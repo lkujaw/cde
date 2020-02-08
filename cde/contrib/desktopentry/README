@@ -6,4 +6,7 @@ https://standards.freedesktop.org/desktop-entry-spec/latest
 It is the opposite style to contrib/desktop2dt that takes desktop files and
 converts them for use with dtlogin.
 
-It does not yet support language/login in other than English/C locale.
+Language selection is the job of the login manager (xdm, dtlogin, kdm,
+etc).
+
+
