@@ -171,7 +171,7 @@ static int Text_Widget(
                         int argc,
                         char *argv[]) ;
 static int Text_VarAndWidget( 
-                        int (*func)(Widget w),
+                        long (*func)(Widget w),
                         Boolean varIsString,
                         int argc,
                         char *argv[]) ;
@@ -1301,7 +1301,7 @@ do_DtHelpReturnSelectedWidgetId(
 	return(1);
    }
 
-   res = DtHelpReturnSelectedWidgetId(w->w, NULL, &retWidget);
+   res = DtHelpReturnSelectedWidgetId(w->w, 0, &retWidget);
    XSync(XtDisplay(w->w), False);
 
    f.addr = (caddr_t)&res;
@@ -3959,7 +3959,7 @@ do_XmTextRemove(
 
 static int
 Text_VarAndWidget(
-        int (*func)(Widget w),
+        long (*func)(Widget w),
         Boolean varIsString,
         int argc,
         char *argv[] )
@@ -4008,7 +4008,7 @@ do_XmTextGetTopCharacter(
         int argc,
         char *argv[] )
 {
-   return (Text_VarAndWidget((int (*)())XmTextGetTopCharacter, False, argc, 
+   return (Text_VarAndWidget((long (*)())XmTextGetTopCharacter, False, argc, 
            argv));
 }
 
@@ -4018,7 +4018,7 @@ do_XmTextGetBaseline(
         int argc,
         char *argv[] )
 {
-   return (Text_VarAndWidget(XmTextGetBaseline, False, argc, argv));
+    return (Text_VarAndWidget((long (*)())XmTextGetBaseline, False, argc, argv));
 }
 
 
@@ -4027,7 +4027,7 @@ do_XmTextGetInsertionPosition(
         int argc,
         char *argv[] )
 {
-   return (Text_VarAndWidget((int (*)())XmTextGetInsertionPosition, False, 
+   return (Text_VarAndWidget((long (*)())XmTextGetInsertionPosition, False, 
            argc, argv));
 }
 
@@ -4037,7 +4037,7 @@ do_XmTextGetLastPosition(
         int argc,
         char *argv[] )
 {
-   return (Text_VarAndWidget((int (*)())XmTextGetLastPosition, False, argc, 
+   return (Text_VarAndWidget((long (*)())XmTextGetLastPosition, False, argc, 
                              argv));
 }
 
@@ -4047,7 +4047,7 @@ do_XmTextGetMaxLength(
         int argc,
         char *argv[] )
 {
-   return (Text_VarAndWidget(XmTextGetMaxLength, False, argc, argv));
+   return (Text_VarAndWidget((long (*)())XmTextGetMaxLength, False, argc, argv));
 }
 
 
@@ -4056,7 +4056,7 @@ do_XmTextGetSelection(
         int argc,
         char *argv[] )
 {
-   return (Text_VarAndWidget((int (*)())XmTextGetSelection, True, argc, argv));
+   return (Text_VarAndWidget((long (*)())XmTextGetSelection, True, argc, argv));
 }
 
 
@@ -4065,7 +4065,7 @@ do_XmTextGetString(
         int argc,
         char *argv[] )
 {
-   return (Text_VarAndWidget((int (*)())XmTextGetString, True, argc, argv));
+   return (Text_VarAndWidget((long (*)())XmTextGetString, True, argc, argv));
 }
 
 
