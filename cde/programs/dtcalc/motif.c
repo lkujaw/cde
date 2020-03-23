@@ -2122,7 +2122,7 @@ key_init(void)
       X->kparray[i - X->kcmin] = 0 ;
       for (j = 0; j < X->keysyms_per_key; ++j)
         {
-          ks = XKeycodeToKeysym(X->dpy, i, j) ;
+          ks = XkbKeycodeToKeysym(X->dpy, i, j) ;
           if (IsKeypadKey(ks))
             {
               X->kparray[i - X->kcmin] = 1 ;
@@ -2142,7 +2142,7 @@ keypad_keysym(XEvent *xevent)
 
   for (i = 0; i < X->keysyms_per_key; ++i)
     {
-      ks = XKeycodeToKeysym(X->dpy, keycode, i) ;
+      ks = XkbKeycodeToKeysym(X->dpy, keycode, i) ;
       if (IsKeypadKey(ks))
       {
 #ifdef sun

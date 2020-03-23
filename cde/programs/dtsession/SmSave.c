@@ -1326,7 +1326,7 @@ QueryServerSettings( void )
 		return(-1);
 	    }
 	}
-	tmpMod = XKeycodeToKeysym(smGD.display, modMap->modifiermap[i], 0);
+	tmpMod = XkbKeycodeToKeysym(smGD.display, modMap->modifiermap[i], 0, 0);
 	sprintf(tmpChar,"%ld", tmpMod);
 	strcat(resSpec, tmpChar);
 	if(i != numLoops)

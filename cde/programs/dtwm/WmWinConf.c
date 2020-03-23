@@ -279,7 +279,7 @@ void HandleClientFrameMove (ClientData *pcd, XEvent *pev)
 		  keyMultiplier++;
 	    }
 
-	    keysym = XKeycodeToKeysym (DISPLAY, pev->xkey.keycode, 0);
+	    keysym = XkbKeycodeToKeysym (DISPLAY, pev->xkey.keycode, 0, 0);
 	    control = (pev->xkey.state & ControlMask) != 0;
 	    tmpX = tmpY = 0;
 
@@ -692,7 +692,7 @@ Boolean HandleResizeKeyPress (ClientData *pcd, XEvent *pev)
 	  keyMult++;
     }
 
-    keysym = XKeycodeToKeysym (DISPLAY, pev->xkey.keycode, 0);
+    keysym = XkbKeycodeToKeysym (DISPLAY, pev->xkey.keycode, 0, 0);
     control = (pev->xkey.state & ControlMask) != 0;
 
     switch (keysym) {
@@ -4328,7 +4328,7 @@ Boolean HandleMarqueeKeyPress (WmScreenData *pSD, XEvent *pev)
 	  keyMult++;
     }
 
-    keysym = XKeycodeToKeysym (DISPLAY, pev->xkey.keycode, 0);
+    keysym = XkbKeycodeToKeysym (DISPLAY, pev->xkey.keycode, 0);
     control = (pev->xkey.state & ControlMask) != 0;
 
     switch (keysym) {
