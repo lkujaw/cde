@@ -63,7 +63,6 @@ PROGRAMS = dtksh
 SRCS =  \
 		userinit.c \
 		builtins.c \
-		aliases.c \
 		widget.c \
 		dtkcvt.c \
 		dtkcmds.c \
@@ -102,14 +101,13 @@ XCOMM Must replace standard ksh tables of builtins and aliases
 XCOMM with our augmented versions.
 XCOMM
 
-libshell.a: $(KSH93SLIBSHELL) userinit.o builtins.o aliases.o
+libshell.a: $(KSH93SLIBSHELL) userinit.o builtins.o
 	$(CP) $(KSH93LIBSHELL) libshell.a; \
-	ar d libshell.a userinit.o builtins.o aliases.o ; \
-	$(AR) libshell.a userinit.o builtins.o aliases.o
+	ar d libshell.a userinit.o builtins.o ; \
+	$(AR) libshell.a userinit.o builtins.o
 
 SpecialObjectRule(userinit.o,$(NULL),-DSHOPT_VSH -DKSHELL -D_TRACE_ )
 SpecialObjectRule(builtins.o,$(NULL),-DSHOPT_VSH -DKSHELL -D_TRACE_ )
-SpecialObjectRule(aliases.o,$(NULL),-DSHOPT_VSH -DKSHELL -D_TRACE_ )
 
 ComplexProgramTarget($(PROGRAMS))
 
