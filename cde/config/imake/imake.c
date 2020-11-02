@@ -242,19 +242,6 @@ extern int	errno;
 #include <stdarg.h>
 #include "imakemdep.h"
 
-/*
- * This define of strerror is copied from (and should be identical to)
- * Xos.h, which we don't want to include here for bootstrapping reasons.
- */
-#if defined(X_NOT_STDC_ENV) || (defined(sun) && !defined(SVR4))
-# ifndef strerror
-extern char *sys_errlist[];
-extern int sys_nerr;
-#  define strerror(n) \
-    (((n) >= 0 && (n) < sys_nerr) ? sys_errlist[n] : "unknown error")
-# endif
-#endif
-
 #define	TRUE		1
 #define	FALSE		0
 

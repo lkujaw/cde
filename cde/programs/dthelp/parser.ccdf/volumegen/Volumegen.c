@@ -56,7 +56,6 @@
 typedef int Boolean;
 
 /* extern int errno; */
-/* extern char *sys_errlist[]; */
 /* extern int sys_nerr; */
 
 static void GenTopicList (

@@ -108,18 +108,12 @@ NoN(strerror)
 
 #include <ast.h>
 
-extern __MANGLE__ int	sys_nerr;
-extern __MANGLE__ char*	sys_errlist[];
 
 char*
 strerror __PARAM__((int err), (err)) __OTORP__(int err;)
 #line 25
 {
-	static char	msg[28];
-
-	if (err > 0 && err <= sys_nerr) return(sys_errlist[err]);
-	sfsprintf(msg, sizeof(msg), "Error %d", err);
-	return(msg);
+	return strerror(err);
 }
 
 #endif

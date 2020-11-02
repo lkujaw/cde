@@ -72,10 +72,6 @@
 
 static Bool lookForButton(Display *, XEvent *, XPointer);
 
-#if !defined(__linux__) && !defined(CSRG_BASED)
-extern char	*sys_errlist[];
-#endif
-
 extern int	drag_load_proc(char*, Calendar *);
 static char	dnd_filename[20];
 

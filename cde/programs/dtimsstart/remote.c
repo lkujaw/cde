@@ -37,10 +37,6 @@
 #include	<X11/Xproto.h>		/* for X_ChangeHosts */
 #include	<X11/Xatom.h>		/* for XA_STRING */
 
-#if !defined(__linux__) && !defined(CSRG_BASED)
-extern char	*sys_errlist[];
-#endif
-
 static char	*conf_msg_id = STR_CONFDATA;
 
 #define	CONF_MSG_ID_LEN		strlen(conf_msg_id)

@@ -107,10 +107,6 @@
  * OPT_CPP_OPTIONS - string, options to pass to cpp. For example, on
  *   some platforms -B is used so C++ comments are processed by cpp.
  *
- *
- * OPT_STRERROR - set if strerror() is available, otherwise we assume
- *   global symbol sys_errlist is defined in errno.h.
- *
  * OPT_SVR4_GETMNTENT - set to use new SVR4 flavor of getmntent.
  *
  * OPT_LOCKF_MNTTAB - set to hold a lockf lock on MNTTAB while doing
@@ -242,7 +238,6 @@
 # undef  OPT_SYSINFO
 # define OPT_CPP_PATH		"/usr/ccs/lib/cpp"
 # define OPT_CPP_OPTIONS	""
-# define OPT_STRERROR
 # undef  OPT_SVR4_GETMNTENT
 # undef  OPT_LOCKF_MNTENT
 # define OPT_DEFINE_SIG_PF
@@ -273,7 +268,6 @@
 # undef  OPT_SYSINFO
 # define OPT_CPP_PATH		"/usr/lib/cpp"
 # define OPT_CPP_OPTIONS	 "-B"
-# undef  OPT_STRERROR
 # undef  OPT_SVR4_GETMNTENT
 # undef  OPT_LOCKF_MNTENT
 # define OPT_LOCAL_MOUNT_TYPE	MNTTYPE_42
@@ -302,7 +296,6 @@
 # define OPT_CATGETS
 # undef  OPT_GETDTABLESIZE
 # define OPT_SYSINFO
-# define OPT_STRERROR
 # define OPT_CPP_PATH		"/usr/ccs/lib/cpp"
 # define OPT_CPP_OPTIONS	"-B"
 # define OPT_SVR4_GETMNTENT
@@ -389,7 +382,6 @@
 #  define OPT_CPP_PATH		"/opt/langtools/lbin/cpp"
 # endif
 # define OPT_CPP_OPTIONS	""
-# define OPT_STRERROR
 # undef  OPT_SVR4_GETMNTENT
 # undef  OPT_LOCKF_MNTENT
 # define OPT_LOCAL_MOUNT_TYPE	MNTTYPE_HFS
@@ -415,7 +407,6 @@
 # undef  OPT_SYSINFO
 # define OPT_CPP_PATH		"/usr/bin/cpp"
 # define OPT_CPP_OPTIONS	 ""
-# define OPT_STRERROR
 # undef  OPT_SVR4_GETMNTENT
 # undef  OPT_LOCKF_MNTENT
 # define OPT_LOCAL_MOUNT_TYPE	"ext2fs"
@@ -446,7 +437,6 @@
 # undef  OPT_SYSINFO
 # define OPT_CPP_PATH		"/usr/libexec/cpp"
 # define OPT_CPP_OPTIONS	""
-# define OPT_STRERROR
 # undef  OPT_SVR4_GETMNTENT
 # undef  OPT_LOCKF_MNTENT
 # define OPT_LOCAL_MOUNT_TYPE	MNTTYPE_UFS
@@ -479,7 +469,6 @@
 #  define OPT_CPP_PATH		"/usr/libexec/cpp"
 # endif
 # define OPT_CPP_OPTIONS	""
-# define OPT_STRERROR
 # undef  OPT_SVR4_GETMNTENT
 # undef  OPT_LOCKF_MNTENT
 # define OPT_LOCAL_MOUNT_TYPE	MNTTYPE_UFS
@@ -509,7 +498,6 @@
 # undef  OPT_SYSINFO
 # define OPT_CPP_PATH		"/usr/bin/cpp"
 # define OPT_CPP_OPTIONS	""
-# define OPT_STRERROR
 # undef  OPT_SVR4_GETMNTENT
 # undef  OPT_LOCKF_MNTENT
 # define OPT_LOCAL_MOUNT_TYPE	MNTTYPE_UFS

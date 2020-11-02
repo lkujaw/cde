@@ -306,10 +306,7 @@ syserr(char *msg, int a1, int a2, int a3)
 #if 0
 	/* print the error, if any */
 	if (saveerr != 0) {
-		if (saveerr < 0 || saveerr > sys_nerr) 
-			(void) fprintf(stderr, ":Unknown error %d", saveerr);
-		else 
-			(void) fprintf(stderr, ":%s", sys_errlist[saveerr]);
+			(void) fprintf(stderr, ":%s", strerror(saveerr));
 	}
 #endif
 

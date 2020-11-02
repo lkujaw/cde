@@ -68,8 +68,7 @@
 # include       <pwd.h>                 /* for passwd structure            */
 # include	<stdio.h>
 # include	<stdlib.h>		/* for exit(), malloc(), abort()   */
-# include	<string.h>		/* for string functions, bcopy(),
-					   sys_errlist			   */
+# include	<string.h>		/* for string functions, bcopy()   */
 # include	<sys/param.h>		/* for NGROUPS			   */
 # include	<sys/types.h>   	/* for fd_set			   */
 # include	<netinet/in.h>		/* for Internet socket stuff	   */
@@ -475,10 +474,6 @@ struct verify_info {
  *
  ***************************************************************************/
 
-#if !defined(__linux__) && !defined(CSRG_BASED)
-extern char	*sys_errlist[];		/* system error msgs		   */
-extern int	sys_nerr;		/* system error msgs		   */
-#endif
 extern XrmDatabase  XresourceDB; 
 
 

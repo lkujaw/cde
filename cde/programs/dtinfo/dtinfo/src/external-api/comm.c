@@ -53,9 +53,6 @@
 #include <sys/select.h>
 #endif
 
-extern char *sys_errlist[];
-
-
 static OliasEvent *current_event;
 static int reply_status;
 #define NO_REPLY 0
@@ -332,7 +329,7 @@ wait_for_reply (Widget toplevel)
 	      XtAppWarningMsg (XtWidgetToApplicationContext (toplevel),
 			       "communicationsError", "select",
 			       "Olias API", "Select failed: %s",
-			       &sys_errlist[errno], &num_params);
+			       strerror(errno), &num_params);
 	      continue;
 	    }
 	  continue;

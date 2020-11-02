@@ -44,14 +44,6 @@
 #include "ttdbck.h"
 #include "tt_db_server_consts.h"
 
-#if !defined(OPT_STRERROR)
-// No strerror(), fake it
-char *
-strerror(int e)
-{
-	return ((e<sys_nerr) ? sys_errlist[e] : "unknown");
-}
-#endif
 
 Spec::
 Spec()     
