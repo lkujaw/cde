@@ -228,7 +228,7 @@ static XtTranslations proj_transtbl = NULL;
 static XRectangle       *rband_rect = NULL;
 static Boolean          mselect_adjust = False;
 
-char			Buf[MAXPATHLEN];	/* Work buffer */
+extern char			Buf[MAXPATHLEN];	/* Work buffer */
 
 /*************************************************************************
 **

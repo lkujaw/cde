@@ -79,7 +79,7 @@
 
 const char 	mod_path[] = "*proj_mod_path";
 const char 	proj_path[] = "*proj_proj_path";
-char		Buf[MAXPATHLEN];	/* Work buffer */
+extern char		Buf[MAXPATHLEN];	/* Work buffer */
 
 /* Whether we are to export a module as BIL (default) or UIL */
 static BOOL ExportAsUIL = FALSE;

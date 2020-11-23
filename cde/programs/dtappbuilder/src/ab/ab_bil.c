@@ -88,7 +88,7 @@ static int print_load_stats(
 		ABProfiledInterval	configTime
 		);
 
-char	Buf[MAXPATHLEN];	/* Work buffer */
+extern char	Buf[MAXPATHLEN];	/* Work buffer */
 
 /*
  * Loads in a new project, replacing the current project.

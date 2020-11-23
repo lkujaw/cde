@@ -60,7 +60,7 @@
 #include "bilP.h"
 
 BIL_LOAD_INFO	bilP_load;
-char		Buf[MAXPATHLEN];
+static char		Buf[MAXPATHLEN];
 
 /*
  * Read a BIL file into memory. Returns a project node.

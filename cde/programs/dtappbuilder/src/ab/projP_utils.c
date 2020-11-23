@@ -93,7 +93,7 @@ static void     mult_module_selected(
 **                                                                      **
 **************************************************************************/
 
-char		Buf[MAXPATHLEN];	/* Work buffer */
+extern char		Buf[MAXPATHLEN];	/* Work buffer */
 
 /*************************************************************************
 **                                                                      **

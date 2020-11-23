@@ -108,7 +108,7 @@ typedef enum
 } CG_STATUS;
 
 
-CGenOptions		CodeGenOptions;
+extern CGenOptions		CodeGenOptions;
 StringList	    user_env_vars = NULL;
 StringList	    module_list = NULL;
 static CG_GOAL      user_goal = CG_GOAL_UNDEF;
