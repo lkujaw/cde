@@ -87,7 +87,7 @@ typedef struct Xobject {            /* Motif/Xlib graphics object. */
 
 typedef struct Xobject *XVars ;
 
-XVars X ;
+extern XVars X ;
 
 #ifndef CDE_INSTALLATION_TOP
 #define CDE_INSTALLATION_TOP "/usr/dt"

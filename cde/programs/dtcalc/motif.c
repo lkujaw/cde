@@ -112,6 +112,9 @@ extern XmWidgetExtData _XmGetWidgetExtData(
 #include "ds_popup.h"
 #include "ds_xlib.h"
 
+
+ApplicationArgs application_args;
+XVars X;
 Boolean colorSrv;
 
 static XtResource resources[] =

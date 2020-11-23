@@ -552,7 +552,9 @@ struct calcVars {                     /* Calctool variables and options. */
 #ifdef hpux
   int keybdID;
 #endif
-} CalcVars ;
+};
+
+extern struct calcVars CalcVars;
 
 typedef struct calcVars *Vars ;
 
@@ -568,7 +570,7 @@ typedef struct
    char *session;
 } ApplicationArgs, *ApplicationArgsPtr;
 
-ApplicationArgs application_args;
+extern ApplicationArgs application_args;
 
 /* MP definitions. */
 
