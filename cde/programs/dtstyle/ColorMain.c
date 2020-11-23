@@ -246,7 +246,7 @@ Widget  paletteList;
 Widget  deleteButton;
 char    *defaultName;
 Bool    WaitSelection;
-int     NumOfPalettes;
+int     NumOfPalettes = 0;
 
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* Internal Variables                    */

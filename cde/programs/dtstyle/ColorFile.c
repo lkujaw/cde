@@ -125,8 +125,6 @@ static void InitializeBW(
 /*+++++++++++++++++++++++++++++++++++++++*/
 /* Internal Variables                    */
 /*+++++++++++++++++++++++++++++++++++++++*/
-int NumOfPalettes = 0;
-
 static char *PALETTE_DIR = CDE_INSTALLATION_TOP "/palettes/";
 static char *PALETTE_DIR_ADM = "/etc/dt/palettes/";
 static char *DEFAULT_FILENAME = "palette.dt";
