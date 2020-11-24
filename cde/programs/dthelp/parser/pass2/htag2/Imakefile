@@ -38,9 +38,9 @@ APPLHDRS = $(PARSEHDRS) $(ELTHDRS) \
         ../parser/pval.h ../parser/globdec.h ../parser/signonx.h \
         ../parser/userinc.h
 
-SRCS =  custom.c sdl.c option.c out.c $(XLATESRCS)
+SRCS =  custom.c global.c sdl.c option.c out.c $(XLATESRCS)
 
-OBJS =  custom.o sdl.o option.o out.o $(XLATEOBJS)
+OBJS =  custom.o global.o sdl.o option.o out.o $(XLATEOBJS)
 
 LOCAL_LIBRARIES = $(SDLUTILLIB)
 

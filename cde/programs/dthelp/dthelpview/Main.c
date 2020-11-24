@@ -80,6 +80,27 @@
 #include "UtilI.h"
 #include "ManPageI.h"
 
+/* Global Variables Used to maintain our cache list of help dialogs */
+CacheListStruct *pCacheListHead; 
+CacheListStruct *pCacheListTale;  
+int             totalCacheNodes;
+
+/* Global Variables */
+Widget topLevel;
+Widget viewWidget;
+Widget manWidget;
+Widget manBtn;
+Widget manText;
+Widget manForm;
+Widget closeBtn;
+
+/* General global variables */
+int runMode;
+char      *helpClass;
+Display	  *appDisplay;
+char      *startCommand;
+
+
 /*  Application resource list definition  */
 
 static XrmOptionDescRec option_list[] =

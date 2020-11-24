@@ -37,6 +37,7 @@ XLATEOBJECTS = $(HTAG2SRC)/LocaleXlate.o $(HTAG2SRC)/XlationSvc.o
 
 APPLOBJECTS = \
 	$(HTAG2SRC)/custom.o \
+	$(HTAG2SRC)/global.o \
 	$(HTAG2SRC)/sdl.o    \
 	$(HTAG2SRC)/option.o \
 	$(HTAG2SRC)/out.o    \

@@ -35,6 +35,8 @@
 #include "if.h"
 #include "entext.h"
 
+char *user_defined_entities M_PARINIT("USER-DEFINED-ENTITIES");
+
 static void scanloop(LOGICAL prolog);
 
 /* Main procedure */

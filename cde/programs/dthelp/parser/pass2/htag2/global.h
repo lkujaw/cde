@@ -128,20 +128,20 @@ EXTERN char *progName          INIT(NULL);
 /*
  * Names for all the input, output and intermediate files we'll need.
 */
-char *inFileName;
-char *outFileName;
-char *errFileName;
-char *idxFileName;
-char *snbFileName;
-char *sortedIdxFileName;
-char *tossFileName;
-char *vstructFileName;
-char *tempFileName;
-char *compFileName;
-char *compZFileName;
+extern char *inFileName;
+extern char *outFileName;
+extern char *errFileName;
+extern char *idxFileName;
+extern char *snbFileName;
+extern char *sortedIdxFileName;
+extern char *tossFileName;
+extern char *vstructFileName;
+extern char *tempFileName;
+extern char *compFileName;
+extern char *compZFileName;
 
-FILE *inFile;
-FILE *outFile;
+extern FILE *inFile;
+extern FILE *outFile;
 
 typedef struct _loidsRec *LoidsPtr;
 typedef struct _loidsRec {

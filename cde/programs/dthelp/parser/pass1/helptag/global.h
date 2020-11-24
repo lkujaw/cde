@@ -170,17 +170,17 @@ EXTERN M_WCHAR *imageghyperlinkp;
 EXTERN M_WCHAR *imageglinktypep;
 EXTERN M_WCHAR *imagegdescription;
 
-LOGICAL inParText INIT(FALSE);
-LOGICAL inSdlP    INIT(FALSE);
+extern LOGICAL inParText;
+extern LOGICAL inSdlP;
 
 /* Save these ids and reuse them on the current virpage.
  * We need two of each (except for the first) so we can alternate to
  * avoid <form> thinking it is supposed to span them.  The bullet id
  * indexes will flip back and forth between 0 and 1 to pick an id.
 */
-int bulletId[2], looseBulletId[2], firstBulletId, firstLooseBulletId;
-int bulletIdIndex INIT(1);
-int looseBulletIdIndex INIT(1);
+extern int bulletId[2], looseBulletId[2], firstBulletId, firstLooseBulletId;
+extern int bulletIdIndex;
+extern int looseBulletIdIndex;
 
 /* save the textsize to emit it on the <p> tag; this allows us to have
  * a single ssi= for the "ex" <block> and modify the text size individually 
@@ -213,7 +213,7 @@ EXTERN char *helpbase INIT(NULL);
 EXTERN char *helpext;
 
 /* Should we use these BASENAME_LIMIT on the size of file names? */
-LOGICAL usingshortnames INIT(FALSE);
+extern LOGICAL usingshortnames;
 /* Limit on how long the basename can be for a .ht file */
 #define BASENAME_LIMIT 6
 /* limit on how many additional character are allowed before the ext */

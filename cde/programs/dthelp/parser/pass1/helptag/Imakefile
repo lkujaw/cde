@@ -44,10 +44,10 @@ APPLHDRS = $(PARSEHDRS) $(ELTHDRS) \
         ../parser/pval.h ../parser/globdec.h ../parser/signonx.h \
         ../parser/userinc.h
 
-SRCS =  custom.c default.c help.c make.c option.c out.c special.c xref.c \
+SRCS =  custom.c default.c global.c help.c make.c option.c out.c special.c xref.c \
         $(XLATESRCS)
 
-OBJS =  custom.o default.o help.o make.o option.o out.o special.o xref.o \
+OBJS =  custom.o default.o global.o help.o make.o option.o out.o special.o xref.o \
         $(XLATEOBJS)
 
 LOCAL_LIBRARIES = $(HELPUTILLIB)

@@ -64,9 +64,9 @@
 
 /* Global Variables Used by our helpCache */
 
-CacheListStruct *pCacheListHead;
-CacheListStruct *pCacheListTale;
-int             totalCacheNodes;
+extern CacheListStruct *pCacheListHead;
+extern CacheListStruct *pCacheListTale;
+extern int             totalCacheNodes;
 
 /*  Globally referenced widget variables */
 extern Widget topLevel;

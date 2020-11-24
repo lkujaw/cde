@@ -66,25 +66,25 @@
 
 
 /* Global Variables Used to maintain our cache list of help dialogs */
-CacheListStruct *pCacheListHead; 
-CacheListStruct *pCacheListTale;  
-int             totalCacheNodes;
+extern CacheListStruct *pCacheListHead; 
+extern CacheListStruct *pCacheListTale;  
+extern int             totalCacheNodes;
 
 /* Global Variables */
-Widget topLevel;
-Widget viewWidget;
-Widget manWidget;
-Widget manBtn;
-Widget manText;
-Widget manForm;
-Widget closeBtn;
+extern Widget topLevel;
+extern Widget viewWidget;
+extern Widget manWidget;
+extern Widget manBtn;
+extern Widget manText;
+extern Widget manForm;
+extern Widget closeBtn;
 
 
 /* General global variables */
-int runMode;
-char      *helpClass;
-Display	  *appDisplay;
-char      *startCommand;
+extern int runMode;
+extern char      *helpClass;
+extern Display	  *appDisplay;
+extern char      *startCommand;
 
 
 

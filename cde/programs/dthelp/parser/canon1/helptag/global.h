@@ -227,20 +227,21 @@ struct _block {
     char   *pclass;
     char   *pssi;
     PBLOCK  pprev;
-} block, *pblock;
-PBLOCK blockinfo INIT(NULL);
+};
+/*block, *pblock;*/
+extern PBLOCK blockinfo;
 
-LOGICAL inParText INIT(FALSE);
-LOGICAL inSdlP    INIT(FALSE);
+extern LOGICAL inParText;
+extern LOGICAL inSdlP;
 
 /* Save these ids and reuse them on the current virpage.
  * We need two of each (except for the first) so we can alternate to
  * avoid <form> thinking it is supposed to span them.  The bullet id
  * indexes will flip back and forth between 0 and 1 to pick an id.
 */
-int bulletId[2], looseBulletId[2], firstBulletId, firstLooseBulletId;
-int bulletIdIndex INIT(1);
-int looseBulletIdIndex INIT(1);
+extern int bulletId[2], looseBulletId[2], firstBulletId, firstLooseBulletId;
+extern int bulletIdIndex;
+extern int looseBulletIdIndex;
 
 /* indent for p, image, ex, vex, based on plain list */
 #define LISTFIRSTINDENT 2
@@ -289,7 +290,7 @@ EXTERN char *helpext;
 EXTERN char helptmpbuf[2] INIT("0");
 
 /* Should we use these BASENAME_LIMIT on the size of file names? */
-LOGICAL usingshortnames INIT(FALSE);
+extern LOGICAL usingshortnames;
 /* Limit on how long the basename can be for a .ht file */
 #define BASENAME_LIMIT 6
 /* limit on how many additional character are allowed before the ext */

@@ -68,6 +68,13 @@
 #include "HelpCacheI.h"
 #include "HourGlassI.h"
 
+/* Global Variables Used by our helpCache */
+
+CacheListStruct *pCacheListHead;
+CacheListStruct *pCacheListTale;
+int             totalCacheNodes;
+
+
 /*  Internal Static Functions  */
 static Widget BuildMenus(Widget parent);
 static void CreateMainWindow(Widget parent);

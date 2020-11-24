@@ -44,6 +44,7 @@ XLATEOBJECTS = $(HELPTAGSRC)/LocaleXlate.o $(HELPTAGSRC)/XlationSvc.o
 APPLOBJECTS = \
 	$(HELPTAGSRC)/custom.o \
 	$(HELPTAGSRC)/default.o \
+	$(HELPTAGSRC)/global.o \
 	$(HELPTAGSRC)/help.o \
 	$(HELPTAGSRC)/make.o \
 	$(HELPTAGSRC)/option.o \

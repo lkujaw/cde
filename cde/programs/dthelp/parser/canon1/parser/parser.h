@@ -301,7 +301,7 @@ M_PAREXTERN int m_prevcon ;
 M_PAREXTERN int m_token ;
 M_PAREXTERN int m_scanval ;
 
-char *user_defined_entities M_PARINIT("USER-DEFINED-ENTITIES");
+extern char *user_defined_entities;
 
 /* Declarations for tentative list of omitted tags when checking for tag
    MINimization */
