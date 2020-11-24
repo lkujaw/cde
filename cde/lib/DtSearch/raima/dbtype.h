@@ -405,7 +405,11 @@ typedef struct {struct CNTRY_TBL_S *ptr; LOCK_DESC} CNTRY_TBL_P;
 struct sk {
    INT sk_fld;
    CHAR_P sk_val;
-} __SK__;
+};
+
+/* PJH 20201124 unused struct variable declaration in header causing issues
+struct sk __SK__;
+*/
 typedef struct { struct sk *ptr; LOCK_DESC } SK_P;
 
 /* node key search path stack entry: one per level per key field */
