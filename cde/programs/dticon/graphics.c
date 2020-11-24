@@ -60,11 +60,11 @@
 
 extern GC scratch_gc;
 
-Widget editMenu_cut_pb;
-Widget editMenu_copy_pb;
-Widget editMenu_rotate_pb;
-Widget editMenu_flip_pb;
-Widget editMenu_scale_pb;
+extern Widget editMenu_cut_pb;
+extern Widget editMenu_copy_pb;
+extern Widget editMenu_rotate_pb;
+extern Widget editMenu_flip_pb;
+extern Widget editMenu_scale_pb;
 
 extern void Stop_HotBox(void);
 

@@ -101,13 +101,13 @@ static void Do_DropCheckOp(DtDndTransferCallback);
 static void Do_DropOp(void);
 
 extern Widget optionsMenu_grid;
-Widget editMenu_paste_pb;
-Widget editMenu_cut_pb;
-Widget editMenu_copy_pb;
-Widget editMenu_rotate_pb;
-Widget editMenu_flip_pb;
-Widget editMenu_scale_pb;
-Widget editMenu_undo_pb;
+extern Widget editMenu_paste_pb;
+extern Widget editMenu_cut_pb;
+extern Widget editMenu_copy_pb;
+extern Widget editMenu_rotate_pb;
+extern Widget editMenu_flip_pb;
+extern Widget editMenu_scale_pb;
+extern Widget editMenu_undo_pb;
 extern Widget newWidthText, newHeightText;
 
 extern GC scratch_gc;

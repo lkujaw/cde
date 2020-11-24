@@ -138,7 +138,7 @@ extern Window  tablet_win;
 static int jskXerrorDebug();
 static int jskXerrorIODebug();
 
-Widget editMenu_undo_pb;
+extern Widget editMenu_undo_pb;
 
 void GetSessionInfo( void );
 void Set_Gfx_Labels( Boolean );
