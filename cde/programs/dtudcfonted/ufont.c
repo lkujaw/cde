@@ -56,6 +56,21 @@ GetMessage(int set, int number, char *string)
  *    Widgets							*
  ***************************************************************/
 Widget	toplevel;
+Widget	editPtnW;
+Widget	cpyPtnW;
+Widget	mngPtnW;
+
+EditChar	edg;
+EditList 	edlist;
+EditPane 	edpane;
+XlibInf 	xl;
+DelInf		dn;
+DelPtnInf 	dl[D_MAX] ;
+DelPtnInf 	dl_glyph[EDLIST_MAX];		 /* add dl_disp 1995.09.20 */
+int		sq_disp[EDLIST_MAX];		 /* add sq_disp 1995.09.20 */
+EditPtnInf 	em;
+CopyPtnInf 	cpm;
+
 static Widget	dnPopW;
 Widget	wgeScro, editPopW;
 

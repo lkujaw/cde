@@ -66,9 +66,9 @@ extern FalCodeRegion CodeArea[16];
  structure of widgets
  ********************************************************************/
 extern	Widget	toplevel;
-	Widget	editPopW,
-		wgeScro,
-		wgeBulB_edit;
+extern Widget wgeScro;
+extern Widget editPopW;
+Widget wgeBulB_edit;
 static	Widget	wgeStaT_form[EDLIST_MAX],
 		wgeStaT_disp[EDLIST_MAX],
 		wgeStaT_list[EDLIST_MAX],

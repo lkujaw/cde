@@ -255,23 +255,23 @@ typedef struct _FontInf {
 
  **********************************************************************/
 
-Widget	toplevel;
+extern Widget	toplevel;
 
-Widget	editPtnW;
-Widget	cpyPtnW;
-Widget	mngPtnW;
+extern Widget	editPtnW;
+extern Widget	cpyPtnW;
+extern Widget	mngPtnW;
 
-EditChar	edg;
-EditList 	edlist;
-EditPane 	edpane;
-XlibInf 	xl;
-DelInf		dn;
-DelPtnInf 	dl[D_MAX] ;
-DelPtnInf 	dl_glyph[EDLIST_MAX];		 /* add dl_disp 1995.09.20 */
-int		sq_disp[EDLIST_MAX];		 /* add sq_disp 1995.09.20 */
+extern EditChar	edg;
+extern EditList 	edlist;
+extern EditPane 	edpane;
+extern XlibInf 	xl;
+extern DelInf		dn;
+extern DelPtnInf 	dl[D_MAX] ;
+extern DelPtnInf 	dl_glyph[EDLIST_MAX];		 /* add dl_disp 1995.09.20 */
+extern int		sq_disp[EDLIST_MAX];		 /* add sq_disp 1995.09.20 */
 
-EditPtnInf 	em;
-CopyPtnInf 	cpm;
+extern EditPtnInf 	em;
+extern CopyPtnInf 	cpm;
 
 
 /*
