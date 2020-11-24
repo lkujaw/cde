@@ -71,7 +71,7 @@ Widget Licon2;
 extern int do_which;
 enum icon_size_range filetype_icon_size = None_Selected;
 */
-enum icon_size_range filetype_icon_size;
+enum icon_size_range filetype_icon_size = None_Selected;
 
 
 /*******************************************************************************

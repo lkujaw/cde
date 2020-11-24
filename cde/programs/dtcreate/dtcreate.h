@@ -287,7 +287,7 @@ STORAGECLASS  Widget       FC_EndByteTextField;
 */
 STORAGECLASS  Widget       FC_NameOrPathText;
 STORAGECLASS  Widget       FC_AndLabel1;
-STORAGECLASS  Widget       FC_PermissionForm;
+extern  Widget       FC_PermissionForm;
 STORAGECLASS  Widget       FC_ReadToggle;
 STORAGECLASS  Widget       FC_WriteToggle;
 STORAGECLASS  Widget       FC_ExecuteToggle;
@@ -324,7 +324,7 @@ STORAGECLASS  SessionData  sessiondata;
 #ifdef  NOEXTERN
 
 STORAGECLASS  enum icon_size_range action_icon_size = None_Selected;
-STORAGECLASS  enum icon_size_range filetype_icon_size = None_Selected;
+STORAGECLASS  extern enum icon_size_range filetype_icon_size;
 STORAGECLASS  int     pidIconEditor = 0;
 STORAGECLASS  Boolean bShowPixmaps = TRUE;
 STORAGECLASS  Widget  IconSelector = (Widget)NULL;
@@ -353,7 +353,6 @@ STORAGECLASS  const char *af_tiny_icon_default = "/usr/dt/appconfig/icons/C/Dtda
 
 #else  /* NOEXTERN */
 
-STORAGECLASS  enum icon_size_range action_icon_size;
 STORAGECLASS  enum icon_size_range filetype_icon_size;
 STORAGECLASS  int     pidIconEditor;
 STORAGECLASS  Boolean bShowPixmaps;
