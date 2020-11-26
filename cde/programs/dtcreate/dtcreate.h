@@ -36,14 +36,6 @@
 #include <nl_types.h>
 #include <sys/param.h>
 
-#ifndef STORAGECLASS
-#ifdef  NOEXTERN
-#define STORAGECLASS
-#else
-#define STORAGECLASS extern
-#endif
-#endif
-
 /***************************************************************************/
 /*                                                                         */
 /*  Constant Declarations                                                  */
@@ -206,180 +198,145 @@ typedef struct {
 /*                                                                         */
 /***************************************************************************/
 
-        /*******************************************************************/
-        /* Global variables that are not being initialized.                */
-        /*******************************************************************/
+/*******************************************************************/
+/* Global variables that are not being initialized.                */
+/******************************************************************/
 
-STORAGECLASS  ActionData   AD;
-STORAGECLASS  ActionData   *pMyCopyAD;
-STORAGECLASS  char         *pszFileToEdit;
-STORAGECLASS  Cursor       watch_cursor;
-STORAGECLASS  Widget       widEditSource;
-STORAGECLASS  Boolean      bIconEditorDisplayed;
-STORAGECLASS  nl_catd      nlmsg_fd;
-STORAGECLASS  char         *pszExecName;
-STORAGECLASS  Widget       widSelectedIcon;
-STORAGECLASS  Boolean      bLowRes;
-STORAGECLASS  IconData     *IconDataList[ICON_NUMBER];
+extern ActionData   AD;
+extern ActionData   *pMyCopyAD;
+extern char         *pszFileToEdit;
+extern Cursor       watch_cursor;
+extern Widget       widEditSource;
+extern Boolean      bIconEditorDisplayed;
+extern nl_catd      nlmsg_fd;
+extern char         *pszExecName;
+extern Widget       widSelectedIcon;
+extern Boolean      bLowRes;
+extern IconData     *IconDataList[ICON_NUMBER];
 
-                 /**********************************************************/
-                 /* CreateActionAppShell  globals.                         */
-                 /**********************************************************/
+/**********************************************************/
+/* CreateActionAppShell  globals.                         */
+/**********************************************************/
 
-STORAGECLASS  Widget       CreateActionAppShell;
-STORAGECLASS  Widget       ExpertOption;
-STORAGECLASS  Widget       ColorMonoOption;
-STORAGECLASS  Widget       CA_ActionNameTextField;
-STORAGECLASS  Widget       CA_MED_IconGadget;
-STORAGECLASS  Widget       CA_SML_IconGadget;
-STORAGECLASS  Widget       CA_TINY_IconGadget;
-STORAGECLASS  Widget       CA_LRG_IconGadget;
-STORAGECLASS  Widget       CA_DblClkText;
-STORAGECLASS  Widget       XprtOptionForm;
-STORAGECLASS  Widget       CA_XprtActionOpenText;
-STORAGECLASS  Widget       CA_FiletypesList;
-STORAGECLASS  Widget       CA_WindowTypeArea;
-STORAGECLASS  Widget       CA_WindowType;
-STORAGECLASS  Widget       CA_Expand;
+extern Widget       CreateActionAppShell;
+extern Widget       ExpertOption;
+extern Widget       ColorMonoOption;
+extern Widget       CA_ActionNameTextField;
+extern Widget       CA_MED_IconGadget;
+extern Widget       CA_SML_IconGadget;
+extern Widget       CA_TINY_IconGadget;
+extern Widget       CA_LRG_IconGadget;
+extern Widget       CA_DblClkText;
+extern Widget       XprtOptionForm;
+extern Widget       CA_XprtActionOpenText;
+extern Widget       CA_FiletypesList;
+extern Widget       CA_WindowTypeArea;
+extern Widget       CA_WindowType;
+extern Widget       CA_Expand;
 #if 0
-STORAGECLASS  Widget       CA_WindowType_OptionMenuShell;
-STORAGECLASS  Widget       CA_WindowType_Pane;
+extern Widget       CA_WindowType_OptionMenuShell;
+extern Widget       CA_WindowType_Pane;
 #endif
-STORAGECLASS  Widget       CA_WinTypeX;
-STORAGECLASS  Widget       CA_WinTypeAutoClose;
-STORAGECLASS  Widget       CA_WinTypeManualClose;
-STORAGECLASS  Widget       CA_WinTypeNoOutput;
-STORAGECLASS  Widget       CA_HelpTextWindow;
-STORAGECLASS  Widget       CA_HelpText;
-STORAGECLASS  Widget       CA_AllFiletypesToggle;
-STORAGECLASS  Widget       CA_FiletypesInListToggle;
+extern Widget       CA_WinTypeX;
+extern Widget       CA_WinTypeAutoClose;
+extern Widget       CA_WinTypeManualClose;
+extern Widget       CA_WinTypeNoOutput;
+extern Widget       CA_HelpTextWindow;
+extern Widget       CA_HelpText;
+extern Widget       CA_AllFiletypesToggle;
+extern Widget       CA_FiletypesInListToggle;
 
-                 /**********************************************************/
-                 /* AddFiletype  globals.                                  */
-                 /**********************************************************/
+/**********************************************************/
+/* AddFiletype  globals.                                  */
+/**********************************************************/
 
-STORAGECLASS  Widget       AddFiletype;
-STORAGECLASS  Widget       AF_FileTypeNameTextField;
-STORAGECLASS  Widget       AF_IdCharacteristicsText;
-STORAGECLASS  Widget       AF_IdCharacteristicsEdit;
-STORAGECLASS  Widget       AF_FiletypePrintCmdTextField;
-STORAGECLASS  Widget       AF_OpenCmdText;
-STORAGECLASS  Widget       AF_FiletypeHelpText;
-STORAGECLASS  Widget       AF_MED_IconGadget;
-STORAGECLASS  Widget       AF_TINY_IconGadget;
+extern Widget       AddFiletype;
+extern Widget       AF_FileTypeNameTextField;
+extern Widget       AF_IdCharacteristicsText;
+extern Widget       AF_IdCharacteristicsEdit;
+extern Widget       AF_FiletypePrintCmdTextField;
+extern Widget       AF_OpenCmdText;
+extern Widget       AF_FiletypeHelpText;
+extern Widget       AF_MED_IconGadget;
+extern Widget       AF_TINY_IconGadget;
 
-                 /**********************************************************/
-                 /* FileCharacteristics  globals                           */
-                 /**********************************************************/
+/**********************************************************/
+/* FileCharacteristics  globals                           */
+/**********************************************************/
 
-STORAGECLASS  Widget       FileCharacteristics;
-STORAGECLASS  Widget       FC_DirectoryToggle;
-STORAGECLASS  Widget       FC_FileToggle;
-STORAGECLASS  Widget       FC_AndLabel2;
-STORAGECLASS  Widget       FC_ContentsPatternText;
-STORAGECLASS  Widget       FC_StringToggle;
-STORAGECLASS  Widget       FC_ByteToggle;
-STORAGECLASS  Widget       FC_ShortToggle;
-STORAGECLASS  Widget       FC_LongToggle;
-STORAGECLASS  Widget       FC_StartByteTextField;
+extern Widget       FileCharacteristics;
+extern Widget       FC_DirectoryToggle;
+extern Widget       FC_FileToggle;
+extern Widget       FC_AndLabel2;
+extern Widget       FC_ContentsPatternText;
+extern Widget       FC_StringToggle;
+extern Widget       FC_ByteToggle;
+extern Widget       FC_ShortToggle;
+extern Widget       FC_LongToggle;
+extern Widget       FC_StartByteTextField;
 /*
-STORAGECLASS  Widget       FC_EndByteTextField;
+extern Widget       FC_EndByteTextField;
 */
-STORAGECLASS  Widget       FC_NameOrPathText;
-STORAGECLASS  Widget       FC_AndLabel1;
-extern  Widget       FC_PermissionForm;
-STORAGECLASS  Widget       FC_ReadToggle;
-STORAGECLASS  Widget       FC_WriteToggle;
-STORAGECLASS  Widget       FC_ExecuteToggle;
+extern Widget       FC_NameOrPathText;
+extern Widget       FC_AndLabel1;
+extern Widget       FC_PermissionForm;
+extern Widget       FC_ReadToggle;
+extern Widget       FC_WriteToggle;
+extern Widget       FC_ExecuteToggle;
 
-STORAGECLASS  Widget       FC_NamePatternLabel;
-STORAGECLASS  Widget       FC_PermissionLabel;
-STORAGECLASS  Widget       FC_PermissionToggle;
-STORAGECLASS  Widget       FC_ContentsLabel;
-STORAGECLASS  Widget       FC_ContentsBox;
-STORAGECLASS  Widget       FC_TypeRowColumn;
-STORAGECLASS  Widget       FC_StartByteLabel;
-STORAGECLASS  Widget       FC_TypeLabel;
-STORAGECLASS  Widget       FC_ContentsPatternLabel;
+extern Widget       FC_NamePatternLabel;
+extern Widget       FC_PermissionLabel;
+extern Widget       FC_PermissionToggle;
+extern Widget       FC_ContentsLabel;
+extern Widget       FC_ContentsBox;
+extern Widget       FC_TypeRowColumn;
+extern Widget       FC_StartByteLabel;
+extern Widget       FC_TypeLabel;
+extern Widget       FC_ContentsPatternLabel;
 /*
-STORAGECLASS  Widget       FC_EndByteLabel;
+extern Widget       FC_EndByteLabel;
 */
-STORAGECLASS  Widget       FC_ContentsToggle;
-STORAGECLASS  Widget       FC_NameOrPathToggle;
+extern Widget       FC_ContentsToggle;
+extern Widget       FC_NameOrPathToggle;
 
-                 /**********************************************************/
-                 /* icon_selection_dialog  globals                         */
-                 /**********************************************************/
-STORAGECLASS  Widget       ISD_SelectedIconTextField;
+/**********************************************************/
+/* icon_selection_dialog  globals                         */
+/**********************************************************/
+extern Widget       ISD_SelectedIconTextField;
 
-                 /**********************************************************/
-                 /* Other dialog globals                                   */
-                 /**********************************************************/
-STORAGECLASS  SessionData  sessiondata;
+/**********************************************************/
+/* Other dialog globals                                   */
+/**********************************************************/
+extern SessionData  sessiondata;
 
-        /*******************************************************************/
-        /* Global variables that are being initialized.                    */
-        /*******************************************************************/
+/*******************************************************************/
+/* Global variables that are being initialized.                    */
+/*******************************************************************/
 
-#ifdef  NOEXTERN
+extern enum icon_size_range filetype_icon_size;
+extern int     pidIconEditor;
+extern Boolean bShowPixmaps;
+extern Widget  IconSelector;
+extern Boolean DbInitDone;
+extern Widget  OpenFile;
+extern Widget  Confirmed;
+extern Widget  QuestionDialog;
+extern Widget  ErrorDialog;
+extern Widget  last_action_pushed;
+extern Widget  last_filetype_pushed;
 
-STORAGECLASS  enum icon_size_range action_icon_size = None_Selected;
-STORAGECLASS  extern enum icon_size_range filetype_icon_size;
-STORAGECLASS  int     pidIconEditor = 0;
-STORAGECLASS  Boolean bShowPixmaps = TRUE;
-STORAGECLASS  Widget  IconSelector = (Widget)NULL;
-STORAGECLASS  Boolean DbInitDone = FALSE;
-STORAGECLASS  Widget  OpenFile = (Widget)NULL;
-STORAGECLASS  Widget  Confirmed = (Widget)NULL;
-STORAGECLASS  Widget  QuestionDialog = (Widget)NULL;
-STORAGECLASS  Widget  ErrorDialog = (Widget)NULL;
-STORAGECLASS  Widget  last_action_pushed = (Widget)NULL;
-STORAGECLASS  Widget  last_filetype_pushed = (Widget)NULL;
+extern const char *ca_icon_default;
+extern const char *ca_full_icon_default;
+extern const char *ca_lrg_icon_default;
+extern const char *ca_med_icon_default;
+extern const char *ca_sml_icon_default;
+extern const char *ca_tiny_icon_default;
 
-
-STORAGECLASS  const char *ca_icon_default = "Dtactn";
-STORAGECLASS  const char *ca_full_icon_default =  "/usr/dt/appconfig/icons/C/Dtactn";
-STORAGECLASS  const char *ca_lrg_icon_default =  "/usr/dt/appconfig/icons/C/Dtactn.l";
-STORAGECLASS  const char *ca_med_icon_default =  "/usr/dt/appconfig/icons/C/Dtactn.m";
-STORAGECLASS  const char *ca_sml_icon_default =  "/usr/dt/appconfig/icons/C/Dtactn.s";
-STORAGECLASS  const char *ca_tiny_icon_default = "/usr/dt/appconfig/icons/C/Dtactn.t";
-
-STORAGECLASS  const char *af_icon_default = "Dtdata";
-STORAGECLASS  const char *af_full_icon_default =  "/usr/dt/appconfig/icons/C/Dtdata";
-STORAGECLASS  const char *af_lrg_icon_default =  "/usr/dt/appconfig/icons/C/Dtdata.l";
-STORAGECLASS  const char *af_med_icon_default =  "/usr/dt/appconfig/icons/C/Dtdata.m";
-STORAGECLASS  const char *af_sml_icon_default =  "/usr/dt/appconfig/icons/C/Dtdata.s";
-STORAGECLASS  const char *af_tiny_icon_default = "/usr/dt/appconfig/icons/C/Dtdata.t";
-
-#else  /* NOEXTERN */
-
-STORAGECLASS  enum icon_size_range filetype_icon_size;
-STORAGECLASS  int     pidIconEditor;
-STORAGECLASS  Boolean bShowPixmaps;
-STORAGECLASS  Widget  IconSelector;
-STORAGECLASS  Boolean DbInitDone;
-STORAGECLASS  Widget  OpenFile;
-STORAGECLASS  Widget  Confirmed;
-STORAGECLASS  Widget  QuestionDialog;
-STORAGECLASS  Widget  ErrorDialog;
-STORAGECLASS  Widget  last_action_pushed;
-STORAGECLASS  Widget  last_filetype_pushed;
-
-
-STORAGECLASS  const char *ca_icon_default;
-STORAGECLASS  const char *ca_full_icon_default;
-STORAGECLASS  const char *ca_lrg_icon_default;
-STORAGECLASS  const char *ca_med_icon_default;
-STORAGECLASS  const char *ca_sml_icon_default;
-STORAGECLASS  const char *ca_tiny_icon_default;
-
-STORAGECLASS  const char *af_icon_default;
-STORAGECLASS  const char *af_full_icon_default;
-STORAGECLASS  const char *af_lrg_icon_default;
-STORAGECLASS  const char *af_med_icon_default;
-STORAGECLASS  const char *af_sml_icon_default;
-STORAGECLASS  const char *af_tiny_icon_default;
-
-#endif /*  NOEXTERN */
+extern const char *af_icon_default;
+extern const char *af_full_icon_default;
+extern const char *af_lrg_icon_default;
+extern const char *af_med_icon_default;
+extern const char *af_sml_icon_default;
+extern const char *af_tiny_icon_default;
 
 #endif /* _DTCREATE_H_INCLUDED */

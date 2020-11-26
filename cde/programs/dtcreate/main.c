@@ -61,7 +61,6 @@ extern XmWidgetExtData _XmGetWidgetExtData(
                         unsigned char extType) ;
 #endif /* NeedWidePrototypes */
 
-#define NOEXTERN
 #include "dtcreate.h"
 #include "ca_aux.h"
 #include "cmnrtns.h"
@@ -77,6 +76,146 @@ Tt_message ProcessToolTalkMessage( );
 #if !defined(NL_CAT_LOCALE)
 #define NL_CAT_LOCALE 0
 #endif
+
+/* Global variables declared in dtcreate.h */
+ActionData   AD;
+ActionData   *pMyCopyAD;
+char         *pszFileToEdit;
+Cursor       watch_cursor;
+Widget       widEditSource;
+Boolean      bIconEditorDisplayed;
+nl_catd      nlmsg_fd;
+char         *pszExecName;
+Widget       widSelectedIcon;
+Boolean      bLowRes;
+IconData     *IconDataList[ICON_NUMBER];
+
+/**********************************************************/
+/* CreateActionAppShell  globals.                         */
+/**********************************************************/
+
+Widget       CreateActionAppShell;
+Widget       ExpertOption;
+Widget       ColorMonoOption;
+Widget       CA_ActionNameTextField;
+Widget       CA_MED_IconGadget;
+Widget       CA_SML_IconGadget;
+Widget       CA_TINY_IconGadget;
+Widget       CA_LRG_IconGadget;
+Widget       CA_DblClkText;
+Widget       XprtOptionForm;
+Widget       CA_XprtActionOpenText;
+Widget       CA_FiletypesList;
+Widget       CA_WindowTypeArea;
+Widget       CA_WindowType;
+Widget       CA_Expand;
+#if 0
+Widget       CA_WindowType_OptionMenuShell;
+Widget       CA_WindowType_Pane;
+#endif
+Widget       CA_WinTypeX;
+Widget       CA_WinTypeAutoClose;
+Widget       CA_WinTypeManualClose;
+Widget       CA_WinTypeNoOutput;
+Widget       CA_HelpTextWindow;
+Widget       CA_HelpText;
+Widget       CA_AllFiletypesToggle;
+Widget       CA_FiletypesInListToggle;
+
+/**********************************************************/
+/* AddFiletype  globals.                                  */
+/**********************************************************/
+
+Widget       AddFiletype;
+Widget       AF_FileTypeNameTextField;
+Widget       AF_IdCharacteristicsText;
+Widget       AF_IdCharacteristicsEdit;
+Widget       AF_FiletypePrintCmdTextField;
+Widget       AF_OpenCmdText;
+Widget       AF_FiletypeHelpText;
+Widget       AF_MED_IconGadget;
+Widget       AF_TINY_IconGadget;
+
+/**********************************************************/
+/* FileCharacteristics  globals                           */
+/**********************************************************/
+
+Widget       FileCharacteristics;
+Widget       FC_DirectoryToggle;
+Widget       FC_FileToggle;
+Widget       FC_AndLabel2;
+Widget       FC_ContentsPatternText;
+Widget       FC_StringToggle;
+Widget       FC_ByteToggle;
+Widget       FC_ShortToggle;
+Widget       FC_LongToggle;
+Widget       FC_StartByteTextField;
+/*
+Widget       FC_EndByteTextField;
+*/
+Widget       FC_NameOrPathText;
+Widget       FC_AndLabel1;
+Widget       FC_ReadToggle;
+Widget       FC_WriteToggle;
+Widget       FC_ExecuteToggle;
+
+Widget       FC_NamePatternLabel;
+Widget       FC_PermissionLabel;
+Widget       FC_PermissionToggle;
+Widget       FC_ContentsLabel;
+Widget       FC_ContentsBox;
+Widget       FC_TypeRowColumn;
+Widget       FC_StartByteLabel;
+Widget       FC_TypeLabel;
+Widget       FC_ContentsPatternLabel;
+/*
+Widget       FC_EndByteLabel;
+*/
+Widget       FC_ContentsToggle;
+Widget       FC_NameOrPathToggle;
+
+/**********************************************************/
+/* icon_selection_dialog  globals                         */
+/**********************************************************/
+Widget       ISD_SelectedIconTextField;
+
+/**********************************************************/
+/* Other dialog globals                                   */
+/**********************************************************/
+SessionData  sessiondata;
+
+/*******************************************************************/
+/* Global variables that are being initialized.                    */
+/*******************************************************************/
+
+
+enum icon_size_range action_icon_size = None_Selected;
+extern enum icon_size_range filetype_icon_size;
+int     pidIconEditor = 0;
+Boolean bShowPixmaps = TRUE;
+Widget  IconSelector = (Widget)NULL;
+Boolean DbInitDone = FALSE;
+Widget  OpenFile = (Widget)NULL;
+Widget  Confirmed = (Widget)NULL;
+Widget  QuestionDialog = (Widget)NULL;
+Widget  ErrorDialog = (Widget)NULL;
+Widget  last_action_pushed = (Widget)NULL;
+Widget  last_filetype_pushed = (Widget)NULL;
+
+const char *ca_icon_default = "Dtactn";
+const char *ca_full_icon_default =  "/usr/dt/appconfig/icons/C/Dtactn";
+const char *ca_lrg_icon_default =  "/usr/dt/appconfig/icons/C/Dtactn.l";
+const char *ca_med_icon_default =  "/usr/dt/appconfig/icons/C/Dtactn.m";
+const char *ca_sml_icon_default =  "/usr/dt/appconfig/icons/C/Dtactn.s";
+const char *ca_tiny_icon_default = "/usr/dt/appconfig/icons/C/Dtactn.t";
+
+const char *af_icon_default = "Dtdata";
+const char *af_full_icon_default =  "/usr/dt/appconfig/icons/C/Dtdata";
+const char *af_lrg_icon_default =  "/usr/dt/appconfig/icons/C/Dtdata.l";
+const char *af_med_icon_default =  "/usr/dt/appconfig/icons/C/Dtdata.m";
+const char *af_sml_icon_default =  "/usr/dt/appconfig/icons/C/Dtdata.s";
+const char *af_tiny_icon_default = "/usr/dt/appconfig/icons/C/Dtdata.t";
+
 
 
 /*----------------------------------------------------
