@@ -111,19 +111,6 @@ extern char *_DtGetMessage(char *filename, int set, int n, char *s);
 
 #define  MP_SIZE      150     /* Size of the multiple precision values. */
 
-#define  FCLOSE       (void) fclose     /* To make lint happy. */
-#define  FPRINTF      (void) fprintf
-#define  FPUTS        (void) fputs
-#define  FREE         (void) free
-#define  MEMCPY       (void) memcpy
-#define  MKTEMP       (void) mktemp
-#define  REWIND       (void) rewind
-#define  SPRINTF      (void) sprintf
-#define  SSCANF       (void) sscanf
-#define  STRCPY       (void) strcpy
-#define  STRNCAT      (void) strncat
-#define  UNLINK       (void) unlink
-
 /* Various pseudo events used by the dtcalc program. */
 #define  KEYBOARD_DOWN    100    /* Keyboard character was pressed. */
 #define  KEYBOARD_UP      101    /* Keyboard character was released. */

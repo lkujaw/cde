@@ -295,7 +295,7 @@ main(int argc, char **argv)
 
       tmpStr = GETMESSAGE(2, 31, "Could not open display.\n");
       msg = XtNewString(tmpStr);
-      FPRINTF(stderr, "%s", msg) ;
+      fprintf(stderr, "%s", msg) ;
       exit(1) ;
     }
 
@@ -504,7 +504,7 @@ dtcalc_initialize_rframe(Widget owner, int type)
                    XmNdefaultPosition,  FALSE,
                    NULL) ;
 
-     SPRINTF(str, "register%1d", 0) ;
+     sprintf(str, "register%1d", 0) ;
      X->registers[0] = XtVaCreateManagedWidget(str,
                                    xmLabelWidgetClass,
                                    form,
@@ -518,7 +518,7 @@ dtcalc_initialize_rframe(Widget owner, int type)
 
      for (i = 1; i < MAXREGS; i++)
        {
-         SPRINTF(str, "register%1d", i) ;
+         sprintf(str, "register%1d", i) ;
          X->registers[i] = XtVaCreateManagedWidget(str,
                                        xmLabelWidgetClass,
                                        form,
@@ -587,7 +587,7 @@ dtcalc_initialize_rframe(Widget owner, int type)
                    XmNdefaultPosition,  FALSE,
                    NULL) ;
 
-     SPRINTF(str, "fregister%1d", 0) ;
+     sprintf(str, "fregister%1d", 0) ;
      X->fregisters[0] = XtVaCreateManagedWidget(str,
                                    xmLabelWidgetClass,
                                    form,
@@ -601,7 +601,7 @@ dtcalc_initialize_rframe(Widget owner, int type)
 
      for (i = 1; i < FINREGS; i++)
        {
-         SPRINTF(str, "fregister%1d", i) ;
+         sprintf(str, "fregister%1d", i) ;
          X->fregisters[i] = XtVaCreateManagedWidget(str,
                                        xmLabelWidgetClass,
                                        form,
@@ -615,7 +615,7 @@ dtcalc_initialize_rframe(Widget owner, int type)
                                        NULL) ;
        }
 
-     SPRINTF(str, "fregistervals%1d", 0) ;
+     sprintf(str, "fregistervals%1d", 0) ;
      X->fregistersvals[0] = XtVaCreateManagedWidget(str,
                                    xmLabelWidgetClass,
                                    form,
@@ -632,7 +632,7 @@ dtcalc_initialize_rframe(Widget owner, int type)
 
      for (i = 1; i < FINREGS; i++)
        {
-         SPRINTF(str, "fregistervals%1d", i) ;
+         sprintf(str, "fregistervals%1d", i) ;
          X->fregistersvals[i] = XtVaCreateManagedWidget(str,
                                        xmLabelWidgetClass,
                                        form,
@@ -1825,7 +1825,7 @@ ProcessMotifSelection(Widget W)
             display[i+1] = '\0';
         }
 
-        STRCPY(v->display, display);
+        strcpy(v->display, display);
         XtFree(display);
     }
 
@@ -2054,7 +2054,7 @@ get_resource(enum res_type rtype)
 {
   char str[MAXLINE] ;
 
-  STRCPY(str, calc_res[(int) rtype]) ;
+  strcpy(str, calc_res[(int) rtype]) ;
   return(ds_get_resource(X->rDB, v->appname, str)) ;
 }
 
@@ -2174,7 +2174,7 @@ make_frames(void)
     {
       tool_label = (char *) calloc(1, strlen(lstrs[(int) L_UCALC]) + 3);
 
-      SPRINTF(tool_label, "%s", lstrs[(int) L_UCALC]);
+      sprintf(tool_label, "%s", lstrs[(int) L_UCALC]);
     }
   else read_str(&tool_label, v->titleline) ;
 
@@ -2227,7 +2227,7 @@ make_registers(int type)
   {
      for (i = 0; i < MAXREGS; i++)
        {
-         SPRINTF(line, "%s:   %s", menu_entries[i + 10].str,
+         sprintf(line, "%s:   %s", menu_entries[i + 10].str,
                                       make_number(v->MPmvals[i], FALSE))  ;
 
          {
@@ -2975,7 +2975,7 @@ update_cf_value(void)
                    }
                    /* need to run a "compute" of what was typed in */
                    len = strlen(X->vval) ;
-                   STRCPY(str, X->vval);
+                   strcpy(str, X->vval);
                    if(X->vval[len - 1] != '=')
                    {
                       /* need to add an '=' at the end of the string so it
@@ -3007,8 +3007,8 @@ update_cf_value(void)
                    toclear = v->toclear;
                    tstate = v->tstate;
                    pending = v->pending;
-                   STRCPY(display, v->display);
-                   STRCPY(fnum, v->fnum);
+                   strcpy(display, v->display);
+                   strcpy(fnum, v->fnum);
                    mpstr(v->MPdisp_val, MPdisp_val);
                    mpstr(v->MPlast_input, MPlast_input);
                    mpstr(v->MPresult, MPresult);
@@ -3025,7 +3025,7 @@ update_cf_value(void)
                    /* get the computed value */
                    accuracy = v->accuracy;
                    v->accuracy = 9 ;
-                   STRCPY(result, make_number(v->MPresult, FALSE)) ;
+                   strcpy(result, make_number(v->MPresult, FALSE)) ;
                    v->accuracy = accuracy ;
 
                    /* return to previous state */
@@ -3036,8 +3036,8 @@ update_cf_value(void)
                    v->toclear = toclear;
                    v->tstate = tstate;
                    v->pending = pending;
-                   STRCPY(v->display, display);
-                   STRCPY(v->fnum, fnum);
+                   strcpy(v->display, display);
+                   strcpy(v->fnum, fnum);
                    mpstr(MPdisp_val, v->MPdisp_val);
                    mpstr(MPlast_input, v->MPlast_input);
                    mpstr(MPresult, v->MPresult);
@@ -3048,7 +3048,7 @@ update_cf_value(void)
                    ptr = DtStrchr(result, 'e');
                    if (n != 1 || ptr != NULL || v->error == TRUE)
                      {
-                       SPRINTF(message, "%s\n%s", vstrs[(int) V_INVCON],
+                       sprintf(message, "%s\n%s", vstrs[(int) V_INVCON],
                                vstrs[(int) V_NOCHANGE]) ;
                        do_continue_notice(X->CFframe, message) ;
                        set_item(OPITEM, "") ;
@@ -3066,7 +3066,7 @@ update_cf_value(void)
                    {
                       len = strlen(result);
 
-                      STRCPY(str, result);
+                      strcpy(str, result);
                       for(i=0; i < len; i++)
                          str[i] = str[i+1];
                       MPstr_to_num(str, DEC, v->MPcon_vals[X->cfno]) ;
@@ -3085,7 +3085,7 @@ update_cf_value(void)
                           len--;
                       }
                    }
-                   SPRINTF(v->con_names[X->cfno], "%1d: %s [%s]",
+                   sprintf(v->con_names[X->cfno], "%1d: %s [%s]",
                            X->cfno, result, X->dval) ;
                    break ;
       case M_FUN : tmpStr = GETMESSAGE(3, 45, ".");
@@ -3100,14 +3100,14 @@ update_cf_value(void)
                          ptr = DtStrchr(X->vval, tmpStr[0]);
                       }
                    }
-                   STRCPY(v->fun_vals[X->cfno], convert(X->vval)) ;
+                   strcpy(v->fun_vals[X->cfno], convert(X->vval)) ;
                    if(strcmp(X->vval, "") != 0)
                    {
-                      SPRINTF(v->fun_names[X->cfno], "%1d: %s [%s]",
+                      sprintf(v->fun_names[X->cfno], "%1d: %s [%s]",
                               X->cfno, X->vval, X->dval) ;
                    }
                    else
-                      STRCPY(v->fun_names[X->cfno], "");
+                      strcpy(v->fun_names[X->cfno], "");
                    break;
       default : break;
     }
@@ -3211,13 +3211,13 @@ write_cf_value(Widget widget, XtPointer client_data, XtPointer call_data)
      X->dval[40] = '\0';
   X->vval = XmTextFieldGetString(X->CFpi_vtext->textfield);
   X->cfval = XmTextFieldGetString(X->CFpi_cftext->textfield);
-  SSCANF(X->cfval, "%d", &X->cfno) ;
+  sscanf(X->cfval, "%d", &X->cfno) ;
   if ((strcmp(X->cfval, "") == 0) || X->cfval[0] < '0' || X->cfval[0] > '9' ||
                                      X->cfno < 0 || X->cfno > 9)
     {
-      SPRINTF(str, "%s", (X->CFtype == M_CON) ? vstrs[(int) V_LCON]
+      sprintf(str, "%s", (X->CFtype == M_CON) ? vstrs[(int) V_LCON]
                                    : vstrs[(int) V_LFUN]) ;
-      SPRINTF(message, "%s\n%s", str, vstrs[(int) V_RANGE]) ;
+      sprintf(message, "%s\n%s", str, vstrs[(int) V_RANGE]) ;
       do_continue_notice(X->CFframe, message) ;
       return ;
     }
@@ -3234,10 +3234,10 @@ write_cf_value(Widget widget, XtPointer client_data, XtPointer call_data)
     }
   if (X->cfexists)
     {
-      SPRINTF(str, mess[(int) MESS_CON],
+      sprintf(str, mess[(int) MESS_CON],
                    (X->CFtype == M_CON) ? vstrs[(int) V_UCON]
                                         : vstrs[(int) V_UFUN], X->cfno) ;
-      SPRINTF(message, "%s\n%s", str, vstrs[(int) V_OWRITE]) ;
+      sprintf(message, "%s\n%s", str, vstrs[(int) V_OWRITE]) ;
       XtUnmanageChild(X->CFframe) ;
       do_confirm_notice(X->CFframe, message) ;
     }
@@ -4402,7 +4402,7 @@ RestoreSession(void)
 
    if (get_str_resource(R_DISPLAYED, str))
    {
-      STRCPY(v->display, str);
+      strcpy(v->display, str);
       MPstr_to_num(str, v->base, v->MPdisp_val) ;
    }
 

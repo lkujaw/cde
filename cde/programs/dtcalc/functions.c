@@ -336,7 +336,7 @@ do_business(void)     /* Perform special business mode calculations. */
           make_registers(FIN) ;
       v->funstate = 1;
 
-      STRCPY(v->display, display_number);
+      strcpy(v->display, display_number);
       set_item(DISPLAYITEM, v->display);
       need_show = FALSE;
     }
@@ -641,15 +641,15 @@ do_expno(void)           /* Get exponential number. */
   v->pointed = (strchr(v->display, '.') != NULL) ;
   if (!v->new_input)
     {
-      STRCPY(v->display, "1.0 +") ;
+      strcpy(v->display, "1.0 +") ;
       v->new_input = v->pointed = 1 ;
     }
   else if (!v->pointed)
     {
-      STRNCAT(v->display, ". +", 3) ;
+      strncat(v->display, ". +", 3) ;
       v->pointed = 1 ;
     }
-  else if (!v->key_exp) STRNCAT(v->display, " +", 2) ;
+  else if (!v->key_exp) strncat(v->display, " +", 2) ;
   v->toclear = 0 ;
   v->key_exp = 1 ;
   v->exp_posn = strchr(v->display, '+') ;
@@ -910,7 +910,7 @@ do_number(void)
 
   if (v->toclear)
     {
-      SPRINTF(v->display, "%c", nextchar) ;
+      sprintf(v->display, "%c", nextchar) ;
       v->toclear = 0 ;
     }
   else
@@ -990,7 +990,7 @@ do_paren(void)
                 if(tmpdb == 0.0)
                 {
                    v->cur_op = '?';
-                   STRCPY(v->display, "") ;
+                   strcpy(v->display, "") ;
                    set_item(DISPLAYITEM, v->display) ;
                 }
                 else
@@ -1009,7 +1009,7 @@ do_paren(void)
           }
           else
           {
-             STRCPY(v->display, "") ;
+             strcpy(v->display, "") ;
              set_item(DISPLAYITEM, v->display) ;
          }
       }
@@ -1127,10 +1127,10 @@ do_point(void)                   /* Handle numeric point. */
     {
       if (v->toclear)
         {
-          STRCPY(v->display, ".") ;
+          strcpy(v->display, ".") ;
           v->toclear = 0 ;
         }
-      else STRNCAT(v->display, ".", 1) ;
+      else strncat(v->display, ".", 1) ;
       v->pointed = 1 ;
     }
   else
@@ -1644,7 +1644,7 @@ process_parens(char current)
             {
               set_item(DISPLAYITEM, vstrs[(int) V_ERROR]) ;
               set_item(OPITEM,      vstrs[(int) V_CLR]) ;
-              STRCPY(v->display,    vstrs[(int) V_ERROR]) ;
+              strcpy(v->display,    vstrs[(int) V_ERROR]) ;
             }
           else
             {
@@ -1664,7 +1664,7 @@ push_num(int *MPval)            /* Try to push value onto the numeric stack. */
   if (v->numsptr < 0) return ;
   if (v->numsptr >= MAXSTACK)
     {
-      STRCPY(v->display, vstrs[(int) V_NUMSTACK]) ;
+      strcpy(v->display, vstrs[(int) V_NUMSTACK]) ;
       set_item(DISPLAYITEM, v->display) ;
       v->error = 1 ;
       beep() ;
@@ -1686,7 +1686,7 @@ push_op(int val)     /* Try to push value onto the operand stack. */
   if (v->opsptr < 0) return ;
   if (v->opsptr >= MAXSTACK)
     {
-      STRCPY(v->display, vstrs[(int) V_OPSTACK]) ;
+      strcpy(v->display, vstrs[(int) V_OPSTACK]) ;
       set_item(DISPLAYITEM, v->display) ;
       v->error = 1 ;
       set_item(OPITEM, vstrs[(int) V_CLR]) ;

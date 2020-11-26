@@ -318,7 +318,7 @@ clear_display(void)
   v->defState = 1 ;
   i = 0 ;
   mpcim(&i, v->MPdisp_val) ;
-  STRCPY(v->display, make_number(v->MPdisp_val, FALSE)) ;
+  strcpy(v->display, make_number(v->MPdisp_val, FALSE)) ;
   set_item(DISPLAYITEM, v->display) ;
   
   v->hyperbolic = 0 ;
@@ -419,7 +419,7 @@ void
 doerr(char *errmes)
 {
   if (!v->started) return ;
-  STRCPY(v->display, errmes) ;
+  strcpy(v->display, errmes) ;
   set_item(DISPLAYITEM, v->display) ;
   v->error = 1 ;
   beep() ;
@@ -434,7 +434,7 @@ get_bool_resource(enum res_type rtype, int *boolval)
   int len, n ;
  
   if ((val = get_resource(rtype)) == NULL) return(0) ;
-  STRCPY(tempstr, val) ;
+  strcpy(tempstr, val) ;
   len = strlen(tempstr) ;
   for (n = 0; n < len; n++)
     if (isupper(tempstr[n])) tempstr[n] = tolower(tempstr[n]) ;
@@ -504,9 +504,9 @@ get_label(int n)
      temp = buttons[n].str;
 
   if(temp != NULL)
-     STRCPY(v->pstr, temp) ;
+     strcpy(v->pstr, temp) ;
   else
-     STRCPY(v->pstr, "");
+     strcpy(v->pstr, "");
 }
 
 /* Extract command line options. */
@@ -546,7 +546,7 @@ get_options(int argc, char *argv[])
                          sprintf(msg, opts[(int) O_MODE], next);
                          getparam(next, argv, msg) ;
                          XtFree(msg);
-                         STRCPY(strval, next) ;
+                         strcpy(strval, next) ;
                          len = strlen(strval) ;
                          for (i = 0; i < len; i++)
                          {
@@ -571,7 +571,7 @@ get_options(int argc, char *argv[])
                          break ;
               case 'b' : INC ;
                          getparam(next, argv, opts[(int) O_BASE]) ;
-                         STRCPY(strval, next) ;
+                         strcpy(strval, next) ;
                          len = strlen(strval) ;
                          for (i = 0; i < len; i++)
                          {
@@ -605,7 +605,7 @@ get_options(int argc, char *argv[])
                             sprintf(msg, opts[(int) O_DISPLAY], next);
                             getparam(next, argv, msg) ;
                             XtFree(msg);
-                            STRCPY(strval, next) ;
+                            strcpy(strval, next) ;
                             len = strlen(strval) ;
                             for (i = 0; i < len; i++)
                             {
@@ -645,7 +645,7 @@ get_options(int argc, char *argv[])
                             sprintf(msg, opts[(int) O_TRIG], next);
                             getparam(next, argv, msg) ;
                             XtFree(msg);
-                            STRCPY(strval, next) ;
+                            strcpy(strval, next) ;
                             len = strlen(strval) ;
                             for (i = 0; i < len; i++)
                             {
@@ -695,14 +695,14 @@ getparam(char *s, char *argv[], char *errmes)
 {
   char *msg;
 
-  if (*argv != NULL && argv[0][0] != '-') STRCPY(s, *argv) ;
+  if (*argv != NULL && argv[0][0] != '-') strcpy(s, *argv) ;
   else
     { 
       msg = (char *) XtMalloc(strlen(mess[(int) MESS_PARAM]) + 
                               strlen(errmes) + 3);
       sprintf(msg, mess[(int) MESS_PARAM], errmes);
       _DtSimpleError (v->appname, DtError, NULL, msg);
-      FPRINTF(stderr, mess[(int) MESS_PARAM], errmes) ;
+      fprintf(stderr, mess[(int) MESS_PARAM], errmes) ;
       exit(1) ;
     }
 }
@@ -783,8 +783,8 @@ get_rcfile(char *name)
               }  
             else if (isval == 'f')
               {
-                SSCANF(&line[3], "%s", tmp) ;
-                STRCPY(v->fun_vals[i], convert(tmp)) ;
+                sscanf(&line[3], "%s", tmp) ;
+                strcpy(v->fun_vals[i], convert(tmp)) ;
               }  
             else if (isval == 'r')
               {  
@@ -800,18 +800,18 @@ get_rcfile(char *name)
                   line[strlen(line)-1] = '\0' ;
                   if (isval == 'c')
                     {
-                      STRCPY(tmp, make_number(v->MPcon_vals[i], TRUE)) ;
-                      SPRINTF(v->con_names[i], "%1d: %s [%s]",
+                      strcpy(tmp, make_number(v->MPcon_vals[i], TRUE)) ;
+                      sprintf(v->con_names[i], "%1d: %s [%s]",
                               i, tmp, &line[n]) ;
                     }
                   else
-                    SPRINTF(v->fun_names[i], "%1d: %s [%s]",
+                    sprintf(v->fun_names[i], "%1d: %s [%s]",
                             i, tmp, &line[n]) ;
                   break ;
                 }
           }
     }
-  FCLOSE(rcfd) ;
+  fclose(rcfd) ;
 }
 
 /* Get a string resource from database. */
@@ -822,7 +822,7 @@ get_str_resource(enum res_type rtype, char *strval)
   int i, len ;
 
   if ((val = get_resource(rtype)) == NULL) return(0) ;
-  STRCPY(strval, val) ;
+  strcpy(strval, val) ;
   len = strlen(strval) ;
   if(rtype != R_TRIG && rtype != R_DISPLAY)
   {
@@ -1013,7 +1013,7 @@ make_eng_sci(int *MPnumber)
         }
     }    
 
-  STRCPY(fixed, make_fixed(MPmant, MAX_DIGITS-6)) ;
+  strcpy(fixed, make_fixed(MPmant, MAX_DIGITS-6)) ;
   len = strlen(fixed) ;
   for (i = 0; i < len; i++) *optr++ = fixed[i] ;
 
@@ -1515,7 +1515,7 @@ process_stack(int startop, int startnum, int n)
   int i ;
   int nptr ;                /* Pointer to next number from numeric stack. */
 
-  STRCPY(sdisp, v->display) ;  /* Save current display. */
+  strcpy(sdisp, v->display) ;  /* Save current display. */
   nptr = startnum ;
   v->pending = 0 ;
   v->cur_op = '?' ;            /* Current operation is initially undefined. */
@@ -1546,7 +1546,7 @@ process_stack(int startop, int startnum, int n)
   v->opsptr = startop - 1 ;
   push_op(-1) ;
   save_pending_values(KEY_LPAR) ;
-  STRCPY(v->display, sdisp) ;  /* Restore current display. */
+  strcpy(v->display, sdisp) ;  /* Restore current display. */
 }
 
 
@@ -1557,8 +1557,8 @@ process_str(char *str, enum menu_type mtype)
   char save[80];
 
   len = strlen(str) ;
-  STRCPY(save, v->display) ;
-  STRCPY(v->display, " ") ;
+  strcpy(save, v->display) ;
+  strcpy(v->display, " ") ;
   set_item(DISPLAYITEM, v->display);
   for (i = 0 ; i < len; i++)
     {    
@@ -1568,7 +1568,7 @@ process_str(char *str, enum menu_type mtype)
       {
         if(mtype == M_FUN)
         {
-           STRCPY(v->display, save);
+           strcpy(v->display, save);
            set_item(DISPLAYITEM, v->display);
            v->error = 0;
         }
@@ -1613,11 +1613,11 @@ read_rcfiles(void)   /* Read .dtcalcrc's from home and current directories. */
 
   for (n = 0; n < MAXREGS; n++)
     {
-      STRCPY(tmp, make_number(v->MPcon_vals[n], FALSE)) ;
-      SPRINTF(name, "%1d: %s [%s]", n, tmp, v->con_names[n]) ;
+      strcpy(tmp, make_number(v->MPcon_vals[n], FALSE)) ;
+      sprintf(name, "%1d: %s [%s]", n, tmp, v->con_names[n]) ;
 
-      STRCPY(v->con_names[n], name) ;
-      STRCPY(v->fun_vals[n], "") ;    /* Initially empty function strings. */
+      strcpy(v->con_names[n], name) ;
+      strcpy(v->fun_vals[n], "") ;    /* Initially empty function strings. */
     }
 
   if ((home = getenv("HOME")) == NULL)
@@ -1638,7 +1638,7 @@ show_display(int *MPval)
 {
   if (!v->error)
     {
-      STRCPY(v->display, make_number(MPval, TRUE)) ;
+      strcpy(v->display, make_number(MPval, TRUE)) ;
       set_item(DISPLAYITEM, v->display) ;
     }
 }
@@ -1647,9 +1647,9 @@ show_display(int *MPval)
 void
 usage(char *progname)
 {
-  FPRINTF(stderr, ustrs[(int) USAGE1], PATCHLEVEL) ;
-  FPRINTF(stderr, "%s", ustrs[(int) USAGE2]) ;
-  FPRINTF(stderr, "%s", ustrs[(int) USAGE3]) ;
+  fprintf(stderr, ustrs[(int) USAGE1], PATCHLEVEL) ;
+  fprintf(stderr, "%s", ustrs[(int) USAGE2]) ;
+  fprintf(stderr, "%s", ustrs[(int) USAGE3]) ;
   exit(1) ;
 }
 
@@ -1668,7 +1668,7 @@ write_rcfile(enum menu_type mtype, int exists, int cfno, char *val, char *commen
   struct passwd *entry ;        /* The user's /etc/passwd entry. */
 
   rcexists = 0 ;
-  SPRINTF(rcname, "%s/%s", getcwd(pathname, MAXPATHLEN), RCNAME) ;
+  sprintf(rcname, "%s/%s", getcwd(pathname, MAXPATHLEN), RCNAME) ;
   if (access(rcname, F_OK) == 0) rcexists = 1 ;
   else
     { 
@@ -1677,17 +1677,17 @@ write_rcfile(enum menu_type mtype, int exists, int cfno, char *val, char *commen
           if ((entry = getpwuid(getuid())) == NULL) return ;
           home = entry->pw_dir ;
         }
-      SPRINTF(rcname, "%s/%s", home, RCNAME) ;
+      sprintf(rcname, "%s/%s", home, RCNAME) ;
       if (access(rcname, F_OK) == 0) rcexists = 1 ;
     }
-  STRCPY(tmp_filename, "/tmp/.dtcalcrcXXXXXX") ;
-  MKTEMP(tmp_filename) ;
+  strcpy(tmp_filename, "/tmp/.dtcalcrcXXXXXX") ;
+  mktemp(tmp_filename) ;
   if ((tmpfd = fopen(tmp_filename, "w+")) == NULL) return ;
 
   if (rcexists)
     {
       rcfd = fopen(rcname, "r") ;
-      SPRINTF(sval, " %1d", cfno) ;
+      sprintf(sval, " %1d", cfno) ;
       while (fgets(str, MAXLINE, rcfd))
         {
           if (exists)
@@ -1695,40 +1695,40 @@ write_rcfile(enum menu_type mtype, int exists, int cfno, char *val, char *commen
               switch (mtype)
                 {
                   case M_CON : sval[0] = 'c' ;
-                               if (!strncmp(str, sval, 2)) FPUTS("#", tmpfd) ;
+                               if (!strncmp(str, sval, 2)) fputs("#", tmpfd) ;
                                sval[0] = 'C' ;
-                               if (!strncmp(str, sval, 2)) FPUTS("#", tmpfd) ;
+                               if (!strncmp(str, sval, 2)) fputs("#", tmpfd) ;
                                break ;
                   case M_FUN : sval[0] = 'f' ;
-                               if (!strncmp(str, sval, 2)) FPUTS("#", tmpfd) ;
+                               if (!strncmp(str, sval, 2)) fputs("#", tmpfd) ;
                                sval[0] = 'F' ;
-                               if (!strncmp(str, sval, 2)) FPUTS("#", tmpfd) ;
+                               if (!strncmp(str, sval, 2)) fputs("#", tmpfd) ;
                                break;
                   default: break;
                 }
             }    
-          FPRINTF(tmpfd, "%s", str) ;
+          fprintf(tmpfd, "%s", str) ;
         }
-      FCLOSE(rcfd) ;
+      fclose(rcfd) ;
     }
 
   switch (mtype)
     {
-      case M_CON : FPRINTF(tmpfd, "\nC%1d %s %s\n", cfno, val, comment) ;
+      case M_CON : fprintf(tmpfd, "\nC%1d %s %s\n", cfno, val, comment) ;
                    break ;
       case M_FUN : 
                if(strcmp(val, "") != 0)
-                  FPRINTF(tmpfd, "\nF%1d %s %s\n", cfno, val, comment) ;
+                  fprintf(tmpfd, "\nF%1d %s %s\n", cfno, val, comment) ;
                break;
       default: break;
     }
-  UNLINK(rcname) ;
+  unlink(rcname) ;
   rcfd = fopen(rcname, "w") ;
-  REWIND(tmpfd) ;
-  while (fgets(str, MAXLINE, tmpfd)) FPRINTF(rcfd, "%s", str) ;
-  FCLOSE(rcfd) ;
-  FCLOSE(tmpfd);
-  UNLINK(tmp_filename) ;
+  rewind(tmpfd) ;
+  while (fgets(str, MAXLINE, tmpfd)) fprintf(rcfd, "%s", str) ;
+  fclose(rcfd) ;
+  fclose(tmpfd);
+  unlink(tmp_filename) ;
 }
 
 
@@ -1738,7 +1738,7 @@ write_resources(char *filename)
   char intval[5] ;
   int MPtemp[MP_SIZE];
 
-  SPRINTF(intval, "%d", v->accuracy) ;
+  sprintf(intval, "%d", v->accuracy) ;
   put_resource(R_ACCURACY, intval) ;
   put_resource(R_DISPLAYED, v->display) ;
   put_resource(R_BASE,     base_str[(int) v->base]) ;
