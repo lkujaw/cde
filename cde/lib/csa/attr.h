@@ -110,16 +110,16 @@ extern _DtCmAttrInfo _CSA_entry_attr_info[];
  * external function declarations
  */
 
-extern CSA_return_code _DtCm_check_cal_csa_attributes P((
+extern CSA_return_code _DtCm_check_cal_csa_attributes(
 				int		fvers,
 				uint		num_attrs,
 				CSA_attribute	*attrs,
 				char		*cname,
 				boolean_t	checkreadonly,
 				boolean_t	firsttime,
-				boolean_t	checkattrnum));
+				boolean_t	checkattrnum);
 
-extern CSA_return_code _DtCm_check_cal_cms_attributes P((
+extern CSA_return_code _DtCm_check_cal_cms_attributes(
 				int		fvers,
 				uint		num_attrs,
 				cms_attribute	*attrs,
@@ -127,154 +127,154 @@ extern CSA_return_code _DtCm_check_cal_cms_attributes P((
 				char		*cname,
 				boolean_t	checkreadonly,
 				boolean_t	firsttime,
-				boolean_t	checkattrnum));
+				boolean_t	checkattrnum);
 
-extern CSA_return_code	_DtCm_check_entry_attributes P((
+extern CSA_return_code	_DtCm_check_entry_attributes(
 				int		fversion,
 				uint		size,
 				CSA_attribute	*attrs,
 				CSA_flags	utype,
-				boolean_t	checkattrnum));
+				boolean_t	checkattrnum);
 
-extern CSA_return_code _DtCm_check_entry_cms_attributes P((
+extern CSA_return_code _DtCm_check_entry_cms_attributes(
 				int		fvers,
 				uint		num_attrs,
 				cms_attribute	*attrs,
 				CSA_flags	utype,
-				boolean_t	checkattrnum));
+				boolean_t	checkattrnum);
 
-extern CSA_return_code	_DtCm_copy_cms_attributes P((
+extern CSA_return_code	_DtCm_copy_cms_attributes(
 				uint srcsize,
 				cms_attribute *srcattrs,
 				uint *dstsize,
-				cms_attribute **dstattrs));
+				cms_attribute **dstattrs);
 
-extern CSA_return_code	_DtCm_copy_cms_attribute P((
+extern CSA_return_code	_DtCm_copy_cms_attribute(
 				cms_attribute	*to,
 				cms_attribute	*from,
-				boolean_t copyname));
+				boolean_t copyname);
 
-extern CSA_return_code	_DtCm_copy_cms_attr_val P((
+extern CSA_return_code	_DtCm_copy_cms_attr_val(
 				cms_attribute_value *from,
-				cms_attribute_value **to));
+				cms_attribute_value **to);
 
-extern cms_access_entry *_DtCm_copy_cms_access_list P((
-				cms_access_entry *alist));
+extern cms_access_entry *_DtCm_copy_cms_access_list(
+				cms_access_entry *alist);
 
-extern CSA_date_time_list _DtCm_copy_date_time_list P((
-				CSA_date_time_list dlist));
+extern CSA_date_time_list _DtCm_copy_date_time_list(
+				CSA_date_time_list dlist);
 
-extern CSA_return_code _DtCm_cms2csa_attribute P((
+extern CSA_return_code _DtCm_cms2csa_attribute(
 				cms_attribute from,
-				CSA_attribute *to));
+				CSA_attribute *to);
 
-extern CSA_return_code _DtCm_cms2csa_attrval P((
+extern CSA_return_code _DtCm_cms2csa_attrval(
 				cms_attribute_value *from,
-				CSA_attribute_value **to));
+				CSA_attribute_value **to);
 
-extern CSA_return_code _DtCm_cms2csa_access_list P((
+extern CSA_return_code _DtCm_cms2csa_access_list(
 				cms_access_entry *cmslist,
-				CSA_access_rights **csalist));
+				CSA_access_rights **csalist);
 
-extern CSA_return_code _DtCm_csa2cms_access_list P((
+extern CSA_return_code _DtCm_csa2cms_access_list(
 				CSA_access_rights *csalist,
-				cms_access_entry **cmslist));
+				cms_access_entry **cmslist);
 
-extern CSA_return_code _DtCm_copy_reminder P((
+extern CSA_return_code _DtCm_copy_reminder(
 				CSA_reminder *from,
-				CSA_reminder **to));
+				CSA_reminder **to);
 
-extern CSA_return_code _DtCm_copy_opaque_data P((
+extern CSA_return_code _DtCm_copy_opaque_data(
 				CSA_opaque_data *from,
-				CSA_opaque_data **to));
+				CSA_opaque_data **to);
 
-extern void		_DtCm_free_csa_access_list P((CSA_access_list alist));
+extern void		_DtCm_free_csa_access_list(CSA_access_list alist);
 
-extern void 		_DtCm_free_cms_attributes P((
+extern void 		_DtCm_free_cms_attributes(
 				uint size,
-				cms_attribute *attrs));
+				cms_attribute *attrs);
 
-extern void 		_DtCm_free_attributes	P((
+extern void 		_DtCm_free_attributes(
 				uint size,
-				CSA_attribute * attrs));
+				CSA_attribute * attrs);
 
-extern void		_DtCm_free_cms_attribute_values P((
+extern void		_DtCm_free_cms_attribute_values(
 				uint size,
-				cms_attribute *attrs));
+				cms_attribute *attrs);
 
-extern void		_DtCm_free_attribute_values P((
+extern void		_DtCm_free_attribute_values(
 				uint size,
-				CSA_attribute *attrs));
+				CSA_attribute *attrs);
 
-extern void		_DtCm_free_cms_attribute_value P((
-				cms_attribute_value *val));
+extern void		_DtCm_free_cms_attribute_value(
+				cms_attribute_value *val);
 
-extern void		_DtCm_free_attribute_value P((
-				CSA_attribute_value *val));
+extern void		_DtCm_free_attribute_value(
+				CSA_attribute_value *val);
 
-extern void		_DtCm_free_cms_access_entry P((cms_access_entry *list));
+extern void		_DtCm_free_cms_access_entry(cms_access_entry *list);
 
-extern void		_DtCm_free_date_time_list P((CSA_date_time_list list));
+extern void		_DtCm_free_date_time_list(CSA_date_time_list list);
 
-extern void		_DtCm_free_reminder P((CSA_reminder *val));
+extern void		_DtCm_free_reminder(CSA_reminder *val);
 
-extern void		_DtCm_free_opaque_data P((CSA_opaque_data *val));
+extern void		_DtCm_free_opaque_data(CSA_opaque_data *val);
 
-extern char 		*_DtCm_old_reminder_name_to_name P((
-				char *oldname));
+extern char 		*_DtCm_old_reminder_name_to_name(
+				char *oldname);
 
-extern int		_DtCm_old_reminder_name_to_index P((
-				char *name));
+extern int		_DtCm_old_reminder_name_to_index(
+				char *name);
 
-extern CSA_return_code	_DtCm_get_old_attr_by_name P((
+extern CSA_return_code	_DtCm_get_old_attr_by_name(
 				char *name,
-				_DtCm_old_attrs *attr));
+				_DtCm_old_attrs *attr);
 
-extern CSA_return_code	_DtCm_get_old_attr_by_index P((
+extern CSA_return_code	_DtCm_get_old_attr_by_index(
 				int index,
-				_DtCm_old_attrs *attr));
+				_DtCm_old_attrs *attr);
 
-extern CSA_return_code	_DtCm_set_uint32_attrval P((
+extern CSA_return_code	_DtCm_set_uint32_attrval(
 				uint numval,
-				cms_attribute_value **val));
+				cms_attribute_value **val);
 
-extern CSA_return_code	_DtCm_set_sint32_attrval P((
+extern CSA_return_code	_DtCm_set_sint32_attrval(
 				int numval,
-				cms_attribute_value **val));
+				cms_attribute_value **val);
 
-extern CSA_return_code	_DtCm_set_string_attrval P((
+extern CSA_return_code	_DtCm_set_string_attrval(
 				char *strval,
 				cms_attribute_value **val,
-				CSA_enum type));
+				CSA_enum type);
 
-extern CSA_return_code	_DtCm_set_user_attrval P((
+extern CSA_return_code	_DtCm_set_user_attrval(
 				char *user,
-				cms_attribute_value **val));
+				cms_attribute_value **val);
 
-extern CSA_return_code	_DtCm_set_reminder_attrval P((
+extern CSA_return_code	_DtCm_set_reminder_attrval(
 				CSA_reminder *remval,
-				cms_attribute_value **val));
+				cms_attribute_value **val);
 
-extern CSA_return_code	_DtCm_set_access_attrval P((
+extern CSA_return_code	_DtCm_set_access_attrval(
 				cms_access_entry *aval,
-				cms_attribute_value **val));
+				cms_attribute_value **val);
 
-extern CSA_return_code	_DtCm_set_opaque_attrval P((
+extern CSA_return_code	_DtCm_set_opaque_attrval(
 				CSA_opaque_data *opqval,
-				cms_attribute_value **val));
+				cms_attribute_value **val);
 
-extern CSA_return_code	_DtCm_set_csa_access_attrval P((
+extern CSA_return_code	_DtCm_set_csa_access_attrval(
 				cms_access_entry *aval,
-				CSA_attribute_value **val));
+				CSA_attribute_value **val);
 
-extern CSA_return_code _DtCm_set_csa_uint32_attrval P((
+extern CSA_return_code _DtCm_set_csa_uint32_attrval(
 				uint numval,
-				CSA_attribute_value **attrval));
+				CSA_attribute_value **attrval);
 
-extern CSA_return_code _DtCm_set_csa_string_attrval P((
+extern CSA_return_code _DtCm_set_csa_string_attrval(
 				char *strval,
 				CSA_attribute_value **attrval,
-				CSA_enum type));
+				CSA_enum type);
 
 extern void _DtCm_get_attribute_types(uint size, int *types);
 

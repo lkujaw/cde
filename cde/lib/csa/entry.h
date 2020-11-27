@@ -52,76 +52,76 @@ typedef struct _libentry {
 
 /* function prototypes */
 
-extern _DtCm_libentry *_DtCm_get_libentry P((CSA_entry_handle entryh));
+extern _DtCm_libentry *_DtCm_get_libentry(CSA_entry_handle entryh);
 
-extern CSA_return_code _DtCm_make_libentry P((
+extern CSA_return_code _DtCm_make_libentry(
 				cms_entry	*cmsentry,
-				_DtCm_libentry	**entry_r));
+				_DtCm_libentry	**entry_r);
 
-extern CSA_return_code _DtCm_get_entry_detail P((_DtCm_libentry *entry));
+extern CSA_return_code _DtCm_get_entry_detail(_DtCm_libentry *entry);
 
-extern CSA_return_code _DtCm_get_entry_attr_names P((
+extern CSA_return_code _DtCm_get_entry_attr_names(
 				_DtCm_libentry *entry,
 				CSA_uint32 *num_names_r,
-				char **names_r[]));
+				char **names_r[]);
 
-extern CSA_return_code _DtCm_get_entry_attrs_by_name P((
+extern CSA_return_code _DtCm_get_entry_attrs_by_name(
 				_DtCm_libentry *entry,
 				CSA_uint32 num_names,
 				CSA_attribute_reference *names,
 				CSA_uint32 *num_attrs,
-				CSA_attribute **attrs));
+				CSA_attribute **attrs);
 
-extern CSA_return_code _DtCm_get_all_entry_attrs P((
+extern CSA_return_code _DtCm_get_all_entry_attrs(
 				_DtCm_libentry *entry,
 				CSA_uint32 *num_attrs,
-				CSA_attribute **attrs));
+				CSA_attribute **attrs);
 
-extern CSA_return_code _DtCm_libentry_to_entryh P((
+extern CSA_return_code _DtCm_libentry_to_entryh(
 				_DtCm_libentry *elist,
 				CSA_uint32 *size,
-				CSA_entry_handle **entries_r));
+				CSA_entry_handle **entries_r);
 
-extern CSA_return_code _DtCmCmsentriesToLibentries P((
+extern CSA_return_code _DtCmCmsentriesToLibentries(
 				_DtCmNameTable	**tbl,
 				cms_entry	*entries,
-				_DtCm_libentry	**libentries));
+				_DtCm_libentry	**libentries);
 
-extern CSA_return_code _DtCm_appt4_to_libentries P((
+extern CSA_return_code _DtCm_appt4_to_libentries(
 				char		*calname,
 				Appt_4		*appt4,
-				_DtCm_libentry	**libentries));
+				_DtCm_libentry	**libentries);
 
-extern CSA_return_code _DtCm_libentries_to_appt4 P((
+extern CSA_return_code _DtCm_libentries_to_appt4(
 				_DtCm_libentry *libentries,
-				Appt_4 **appt4));
+				Appt_4 **appt4);
 
-extern CSA_return_code _DtCm_reminder4_to_csareminder P((
+extern CSA_return_code _DtCm_reminder4_to_csareminder(
 				Reminder_4 *r4,
 				CSA_uint32 *num_rems,
-				CSA_reminder_reference **rems));
+				CSA_reminder_reference **rems);
 
-extern _DtCm_libentry *_DtCm_convert_entry_wheader P((_DtCm_libentry *entry));
+extern _DtCm_libentry *_DtCm_convert_entry_wheader(_DtCm_libentry *entry);
 
-extern void _DtCm_free_libentries_from_list P((
+extern void _DtCm_free_libentries_from_list(
 				_DtCm_libentry *head,
-				_DtCm_libentry *tail));
+				_DtCm_libentry *tail);
 
-extern void _DtCm_free_libentries P((_DtCm_libentry *entries));
+extern void _DtCm_free_libentries(_DtCm_libentry *entries);
 
-extern void _DtCm_free_entry_handles P((
+extern void _DtCm_free_entry_handles(
 				uint num_entries,
-				CSA_entry_handle *entries));
+				CSA_entry_handle *entries);
 
-extern void _DtCm_free_reminder_references P((
+extern void _DtCm_free_reminder_references(
 				uint num_rems,
-				CSA_reminder_reference *rems));
+				CSA_reminder_reference *rems);
 
-extern void _DtCm_free_entry_content P((uint dummy, _DtCm_libentry *entry));
+extern void _DtCm_free_entry_content(uint dummy, _DtCm_libentry *entry);
 
-extern CSA_return_code _DtCm_cms2csa_reminder_ref P((
+extern CSA_return_code _DtCm_cms2csa_reminder_ref(
 				cms_reminder_ref	*cmsrems,
 				CSA_uint32		*num_rems,
-				CSA_reminder_reference	**csarems));
+				CSA_reminder_reference	**csarems);
 
 #endif

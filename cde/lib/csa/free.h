@@ -49,7 +49,7 @@ extern void *_DtCm_alloc_entry();
 
 extern CSA_return_code _DtCm_free(void *ptr);
 
-extern void _DtCm_free_character_pointers P((uint num_elem, void *vptr));
+extern void _DtCm_free_character_pointers(uint num_elem, void *vptr);
 
 #endif
 

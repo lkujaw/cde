@@ -34,6 +34,6 @@
 #include <X11/Intrinsic.h>
 #include "ansi_c.h"
 
-extern void _DtCm_register_xtcallback P((XtAppContext appct));
+extern void _DtCm_register_xtcallback(XtAppContext appct);
 
 #endif /* _XTCLIENT_H */

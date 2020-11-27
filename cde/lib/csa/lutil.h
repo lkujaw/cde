@@ -33,16 +33,16 @@
 
 #include "ansi_c.h"
 
-extern char *_DtCmGetPrefix P((char *str, char sep));
+extern char *_DtCmGetPrefix(char *str, char sep);
 
-extern char *_DtCmGetLocalHost P(());
+extern char *_DtCmGetLocalHost();
 
-extern char *_DtCmGetLocalDomain P((char *hostname));
+extern char *_DtCmGetLocalDomain(char *hostname);
 
-extern char *_DtCmGetHostAtDomain P(());
+extern char *_DtCmGetHostAtDomain();
 
-extern char *_DtCmGetUserName P(());
+extern char *_DtCmGetUserName();
 
-extern boolean_t _DtCmIsUserName P((char *user));
+extern boolean_t _DtCmIsUserName(char *user);
 
 #endif

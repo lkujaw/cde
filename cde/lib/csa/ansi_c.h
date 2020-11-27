@@ -36,28 +36,19 @@
 
 #include <stdlib.h>
 
-/*
-**  For all function declarations, if ANSI, then use a prototype
-*/
-#if  defined(__STDC__)
-#define P(args)  args
-#else
-#define P(args)  ()
-#endif
-
 #ifdef SunOS
-extern char	*fconvert	P((double, int, int*, int*, char*));
-extern int	isascii		P((int));
-extern int	kill		P((long, int));
-extern char	*mktemp		P((char*));
-extern int	strcasecmp	P((const char*, const char*));
-extern int	strncasecmp	P((const char*, const char*, size_t));
-extern char	*strdup		P((const char*));
+extern char	*fconvert(double, int, int*, int*, char*))
+extern int	isascii(int);
+extern int	kill(long, int);
+extern char	*mktemp(char*);
+extern int	strcasecmp(const char*, const char*);
+extern int	strncasecmp(const char*, const char*, size_t);
+extern char	*strdup	(const char*);
 #endif
 
 #ifdef NEED_STRCASECMP
-int	strcasecmp	P((const char*, const char*));
-int	strncasecmp	P((const char*, const char*, size_t));
+int	strcasecmp(const char*, const char*);
+int	strncasecmp(const char*, const char*, size_t);
 #endif
 
 #endif

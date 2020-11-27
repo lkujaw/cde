@@ -39,61 +39,61 @@
 /*
  * conversion routines for rpc.cmsd version 5 to rpc.cmsd version 4 data types
  */
-extern CSA_return_code _DtCm_cmsattrs_to_apptdata P((
+extern CSA_return_code _DtCm_cmsattrs_to_apptdata(
 				uint num_attrs,
 				cms_attribute *attrs,
-				Appt_4 *appt4));
+				Appt_4 *appt4);
 
-extern CSA_return_code _DtCm_attrs_to_apptdata P((
+extern CSA_return_code _DtCm_attrs_to_apptdata(
 				uint size,
 				CSA_attribute *attrs,
-				Appt_4 *appt));
+				Appt_4 *appt);
 
-extern CSA_return_code _DtCm_cms_entry_to_appt4	P((
+extern CSA_return_code _DtCm_cms_entry_to_appt4(
 				cms_entry *entry,
-				Appt_4 **appt4));
+				Appt_4 **appt4);
 
-extern CSA_return_code _DtCm_attrs_to_appt4 P((
+extern CSA_return_code _DtCm_attrs_to_appt4(
 				uint num_attrs,
 				CSA_attribute *attrs,
-				Appt_4 **appt4_r));
+				Appt_4 **appt4_r);
 
-extern CSA_return_code _DtCm_scope_to_options4 P((
+extern CSA_return_code _DtCm_scope_to_options4(
 				CSA_enum scope,
-				Options_4 *opt));
+				Options_4 *opt);
 
-extern CSA_return_code _DtCm_csaaccesslist_toaccessentry4 P((
+extern CSA_return_code _DtCm_csaaccesslist_toaccessentry4(
 				CSA_access_list alist,
-				Access_Entry_4 **a4));
+				Access_Entry_4 **a4);
 
-extern int _DtCm_string_to_eventtype4 P((
+extern int _DtCm_string_to_eventtype4(
 				char *val,
-				Event_Type_4 *tag));
+				Event_Type_4 *tag);
 
-extern int _DtCm_rtype_to_interval4 P((
+extern int _DtCm_rtype_to_interval4(
 				int val,
-				Interval_4 *period));
+				Interval_4 *period);
 
-extern int _DtCm_status_to_apptstatus4 P((
+extern int _DtCm_status_to_apptstatus4(
 				int val,
-				Appt_Status_4 *astat));
+				Appt_Status_4 *astat);
 
-extern int _DtCm_classification_to_privacy4 P((
+extern int _DtCm_classification_to_privacy4(
 				int val,
-				Privacy_Level_4 *privacy));
+				Privacy_Level_4 *privacy);
 
-extern CSA_return_code _DtCm_attrs_to_eventtype4 P((
+extern CSA_return_code _DtCm_attrs_to_eventtype4(
 				cms_attribute_value	*type,
 				cms_attribute_value	*stype,
-				Tag_4			*tag));
+				Tag_4			*tag);
 
-extern CSA_return_code _DtCm_remove_reminder P((char *rem, Appt_4 *appt));
+extern CSA_return_code _DtCm_remove_reminder(char *rem, Appt_4 *appt);
 
-extern CSA_return_code _DtCm_add_reminder P((
+extern CSA_return_code _DtCm_add_reminder(
 				char *rem,
 				CSA_reminder * val,
-				Appt_4 *appt));
+				Appt_4 *appt);
 
-extern int _DtCmAccessRightToV4AccessType P((unsigned int access));
+extern int _DtCmAccessRightToV4AccessType(unsigned int access);
 
 #endif

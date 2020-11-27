@@ -52,22 +52,22 @@ typedef struct {
 	char	**names;
 } _DtCmNameTable;
 
-extern _DtCmNameTable *_DtCm_make_name_table P((
+extern _DtCmNameTable *_DtCm_make_name_table(
 				int	size,
-				char	**names));
+				char	**names);
 
-extern void _DtCm_free_name_table P((_DtCmNameTable *tbl));
+extern void _DtCm_free_name_table(_DtCmNameTable *tbl);
 
-extern CSA_return_code _DtCm_add_name_to_table P((
+extern CSA_return_code _DtCm_add_name_to_table(
 				_DtCmNameTable	*tbl,
 				int		index,
-				char		*newname));
+				char		*newname);
 
-extern int _DtCm_get_index_from_table P((
+extern int _DtCm_get_index_from_table(
 				_DtCmNameTable	*tbl,
-				char		*name));
+				char		*name);
 
-extern CSA_return_code _DtCmExtendNameTable P((
+extern CSA_return_code _DtCmExtendNameTable(
 				char		*name,
 				int		index,
 				int		type,
@@ -75,7 +75,7 @@ extern CSA_return_code _DtCmExtendNameTable P((
 				int		basesize,
 				char		**basenames,
 				_DtCmNameTable	**tbl,
-				int		**types));
+				int		**types);
 
 #endif /* _NAMETBL_H */
 

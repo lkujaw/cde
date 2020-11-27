@@ -73,40 +73,40 @@ typedef struct conn {
 } _DtCm_Connection;
 
 #ifdef SunOS
-extern enum clnt_stat _DtCm_clnt_call P((
+extern enum clnt_stat _DtCm_clnt_call(
 				_DtCm_Connection *conn,
 				u_long proc,
 				xdrproc_t inproc,
 				caddr_t in,
 				xdrproc_t outproc,
 				caddr_t out,
-				struct timeval tout));
+				struct timeval tout);
 #endif
 
-extern CSA_return_code _DtCm_add_registration P((
+extern CSA_return_code _DtCm_add_registration(
 				_DtCm_Client_Info *ci,
 				char *cal,
-				unsigned long update_type));
+				unsigned long update_type);
 
-extern void _DtCm_remove_registration P((
+extern void _DtCm_remove_registration(
 				_DtCm_Client_Info *ci,
-				char *cal));
+				char *cal);
 
-extern CSA_return_code _DtCm_create_udp_client P((
+extern CSA_return_code _DtCm_create_udp_client(
 				char *host,
 				int version,
 				int timeout,
-				_DtCm_Client_Info **clnt));
+				_DtCm_Client_Info **clnt);
 
-extern CSA_return_code _DtCm_create_tcp_client P((
+extern CSA_return_code _DtCm_create_tcp_client(
 				char *host,
 				int version,
 				int timeout,
-				_DtCm_Client_Info **clnt));
+				_DtCm_Client_Info **clnt);
 
-extern CSA_return_code _DtCm_get_server_rpc_version P((char *host, int *vers));
+extern CSA_return_code _DtCm_get_server_rpc_version(char *host, int *vers);
 
-extern CSA_return_code _DtCm_clntstat_to_csastat P((enum clnt_stat clntstat));
+extern CSA_return_code _DtCm_clntstat_to_csastat(enum clnt_stat clntstat);
 
 #endif
 

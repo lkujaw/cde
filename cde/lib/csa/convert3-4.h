@@ -37,13 +37,13 @@
    rpc.cmsd version 4 data types
 */
 
-extern Table_Args_4 *_DtCm_tableargs3_to_tableargs4 P((Table_Args_3*));
-extern Table_Args_4 *_DtCm_tabledelargs3_to_tabledelargs4 P((Table_Args_3*, Options_4));
-extern Registration_4 *_DtCm_reg3_to_reg4 P((Registration_3*));
-extern Access_Args_4 *_DtCm_accargs3_to_accargs4 P((Access_Args_3*));
-extern Table_Res_4 *_DtCm_tableres3_to_tableres4 P((Table_Res_3*));
-extern Table_Status_4 _DtCm_tablestat3_to_tablestat4 P((Table_Status_3));
-extern Access_Status_4 _DtCm_accstat3_to_accstat4 P((Access_Status_3));
-extern Registration_Status_4 _DtCm_regstat3_to_regstat4 P((Registration_Status_3));
+extern Table_Args_4 *_DtCm_tableargs3_to_tableargs4(Table_Args_3*);
+extern Table_Args_4 *_DtCm_tabledelargs3_to_tabledelargs4(Table_Args_3*, Options_4);
+extern Registration_4 *_DtCm_reg3_to_reg4(Registration_3*);
+extern Access_Args_4 *_DtCm_accargs3_to_accargs4(Access_Args_3*);
+extern Table_Res_4 *_DtCm_tableres3_to_tableres4(Table_Res_3*);
+extern Table_Status_4 _DtCm_tablestat3_to_tablestat4(Table_Status_3);
+extern Access_Status_4 _DtCm_accstat3_to_accstat4(Access_Status_3);
+extern Registration_Status_4 _DtCm_regstat3_to_regstat4(Registration_Status_3);
 
 #endif

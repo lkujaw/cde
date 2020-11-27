@@ -36,7 +36,7 @@
 #include "cm.h"
 #include "rtable4.h"
 
-extern CSA_return_code _DtCmHashCriteria P((
+extern CSA_return_code _DtCmHashCriteria(
 			_DtCmNameTable	*tbl,
 			CSA_uint32	num_attrs,
 			CSA_attribute	*csaattrs,
@@ -52,14 +52,14 @@ extern CSA_return_code _DtCmHashCriteria P((
 			long		*id,
 			CSA_uint32	*hnum,
 			cms_attribute	**hattrs,
-			CSA_enum	**hops));
+			CSA_enum	**hops);
 
-extern void _DtCmFreeHashedArrays P((
+extern void _DtCmFreeHashedArrays(
 			CSA_uint32	hnum,
 			cms_attribute	*hattrs,
-			CSA_enum	*hops));
+			CSA_enum	*hops);
 
-extern Appt_4 *_DtCm_match_appts P((
+extern Appt_4 *_DtCm_match_appts(
 			Appt_4		*appts,
 			long		id,
 			boolean_t	no_end_time_range,
@@ -67,7 +67,7 @@ extern Appt_4 *_DtCm_match_appts P((
 			time_t		end2,
 			CSA_uint32	num_attrs,
 			cms_attribute	*attrs,
-			CSA_enum	*ops));
+			CSA_enum	*ops);
 
 extern boolean_t _DtCm_match_one_appt(
 			Appt_4 *appt,
@@ -75,45 +75,45 @@ extern boolean_t _DtCm_match_one_appt(
 			cms_attribute * attrs,
 			CSA_enum *ops);
 
-extern Reminder_4 *_DtCm_match_reminders P((
+extern Reminder_4 *_DtCm_match_reminders(
 			Reminder_4 *rems,
 			uint num_names,
-			char **names));
+			char **names);
 
-extern CSA_return_code _DtCm_check_operator P((
+extern CSA_return_code _DtCm_check_operator(
 			uint size,
 			CSA_attribute *csaattrs,
 			cms_attribute *cmsattrs,
-			CSA_enum *ops));
+			CSA_enum *ops);
 
-extern boolean_t _DtCm_match_sint32_attribute P((
+extern boolean_t _DtCm_match_sint32_attribute(
 			cms_attribute_value *val1,
 			cms_attribute_value *val2,
-			CSA_enum op));
+			CSA_enum op);
 
-extern boolean_t _DtCm_match_uint32_attribute P((
+extern boolean_t _DtCm_match_uint32_attribute(
 			cms_attribute_value *val1,
 			cms_attribute_value *val2,
-			CSA_enum op));
+			CSA_enum op);
 
-extern boolean_t _DtCm_match_time_attribute P((
+extern boolean_t _DtCm_match_time_attribute(
 			cms_attribute_value *val1,
 			cms_attribute_value *val2,
-			CSA_enum op));
+			CSA_enum op);
 
-extern boolean_t _DtCm_match_time_duration_attribute P((
+extern boolean_t _DtCm_match_time_duration_attribute(
 			cms_attribute_value *val1,
 			cms_attribute_value *val2,
-			CSA_enum op));
+			CSA_enum op);
 
-extern boolean_t _DtCm_match_string_attribute P((
+extern boolean_t _DtCm_match_string_attribute(
 			cms_attribute_value *val1,
 			cms_attribute_value *val2,
-			CSA_enum op));
+			CSA_enum op);
 
-extern boolean_t _DtCm_match_reminder_attribute P((
+extern boolean_t _DtCm_match_reminder_attribute(
 			cms_attribute_value *val1,
 			cms_attribute_value *val2,
-			CSA_enum op));
+			CSA_enum op);
 
 #endif

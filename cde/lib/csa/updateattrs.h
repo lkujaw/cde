@@ -37,7 +37,7 @@
 #include "cm.h"
 #include "nametbl.h"
 
-extern CSA_return_code _DtCmUpdateAttributes P((
+extern CSA_return_code _DtCmUpdateAttributes(
 			uint		numsrc,
 			cms_attribute	*srcattrs,
 			uint		*numdst,
@@ -45,34 +45,34 @@ extern CSA_return_code _DtCmUpdateAttributes P((
 			_DtCmNameTable	**tbl,
 			boolean_t	caltbl,
 			int		**types,
-			boolean_t	makecopy));
+			boolean_t	makecopy);
 
-extern CSA_return_code _DtCmUpdateAttribute P((
+extern CSA_return_code _DtCmUpdateAttribute(
 			cms_attribute	*from,
-			cms_attribute	*to));
+			cms_attribute	*to);
 
-extern CSA_return_code _DtCmUpdateAccessListAttrVal P((
+extern CSA_return_code _DtCmUpdateAccessListAttrVal(
 			cms_attribute_value *newval,
-			cms_attribute_value **attrval));
+			cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmUpdateSint32AttrVal P((
+extern CSA_return_code _DtCmUpdateSint32AttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmUpdateStringAttrVal P((
+extern CSA_return_code _DtCmUpdateStringAttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmUpdateReminderAttrVal P((
+extern CSA_return_code _DtCmUpdateReminderAttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmUpdateDateTimeListAttrVal P((
+extern CSA_return_code _DtCmUpdateDateTimeListAttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmUpdateOpaqueDataAttrVal P((
+extern CSA_return_code _DtCmUpdateOpaqueDataAttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
 #endif

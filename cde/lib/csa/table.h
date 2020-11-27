@@ -42,24 +42,24 @@
  *  Interface to rpc calls of version 2-4
  */
 
-extern CSA_return_code _DtCm_table_create P((Calendar *cal));
+extern CSA_return_code _DtCm_table_create(Calendar *cal);
 
-extern CSA_return_code _DtCm_table_get_access P((
+extern CSA_return_code _DtCm_table_get_access(
 				Calendar *cal,
-				cms_access_entry **acclist));
+				cms_access_entry **acclist);
 
-extern CSA_return_code _DtCm_table_set_access P((
+extern CSA_return_code _DtCm_table_set_access(
 				Calendar *cal,
-				CSA_access_list alist));
+				CSA_access_list alist);
 
-extern CSA_return_code _DtCm_table_lookup_reminder P((
+extern CSA_return_code _DtCm_table_lookup_reminder(
 				Calendar *cal,
 				CSA_uint32 num_names,
 				char **reminder_names,
 				CSA_uint32 *num_rems,
-				CSA_reminder_reference **rems));
+				CSA_reminder_reference **rems);
 
-extern CSA_return_code _DtCm_table_lookup_range P((
+extern CSA_return_code _DtCm_table_lookup_range(
 				Calendar	*cal,
 				long		start1,
 				long		start2,
@@ -70,11 +70,11 @@ extern CSA_return_code _DtCm_table_lookup_range P((
 				uint		num_attrs,
 				cms_attribute	*attrs,
 				CSA_enum	*ops,
-				_DtCm_libentry	**appts));
+				_DtCm_libentry	**appts);
 
-extern CSA_return_code _DtCm_table_lookup P((
+extern CSA_return_code _DtCm_table_lookup(
 				Calendar *cal,
-				_DtCm_libentry *entry));
+				_DtCm_libentry *entry);
 
 /*
  * This routine looks up events of a repeating sequence.
@@ -85,44 +85,44 @@ extern CSA_return_code _DtCm_table_lookup P((
  * in the key of the first entry which will be returned in the cms_key
  * structure pointed to by key.
  */
-extern CSA_return_code _DtCm_table_lookup_key_range P((
+extern CSA_return_code _DtCm_table_lookup_key_range(
 				Calendar *cal,
 				_DtCm_libentry *entry,
 				long id,
 				time_t start,
 				time_t end,
 				cms_key *key,
-				_DtCm_libentry **elist_r));
+				_DtCm_libentry **elist_r);
 
-extern CSA_return_code _DtCm_table_insert P((
+extern CSA_return_code _DtCm_table_insert(
 				Calendar *cal,
 				uint num_attrs,
 				CSA_attribute * attrs,
-				_DtCm_libentry **entries));
+				_DtCm_libentry **entries);
 
-extern CSA_return_code _DtCm_table_delete P((
+extern CSA_return_code _DtCm_table_delete(
 				Calendar *cal,
 				_DtCm_libentry *entry,
-				CSA_enum scope));
+				CSA_enum scope);
 
-extern CSA_return_code _DtCm_table_update P((
+extern CSA_return_code _DtCm_table_update(
 				Calendar *cal,
 				_DtCm_libentry *oentry,
 				uint num_attrs,
 				CSA_attribute * attrs,
 				CSA_enum scope,
-				_DtCm_libentry **nentry));
+				_DtCm_libentry **nentry);
 
-extern CSA_return_code _DtCm_table_size P((
+extern CSA_return_code _DtCm_table_size(
 				Calendar *cal,
-				int *size));
+				int *size);
 
-extern CSA_return_code _DtCm_table_unregister_target P((
+extern CSA_return_code _DtCm_table_unregister_target(
 				_DtCm_Connection *conn,
-				char *cal));
+				char *cal);
 
-extern CSA_return_code _DtCm_table_register_target P((
+extern CSA_return_code _DtCm_table_register_target(
 				_DtCm_Connection *conn,
-				char *cal));
+				char *cal);
 
 #endif

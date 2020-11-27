@@ -40,21 +40,21 @@
 extern _DtCmNameTable *_DtCm_cal_name_tbl;
 extern _DtCmNameTable *_DtCm_entry_name_tbl;
 
-extern void _DtCm_init_hash P(());
+extern void _DtCm_init_hash(void);
 
-extern cms_entry *_DtCm_make_cms_entry P((_DtCmNameTable *tbl));
+extern cms_entry *_DtCm_make_cms_entry(_DtCmNameTable *tbl);
 
-extern CSA_return_code _DtCm_copy_cms_entry P((
+extern CSA_return_code _DtCm_copy_cms_entry(
 				cms_entry *e,
-				cms_entry **e_r));
+				cms_entry **e_r);
 
-extern void _DtCm_free_cms_entry P((cms_entry *entry));
+extern void _DtCm_free_cms_entry(cms_entry *entry);
 
-extern void _DtCm_free_cms_entries P((cms_entry *entry));
+extern void _DtCm_free_cms_entries(cms_entry *entry);
 
-extern CSA_return_code _DtCmGrowAttrArray P((
+extern CSA_return_code _DtCmGrowAttrArray(
 			uint		*num_attr,
 			cms_attribute	**attrs,
-			cms_attribute	*attr));
+			cms_attribute	*attr);
 
 #endif

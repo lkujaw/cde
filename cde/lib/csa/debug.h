@@ -39,8 +39,8 @@
 #define DP(a)
 #endif /* CM_DEBUG */
 
-extern void		_DtCm_print_tick		P((long));
+extern void		_DtCm_print_tick(long);
 
-extern void		_DtCm_print_errmsg		P((const char *));
+extern void		_DtCm_print_errmsg(const char *);
 
 #endif /* _DEBUG_H */
