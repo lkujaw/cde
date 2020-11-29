@@ -53,7 +53,6 @@
 #define _EDITOR_H
 
 #include <csa.h>
-#include "ansi_c.h"
 #include "calendar.h"
 #include "misc.h"
 #include "dssw.h"
@@ -115,27 +114,27 @@ typedef struct {
 **  Editor external function declarations
 **
 *******************************************************************************/
-extern void	add_to_appt_list	P((CSA_entry_handle, Editor*));
-extern void	add_all_appt		P((Editor*));
-extern void	build_editor_list	P((Editor*, Tick, Glance, CSA_entry_handle**,
-					   CSA_uint32*));
-extern int	build_editor_view	P((Editor*, Glance, Boolean));
-extern Boolean	editor_change		P((Dtcm_appointment*, CSA_entry_handle,
-					   CSA_entry_handle*, Calendar*));
-extern void	editor_clean_up		P((Editor*));
-extern Boolean	editor_created		P((Editor*));
-extern Boolean	editor_delete		P((CSA_entry_handle, Calendar*));
-extern Boolean	editor_insert		P((Dtcm_appointment*, CSA_entry_handle*,
-					   Calendar*));
-extern CSA_entry_handle editor_nth_appt	P((Editor*, int));
-extern Boolean	editor_showing		P((Editor*));
-extern Boolean	editor_view_showing	P((Editor*));
-extern void	get_editor_vals		P((Editor*));
-extern void	set_editor_defaults	P((Editor*, Tick, Tick, Boolean));
-extern void	set_editor_title	P((Editor*, char *));
-extern void	set_editor_vals		P((Editor*, Tick, Tick));
-extern void	show_editor		P((Calendar*, Tick, Tick, Boolean));
-extern void	show_editor_view	P((Calendar*, Glance));
-extern void	e_make_editor		P((Calendar*));
+extern void	add_to_appt_list(CSA_entry_handle, Editor*);
+extern void	add_all_appt(Editor*);
+extern void	build_editor_list(Editor*, Tick, Glance, CSA_entry_handle**,
+					   CSA_uint32*);
+extern int	build_editor_view(Editor*, Glance, Boolean);
+extern Boolean	editor_change(Dtcm_appointment*, CSA_entry_handle,
+					   CSA_entry_handle*, Calendar*);
+extern void	editor_clean_up	(Editor*);
+extern Boolean	editor_created(Editor*);
+extern Boolean	editor_delete(CSA_entry_handle, Calendar*);
+extern Boolean	editor_insert(Dtcm_appointment*, CSA_entry_handle*,
+					   Calendar*);
+extern CSA_entry_handle editor_nth_appt(Editor*, int);
+extern Boolean	editor_showing(Editor*);
+extern Boolean	editor_view_showing(Editor*);
+extern void	get_editor_vals	(Editor*);
+extern void	set_editor_defaults(Editor*, Tick, Tick, Boolean);
+extern void	set_editor_title(Editor*, char *);
+extern void	set_editor_vals	(Editor*, Tick, Tick);
+extern void	show_editor	(Calendar*, Tick, Tick, Boolean);
+extern void	show_editor_view(Calendar*, Glance);
+extern void	e_make_editor(Calendar*);
 
 #endif

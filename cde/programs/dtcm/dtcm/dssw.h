@@ -53,7 +53,6 @@
 #define _DSSW_H
 
 #include <csa.h>
-#include "ansi_c.h"
 #include "calendar.h"
 
 #define DATE_LEN	100
@@ -121,21 +120,21 @@ typedef struct {
 **  DSSW external function declarations
 **
 *******************************************************************************/
-extern void	build_dssw		P((DSSW*, Calendar*, Widget, Boolean, Boolean));
-extern Boolean	dssw_appt_to_form	P((DSSW*, CSA_entry_handle));
-extern Boolean	dssw_attrs_to_form	P((DSSW*, Dtcm_appointment*));
-extern Boolean	dssw_form_to_appt	P((DSSW*, Dtcm_appointment*, char*,
-					   Tick));
-extern Boolean	dssw_form_flags_to_appt	P((DSSW*, Dtcm_appointment*, char*,
-					   Tick, int *));
-extern Boolean	dssw_form_to_todo	P((DSSW*, Dtcm_appointment*, char*,
-					   Tick));
-extern void	load_dssw_times		P((DSSW*, Tick, Tick, Boolean));
-extern void	get_dssw_times		P((DSSW*));
-extern void	get_dssw_vals		P((DSSW*, Tick));
-extern void	set_dssw_defaults	P((DSSW*, Tick, Boolean));
-extern void	set_dssw_times		P((DSSW*));
-extern void	set_dssw_vals		P((DSSW*, Tick));
-extern void	set_dssw_menus		P((DSSW*, Props *));
+extern void	build_dssw(DSSW*, Calendar*, Widget, Boolean, Boolean);
+extern Boolean	dssw_appt_to_form(DSSW*, CSA_entry_handle);
+extern Boolean	dssw_attrs_to_form(DSSW*, Dtcm_appointment*);
+extern Boolean	dssw_form_to_appt(DSSW*, Dtcm_appointment*, char*,
+					   Tick);
+extern Boolean	dssw_form_flags_to_appt(DSSW*, Dtcm_appointment*, char*,
+					   Tick, int *);
+extern Boolean	dssw_form_to_todo(DSSW*, Dtcm_appointment*, char*,
+					   Tick);
+extern void	load_dssw_times(DSSW*, Tick, Tick, Boolean);
+extern void	get_dssw_times(DSSW*);
+extern void	get_dssw_vals(DSSW*, Tick);
+extern void	set_dssw_defaults(DSSW*, Tick, Boolean);
+extern void	set_dssw_times(DSSW*);
+extern void	set_dssw_vals(DSSW*, Tick);
+extern void	set_dssw_menus(DSSW*, Props *);
 
 #endif

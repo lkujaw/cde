@@ -31,7 +31,6 @@
 #ifndef _LEXER_H
 #define _LEXER_H
 
-#include "ansi_c.h"
 #include "rtable4.h"
 
 extern int		yyylineno;
@@ -42,7 +41,7 @@ extern Tag_4		externTag;
 extern Appt_Status_4	externApptStatus;
 extern Privacy_Level_4	externPrivacy;
 
-extern void		setinput	P((FILE*));
-extern int		yyylex		P(());
+extern void		setinput(FILE*);
+extern int		yyylex(void);
 
 #endif

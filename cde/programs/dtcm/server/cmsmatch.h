@@ -32,14 +32,13 @@
 #define _CMSMATCH_H
 
 #include <EUSCompat.h>
-#include "ansi_c.h"
 #include "cm.h"
 #include "nametbl.h"
 
-extern boolean_t _DtCmsMatchAttributes P((
+extern boolean_t _DtCmsMatchAttributes(
 			cms_entry *entry,
 			uint num_attrs,
 			cms_attribute *attrs,
-			CSA_enum *ops));
+			CSA_enum *ops);
 
 #endif

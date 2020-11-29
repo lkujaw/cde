@@ -53,24 +53,23 @@
 #define _FORMAT_H
 
 #include <csa.h>
-#include "ansi_c.h"
 #include "props.h"
 
 #define DEFAULT_APPT_LEN	50
 #define DEFAULT_GAPPT_LEN	80
 
 
-extern void format_date		P((Tick, OrderingType, char*, int, int, int));
-extern void format_date3	P((Tick, OrderingType, SeparatorType, char*));
-extern Boolean format_line	P((Tick, char*, char*, int, Boolean,
-				   DisplayType));
-extern void format_line2	P((Dtcm_appointment*, char*, char*,
-				   DisplayType));
-extern void format_appt		P((Dtcm_appointment*, char*, DisplayType, int));
-extern void format_abbrev_appt	P((Dtcm_appointment*, char*, Boolean,
-				   DisplayType));
-extern void format_maxchars	P((Dtcm_appointment*, char*, int, DisplayType));
-extern void format_gappt	P((Dtcm_appointment*, char*, char*,
-				   DisplayType, int));
+extern void format_date(Tick, OrderingType, char*, int, int, int);
+extern void format_date3(Tick, OrderingType, SeparatorType, char*);
+extern Boolean format_line(Tick, char*, char*, int, Boolean,
+				   DisplayType);
+extern void format_line2(Dtcm_appointment*, char*, char*,
+				   DisplayType);
+extern void format_appt	(Dtcm_appointment*, char*, DisplayType, int);
+extern void format_abbrev_appt(Dtcm_appointment*, char*, Boolean,
+				   DisplayType);
+extern void format_maxchars(Dtcm_appointment*, char*, int, DisplayType);
+extern void format_gappt(Dtcm_appointment*, char*, char*,
+				   DisplayType, int);
 
 #endif

@@ -73,7 +73,7 @@ typedef struct {
 	char			gmttimezone[BUFSIZ];
 }Timezone;
 
-extern caddr_t	make_timezone	P((Calendar*));
-extern void	refresh_timezone P((Timezone*));
+extern caddr_t	make_timezone(Calendar*);
+extern void	refresh_timezone(Timezone*);
 
 #endif

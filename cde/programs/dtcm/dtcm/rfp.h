@@ -53,7 +53,6 @@
 #define _RFP_H
 
 #include <csa.h>
-#include "ansi_c.h"
 #include "calendar.h"
 #include "misc.h"
 
@@ -98,20 +97,20 @@ typedef struct {
 **  RFP (repeat, for, privacy) external function declarations
 **
 *******************************************************************************/
-extern void	build_rfp		P((RFP*, Calendar*, Widget));
-extern void	get_rfp_privacy_val	P((RFP*));
-extern void	get_rfp_repeat_val	P((RFP*, time_t));
-extern void	get_rfp_vals		P((RFP*, time_t));
-extern Boolean	rfp_attrs_to_form	P((RFP*, Dtcm_appointment*));
-extern Boolean	rfp_appt_to_form	P((RFP*, CSA_entry_handle));
-extern Boolean	rfp_form_to_appt	P((RFP*, Dtcm_appointment*, char*));
-extern Boolean	rfp_form_flags_to_appt	P((RFP*, Dtcm_appointment*, char*, int *));
-extern void	set_rfp_privacy_val	P((RFP*));
-extern void	set_rfp_repeat_val	P((RFP*));
-extern void	set_rfp_defaults	P((RFP*));
-extern void	set_rfp_vals		P((RFP*));
-extern void	rfp_set_repeat_values	P((RFP*));
-extern void	rfp_init		P((RFP*, Calendar *, Widget));
+extern void	build_rfp(RFP*, Calendar*, Widget);
+extern void	get_rfp_privacy_val(RFP*);
+extern void	get_rfp_repeat_val(RFP*, time_t);
+extern void	get_rfp_vals(RFP*, time_t);
+extern Boolean	rfp_attrs_to_form(RFP*, Dtcm_appointment*);
+extern Boolean	rfp_appt_to_form(RFP*, CSA_entry_handle);
+extern Boolean	rfp_form_to_appt(RFP*, Dtcm_appointment*, char*);
+extern Boolean	rfp_form_flags_to_appt(RFP*, Dtcm_appointment*, char*, int *);
+extern void	set_rfp_privacy_val(RFP*);
+extern void	set_rfp_repeat_val(RFP*);
+extern void	set_rfp_defaults(RFP*);
+extern void	set_rfp_vals(RFP*);
+extern void	rfp_set_repeat_values(RFP*);
+extern void	rfp_init(RFP*, Calendar *, Widget);
 
 
 #endif

@@ -53,15 +53,14 @@
 
 #include <X11/Intrinsic.h>
 #include <csa.h>
-#include "ansi_c.h"
 
-extern void compose		P((Calendar*, CSA_reminder_reference *, char**));
-extern void flash_it		P((XtPointer, XtIntervalId*));
-extern void mail_it		P((XtPointer, XtIntervalId*, CSA_reminder_reference *));
-extern void open_it		P((XtPointer, XtIntervalId*, CSA_reminder_reference *));
-extern void postup_show_proc	P((Calendar*, CSA_reminder_reference *));
-extern void reminder_driver	P((XtPointer, XtIntervalId*));
-extern void ring_it		P((XtPointer, XtIntervalId*));
-extern void slp			P((int x));
+extern void compose(Calendar*, CSA_reminder_reference *, char**);
+extern void flash_it(XtPointer, XtIntervalId*);
+extern void mail_it(XtPointer, XtIntervalId*, CSA_reminder_reference *);
+extern void open_it(XtPointer, XtIntervalId*, CSA_reminder_reference *);
+extern void postup_show_proc(Calendar*, CSA_reminder_reference *);
+extern void reminder_driver(XtPointer, XtIntervalId*);
+extern void ring_it(XtPointer, XtIntervalId*);
+extern void slp(int x);
 
 #endif

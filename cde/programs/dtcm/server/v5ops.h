@@ -31,42 +31,41 @@
 #ifndef _V5OPS_H
 #define _V5OPS_H
 
-#include "ansi_c.h"
 #include "cm.h"
 #include "cmscalendar.h"
 #include "rerule.h"
 #include "repeat.h"
 
-extern _DtCmsComparisonResult _DtCmsCompareEntry P((
+extern _DtCmsComparisonResult _DtCmsCompareEntry(
 				cms_key *key,
-				caddr_t data));
+				caddr_t data);
 
-extern _DtCmsComparisonResult _DtCmsCompareRptEntry P((
+extern _DtCmsComparisonResult _DtCmsCompareRptEntry(
 				cms_key *key,
-				caddr_t data));
+				caddr_t data);
 
-extern caddr_t _DtCmsGetEntryKey P((caddr_t data));
+extern caddr_t _DtCmsGetEntryKey(caddr_t data);
 
-extern CSA_return_code _DtCmsSetLastUpdate P((cms_entry *entry));
+extern CSA_return_code _DtCmsSetLastUpdate(cms_entry *entry);
 
-extern void _DtCmsConvertToOnetime P((cms_entry *entry, RepeatEvent *re));
+extern void _DtCmsConvertToOnetime(cms_entry *entry, RepeatEvent *re);
 
-extern int _DtCmsGetDuration P((cms_entry *eptr));
+extern int _DtCmsGetDuration(cms_entry *eptr);
 
-extern CSA_return_code _DtCmsCheckInitialAttributes P((cms_entry *entry));
+extern CSA_return_code _DtCmsCheckInitialAttributes(cms_entry *entry);
 
-extern CSA_return_code _DtCmsCheckStartEndTime P((cms_entry *entry));
+extern CSA_return_code _DtCmsCheckStartEndTime(cms_entry *entry);
 
-extern void _DtCmsCleanupExceptionDates P((cms_entry *newe, long ftick));
+extern void _DtCmsCleanupExceptionDates(cms_entry *newe, long ftick);
 
-extern int _DtCmsNumberExceptionDates P((cms_entry *entry));
+extern int _DtCmsNumberExceptionDates(cms_entry *entry);
 
-extern CSA_return_code _DtCmsUpdateDurationInRule P((
+extern CSA_return_code _DtCmsUpdateDurationInRule(
 				cms_entry	*entry,
-				uint		remain));
+				uint		remain);
 
-extern CSA_return_code _DtCmsAddEndDateToRule P((
+extern CSA_return_code _DtCmsAddEndDateToRule(
 				cms_attribute	*attr,
 				RepeatEvent	*re,
-				long		time));
+				long		time);
 #endif

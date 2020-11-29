@@ -31,7 +31,6 @@
 #ifndef _PROPS_PU_H
 #define _PROPS_PU_H
 
-#include "ansi_c.h"
 #include "dssw.h"
 #include "props.h"
 #include "reminders.h"
@@ -244,25 +243,25 @@ enum
 **  External function declarations
 **
 *******************************************************************************/
-extern void	create_all_pixmaps	P((Props_pu*, Widget));
-extern Boolean	get_date_vals_from_ui	P((Props_pu*, Props*));
-extern Boolean	get_display_vals_from_ui P((Props_pu*, Props*));
-extern Boolean	get_editor_vals_from_ui	P((Props_pu*, Props*));
-extern Boolean	get_gap_vals_from_ui	P((Props_pu*, Props*));
-extern Boolean	get_printer_vals_from_ui P((Props_pu*, Props*));
-extern Boolean	get_props_from_ui	P((Props_pu*, Props*, int*));
-extern void	set_date_vals_on_ui	P((Props_pu*, Props*));
-extern void	set_display_vals_on_ui	P((Props_pu*, Props*));
-extern void	set_editor_vals_on_ui	P((Props_pu*, Props*));
-extern void	set_gap_vals_on_ui	P((Props_pu*, Props*));
-extern void	set_printer_vals_on_ui	P((Props_pu*, Props*));
-extern void	set_props_on_ui		P((Props_pu*, Props*));
-extern void	set_props_pu_defaults	P((Props_pu*, Props*));
-extern void	show_props_pu		P((Calendar*));
-extern void	props_pu_clean_up	P((Props_pu*));
-extern Boolean	props_pu_showing	P((Props_pu*));
-extern Boolean	p_flush_changes		P((Calendar*));
-extern void	show_print_props_pu	P((Calendar*));
+extern void	create_all_pixmaps(Props_pu*, Widget);
+extern Boolean	get_date_vals_from_ui(Props_pu*, Props*);
+extern Boolean	get_display_vals_from_ui(Props_pu*, Props*);
+extern Boolean	get_editor_vals_from_ui(Props_pu*, Props*);
+extern Boolean	get_gap_vals_from_ui(Props_pu*, Props*);
+extern Boolean	get_printer_vals_from_ui(Props_pu*, Props*);
+extern Boolean	get_props_from_ui(Props_pu*, Props*, int*);
+extern void	set_date_vals_on_ui(Props_pu*, Props*);
+extern void	set_display_vals_on_ui(Props_pu*, Props*);
+extern void	set_editor_vals_on_ui(Props_pu*, Props*);
+extern void	set_gap_vals_on_ui(Props_pu*, Props*);
+extern void	set_printer_vals_on_ui(Props_pu*, Props*);
+extern void	set_props_on_ui	(Props_pu*, Props*);
+extern void	set_props_pu_defaults(Props_pu*, Props*);
+extern void	show_props_pu(Calendar*);
+extern void	props_pu_clean_up(Props_pu*);
+extern Boolean	props_pu_showing(Props_pu*);
+extern Boolean	p_flush_changes	(Calendar*);
+extern void	show_print_props_pu(Calendar*);
 
 extern void p_defaults_proc_helper(XtPointer client_data);
 

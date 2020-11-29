@@ -53,16 +53,15 @@
 #define _DATEFIELD_H
 
 #include <X11/Intrinsic.h>
-#include "ansi_c.h"
 #include "props.h"
 #include "timeops.h"
 
 /*
 **  External function declaration
 */
-extern char	*get_date_from_widget	P((Tick, Widget, OrderingType,
-						SeparatorType));
-extern void	set_date_in_widget	P((Tick, Widget, OrderingType,
-						SeparatorType));
+extern char	*get_date_from_widget(Tick, Widget, OrderingType,
+						SeparatorType);
+extern void	set_date_in_widget(Tick, Widget, OrderingType,
+						SeparatorType);
 
 #endif

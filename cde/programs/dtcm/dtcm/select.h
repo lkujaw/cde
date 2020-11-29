@@ -52,7 +52,6 @@
 #ifndef _SELECT_H
 #define _SELECT_H
 
-#include "ansi_c.h"
 #include "browser.h"
 #include "calendar.h"
 
@@ -79,16 +78,16 @@ typedef struct {
 	int	y;
 } pr_pos;
 
-extern void	activate_selection	P((Selection*));
-extern void	browser_deselect	P((Calendar *, Browser*));	
-extern void	browser_select		P((Calendar *, Browser*, pr_pos*));	
-extern void	calendar_deselect	P((Calendar*));
-extern void	calendar_select		P((Calendar*, Selection_unit, caddr_t));
-extern void	deactivate_selection	P((Selection *));
-extern void	monthbox_deselect	P((Calendar*));	
-extern void	monthbox_select		P((Calendar*));
-extern void	paint_selection		P((Calendar*));
-extern int	selection_active	P((Selection*));
-extern void	weekchart_select	P((Calendar*));	
+extern void	activate_selection(Selection*);
+extern void	browser_deselect(Calendar *, Browser*);
+extern void	browser_select(Calendar *, Browser*, pr_pos*);
+extern void	calendar_deselect(Calendar*);
+extern void	calendar_select	(Calendar*, Selection_unit, caddr_t);
+extern void	deactivate_selection(Selection *);
+extern void	monthbox_deselect(Calendar*);	
+extern void	monthbox_select(Calendar*);
+extern void	paint_selection(Calendar*);
+extern int	selection_active(Selection*);
+extern void	weekchart_select(Calendar*);
 
 #endif

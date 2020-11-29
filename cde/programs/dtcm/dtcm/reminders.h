@@ -54,7 +54,6 @@
 
 #include <X11/Intrinsic.h>
 #include <csa.h>
-#include "ansi_c.h"
 #include "misc.h"
 
 #define REMINDER_SCOPE_LEN	5
@@ -114,14 +113,14 @@ typedef struct {
 **  Editor external function declarations
 **
 *******************************************************************************/
-extern void	build_reminders		P((Reminders*, Calendar*, Widget));
-extern Reminder_val_op	get_reminders_vals	P((Reminders*, Boolean));
-extern Boolean	reminders_attrs_to_form	P((Reminders*, Dtcm_appointment*));
-extern Boolean	reminders_appt_to_form	P((Reminders*, CSA_entry_handle));
-extern Boolean	reminders_form_to_appt	P((Reminders*, Dtcm_appointment*, char *));
-extern void	set_reminders_defaults	P((Reminders*));
-extern void	set_reminders_vals	P((Reminders*, Boolean));
-extern void 	reminders_init		P((Reminders*, Calendar*, Widget));
+extern void	build_reminders(Reminders*, Calendar*, Widget);
+extern Reminder_val_op	get_reminders_vals(Reminders*, Boolean);
+extern Boolean	reminders_attrs_to_form(Reminders*, Dtcm_appointment*);
+extern Boolean	reminders_appt_to_form(Reminders*, CSA_entry_handle);
+extern Boolean	reminders_form_to_appt(Reminders*, Dtcm_appointment*, char *);
+extern void	set_reminders_defaults(Reminders*);
+extern void	set_reminders_vals(Reminders*, Boolean);
+extern void 	reminders_init(Reminders*, Calendar*, Widget);
 
 
 #endif

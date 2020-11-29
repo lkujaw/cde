@@ -31,8 +31,6 @@
 #ifndef _GARBAGE_H
 #define _GARBAGE_H
 
-#include "ansi_c.h"
-
 /*
 **  Housekeeping mechanism to clean up the calendar log file.  It copies the
 **  log file to a backup file, dumps the red/black tree to a temp file, copies
@@ -41,8 +39,8 @@
 **  The garbage collector runs at midnight every.
 */
 
-extern void _DtCmsCollectOne P((_DtCmsCalendar *cal));
-extern CSA_return_code _DtCmsDumpDataV1 P((char *file, _DtCmsCalendar *cal));
-extern CSA_return_code _DtCmsDumpDataV2 P((char *file, _DtCmsCalendar *cal));
+extern void _DtCmsCollectOne(_DtCmsCalendar *cal);
+extern CSA_return_code _DtCmsDumpDataV1(char *file, _DtCmsCalendar *cal);
+extern CSA_return_code _DtCmsDumpDataV2(char *file, _DtCmsCalendar *cal);
 
 #endif

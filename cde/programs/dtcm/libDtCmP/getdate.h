@@ -64,7 +64,6 @@ struct timeb
 #include <sys/timeb.h>
 #endif
 #include <time.h>
-#include "ansi_c.h"
 
 #define BOT_YEAR	1970
 #define EOT_YEAR	2037
@@ -77,12 +76,12 @@ struct timeb
 #define DATE_BHOUR	-7	/* date had a bad hour number */
 #define DATE_CONV	-8	/* date converted poorly for am/pm/24hr */
 
-extern time_t		dateconv		P((int, int, int, int, int, int, int, int, int));
-extern time_t		dayconv			P((int, int, time_t));
-extern time_t		timeconv		P((int, int, int, int));
-extern time_t		monthadd		P((time_t, time_t));
-extern time_t		daylcorr		P((time_t, time_t));
-extern time_t		cm_getdate		P((char*, struct timeb *));
+extern time_t		dateconv	(int, int, int, int, int, int, int, int, int);
+extern time_t		dayconv		(int, int, time_t);
+extern time_t		timeconv	(int, int, int, int);
+extern time_t		monthadd	(time_t, time_t);
+extern time_t		daylcorr	(time_t, time_t);
+extern time_t		cm_getdate	(char*, struct timeb *);
 
 int yylex();
 extern void yyerror(char *s);

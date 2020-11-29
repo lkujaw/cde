@@ -31,7 +31,6 @@
 #ifndef _TREE_H
 #define _TREE_H
 
-#include "ansi_c.h"
 #include "data.h"
 
 /*
@@ -52,32 +51,32 @@ typedef struct {
 	caddr_t private;	/* for internal tool state */
 } Rb_tree;
 
-extern Rb_tree* rb_create P((_DtCmsGetKeyProc, _DtCmsCompareProc));
+extern Rb_tree* rb_create(_DtCmsGetKeyProc, _DtCmsCompareProc);
 
-extern void rb_destroy P((Rb_tree*, _DtCmsEnumerateProc)); 
+extern void rb_destroy(Rb_tree*, _DtCmsEnumerateProc); 
 
-extern int rb_size P((Rb_tree*t));
+extern int rb_size(Rb_tree*t);
 
-extern Rb_Status rb_insert P((Rb_tree*, caddr_t data, caddr_t key)); 
+extern Rb_Status rb_insert(Rb_tree*, caddr_t data, caddr_t key); 
 
-extern Rb_Status rb_insert_node P((Rb_tree*, Tree_node*, caddr_t key));
+extern Rb_Status rb_insert_node(Rb_tree*, Tree_node*, caddr_t key);
 
-extern Tree_node * rb_delete P((Rb_tree*, caddr_t key));
+extern Tree_node * rb_delete(Rb_tree*, caddr_t key);
 
-extern caddr_t rb_lookup P((Rb_tree*, caddr_t key));
+extern caddr_t rb_lookup(Rb_tree*, caddr_t key);
 
-extern caddr_t rb_lookup_next_larger P((Rb_tree*, caddr_t key));
+extern caddr_t rb_lookup_next_larger(Rb_tree*, caddr_t key);
 
-extern caddr_t rb_lookup_next_smaller P((Rb_tree*, caddr_t key));
+extern caddr_t rb_lookup_next_smaller(Rb_tree*, caddr_t key);
 
-extern caddr_t rb_lookup_smallest P((Rb_tree*));
+extern caddr_t rb_lookup_smallest(Rb_tree*);
 
-extern caddr_t rb_lookup_largest P((Rb_tree*));
+extern caddr_t rb_lookup_largest(Rb_tree*);
 
-extern Rb_Status rb_enumerate_up P((Rb_tree*, _DtCmsEnumerateProc));
+extern Rb_Status rb_enumerate_up(Rb_tree*, _DtCmsEnumerateProc);
 
-extern void rb_enumerate_down P((Rb_tree*, _DtCmsEnumerateProc));
+extern void rb_enumerate_down(Rb_tree*, _DtCmsEnumerateProc);
 
-extern Rb_Status rb_check_tree P((Rb_tree *));
+extern Rb_Status rb_check_tree(Rb_tree *);
 
 #endif

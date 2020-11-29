@@ -52,10 +52,9 @@
 #ifndef _SESSION_H
 #define _SESSION_H
 
-#include "ansi_c.h"
 #include "calendar.h"
 
-extern void	CMSaveSessionCB		P((Widget,  XtPointer, XtPointer));
-extern void	GetSessionInfo		P(());
+extern void	CMSaveSessionCB(Widget,  XtPointer, XtPointer);
+extern void	GetSessionInfo();
 
 #endif

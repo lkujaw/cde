@@ -65,9 +65,9 @@ typedef struct year {
 	int	year_shown;
 } Year;
 
-extern void	cleanup_after_yearview  P((Calendar *));
-extern void	year_button		P((Widget, XtPointer, XtPointer));
-extern CSA_return_code paint_year	P((Calendar*));
-extern void     print_std_year_range    P((int, int));
+extern void	cleanup_after_yearview(Calendar *);
+extern void	year_button(Widget, XtPointer, XtPointer);
+extern CSA_return_code paint_year(Calendar*);
+extern void print_std_year_range(int, int);
 
 #endif

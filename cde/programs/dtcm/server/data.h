@@ -35,8 +35,6 @@
  * Common definition for internal data storage
  */
 
-#include "ansi_c.h"
-
 typedef enum {
 	rb_ok		= 0,
 	rb_duplicate	= 1,

@@ -31,7 +31,6 @@
 #ifndef _REMINDER_H
 #define _REMINDER_H
 
-#include "ansi_c.h"
 #include "EUSCompat.h"
 #include "cm.h"
 #include "rtable4.h"
@@ -71,50 +70,50 @@ typedef struct reminder_q {
 	struct reminder_q *next;
 } Rm_que;
 
-extern void _DtCmsAddReminderV4 P((Rm_que **qhead, Rm_que *p_reminder));
+extern void _DtCmsAddReminderV4(Rm_que **qhead, Rm_que *p_reminder);
 
-extern Rm_que *_DtCmsRemoveReminderV4 P((
+extern Rm_que *_DtCmsRemoveReminderV4(
 		Rm_que **qhead,
 		Rm_que *p_prev,
-		Rm_que *p_curr));
+		Rm_que *p_curr);
 
-extern Rm_que *build_reminder P((
+extern Rm_que *build_reminder(
 		time_t	current_time,
 		Appt_4	*p_appt,
 		Attr_4	p_attr,
 		time_t	start_tick,
-		u_int	start_ord));
+		u_int	start_ord);
 
-extern Reminder_4 *_DtCmsGetReminderInfoV4 P((Rm_que *original));
+extern Reminder_4 *_DtCmsGetReminderInfoV4(Rm_que *original);
 
-extern void _DtCmsPrintReminderListV4 P((Rm_que *qhead));
+extern void _DtCmsPrintReminderListV4(Rm_que *qhead);
 
-extern void _DtCmsObsoleteReminderV4 P((
+extern void _DtCmsObsoleteReminderV4(
 		Rm_que		**qhead,
 		Appt_4		*p_appt,
 		int		ord, 
-		boolean_t	delforward));
+		boolean_t	delforward);
 
-extern void _DtCmsAddReminders4Entry P((
+extern void _DtCmsAddReminders4Entry(
 		_DtCmsRemQueue	**qhead,
 		cms_entry	*entry,
-		List_node	*lnode));
+		List_node	*lnode);
 
-extern void _DtCmsObsoleteReminder4Entry P((
+extern void _DtCmsObsoleteReminder4Entry(
 		_DtCmsRemQueue	*qhead,
 		cms_entry	*entry,
 		List_node	*lnode,
 		time_t		starttime,
-		boolean_t	delfwd));
+		boolean_t	delfwd);
 
-extern CSA_return_code _DtCmsLookupReminder P((
+extern CSA_return_code _DtCmsLookupReminder(
 			_DtCmsRemQueue		*remq,
 			time_t			tick,
 			uint			num_names,
 			cms_attr_name		*names,
-			cms_reminder_ref	**rems));
+			cms_reminder_ref	**rems);
 
-extern void _DtCmsFreeReminderRef P((cms_reminder_ref *rems));
+extern void _DtCmsFreeReminderRef(cms_reminder_ref *rems);
 
 extern void _DtCmsUpdateReminders(_DtCmsRemQueue *remq);
 

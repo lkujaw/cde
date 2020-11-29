@@ -52,22 +52,20 @@
 #ifndef _COMMON_H
 #define _COMMON_H
 
-#include "ansi_c.h"
-
 #if LATER
 typedef struct {
         int data_version;
         char* target;
 } Cdata;
 
-extern Cdata	*get_cdata		P(());
-extern void	free_cd_from_blist	P(());
+extern Cdata	*get_cdata();
+extern void	free_cd_from_blist();
 #endif
-extern void	reset_values		P(());
-extern void	backup_values		P(());
-extern void	blist_write_names	P(());
-extern Boolean	duplicate_cd		P(());
-extern char	*get_appt_str		P(());
-extern void	common_update_lists	P(());
+extern void	reset_values(void);
+extern void	backup_values(void);
+extern void	blist_write_names(void);
+extern Boolean	duplicate_cd(void);
+extern char	*get_appt_str(void);
+extern void	common_update_lists(void);
 
 #endif

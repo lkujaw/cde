@@ -44,36 +44,35 @@
 #ifndef _CMSATTR_H
 #define _CMSATTR_H
 
-#include "ansi_c.h"
 #include "cm.h"
 #include "cmscalendar.h"
 
-extern CSA_return_code _DtCmsUpdateSint32AttrVal P((
+extern CSA_return_code _DtCmsUpdateSint32AttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmsUpdateUint32AttrVal P((
+extern CSA_return_code _DtCmsUpdateUint32AttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmsUpdateStringAttrVal P((
+extern CSA_return_code _DtCmsUpdateStringAttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmsUpdateAccessListAttrVal P((
+extern CSA_return_code _DtCmsUpdateAccessListAttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmsUpdateReminderAttrVal P((
+extern CSA_return_code _DtCmsUpdateReminderAttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmsUpdateDateTimeListAttrVal P((
+extern CSA_return_code _DtCmsUpdateDateTimeListAttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
-extern CSA_return_code _DtCmsUpdateOpaqueDataAttrVal P((
+extern CSA_return_code _DtCmsUpdateOpaqueDataAttrVal(
 				cms_attribute_value *newval,
-				cms_attribute_value **attrval));
+				cms_attribute_value **attrval);
 
 #endif

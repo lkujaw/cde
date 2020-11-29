@@ -31,21 +31,20 @@
 #ifndef _LOOKUP_H
 #define _LOOKUP_H
 
-#include "ansi_c.h"
 #include "cm.h"
 #include "cmscalendar.h"
 
-extern _DtCmsComparisonResult _DtCmsCompareEntry P((
+extern _DtCmsComparisonResult _DtCmsCompareEntry(
 				cms_key *key,
-				caddr_t data));
+				caddr_t data);
 
-extern _DtCmsComparisonResult _DtCmsCompareRptEntry P((
+extern _DtCmsComparisonResult _DtCmsCompareRptEntry(
 				cms_key *key,
-				caddr_t data));
+				caddr_t data);
 
-extern caddr_t _DtCmsGetEntryKey P((caddr_t data));
+extern caddr_t _DtCmsGetEntryKey(caddr_t data);
 
-extern CSA_return_code _DtCmsLookupEntries P((
+extern CSA_return_code _DtCmsLookupEntries(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
@@ -57,9 +56,9 @@ extern CSA_return_code _DtCmsLookupEntries P((
 			CSA_uint32	num_attrs,
 			cms_attribute	*attrs,
 			CSA_enum	*ops,
-			cms_entry	**entries));
+			cms_entry	**entries);
 
-extern CSA_return_code _DtCmsLookupEntriesById P((
+extern CSA_return_code _DtCmsLookupEntriesById(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
@@ -73,9 +72,9 @@ extern CSA_return_code _DtCmsLookupEntriesById P((
 			CSA_uint32	num_attrs,
 			cms_attribute	*attrs,
 			CSA_enum	*ops,
-			cms_entry	**entries));
+			cms_entry	**entries);
 
-extern CSA_return_code _DtCmsEnumerateSequenceById P((
+extern CSA_return_code _DtCmsEnumerateSequenceById(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
@@ -89,9 +88,9 @@ extern CSA_return_code _DtCmsEnumerateSequenceById P((
 			CSA_uint32	num_attrs,
 			cms_attribute	*attrs,
 			CSA_enum	*ops,
-			cms_entry	**entries));
+			cms_entry	**entries);
 
-extern CSA_return_code _DtCmsLookupEntriesByKey P((
+extern CSA_return_code _DtCmsLookupEntriesByKey(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
@@ -99,10 +98,10 @@ extern CSA_return_code _DtCmsLookupEntriesByKey P((
 			cms_key		*keys,
 			uint		num_names,
 			cms_attr_name	*names,
-			cms_get_entry_attr_res_item **res));
+			cms_get_entry_attr_res_item **res);
 
 
-extern CSA_return_code _DtCmsGetEntryAttrByKey P((
+extern CSA_return_code _DtCmsGetEntryAttrByKey(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
@@ -110,6 +109,6 @@ extern CSA_return_code _DtCmsGetEntryAttrByKey P((
 			uint		num_names,
 			cms_attr_name	*names,
 			cms_entry	**entry_r,
-			cms_get_entry_attr_res_item **res_r));
+			cms_get_entry_attr_res_item **res_r);
 
 #endif

@@ -53,7 +53,6 @@
 #define _MONTHGLANCE_H
 
 #include <csa.h>
-#include "ansi_c.h"
 
 typedef struct month {
 	Widget	*hot_button;
@@ -63,13 +62,13 @@ typedef struct month {
 	int	dayname_height;
 } Month;
 
-extern void 	prepare_to_paint_monthview	P((Calendar*, XRectangle*));
-extern void	get_time_str		P((Dtcm_appointment*, char*));
-extern void	month_button		P((Widget, XtPointer, XtPointer));
-extern void	month_event		P((XEvent*));
-extern void	paint_grid		P((Calendar*, XRectangle*));
-extern void	print_month_range	P((Calendar*, Tick, Tick));
-extern void	cleanup_after_monthview P((Calendar*));
+extern void prepare_to_paint_monthview(Calendar*, XRectangle*);
+extern void	get_time_str(Dtcm_appointment*, char*);
+extern void	month_button(Widget, XtPointer, XtPointer);
+extern void	month_event(XEvent*);
+extern void	paint_grid(Calendar*, XRectangle*);
+extern void	print_month_range(Calendar*, Tick, Tick);
+extern void	cleanup_after_monthview(Calendar*);
 
 
 #endif

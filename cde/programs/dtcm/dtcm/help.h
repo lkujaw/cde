@@ -114,9 +114,9 @@
 #define DURATION_ERROR_HELP		"CalendarDurationError"
 #define ADVANCE_ERROR_HELP		"CalendarAdvanceError"
 
-extern void	show_main_help	P((Widget, XtPointer, XtPointer));
-extern void	help_cb		P((Widget, XtPointer, XtPointer));
-extern void	help_view_cb	P((Widget, XtPointer, XtPointer));
+extern void	show_main_help(Widget, XtPointer, XtPointer);
+extern void	help_cb(Widget, XtPointer, XtPointer);
+extern void	help_view_cb(Widget, XtPointer, XtPointer);
 
 #endif
 

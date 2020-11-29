@@ -53,7 +53,6 @@
 #define _TODO_H
 
 #include <csa.h>
-#include "ansi_c.h"
 #include "calendar.h"
 #include "misc.h"
 #include "dssw.h"
@@ -130,24 +129,24 @@ typedef struct {
 **  ToDo external function declarations
 **
 *******************************************************************************/
-extern void	add_to_todo_list	P((CSA_entry_handle, ToDo*));
-extern void	add_all_todo		P((ToDo*));
-extern void	build_todo_list		P((ToDo*, Tick, Glance, CSA_entry_handle**,
-					   CSA_uint32*, todo_view_op));
-extern int	build_todo_view		P((ToDo*, Glance, Boolean));
-extern void	get_todo_vals		P((ToDo*));
-extern void	todo_hide		P((ToDo*));
-extern void	set_todo_defaults	P((ToDo*));
-extern void	set_todo_title		P((ToDo*, char*));
-extern void	set_todo_vals		P((ToDo*));
-extern void	show_todo		P((Calendar*));
-extern void	t_make_todo		P((Calendar*));
-extern void	show_todo_view		P((Calendar*, todo_view_op));
-extern void	todo_clean_up		P((ToDo*));
-extern Boolean	todo_showing		P((ToDo*));
-extern Boolean	todo_view_showing	P((ToDo*));
-extern CSA_entry_handle	t_nth_appt	P((ToDo*, int));
-extern Boolean  todo_insert           P((Dtcm_appointment*, CSA_entry_handle*,
-					Calendar*));
+extern void	add_to_todo_list(CSA_entry_handle, ToDo*);
+extern void	add_all_todo(ToDo*);
+extern void	build_todo_list(ToDo*, Tick, Glance, CSA_entry_handle**,
+					   CSA_uint32*, todo_view_op);
+extern int	build_todo_view(ToDo*, Glance, Boolean);
+extern void	get_todo_vals(ToDo*);
+extern void	todo_hide(ToDo*);
+extern void	set_todo_defaults(ToDo*);
+extern void	set_todo_title(ToDo*, char*);
+extern void	set_todo_vals(ToDo*);
+extern void	show_todo(Calendar*);
+extern void	t_make_todo(Calendar*);
+extern void	show_todo_view(Calendar*, todo_view_op);
+extern void	todo_clean_up(ToDo*);
+extern Boolean	todo_showing(ToDo*);
+extern Boolean	todo_view_showing(ToDo*);
+extern CSA_entry_handle	t_nth_appt(ToDo*, int);
+extern Boolean  todo_insert(Dtcm_appointment*, CSA_entry_handle*,
+					Calendar*);
 
 #endif

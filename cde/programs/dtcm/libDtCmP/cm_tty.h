@@ -54,7 +54,6 @@
 
 #include <csa.h>
 #include <nl_types.h>
-#include "ansi_c.h"
 #include "timeops.h"
 #include "util.h"
 #include "props.h"
@@ -175,60 +174,60 @@ static const int	ALL_DAY = -2;
 /*
  * External function definitions
  */
-extern char		*boolean_str		P((boolean_t));
-extern int		cm_tty_delete		P((nl_catd, CSA_session_handle, int, int, CSA_entry_handle*));
-extern void		cm_tty_format_header	P((Props*, Tick, char*));
-extern int		cm_tty_insert		P((nl_catd, CSA_session_handle, int, char*, char*,
+extern char		*boolean_str(boolean_t);
+extern int		cm_tty_delete(nl_catd, CSA_session_handle, int, int, CSA_entry_handle*);
+extern void		cm_tty_format_header(Props*, Tick, char*);
+extern int		cm_tty_insert(nl_catd, CSA_session_handle, int, char*, char*,
 						   char*, char*, char*, char*,
-						   char*, Props*));
-extern void		cm_tty_load_props	P((Props**));
-extern int		cm_tty_lookup		P((nl_catd, CSA_session_handle, int, char*, char*,
-						   CSA_entry_handle**, Props*));
-extern boolean_t	convert_boolean_str	P((char*));
-extern CSA_sint32	convert_privacy_str	P((char*));
-extern int		convert_privacy_str_to_op P((char*));
-extern SeparatorType	convert_separator_str	P((char*));
-extern Time_scope_menu_op convert_time_scope_str P((char*));
-extern char		*day_str		P((Days_op));
-extern char		*default_repeat_cnt_str	P((Repeat_menu_op));
-extern char		*default_repeat_scope_str P((nl_catd, Repeat_menu_op));
-extern char		*for_str		P((For_menu_op));
-extern char		*get_datemsg		P((OrderingType,
-						   SeparatorType));
-extern Parse_key_op	identify_parse_key	P((char*));
-extern void		load_appt_defaults	P((Dtcm_appointment*, Props*));
-extern void		load_reminder_props	P((Dtcm_appointment*, Props*));
-extern char		*month_str		P((Months_op));
-extern Validate_op	parse_appt_from_file	P((nl_catd, char*, CmDataList*,
+						   char*, Props*);
+extern void		cm_tty_load_props(Props**);
+extern int		cm_tty_lookup(nl_catd, CSA_session_handle, int, char*, char*,
+						   CSA_entry_handle**, Props*);
+extern boolean_t	convert_boolean_str(char*);
+extern CSA_sint32	convert_privacy_str(char*);
+extern int		convert_privacy_str_to_op (char*);
+extern SeparatorType	convert_separator_str(char*);
+extern Time_scope_menu_op convert_time_scope_str(char*);
+extern char		*day_str(Days_op);
+extern char		*default_repeat_cnt_str(Repeat_menu_op);
+extern char		*default_repeat_scope_str(nl_catd, Repeat_menu_op);
+extern char		*for_str(For_menu_op);
+extern char		*get_datemsg(OrderingType,
+						   SeparatorType);
+extern Parse_key_op	identify_parse_key(char*);
+extern void		load_appt_defaults(Dtcm_appointment*, Props*);
+extern void		load_reminder_props(Dtcm_appointment*, Props*);
+extern char		*month_str(Months_op);
+extern Validate_op	parse_appt_from_file(nl_catd, char*, CmDataList*,
 						   Props*, boolean_t(*)(void*), 
-						   void*, int));
-extern char		*parse_attrs_to_string	P((Dtcm_appointment*, Props*,
-						   char*));
-extern char		*attrs_to_string	P((CSA_attribute *, int));
-extern char		*create_rfc_message	P((char *, char *, char**, int));
-extern char		*parse_appt_to_string	P((CSA_session_handle, CSA_entry_handle, Props*, int));
-extern char		*periodstr_from_period	P((CSA_sint32, int));
-extern char		*privacy_str		P((int));
-extern char		*privacy_str_old	P((int));
-extern char		*repeat_str		P((nl_catd, Repeat_menu_op));
-extern char		*repeat_scope_str	P((nl_catd, Repeat_scope_menu_op));
-extern char		*privacy_str_411	P((int));
-extern char		*separator_str		P((SeparatorType));
-extern void		str_to_period		P((char*, CSA_sint32*, int*));
-extern int		timescopestring_to_tick	P((char*));
-extern char		*time_scope_str		P((Time_scope_menu_op));
-extern char		*time_scope_str_i18n	P((nl_catd, Time_scope_menu_op));
-extern boolean_t	valid_time		P((Props*, char*));
-extern Validate_op	validate_appt		P((nl_catd, Dtcm_appointment*, 
+						   void*, int);
+extern char		*parse_attrs_to_string(Dtcm_appointment*, Props*,
+						   char*);
+extern char		*attrs_to_string(CSA_attribute *, int);
+extern char		*create_rfc_message(char *, char *, char**, int);
+extern char		*parse_appt_to_string(CSA_session_handle, CSA_entry_handle, Props*, int);
+extern char		*periodstr_from_period(CSA_sint32, int);
+extern char		*privacy_str(int);
+extern char		*privacy_str_old(int);
+extern char		*repeat_str	(nl_catd, Repeat_menu_op);
+extern char		*repeat_scope_str(nl_catd, Repeat_scope_menu_op);
+extern char		*privacy_str_411(int);
+extern char		*separator_str(SeparatorType);
+extern void		str_to_period(char*, CSA_sint32*, int*);
+extern int		timescopestring_to_tick(char*);
+extern char		*time_scope_str(Time_scope_menu_op);
+extern char		*time_scope_str_i18n(nl_catd, Time_scope_menu_op);
+extern boolean_t	valid_time(Props*, char*);
+extern Validate_op	validate_appt(nl_catd, Dtcm_appointment*, 
 						   char*, char*, char*, int, 
 						   char*, char*, char*,
 						   boolean_t(*)(void*), void*,
-						   int));
-extern Validate_op	validate_dssw		P((Dtcm_appointment*, char*,
+						   int);
+extern Validate_op	validate_dssw(Dtcm_appointment*, char*,
 						   char*, char*, int, char*,
-						   boolean_t(*)(void*), void*));
-extern Validate_op	validate_rfp		P((nl_catd, Dtcm_appointment*, 
-						   char*, char*, int));
-extern Validate_op	validate_reminders	P((Dtcm_appointment*));
+						   boolean_t(*)(void*), void*);
+extern Validate_op	validate_rfp(nl_catd, Dtcm_appointment*, 
+						   char*, char*, int);
+extern Validate_op	validate_reminders(Dtcm_appointment*);
 
 #endif

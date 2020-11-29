@@ -52,8 +52,6 @@
 #ifndef _GOTO_H
 #define _GOTO_H
 
-#include "ansi_c.h"
-
 typedef struct {
 	Widget          	frame;
 	Widget			form;
@@ -65,7 +63,7 @@ typedef struct {
 	Widget			goto_message;
 }Goto;
 
-extern	caddr_t	make_goto	P((Calendar*));
+extern	caddr_t	make_goto(Calendar*);
 
 #define DATESIZ 40
 

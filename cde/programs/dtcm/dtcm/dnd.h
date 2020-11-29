@@ -52,8 +52,6 @@
 #ifndef _DND_H
 #define _DND_H
 
-#include "ansi_c.h"
-
 typedef enum {SingleEditorList, 
 	      SingleEditorIcon, 
 	      GroupEditorList, 
@@ -72,12 +70,12 @@ typedef struct {
 #define DRAG_THRESHOLD 4
 
 
-extern void cm_register_drop_site	P((Calendar *c, Widget w));
-extern void ApptDragStart		P((Widget, XEvent *, Calendar *,
-					   EditorType));
-extern void TranslationDragStart	P((Widget, XEvent *, String *,
-					   Cardinal *));
-extern void DtcmProcessPress		P((Widget, XEvent *, String *,
-					   Cardinal *));
+extern void cm_register_drop_site(Calendar *c, Widget w);
+extern void ApptDragStart(Widget, XEvent *, Calendar *,
+					   EditorType);
+extern void TranslationDragStart(Widget, XEvent *, String *,
+					   Cardinal *);
+extern void DtcmProcessPress(Widget, XEvent *, String *,
+					   Cardinal *);
 
 #endif

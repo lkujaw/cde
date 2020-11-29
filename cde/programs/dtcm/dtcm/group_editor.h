@@ -53,7 +53,6 @@
 #define _GEDITOR_H
 
 #include <csa.h>
-#include "ansi_c.h"
 #include "util.h"
 #include "calendar.h"
 #include "misc.h"
@@ -127,21 +126,21 @@ typedef struct {
 **  Group Editor external function declarations
 **
 *******************************************************************************/
-extern void		add_to_gaccess_list	P((char*, CSA_session_handle,
+extern void		add_to_gaccess_list(char*, CSA_session_handle,
 						   unsigned int, int, GEditor*,
-						   Boolean));
-extern void		add_all_gappt		P((GEditor*));
-extern void		geditor_clean_up	P((GEditor*));
-extern CSA_entry_handle	geditor_nth_appt	P((GEditor*, int,
-						   Access_data**));
-extern Boolean		geditor_showing		P((GEditor*));
-extern void		get_geditor_vals	P((GEditor*));
-extern void		remove_all_gaccess_data P((GEditor*));
-extern void		remove_all_gaccess	P((GEditor*));
-extern void		remove_from_gaccess_list P((char*, GEditor*));
-extern void		set_geditor_defaults	P((GEditor*, Tick, Tick));
-extern void		set_geditor_title	P((GEditor*, char*));
-extern void		set_geditor_vals	P((GEditor*, Tick, Tick));
-extern void		show_geditor		P((Calendar*, Tick, Tick));
+						   Boolean);
+extern void		add_all_gappt(GEditor*);
+extern void		geditor_clean_up(GEditor*);
+extern CSA_entry_handle	geditor_nth_appt(GEditor*, int,
+						   Access_data**);
+extern Boolean		geditor_showing(GEditor*);
+extern void		get_geditor_vals(GEditor*);
+extern void		remove_all_gaccess_data(GEditor*);
+extern void		remove_all_gaccess(GEditor*);
+extern void		remove_from_gaccess_list(char*, GEditor*);
+extern void		set_geditor_defaults(GEditor*, Tick, Tick);
+extern void		set_geditor_title(GEditor*, char*);
+extern void		set_geditor_vals(GEditor*, Tick, Tick);
+extern void		show_geditor(Calendar*, Tick, Tick);
 
 #endif

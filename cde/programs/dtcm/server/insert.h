@@ -31,16 +31,15 @@
 #ifndef _INSERT_H
 #define _INSERT_H
 
-#include "ansi_c.h"
 #include "cm.h"
 #include "cmscalendar.h"
 
-extern CSA_return_code _DtCmsInsertEntry P((
+extern CSA_return_code _DtCmsInsertEntry(
 			_DtCmsCalendar	*cal,
-			cms_entry	*entry));
+			cms_entry	*entry);
 
-extern CSA_return_code _DtCmsInsertEntryAndLog P((
+extern CSA_return_code _DtCmsInsertEntryAndLog(
 			_DtCmsCalendar	*cal,
-			cms_entry	*entry));
+			cms_entry	*entry);
 
 #endif

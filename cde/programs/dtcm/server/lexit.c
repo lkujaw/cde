@@ -46,7 +46,6 @@
 
 #include "rtable4.h"
 #include "parser.h"
-#include "ansi_c.h"
 
 extern char *pgname;
 int yyylineno;
@@ -58,8 +57,8 @@ Appt_Status_4 externApptStatus;
 Tag_4 externTag;
 Privacy_Level_4 externPrivacy;
 
-static int 	hash_string	P((char *));
-static char 	*strescapes	P((char *));
+static int hash_string(char *);
+static char *strescapes(char *);
 
 static int len;
 static caddr_t start_of_mmapped_area;

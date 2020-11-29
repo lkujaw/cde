@@ -43,43 +43,43 @@
 #define PAGE_HEIGHT	11000	/* 11.0"  paper height */
 #define XINCH		1000	/*  1 inch */
 
-extern void	x_day_header		P((void *));
-extern void	x_day_timeslots		P((void *, int, Boolean));
-extern void	x_finish_printer	P((void *));
-extern void	x_finish_std_month	P(());
-extern int	x_get_day_lines_per_page P((void *));
-extern int	x_get_month_lines_per_page P((void *));
-extern int	x_get_week_lines_per_page P((void *));
-extern void	x_init_day	 	P((void *, int));
-extern void	x_init_list		P((void *));
-extern void	x_init_month	 	P((void *, int));
-extern void	x_init_printer		P((void *, short));
-extern void	x_init_std_year		P((void *));
-extern void	x_init_week	 	P((void *));
-extern void	x_month_daynames	P((void *, int));
-extern void	x_month_timeslots	P((void *, Tick, Boolean));
-extern void *	x_open_file		P((Calendar *));
-extern void	x_print_file		P((void *, Calendar *));
-extern void	x_print_header		P((void *, char*, int, int));
-extern void	x_print_list_range	P((Calendar*, CSA_sint32, int,
-					   Tick, Tick));
-extern void	x_print_little_months	P((void *, Tick));
-extern void	x_print_month		P((void *, int, int, int,
-					   int, int, int, int));
-extern Boolean	x_print_month_appts	P((void *, CSA_entry_handle*, int,
-					   int, time_t, int));
-extern Boolean	x_print_multi_appts	P((void *, CSA_entry_handle*, int,
-					   int, Glance));
-extern void	x_print_todo		P((void *, CSA_entry_handle*, int,
+extern void	x_day_header(void *);
+extern void	x_day_timeslots(void *, int, Boolean);
+extern void	x_finish_printer(void *);
+extern void	x_finish_std_month();
+extern int	x_get_day_lines_per_page(void *);
+extern int	x_get_month_lines_per_page(void *);
+extern int	x_get_week_lines_per_page(void *);
+extern void	x_init_day(void *, int);
+extern void	x_init_list(void *);
+extern void	x_init_month(void *, int);
+extern void	x_init_printer(void *, short);
+extern void	x_init_std_year(void *);
+extern void	x_init_week(void *);
+extern void	x_month_daynames(void *, int);
+extern void	x_month_timeslots(void *, Tick, Boolean);
+extern void *	x_open_file	(Calendar *);
+extern void	x_print_file(void *, Calendar *);
+extern void	x_print_header(void *, char*, int, int);
+extern void	x_print_list_range(Calendar*, CSA_sint32, int,
+					   Tick, Tick);
+extern void	x_print_little_months(void *, Tick);
+extern void	x_print_month(void *, int, int, int,
+					   int, int, int, int);
+extern Boolean	x_print_month_appts(void *, CSA_entry_handle*, int,
+					   int, time_t, int);
+extern Boolean	x_print_multi_appts(void *, CSA_entry_handle*, int,
+					   int, Glance);
+extern void	x_print_todo(void *, CSA_entry_handle*, int,
 					   CSA_sint32, Boolean, int, time_t,
-					   char *)); 
-extern void	x_print_year 		P((void *, int));
-extern void	x_std_month_name 	P((void *, char*));
-extern void	x_std_year_name 	P((void *, int));
-extern void	x_week_appt_boxes 	P((void *));
-extern void	x_week_daynames		P((void *, char*, int, Boolean));
-extern void	x_week_sched_boxes	P((void *));
-extern void	x_week_sched_draw	P((void *, int));
-extern void	x_week_sched_init	P((void *));
+					   char *);
+extern void	x_print_year(void *, int);
+extern void	x_std_month_name(void *, char*);
+extern void	x_std_year_name(void *, int);
+extern void	x_week_appt_boxes(void *);
+extern void	x_week_daynames(void *, char*, int, Boolean);
+extern void	x_week_sched_boxes(void *);
+extern void	x_week_sched_draw(void *, int);
+extern void	x_week_sched_init(void *);
 
 #endif

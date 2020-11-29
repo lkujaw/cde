@@ -31,31 +31,30 @@
 #ifndef _DELETE_H
 #define _DELETE_H
 
-#include "ansi_c.h"
 #include "cm.h"
 #include "cmscalendar.h"
 
-extern CSA_return_code _DtCmsDeleteEntry P((
+extern CSA_return_code _DtCmsDeleteEntry(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
 			cms_key		*key,
-			cms_entry	**entry_r));
+			cms_entry	**entry_r);
 
-extern CSA_return_code _DtCmsDeleteEntryAndLog P((
+extern CSA_return_code _DtCmsDeleteEntryAndLog(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
 			cms_key		*key,
-			cms_entry	**entry_r));
+			cms_entry	**entry_r);
 
-extern CSA_return_code _DtCmsDeleteInstancesAndLog P((
+extern CSA_return_code _DtCmsDeleteInstancesAndLog(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
 			cms_key		*key,
 			int		scope,
 			cms_entry	**newe,
-			cms_entry	**olde));
+			cms_entry	**olde);
 
 #endif

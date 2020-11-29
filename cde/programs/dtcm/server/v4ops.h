@@ -31,7 +31,6 @@
 #ifndef _V4OPS_H
 #define _V4OPS_H
 
-#include "ansi_c.h"
 #include "rtable4.h"
 #include "cm.h"
 #include "log.h"
@@ -45,64 +44,64 @@ typedef struct __DtCmsEntryId {
 	struct __DtCmsEntryId *next;
 } _DtCmsEntryId;
 
-extern CSA_return_code _DtCmsInsertAppt P((_DtCmsCalendar *cal, Appt_4 *appt4));
+extern CSA_return_code _DtCmsInsertAppt(_DtCmsCalendar *cal, Appt_4 *appt4);
 
-extern CSA_return_code _DtCmsDeleteAppt P((
+extern CSA_return_code _DtCmsDeleteAppt(
 			_DtCmsCalendar	*cal,
 			char		*user,
 			uint		access,
 			Id_4		*p_key,
-			Appt_4		**appt_r));
+			Appt_4		**appt_r);
 
-extern CSA_return_code _DtCmsDeleteApptAndLog P((
+extern CSA_return_code _DtCmsDeleteApptAndLog(
 			_DtCmsCalendar	*cal,
 			char		*user,
 			uint		access,
 			Id_4		*key,
-			Appt_4		**oldappt));
+			Appt_4		**oldappt);
 
-extern CSA_return_code _DtCmsDeleteApptInstancesAndLog P((
+extern CSA_return_code _DtCmsDeleteApptInstancesAndLog(
 			_DtCmsCalendar	*cal,
 			char		*source,
 			uint		access,
 			Id_4		*key,
 			Options_4	option,
 			int		*remain,
-			Appt_4		**oldappt));
+			Appt_4		**oldappt);
 
-extern CSA_return_code _DtCmsChangeAll P((
+extern CSA_return_code _DtCmsChangeAll(
 			_DtCmsCalendar	*cal,
 			char		*source,
 			uint		access,
 			Id_4		*p_key,
 			Appt_4		*newa,
-			Appt_4		**oldappt));
+			Appt_4		**oldappt);
 
-extern CSA_return_code _DtCmsChangeSome P((
+extern CSA_return_code _DtCmsChangeSome(
 			_DtCmsCalendar	*cal,
 			char		*source,
 			uint		access,
 			Id_4		*p_key,
 			Appt_4		*p_appt,
 			Options_4	option,
-			Appt_4		**oldappt));
+			Appt_4		**oldappt);
 
-extern CSA_return_code _DtCmsInsertApptAndLog P((
+extern CSA_return_code _DtCmsInsertApptAndLog(
 			_DtCmsCalendar	*cal,
-			Appt_4		*appt));
+			Appt_4		*appt);
 
-extern _DtCmsComparisonResult _DtCmsCompareAppt P((Id_4 *key, caddr_t data));
+extern _DtCmsComparisonResult _DtCmsCompareAppt(Id_4 *key, caddr_t data);
 
-extern _DtCmsComparisonResult _DtCmsCompareRptAppt P((Id_4 *key, caddr_t data));
+extern _DtCmsComparisonResult _DtCmsCompareRptAppt(Id_4 *key, caddr_t data);
 
-extern caddr_t _DtCmsGetApptKey P((caddr_t data));
+extern caddr_t _DtCmsGetApptKey(caddr_t data);
 
-extern CSA_return_code v4_transact_log P((
+extern CSA_return_code v4_transact_log(
 			char		*calendar,
 			Appt_4		*a,
-			_DtCmsLogOps	op));
+			_DtCmsLogOps	op);
 
-extern CSA_return_code _DtCmsLookupRangeV4 P((
+extern CSA_return_code _DtCmsLookupRangeV4(
 			_DtCmsCalendar	*cal,
 			char		*user,
 			uint		access,
@@ -115,9 +114,9 @@ extern CSA_return_code _DtCmsLookupRangeV4 P((
 			cms_attribute	*attrs,
 			CSA_enum	*ops,
 			Appt_4		**appt_r,
-			Abb_Appt_4	**abbr_r));
+			Abb_Appt_4	**abbr_r);
 
-extern CSA_return_code _DtCmsLookupKeyrangeV4 P((
+extern CSA_return_code _DtCmsLookupKeyrangeV4(
 			_DtCmsCalendar	*cal,
 			char		*user,
 			uint		access,
@@ -133,48 +132,48 @@ extern CSA_return_code _DtCmsLookupKeyrangeV4 P((
 			cms_attribute	*attrs,
 			CSA_enum	*ops,
 			Appt_4		**appt_r,
-			Abb_Appt_4	**abbr_r));
+			Abb_Appt_4	**abbr_r);
 
-extern CSA_return_code _AddToLinkedAppts P((
+extern CSA_return_code _AddToLinkedAppts(
 			Appt_4	*p_appt,
 			char	*user,
 			uint	access,
-			caddr_t	*ilp));
+			caddr_t	*ilp);
 
-extern CSA_return_code _AddToLinkedAbbrAppts P((
+extern CSA_return_code _AddToLinkedAbbrAppts(
 			Appt_4	*p_appt,
 			char	*user,
 			uint	access,
-			caddr_t	*ilp));
+			caddr_t	*ilp);
 
-extern Privacy_Level_4 _GetAccessLevel P((
+extern Privacy_Level_4 _GetAccessLevel(
 			char	*user,
 			uint	access,
-			Appt_4	*p_appt));
+			Appt_4	*p_appt);
 
-extern Appt_4 * _AddApptInOrder P((Appt_4 * head, Appt_4 * aptr));
+extern Appt_4 * _AddApptInOrder(Appt_4 * head, Appt_4 * aptr);
 
-extern Abb_Appt_4 * _AddAbbApptInOrder P((Abb_Appt_4 *head, Abb_Appt_4 *aptr));
+extern Abb_Appt_4 * _AddAbbApptInOrder(Abb_Appt_4 *head, Abb_Appt_4 *aptr);
 
-extern CSA_return_code _DtCmsSetV4AccessListAndLog P((
+extern CSA_return_code _DtCmsSetV4AccessListAndLog(
 			_DtCmsCalendar	*cal,
-			Access_Entry_4	*alist));
+			Access_Entry_4	*alist);
 
-extern CSA_return_code _DtCmsGetV4Reminders P((
+extern CSA_return_code _DtCmsGetV4Reminders(
 			_DtCmsCalendar	*cal,
 			long		tick,
 			Reminder_4	**rem_r,
-			_DtCmsEntryId	**ids_r));
+			_DtCmsEntryId	**ids_r);
 
-extern void _DtCmsFreeEntryIds P((_DtCmsEntryId *ids));
+extern void _DtCmsFreeEntryIds(_DtCmsEntryId *ids);
 
-extern CSA_return_code _DtCmsTruncateElist P((
+extern CSA_return_code _DtCmsTruncateElist(
 			Appt_4		*parent_p,
 			int		remain,
-			Except_4	**excpt));
+			Except_4	**excpt);
 
-extern CSA_return_code _DtCmsSetV4AccessListInCal P((
+extern CSA_return_code _DtCmsSetV4AccessListInCal(
 			_DtCmsCalendar *cal,
-			Access_Entry_4 *e));
+			Access_Entry_4 *e);
 
 #endif

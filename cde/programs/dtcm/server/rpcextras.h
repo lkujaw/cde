@@ -31,8 +31,6 @@
 #ifndef _RPCEXTRAS_H
 #define _RPCEXTRAS_H
 
-#include "ansi_c.h"
-
 #define RPCGEN_ACTION(routine) routine
 
 struct rpcgen_table {
@@ -58,7 +56,7 @@ typedef struct prog_object {
 
 typedef program_object *program_handle;
 
-extern program_handle newph	P(());
-extern program_handle getph	P(());
+extern program_handle newph(void);
+extern program_handle getph(void);
 
 #endif

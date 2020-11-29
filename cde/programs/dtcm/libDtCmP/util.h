@@ -55,7 +55,6 @@
 #include <sys/types.h>
 #include <X11/Xlib.h>
 #include <csa.h>
-#include "ansi_c.h"
 #include "timeops.h"
 #include "props.h"
 
@@ -212,79 +211,79 @@ typedef struct {
  * forth to the backend.  These functions and structures make hard coding
  * indexes into the arrays unnecessary.
  */
-extern Dtcm_appointment	*allocate_appt_struct	P((Allocation_reason , int, ...));
-extern CSA_return_code  query_appt_struct       P((CSA_session_handle, 
+extern Dtcm_appointment	*allocate_appt_struct(Allocation_reason , int, ...);
+extern CSA_return_code  query_appt_struct      (CSA_session_handle, 
 						   CSA_entry_handle, 
-						   Dtcm_appointment *));
-extern Dtcm_calendar	*allocate_cal_struct	P((Allocation_reason, int, ...));
-extern CSA_return_code  query_cal_struct        P((CSA_session_handle, 
-						   Dtcm_calendar *));
-extern void		free_appt_struct	P((Dtcm_appointment**));
-extern void		free_cal_struct		P((Dtcm_calendar**));
+						   Dtcm_appointment *);
+extern Dtcm_calendar	*allocate_cal_struct(Allocation_reason, int, ...);
+extern CSA_return_code  query_cal_struct       (CSA_session_handle, 
+						   Dtcm_calendar *);
+extern void		free_appt_struct(Dtcm_appointment**);
+extern void		free_cal_struct	(Dtcm_calendar**);
 
-extern boolean_t	cal_ident_index_ro	P((int, int));
-extern boolean_t	entry_ident_index_ro	P((int, int));
-extern CSA_enum		cal_ident_index_tag	P((int));
-extern CSA_enum		entry_ident_index_tag	P((int));
-extern boolean_t	ident_name_ro	P((char*, int));
-extern void		initialize_cal_attr	P((int, CSA_attribute*,
-						   Allocation_reason, int));
-extern void		initialize_entry_attr	P((int, CSA_attribute*,
-						   Allocation_reason, int));
-extern void		set_appt_links		P((Dtcm_appointment*));
-extern void		set_cal_links		P((Dtcm_calendar*));
-extern void		scrub_cal_attr_list	P((Dtcm_calendar*));
-extern void		setup_range		P((CSA_attribute**,
+extern boolean_t	cal_ident_index_ro(int, int);
+extern boolean_t	entry_ident_index_ro(int, int);
+extern CSA_enum		cal_ident_index_tag(int);
+extern CSA_enum		entry_ident_index_tag(int);
+extern boolean_t	ident_name_ro(char*, int);
+extern void		initialize_cal_attr(int, CSA_attribute*,
+						   Allocation_reason, int);
+extern void		initialize_entry_attr(int, CSA_attribute*,
+						   Allocation_reason, int);
+extern void		set_appt_links	(Dtcm_appointment*);
+extern void		set_cal_links	(Dtcm_calendar*);
+extern void		scrub_cal_attr_list(Dtcm_calendar*);
+extern void		setup_range	(CSA_attribute**,
 						   CSA_enum**, int*, time_t,
 						   time_t, CSA_sint32, CSA_sint32,
-						   boolean_t, int));
-extern void		free_range		P((CSA_attribute**,
-						   CSA_enum**, int));
+						   boolean_t, int);
+extern void		free_range	(CSA_attribute**,
+						   CSA_enum**, int);
 
 /*
  * Other utilty functions
  */
-extern int		blank_buf		P((char*));
-extern int		embedded_blank		P((char*));
-extern char		*ckalloc		P(());
-extern char		*cm_def_printer		P(());
-extern char		*cm_get_credentials	P(());
-extern char		*cm_get_local_domain	P(());
-extern char		*cm_get_local_host	P(());
-extern char		*cm_get_uname		P(());
-extern char		*cm_pqtarget		P((char*));
-extern char		*cm_strcat		P((char*, char*));
-extern char		*cm_strcpy		P((char*, char*));
-extern char		*cm_strdup		P((char*));
-extern int		cm_strlen		P((char*));
-extern char		*cm_target2domain	P((char*));
-extern char		*cm_target2host		P((char*));
-extern char		*cm_target2location	P((char*));
-extern char		*cm_target2name		P((char*));
-extern char		*cr_to_str		P((char*));
-extern void		destroy_lines		P((Lines*));
-extern void		expand_esc_chars	P((char*));
-extern char		*get_head		P((char*, char));
-extern char		*get_tail		P((char*, char));
-extern void		print_tick		P((time_t));
-extern boolean_t	same_path		P((char*, char*));
-extern boolean_t	same_user		P((char*, char*));
-extern char		*str_to_cr		P((char*));
-extern char		*strncat		P(());
-extern char		*substr			P((char*, int, int n));
-extern void		syserr			P((char*, int, int, int));
-extern Lines		*text_to_lines		P((char*, int));
-extern int		get_data_version	P((CSA_session_handle));
-extern int		get_server_version	P((CSA_session_handle));
-extern CSA_sint32	privacy_set		P((Dtcm_appointment *));
-extern CSA_sint32	showtime_set		P((Dtcm_appointment *));
-extern int		max			P((int, int));
-extern int		min			P((int, int));
-extern int              parse_date              P((OrderingType, SeparatorType, char*, char*, char*, char*));
+extern int blank_buf (char*);
+extern int embedded_blank(char*);
+extern char * ckalloc(unsigned int size);
+extern char * cm_def_printer(void);
+extern char * cm_get_credentials(void);
+extern char * cm_get_local_domain(void);
+extern char * cm_get_local_host(void);
+extern char * cm_get_uname(void);
+extern char * cm_pqtarget(char*);
+extern char * cm_strcat(char*, char*);
+extern char * cm_strcpy(char*, char*);
+extern char * cm_strdup(char*);
+extern int cm_strlen(char*);
+extern char * cm_target2domain(char*);
+extern char * cm_target2host	(char*);
+extern char * cm_target2location(char*);
+extern char * cm_target2name	(char*);
+extern char * cr_to_str(char*);
+extern void destroy_lines(Lines*);
+extern void expand_esc_chars(char*);
+extern char * get_head(char*, char);
+extern char * get_tail(char*, char);
+extern void print_tick(time_t);
+extern boolean_t same_path(char*, char*);
+extern boolean_t same_user(char*, char*);
+extern char * str_to_cr(char*);
+extern char * strncat(char *, const char *, size_t n);
+extern char * substr(char*, int, int n);
+extern void syserr(char*, int, int, int);
+extern Lines * text_to_lines	(char*, int);
+extern int get_data_version(CSA_session_handle);
+extern int get_server_version(CSA_session_handle);
+extern CSA_sint32 privacy_set(Dtcm_appointment *);
+extern CSA_sint32 showtime_set(Dtcm_appointment *);
+extern int max(int, int);
+extern int min(int, int);
+extern int parse_date(OrderingType, SeparatorType, char*, char*, char*, char*);
 
-extern int              datestr2mdy             P((char*, OrderingType, SeparatorType, char*));
-extern void             format_tick             P((time_t, OrderingType, SeparatorType, char*));
-extern void		format_time		P((Tick, DisplayType, char*));
+extern int datestr2mdy(char*, OrderingType, SeparatorType, char*);
+extern void format_tick(time_t, OrderingType, SeparatorType, char*);
+extern void	format_time(Tick, DisplayType, char*);
 
 /*
  * In Motif you can't associate user data with items in a list.  To get around
@@ -303,12 +302,12 @@ typedef struct _CmDataList {
 	int		count;
 } CmDataList;
 
-extern CmDataList	*CmDataListCreate	P((void));
-extern void		CmDataListDestroy	P((CmDataList *, int));
-extern int		CmDataListAdd		P((CmDataList *, void *, int));
-extern void		*CmDataListGetData	P((CmDataList *, int));
-extern void		*CmDataListDeletePos	P((CmDataList *, int, int));
-extern void		CmDataListDeleteAll	P((CmDataList *, int));
+extern CmDataList * CmDataListCreate(void);
+extern void CmDataListDestroy(CmDataList *, int);
+extern int CmDataListAdd(CmDataList *, void *, int);
+extern void * CmDataListGetData(CmDataList *, int);
+extern void * CmDataListDeletePos(CmDataList *, int, int);
+extern void CmDataListDeleteAll(CmDataList *, int);
 
 
 #endif

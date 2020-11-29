@@ -31,7 +31,6 @@
 #ifndef _CMSCALENDAR_H
 #define _CMSCALENDAR_H
 
-#include "ansi_c.h"
 #include "csa.h"
 #include "cm.h"
 #include "nametbl.h"
@@ -89,84 +88,84 @@ typedef	struct __DtCmsCalendar {
 } _DtCmsCalendar;
 
 
-extern _DtCmsCalendar * _DtCmsMakeCalendar P((
+extern _DtCmsCalendar * _DtCmsMakeCalendar(
 				char *owner,
-				char *name));
+				char *name);
 
-extern void _DtCmsPutInCalList P((_DtCmsCalendar *cal));
+extern void _DtCmsPutInCalList(_DtCmsCalendar *cal);
 
-extern void _DtCmsFreeCalendar P((_DtCmsCalendar *cal));
+extern void _DtCmsFreeCalendar(_DtCmsCalendar *cal);
 
-extern CSA_return_code _DtCmsSetFileVersion P((
+extern CSA_return_code _DtCmsSetFileVersion(
 				_DtCmsCalendar *cal,
-				int version));
+				int version);
 
-extern CSA_return_code _DtCmsLoadCalendar P((
+extern CSA_return_code _DtCmsLoadCalendar(
 				char *target,
-				_DtCmsCalendar **cal));
+				_DtCmsCalendar **cal);
 
-extern char * _DtCmsGetCalendarOwner P((char *target));
+extern char * _DtCmsGetCalendarOwner(char *target);
 
-extern CSA_return_code _DtCmsGetCalendarByName P((
+extern CSA_return_code _DtCmsGetCalendarByName(
 				char *target,
 				boolean_t load,
-				_DtCmsCalendar **cal));
+				_DtCmsCalendar **cal);
 
-extern CSA_return_code _DtCmsInsertEntry4Parser P((
+extern CSA_return_code _DtCmsInsertEntry4Parser(
 				_DtCmsCalendar *cal,
-				cms_entry *entry));
+				cms_entry *entry);
 
-extern void _DtCmsSetAccess4Parser P((
+extern void _DtCmsSetAccess4Parser(
 				_DtCmsCalendar *cal,
 				Access_Entry_4 *list,
-				int type));
+				int type);
 
-extern void _DtCmsSetCalendarAttrs4Parser P((
+extern void _DtCmsSetCalendarAttrs4Parser(
 				_DtCmsCalendar *cal,
 				int len,
-				cms_attribute *attrs));
+				cms_attribute *attrs);
 
-extern void _DtCmsGenerateKey P((_DtCmsCalendar *cal, long *key));
+extern void _DtCmsGenerateKey(_DtCmsCalendar *cal, long *key);
 
-extern CSA_return_code _DtCmsEnumerateUp P((
+extern CSA_return_code _DtCmsEnumerateUp(
 				_DtCmsCalendar *cal,
-				_DtCmsEnumerateProc doit));
+				_DtCmsEnumerateProc doit);
 
-extern void _DtCmsEnumerateDown P((
+extern void _DtCmsEnumerateDown(
 				_DtCmsCalendar *cal,
-				_DtCmsEnumerateProc doit));
+				_DtCmsEnumerateProc doit);
 
-extern CSA_return_code _DtCmsRbToCsaStat P((Rb_Status rb_stat));
+extern CSA_return_code _DtCmsRbToCsaStat(Rb_Status rb_stat);
 
-extern CSA_return_code _DtCmsGetCalAttrsByName P((
+extern CSA_return_code _DtCmsGetCalAttrsByName(
 				_DtCmsCalendar	*cal,
 				uint		num_names,
 				cms_attr_name	*names,
 				uint		*num_attrs_r,
-				cms_attribute	**attrs_r));
+				cms_attribute	**attrs_r);
 
-extern CSA_return_code _DtCmsGetAllCalAttrs P((
+extern CSA_return_code _DtCmsGetAllCalAttrs(
 				_DtCmsCalendar	*cal,
 				u_int		*num_attrs_r,
 				cms_attribute	**attrs_r,
-				boolean_t	returnall));
+				boolean_t	returnall);
 
-extern CSA_return_code _DtCmsGetCalAttrNames P((
+extern CSA_return_code _DtCmsGetCalAttrNames(
 				_DtCmsCalendar	*cal,
 				uint		*num_names_r,
-				cms_attr_name	**names_r));
+				cms_attr_name	**names_r);
 
-extern void _DtCmsFreeCmsAttrNames P((uint num, cms_attr_name *names));
+extern void _DtCmsFreeCmsAttrNames(uint num, cms_attr_name *names);
 
-extern CSA_return_code _DtCmsUpdateCalAttributesAndLog P((
+extern CSA_return_code _DtCmsUpdateCalAttributesAndLog(
 				_DtCmsCalendar	*cal,
 				uint		numsrc,
 				cms_attribute	*srcattrs,
-				uint		access));
+				uint		access);
 
-extern CSA_return_code _DtCmsV5TransactLog P((
+extern CSA_return_code _DtCmsV5TransactLog(
 				_DtCmsCalendar	*cal,
 				cms_entry	*e,
-				_DtCmsLogOps	op));
+				_DtCmsLogOps	op);
 
 #endif

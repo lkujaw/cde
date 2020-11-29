@@ -55,7 +55,6 @@
 #include <X11/Intrinsic.h>
 #include <Xm/Xm.h>
 #include <csa.h>
-#include "ansi_c.h"
 #include "calendar.h"
 #include "cm_tty.h"
 #include "datefield.h"
@@ -81,31 +80,31 @@ typedef enum {
 /*
 **  External function declarations
 */
-extern char	*cm_mbchar		P((char*));
-extern int	cm_mbstrlen		P((char*));
-extern Widget	create_for_menu		P((Widget));
-extern Widget	create_privacy_menu	P((Widget));
-extern Widget	create_repeat_menu	P((Widget, XtCallbackProc, XtPointer));
-extern Widget	create_repeat_scope_menu P((Widget, XmString, XtCallbackProc,
-					    XtPointer));
-extern Widget	create_start_stop_time_menu P((Widget, XmString, XtCallbackProc,
+extern char	*cm_mbchar(char*);
+extern int	cm_mbstrlen(char*);
+extern Widget	create_for_menu	(Widget);
+extern Widget	create_privacy_menu(Widget);
+extern Widget	create_repeat_menu(Widget, XtCallbackProc, XtPointer);
+extern Widget	create_repeat_scope_menu(Widget, XmString, XtCallbackProc,
+					    XtPointer);
+extern Widget	create_start_stop_time_menu(Widget, XmString, XtCallbackProc,
 					       XtPointer, Props*, Boolean, 
-						Boolean, Widget**, int*));
-extern Widget	create_time_scope_menu	P((Widget, XmString, XtCallbackProc,
-					   XtPointer));
+						Boolean, Widget**, int*);
+extern Widget	create_time_scope_menu(Widget, XmString, XtCallbackProc,
+					   XtPointer);
 #ifndef _AIX
-extern int	dialog_popup		P((Widget, ...));
+extern int	dialog_popup(Widget, ...);
 #endif /* _AIX */
-extern void	editor_err_msg		P((Widget, char*, Validate_op, Pixmap));
-extern void	backend_err_msg		P((Widget, char*, CSA_return_code, Pixmap));
-extern void	get_range		P((Glance, time_t, time_t*, time_t*));
-extern boolean_t query_user		P((void*));
-extern void	set_message		P((Widget, char*));
-extern void	setup_quit_handler	P((Widget, XtCallbackProc, caddr_t));
-extern int	ds_is_double_click      P((XEvent*, XEvent*));
-extern int	cm_select_text		P((Widget, Time));
-extern void	set_time_submenu	P((Widget, Widget, Props*, 
+extern void	editor_err_msg(Widget, char*, Validate_op, Pixmap);
+extern void	backend_err_msg(Widget, char*, CSA_return_code, Pixmap);
+extern void	get_range(Glance, time_t, time_t*, time_t*);
+extern boolean_t query_user(void*);
+extern void	set_message	(Widget, char*);
+extern void	setup_quit_handler(Widget, XtCallbackProc, caddr_t);
+extern int	ds_is_double_click(XEvent*, XEvent*);
+extern int	cm_select_text(Widget, Time);
+extern void	set_time_submenu(Widget, Widget, Props*, 
 					   XtCallbackProc, XtPointer, 
-					   Boolean, Boolean, Widget**, int*));
-extern void 	ManageChildren		P((Widget));
+					   Boolean, Boolean, Widget**, int*);
+extern void 	ManageChildren(Widget);
 #endif

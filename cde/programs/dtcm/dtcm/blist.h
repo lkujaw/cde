@@ -52,7 +52,6 @@
 #ifndef _BLIST_H
 #define _BLIST_H
 
-#include "ansi_c.h"
 #include "util.h"
 
 /*
@@ -107,11 +106,11 @@ typedef struct browser_state {
 	struct browser_state	*next;
 } BrowserState;
 
-extern void	blist_clean		P((Browselist*, Boolean));
-extern void	blist_init_names	P((Calendar*));
-extern void	blist_init_ui		P((Calendar*));
-extern void	blist_reset		P((Calendar*));
-extern void	make_browselist		P((Calendar*));
-extern void	show_browselist		P((Calendar*));
+extern void	blist_clean(Browselist*, Boolean);
+extern void	blist_init_names(Calendar*);
+extern void	blist_init_ui(Calendar*);
+extern void	blist_reset(Calendar*);
+extern void	make_browselist(Calendar*);
+extern void	show_browselist(Calendar*);
 
 #endif

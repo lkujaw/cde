@@ -56,7 +56,6 @@
 #include <csa.h>
 #include <nl_types.h>
 #include <Xm/Xm.h>
-#include "ansi_c.h"
 #include "util.h"
 #include "timeops.h"
 #include "props.h"
@@ -324,68 +323,68 @@ extern int _csa_tick_to_iso8601(time_t, char *);
          (int)(r2)->y<=(int)(r1)->y+(int)(r1)->height)
 
 
-extern void		cache_dims		P((Calendar*, Dimension,
-						   Dimension));
-extern char*		cm_get_relname		P(());
-extern Boolean		in_range		P((time_t, time_t, time_t));
-extern int		report_err		P((char*));
-extern void		reset_alarm		P((Calendar*));
-extern CSA_return_code	reset_timer		P((Calendar*));
-extern CSA_return_code	paint_canvas		P((Calendar*, XRectangle*, 
-						   Render_Type));
-extern void		switch_it		P((Calendar*, char*,
-						   WindowType));
-extern int		yyyerror		P((char*));
-extern void		gr_clear_area		P((new_XContext*, int, int,
-						   Dimension, Dimension));
-extern void		gr_clear_box		P((new_XContext*, int, int, int,
-						   int));
-extern void		gr_make_grayshade	P((new_XContext*, int, int, int,
-						   int, int));
-extern void		gr_make_gray		P((new_XContext*, int, int, int,
-						   int, int));
-extern void		gr_make_rgbcolor	P((new_XContext*, Colormap, int,
+extern void		cache_dims(Calendar*, Dimension,
+						   Dimension);
+extern char*		cm_get_relname(void);
+extern Boolean		in_range(time_t, time_t, time_t);
+extern int		report_err(char*);
+extern void		reset_alarm(Calendar*);
+extern CSA_return_code	reset_timer(Calendar*);
+extern CSA_return_code	paint_canvas(Calendar*, XRectangle*, 
+						   Render_Type);
+extern void		switch_it(Calendar*, char*,
+						   WindowType);
+extern int		yyyerror(char*);
+extern void		gr_clear_area(new_XContext*, int, int,
+						   Dimension, Dimension);
+extern void		gr_clear_box(new_XContext*, int, int, int,
+						   int);
+extern void		gr_make_grayshade(new_XContext*, int, int, int,
+						   int, int);
+extern void		gr_make_gray(new_XContext*, int, int, int,
+						   int, int);
+extern void		gr_make_rgbcolor(new_XContext*, Colormap, int,
 						   int, int, int, int, int,
-						   int));
-extern int		gr_nchars		P((int, char*, Cal_Font *));
-extern void		gr_draw_rgb_box		P((new_XContext*, int, int, int,
-						   int, int, int, Colormap));
-extern void		gr_dissolve_box		P((new_XContext*, int, int, int,
-						   int, int));
-extern int		gr_center		P((int, char*, Cal_Font *));
-extern void		gr_text			P((new_XContext*, int, int,
+						   int);
+extern int		gr_nchars(int, char*, Cal_Font *);
+extern void		gr_draw_rgb_box	(new_XContext*, int, int, int,
+						   int, int, int, Colormap);
+extern void		gr_dissolve_box	(new_XContext*, int, int, int,
+						   int, int);
+extern int		gr_center(int, char*, Cal_Font *);
+extern void		gr_text(new_XContext*, int, int,
 						   Cal_Font *, char*,
-						   XRectangle*));
-extern void		gr_text_rgb		P((new_XContext*, int, int,
+						   XRectangle*);
+extern void		gr_text_rgb(new_XContext*, int, int,
 						   Cal_Font *, char*, Pixel,
-						   Colormap, XRectangle*));
-extern void		gr_draw_line		P((new_XContext*, int, int, int,
+						   Colormap, XRectangle*);
+extern void		gr_draw_line(new_XContext*, int, int, int,
 						   int, GR_Line_Style,
-						   XRectangle*));
-extern void		gr_draw_box		P((new_XContext*, int, int, int,
-						   int, XRectangle*));
-extern void		gr_draw_glyph		P((new_XContext*, new_XContext*,
-						   Pixmap, int, int, int, int));
-extern void		gr_set_clip_rectangles	P((new_XContext*, int, int,
-						   XRectangle*, int, int));
-extern void		gr_clear_clip_rectangles P((new_XContext*));
-extern Boolean		gr_init			P((new_XContext*, Widget));
-extern new_XContext	*gr_create_xcontext	P((Calendar*, Widget, GR_depth,
-						   XtAppContext));
-extern Boolean		today_inrange		P((Calendar*, time_t));
-extern void		update_browse_menu_names P((Calendar*));
-extern char*		get_user_calendar	P(());
-extern void		destroy_paint_cache	P((Paint_cache *, int));
-extern void		invalidate_cache	P((Calendar *));
+						   XRectangle*);
+extern void		gr_draw_box(new_XContext*, int, int, int,
+						   int, XRectangle*);
+extern void		gr_draw_glyph(new_XContext*, new_XContext*,
+						   Pixmap, int, int, int, int);
+extern void		gr_set_clip_rectangles(new_XContext*, int, int,
+						   XRectangle*, int, int);
+extern void		gr_clear_clip_rectangles(new_XContext*);
+extern Boolean		gr_init(new_XContext*, Widget);
+extern new_XContext	*gr_create_xcontext(Calendar*, Widget, GR_depth,
+						   XtAppContext);
+extern Boolean		today_inrange(Calendar*, time_t);
+extern void		update_browse_menu_names(Calendar*);
+extern char*		get_user_calendar(void);
+extern void		destroy_paint_cache(Paint_cache *, int);
+extern void		invalidate_cache(Calendar *);
 
-extern CSA_return_code	allocate_paint_cache	P((CSA_entry_handle *, int, Paint_cache **));
+extern CSA_return_code	allocate_paint_cache(CSA_entry_handle *, int, Paint_cache **);
 
-extern Boolean 		fontlist_to_font	P((XmFontList, Cal_Font *));
-extern void 		CalTextExtents		P((Cal_Font *, char *, int, 
-						   int *, int *, int *, int *));
-extern void 		CalDrawString		P((Display *, Drawable,
+extern Boolean 		fontlist_to_font(XmFontList, Cal_Font *);
+extern void 		CalTextExtents	(Cal_Font *, char *, int, 
+						   int *, int *, int *, int *);
+extern void 		CalDrawString	(Display *, Drawable,
 						   Cal_Font *, GC, int, int,
-						   char *, int));
-extern void 		CalFontExtents		P((Cal_Font *, 
-						   XFontSetExtents *));
+						   char *, int);
+extern void 		CalFontExtents	(Cal_Font *, 
+						   XFontSetExtents *);
 #endif

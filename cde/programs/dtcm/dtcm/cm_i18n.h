@@ -92,10 +92,10 @@ extern char *cm_printf();
 int is_comment();
 int match_locale();
 
-extern int	cm_get_fonts		P((char *));
-extern int	is_comment		P((char[MAX_LINE_LEN]));
-extern int	match_locale		P((char *, char[MAX_LINE_LEN]));
-extern void	ps_i18n_header		P((FILE *, Widget));
-extern char*	euc_to_octal		P((char *));
-extern char*	cm_get_i18n_date	P((Widget, char *));
-extern char*	cm_printf		P((double, int));
+extern int	cm_get_fonts(char *);
+extern int	is_comment(char[MAX_LINE_LEN]);
+extern int	match_locale(char *, char[MAX_LINE_LEN]);
+extern void	ps_i18n_header(FILE *, Widget);
+extern char*	euc_to_octal(char *);
+extern char*	cm_get_i18n_date(Widget, char *);
+extern char*	cm_printf(double, int);

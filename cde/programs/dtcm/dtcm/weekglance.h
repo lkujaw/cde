@@ -53,7 +53,6 @@
 #define _WEEKGLANCE_H
 
 #include <csa.h>
-#include "ansi_c.h"
 
 typedef struct week {
         int     start_date;
@@ -86,12 +85,12 @@ typedef struct week {
 
 typedef enum {okay, lower, upper} Boundary;
 
-extern void 	paint_weekview	P((Calendar*, XRectangle*));
-extern void	print_week_range	P((Calendar*, Tick, Tick));
-extern int	count_multi_appts	P((CSA_entry_handle*, int, Calendar*));
-extern void	week_button		P((Widget, XtPointer, XtPointer));
-extern void	week_event		P((XEvent*));
-extern void	cleanup_after_weekview	P((Calendar*));
-extern void	resize_weekview P((Calendar *, Boundary *));
+extern void paint_weekview(Calendar*, XRectangle*);
+extern void	print_week_range(Calendar*, Tick, Tick);
+extern int  count_multi_appts(CSA_entry_handle*, int, Calendar*);
+extern void	week_button(Widget, XtPointer, XtPointer);
+extern void	week_event(XEvent*);
+extern void	cleanup_after_weekview(Calendar*);
+extern void	resize_weekview(Calendar *, Boundary *);
 
 #endif

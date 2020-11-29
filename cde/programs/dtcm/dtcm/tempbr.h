@@ -52,7 +52,6 @@
 #ifndef _TEMPBR_H
 #define _TEMPBR_H
 
-#include "ansi_c.h"
 #include "calendar.h"
 #ifdef FNS
 #include "cmfns.h"
@@ -76,6 +75,6 @@ typedef struct {
 #endif
 } Tempbr;
 
-extern caddr_t	make_tempbr	P(());
+extern caddr_t	make_tempbr(Calendar *c);
 
 #endif /* _TEMPBR_H */

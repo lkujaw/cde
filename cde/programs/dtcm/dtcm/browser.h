@@ -52,7 +52,6 @@
 #ifndef _BROWSER_H
 #define _BROWSER_H
 
-#include "ansi_c.h"
 #include "timeops.h"
 #include "calendar.h"
 
@@ -112,23 +111,23 @@ typedef struct {
 #define MB_PREVMONTH 4
 #define MB_NEXTMONTH 5
 
-extern void		br_display			P((Calendar*));
-extern Boolean		browser_exists			P(());
-extern void		browser_reset_list		P((Calendar*));
-extern Boolean		browser_showing			P(());
-extern void		make_browser			P(());
-extern void		mb_draw_chartgrid		P(());
-extern void		mb_draw_appts			P(());
-extern void		mb_update_segs			P(());
-extern void		mb_update_busyicon		P(());
-extern void		mb_init_blist			P(());
-extern void		mb_init_canvas			P(());
-extern void		mb_deregister_names		P(());
-extern void		mb_refresh_canvas		P(());
-extern void		sched_proc			P(());
-extern void		set_default_reminders		P(());
-extern void		set_default_scope_plus		P(());
-extern void		set_default_what		P(());
-extern void		mb_refigure_chart		P((Calendar *));
+extern void		br_display(Calendar *);
+extern Boolean		browser_exists(void);
+extern void		browser_reset_list(Calendar*);
+extern Boolean		browser_showing(void);
+extern void		make_browser(Calendar *c);
+extern void		mb_draw_chartgrid(Browser *b, Calendar *c);
+extern void		mb_draw_appts(Browser *b, int start, int end, Calendar *c);
+extern void		mb_update_segs(Browser *, Tick, Tick, int *, int *);
+extern void		mb_update_busyicon(void);
+extern void		mb_init_blist(void);
+extern void		mb_init_canvas(Calendar *c);
+extern void		mb_deregister_names(char *, Calendar *);
+extern void		mb_refresh_canvas(Browser *b, Calendar *c);
+extern void		sched_proc(void);
+extern void		set_default_reminders(void);
+extern void		set_default_scope_plus(void);
+extern void		set_default_what(void);
+extern void		mb_refigure_chart(Calendar *);
 
 #endif

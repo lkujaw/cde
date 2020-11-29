@@ -31,16 +31,15 @@
 #ifndef _UPDATE_H
 #define _UPDATE_H
 
-#include "ansi_c.h"
 #include "cm.h"
 #include "cmscalendar.h"
 
-extern CSA_return_code _DtCmsUpdateCalAttrs P((
+extern CSA_return_code _DtCmsUpdateCalAttrs(
 			_DtCmsCalendar	*cal,
 			uint		num_attrs,
-			cms_attribute	*attrs));
+			cms_attribute	*attrs);
 
-extern CSA_return_code _DtCmsUpdateEntry P((
+extern CSA_return_code _DtCmsUpdateEntry(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
@@ -48,9 +47,9 @@ extern CSA_return_code _DtCmsUpdateEntry P((
 			uint		num_attrs,
 			cms_attribute	*attrs,
 			cms_entry	**oldentry,
-			cms_entry	**newentry));
+			cms_entry	**newentry);
 
-extern CSA_return_code _DtCmsUpdateInstances P((
+extern CSA_return_code _DtCmsUpdateInstances(
 			_DtCmsCalendar	*cal,
 			char		*sender,
 			uint		access,
@@ -59,6 +58,6 @@ extern CSA_return_code _DtCmsUpdateInstances P((
 			uint		num_attrs,
 			cms_attribute	*attrs,
 			cms_entry	**oldentry,
-			cms_entry	**newentry));
+			cms_entry	**newentry);
 
 #endif

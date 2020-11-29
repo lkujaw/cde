@@ -52,8 +52,6 @@
 #ifndef _FIND_H
 #define _FIND_H
 
-#include "ansi_c.h"
-
 typedef struct tick_list {
 	Tick tick;
 	struct tick_list *next;
@@ -88,7 +86,7 @@ typedef struct {
 	Tick			search_to_date;
 }Find;
 
-extern caddr_t	make_find	P((Calendar*));
-static Tick f_get_searchdate	P((Widget, Props*));
+extern caddr_t	make_find(Calendar*);
+static Tick f_get_searchdate(Widget, Props*);
 
 #endif

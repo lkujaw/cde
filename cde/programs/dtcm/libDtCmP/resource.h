@@ -51,8 +51,7 @@
 
 #ifndef _RESOURCE_H
 #define _RESOURCE_H
- 
-#include "ansi_c.h"
+
 #include <sys/types.h>
 
 /*
@@ -68,14 +67,14 @@ typedef struct Resource Resource;
 /*
 **  Function declarations
 */
-extern void		free_resources		P((Resource*));
-extern char	    	*get_resource		P((Resource*, char *, char*,
-							char*, char*));
-extern char		*get_resource_by_val	P((Resource*, char*, char*));
-extern boolean_t	load_resources		P((Resource**, char*));
-extern boolean_t	save_resources		P((Resource*, char*));
-extern boolean_t	set_resource		P((Resource**, char*, char*,
-							char*, char*));
-extern boolean_t	set_resource_by_val	P((Resource**, char*, char*));
+extern void		free_resourcee(Resource*);
+extern char	    	*get_resource(Resource*, char *, char*,
+							char*, char*);
+extern char		*get_resource_by_val(Resource*, char*, char*);
+extern boolean_t	load_resources(Resource**, char*);
+extern boolean_t	save_resources(Resource*, char*);
+extern boolean_t	set_resource(Resource**, char*, char*,
+							char*, char*);
+extern boolean_t	set_resource_by_val(Resource**, char*, char*);
 
 #endif

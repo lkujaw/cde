@@ -53,7 +53,6 @@
 #define _DAYGLANCE_H
 
 #include <csa.h>
-#include "ansi_c.h"
 #include "props.h"
 
 #define MOBOX_AREA_WIDTH	(int)(c->view->winw*.4)
@@ -82,17 +81,17 @@ typedef struct dayglance {
 	Widget *month_panels;
 } Day;
 
-extern void	init_dayview		P((Calendar*));
-extern void	day_button		P((Widget, XtPointer, XtPointer));
-extern void	init_mo			P((Calendar*));
-extern void	monthbox_datetoxy	P((Calendar*));
-extern void	monthbox_xytodate	P((Calendar*, int x, int y));
-extern void	paint_dayview		P((Calendar*, Boolean,
-					   XRectangle*, Boolean));
-extern void	paint_day		P((Calendar*));
-extern void	print_day_range		P((Calendar*, Tick, Tick));
-extern void	day_event		P((XEvent*));
-extern int	morning			P((int));
-extern void 	paint_day_header	P((Calendar *, Tick, void *));
-extern void 	cleanup_after_dayview	P((Calendar *));
+extern void	init_dayview(Calendar*);
+extern void	day_button(Widget, XtPointer, XtPointer);
+extern void	init_mo(Calendar*);
+extern void	monthbox_datetoxy(Calendar*);
+extern void	monthbox_xytodate(Calendar*, int x, int y);
+extern void	paint_dayview(Calendar*, Boolean,
+					   XRectangle*, Boolean);
+extern void	paint_day(Calendar*);
+extern void	print_day_range	(Calendar*, Tick, Tick);
+extern void	day_event(XEvent*);
+extern int  morning(int);
+extern void paint_day_header(Calendar *, Tick, void *);
+extern void cleanup_after_dayview(Calendar *);
 #endif

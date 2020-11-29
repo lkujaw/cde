@@ -31,14 +31,12 @@
 #ifndef _UTILITY_H
 #define _UTILITY_H
 
-#include "ansi_c.h"
+extern char *_DtCmsTarget2Name(char *target);
 
-extern char *_DtCmsTarget2Name P((char *target));
+extern char *_DtCmsTarget2Location(char *target);
 
-extern char *_DtCmsTarget2Location P((char *target));
+extern char *_DtCmsTarget2Host(char *target);
 
-extern char *_DtCmsTarget2Host P((char *target));
-
-extern char *_DtCmsTarget2Domain P((char *target));
+extern char *_DtCmsTarget2Domain(char *target);
 
 #endif

@@ -54,7 +54,6 @@
  
 #include <X11/Xlib.h>
 #include <X11/Intrinsic.h>
-#include "ansi_c.h"
 
 /*
 **  Location ops for ds_position_popup().
@@ -72,10 +71,10 @@ typedef enum {
 /*
 **  Function declarations.
 */
-extern int		ds_force_popup_on_screen P((Widget, int*, int*)) ;
-extern void		ds_get_screen_size	P((Widget, int*, int*)) ;
-extern int		ds_position_popup	P((Widget, Widget,
-							ds_location_op)) ;
-extern char		*ds_relname		P(());
+extern int		ds_force_popup_on_screen(Widget, int*, int*);
+extern void		ds_get_screen_size(Widget, int*, int*);
+extern int		ds_position_popup(Widget, Widget,
+							ds_location_op);
+extern char		*ds_relname();
 
 #endif

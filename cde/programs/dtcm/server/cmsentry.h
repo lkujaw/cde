@@ -32,23 +32,22 @@
 #define _CMSENTRY_H
 
 #include <EUSCompat.h>
-#include "ansi_c.h"
 #include "nametbl.h"
 #include "cm.h"
 #include "csa.h"
 #include "cmscalendar.h"
 
-extern CSA_return_code _DtCmsMakeHashedEntry P((
+extern CSA_return_code _DtCmsMakeHashedEntry(
 			_DtCmsCalendar	*cal,
 			uint		num,
 			cms_attribute	*attrs,
-			cms_entry	**entry));
+			cms_entry	**entry);
 
-extern void _DtCmsFreeEntryAttrResItem P((cms_get_entry_attr_res_item *elist));
+extern void _DtCmsFreeEntryAttrResItem(cms_get_entry_attr_res_item *elist);
 
-extern CSA_return_code _DtCmsGetCmsEntryForClient P((
+extern CSA_return_code _DtCmsGetCmsEntryForClient(
 			cms_entry	*e,
 			cms_entry	**e_r,
-			boolean_t	time_only));
+			boolean_t	time_only);
 
 #endif

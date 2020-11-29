@@ -53,7 +53,6 @@
 #define _PROPS_H
 
 #include <sys/types.h>
-#include "ansi_c.h"
 #include "resource.h"
 
 /*******************************************************************************
@@ -150,14 +149,14 @@ typedef struct {
 **  External function declarations
 **
 *******************************************************************************/
-extern boolean_t	cal_convert_cmrc	P((Props*));
-extern char		*get_char_prop		P((Props*, Props_op));
-extern char		*get_char_prop_default	P((Props_op));
-extern int		get_int_prop		P((Props*, Props_op));
-extern void		props_clean_up		P((Props*));
-extern boolean_t	read_props		P((Props*));
-extern boolean_t	save_props		P((Props*));
-extern boolean_t	set_char_prop		P((Props*, Props_op, char*));
-extern boolean_t	set_int_prop		P((Props*, Props_op, int));
+extern boolean_t	cal_convert_cmrc(Props*);
+extern char		*get_char_prop(Props*, Props_op);
+extern char		*get_char_prop_default(Props_op);
+extern int		get_int_prop(Props*, Props_op);
+extern void		props_clean_up(Props*);
+extern boolean_t	read_props(Props*);
+extern boolean_t	save_props(Props*);
+extern boolean_t	set_char_prop(Props*, Props_op, char*);
+extern boolean_t	set_int_prop(Props*, Props_op, int);
 
 #endif
