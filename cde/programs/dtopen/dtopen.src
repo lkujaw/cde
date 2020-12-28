@@ -50,8 +50,8 @@ XCOMM ## Utility Functions
 XCOMM ## Find the path of a program
 FindProg()
 {
-    # FindProg "program"
-    # - returns full path, or ""
+XCOMM   FindProg "program"
+XCOMM   - returns full path, or ""
 
     whence "$1"
 
@@ -61,8 +61,8 @@ FindProg()
 XCOMM ## Show an error message
 ErrorMsg()
 {
-    # ErrorMsg "Title "Message" ["OK"]
-    # use dterror.ds to display it...
+XCOMM   ErrorMsg "Title "Message" ["OK"]
+XCOMM   use dterror.ds to display it...
 
     if [ -z "$3" ]
     then    # default to 'OK'
@@ -79,7 +79,7 @@ ErrorMsg()
 XCOMM ## do a simple command
 DoSimpleCmd()
 {
-    # DoSimpleCmd "commands" args
+XCOMM   DoSimpleCmd "commands" args
 
     didone=0
     cmds="$1"
@@ -131,7 +131,7 @@ case $APPNAME in
         DoSimpleCmd "$VVIDEO" "$*"
         ;;
     *)
-        # Unknown
+XCOMM   Unknown
         ErrorMsg "${DTOPEN}: Unknown Helper Application" \
                   "\"$APPNAME\" is not a recognized Helper Application.  \nKnown Helper Applications are:\n\n$COMMANDS"
         ;;
