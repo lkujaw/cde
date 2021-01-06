@@ -286,7 +286,7 @@ paint_month(Calendar *c, Tick key, XRectangle *rect)
  
         tm              = *_XLocaltime(&key, localtime_buf);
         tm.tm_mday      = 1;
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
         tm.tm_isdst      = -1;
         day             = mktime(&tm);
 #else
@@ -466,7 +466,7 @@ layout_month(
 
 	tm = *_XLocaltime(&date, localtime_buf);
 	tm.tm_mday = 1;
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 	tm.tm_isdst = -1;
 	day = mktime(&tm);
 #else
@@ -703,7 +703,7 @@ count_month_pages(Calendar *c, Tick start_date, int lines_per_box)
 
         tm    = *_XLocaltime(&start_date, localtime_buf);
         tm.tm_mday = 1;
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
         tm.tm_isdst = -1;
         day   = (int)mktime(&tm);
 #else

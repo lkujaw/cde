@@ -814,7 +814,7 @@ next_ndays(time_t t, int n)
 	tm.tm_min	= 0;
 	tm.tm_hour	= 0;
 
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 	next            = mktime(&tm);
 #else
 	next		= timelocal(&tm);
@@ -1004,7 +1004,7 @@ prev_nmonth(time_t t, int n)
 		tm.tm_mon += 12;
 		tm.tm_year--;
 	}
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 	tm.tm_isdst = -1;
 	return(mktime(&tm));
 #else
@@ -1088,7 +1088,7 @@ nextnyear(time_t t, int n)
 
 	tm	= *_XLocaltime(&t, localtime_buf);
 	tm.tm_year += n;
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 	return(mktime(&tm));
 #else
 	return(timelocal(&tm));
@@ -1110,7 +1110,7 @@ prevnyear(time_t t, int n)
 
 	tm = *_XLocaltime(&t, localtime_buf);
 	tm.tm_year -= n;
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 	return(mktime(&tm));
 #else
 	return(timelocal(&tm));
@@ -1139,7 +1139,7 @@ prevmonth_exactday(time_t t)
 		prev = previousmonth(previousmonth(t));		/* hop over the month */
 		tm = *_XLocaltime(&prev, localtime_buf);
 		tm.tm_mday = day;
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 		tm.tm_isdst = -1;
 		prev =(mktime(&tm)) + sdelta;
 #else
@@ -1172,7 +1172,7 @@ nextmonth_exactday(time_t t)
 		next = next_nmonth(t, 2);		/* hop over the month */
 		tm = *_XLocaltime(&next, localtime_buf);
 		tm.tm_mday = day;
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 		tm.tm_isdst = -1;
 		next = mktime(&tm) + sdelta;
 #else
@@ -1201,7 +1201,7 @@ previousmonth(time_t t)
 		tm.tm_mday=1;
 		tm.tm_mon--;
 	}
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 	tm.tm_isdst = -1;
 	return(mktime(&tm));
 #else
@@ -1513,7 +1513,7 @@ nextnmth_exactday(time_t t, int n)
 			t = next;
 	}
 
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 	tm2.tm_isdst = -1;
 	next = mktime(&tm2);
 #else
@@ -1549,7 +1549,7 @@ prevnmth_exactday(time_t t, int n)
 			t = prev;
 	}
 
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 	tm2.tm_isdst = -1;
 	prev = mktime(&tm2);
 #else
