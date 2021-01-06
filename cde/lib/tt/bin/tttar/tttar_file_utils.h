@@ -49,7 +49,7 @@ _Tt_string_list_ptr	realtrees( _Tt_string_list_ptr	paths,
 					bool_t follow_symlinks );
 void		append_real_subtrees( _Tt_string_list_ptr realtrees,
 				      _Tt_string path );
-char	       *basename( char *pathname );
-char	       *dirname( char *pathname );
+char	       *basename_tt( char *pathname );
+char	       *dirname_tt( char *pathname );
 
 #endif /* _LSTAR_FILE_UTILS_H */

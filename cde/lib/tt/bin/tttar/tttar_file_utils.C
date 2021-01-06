@@ -231,8 +231,8 @@ realtrees( _Tt_string_list_ptr paths, bool_t follow_symlinks )
 				 * symlink instead of the path of the
 				 * linked file.
 				 */
-				char *dir = dirname( (char *)path );
-				char *base = basename( (char *)path );
+				char *dir = dirname_tt( (char *)path );
+				char *base = basename_tt( (char *)path );
 				resolved_path = _tt_get_realpath( dir,
 							  resolved_path_buf );
 				if (resolved_path != NULL) {
@@ -354,10 +354,9 @@ append_real_subtrees( _Tt_string_list_ptr realtrees, _Tt_string path )
 } /* append_real_subtrees() */
 
 /*
- * basename() - Return the last component of a pathname.
+ * basename_tt() - Return the last component of a pathname.
  */
-#if !defined(__linux__)
-char *basename( char *pathname ) {
+char *basename_tt( char *pathname ) {
 	char *the_basename;
 	
 	the_basename = strrchr( pathname, '/' );
@@ -368,14 +367,13 @@ char *basename( char *pathname ) {
 	}
 	return the_basename;
 }
-#endif
 
 /*
- * dirname() - Return the pathname minus the basename, or "." if the
+ * dirname_tt() - Return the pathname minus the basename, or "." if the
  *	basename is all there is.  Caller is responsible for free()ing
  *	the storage returned.
  */
-char *dirname( char *pathname ) {
+char *dirname_tt( char *pathname ) {
 	char *the_basename;
 	char *the_dirname;
 	
