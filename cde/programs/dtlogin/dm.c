@@ -68,7 +68,7 @@
 # include	<varargs.h>
 #endif
 
-#if defined (SYSV) || defined (SVR4)
+#if defined(SYSV) || defined(SVR4) || defined(__linux__)
 #ifndef F_TLOCK
 # include	<unistd.h>
 #endif
@@ -529,11 +529,10 @@ WaitForChild( void )
     waitType	status;
     int		mask;
 
-#if defined(SYSV) || defined(SVR4)  || defined(hpux)
-
+#if defined(SYSV) || defined(SVR4) || defined(hpux) || defined(__linux__)
     if (AnyWellKnownSockets()) {
 	while ( ChildReady ) {
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 	   while ((pid = waitpid((pid_t) -1, &status, WNOHANG)) > 0 )
 #else
 	    while ((pid = wait3 (&status, WNOHANG, NULL)) > 0 )
@@ -1337,7 +1336,7 @@ StorePid( void )
 	fseek (pidFilePtr, 0l, 0);
 	if (lockPidFile)
 	{
-#if defined (SYSV) || defined (SVR4)
+#if defined(SYSV) || defined(SVR4) || defined(__linux__)
 	    if (lockf (pidFd, F_TLOCK, 0) == -1)
 	    {
 		if ((errno == EAGAIN) || (errno == EACCES))
@@ -1374,7 +1373,7 @@ static void
 UnlockPidFile( void )
 {
     if (lockPidFile)
-#if defined (SYSV) || defined (SVR4)
+#if defined(SYSV) || defined(SVR4) || defined(__linux__)
 	lockf (pidFd, F_ULOCK, 0);
 #else
 	flock (pidFd, LOCK_UN);
