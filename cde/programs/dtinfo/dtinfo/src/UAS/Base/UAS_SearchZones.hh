@@ -24,7 +24,8 @@
 #ifndef _UAS_SearchZones_hh_
 #define _UAS_SearchZones_hh_
 
-#include "unistd.h"
+#include <unistd.h>
+#include "config.h" // for u_int
 
 #include "UAS_String.hh"
 
