@@ -70,6 +70,7 @@ static char *CopyRt =
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
+#include <limits.h>
 #include <memory.h>
 #include <errno.h>
 #include <sys/types.h>
@@ -89,7 +90,11 @@ static char *CopyRt =
 
 /* for backwards compatibility */
 #ifndef _MAXNAMLEN
+#ifndef MAXNAMLEN
+#define _MAXNAMLEN NAME_MAX
+#else
 #define _MAXNAMLEN MAXNAMLEN
+#endif
 #endif
 
 static int	do_context, do_tree, do_summ, do_stats, do_validate, do_idlist;
