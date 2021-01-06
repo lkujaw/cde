@@ -49,7 +49,10 @@
 #if defined(__linux__)
 /* HACK On linux prevent inclusion of __FILE.h that contains a conflicting
    definition of __FILE that we define later */
+/* GLIBC */
 # define ____FILE_defined 1
+/* MUSL */
+# define __DEFINED_FILE 1
 #endif /* linux */
 
 /*	Public header file for the safe fast io package.
