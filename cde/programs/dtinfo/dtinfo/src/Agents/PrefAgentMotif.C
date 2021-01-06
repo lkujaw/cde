@@ -312,7 +312,7 @@ PrefAgent::create_ui()
   f_shell = WTopLevelShell (window_system().toplevel(), WPopup, "preferences");
   window_system().register_shell(&f_shell);
 
-  string = CATGETS(Set_PrefAgent, 1, "Dtinfo: Preferences");
+  string = MCATGETS(Set_PrefAgent, 1, "Dtinfo: Preferences");
   XtVaSetValues((Widget)f_shell,
                 XmNtitle, string,
                 XmNmwmDecorations, decorations,
@@ -322,7 +322,7 @@ PrefAgent::create_ui()
   DECLMC(WXmOptionMenu,   options,      form,         "options");
   DECLC (WXmPulldownMenu, options_menu, form,         "options_menu");
 
-  mtfstring = CATGETS(Set_AgentLabel, 186, "Preferences for");
+  mtfstring = MCATGETS(Set_AgentLabel, 186, "Preferences for");
   XtVaSetValues(options, XmNlabelString, (XmString)mtfstring, NULL);
 
   ASSNM (WXmPushButton,   f_ok,         form,         "ok");
@@ -331,15 +331,15 @@ PrefAgent::create_ui()
   DECLM (WXmPushButton,   cancel,       form,         "cancel");
   DECLM (WXmPushButton,   help,         form,         "help");
 
-  mtfstring = CATGETS(Set_AgentLabel, 161, "OK");
+  mtfstring = MCATGETS(Set_AgentLabel, 161, "OK");
   XtVaSetValues(f_ok, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 201, "Apply");
+  mtfstring = MCATGETS(Set_AgentLabel, 201, "Apply");
   XtVaSetValues(f_apply, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 202, "Reset");
+  mtfstring = MCATGETS(Set_AgentLabel, 202, "Reset");
   XtVaSetValues(f_reset, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 162, "Cancel");
+  mtfstring = MCATGETS(Set_AgentLabel, 162, "Cancel");
   XtVaSetValues(cancel, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 48, "Help");
+  mtfstring = MCATGETS(Set_AgentLabel, 48, "Help");
   XtVaSetValues(help, XmNlabelString, (XmString)mtfstring, NULL);
 
   SET_CALLBACK (f_ok,Activate,ok);
@@ -366,17 +366,17 @@ PrefAgent::create_ui()
   DECLM (WXmLabel,        lock_label,      browse_form,   "lock_label");
   ASSNM (WXmToggleButton, f_lock_toggle,   browse_form,   "lock_toggle");
 
-  mtfstring = CATGETS(Set_AgentLabel, 187, "Browsing");
+  mtfstring = MCATGETS(Set_AgentLabel, 187, "Browsing");
   XtVaSetValues(browse, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 190, "Browser Geometry");
+  mtfstring = MCATGETS(Set_AgentLabel, 190, "Browser Geometry");
   XtVaSetValues(browse_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 270, "...");
+  mtfstring = MCATGETS(Set_AgentLabel, 270, "...");
   XtVaSetValues(get_browse_geo, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 192, "Font Scale");
+  mtfstring = MCATGETS(Set_AgentLabel, 192, "Font Scale");
   XtVaSetValues(fs_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 193, "Pin Window");
+  mtfstring = MCATGETS(Set_AgentLabel, 193, "Pin Window");
   XtVaSetValues(lock_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 194, "File a Bug");
+  mtfstring = MCATGETS(Set_AgentLabel, 194, "File a Bug");
   XtVaSetValues(f_lock_toggle, XmNlabelString, (XmString)mtfstring, NULL);
 
   Dimension height;
@@ -425,15 +425,15 @@ PrefAgent::create_ui()
   DECLM (WXmLabel,        update_label,    map_form,      "update_label");
   ASSNM (WXmToggleButton, f_update_toggle, map_form,      "update_toggle");
 
-  mtfstring = CATGETS(Set_AgentLabel, 188, "Map");
+  mtfstring = MCATGETS(Set_AgentLabel, 188, "Map");
   XtVaSetValues(map, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 195, "Map Geometry");
+  mtfstring = MCATGETS(Set_AgentLabel, 195, "Map Geometry");
   XtVaSetValues(map_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 270, "...");
+  mtfstring = MCATGETS(Set_AgentLabel, 270, "...");
   XtVaSetValues(get_map_geo, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 196, "Auto Update");
+  mtfstring = MCATGETS(Set_AgentLabel, 196, "Auto Update");
   XtVaSetValues(update_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 194, "File a Bug");
+  mtfstring = MCATGETS(Set_AgentLabel, 194, "File a Bug");
   XtVaSetValues(f_update_toggle, XmNlabelString, (XmString)mtfstring, NULL);
 
   height = f_map_geo.Height();
@@ -451,7 +451,7 @@ PrefAgent::create_ui()
   // Create history preferences 
   DECLM (WXmPushButton,   history,      options_menu, "history");
 
-  mtfstring = CATGETS(Set_AgentLabel, 260, "History");
+  mtfstring = MCATGETS(Set_AgentLabel, 260, "History");
   XtVaSetValues(history, XmNlabelString, (XmString)mtfstring, NULL);
 
   DECL  (WXmForm,         hist_form,     container,     "history_prefs");
@@ -466,9 +466,9 @@ PrefAgent::create_ui()
   DECLM (WXmArrowButton,  sh_up,         sh_form,       "sh_up");
   DECLM (WXmArrowButton,  sh_down,       sh_form,       "sh_down");
 
-  mtfstring = CATGETS(Set_AgentLabel, 197, "Section History Size");
+  mtfstring = MCATGETS(Set_AgentLabel, 197, "Section History Size");
   XtVaSetValues(nh_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 198, "Search History Size");
+  mtfstring = MCATGETS(Set_AgentLabel, 198, "Search History Size");
   XtVaSetValues(sh_label, XmNlabelString, (XmString)mtfstring, NULL);
 
   height = f_nh_field.Height();
@@ -511,7 +511,7 @@ PrefAgent::create_ui()
 
   DECLM (WXmPushButton,   search,            options_menu,  "search");
 
-  mtfstring = CATGETS(Set_AgentLabel, 189, "Searching");
+  mtfstring = MCATGETS(Set_AgentLabel, 189, "Searching");
   XtVaSetValues(search, XmNlabelString, (XmString)mtfstring, NULL);
 
   DECL  (WXmForm,         search_form,       container,     "search_prefs");
@@ -523,11 +523,11 @@ PrefAgent::create_ui()
   DECLM (WXmLabel,        adisplay_label,    search_form,   "adisplay_label");
   ASSNM (WXmToggleButton, f_adisplay_toggle, search_form,   "adisplay_toggle");
 
-  mtfstring = CATGETS(Set_AgentLabel, 199, "Maximum Search Hits");
+  mtfstring = MCATGETS(Set_AgentLabel, 199, "Maximum Search Hits");
   XtVaSetValues(max_hits_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 200, "Auto Display First Hit");
+  mtfstring = MCATGETS(Set_AgentLabel, 200, "Auto Display First Hit");
   XtVaSetValues(adisplay_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 194, "File a Bug");
+  mtfstring = MCATGETS(Set_AgentLabel, 194, "File a Bug");
   XtVaSetValues(f_adisplay_toggle, XmNlabelString, (XmString)mtfstring, NULL);
 
   height = f_max_hits_field.Height();
@@ -963,7 +963,7 @@ void
 PrefAgent::set_update (bool set)
 {
   XmStringLocalized mtfstring =
-	CATGETS(Set_AgentLabel, set? 203 : 204, set ? "On" : "Off");
+	MCATGETS(Set_AgentLabel, set? 203 : 204, set ? "On" : "Off");
 
   XtVaSetValues(f_update_toggle, XmNlabelString, (XmString)mtfstring, NULL);
 
@@ -1022,7 +1022,7 @@ void
 PrefAgent::set_auto_display (bool set)
 {
   XmStringLocalized mtfstring =
-	CATGETS(Set_AgentLabel, set? 203 : 204, set ? "On" : "Off");
+	MCATGETS(Set_AgentLabel, set? 203 : 204, set ? "On" : "Off");
 
   XtVaSetValues(f_adisplay_toggle, XmNlabelString, (XmString)mtfstring, NULL);
 
@@ -1072,11 +1072,11 @@ PrefAgent::get_geometry (WCallback *wcb)
 		 WArgList (XmNdialogType, XmDIALOG_INFORMATION, NULL));
   WXmDialogShell shell (info_dialog.Parent());
   // set window title
-  String string = CATGETS(Set_PrefAgent, 2, "Dtinfo: Get Geometry");
+  String string = MCATGETS(Set_PrefAgent, 2, "Dtinfo: Get Geometry");
   XtVaSetValues((Widget)shell, XmNtitle, string, NULL);
   //  window_system().register_full_modal_shell (&shell);
   info_dialog.MessageString (
-	(char*)UAS_String(CATGETS(Set_Messages, 16, "File a Bug")));
+	(char*)UAS_String(MCATGETS(Set_Messages, 16, "File a Bug")));
   XtUnmanageChild (info_dialog.OkPB());
   XtUnmanageChild (info_dialog.HelpPB());
 

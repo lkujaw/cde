@@ -62,7 +62,7 @@ MMDB_Library::title (UAS_TitleType) {
     UAS_String rval = il->get_info_lib_name();
     if (rval == "")
     {
-      rval = CATGETS(Set_UAS_MMDB, 5, "File a Bug");
+      rval = MCATGETS(Set_UAS_MMDB, 5, "File a Bug");
       rval = rval + mmdb().infoLibPath();
     }
     return rval;
@@ -128,7 +128,7 @@ MMDB_Library::name () {
       { 
         char scratch[128];
         snprintf(scratch, sizeof(scratch),
-                 CATGETS(Set_UAS_MMDB, 6, "File a Bug"), (char *)kids[i]->id());
+                 MCATGETS(Set_UAS_MMDB, 6, "File a Bug"), (char *)kids[i]->id());
         f_name = UAS_String(scratch);
       }
     }

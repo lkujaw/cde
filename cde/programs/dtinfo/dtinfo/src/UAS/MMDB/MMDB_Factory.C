@@ -70,7 +70,7 @@ MMDB_Factory::createMMDB (const UAS_String &infoLibPath) {
 	if (!olias_db().validInfoLibPath(infoLibPath)) {
 	    UAS_ErrorMsg badPath;
 	    char buf[BUFSIZ];
-	    (void) snprintf (buf, sizeof(buf), CATGETS(Set_UAS_MMDB, 2,
+	    (void) snprintf (buf, sizeof(buf), MCATGETS(Set_UAS_MMDB, 2,
 					"Invalid Infolib path: %s"),
 					(char *) infoLibPath);
 	    badPath.fErrorMsg = buf;
@@ -83,7 +83,7 @@ MMDB_Factory::createMMDB (const UAS_String &infoLibPath) {
 	} mcatch_any() {
 #if 0
 	    char buf[BUFSIZ];
-	    (void) snprintf (buf, sizeof(buf), CATGETS(Set_UAS_MMDB, 3,
+	    (void) snprintf (buf, sizeof(buf), MCATGETS(Set_UAS_MMDB, 3,
 					"Ignoring invalid Infolib path: %s"),
 					(char *) infoLibPath);
 	    UAS_ErrorMsg theError;
@@ -351,7 +351,7 @@ MMDB_Factory::genInfolibName () {
     static int counter = 0;
     char buf[BUFSIZ];
     (void) snprintf (buf, sizeof(buf),
-		CATGETS(Set_UAS_MMDB, 4, "DtMmdb Library %d"), ++counter);
+		MCATGETS(Set_UAS_MMDB, 4, "DtMmdb Library %d"), ++counter);
     return UAS_String (buf);
 }
 

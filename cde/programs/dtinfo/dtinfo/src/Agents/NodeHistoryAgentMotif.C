@@ -128,7 +128,7 @@ NodeHistoryAgent::create_ui()
   f_shell = WTopLevelShell (window_system().toplevel(), WPopup, "node_hist");
   window_system().register_shell (&f_shell);
 
-  string = CATGETS(Set_NodeHistoryAgent, 1, "Dtinfo: Section History");
+  string = MCATGETS(Set_NodeHistoryAgent, 1, "Dtinfo: Section History");
   XtVaSetValues((Widget)f_shell, XmNtitle, string, NULL);
 
   DECL  (WXmForm,         form,       f_shell,   "form");
@@ -137,20 +137,20 @@ NodeHistoryAgent::create_ui()
   DECLM (WXmPushButton,   help,       form,      "help");
   DECLM (WXmSeparator,    sep,        form,      "separator");
 
-  mtfstring = CATGETS(Set_AgentLabel, 165, "Display");
+  mtfstring = MCATGETS(Set_AgentLabel, 165, "Display");
   XtVaSetValues(f_display, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 12, "Close");
+  mtfstring = MCATGETS(Set_AgentLabel, 12, "Close");
   XtVaSetValues(close, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 48, "Help");
+  mtfstring = MCATGETS(Set_AgentLabel, 48, "Help");
   XtVaSetValues(help, XmNlabelString, (XmString)mtfstring, NULL);
 
   // set up column labels (Book, Section) 
   WXmLabel booklabel	(form, "book", WAutoManage);
   WXmLabel sectionlabel	(form, "section", WAutoManage);
 
-  mtfstring = CATGETS(Set_AgentLabel, 184, "Book");
+  mtfstring = MCATGETS(Set_AgentLabel, 184, "Book");
   XtVaSetValues(booklabel, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 185, "Section");
+  mtfstring = MCATGETS(Set_AgentLabel, 185, "Section");
   XtVaSetValues(sectionlabel, XmNlabelString, (XmString)mtfstring, NULL);
 
   Widget scrolled_list =  XmCreateScrolledList (form, (char*)"list", NULL, 0);

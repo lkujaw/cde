@@ -140,7 +140,7 @@ LogToolTalkMessage (
     
     if (! tt_is_err(status)) return XtsNewString("");;
 
-    errfmt = CATGETS(Set_TtIpcMgr, msg_num, dflt_txt);
+    errfmt = MCATGETS(Set_TtIpcMgr, msg_num, dflt_txt);
     statmsg = tt_status_message(status);
     errmsglen = strlen(errfmt) + strlen(statmsg) + 2;
     errmsg = XtMalloc(errmsglen);
@@ -280,7 +280,7 @@ TtIpcMgr::ipc_init_wp0( XtPointer /* theIpcObj */ )
   {    
       DtMsgLogMessage("dtinfo", DtMsgLogError,
                     "%s: %s", "tt_ptype_declare",
-                    (char *) CATGETS(
+                    (char *) MCATGETS(
                     Set_TtIpcMgr, 9, 
    "The process type 'DtInfoPrint' is not the\nname of an installed process type."));
   }
@@ -364,7 +364,7 @@ TtIpcMgr::do_infolib( char *lib_path )
       // if no file argument specified, get the default
       if( !(lib_path = env().infolibDefault()) )
       {
-          message_mgr().error_dialog( (char*)UAS_String(CATGETS(
+          message_mgr().error_dialog( (char*)UAS_String(MCATGETS(
                     Set_AddLibraryAgent, ERR_INFOLIB_SPEC_FORMAT,
                     "Infolib specification format error." )) ) ;
           return (sts = BAD_ARG_FORMAT);

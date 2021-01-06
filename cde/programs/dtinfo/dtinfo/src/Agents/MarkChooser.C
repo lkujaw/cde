@@ -135,7 +135,7 @@ MarkChooser::create_ui (Widget parent,
   XtVaSetValues(f_form, XmNdialogTitle, (XmString)XmStringLocalized((char*)title_key), NULL);
   XtVaSetValues(f_ok, XmNlabelString, (XmString)XmStringLocalized((char*)ok_key), NULL);
 
-  mtfstring = CATGETS(Set_AgentLabel, 162, "Cancel");
+  mtfstring = MCATGETS(Set_AgentLabel, 162, "Cancel");
   XtVaSetValues(cancel, XmNlabelString, (XmString)mtfstring, NULL);
 
   SET_CALLBACK (f_list,SingleSelection,select);

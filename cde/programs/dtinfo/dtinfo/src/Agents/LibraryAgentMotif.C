@@ -226,7 +226,7 @@ exitCB(Widget, XtPointer client_data, XtPointer)
   if (BookmarkEdit::modified_count() > 0)
     {
       if (! message_mgr().question_dialog(
-		(char*)UAS_String(CATGETS(Set_Messages, 5,
+		(char*)UAS_String(MCATGETS(Set_Messages, 5,
 			"There are unsaved bookmarks open.\n"
 			"Quit without saving them?")),
 		f_shell))
@@ -237,7 +237,7 @@ exitCB(Widget, XtPointer client_data, XtPointer)
   //if (XtIsRealized(f_shell)) XMapRaised(XtDisplay(f_shell), XtWindow(f_shell));
 
   message_mgr().quit_dialog(
-      (char*)UAS_String(CATGETS(Set_Messages, 6, "Quit Dtinfo?")), f_shell);
+      (char*)UAS_String(MCATGETS(Set_Messages, 6, "Quit Dtinfo?")), f_shell);
 }
 
 // /////////////////////////////////////////////////////////////////
@@ -348,7 +348,7 @@ LibraryAgent::create_ui()
   window_system().register_shell ((WTopLevelShell*)f_shell);
 
   // set title of doc_tree
-  string = CATGETS(Set_LibraryAgent, 3, "Dtinfo: Book List");
+  string = MCATGETS(Set_LibraryAgent, 3, "Dtinfo: Book List");
   XtVaSetValues(f_shell, XmNtitle, string, NULL);
 
   // just use "delete_response" instead
@@ -384,9 +384,9 @@ LibraryAgent::create_ui()
   widget = XtCreateManagedWidget("file", xmCascadeButtonGadgetClass, menu_bar, args, n);
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 1, "File")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 1, "File")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 2, ""),
+	*MCATGETS(Set_AgentLabel, 2, ""),
 	NULL);
   help_agent().add_help_cb(widget);
 
@@ -398,9 +398,9 @@ LibraryAgent::create_ui()
 
   XtVaSetValues(f_view,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 4, "View")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 4, "View")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 5, ""),
+	*MCATGETS(Set_AgentLabel, 5, ""),
 	NULL);
 
 #ifdef AllowDetach
@@ -411,9 +411,9 @@ LibraryAgent::create_ui()
   // add labelString to f_detach
   XtVaSetValues(f_detach,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 6, "Detach")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 6, "Detach")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 7, ""),
+	*MCATGETS(Set_AgentLabel, 7, ""),
 	NULL);
 #endif
 
@@ -427,9 +427,9 @@ LibraryAgent::create_ui()
   // add labelString to f_print_as
   XtVaSetValues(f_print_as,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 10, "Print...")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 10, "Print...")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 9, "P"),
+	*MCATGETS(Set_AgentLabel, 9, "P"),
 	NULL);
 
   XtCreateManagedWidget("sep2", xmSeparatorGadgetClass, fileM, 0, 0);
@@ -442,9 +442,9 @@ LibraryAgent::create_ui()
   // add labelString to f_close
   XtVaSetValues(f_close,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 12, "Close")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 12, "Close")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 13, ""),
+	*MCATGETS(Set_AgentLabel, 13, ""),
 	NULL);
 
   widget = XtCreateManagedWidget("exit", xmPushButtonGadgetClass, fileM, 0, 0);
@@ -452,9 +452,9 @@ LibraryAgent::create_ui()
   // add labelString to "exit"
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 14, "Exit")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 14, "Exit")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 15, ""),
+	*MCATGETS(Set_AgentLabel, 15, ""),
 	NULL);
 
   // edit menu
@@ -467,9 +467,9 @@ LibraryAgent::create_ui()
   // add labelString to "edit"
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 16, "Edit")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 16, "Edit")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 17, ""),
+	*MCATGETS(Set_AgentLabel, 17, ""),
 	NULL);
   help_agent().add_help_cb(widget);
 
@@ -479,9 +479,9 @@ LibraryAgent::create_ui()
   // add labelString to "copy"
   XtVaSetValues(f_copy,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 18, "Copy")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 18, "Copy")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 19, ""),
+	*MCATGETS(Set_AgentLabel, 19, ""),
 	NULL);
 
   widget = XtCreateManagedWidget("add", xmPushButtonWidgetClass, editM, 0, 0);
@@ -489,9 +489,9 @@ LibraryAgent::create_ui()
   // add labelString to "add"
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 20, "Add...")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 20, "Add...")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 21, ""),
+	*MCATGETS(Set_AgentLabel, 21, ""),
 	NULL);
 
   f_remove = XtCreateManagedWidget("remove",
@@ -500,9 +500,9 @@ LibraryAgent::create_ui()
   // add labelString to "remove"
   XtVaSetValues(f_remove,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 22, "Remove")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 22, "Remove")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 23, ""),
+	*MCATGETS(Set_AgentLabel, 23, ""),
 	NULL);
 
   // options menu
@@ -515,9 +515,9 @@ LibraryAgent::create_ui()
   // add labelString to "options"
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 24, "Options")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 24, "Options")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 25, ""),
+	*MCATGETS(Set_AgentLabel, 25, ""),
 	NULL);
   help_agent().add_help_cb(widget);
 
@@ -527,9 +527,9 @@ LibraryAgent::create_ui()
   // add labelString to "preferences"
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 26, "Preferences...")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 26, "Preferences...")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 27, ""),
+	*MCATGETS(Set_AgentLabel, 27, ""),
 	NULL);
 
   XtCreateManagedWidget("sep1", xmSeparatorGadgetClass, optionsM, 0, 0);
@@ -542,9 +542,9 @@ LibraryAgent::create_ui()
   // add labelString to "auto_track"
   XtVaSetValues(f_auto_track,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 28, "Auto Track")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 28, "Auto Track")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 29, ""),
+	*MCATGETS(Set_AgentLabel, 29, ""),
 	NULL);
 
   Widget tool_barT = XtCreateManagedWidget("show_tool_bar",
@@ -555,9 +555,9 @@ LibraryAgent::create_ui()
   // add labelString to "show_tool_bar"
   XtVaSetValues(tool_barT,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 30, "Show ToolBar")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 30, "Show ToolBar")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 31, ""),
+	*MCATGETS(Set_AgentLabel, 31, ""),
 	NULL);
 
   Widget search_areaT = XtCreateManagedWidget("show_search_area",
@@ -568,9 +568,9 @@ LibraryAgent::create_ui()
   // add labelString to "show_search_area"
   XtVaSetValues(search_areaT,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 32, "Show Search Area")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 32, "Show Search Area")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 33, ""),
+	*MCATGETS(Set_AgentLabel, 33, ""),
 	NULL);
 
   // windows menu
@@ -583,9 +583,9 @@ LibraryAgent::create_ui()
   // add labelString to "windows"
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 34, "Windows")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 34, "Windows")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 35, ""),
+	*MCATGETS(Set_AgentLabel, 35, ""),
 	NULL);
   help_agent().add_help_cb(widget);
 
@@ -594,9 +594,9 @@ LibraryAgent::create_ui()
   XtAddCallback(widget, XmNactivateCallback, mark_listCB, 0);
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 40, "Marks List")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 40, "Marks List")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 41, ""),
+	*MCATGETS(Set_AgentLabel, 41, ""),
 	NULL);
 
   widget = XtCreateManagedWidget("section_history", xmPushButtonGadgetClass,
@@ -604,9 +604,9 @@ LibraryAgent::create_ui()
   XtAddCallback(widget, XmNactivateCallback, section_historyCB, 0);
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 38, "Section History")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 38, "Section History")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 39, ""),
+	*MCATGETS(Set_AgentLabel, 39, ""),
 	NULL);
 
   widget = XtCreateManagedWidget("search_history", xmPushButtonGadgetClass,
@@ -614,9 +614,9 @@ LibraryAgent::create_ui()
   XtAddCallback(widget, XmNactivateCallback, search_historyCB, 0);
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 42, "Search History")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 42, "Search History")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 43, ""),
+	*MCATGETS(Set_AgentLabel, 43, ""),
 	NULL);
 
   widget = XtCreateManagedWidget("query", xmPushButtonGadgetClass,
@@ -624,9 +624,9 @@ LibraryAgent::create_ui()
   XtAddCallback(widget, XmNactivateCallback, query_editorCB, 0);
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 44, "Query Editor")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 44, "Query Editor")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 45, ""),
+	*MCATGETS(Set_AgentLabel, 45, ""),
 	NULL);
 
   widget = XtCreateManagedWidget("scope", xmPushButtonGadgetClass,
@@ -634,9 +634,9 @@ LibraryAgent::create_ui()
   XtAddCallback(widget, XmNactivateCallback, scope_editorCB, 0);
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 46, "Scope Editor")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 46, "Scope Editor")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 47, ""),
+	*MCATGETS(Set_AgentLabel, 47, ""),
 	NULL);
 
   Widget helpM = XmCreatePulldownMenu(menu_bar, (char*)"help_menu", 0, 0);
@@ -648,9 +648,9 @@ LibraryAgent::create_ui()
 			      menu_bar, args, n);
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 48, "Help")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 48, "Help")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 49, ""),
+	*MCATGETS(Set_AgentLabel, 49, ""),
 	NULL);
   help_agent().add_help_cb(widget);
   n = 0;
@@ -663,9 +663,9 @@ LibraryAgent::create_ui()
                               helpM, 0, 0);
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 50, "On Item...")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 50, "On Item...")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 51, ""),
+	*MCATGETS(Set_AgentLabel, 51, ""),
 	NULL);
 
 #endif
@@ -677,9 +677,9 @@ LibraryAgent::create_ui()
 			      helpM, 0, 0);
   XtVaSetValues(on_overview,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 257, "Overview")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 257, "Overview")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 258, ""),
+	*MCATGETS(Set_AgentLabel, 258, ""),
 	NULL);
 
   XtCreateManagedWidget("sep", xmSeparatorGadgetClass,
@@ -688,26 +688,26 @@ LibraryAgent::create_ui()
 			      helpM, 0, 0);
   XtVaSetValues(on_tasks,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 249, "Tasks")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 249, "Tasks")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 250, ""),
+	*MCATGETS(Set_AgentLabel, 250, ""),
 	NULL);
 
   on_reference = XtCreateManagedWidget("on_reference", xmPushButtonGadgetClass,
 			      helpM, 0, 0);
   XtVaSetValues(on_reference,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 251, "Reference")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 251, "Reference")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 252, ""),
+	*MCATGETS(Set_AgentLabel, 252, ""),
 	NULL);
   on_item = XtCreateManagedWidget("on_item", xmPushButtonGadgetClass,
 			      helpM, 0, 0);
   XtVaSetValues(on_item,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 50, "On Item...")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 50, "On Item...")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 51, ""),
+	*MCATGETS(Set_AgentLabel, 51, ""),
 	NULL);
   XtCreateManagedWidget("sep", xmSeparatorGadgetClass,
 			      helpM, 0, 0);
@@ -715,9 +715,9 @@ LibraryAgent::create_ui()
 			      helpM, 0, 0);
   XtVaSetValues(on_help,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 253, "Using Help")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 253, "Using Help")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 254, ""),
+	*MCATGETS(Set_AgentLabel, 254, ""),
 	NULL);
   XtCreateManagedWidget("sep", xmSeparatorGadgetClass,
 			      helpM, 0, 0);
@@ -725,9 +725,9 @@ LibraryAgent::create_ui()
 			      helpM, 0, 0);
   XtVaSetValues(on_about,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 255, "About Information Manager")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 255, "About Information Manager")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 256, ""),
+	*MCATGETS(Set_AgentLabel, 256, ""),
 	NULL);
 
   // WXmPushButtonGadget tmp_pbg(tmp);
@@ -750,7 +750,7 @@ LibraryAgent::create_ui()
 				  tool_bar, 0, 0);
   XtAddCallback(f_view2, XmNactivateCallback, display_nodeCB, this);
   help_text = new UAS_String(
-		CATGETS(Set_AgentQHelp, 52, "Display selected section"));
+		MCATGETS(Set_AgentQHelp, 52, "Display selected section"));
   add_quick_help(f_view2, (char*)*help_text);
   f_help_text.insert_item(help_text);
   help_agent().add_help_cb(f_view2);
@@ -762,7 +762,7 @@ LibraryAgent::create_ui()
   f_detach2 = XtCreateManagedWidget("detach", xmPushButtonWidgetClass,
 				    tool_bar, 0, 0);
   XtAddCallback(f_detach2, XmNactivateCallback, detach_subtreeCB, this);
-  help_text = new UAS_String(CATGETS(Set_AgentQHelp, 53, "Display selected section in a separate Book List"));
+  help_text = new UAS_String(MCATGETS(Set_AgentQHelp, 53, "Display selected section in a separate Book List"));
   add_quick_help(f_detach2, (char*)*help_text);
   f_help_text.insert_item(help_text);
 #endif
@@ -770,7 +770,7 @@ LibraryAgent::create_ui()
   f_print2 = XtCreateManagedWidget("print", xmPushButtonWidgetClass,
 				   tool_bar, 0, 0);
   XtAddCallback(f_print2, XmNactivateCallback, printCB, this);
-  help_text = new UAS_String(CATGETS(Set_AgentQHelp, 54,
+  help_text = new UAS_String(MCATGETS(Set_AgentQHelp, 54,
 				     "Print selected section"));
   add_quick_help(f_print2, (char*)*help_text);
   f_help_text.insert_item(help_text);
@@ -778,7 +778,7 @@ LibraryAgent::create_ui()
 
   widget = XtCreateManagedWidget("add", xmPushButtonWidgetClass, tool_bar, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, add_libraryCB, this);
-  help_text = new UAS_String(CATGETS(Set_AgentQHelp, 55,
+  help_text = new UAS_String(MCATGETS(Set_AgentQHelp, 55,
 				"Open an additional information library"));
   add_quick_help(widget, (char*)*help_text);
   f_help_text.insert_item(help_text);
@@ -787,7 +787,7 @@ LibraryAgent::create_ui()
   f_remove2 = XtCreateManagedWidget("remove", xmPushButtonWidgetClass,
 				    tool_bar, 0, 0);
   XtAddCallback(f_remove2, XmNactivateCallback, remove_libraryCB, this);
-  help_text = new UAS_String(CATGETS(Set_AgentQHelp, 56,
+  help_text = new UAS_String(MCATGETS(Set_AgentQHelp, 56,
 				"Close selected information library"));
   add_quick_help(f_remove2, (char*)*help_text);
   f_help_text.insert_item(help_text);
@@ -796,7 +796,7 @@ LibraryAgent::create_ui()
   widget = XtCreateManagedWidget("query", xmPushButtonWidgetClass,
 			      tool_bar, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, query_editorCB, 0);
-  help_text = new UAS_String(CATGETS(Set_AgentQHelp, 57,
+  help_text = new UAS_String(MCATGETS(Set_AgentQHelp, 57,
 				"Perform a search using the Query Editor"));
   add_quick_help(widget, (char*)*help_text);
   f_help_text.insert_item(help_text);
@@ -806,7 +806,7 @@ LibraryAgent::create_ui()
   widget = XtCreateManagedWidget("marks_list", xmPushButtonWidgetClass,
 			      tool_bar, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, mark_listCB, 0);
-  help_text = new UAS_String(CATGETS(Set_AgentQHelp, 58,
+  help_text = new UAS_String(MCATGETS(Set_AgentQHelp, 58,
 				"Display the bookmarks and notes list"));
   add_quick_help(widget, (char*)*help_text);
   f_help_text.insert_item(help_text);
@@ -862,7 +862,7 @@ LibraryAgent::create_ui()
   XtSetArg(args[n], XmNbackground, bg); n++;
   f_status_text = XtCreateManagedWidget("text", xmTextFieldWidgetClass,
 					message, args, n);
-  string = CATGETS(Set_LibraryAgent, 63, "Welcome to Dtinfo!");
+  string = MCATGETS(Set_LibraryAgent, 63, "Welcome to Dtinfo!");
   XtVaSetValues(f_status_text, XmNvalue, string, NULL);
 
   // Search area
@@ -873,9 +873,9 @@ LibraryAgent::create_ui()
   XtManageChild(widget = XmCreateOptionMenu(search_area, (char*)"scope", args, n));
   XtVaSetValues(widget,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 59, "Search:")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 59, "Search:")),
 	NULL);
-  help_text = new UAS_String(CATGETS(Set_AgentQHelp, 60,
+  help_text = new UAS_String(MCATGETS(Set_AgentQHelp, 60,
 				     "Specify search scope"));
   add_quick_help(widget, (char*)*help_text);
   f_help_text.insert_item(help_text);
@@ -911,9 +911,9 @@ LibraryAgent::create_ui()
   XtAddCallback(widget, XmNactivateCallback, scope_editorCB, 0);
   XtVaSetValues(widget,
     XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 61, "Scope Editor")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 61, "Scope Editor")),
     NULL);
-  help_text = new UAS_String(CATGETS(Set_AgentQHelp, 62,
+  help_text = new UAS_String(MCATGETS(Set_AgentQHelp, 62,
 			     "Specify search scope using the Scope Editor"));
   add_quick_help(widget, (char*)*help_text);
   f_help_text.insert_item(help_text);
@@ -1066,11 +1066,11 @@ LibraryAgent::search_help (Widget, XtPointer client_data,
 
   if (help_text == NULL) {
     UAS_Pointer<UAS_String> str;
-    str = new UAS_String(CATGETS(Set_AgentQHelp, 64, "Search %s"));
+    str = new UAS_String(MCATGETS(Set_AgentQHelp, 64, "Search %s"));
     help_text = (char*)*str;
     agent->f_help_text.insert_item(str);
 
-    str = new UAS_String(CATGETS(Set_LibraryAgent, 65, "Current Section"));
+    str = new UAS_String(MCATGETS(Set_LibraryAgent, 65, "Current Section"));
     default_scope = (char*)*str;
     agent->f_help_text.insert_item(str);
   }
@@ -1169,7 +1169,7 @@ LibraryAgent::add_library(char* newLib, Widget parent)
         ((newLib != NULL) && ( *newLib == '\0' )) )
     {
         message_mgr().error_dialog(
-                (char*)UAS_String(CATGETS( Set_AddLibraryAgent, 6,
+                (char*)UAS_String(MCATGETS( Set_AddLibraryAgent, 6,
                       "No Infolib specified." )), parent);
         return (sts = BAD_ARG_FORMAT);
     }
@@ -1210,7 +1210,7 @@ LibraryAgent::add_library(char* newLib, Widget parent)
             else
             {
                 message_mgr().error_dialog (
-                  (char*)UAS_String(CATGETS(Set_AddLibraryAgent, 5,
+                  (char*)UAS_String(MCATGETS(Set_AddLibraryAgent, 5,
                        "Infolib specification format error.")),
 		  parent);
                 sts = BAD_ARG_FORMAT ;
@@ -1219,7 +1219,7 @@ LibraryAgent::add_library(char* newLib, Widget parent)
         }
         else {
             message_mgr().error_dialog (
-                (char*)UAS_String(CATGETS(Set_AddLibraryAgent, 2,
+                (char*)UAS_String(MCATGETS(Set_AddLibraryAgent, 2,
                      "Please enter an absolute path to the infolib.")),
 	        parent);
         }
@@ -1231,7 +1231,7 @@ LibraryAgent::add_library(char* newLib, Widget parent)
             // if returned to reach here, error msg probably given by
             // MMDB interface:   "Invalid MMDB infolib path: <>"
 	    message_mgr().error_dialog (
-	      (char*)UAS_String(CATGETS(Set_AddLibraryAgent, 3,
+	      (char*)UAS_String(MCATGETS(Set_AddLibraryAgent, 3,
                      "Infolib open failed. Check the path specified.")),
 	      parent);
 #endif
@@ -1246,7 +1246,7 @@ LibraryAgent::add_library(char* newLib, Widget parent)
         if( d != (const int)0 )
         {
           message_mgr().error_dialog(
-                (char*)UAS_String(CATGETS(Set_AddLibraryAgent, 4,
+                (char*)UAS_String(MCATGETS(Set_AddLibraryAgent, 4,
                        "Infolib creation failed.")),
 		parent) ;
         }

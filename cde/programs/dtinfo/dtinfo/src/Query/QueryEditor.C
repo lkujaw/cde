@@ -278,7 +278,7 @@ QueryEditor::create_ui()
   f_shell = WTopLevelShell(window_system().toplevel(), WPopup, "query_editor");
   window_system().register_shell (&f_shell);
 
-  string = CATGETS(Set_QueryEditor, 1, "Dtinfo: Query Editor");
+  string = MCATGETS(Set_QueryEditor, 1, "Dtinfo: Query Editor");
   XtVaSetValues((Widget)f_shell, XmNtitle, string, NULL);
 
   // Main form and menu bar. 
@@ -291,7 +291,7 @@ QueryEditor::create_ui()
   XtSetArg(args[n], XmNsubMenuId, (Widget) scope_menu); n++;
   f_scope_option = WXmOptionMenu    (form,       (char*)"scope_option", AM, args, n);
 
-  mtfstring = CATGETS(Set_AgentLabel, 212, "Scope Name");
+  mtfstring = MCATGETS(Set_AgentLabel, 212, "Scope Name");
   XtVaSetValues(f_scope_option, XmNlabelString, (XmString)mtfstring, NULL);
 
   // Menu definitions.   how about using AddPushButton (name, obj, fun)??
@@ -308,23 +308,23 @@ QueryEditor::create_ui()
   f_undo_btn = WXmPushButton        (edit_menu,  "undo",             AM);
   f_redo_btn = WXmPushButton        (edit_menu,  "redo",             AM);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 16, "Edit");
-  mnemonic  = *CATGETS(Set_AgentLabel, 17, "E");
+  mtfstring =  MCATGETS(Set_AgentLabel, 16, "Edit");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 17, "E");
   XtVaSetValues(edit_cascade, XmNlabelString, (XmString)mtfstring,
 			      XmNmnemonic, mnemonic, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 224, "Cut");
+  mtfstring =  MCATGETS(Set_AgentLabel, 224, "Cut");
   XtVaSetValues(f_cut_btn, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 18, "Copy");
+  mtfstring =  MCATGETS(Set_AgentLabel, 18, "Copy");
   XtVaSetValues(f_copy_btn, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 225, "Paste");
+  mtfstring =  MCATGETS(Set_AgentLabel, 225, "Paste");
   XtVaSetValues(f_paste_btn, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 226, "Group");
+  mtfstring =  MCATGETS(Set_AgentLabel, 226, "Group");
   XtVaSetValues(f_group_btn, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 227, "Ungroup");
+  mtfstring =  MCATGETS(Set_AgentLabel, 227, "Ungroup");
   XtVaSetValues(f_ungroup_btn, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 228, "Undo");
+  mtfstring =  MCATGETS(Set_AgentLabel, 228, "Undo");
   XtVaSetValues(f_undo_btn, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 229, "Redo");
+  mtfstring =  MCATGETS(Set_AgentLabel, 229, "Redo");
   XtVaSetValues(f_redo_btn, XmNlabelString, (XmString)mtfstring, NULL);
 
   // Button area at the bottom 
@@ -339,17 +339,17 @@ QueryEditor::create_ui()
   WXmPushButton help                (form,       "help",             AM);
   WXmSeparator separator            (form,       "separator",        AM);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 92, "History");
+  mtfstring =  MCATGETS(Set_AgentLabel, 92, "History");
   XtVaSetValues(history, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 102, "Search");
+  mtfstring =  MCATGETS(Set_AgentLabel, 102, "Search");
   XtVaSetValues(f_search_btn, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 231, "Clear All");
+  mtfstring =  MCATGETS(Set_AgentLabel, 231, "Clear All");
   XtVaSetValues(clear, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 46, "Scope Editor");
+  mtfstring =  MCATGETS(Set_AgentLabel, 46, "Scope Editor");
   XtVaSetValues(scope, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 12, "Close");
+  mtfstring =  MCATGETS(Set_AgentLabel, 12, "Close");
   XtVaSetValues(cancel, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 48, "Help");
+  mtfstring =  MCATGETS(Set_AgentLabel, 48, "Help");
   XtVaSetValues(help, XmNlabelString, (XmString)mtfstring, NULL);
 
   help_agent().add_activate_help (help, (char*)"query_editor_help");
@@ -359,7 +359,7 @@ QueryEditor::create_ui()
   WXmForm qform                     (pane,       "qform"               );
   WXmLabel qlabel                   (qform,      "qlabel",           AM);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 230, "Query");
+  mtfstring =  MCATGETS(Set_AgentLabel, 230, "Query");
   XtVaSetValues(qlabel, XmNlabelString, (XmString)mtfstring, NULL);
   
   f_query_text = WXmScrolledText    (qform,      (char*)"qtext",     AM);
@@ -545,7 +545,7 @@ QueryEditor::modify_verify (WCallback *wcb)
 //  tvp->doit = False;
 
 //  message_mgr().warning_dialog (
-//	(char*)UAS_String(CATGETS(Set_Messages, 47,
+//	(char*)UAS_String(MCATGETS(Set_Messages, 47,
 //				"This is a display-only field.")));
 }
 

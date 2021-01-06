@@ -616,7 +616,7 @@ DtSR_SearchEngine::search(UAS_String oql, UAS_SearchScope& scope,
 	    if (DtSr_res)
 		DtSearchFreeResults(&DtSr_res);
 
-	    UAS_String msg(CATGETS(Set_DtSR_SearchEngine, 1,
+	    UAS_String msg(MCATGETS(Set_DtSR_SearchEngine, 1,
 				"DtSearch does not support the query."));
 	    DtSearchFreeMessages();
 

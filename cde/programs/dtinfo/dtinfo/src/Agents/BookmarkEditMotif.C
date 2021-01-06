@@ -218,7 +218,7 @@ BookmarkEdit::create_ui()
     new WTopLevelShell (window_system().toplevel(), WPopup, "bookmark_edit");
   window_system().register_shell (f_shell);
 
-  string = CATGETS(Set_BookmarkEdit, 1, "Dtinfo: Bookmark Editor");
+  string = MCATGETS(Set_BookmarkEdit, 1, "Dtinfo: Bookmark Editor");
   XtVaSetValues(*f_shell, XmNtitle, string, NULL);
 
   WXmForm              form        (*f_shell, "form");
@@ -226,28 +226,28 @@ BookmarkEdit::create_ui()
   f_name_text = new WXmTextField   (form,     "name_text",   WAutoManage);
   WXmLabelGadget       notes       (form,     "notes",       WAutoManage);
 
-  mtfstring = CATGETS(Set_AgentLabel, 163, "Name");
+  mtfstring = MCATGETS(Set_AgentLabel, 163, "Name");
   XtVaSetValues(name, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 164, "Notes");
+  mtfstring = MCATGETS(Set_AgentLabel, 164, "Notes");
   XtVaSetValues(notes, XmNlabelString, (XmString)mtfstring, NULL);
 
   // NOTE: Don't add spaces after "," because of stupid CPP.
   f_ok = WXmPushButtonGadget (form, "ok", WAutoManage);
   ON_ACTIVATE (f_ok, ok);
 
-  mtfstring = CATGETS(Set_AgentLabel, 161, "OK");
+  mtfstring = MCATGETS(Set_AgentLabel, 161, "OK");
   XtVaSetValues(f_ok, XmNlabelString, (XmString)mtfstring, NULL);
 
   BUTTON (form,view);
   BUTTON (form,cancel);
 
-  mtfstring = CATGETS(Set_AgentLabel, 165, "Display");
+  mtfstring = MCATGETS(Set_AgentLabel, 165, "Display");
   XtVaSetValues(view, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 162, "Cancel");
+  mtfstring = MCATGETS(Set_AgentLabel, 162, "Cancel");
   XtVaSetValues(cancel, XmNlabelString, (XmString)mtfstring, NULL);
 
   WXmPushButtonGadget help (form, "help", WAutoManage);
-  mtfstring = CATGETS(Set_AgentLabel, 48, "Help");
+  mtfstring = MCATGETS(Set_AgentLabel, 48, "Help");
   XtVaSetValues(help, XmNlabelString, (XmString)mtfstring, NULL);
   help_agent().add_activate_help (help, (char*)"bookmark_edit_help");
   f_wm_delete_callback =
@@ -301,7 +301,7 @@ BookmarkEdit::ok()
       mcatch_any()
 	{
 	  message_mgr().error_dialog(
-		CATGETS(Set_BookmarkEdit, 1, "Dtinfo: Bookmark Editor"));
+		MCATGETS(Set_BookmarkEdit, 1, "Dtinfo: Bookmark Editor"));
 	}
       end_try;
     }
@@ -334,7 +334,7 @@ BookmarkEdit::cancel()
 
   if (f_modified)
     confirmed = message_mgr().question_dialog(
-                  (char*)UAS_String(CATGETS(Set_Messages, 2,
+                  (char*)UAS_String(MCATGETS(Set_Messages, 2,
 						"Abandon changes?")));
 
   if (confirmed)

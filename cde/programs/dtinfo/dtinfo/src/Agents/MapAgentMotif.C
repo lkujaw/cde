@@ -346,7 +346,7 @@ MapAgent::display (UAS_Pointer<UAS_Common> &doc_ptr, bool popup)
   if (this_button == NULL)
     {
       message_mgr().
-	error_dialog (CATGETS(Set_Messages, 7, "File a Bug"));
+	error_dialog (MCATGETS(Set_Messages, 7, "File a Bug"));
       return;
     }
   else
@@ -432,7 +432,7 @@ MapAgent::display (UAS_Pointer<UAS_Common> &doc_ptr, bool popup)
   // Manage all the children.
   MapButton::ManageKids();
 
-  UAS_String buffer = CATGETS(Set_MapAgent, 2, "Dtinfo: ");
+  UAS_String buffer = MCATGETS(Set_MapAgent, 2, "Dtinfo: ");
   buffer = buffer + doc_ptr->title();
   f_shell->Title ((char*)buffer);
 
@@ -481,7 +481,7 @@ MapAgent::create_ui()
   window_system().register_shell (f_shell);
 
   XtVaSetValues(*f_shell, XmNtitle,
-	        CATGETS(Set_MapAgent, 1, "Dtinfo: Local Map"), NULL);
+	        MCATGETS(Set_MapAgent, 1, "Dtinfo: Local Map"), NULL);
   WindowGeometry wg = pref_mgr().get_geometry (PrefMgr::MapGeometry);
   f_shell->Set(WArgList(XmNwidth, wg.width,
 			XmNheight, wg.height,
@@ -496,9 +496,9 @@ MapAgent::create_ui()
   help_agent().add_activate_help (help, (char*)"map_help");
 
   XtVaSetValues(close, XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 12, "Close")), NULL);
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 12, "Close")), NULL);
   XtVaSetValues(help, XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 48, "Help")), NULL);
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 48, "Help")), NULL);
 
   WXmPanedWindow pane (rootform, "pane");
   WXmForm topform (pane, "topform");
@@ -512,7 +512,7 @@ MapAgent::create_ui()
 
   f_lock = new WXmToggleButton (topform, "lock", WAutoManage);
   XtVaSetValues(*f_lock, XmNlabelString,
-     (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 196, "Auto Update")),
+     (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 196, "Auto Update")),
                          XmNindicatorSize, 15, NULL);
   bool lock_status = pref_mgr().get_boolean (PrefMgr::MapAutoUpdate);
   f_lock->Set(lock_status);

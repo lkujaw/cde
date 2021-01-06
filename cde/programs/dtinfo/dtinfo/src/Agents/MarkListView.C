@@ -134,7 +134,7 @@ MarkListView::create_ui()
   f_shell = WTopLevelShell (window_system().toplevel(), WPopup, "mark_list");
   window_system().register_shell(&f_shell);
 
-  string = CATGETS(Set_MarkList, 1, "Dtinfo: User Marks List");
+  string = MCATGETS(Set_MarkList, 1, "Dtinfo: User Marks List");
   XtVaSetValues((Widget)f_shell, XmNtitle, string, NULL);
 
   DECL  (WXmForm,         form,         f_shell,      "form");
@@ -148,15 +148,15 @@ MarkListView::create_ui()
   f_list = WXmList (list);
   f_list.Manage();
 
-  mtfstring = CATGETS(Set_AgentLabel, 165, "Display");
+  mtfstring = MCATGETS(Set_AgentLabel, 165, "Display");
   XtVaSetValues(f_view, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 16, "Edit");
+  mtfstring = MCATGETS(Set_AgentLabel, 16, "Edit");
   XtVaSetValues(f_edit, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 183, "Delete");
+  mtfstring = MCATGETS(Set_AgentLabel, 183, "Delete");
   XtVaSetValues(f_delete, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 12, "Close");
+  mtfstring = MCATGETS(Set_AgentLabel, 12, "Close");
   XtVaSetValues(close, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 48, "Help");
+  mtfstring = MCATGETS(Set_AgentLabel, 48, "Help");
   XtVaSetValues(help, XmNlabelString, (XmString)mtfstring, NULL);
 
   SET_CALLBACK (f_list,SingleSelection,select);

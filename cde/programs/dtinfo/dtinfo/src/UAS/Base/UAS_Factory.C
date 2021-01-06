@@ -111,13 +111,13 @@ UAS_Factory::create (const UAS_String &locator) {
     locator.split (':', access, rest);
     if (access == "") {
 	throw (UAS_Exception((char*)UAS_String(
-		CATGETS(Set_UAS_Base, 1,
+		MCATGETS(Set_UAS_Base, 1,
 			"No access part provided in locator (URL)."))));
     }
     UAS_Factory *theFactory = UAS_Factory::lookup(access);
     if (theFactory == 0) {
 	char buf[BUFSIZ];
-	(void) snprintf (buf, sizeof(buf), CATGETS(Set_UAS_Base, 2,
+	(void) snprintf (buf, sizeof(buf), MCATGETS(Set_UAS_Base, 2,
 				     "Don't know how to create %s: objects"),
 			(char*)access);
 

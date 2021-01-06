@@ -293,7 +293,7 @@ SearchScopeList::restore()
   // Create the scope for the Current Section
   //
   s = f_search_scope_agent->create_scope(
-  	(char*)UAS_String(CATGETS(Set_Messages, 30, "Current Section")),
+  	(char*)UAS_String(MCATGETS(Set_Messages, 30, "Current Section")),
   	bcases, f_section, FALSE);
   s->set_read_only();
 
@@ -302,7 +302,7 @@ SearchScopeList::restore()
   //
   bcases = f_search_scope_agent->bookcase_list();
   s = f_search_scope_agent->create_scope(
-	(char*)UAS_String(CATGETS(Set_SearchScopeAgent, 4, "All Libraries")),
+	(char*)UAS_String(MCATGETS(Set_SearchScopeAgent, 4, "All Libraries")),
 	bcases, f_all, FALSE);
   s->set_read_only();
   bcases.clear();
@@ -325,7 +325,7 @@ SearchScopeList::restore()
   // yet been realized. Just set the flag so dialog can be
   // shown later.
   //   message_mgr().warning_dialog (
-  //	(char*)UAS_String(CATGETS(Set_Messages, 31,
+  //	(char*)UAS_String(MCATGETS(Set_Messages, 31,
   //	"Ignoring invalid scopes in your profile.")));
 }
 

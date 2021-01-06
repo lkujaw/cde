@@ -240,7 +240,7 @@ IcccmAgent::targetCB(Widget w, XtPointer ia, Atom *selection,
 							length, format);
     if (atom == None) // failed to resolve the best atom
 	message_mgr().info_dialog ((char*)
-		UAS_String(CATGETS(Set_Messages, 4,
+		UAS_String(MCATGETS(Set_Messages, 4,
 				"There is no text selected.\n"
 				"Select some text, then try again.")));
 }
@@ -255,7 +255,7 @@ IcccmAgent::valueCB(Widget w, XtPointer ia, Atom *selection,
 
     if (atom == None) // failed to resolve the best atom
 	message_mgr().info_dialog ((char*)
-		UAS_String(CATGETS(Set_Messages, 4,
+		UAS_String(MCATGETS(Set_Messages, 4,
 				"There is no text selected.\n"
 				"Select some text, then try again.")));
 }

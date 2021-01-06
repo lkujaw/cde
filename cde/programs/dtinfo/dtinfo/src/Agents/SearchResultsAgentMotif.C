@@ -247,8 +247,8 @@ SearchResultsAgent::compose_header()
   WXmLabel* header =
 	(WXmLabel*)XtNameToWidget((Widget)*f_list_form, "header");
 
-  WXmString bookString = CATGETS(Set_AgentLabel, 184, "Book");
-  WXmString sectString = CATGETS(Set_AgentLabel, 185, "Section");
+  WXmString bookString = MCATGETS(Set_AgentLabel, 184, "Book");
+  WXmString sectString = MCATGETS(Set_AgentLabel, 185, "Section");
 
   WXmString bookPostfix(
 	window_system().make_space(
@@ -313,7 +313,7 @@ SearchResultsAgent::display (ResultID *results)
   // NOTE: Using bogus internal string below: 
   if (f_scale == 0)
     message_mgr().warning_dialog (
-	(char*)UAS_String(CATGETS(Set_Messages, 69,
+	(char*)UAS_String(MCATGETS(Set_Messages, 69,
 			"Search results weighting are not available.")));
   
   /* -------- Display the number of hits. -------- */
@@ -452,7 +452,7 @@ SearchResultsAgent::create_window()
   XmStringLocalized mtfstring;
   String	    string;
 
-  string = CATGETS(Set_SearchResultsAgent, 1, "Dtinfo: Search Results");
+  string = MCATGETS(Set_SearchResultsAgent, 1, "Dtinfo: Search Results");
   XtVaSetValues((Widget)*f_shell, XmNtitle, string, NULL);
 
   help_agent().add_activate_help(f_help, (char*)"results_help");
@@ -477,15 +477,15 @@ SearchResultsAgent::create_window()
   f_scope_label = (WXmLabel*)(Widget) WXmLabel (*f_form,   "scope_name", AM);
   WXmLabel query_label (*f_form, "query_label", AM);
 
-  mtfstring = CATGETS(Set_AgentLabel, 219, "Retrieved:");
+  mtfstring = MCATGETS(Set_AgentLabel, 219, "Retrieved:");
   XtVaSetValues(retrieved, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 194, "File a Bug");
+  mtfstring = MCATGETS(Set_AgentLabel, 194, "File a Bug");
   XtVaSetValues((Widget)f_hits_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 220, "Scope:");
+  mtfstring = MCATGETS(Set_AgentLabel, 220, "Scope:");
   XtVaSetValues(scope, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 194, "File a Bug");
+  mtfstring = MCATGETS(Set_AgentLabel, 194, "File a Bug");
   XtVaSetValues((Widget)f_scope_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 221, "Query:");
+  mtfstring = MCATGETS(Set_AgentLabel, 221, "Query:");
   XtVaSetValues(query_label, XmNlabelString, (XmString)mtfstring, NULL);
   
   Widget textw = XmCreateScrolledText (*f_pane, (char*)"query_text", NULL, 0);
@@ -600,7 +600,7 @@ SearchResultsAgent::view_activate (WCallback *)
   }
   else {
       message_mgr().warning_dialog (
-	  (char*)UAS_String(CATGETS(Set_Messages, 51,
+	  (char*)UAS_String(MCATGETS(Set_Messages, 51,
 	  "The document or section requested is not available.")));
   }
 }
@@ -683,6 +683,6 @@ SearchResultsAgent::modify_verify (WCallback *wcb)
   tvp->doit = False;
 
   message_mgr().warning_dialog (
-	(char*)UAS_String(CATGETS(Set_Messages, 47,
+	(char*)UAS_String(MCATGETS(Set_Messages, 47,
 					"This is a display-only field.")));
 }

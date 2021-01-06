@@ -272,7 +272,7 @@ customizePrintSetupBox(AppPrintData *p)
 					     XmNmarginHeight, 2,
 					     NULL);
 
-    label = XmStringGenerate(CATGETS(Set_AgentLabel, 205, "Number of Sections"), 
+    label = XmStringGenerate(MCATGETS(Set_AgentLabel, 205, "Number of Sections"),
 			     NULL, XmCHARSET_TEXT, NULL);
 
     XtVaCreateManagedWidget("how_many_title",
@@ -289,7 +289,7 @@ customizePrintSetupBox(AppPrintData *p)
 					    how_many_frame,
 					    NULL);
 
-    label = XmStringGenerate(CATGETS(Set_AgentLabel, 206, "Selected:"),
+    label = XmStringGenerate(MCATGETS(Set_AgentLabel, 206, "Selected:"),
 			     NULL, XmCHARSET_TEXT, NULL);
 
     selected_label = XtVaCreateManagedWidget("selected_label", 
@@ -314,7 +314,7 @@ customizePrintSetupBox(AppPrintData *p)
 					       XmNtopOffset, 2,
 					       NULL);
 
-    label = XmStringGenerate(CATGETS(Set_AgentLabel, 207, "To Be Printed:"),
+    label = XmStringGenerate(MCATGETS(Set_AgentLabel, 207, "To Be Printed:"),
 			     NULL, XmCHARSET_TEXT, NULL);
     
     XtVaCreateManagedWidget("to_print_label",
@@ -357,7 +357,7 @@ customizePrintSetupBox(AppPrintData *p)
 					 XmNrightOffset, 5,
 					 NULL);
 
-    label = XmStringGenerate(CATGETS(Set_AgentLabel, 209, "What to Print"),
+    label = XmStringGenerate(MCATGETS(Set_AgentLabel, 209, "What to Print"),
 			     NULL, XmCHARSET_TEXT, NULL);
 
     XtVaCreateManagedWidget("what_title",
@@ -373,7 +373,7 @@ customizePrintSetupBox(AppPrintData *p)
 					what_frame,
 					NULL);
 
-    label = XmStringGenerate(CATGETS(Set_AgentLabel, 210, "Sections"),
+    label = XmStringGenerate(MCATGETS(Set_AgentLabel, 210, "Sections"),
 			     NULL, XmCHARSET_TEXT, NULL);
 
     f_print_nodes = print_nodes = XtVaCreateManagedWidget("print_nodes",
@@ -393,7 +393,7 @@ customizePrintSetupBox(AppPrintData *p)
     XmStringFree(label);
     XtAddCallback(print_nodes, XmNvalueChangedCallback, ToggleWhatCB, p);
 
-    label = XmStringGenerate(CATGETS(Set_AgentLabel, 211, "Hierarchy"),
+    label = XmStringGenerate(MCATGETS(Set_AgentLabel, 211, "Hierarchy"),
 			     NULL, XmCHARSET_TEXT, NULL);
         
     f_print_hierarchy = XtVaCreateManagedWidget("print_hierarchy",
@@ -445,7 +445,7 @@ PdmNotifyCB(Widget pr_shell, XtPointer client_data, XtPointer call_data)
 	(pr_cbs->reason == XmCR_PDM_START_VXAUTH) ||
 	(pr_cbs->reason == XmCR_PDM_START_PXAUTH))
     {
-	msg = CATGETS(Set_PrintPanelAgent, 12, "Print Dialog Manager error - setup failed.");
+	msg = MCATGETS(Set_PrintPanelAgent, 12, "Print Dialog Manager error - setup failed.");
 	message_mgr().error_dialog(msg);
     }
  
@@ -548,7 +548,7 @@ PrintSetupCB(Widget print_dialog, XtPointer client_data, XtPointer call_data)
     if (XmPrintPopupPDM(p->f_print_shell, print_dialog) 
 	!= XmPDM_NOTIFY_SUCCESS) {
 	/* post a message error dialog */
-	msg = CATGETS(Set_PrintPanelAgent, 6, "Unable to display the Print Dialog Manager");
+	msg = MCATGETS(Set_PrintPanelAgent, 6, "Unable to display the Print Dialog Manager");
 	message_mgr().error_dialog(msg);
 	RCS_DEBUG("XmPrintPopupPDM failed\n");
     }	
@@ -642,7 +642,7 @@ CreatePrintSetup(Widget parent, AppPrintData* p)
 	    // additional dialog resources
 
 	    XmString title = XmStringCreateLocalized(
-		CATGETS(Set_PrintPanelAgent, 1, "Dtinfo: Print"));
+		MCATGETS(Set_PrintPanelAgent, 1, "Dtinfo: Print"));
 
 	    XtSetArg(args[n], XmNdialogTitle, title); n++;
 	    XtSetArg(args[n], (char*)DtNworkAreaLocation, DtWORK_AREA_BOTTOM); n++;
@@ -782,14 +782,14 @@ FinishPrintToFile(Display *display,
 
     if (status != XPGetDocFinished) {
 
-	msg = CATGETS(Set_PrintPanelAgent, 8, "Error printing to file");
+	msg = MCATGETS(Set_PrintPanelAgent, 8, "Error printing to file");
 	message_mgr().error_dialog(msg);
 
 	RCS_DEBUG("Something went wrong with XmPrintToFile...\n");
     }
     else {
 
-	msg = CATGETS(Set_PrintPanelAgent, 9, "Print to file completed.");
+	msg = MCATGETS(Set_PrintPanelAgent, 9, "Print to file completed.");
 	message_mgr().info_dialog(msg);
 
 	RCS_DEBUG("XmPrintToFile completed OK\n");
@@ -886,7 +886,7 @@ DoPrint(Widget widget, AppPrintData * p)
 
 	// Post an error dialog 
 
-	msg = CATGETS(Set_PrintPanelAgent, 
+	msg = MCATGETS(Set_PrintPanelAgent,
 		      11, 
 		      "Print Job Failed.\n\nThe X Print Server is Temporarily Out of Resources.");
 	message_mgr().error_dialog(msg);

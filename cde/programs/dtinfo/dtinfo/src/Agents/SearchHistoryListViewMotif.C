@@ -203,9 +203,9 @@ SearchHistoryListView::child_create_ui_pre(WXmForm &form)
 
   int number_width = WXmString("0").Width(header_font);
 
-  WXmString matchString = CATGETS(Set_AgentLabel, 246, "Matches");
-  WXmString scopeString = CATGETS(Set_AgentLabel, 243, "Scope");
-  WXmString queryString = CATGETS(Set_AgentLabel, 230, "Query");
+  WXmString matchString = MCATGETS(Set_AgentLabel, 246, "Matches");
+  WXmString scopeString = MCATGETS(Set_AgentLabel, 243, "Scope");
+  WXmString queryString = MCATGETS(Set_AgentLabel, 230, "Query");
 
   int scope_offset = 8 * number_width;
 
@@ -284,5 +284,5 @@ SearchHistoryListView::display()
   cerr << "done." << endl; 
 #endif
   XtVaSetValues(*f_shell, XmNtitle,
-	CATGETS(Set_SearchHistoryList, 1, "Dtinfo: Search History"), NULL);
+	MCATGETS(Set_SearchHistoryList, 1, "Dtinfo: Search History"), NULL);
 }

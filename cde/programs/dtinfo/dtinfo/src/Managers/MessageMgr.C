@@ -86,7 +86,7 @@ DisplayDocumentError::receive (UAS_ErrorMsg &message, void *client_data)
   const char *text = message.fErrorMsg;
 
   if (text == NULL)
-    text = (char*)UAS_String(CATGETS(Set_Messages, 35, "File a Bug"));
+    text = (char*)UAS_String(MCATGETS(Set_Messages, 35, "File a Bug"));
 
   message_mgr().error_dialog ((char *) text);
 }
@@ -111,7 +111,7 @@ ReportSearchMsg::receive (UAS_SearchMsg &message, void *client_data)
   }
   else {
     message_mgr().error_dialog(
-	(char*)UAS_String(CATGETS(Set_Messages, 36, "File a Bug")));
+	(char*)UAS_String(MCATGETS(Set_Messages, 36, "File a Bug")));
   }
 }
 
@@ -294,18 +294,18 @@ MessageMgr::quit_dialog (char *message_text, Widget parent)
 
   // Set labels on buttons
   XmStringLocalized mtfstring;
-  mtfstring = CATGETS(Set_AgentLabel, 244, "Yes");
+  mtfstring = MCATGETS(Set_AgentLabel, 244, "Yes");
   XtVaSetValues(XmMessageBoxGetChild(dialog, XmDIALOG_OK_BUTTON),
                 XmNlabelString, (XmString)mtfstring,
                 NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 245, "No");
+  mtfstring = MCATGETS(Set_AgentLabel, 245, "No");
   XtVaSetValues(XmMessageBoxGetChild(dialog, XmDIALOG_CANCEL_BUTTON),
                 XmNlabelString, (XmString)mtfstring,
                 NULL);
 
   // Set the window title
   Widget shell = XtParent(dialog);
-  String string = CATGETS(Set_MessageAgent, 5, "Dtinfo: Confirm Quit");
+  String string = MCATGETS(Set_MessageAgent, 5, "Dtinfo: Confirm Quit");
   XtVaSetValues(shell,
                 XmNminWidth, 200,
                 XmNtitle, (XmString)string,
@@ -347,7 +347,7 @@ MessageMgr::error_dialog (char *message_text, Widget parent)
 
   // Set the window title
   Widget shell = XtParent(dialog);
-  String string = CATGETS(Set_MessageAgent, 1, "Dtinfo: Error");
+  String string = MCATGETS(Set_MessageAgent, 1, "Dtinfo: Error");
   XtVaSetValues(shell, XmNtitle, string, NULL);
 
   show_it(dialog);
@@ -382,7 +382,7 @@ MessageMgr::warning_dialog (char *message_text, Widget parent)
 
   // Set the window title
   Widget shell = XtParent(dialog);
-  String string = CATGETS(Set_MessageAgent, 2, "Dtinfo: Warning");
+  String string = MCATGETS(Set_MessageAgent, 2, "Dtinfo: Warning");
   XtVaSetValues(shell, XmNtitle, string, NULL);
 
   show_it(dialog);
@@ -413,7 +413,7 @@ MessageMgr::info_dialog (char *message_text, Widget parent)
 
   // Set the window title
   Widget shell = XtParent(dialog);
-  String string = CATGETS(Set_MessageAgent, 3, "Dtinfo: Information");
+  String string = MCATGETS(Set_MessageAgent, 3, "Dtinfo: Information");
   XtVaSetValues(shell, XmNtitle, string, NULL);
 
   show_it(dialog);
@@ -482,11 +482,11 @@ MessageMgr::question_dialog (char *message_text, Widget parent)
 
   // Set labels on buttons
   XmStringLocalized mtfstring;
-  mtfstring = CATGETS(Set_AgentLabel, 244, "Yes");
+  mtfstring = MCATGETS(Set_AgentLabel, 244, "Yes");
   XtVaSetValues(XmMessageBoxGetChild(dialog, XmDIALOG_OK_BUTTON),
                 XmNlabelString, (XmString)mtfstring,
                 NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 245, "No");
+  mtfstring = MCATGETS(Set_AgentLabel, 245, "No");
   XtVaSetValues(XmMessageBoxGetChild(dialog, XmDIALOG_CANCEL_BUTTON),
                 XmNlabelString, (XmString)mtfstring,
                 NULL);
@@ -496,7 +496,7 @@ MessageMgr::question_dialog (char *message_text, Widget parent)
 
   // Set the window title
   Widget shell = XtParent(dialog);
-  String string = CATGETS(Set_MessageAgent, 3, "Dtinfo: Information");
+  String string = MCATGETS(Set_MessageAgent, 3, "Dtinfo: Information");
   XtVaSetValues(shell, XmNtitle, string, NULL);
 
   show_it(dialog);
@@ -574,7 +574,7 @@ void
 MessageMgr::demo_failure(demoException &, Widget parent)
 {
   error_dialog(
-	(char*)UAS_String(CATGETS(Set_Messages, 38, "File a Bug")),
+	(char*)UAS_String(MCATGETS(Set_Messages, 38, "File a Bug")),
         parent);
   ::exit(0);
 }

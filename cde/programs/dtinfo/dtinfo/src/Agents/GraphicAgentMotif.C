@@ -238,7 +238,7 @@ GraphicAgent::create_ui()
   f_shell = WTopLevelShell (window_system().toplevel(), WPopup, "graphic");
   window_system().register_shell (&f_shell);
 
-  string = CATGETS(Set_GraphicAgent, 1, "Dtinfo: Detached Graphic");
+  string = MCATGETS(Set_GraphicAgent, 1, "Dtinfo: Detached Graphic");
   XtVaSetValues((Widget)f_shell, XmNtitle, string, NULL);
 
   // just use "delete_response" instead
@@ -264,27 +264,27 @@ GraphicAgent::create_ui()
   DECLM (WXmPushButton,     close,        file_menu,    "close"        );
 
   XtVaSetValues(file, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 1, "File")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 1, "File")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 2, ""),
+    *MCATGETS(Set_AgentLabel, 2, ""),
     NULL);
 
   XtVaSetValues(attach, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 167, "Attach")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 167, "Attach")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 21, ""),
+    *MCATGETS(Set_AgentLabel, 21, ""),
     NULL);
 
   XtVaSetValues(visit, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel,168,"Display Section")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel,168,"Display Section")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 119, ""),
+    *MCATGETS(Set_AgentLabel, 119, ""),
     NULL);
 
   XtVaSetValues(close, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 12, "Close")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 12, "Close")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 13, ""),
+    *MCATGETS(Set_AgentLabel, 13, ""),
     NULL);
 
   DECLM (WXmCascadeButton,  pan,          menu_bar,     "panner"       );
@@ -296,39 +296,39 @@ GraphicAgent::create_ui()
   DECLM (WXmToggleButton,   low_right,    panner_menu,  "low_right"    );
 
   XtVaSetValues(pan, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 166, "Panner")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 166, "Panner")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 9, ""),
+    *MCATGETS(Set_AgentLabel, 9, ""),
     NULL);
 
   XtVaSetValues(none, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 178, "None")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 178, "None")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 7, ""),
+    *MCATGETS(Set_AgentLabel, 7, ""),
     NULL);
 
   XtVaSetValues(up_left, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 179, "Upper Left")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 179, "Upper Left")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 254, ""),
+    *MCATGETS(Set_AgentLabel, 254, ""),
     NULL);
 
   XtVaSetValues(up_right, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 180, "Upper Right")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 180, "Upper Right")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 252, ""),
+    *MCATGETS(Set_AgentLabel, 252, ""),
     NULL);
 
   XtVaSetValues(low_left, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 181, "Lower Left")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 181, "Lower Left")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 113, ""),
+    *MCATGETS(Set_AgentLabel, 113, ""),
     NULL);
 
   XtVaSetValues(low_right, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 182, "Lower Right")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 182, "Lower Right")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 259, ""),
+    *MCATGETS(Set_AgentLabel, 259, ""),
     NULL);
 
   // NOTE: some code in this module depends upon the exact ordering of items
@@ -339,22 +339,22 @@ GraphicAgent::create_ui()
   DECLM (WXmPushButton,     fit_win_to_gr, view_menu,    "fit_graphic" );
 
   XtVaSetValues(view, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 4, "View")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 4, "View")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 5, ""),
+    *MCATGETS(Set_AgentLabel, 5, ""),
     NULL);
 
   XtVaSetValues(fit_gr_to_win, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 169, "Fit to Window")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 169, "Fit to Window")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 35, ""),
+    *MCATGETS(Set_AgentLabel, 35, ""),
     NULL);
 
 
   XtVaSetValues(fit_win_to_gr, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 170, "Fit to Graphic")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 170, "Fit to Graphic")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 37, ""),
+    *MCATGETS(Set_AgentLabel, 37, ""),
     NULL);
 
   DECLM (WXmSeparator,      separator,    view_menu,    "separator"    );
@@ -366,23 +366,23 @@ GraphicAgent::create_ui()
   DECLM (WXmToggleButton,   z_200,        view_menu,    "z_200"        );
   DECLM (WXmToggleButton,   z_custom,     view_menu,    "z_custom"     );
   
-  mtfstring = CATGETS(Set_AgentLabel, 171, "25 %");
+  mtfstring = MCATGETS(Set_AgentLabel, 171, "25 %");
   XtVaSetValues(z_25, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 172, "50 %");
+  mtfstring = MCATGETS(Set_AgentLabel, 172, "50 %");
   XtVaSetValues(z_50, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 173, "100 %");
+  mtfstring = MCATGETS(Set_AgentLabel, 173, "100 %");
   XtVaSetValues(z_100, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 174, "125 %");
+  mtfstring = MCATGETS(Set_AgentLabel, 174, "125 %");
   XtVaSetValues(z_125, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 175, "150 %");
+  mtfstring = MCATGETS(Set_AgentLabel, 175, "150 %");
   XtVaSetValues(z_150, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 176, "200 %");
+  mtfstring = MCATGETS(Set_AgentLabel, 176, "200 %");
   XtVaSetValues(z_200, XmNlabelString, (XmString)mtfstring, NULL);
 
   XtVaSetValues(z_custom, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 177, "Custom...")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 177, "Custom...")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 13, ""),
+    *MCATGETS(Set_AgentLabel, 13, ""),
     NULL);
 
   z_100.Set(1);
@@ -397,21 +397,21 @@ GraphicAgent::create_ui()
   DECLM (WXmPushButton,     on_help,      help_menu,     "on_help"     );
 
   XtVaSetValues(help, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 48, "Help")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 48, "Help")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 39, ""),
+    *MCATGETS(Set_AgentLabel, 39, ""),
     NULL);
 
   XtVaSetValues(on_window, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 147, "On Window")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 147, "On Window")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 35, ""),
+    *MCATGETS(Set_AgentLabel, 35, ""),
     NULL);
 
   XtVaSetValues(on_help, XmNlabelString,
-    (XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 153, "On Help")),
+    (XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 153, "On Help")),
     XmNmnemonic,
-    *CATGETS(Set_AgentLabel, 39, ""),
+    *MCATGETS(Set_AgentLabel, 39, ""),
     NULL);
 
   DECLM (WXmLabel, message_area, form, "message");
@@ -440,12 +440,12 @@ GraphicAgent::create_ui()
   PixmapGraphic &pgraphic = *(f_graphic->pixmap_graphic());
 
   Graphic *graphic = f_graphic ;
-  UAS_String buffer = CATGETS(Set_GraphicAgent, 8, "Dtinfo: ");
+  UAS_String buffer = MCATGETS(Set_GraphicAgent, 8, "Dtinfo: ");
   UAS_String titleStr(graphic->title());
   const char *title = titleStr ;
 
   if (title == NULL || *title == '\0')	// empty string 
-    title = (char *)CATGETS(Set_GraphicAgent, 2, "Detached Graphic");
+    title = (char *)MCATGETS(Set_GraphicAgent, 2, "Detached Graphic");
   buffer = buffer + title;
 
   f_shell.Title((char*)buffer);
@@ -493,9 +493,9 @@ GraphicAgent::create_ui()
   if(scalable)
   {
     if (f_graphic->content_type() == "application/CGM")
-       mtfstring = CATGETS(Set_GraphicAgent, 4, "Vector illustration (scalable)");
+       mtfstring = MCATGETS(Set_GraphicAgent, 4, "Vector illustration (scalable)");
     else
-       mtfstring = CATGETS(Set_GraphicAgent, 9, "Raster illustration (scalable)");
+       mtfstring = MCATGETS(Set_GraphicAgent, 9, "Raster illustration (scalable)");
   }
   else
   {
@@ -503,7 +503,7 @@ GraphicAgent::create_ui()
       for (unsigned int i = 0 ; i < view_menu.NumChildren(); i++)
 	WRect(view_menu.Children()[i]).SetSensitive(False);
 #endif
-    mtfstring = CATGETS(Set_GraphicAgent, 3,
+    mtfstring = MCATGETS(Set_GraphicAgent, 3,
 		"Raster illustration (non-scalable)");
   }
 
@@ -514,11 +514,11 @@ GraphicAgent::create_ui()
       for (int i = 0 ; i < view_menu.NumChildren(); i++)
 	WRect(view_menu.Children()[i]).SetSensitive(False);
 #endif
-      mtfstring = CATGETS(Set_GraphicAgent, 3,
+      mtfstring = MCATGETS(Set_GraphicAgent, 3,
 				"Raster illustration (non-scalable)");
   }
   else {
-      mtfstring = CATGETS(Set_GraphicAgent, 4,
+      mtfstring = MCATGETS(Set_GraphicAgent, 4,
 				"Vector illustration (scalable)");
   }
 #endif
@@ -859,9 +859,9 @@ GraphicAgent::zoom_callback(WCallback *wcb)
 	    }
 	  f_setcustom = 1 ;
 
-	  UAS_String msg   = CATGETS(Set_GraphicAgent, 6,
+	  UAS_String msg   = MCATGETS(Set_GraphicAgent, 6,
 					"Enter the new scaling percentage:");
-	  UAS_String title = CATGETS(Set_GraphicAgent, 7, "Dtinfo: Set Scale");
+	  UAS_String title = MCATGETS(Set_GraphicAgent, 7, "Dtinfo: Set Scale");
 	  scale = message_mgr().
 		    get_integer((char*)msg, (char*)title, f_current_scale,
                                 (Widget)f_shell);
@@ -901,7 +901,7 @@ GraphicAgent::set_zoom(unsigned int scale)
 
   Wait_Cursor bob;
 
-  XmStringLocalized mtfstring = CATGETS(Set_GraphicAgent, 5,
+  XmStringLocalized mtfstring = MCATGETS(Set_GraphicAgent, 5,
 				"Scaling illustration, please wait...");
 
   XtVaSetValues((Widget)f_message_area, XmNlabelString, (XmString)mtfstring, NULL);
@@ -920,9 +920,9 @@ GraphicAgent::set_zoom(unsigned int scale)
   refresh(graphic());
 
   if (f_graphic->content_type() == "application/CGM")
-    mtfstring = CATGETS(Set_GraphicAgent, 4, "Vector illustration (scalable)");
+    mtfstring = MCATGETS(Set_GraphicAgent, 4, "Vector illustration (scalable)");
   else
-    mtfstring = CATGETS(Set_GraphicAgent, 9, "Raster illustration (scalable)");
+    mtfstring = MCATGETS(Set_GraphicAgent, 9, "Raster illustration (scalable)");
 
   XtVaSetValues((Widget)f_message_area, XmNlabelString, (XmString)mtfstring, NULL);
 
@@ -940,9 +940,9 @@ GraphicAgent::refresh(const UAS_Pointer<Graphic> &)
   // update message area 
   XmStringLocalized mtfstring;
   if (f_graphic->content_type() == "application/CGM")
-    mtfstring = CATGETS(Set_GraphicAgent, 4, "Vector illustration (scalable)");
+    mtfstring = MCATGETS(Set_GraphicAgent, 4, "Vector illustration (scalable)");
   else
-    mtfstring = CATGETS(Set_GraphicAgent, 9, "Raster illustration (scalable)");
+    mtfstring = MCATGETS(Set_GraphicAgent, 9, "Raster illustration (scalable)");
 
   XtVaSetValues((Widget)f_message_area, XmNlabelString, (XmString)mtfstring, NULL);
 }

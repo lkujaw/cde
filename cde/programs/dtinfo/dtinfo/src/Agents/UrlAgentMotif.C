@@ -121,7 +121,7 @@ UrlAgent::document( char   *locator,
       ((locator != NULL) && ( *locator == '\0' )) )
   {
       //  checked here to avoid less specific error return, later
-      message_mgr().error_dialog( (char*)UAS_String(CATGETS(
+      message_mgr().error_dialog( (char*)UAS_String(MCATGETS(
                     Set_UrlAgent, ERR_NO_LOCATOR,
                     "No locator value provided." )) ) ;
       return (sts = BAD_ARG_FORMAT);
@@ -155,7 +155,7 @@ UrlAgent::document( char   *locator,
         }
       else
         {
-          message_mgr().error_dialog( (char*)UAS_String(CATGETS(
+          message_mgr().error_dialog( (char*)UAS_String(MCATGETS(
                         Set_UrlAgent, ERR_LOCATOR_FORMAT,
                        "Locator specification format error." )) ) ;
           sts = BAD_ARG_FORMAT ;
@@ -176,7 +176,7 @@ UrlAgent::document( char   *locator,
     }
   mcatch_any()
     {
-      message_mgr().error_dialog( (char*)UAS_String(CATGETS(
+      message_mgr().error_dialog( (char*)UAS_String(MCATGETS(
                        Set_UrlAgent, ERR_LOCATOR_RESOLUTION,
                        "Locator resolution failed." )) ) ;
 
@@ -251,7 +251,7 @@ UrlAgent::print_document(char *locator)
 	//  checked here to avoid less specific error return, later
 
 	if (!(window_system().videoShell()->silent)) {
-	    message_mgr().error_dialog( (char*)UAS_String(CATGETS(
+	    message_mgr().error_dialog( (char*)UAS_String(MCATGETS(
 		Set_UrlAgent, ERR_NO_LOCATOR,
 		"No locator value provided." )) ) ;
 	}
@@ -287,7 +287,7 @@ UrlAgent::print_document(char *locator)
 	else
         {
 	    if ((!window_system().videoShell()->silent)) {
-		message_mgr().error_dialog( (char*)UAS_String(CATGETS(
+		message_mgr().error_dialog( (char*)UAS_String(MCATGETS(
 		    Set_UrlAgent, ERR_LOCATOR_FORMAT,
 		    "Locator specification format error." )) ) ;
 	    }
@@ -342,7 +342,7 @@ UrlAgent::print_document(char *locator)
 	{
 	    
 	    if ((!window_system().videoShell()->silent)) {
-		message_mgr().error_dialog( (char*)UAS_String(CATGETS(
+		message_mgr().error_dialog( (char*)UAS_String(MCATGETS(
 		    Set_UrlAgent, ERR_LOCATOR_RESOLUTION,
 		    "Locator resolution failed." )) ) ;
 	    }
@@ -374,7 +374,7 @@ UrlAgent::create_ui () {
     XmStringLocalized mtfstring;
     String	      string;
 
-    string = CATGETS(Set_UrlAgent, 1, "Dtinfo: Open Locator");
+    string = MCATGETS(Set_UrlAgent, 1, "Dtinfo: Open Locator");
     XtVaSetValues((Widget)fShell,
                   XmNtitle, string,
                   XmNmwmDecorations, decorations,
@@ -390,17 +390,17 @@ UrlAgent::create_ui () {
     ASSNM	(WXmTextField,	fTextField,	f_form,		"text_field");
     DECLM	(WXmLabel,	label,		f_form,		"the_label");
 
-    mtfstring = CATGETS(Set_AgentLabel, 222, "Enter a Unique Locator:");
+    mtfstring = MCATGETS(Set_AgentLabel, 222, "Enter a Unique Locator:");
     XtVaSetValues(label, XmNlabelString, (XmString)mtfstring, NULL);
-    mtfstring = CATGETS(Set_AgentLabel, 161, "OK");
+    mtfstring = MCATGETS(Set_AgentLabel, 161, "OK");
     XtVaSetValues(fOk, XmNlabelString, (XmString)mtfstring, NULL);
-    mtfstring = CATGETS(Set_AgentLabel, 201, "Apply");
+    mtfstring = MCATGETS(Set_AgentLabel, 201, "Apply");
     XtVaSetValues(fApply, XmNlabelString, (XmString)mtfstring, NULL);
-    mtfstring = CATGETS(Set_AgentLabel, 223, "Clear");
+    mtfstring = MCATGETS(Set_AgentLabel, 223, "Clear");
     XtVaSetValues(fClear, XmNlabelString, (XmString)mtfstring, NULL);
-    mtfstring = CATGETS(Set_AgentLabel, 12, "Close");
+    mtfstring = MCATGETS(Set_AgentLabel, 12, "Close");
     XtVaSetValues(close, XmNlabelString, (XmString)mtfstring, NULL);
-    mtfstring = CATGETS(Set_AgentLabel, 48, "Help");
+    mtfstring = MCATGETS(Set_AgentLabel, 48, "Help");
     XtVaSetValues(help, XmNlabelString, (XmString)mtfstring, NULL);
 
     //
@@ -477,13 +477,13 @@ UrlAgent::displayDocument () {
 //	    d->retrieve ();
 //	} else {
 //	    message_mgr().error_dialog ((char*)
-//		UAS_String(CATGETS(Set_Messages, 70,
+//		UAS_String(MCATGETS(Set_Messages, 70,
 //		"Invalid access method in url.")));
 //	}
 //    }
 //    mcatch_any() {
 //	message_mgr().error_dialog ((char*)
-//		UAS_String(CATGETS(Set_Messages, 71,
+//		UAS_String(MCATGETS(Set_Messages, 71,
 //		"Document creation failed.")));
 //    }
 //    end_try;

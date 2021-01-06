@@ -104,11 +104,11 @@ AddLibraryAgent::create_ui (Widget parent) {
     mtfstring =  msg_catalog_mgr().catgets(Set_AgentLabel, 162);
     XtVaSetValues(canc, XmNlabelString, (XmString)mtfstring, NULL);
 
-    mtfstring =  CATGETS(Set_AgentLabel, 223, "Clear");
+    mtfstring =  MCATGETS(Set_AgentLabel, 223, "Clear");
     XtVaSetValues(f_clr, XmNlabelString, (XmString)mtfstring, NULL);
-    mtfstring =  CATGETS(Set_AgentLabel, 270, "...");
+    mtfstring =  MCATGETS(Set_AgentLabel, 270, "...");
     XtVaSetValues(pick, XmNlabelString, (XmString)mtfstring, NULL);
-    mtfstring = CATGETS(Set_AgentLabel, 48, "Help");
+    mtfstring = MCATGETS(Set_AgentLabel, 48, "Help");
     XtVaSetValues(help, XmNlabelString, (XmString)mtfstring, NULL);
 
 
@@ -211,9 +211,9 @@ AddLibraryAgent::pick_dir () {
     int n;
 
     XmString title_str = XmStringCreateLocalized(
-          CATGETS(Set_AddLibraryAgent, 10, "Dtinfo: Infolib Selection"));
+          MCATGETS(Set_AddLibraryAgent, 10, "Dtinfo: Infolib Selection"));
     XmString no_libs_str = XmStringCreateLocalized(
-          CATGETS(Set_AddLibraryAgent, 11, "No Infolibs Present"));
+          MCATGETS(Set_AddLibraryAgent, 11, "No Infolibs Present"));
     XmString patt_str = XmStringCreateLocalized( (char*)"*.dti" );
     XmString infolibs_str = XmStringCreateLocalized( (char*)"Infolibs" );
 

@@ -149,9 +149,9 @@ ListView::create_ui_objects()
   WXmPushButton help (form, "help", WAutoManage);
 
   XtVaSetValues(close, XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 12, "Close")), NULL);
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 12, "Close")), NULL);
   XtVaSetValues(help, XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 48, "Help")), NULL);
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 48, "Help")), NULL);
 
   // 7/30/93 rtp - bear with this hack, it's a little bogus
   int help_namelen = strlen(f_name) + strlen("_help") + 1;
@@ -163,7 +163,7 @@ ListView::create_ui_objects()
 
   f_activate = WXmPushButton (form, "activate", WAutoManage);
   XtVaSetValues(f_activate, XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 165, "Display")), NULL);
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 165, "Display")), NULL);
   //  WXmLabelGadget label (form, "label", WAutoManage);
   WXmSeparator separator (form, "separator", WAutoManage);
   // NOTE: Fix WWL to have a scrolled list object!

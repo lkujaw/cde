@@ -1235,7 +1235,7 @@ OutlineListView::activate (WCallback *wcb)
         }
       mcatch_any()
         {
-          message_mgr().error_dialog( (char*)UAS_String(CATGETS(
+          message_mgr().error_dialog( (char*)UAS_String(MCATGETS(
                            Set_UrlAgent, 5, "Document not found." )) ) ;
         }
       end_try;

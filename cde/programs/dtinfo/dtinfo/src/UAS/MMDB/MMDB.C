@@ -75,7 +75,7 @@ MMDB::database()
 	  UAS_ErrorMsg msg;
 	  UAS_Buffer buf(256);
 	  const char *x =
-		(char*)UAS_String(CATGETS(Set_UAS_MMDB, 1, "The following bookcases are not valid:"));
+		(char*)UAS_String(MCATGETS(Set_UAS_MMDB, 1, "The following bookcases are not valid:"));
 	  buf.write (x, sizeof(char), strlen(x));
 	  for (int i = 1; i <= bad_count; i++)
 	    {

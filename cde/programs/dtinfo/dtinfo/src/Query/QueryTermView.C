@@ -179,9 +179,9 @@ QueryTermView::create_ui()
   DECLM (WXmPushButtonGadget, contains,     prefix_menu,  "contains"        );
   DECLM (WXmPushButtonGadget, not_contains, prefix_menu,  "not_contains"    );
 
-  mtfstring = CATGETS(Set_AgentLabel, 232, "Contains");
+  mtfstring = MCATGETS(Set_AgentLabel, 232, "Contains");
   XtVaSetValues(contains, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 233, "Doesn\'t Contain");
+  mtfstring = MCATGETS(Set_AgentLabel, 233, "Doesn\'t Contain");
   XtVaSetValues(not_contains, XmNlabelString, (XmString)mtfstring, NULL);
 
   unsigned int caps = f_query_term->avail_caps();
@@ -191,9 +191,9 @@ QueryTermView::create_ui()
     ASSNM (WXmPushButtonGadget, starts,     prefix_menu,  "starts_with"     );
     ASSNM (WXmPushButtonGadget, not_starts, prefix_menu,  "not_starts_with" );
 
-    mtfstring = CATGETS(Set_AgentLabel, 234, "Starts With");
+    mtfstring = MCATGETS(Set_AgentLabel, 234, "Starts With");
     XtVaSetValues(starts, XmNlabelString, (XmString)mtfstring, NULL);
-    mtfstring = CATGETS(Set_AgentLabel, 235, "Doesn\'t Start With");
+    mtfstring = MCATGETS(Set_AgentLabel, 235, "Doesn\'t Start With");
     XtVaSetValues(not_starts, XmNlabelString, (XmString)mtfstring, NULL);
   }
   DECLC (WXmPulldownMenu, connect_menu,     f_form,       "connect_menu"    );
@@ -208,7 +208,7 @@ QueryTermView::create_ui()
   if (caps & (0x01 << UAS_OQLParser::OQL_XOR)) {
     ASSNM (WXmPushButtonGadget,   xorgad,        connect_menu, "xor"           );
 
-    mtfstring = CATGETS(Set_AgentLabel, 237, "Xor");
+    mtfstring = MCATGETS(Set_AgentLabel, 237, "Xor");
     XtVaSetValues(xorgad, XmNlabelString, (XmString)mtfstring, NULL);
   }
   DECLM (WXmPushButtonGadget,   andgad,     connect_menu, "and"             );
@@ -217,13 +217,13 @@ QueryTermView::create_ui()
   if (caps & (0x01 << UAS_OQLParser::OQL_NEAR)) {
     ASSNM (WXmPushButtonGadget,   near,       connect_menu, "near"          );
 
-    mtfstring = CATGETS(Set_AgentLabel, 239, "Near");
+    mtfstring = MCATGETS(Set_AgentLabel, 239, "Near");
     XtVaSetValues(near, XmNlabelString, (XmString)mtfstring, NULL);
   }
   if (caps & (0x01 << UAS_OQLParser::OQL_BEFORE)) {
     ASSNM (WXmPushButtonGadget,   before,     connect_menu, "before"        );
 
-    mtfstring = CATGETS(Set_AgentLabel, 240, "Before");
+    mtfstring = MCATGETS(Set_AgentLabel, 240, "Before");
     XtVaSetValues(before, XmNlabelString, (XmString)mtfstring, NULL);
   }
   ASSNM (WXmArrowButton,        f_pw_button,f_form,       "pw_button"     );
@@ -231,9 +231,9 @@ QueryTermView::create_ui()
     WXmTextField (f_form, "term_text", WAutoManage);
 //  ASSNM (WXmTextField,    f_term_field,    f_form,       "term_text");
 
-  mtfstring = CATGETS(Set_AgentLabel, 236, "Or");
+  mtfstring = MCATGETS(Set_AgentLabel, 236, "Or");
   XtVaSetValues(orgad, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 238, "And");
+  mtfstring = MCATGETS(Set_AgentLabel, 238, "And");
   XtVaSetValues(andgad, XmNlabelString, (XmString)mtfstring, NULL);
 
   // Callbacks!
@@ -597,11 +597,11 @@ QueryTermView::create_fields()
   ASSNM (WXmTextField,    f_weight_field,    f_pws_form,   "weight_field"    );
   ASSN  (WXmTextField,    f_scope_field,     f_pws_form,   "scope_field"     );
 
-  mtfstring = CATGETS(Set_AgentLabel, 241, "Weight");
+  mtfstring = MCATGETS(Set_AgentLabel, 241, "Weight");
   XtVaSetValues(weight_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 242, "Proximity");
+  mtfstring = MCATGETS(Set_AgentLabel, 242, "Proximity");
   XtVaSetValues(f_proximity_label, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 243, "Scope");
+  mtfstring = MCATGETS(Set_AgentLabel, 243, "Scope");
   XtVaSetValues(scope_label, XmNlabelString, (XmString)mtfstring, NULL);
 
   SET_CALLBACK (f_proximity_field,ValueChanged,proximity_changed);

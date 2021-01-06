@@ -410,14 +410,14 @@ NodeWindowAgent::exit_cb()
     {
       bool resp;
       resp = message_mgr().question_dialog (
-                (char*)UAS_String(CATGETS(Set_Messages, 2,
+                (char*)UAS_String(MCATGETS(Set_Messages, 2,
                 "Do you want to abandon your changes?")), (Widget)f_shell);
       if (! resp)
         return;
     }
  
   message_mgr().quit_dialog (
-        (char*)UAS_String(CATGETS(Set_Messages, 6,
+        (char*)UAS_String(MCATGETS(Set_Messages, 6,
         "Do you really want to quit Dtinfo?")), (Widget)f_shell);
 
 }
@@ -511,10 +511,10 @@ NodeWindowAgent::popup_menu(XButtonPressedEvent* event)
           const char *book_name = (char *) bn;
           if (book_name != NULL && *book_name != '\0')
             snprintf (preview_buffer, sizeof(preview_buffer),
-               CATGETS(Set_Messages, 8, "Link to %s: %s"), book_name, title);
+               MCATGETS(Set_Messages, 8, "Link to %s: %s"), book_name, title);
           else
             snprintf (preview_buffer, sizeof(preview_buffer),
-               CATGETS(Set_Messages, 9, "Link to %s"), title);
+               MCATGETS(Set_Messages, 9, "Link to %s"), title);
           WXmLabel lb = WXmLabel(f_preview_label);
           lb.LabelString(WXmString(title));
   
@@ -885,14 +885,14 @@ exitCB(Widget, XtPointer client_data, XtPointer)
     {
       bool resp;
       resp = message_mgr().question_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 2,
+		(char*)UAS_String(MCATGETS(Set_Messages, 2,
 				"Do you want to abandon your changes?")));
       if (! resp)
 	return;
     }
 
   message_mgr().quit_dialog (
-	(char*)UAS_String(CATGETS(Set_Messages, 6,
+	(char*)UAS_String(MCATGETS(Set_Messages, 6,
 				"Do you really want to quit Dtinfo?")));
 #endif
 }
@@ -981,7 +981,7 @@ NodeWindowAgent::create_ui()
 
   window_system().register_shell (f_shell);
 
-  string = CATGETS(Set_NodeWindowAgent, 1, "Dtinfo: Browser");
+  string = MCATGETS(Set_NodeWindowAgent, 1, "Dtinfo: Browser");
   XtVaSetValues((Widget)f_shell, XmNtitle, string, NULL);
 
   f_wm_delete_callback = 
@@ -1019,15 +1019,15 @@ NodeWindowAgent::create_ui()
   help_agent().add_help_cb(widget);
 
 
-  mtfstring =  CATGETS(Set_AgentLabel, 62, "Browser");
-  mnemonic  = *CATGETS(Set_AgentLabel, 63, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 62, "Browser");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 63, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   widget = XtCreateManagedWidget("new", xmPushButtonGadgetClass, fileM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, cloneCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 64, "New Window");
-  mnemonic  = *CATGETS(Set_AgentLabel, 65, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 64, "New Window");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 65, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   XtCreateManagedWidget("sep1", xmSeparatorGadgetClass, fileM, 0, 0);
@@ -1036,8 +1036,8 @@ NodeWindowAgent::create_ui()
 				     fileM, 0, 0);
   XtAddCallback(f_print_as, XmNactivateCallback, print_asCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 72, "Print...");
-  mnemonic  = *CATGETS(Set_AgentLabel, 71, "P");
+  mtfstring =  MCATGETS(Set_AgentLabel, 72, "Print...");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 71, "P");
   XtVaSetValues(f_print_as, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   XtCreateManagedWidget("sep2", xmSeparatorGadgetClass, fileM, 0, 0);
@@ -1045,8 +1045,8 @@ NodeWindowAgent::create_ui()
   widget = XtCreateManagedWidget("show", xmPushButtonGadgetClass, fileM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, show_locatorCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 68, "Show Locator");
-  mnemonic  = *CATGETS(Set_AgentLabel, 69, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 68, "Show Locator");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 69, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   XtCreateManagedWidget("sep3", xmSeparatorGadgetClass, fileM, 0, 0);
@@ -1057,15 +1057,15 @@ NodeWindowAgent::create_ui()
 				  fileM, args, n);
   XtAddCallback(f_close, XmNactivateCallback, dismissCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 74, "Close");
-  mnemonic  = *CATGETS(Set_AgentLabel, 75, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 74, "Close");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 75, "");
   XtVaSetValues(f_close, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   widget = XtCreateManagedWidget("exit", xmPushButtonGadgetClass, fileM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, exitCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 76, "Exit");
-  mnemonic  = *CATGETS(Set_AgentLabel, 77, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 76, "Exit");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 77, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   // search menu
@@ -1078,32 +1078,32 @@ NodeWindowAgent::create_ui()
 					       menu_bar, args, n);
   help_agent().add_help_cb(f_search_menu_button);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 102, "Search");
-  mnemonic  = *CATGETS(Set_AgentLabel, 103, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 102, "Search");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 103, "");
   XtVaSetValues(f_search_menu_button, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   widget = XtCreateManagedWidget("on_selection", xmPushButtonGadgetClass,
 			      searchM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, search_on_selectionCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 78, "On Selection");
-  mnemonic  = *CATGETS(Set_AgentLabel, 79, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 78, "On Selection");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 79, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   widget = XtCreateManagedWidget("query_editor", xmPushButtonGadgetClass,
 			      searchM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, query_editorCB, 0);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 80, "Query Editor");
-  mnemonic  = *CATGETS(Set_AgentLabel, 81, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 80, "Query Editor");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 81, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   widget = XtCreateManagedWidget("scope_editor", xmPushButtonGadgetClass,
 			      searchM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, scope_editorCB, 0);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 82, "Scope Editor");
-  mnemonic  = *CATGETS(Set_AgentLabel, 83, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 82, "Scope Editor");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 83, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   XtCreateManagedWidget("sep1", xmSeparatorGadgetClass, searchM, 0, 0);
@@ -1112,8 +1112,8 @@ NodeWindowAgent::create_ui()
 			      searchM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, search_historyCB, 0);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 84, "Search History");
-  mnemonic  = *CATGETS(Set_AgentLabel, 85, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 84, "Search History");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 85, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   XtCreateManagedWidget("sep2", xmSeparatorGadgetClass, searchM, 0, 0);
@@ -1125,9 +1125,9 @@ NodeWindowAgent::create_ui()
 
   XtVaSetValues(f_clear_search_hits,
 	XmNlabelString,
-	(XmString)XmStringLocalized(CATGETS(Set_AgentLabel, 86, "Clear Search Hits")),
+	(XmString)XmStringLocalized(MCATGETS(Set_AgentLabel, 86, "Clear Search Hits")),
 	XmNmnemonic,
-	*CATGETS(Set_AgentLabel, 87, ""),
+	*MCATGETS(Set_AgentLabel, 87, ""),
 	NULL);
 
   XtCreateManagedWidget("sep3", xmSeparatorGadgetClass, searchM, 0, 0);
@@ -1136,16 +1136,16 @@ NodeWindowAgent::create_ui()
 					xmPushButtonGadgetClass, searchM, 0, 0);
   XtAddCallback(f_search_prev, XmNactivateCallback, search_previousCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 98, "Previous Search");
-  mnemonic  = *CATGETS(Set_AgentLabel, 99, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 98, "Previous Search");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 99, "");
   XtVaSetValues(f_search_prev, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   f_search_next = XtCreateManagedWidget("search_next",
 					xmPushButtonGadgetClass, searchM, 0, 0);
   XtAddCallback(f_search_next, XmNactivateCallback, search_nextCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 100, "Next Search");
-  mnemonic  = *CATGETS(Set_AgentLabel, 101, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 100, "Next Search");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 101, "");
   XtVaSetValues(f_search_next, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   // go menu
@@ -1156,8 +1156,8 @@ NodeWindowAgent::create_ui()
 			menu_bar, args, n);
   help_agent().add_help_cb(widget);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 104, "Go");
-  mnemonic  = *CATGETS(Set_AgentLabel, 105, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 104, "Go");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 105, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   f_history_prev = XtCreateManagedWidget("history_prev",
@@ -1166,8 +1166,8 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_history_prev, XmNarmCallback, preview_history_prevCB, this);
   XtAddCallback(f_history_prev, XmNdisarmCallback, unpreviewCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 88, "Back (History)");
-  mnemonic  = *CATGETS(Set_AgentLabel, 89, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 88, "Back (History)");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 89, "");
   XtVaSetValues(f_history_prev, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   f_history_next = XtCreateManagedWidget("history_next",
@@ -1176,16 +1176,16 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_history_next, XmNarmCallback, preview_history_nextCB, this);
   XtAddCallback(f_history_next, XmNdisarmCallback, unpreviewCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 90, "Forward (History)");
-  mnemonic  = *CATGETS(Set_AgentLabel, 91, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 90, "Forward (History)");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 91, "");
   XtVaSetValues(f_history_next, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   widget = XtCreateManagedWidget("section_history",
 			      xmPushButtonGadgetClass, goM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, section_historyCB, 0);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 92, "History...");
-  mnemonic  = *CATGETS(Set_AgentLabel, 93, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 92, "History...");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 93, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   XtCreateManagedWidget("sep1", xmSeparatorGadgetClass, goM, 0, 0);
@@ -1196,8 +1196,8 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_node_next, XmNarmCallback, preview_nextCB, this);
   XtAddCallback(f_node_next, XmNdisarmCallback, unpreviewCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 96, "Next Section");
-  mnemonic  = *CATGETS(Set_AgentLabel, 97, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 96, "Next Section");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 97, "");
   XtVaSetValues(f_node_next, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   f_node_prev = XtCreateManagedWidget("section_prev",
@@ -1206,8 +1206,8 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_node_prev, XmNarmCallback, preview_previousCB, this);
   XtAddCallback(f_node_prev, XmNdisarmCallback, unpreviewCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 94, "Previous Section");
-  mnemonic  = *CATGETS(Set_AgentLabel, 95, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 94, "Previous Section");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 95, "");
   XtVaSetValues(f_node_prev, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   XtCreateManagedWidget("sep2", xmSeparatorGadgetClass, goM, 0, 0);
@@ -1215,8 +1215,8 @@ NodeWindowAgent::create_ui()
   widget = XtCreateManagedWidget("open", xmPushButtonGadgetClass, goM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, open_urlCB, 0);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 66, "Open Locator...");
-  mnemonic  = *CATGETS(Set_AgentLabel, 67, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 66, "Open Locator...");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 67, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   // marks menu
@@ -1228,8 +1228,8 @@ NodeWindowAgent::create_ui()
 			menu_bar, args, n);
   help_agent().add_help_cb(widget);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 106, "Marks");
-  mnemonic  = *CATGETS(Set_AgentLabel, 107, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 106, "Marks");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 107, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   f_create_bmrk = XtCreateManagedWidget("create_bmrk",
@@ -1247,8 +1247,8 @@ NodeWindowAgent::create_ui()
   if (window_system().dtinfo_font())
     bmfont = XmFontListAppendEntry(bmfont, window_system().dtinfo_font());
 
-  mtfstring =  CATGETS(Set_AgentLabel, 108, "Create Bookmark");
-  mnemonic  = *CATGETS(Set_AgentLabel, 109, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 108, "Create Bookmark");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 109, "");
   XtVaSetValues(f_create_bmrk, XmNlabelString, (XmString)mtfstring,
 			       XmNmnemonic, mnemonic,
 			       XmNfontList, bmfont, NULL);
@@ -1258,8 +1258,8 @@ NodeWindowAgent::create_ui()
 					markM, 0, 0);
   XtAddCallback(f_create_anno, XmNactivateCallback, create_annotationCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 110, "Create Note...");
-  mnemonic  = *CATGETS(Set_AgentLabel, 111, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 110, "Create Note...");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 111, "");
   XtVaSetValues(f_create_anno, XmNlabelString, (XmString)mtfstring,
 			       XmNmnemonic, mnemonic,
 			       XmNfontList, bmfont, NULL);
@@ -1271,8 +1271,8 @@ NodeWindowAgent::create_ui()
 					    markM, 0, 0);
   XtAddCallback(list_marks, XmNactivateCallback, mark_listCB, 0);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 112, "List Marks");
-  mnemonic  = *CATGETS(Set_AgentLabel, 113, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 112, "List Marks");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 113, "");
   XtVaSetValues(list_marks, XmNlabelString, (XmString)mtfstring,
 			    XmNmnemonic, mnemonic,
 			    XmNfontList, bmfont, NULL);
@@ -1283,8 +1283,8 @@ NodeWindowAgent::create_ui()
 				      xmPushButtonGadgetClass, markM, 0, 0);
   XtAddCallback(f_edit_mark, XmNactivateCallback, edit_markCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 114, "Edit Selection...");
-  mnemonic  = *CATGETS(Set_AgentLabel, 115, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 114, "Edit Selection...");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 115, "");
   XtVaSetValues(f_edit_mark, XmNlabelString, (XmString)mtfstring,
 			     XmNmnemonic, mnemonic,
 			     XmNfontList, bmfont, NULL);
@@ -1293,8 +1293,8 @@ NodeWindowAgent::create_ui()
 				      xmPushButtonGadgetClass, markM, 0, 0);
   XtAddCallback(f_move_mark, XmNactivateCallback, move_markCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 116, "Move Selection");
-  mnemonic  = *CATGETS(Set_AgentLabel, 117, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 116, "Move Selection");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 117, "");
   XtVaSetValues(f_move_mark, XmNlabelString, (XmString)mtfstring,
 			     XmNmnemonic, mnemonic,
 			     XmNfontList, bmfont, NULL);
@@ -1304,8 +1304,8 @@ NodeWindowAgent::create_ui()
 					markM, 0, 0);
   XtAddCallback(f_delete_mark, XmNactivateCallback, delete_markCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 118, "Delete Selection");
-  mnemonic  = *CATGETS(Set_AgentLabel, 119, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 118, "Delete Selection");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 119, "");
   XtVaSetValues(f_delete_mark, XmNlabelString, (XmString)mtfstring,
 			       XmNmnemonic, mnemonic,
 			       XmNfontList, bmfont, NULL);
@@ -1385,16 +1385,16 @@ NodeWindowAgent::create_ui()
 			menu_bar, args, n);
   help_agent().add_help_cb(widget);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 120, "Options");
-  mnemonic  = *CATGETS(Set_AgentLabel, 121, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 120, "Options");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 121, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   widget = XtCreateManagedWidget("preferences", xmPushButtonGadgetClass,
 			      optionsM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, prefsCB, 0);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 122, "Preferences...");
-  mnemonic  = *CATGETS(Set_AgentLabel, 123, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 122, "Preferences...");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 123, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   XtCreateManagedWidget("sep1", xmSeparatorGadgetClass, optionsM, 0, 0);
@@ -1404,8 +1404,8 @@ NodeWindowAgent::create_ui()
 					   optionsM, 0, 0);
   XtAddCallback(f_detach_graphic, XmNactivateCallback, detach_graphicCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 124, "Detach Graphic");
-  mnemonic  = *CATGETS(Set_AgentLabel, 125, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 124, "Detach Graphic");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 125, "");
   XtVaSetValues(f_detach_graphic, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   XtCreateManagedWidget("sep2", xmSeparatorGadgetClass, optionsM, 0, 0);
@@ -1416,8 +1416,8 @@ NodeWindowAgent::create_ui()
   XtAddCallback(tool_barT, XmNvalueChangedCallback,
 		tool_bar_toggleCB, tool_bar);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 126, "Show Tool Bar");
-  mnemonic  = *CATGETS(Set_AgentLabel, 127, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 126, "Show Tool Bar");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 127, "");
   XtVaSetValues(tool_barT, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   Widget search_areaT = XtCreateManagedWidget("show_search_area",
@@ -1426,8 +1426,8 @@ NodeWindowAgent::create_ui()
   XtAddCallback(search_areaT, XmNvalueChangedCallback,
 		search_area_toggleCB, search_area);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 128, "Show Search Area");
-  mnemonic  = *CATGETS(Set_AgentLabel, 129, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 128, "Show Search Area");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 129, "");
   XtVaSetValues(search_areaT, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   // windows menu
@@ -1439,24 +1439,24 @@ NodeWindowAgent::create_ui()
 			menu_bar, args, n);
   help_agent().add_help_cb(widget);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 130, "Windows");
-  mnemonic  = *CATGETS(Set_AgentLabel, 131, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 130, "Windows");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 131, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   widget = XtCreateManagedWidget("booklist", xmPushButtonGadgetClass,
 			      windowsM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, show_booklistCB, 0);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 132, "Book List");
-  mnemonic  = *CATGETS(Set_AgentLabel, 133, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 132, "Book List");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 133, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
   widget = XtCreateManagedWidget("graphical_map", xmPushButtonGadgetClass,
 			      windowsM, 0, 0);
   XtAddCallback(widget, XmNactivateCallback, show_mapCB, this);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 134, "Graphical Map");
-  mnemonic  = *CATGETS(Set_AgentLabel, 135, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 134, "Graphical Map");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 135, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
 
@@ -1472,8 +1472,8 @@ NodeWindowAgent::create_ui()
   XtSetArg(args[n], XmNmenuHelpWidget, widget); n++;
   XtSetValues(menu_bar, args, n);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 143, "Help");
-  mnemonic  = *CATGETS(Set_AgentLabel, 144, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 143, "Help");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 144, "");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, XmNmnemonic, mnemonic, NULL);
 
 #define AM WAutoManage
@@ -1496,56 +1496,56 @@ NodeWindowAgent::create_ui()
   //WXmPushButton      on_version      (helpM,      "on_version"    , AM);
   //ON_ACTIVATE (on_version, 		display_version);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 257, "Overview");
-  mnemonic  = *CATGETS(Set_AgentLabel, 258, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 257, "Overview");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 258, "");
   XtVaSetValues((Widget)on_overview, XmNlabelString, (XmString)mtfstring,
 				    XmNmnemonic, mnemonic, NULL);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 249, "Tasks");
-  mnemonic  = *CATGETS(Set_AgentLabel, 250, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 249, "Tasks");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 250, "");
   XtVaSetValues((Widget)on_tasks, XmNlabelString, (XmString)mtfstring,
 				    XmNmnemonic, mnemonic, NULL);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 251, "Reference");
-  mnemonic  = *CATGETS(Set_AgentLabel, 252, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 251, "Reference");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 252, "");
   XtVaSetValues((Widget)on_reference, XmNlabelString, (XmString)mtfstring,
 				    XmNmnemonic, mnemonic, NULL);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 50, "On Item...");
-  mnemonic  = *CATGETS(Set_AgentLabel, 51, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 50, "On Item...");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 51, "");
   XtVaSetValues((Widget)on_item, XmNlabelString, (XmString)mtfstring,
 				    XmNmnemonic, mnemonic, NULL);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 253, "Using Help");
-  mnemonic  = *CATGETS(Set_AgentLabel, 254, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 253, "Using Help");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 254, "");
   XtVaSetValues((Widget)on_help, XmNlabelString, (XmString)mtfstring,
 				    XmNmnemonic, mnemonic, NULL);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 255, "About Information Manager");
-  mnemonic  = *CATGETS(Set_AgentLabel, 256, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 255, "About Information Manager");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 256, "");
   XtVaSetValues((Widget)on_about, XmNlabelString, (XmString)mtfstring,
 				    XmNmnemonic, mnemonic, NULL);
 
 
 #ifdef EAM
-  mtfstring =  CATGETS(Set_AgentLabel, 147, "On Window");
-  mnemonic  = *CATGETS(Set_AgentLabel, 148, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 147, "On Window");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 148, "");
   XtVaSetValues((Widget)on_window, XmNlabelString, (XmString)mtfstring,
 				    XmNmnemonic, mnemonic, NULL);
-//  mtfstring =  CATGETS(Set_AgentLabel, 149, "On Application");
-//  mnemonic  = *CATGETS(Set_AgentLabel, 150, "");
+//  mtfstring =  MCATGETS(Set_AgentLabel, 149, "On Application");
+//  mnemonic  = *MCATGETS(Set_AgentLabel, 150, "");
 //  XtVaSetValues((Widget)on_application, XmNlabelString, (XmString)mtfstring,
 //				    XmNmnemonic, mnemonic, NULL);
-//  mtfstring =  CATGETS(Set_AgentLabel, 151, "Index");
-//  mnemonic  = *CATGETS(Set_AgentLabel, 152, "");
+//  mtfstring =  MCATGETS(Set_AgentLabel, 151, "Index");
+//  mnemonic  = *MCATGETS(Set_AgentLabel, 152, "");
 //  XtVaSetValues((Widget)index, XmNlabelString, (XmString)mtfstring,
 //				    XmNmnemonic, mnemonic, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 155, "On Keys");
-  mnemonic  = *CATGETS(Set_AgentLabel, 156, "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 155, "On Keys");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 156, "");
   XtVaSetValues((Widget)on_keys, XmNlabelString, (XmString)mtfstring,
 				    XmNmnemonic, mnemonic, NULL);
-  mtfstring =  CATGETS(Set_AgentLabel, 157, "On Version");
-  mnemonic  = *CATGETS(Set_AgentLabel, 158. "");
+  mtfstring =  MCATGETS(Set_AgentLabel, 157, "On Version");
+  mnemonic  = *MCATGETS(Set_AgentLabel, 158. "");
   XtVaSetValues((Widget)on_version, XmNlabelString, (XmString)mtfstring,
 				    XmNmnemonic, mnemonic, NULL);
   
@@ -1569,7 +1569,7 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_history_prev2, XmNdisarmCallback, unpreviewCB, this);
   help_agent().add_help_cb (f_history_prev2);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 1,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 1,
 				"Go to the previous section in history"));
   add_quick_help(f_history_prev2, (char*)*textstore);
   f_textstore.insert_item(textstore);
@@ -1582,7 +1582,7 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_history_next2, XmNdisarmCallback, unpreviewCB, this);
   help_agent().add_help_cb (f_history_next2);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 2,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 2,
 				"Go to the next section in history"));
   add_quick_help(f_history_next2, (char*)*textstore);
   f_textstore.insert_item(textstore);
@@ -1599,7 +1599,7 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_node_prev2, XmNdisarmCallback, unpreviewCB, this);
   help_agent().add_help_cb (f_node_prev2);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 3,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 3,
 				"Go to the previous section in document"));
   add_quick_help(f_node_prev2, (char*)*textstore);
   f_textstore.insert_item(textstore);
@@ -1612,7 +1612,7 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_node_next2, XmNdisarmCallback, unpreviewCB, this);
   help_agent().add_help_cb (f_node_next2);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 4,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 4,
 				"Go to the next section in document"));
   add_quick_help(f_node_next2, (char*)*textstore);
   f_textstore.insert_item(textstore);
@@ -1627,7 +1627,7 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_search_prev2, XmNactivateCallback, search_previousCB, this);
   help_agent().add_help_cb (f_search_prev2);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 5,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 5,
 				"Go to the previous search match"));
   add_quick_help(f_search_prev2, (char*)*textstore);
   f_textstore.insert_item(textstore);
@@ -1638,7 +1638,7 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_search_next2, XmNactivateCallback, search_nextCB, this);
   help_agent().add_help_cb (f_search_next2);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 6,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 6,
 				"Go to the next search match"));
   add_quick_help(f_search_next2, (char*)*textstore);
   f_textstore.insert_item(textstore);
@@ -1654,7 +1654,7 @@ NodeWindowAgent::create_ui()
   XtAddCallback(f_print2, XmNactivateCallback, printCB, this);
   help_agent().add_help_cb (f_print2);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 7,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 7,
 				"Print current section"));
   add_quick_help(f_print2, (char*)*textstore);
   f_textstore.insert_item(textstore);
@@ -1664,7 +1664,7 @@ NodeWindowAgent::create_ui()
   XtAddCallback(widget, XmNactivateCallback, show_booklistCB, 0);
   help_agent().add_help_cb (widget);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 8, "Display Book List"));
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 8, "Display Book List"));
   add_quick_help(widget, (char*)*textstore);
   f_textstore.insert_item(textstore);
 
@@ -1673,7 +1673,7 @@ NodeWindowAgent::create_ui()
   XtAddCallback(widget, XmNactivateCallback, show_mapCB, this);
   help_agent().add_help_cb (widget);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 9,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 9,
 					"Display Graphical Map"));
   add_quick_help(widget, (char*)*textstore);
   f_textstore.insert_item(textstore);
@@ -1705,13 +1705,13 @@ NodeWindowAgent::create_ui()
   XtAddCallback(widget, XmNvalueChangedCallback, lock_toggleCB, this);
   help_agent().add_help_cb (widget);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 10,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 10,
 		"Pin (unpin) this window, "
 		"to prevent (allow) use for new documents."));
   add_quick_help(widget, (char*)*textstore);
   f_textstore.insert_item(textstore);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 159, "Retain");
+  mtfstring =  MCATGETS(Set_AgentLabel, 159, "Retain");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, NULL);
   
   // Work Window
@@ -1745,7 +1745,7 @@ NodeWindowAgent::create_ui()
   XtSetArg(args[n], XmNbackground, bg); n++;
   f_status_text = XtCreateManagedWidget("text", xmTextFieldWidgetClass,
 					message, args, n);
-  string = CATGETS(Set_NodeWindowAgent, 2, "To preview a link destination, "
+  string = MCATGETS(Set_NodeWindowAgent, 2, "To preview a link destination, "
 					   "click and hold on the link.");
   XtVaSetValues(f_status_text, XmNvalue, string, NULL);
 
@@ -1805,19 +1805,19 @@ NodeWindowAgent::create_ui()
   f_detach_button = XmCreatePushButton(f_detach_menu, (char*)"Detach Graphic", NULL, 0);
   XtAddCallback(f_detach_button, XmNactivateCallback, detach_grCB, this);
   XtManageChild(f_detach_button);
-  mtfstring =  CATGETS(Set_AgentLabel, 124, "Detach Graphic");
+  mtfstring =  MCATGETS(Set_AgentLabel, 124, "Detach Graphic");
   XtVaSetValues(f_detach_button, XmNlabelString, (XmString)mtfstring, NULL);
 
   f_attach_button = XmCreatePushButton(f_detach_menu, (char*)"Attach Graphic", NULL, 0);
   XtAddCallback(f_attach_button, XmNactivateCallback, attach_grCB, this);
   XtManageChild(f_attach_button);
-  mtfstring =  CATGETS(Set_AgentLabel, 265, "Attach Graphic");
+  mtfstring =  MCATGETS(Set_AgentLabel, 265, "Attach Graphic");
   XtVaSetValues(f_attach_button, XmNlabelString, (XmString)mtfstring, NULL);
 
   f_raise_button = XmCreatePushButton(f_detach_menu, (char*)"Raise Graphic", NULL, 0);
   XtAddCallback(f_raise_button, XmNactivateCallback, raise_grCB, this);
   XtManageChild(f_raise_button);
-  mtfstring =  CATGETS(Set_AgentLabel, 264, "Raise Graphic");
+  mtfstring =  MCATGETS(Set_AgentLabel, 264, "Raise Graphic");
   XtVaSetValues(f_raise_button, XmNlabelString, (XmString)mtfstring, NULL);
 
   XtAddEventHandler (f_help_dsp_area->dispWid, ButtonPressMask, False, popup_menuCB, (XtPointer)this);
@@ -1837,13 +1837,13 @@ NodeWindowAgent::create_ui()
   widget = XmCreatePushButton(f_preview_menu, (char*)"widget", NULL, 0);
   XtAddCallback(widget, XmNactivateCallback, go_to_linkCB, this);
   XtManageChild(widget);
-  mtfstring =  CATGETS(Set_AgentLabel, 168, "Display Link");
+  mtfstring =  MCATGETS(Set_AgentLabel, 168, "Display Link");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, NULL);
 
   widget = XmCreatePushButton(f_preview_menu, (char*)"widget", NULL, 0);
   XtAddCallback(widget, XmNactivateCallback, open_new_nodeCB, this);
   XtManageChild(widget);
-  mtfstring =  CATGETS(Set_AgentLabel, 64, "New Window");
+  mtfstring =  MCATGETS(Set_AgentLabel, 64, "New Window");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, NULL);
 
   // create default popup menu
@@ -1853,13 +1853,13 @@ NodeWindowAgent::create_ui()
   f_node_next3 = XmCreatePushButton(f_default_menu, (char*)"f_node_next3", NULL, 0);
   XtAddCallback(f_node_next3, XmNactivateCallback, node_nextCB, this);
   XtManageChild(f_node_next3);
-  mtfstring =  CATGETS(Set_AgentLabel, 96, "Next Section");
+  mtfstring =  MCATGETS(Set_AgentLabel, 96, "Next Section");
   XtVaSetValues(f_node_next3, XmNlabelString, (XmString)mtfstring, NULL);
 
   f_node_prev3 = XmCreatePushButton(f_default_menu, (char*)"f_node_prev3", NULL, 0);
   XtAddCallback(f_node_prev3, XmNactivateCallback, node_previousCB, this);
   XtManageChild(f_node_prev3);
-  mtfstring =  CATGETS(Set_AgentLabel, 94, "Previous Section");
+  mtfstring =  MCATGETS(Set_AgentLabel, 94, "Previous Section");
   XtVaSetValues(f_node_prev3, XmNlabelString, (XmString)mtfstring, NULL);
 
   widget = XmCreateSeparator(f_default_menu, (char*)"sep", NULL, 0);
@@ -1868,7 +1868,7 @@ NodeWindowAgent::create_ui()
   widget = XmCreatePushButton(f_default_menu, (char*)"widget", NULL, 0);
   XtAddCallback(widget, XmNactivateCallback, show_locatorCB, this);
   XtManageChild(widget);
-  mtfstring =  CATGETS(Set_AgentLabel, 68, "Show Locator");
+  mtfstring =  MCATGETS(Set_AgentLabel, 68, "Show Locator");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, NULL);
 
   widget = XmCreateSeparator(f_default_menu, (char*)"sep", NULL, 0);
@@ -1877,7 +1877,7 @@ NodeWindowAgent::create_ui()
   widget = XmCreatePushButton(f_default_menu, (char*)"widget", NULL, 0);
   XtAddCallback(widget, XmNactivateCallback, printCB, this);
   XtManageChild(widget);
-  mtfstring =  CATGETS(Set_AgentLabel, 70, "Print");
+  mtfstring =  MCATGETS(Set_AgentLabel, 70, "Print");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, NULL);
 
 
@@ -1890,11 +1890,11 @@ NodeWindowAgent::create_ui()
   if (MB_CUR_MAX > 1) {
 
     // DtHelpDispAreaStruct cant_begin_chars
-    WString cant_begin_chars = CATGETS(Set_NodeWindowAgent, 5, "");
+    WString cant_begin_chars = MCATGETS(Set_NodeWindowAgent, 5, "");
     f_help_dsp_area->cant_begin_chars = cant_begin_chars.get_wstr();
 
     // DtHelpDispAreaStruct cant_end_chars
-    WString cant_end_chars = CATGETS(Set_NodeWindowAgent, 6, "");
+    WString cant_end_chars = MCATGETS(Set_NodeWindowAgent, 6, "");
     f_help_dsp_area->cant_end_chars = cant_end_chars.get_wstr();
 
 #ifdef LB_DEBUG
@@ -1998,12 +1998,12 @@ NodeWindowAgent::create_ui()
   XtManageChild(widget = XmCreateOptionMenu(search_area, (char*)"scope", args, n));
   help_agent().add_help_cb (widget);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 60,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 60,
 					"Specify search scope"));
   add_quick_help(widget, (char*)*textstore);
   f_textstore.insert_item(textstore);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 59, "Search:");
+  mtfstring =  MCATGETS(Set_AgentLabel, 59, "Search:");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, NULL);
 
   // hookup the ScopeMenu object here
@@ -2029,10 +2029,10 @@ NodeWindowAgent::create_ui()
   XtAddCallback(widget, XmNactivateCallback, scope_editorCB, 0);
   help_agent().add_help_cb (widget);
 
-  mtfstring =  CATGETS(Set_AgentLabel, 46, "Scope Editor");
+  mtfstring =  MCATGETS(Set_AgentLabel, 46, "Scope Editor");
   XtVaSetValues(widget, XmNlabelString, (XmString)mtfstring, NULL);
 
-  textstore = new UAS_String(CATGETS(Set_AgentQHelp, 11,
+  textstore = new UAS_String(MCATGETS(Set_AgentQHelp, 11,
 			"Specify search scope using the Scope Editor"));
   add_quick_help(widget, (char*)*textstore);
   f_textstore.insert_item(textstore);
@@ -2321,11 +2321,11 @@ NodeWindowAgent::search_help (Widget, XtPointer client_data,
   if (help_text == NULL) {
     UAS_Pointer<UAS_String> str;
 
-    str = new UAS_String(CATGETS(Set_AgentQHelp, 64, "Search %s"));
+    str = new UAS_String(MCATGETS(Set_AgentQHelp, 64, "Search %s"));
     help_text = (char*)*str;
     agent->f_textstore.insert_item(str);
 
-    str = new UAS_String(CATGETS(Set_NodeWindowAgent, 3, "Information Library"));
+    str = new UAS_String(MCATGETS(Set_NodeWindowAgent, 3, "Information Library"));
     default_scope = (char*)*str;
     agent->f_textstore.insert_item(str);
   }
@@ -2478,7 +2478,7 @@ NodeWindowAgent::initialize_history()
 void
 NodeWindowAgent::display_version()
 {
-  UAS_String version = CATGETS(Set_Version, 1, "");
+  UAS_String version = MCATGETS(Set_Version, 1, "");
   if (*(char*)version) {
     message_mgr().info_dialog ((char*)version);
   }
@@ -3000,10 +3000,10 @@ NodeWindowAgent::preview (WTimeOut *)
   const char *book_name = (char *) bn;
   if (book_name != NULL && *book_name != '\0')
     snprintf (preview_buffer, sizeof(preview_buffer),
-              CATGETS(Set_Messages, 8, "Link to %s: %s"), book_name, title);
+              MCATGETS(Set_Messages, 8, "Link to %s: %s"), book_name, title);
   else
     snprintf (preview_buffer, sizeof(preview_buffer),
-              CATGETS(Set_Messages, 9, "Link to %s"), title);
+              MCATGETS(Set_Messages, 9, "Link to %s"), title);
   XmTextFieldSetString(f_status_text, preview_buffer);
   f_preview_timeout = NULL;
   f_preview_document = NULL;
@@ -3083,7 +3083,7 @@ NodeWindowAgent::make_bookmark (Boolean edit, MarkCanvas* refmark)
     //Xassert (name != NULL);
     if (name == NULL)
     {
-      message_mgr().error_dialog ((char*)UAS_String(CATGETS(Set_Messages, 10,
+      message_mgr().error_dialog ((char*)UAS_String(MCATGETS(Set_Messages, 10,
 			"Dtinfo is unable to create this bookmark.")),
                           (Widget)f_shell);
       return status;
@@ -3257,7 +3257,7 @@ NodeWindowAgent::make_bookmark (Boolean edit, MarkCanvas* refmark)
     }
     else if (bad_markinfo.length() > 0)
 	message_mgr().error_dialog (
-		(char*)UAS_String(CATGETS(Set_NodeWindowAgent, 7,
+		(char*)UAS_String(MCATGETS(Set_NodeWindowAgent, 7,
 		"The selected text is dynamically inserted and cannot\n"
 		"be used alone to create a bookmark reference. Either\n"
 		"select other text near the point, or include more of\n"
@@ -3269,7 +3269,7 @@ NodeWindowAgent::make_bookmark (Boolean edit, MarkCanvas* refmark)
   mcatch_any()
   {
       if (! refmark)
-	message_mgr().error_dialog ((char*)UAS_String(CATGETS(Set_Messages, 10,
+	message_mgr().error_dialog ((char*)UAS_String(MCATGETS(Set_Messages, 10,
 		"Dtinfo is unable to create this bookmark.")),
                           (Widget)f_shell);
   }
@@ -3555,7 +3555,7 @@ NodeWindowAgent::delete_mark()
   mcatch_any()
     {
       message_mgr().error_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 11,
+		(char*)UAS_String(MCATGETS(Set_Messages, 11,
 			"Dtinfo is unable to delete this bookmark.")),
                           (Widget)f_shell);
     }
@@ -3606,7 +3606,7 @@ NodeWindowAgent::move_markCB(Widget, XtPointer client_data, XtPointer)
   mcatch_any()
     {
       message_mgr().error_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 12,
+		(char*)UAS_String(MCATGETS(Set_Messages, 12,
 			"Dtinfo is unable to remove this bookmark.")),
                           (Widget)f_shell);
     }
@@ -3667,10 +3667,10 @@ NodeWindowAgent::detach_graphic()
                  WArgList (XmNdialogType, XmDIALOG_INFORMATION, NULL));
   WXmDialogShell shell (info_dialog.Parent());
   // set window title
-  String string = CATGETS(Set_Messages, 72, "Dtinfo: Detach Graphic");
+  String string = MCATGETS(Set_Messages, 72, "Dtinfo: Detach Graphic");
   XtVaSetValues((Widget)shell, XmNtitle, string, NULL);
   info_dialog.MessageString (
-        (char*)UAS_String(CATGETS(Set_Messages, 73, "Click on graphic")));
+        (char*)UAS_String(MCATGETS(Set_Messages, 73, "Click on graphic")));
   XtUnmanageChild (info_dialog.OkPB());
   XtUnmanageChild (info_dialog.HelpPB());
 
@@ -3732,7 +3732,7 @@ NodeWindowAgent::show_locator()
   UAS_String locator_str = f_node_ptr->id();
   const char *locator = (const char *)locator_str;
   snprintf (buffer, sizeof(buffer),
-	   CATGETS(Set_NodeWindowAgent, 4,
+	   MCATGETS(Set_NodeWindowAgent, 4,
                    "The locator for this section is %s"), locator);
   XmTextFieldSetString(f_status_text, buffer);
   XmTextFieldSetSelection(f_status_text,
@@ -4048,7 +4048,7 @@ NodeWindowAgent::do_bookmarks(bool move_to_mark)
   if (bookmark_errors > 0)
     {
       message_mgr().error_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 10,
+		(char*)UAS_String(MCATGETS(Set_Messages, 10,
 			"Dtinfo is unable to create this bookmark.")),
                           (Widget)f_shell);
     }
@@ -4162,7 +4162,7 @@ NodeWindowAgent::initialize_hierarchy()
 	  if (++depth > 15)
 	    {
 	      message_mgr().error_dialog(
-		(char*)UAS_String(CATGETS(Set_Messages, 13, "File a Bug")),
+		(char*)UAS_String(MCATGETS(Set_Messages, 13, "File a Bug")),
                           (Widget)f_shell);
 	      break;
 	    }
@@ -4886,7 +4886,7 @@ NodeWindowAgent::show_mark(MarkCanvas *jump_to, bool move_to)
       else
 	{
 	  message_mgr().warning_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 14,
+		(char*)UAS_String(MCATGETS(Set_Messages, 14,
 			"The bookmark cannot be displayed.")),
                           (Widget)f_shell);
 	}
@@ -5139,7 +5139,7 @@ MarkViewer::receive (ViewMark &message, void* /*client_data*/)
   mcatch_any()
     {
       message_mgr().info_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 15,
+		(char*)UAS_String(MCATGETS(Set_Messages, 15,
 				"The bookcase is not accessible.")));
     }
   end_try;

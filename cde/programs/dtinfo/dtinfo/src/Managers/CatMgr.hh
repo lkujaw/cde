@@ -63,6 +63,6 @@ inline CatMgr& msg_catalog_mgr()
     return CatMgr::msg_catalog_mgr();
 };
 
-#define CATGETS		msg_catalog_mgr().catgets
+#define MCATGETS	msg_catalog_mgr().catgets
 
 #endif

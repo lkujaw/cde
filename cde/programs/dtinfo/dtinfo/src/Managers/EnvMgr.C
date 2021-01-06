@@ -204,7 +204,7 @@ EnvMgr::init(int argc_i, char** argv_i)
          {
             // invalid infolib--display error message
             message_mgr().error_dialog (
-                 (char*)UAS_String(CATGETS(Set_AddLibraryAgent, 7,
+                 (char*)UAS_String(MCATGETS(Set_AddLibraryAgent, 7,
                  "No infolibs found or specified.")));
             return -1;
          }
@@ -349,7 +349,7 @@ EnvMgr::parse_cmdline( int     argc_i,
           {
             // invalid infolib--display error message, but not fatal
             message_mgr().error_dialog (
-                  (char*)UAS_String(CATGETS(Set_AddLibraryAgent, 5,
+                  (char*)UAS_String(MCATGETS(Set_AddLibraryAgent, 5,
                   "Infolib specification format error.")));
           }
         }
@@ -418,7 +418,7 @@ EnvMgr::parse_cmdline( int     argc_i,
       }
       else
       {
-        cerr << CATGETS(Set_EnvMgr, 2, "Invalid argument") << endl;
+        cerr << MCATGETS(Set_EnvMgr, 2, "Invalid argument") << endl;
         return -1;
       }
    }
@@ -428,7 +428,7 @@ EnvMgr::parse_cmdline( int     argc_i,
     // make sure that if print option was specified that some sections 
     // to print were also specified.
     if ( (window_system().videoShell()->print_only) && (f_sectionsArg == (UAS_String)NULL)) {
-	cerr << CATGETS(Set_EnvMgr, 3, "ERROR: The -sect option must be specified with the -print option.") << endl;
+	cerr << MCATGETS(Set_EnvMgr, 3, "ERROR: The -sect option must be specified with the -print option.") << endl;
 	cerr << endl;
 	usage();
 	exit(1);
@@ -440,7 +440,7 @@ EnvMgr::parse_cmdline( int     argc_i,
 void
 EnvMgr::usage()
 {
-    cerr <<  CATGETS(Set_EnvMgr, 4, "Usage: dtinfo") << endl;
+    cerr <<  MCATGETS(Set_EnvMgr, 4, "Usage: dtinfo") << endl;
     cerr << "   [-help]" << endl;
     cerr << "   [-l infolib1] [-l infolib2] [...]" << endl;
     cerr << "   [-sect section[-section][,section[-section]]]" << endl;
@@ -452,7 +452,7 @@ EnvMgr::usage()
     cerr << "              [-paperSize]" << endl;
     cerr << "              [-printer x_print_server]]]" << endl;
     cerr << endl;
-    cerr << CATGETS(Set_EnvMgr, 5, 
+    cerr << MCATGETS(Set_EnvMgr, 5,
 		    "This application understands all standard X Toolkit command-line options.") << endl;
     
 }

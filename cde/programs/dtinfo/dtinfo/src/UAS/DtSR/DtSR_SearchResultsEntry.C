@@ -281,7 +281,7 @@ DtSR_SearchResultsEntry::create_matches()
 	{
 #ifdef JOE_HATES_THIS
 	    message_mgr().error_dialog(
-		(char*)UAS_String(CATGETS(Set_Messages, 39, "File a Bug")));
+		(char*)UAS_String(MCATGETS(Set_Messages, 39, "File a Bug")));
 #else
 	    throw(CASTEXCEPT Exception());
 #endif

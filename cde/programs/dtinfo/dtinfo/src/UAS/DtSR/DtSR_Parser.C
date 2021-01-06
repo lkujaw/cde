@@ -125,9 +125,9 @@ DtSR_Parser::se_construct(OQL_Token token,
 #ifdef IGNORE_UNSUPPORTED
 	return arg1;
 #else
-	UAS_String str   = CATGETS(Set_DtSR_Parser, 1,
+	UAS_String str   = MCATGETS(Set_DtSR_Parser, 1,
 				"The ``%s'' Search feature is not supported.");
-	UAS_String opstr = CATGETS(Set_DtSR_Parser, 3, "weight");
+	UAS_String opstr = MCATGETS(Set_DtSR_Parser, 3, "weight");
 	snprintf(msg, sizeof(msg), (char*)str, (char*)opstr);
 	UAS_String uas_msg = msg;
 	throw(UAS_Search_Feature_Unavailable(uas_msg));
@@ -166,9 +166,9 @@ DtSR_Parser::se_construct(OQL_Token token,
 	}
 	return newstr;
 #else
-	UAS_String str   = CATGETS(Set_DtSR_Parser, 1,
+	UAS_String str   = MCATGETS(Set_DtSR_Parser, 1,
 				"The ``%s'' Search feature is not supported.");
-	UAS_String opstr = CATGETS(Set_DtSR_Parser, 2, "quoted phrase");
+	UAS_String opstr = MCATGETS(Set_DtSR_Parser, 2, "quoted phrase");
 	snprintf(msg, sizeof(msg), (char*)str, (char*)opstr);
 
 	UAS_String uas_msg = msg;
@@ -187,9 +187,9 @@ DtSR_Parser::se_construct(OQL_Token token,
 	newstr = newstr + arg1 + " & " + arg2 + " )";
 	return newstr;
 #else
-	UAS_String str   = CATGETS(Set_DtSR_Parser, 1,
+	UAS_String str   = MCATGETS(Set_DtSR_Parser, 1,
 				"The ``%s'' Search feature is not supported.");
-	UAS_String opstr = CATGETS(Set_DtSR_Parser, 4, "proximity");
+	UAS_String opstr = MCATGETS(Set_DtSR_Parser, 4, "proximity");
 	snprintf(msg, sizeof(msg), (char*)str, (char*)opstr);
 	UAS_String uas_msg = msg;
 	throw(UAS_Search_Feature_Unavailable(uas_msg));
@@ -228,9 +228,9 @@ DtSR_Parser::se_construct(OQL_Token token,
 	newstr = newstr + arg1 + " & " + arg2 + " )";
 	return newstr;
 #else
-	UAS_String str   = CATGETS(Set_DtSR_Parser, 1,
+	UAS_String str   = MCATGETS(Set_DtSR_Parser, 1,
 				"The ``%s'' Search feature is not supported.");
-	UAS_String opstr = CATGETS(Set_DtSR_Parser, 5, "xor");
+	UAS_String opstr = MCATGETS(Set_DtSR_Parser, 5, "xor");
 	snprintf(msg, sizeof(msg), (char*)str, (char*)opstr);
 	UAS_String uas_msg = msg;
 	throw(UAS_Search_Feature_Unavailable(uas_msg));

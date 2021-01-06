@@ -181,7 +181,7 @@ HelpAgent::display_help (Widget w)
   if(locator_id == NULL)
   {
     message_mgr().error_dialog ((char*)UAS_String(
-                  CATGETS(Set_Messages, 3, "No help available")));
+                  MCATGETS(Set_Messages, 3, "No help available")));
     return;
   }
 
@@ -232,7 +232,7 @@ HelpAgent::display_help (const String locatoridResourceString)
     else
     {
       message_mgr().error_dialog (UAS_String(
-                    CATGETS(Set_Messages, 3, "No help available")));
+                    MCATGETS(Set_Messages, 3, "No help available")));
     }
   }
 }

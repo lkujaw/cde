@@ -421,7 +421,7 @@ SearchScopeAgent::display()
     if (env().debug())
     {
        message_mgr().warning_dialog (
-        (char*)UAS_String(CATGETS(Set_Messages, 31,
+        (char*)UAS_String(MCATGETS(Set_Messages, 31,
         "Ignoring invalid scopes in your profile.")));
     }
     search_scope_mgr().show_warning(False);
@@ -467,7 +467,7 @@ SearchScopeAgent::create_ui()
   f_shell = WTopLevelShell (window_system().toplevel(),WPopup,"scope_editor");
   window_system().register_shell(&f_shell);
 
-  string = CATGETS(Set_SearchScopeAgent, 1, "Dtinfo: Search Scope Editor");
+  string = MCATGETS(Set_SearchScopeAgent, 1, "Dtinfo: Search Scope Editor");
   XtVaSetValues((Widget)f_shell, XmNtitle, string, NULL);
 
   DECL  (WXmForm,         form,           f_shell,     "form");
@@ -478,9 +478,9 @@ SearchScopeAgent::create_ui()
   f_scope_option = WXmOptionMenu (form, (char*)"scope_option", WAutoManage, args, n);
   ASSN  (WXmPushButton,   f_unnamed,      scope_menu,  "unnamed");
 
-  mtfstring = CATGETS(Set_AgentLabel, 212, "Scope Name");
+  mtfstring = MCATGETS(Set_AgentLabel, 212, "Scope Name");
   XtVaSetValues(f_scope_option, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 213, "Unnamed");
+  mtfstring = MCATGETS(Set_AgentLabel, 213, "Unnamed");
   XtVaSetValues(f_unnamed, XmNlabelString, (XmString)mtfstring, NULL);
   
   ASSNM (WXmPushButton,   f_new,          form,        "new");
@@ -496,23 +496,23 @@ SearchScopeAgent::create_ui()
   DECLM (WXmLabel,         bookshelf,     form,        "books");
   DECLM (WXmLabel,         components,    form,        "components");
 
-  mtfstring = CATGETS(Set_AgentLabel, 214, "Books");
+  mtfstring = MCATGETS(Set_AgentLabel, 214, "Books");
   XtVaSetValues(bookshelf, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 215, "Components");
+  mtfstring = MCATGETS(Set_AgentLabel, 215, "Components");
   XtVaSetValues(components, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 216, "New");
+  mtfstring = MCATGETS(Set_AgentLabel, 216, "New");
   XtVaSetValues(f_new, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 217, "Save");
+  mtfstring = MCATGETS(Set_AgentLabel, 217, "Save");
   XtVaSetValues(f_save, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 218, "Rename");
+  mtfstring = MCATGETS(Set_AgentLabel, 218, "Rename");
   XtVaSetValues(f_rename, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 183, "Delete");
+  mtfstring = MCATGETS(Set_AgentLabel, 183, "Delete");
   XtVaSetValues(f_delete, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 202, "Reset");
+  mtfstring = MCATGETS(Set_AgentLabel, 202, "Reset");
   XtVaSetValues(f_reset, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 12, "Close");
+  mtfstring = MCATGETS(Set_AgentLabel, 12, "Close");
   XtVaSetValues(close, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 48, "Help");
+  mtfstring = MCATGETS(Set_AgentLabel, 48, "Help");
   XtVaSetValues(help, XmNlabelString, (XmString)mtfstring, NULL);
 
   // WARNING: the widget name, infobases, is used else where--do not alter.
@@ -592,7 +592,7 @@ SearchScopeAgent::new_scope()
   if (f_reset.Sensitive())
     {
       bool dosave = message_mgr().question_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 17,
+		(char*)UAS_String(MCATGETS(Set_Messages, 17,
 			"Do you want to save changes to the current scope?")));
       if (dosave)
         save_scope();
@@ -646,9 +646,9 @@ SearchScopeAgent::scope_name_prompt()
       *((char *) memcpy(default_name, scope_name, len) + len) = '\0';
       message_mgr().set_max_length(default_name_len);
       scope_name = message_mgr().get_string(
-	(char*)UAS_String(CATGETS(Set_SearchScopeAgent, 2,
+	(char*)UAS_String(MCATGETS(Set_SearchScopeAgent, 2,
 					"Enter the scope name to save as:")),
-	(char*)UAS_String(CATGETS(Set_SearchScopeAgent, 3,
+	(char*)UAS_String(MCATGETS(Set_SearchScopeAgent, 3,
 					"Dtinfo: Save Scope")),
 	default_name);
 
@@ -665,14 +665,14 @@ SearchScopeAgent::scope_name_prompt()
       if (strpbrk (scope_name, ":,;") != NULL)
         {
           message_mgr().error_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 18,
+		(char*)UAS_String(MCATGETS(Set_Messages, 18,
 		"You cannot use a colon, comma or semicolon in a search scope name.")));
         }
       // look for empty scope name 
       else if (*scope_name == '\0')
         {
           message_mgr().error_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 19,
+		(char*)UAS_String(MCATGETS(Set_Messages, 19,
 				"Please choose a non-empty scope name.")));
         }
       // look for name too long
@@ -683,7 +683,7 @@ SearchScopeAgent::scope_name_prompt()
           // max char length has changed to 20, the message should
           // be changed to reflect that--or just removed.
           message_mgr().error_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 20,
+		(char*)UAS_String(MCATGETS(Set_Messages, 20,
 		"A search scope name may not exceed 30 characters.")));
         }
       // look for duplicate scope name 
@@ -698,7 +698,7 @@ SearchScopeAgent::scope_name_prompt()
           if (s != 0)
             {
               message_mgr().error_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 21,
+		(char*)UAS_String(MCATGETS(Set_Messages, 21,
 		"The name you entered is already in use.")));
             }
           else
@@ -1044,7 +1044,7 @@ SearchScopeAgent::close()
   if (f_reset.Sensitive())
     {
       bool dosave = message_mgr().question_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 17,
+		(char*)UAS_String(MCATGETS(Set_Messages, 17,
 		"Do you want to save changes to the current scope?")));
       if (dosave)
         save_scope();
@@ -1241,14 +1241,14 @@ SearchScopeAgent::generate_component_list()
   OutlineList *parts = new OutlineList (10);
   OutlineElement *oe;
 
-  ADD (components, CATGETS(Set_Messages, 22, "Everything"), parts, True);
-  ADD (parts, CATGETS(Set_Messages, 23, "Titles"), 0, False);
-  ADD (parts, CATGETS(Set_Messages, 24, "Body"), 0, False);
-  ADD (parts, CATGETS(Set_Messages, 25, "Examples"), 0, False);
-  ADD (parts, CATGETS(Set_Messages, 26, "Index"), 0, False);
-  ADD (parts, CATGETS(Set_Messages, 27, "Tables"), 0, False);
+  ADD (components, MCATGETS(Set_Messages, 22, "Everything"), parts, True);
+  ADD (parts, MCATGETS(Set_Messages, 23, "Titles"), 0, False);
+  ADD (parts, MCATGETS(Set_Messages, 24, "Body"), 0, False);
+  ADD (parts, MCATGETS(Set_Messages, 25, "Examples"), 0, False);
+  ADD (parts, MCATGETS(Set_Messages, 26, "Index"), 0, False);
+  ADD (parts, MCATGETS(Set_Messages, 27, "Tables"), 0, False);
 #ifndef DtinfoClient
-  ADD (parts, CATGETS(Set_Messages, 28, "Graphics"), 0, False);
+  ADD (parts, MCATGETS(Set_Messages, 28, "Graphics"), 0, False);
 #endif
   
   return (components);
@@ -1493,7 +1493,7 @@ SearchScopeAgent::select_scope (WCallback *wcb)
   if (f_reset.Sensitive())
     {
       bool dosave = message_mgr().question_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 17,
+		(char*)UAS_String(MCATGETS(Set_Messages, 17,
 		"Do you want to save changes to the current scope?")));
       if (dosave)
         save_scope();
@@ -1545,7 +1545,7 @@ SearchScopeAgent::delete_scope()
   Xassert (f_current_scope != NULL);
 
   bool doit = message_mgr().question_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 29,
+		(char*)UAS_String(MCATGETS(Set_Messages, 29,
 		"Are you sure you want to delete the scope?")));
   if (!doit)
     return;
@@ -1623,7 +1623,7 @@ SearchScopeAgent::add_infolib(UAS_Pointer<UAS_Common> &lib)
 
   // find the scope
   scope = get_search_scope((char*)UAS_String(
-		CATGETS(Set_SearchScopeAgent, 4, "All Libraries")));
+		MCATGETS(Set_SearchScopeAgent, 4, "All Libraries")));
   
   // get a list of all bookcases
   UAS_PtrList<UAS_BookcaseEntry>bcases = bookcase_list();
@@ -1712,7 +1712,7 @@ SearchScopeAgent::remove_infolib(UAS_Pointer<UAS_Common> &lib)
 
   // find the scope
   scope = get_search_scope((char*)UAS_String(
-		CATGETS(Set_SearchScopeAgent, 4, "All Libraries")));
+		MCATGETS(Set_SearchScopeAgent, 4, "All Libraries")));
   
   // get a list of all bookcases
   UAS_PtrList<UAS_BookcaseEntry>bcases = bookcase_list();

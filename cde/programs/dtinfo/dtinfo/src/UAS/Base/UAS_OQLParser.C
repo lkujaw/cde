@@ -145,7 +145,7 @@ UAS_OQLParser::parse(const char *oql)
         // clean up the stack
         seql = f_stack.pop();
 	throw(CASTUASEXCEPT UAS_Exception(
-             (char*)UAS_String(CATGETS(Set_Messages, 41,
+             (char*)UAS_String(MCATGETS(Set_Messages, 41,
              "Invalid characters in search string."))));
     } else if (f_stack.entries() != 1){
 	// NOTE: bad query - error message to user required 

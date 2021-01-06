@@ -311,11 +311,11 @@ SearchMgr::display_message (SearchMessageType msg, int)
   switch( msg ){
   case NO_HITS:
     message_mgr().info_dialog (
-	(char*)UAS_String(CATGETS(Set_Messages, 40, "File a Bug")));
+	(char*)UAS_String(MCATGETS(Set_Messages, 40, "File a Bug")));
     break;
   case BAD_QUERY:
     message_mgr().warning_dialog (
-	(char*)UAS_String(CATGETS(Set_Messages, 41, "File a Bug")));
+	(char*)UAS_String(MCATGETS(Set_Messages, 41, "File a Bug")));
     break;
   }
 }

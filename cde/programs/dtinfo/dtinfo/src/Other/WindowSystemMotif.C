@@ -576,7 +576,7 @@ WindowSystem::init()
   if (f_display == (Display*)NULL)
   {
       fprintf(stderr, "%s",
-		CATGETS(Set_WindowSystem, 3, "Unable to open display.\n"));
+		MCATGETS(Set_WindowSystem, 3, "Unable to open display.\n"));
       exit(1);
   }
     
@@ -1028,14 +1028,14 @@ WindowSystem::core_dump_handler (int signal_number)
     {
       WXmMessageDialog byebye (window_system().toplevel(), (char*)"core_dump");
       XtVaSetValues((Widget)byebye, XmNmessageString,
-	(XmString)XmStringLocalized(CATGETS(Set_WindowSystem, 2,
+	(XmString)XmStringLocalized(MCATGETS(Set_WindowSystem, 2,
 					    "Bombing...")), NULL);
 
       WShell shell (XtParent ((Widget) byebye));
       window_system().register_shell (&shell);
       window_system().set_cursor (window_system().f_bomb_cursor);
       XtVaSetValues((Widget)shell, XmNtitle, 
-	CATGETS(Set_WindowSystem, 1, "Dtinfo: Fatal Error"), NULL);
+	MCATGETS(Set_WindowSystem, 1, "Dtinfo: Fatal Error"), NULL);
 
       byebye.OkPB().Unmanage();
       byebye.CancelPB().Unmanage();
@@ -1597,7 +1597,7 @@ WindowSystem::interrupt_handler (int /* signal_number */)
 
   if (!(window_system().videoShell()->silent)) {
       message_mgr().quit_dialog (
-	  (char*)UAS_String(CATGETS(Set_Messages, 6, "Quit Dtinfo?")));
+	  (char*)UAS_String(MCATGETS(Set_Messages, 6, "Quit Dtinfo?")));
   }
   else {
       exit(1);

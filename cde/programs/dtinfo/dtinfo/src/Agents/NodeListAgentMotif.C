@@ -159,11 +159,11 @@ NodeListAgent::create_base_window (char *name)
   f_help    = WXmPushButton (*f_form,       "help",        AM);
   WXmPushButton      closeb          (*f_form,       "close",          AM);
 
-  mtfstring = CATGETS(Set_AgentLabel, 165, "Display");
+  mtfstring = MCATGETS(Set_AgentLabel, 165, "Display");
   XtVaSetValues((Widget)f_display, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 12, "Close");
+  mtfstring = MCATGETS(Set_AgentLabel, 12, "Close");
   XtVaSetValues((Widget)closeb, XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 48, "Help");
+  mtfstring = MCATGETS(Set_AgentLabel, 48, "Help");
   XtVaSetValues((Widget)f_help, XmNlabelString, (XmString)mtfstring, NULL);
 
   WXmSeparator       separator       (*f_form,        "separator",      AM);

@@ -203,8 +203,8 @@ MarkIcon::double_click(XEvent *event)
 	g_timeout = NULL;
       }
 
-      UAS_String title  = CATGETS(Set_MarkChooser, 2, "Dtinfo: Edit Mark");
-      UAS_String btitle = CATGETS(Set_AgentLabel, 16, "Edit");
+      UAS_String title  = MCATGETS(Set_MarkChooser, 2, "Dtinfo: Edit Mark");
+      UAS_String btitle = MCATGETS(Set_AgentLabel, 16, "Edit");
       MarkChooser chooser (f_chooser_parent, f_mark_list,
 					(char*)title, (char*)btitle);
 	  
@@ -511,8 +511,8 @@ MarkIcon::activate (WCallback *wcb)
 	  delete g_timeout;
 	  g_timeout = NULL;
 
-	  UAS_String title  = CATGETS(Set_MarkChooser, 2, "Dtinfo: Edit Mark");
-	  UAS_String btitle = CATGETS(Set_AgentLabel, 16, "Edit");
+	  UAS_String title  = MCATGETS(Set_MarkChooser, 2, "Dtinfo: Edit Mark");
+	  UAS_String btitle = MCATGETS(Set_AgentLabel, 16, "Edit");
 	  MarkChooser chooser (f_chooser_parent, f_mark_list,
 					(char*)title, (char*)btitle);
 	  
@@ -537,8 +537,8 @@ MarkIcon::select_mark_timeout()
   // WTimeOut will destruct itself, do not delete g_timeout here
   g_timeout = NULL;
 
-  UAS_String title  = CATGETS(Set_MarkChooser, 1, "Dtinfo: Select Mark");
-  UAS_String btitle = CATGETS(Set_AgentLabel, 161, "Ok");
+  UAS_String title  = MCATGETS(Set_MarkChooser, 1, "Dtinfo: Select Mark");
+  UAS_String btitle = MCATGETS(Set_AgentLabel, 161, "Ok");
   MarkChooser chooser (f_chooser_parent, f_mark_list,
 					(char*)title, (char*)btitle);
 

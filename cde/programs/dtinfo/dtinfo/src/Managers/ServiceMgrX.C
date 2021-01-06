@@ -454,7 +454,7 @@ olias_send_event (Widget, OliasEvent *event)
 	else
 	  {
 	    message_mgr().info_dialog (
-		(char*)UAS_String(CATGETS(Set_Messages, 46, "File a Bug")));
+		(char*)UAS_String(MCATGETS(Set_Messages, 46, "File a Bug")));
 	    return (OLIAS_SUCCESS);
 	    // return (OLIAS_LOCATOR_NOT_FOUND);   until help lib fixed
 	  }

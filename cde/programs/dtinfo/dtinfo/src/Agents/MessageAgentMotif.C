@@ -210,9 +210,9 @@ MessageAgent::displayMessage (char *message_text)
   XmStringLocalized mtfstring;
 
   // Set labels on buttons
-  mtfstring = CATGETS(Set_AgentLabel, 161, "OK");
+  mtfstring = MCATGETS(Set_AgentLabel, 161, "OK");
   XtVaSetValues((Widget)f_dialog->OkPB(), XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 162, "Cancel");
+  mtfstring = MCATGETS(Set_AgentLabel, 162, "Cancel");
   XtVaSetValues((Widget)f_dialog->CancelPB(), XmNlabelString, (XmString)mtfstring, NULL);
 
   // Unmanage the cancel and help buttons
@@ -256,7 +256,7 @@ MessageAgent::displayError (char *message_text, Widget parent)
   // Set the window title
   WXmDialogShell *shell = (WXmDialogShell *)XtParent(*f_dialog);
 
-  String string = CATGETS(Set_MessageAgent, 1, "Dtinfo: Error");
+  String string = MCATGETS(Set_MessageAgent, 1, "Dtinfo: Error");
   XtVaSetValues((Widget)shell, XmNtitle, string, NULL);
 
   // Set the dialog type
@@ -295,7 +295,7 @@ MessageAgent::displayWarning (char *message_text, Widget parent)
   // Set the window title
   WXmDialogShell *shell = (WXmDialogShell *)XtParent(*f_dialog);
 
-  String string = CATGETS(Set_MessageAgent, 2, "Dtinfo: Warning");
+  String string = MCATGETS(Set_MessageAgent, 2, "Dtinfo: Warning");
   XtVaSetValues((Widget)shell, XmNtitle, string, NULL);
 
   // Set the dialog type
@@ -334,7 +334,7 @@ MessageAgent::displayInformation (char *message_text, Widget parent)
   // Set the window title
   WXmDialogShell *shell = (WXmDialogShell *)XtParent(*f_dialog);
 
-  String string = CATGETS(Set_MessageAgent, 3, "Dtinfo: Information");
+  String string = MCATGETS(Set_MessageAgent, 3, "Dtinfo: Information");
   XtVaSetValues((Widget)shell, XmNtitle, string, NULL);
 
   // Set the dialog type
@@ -378,14 +378,14 @@ MessageAgent::displayProgress (char *message_text, Widget parent) {
 #if 0
 	f_dialog->ResizePolicy(XmRESIZE_NONE);
 #endif
-	String string = CATGETS(Set_MessageAgent, 4, "Dtinfo: Progress");
+	String string = MCATGETS(Set_MessageAgent, 4, "Dtinfo: Progress");
 	XtVaSetValues((Widget)shell, XmNtitle, string, NULL);
 
 	f_dialog->DialogType (XmDIALOG_INFORMATION);
 	f_dialog->MessageAlignment (XmALIGNMENT_BEGINNING);
 
 	// Set labels on buttons
-	XmStringLocalized label_str = CATGETS(Set_AgentLabel, 162, "Cancel");
+	XmStringLocalized label_str = MCATGETS(Set_AgentLabel, 162, "Cancel");
 	XtVaSetValues((Widget)f_dialog->CancelPB(),
 				XmNlabelString, (XmString)label_str, NULL);
 
@@ -450,7 +450,7 @@ MessageAgent::displayQuestion (char *message_text, Widget parent)
   // Set the window title
   WXmDialogShell *shell = (WXmDialogShell *)XtParent(*f_dialog);
 
-  String string = CATGETS(Set_MessageAgent, 6, "Dtinfo: Question");
+  String string = MCATGETS(Set_MessageAgent, 6, "Dtinfo: Question");
   XtVaSetValues((Widget)shell, XmNtitle, string, NULL);
 
   // Set the dialog type
@@ -460,9 +460,9 @@ MessageAgent::displayQuestion (char *message_text, Widget parent)
   f_dialog->MessageAlignment (XmALIGNMENT_CENTER);
 
   // Set labels on buttons
-  mtfstring = CATGETS(Set_AgentLabel, 244, "Yes");
+  mtfstring = MCATGETS(Set_AgentLabel, 244, "Yes");
   XtVaSetValues((Widget)f_dialog->OkPB(), XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 245, "No");
+  mtfstring = MCATGETS(Set_AgentLabel, 245, "No");
   XtVaSetValues((Widget)f_dialog->CancelPB(), XmNlabelString, (XmString)mtfstring, NULL);
 
   // Manage the cancel and help buttons
@@ -504,7 +504,7 @@ MessageAgent::displayQuit (char *message_text, Widget parent)
   // Set the window title
   WXmDialogShell *shell = (WXmDialogShell *)XtParent(*f_dialog);
 
-  String string = CATGETS(Set_MessageAgent, 5, "Dtinfo: Confirm Quit");
+  String string = MCATGETS(Set_MessageAgent, 5, "Dtinfo: Confirm Quit");
   XtVaSetValues((Widget)shell, XmNtitle, string,
                                XmNminWidth, 200,  NULL);
 
@@ -518,9 +518,9 @@ MessageAgent::displayQuit (char *message_text, Widget parent)
   f_exit_flag = True;
 
   // Set labels on buttons
-  mtfstring = CATGETS(Set_AgentLabel, 244, "Yes");
+  mtfstring = MCATGETS(Set_AgentLabel, 244, "Yes");
   XtVaSetValues((Widget)f_dialog->OkPB(), XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 245, "No");
+  mtfstring = MCATGETS(Set_AgentLabel, 245, "No");
   XtVaSetValues((Widget)f_dialog->CancelPB(), XmNlabelString, (XmString)mtfstring, NULL);
 
   // Manage the cancel and help buttons
@@ -607,9 +607,9 @@ MessageAgent::get_integer (const char *message, const char* title,
 
   XmStringLocalized mtfstring;
 
-  mtfstring = CATGETS(Set_AgentLabel, 161, "OK");
+  mtfstring = MCATGETS(Set_AgentLabel, 161, "OK");
   XtVaSetValues((Widget)f_dialog->OkPB(), XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 162, "Cancel");
+  mtfstring = MCATGETS(Set_AgentLabel, 162, "Cancel");
   XtVaSetValues((Widget)f_dialog->CancelPB(), XmNlabelString, (XmString)mtfstring, NULL);
 
   snprintf (buffer, sizeof(buffer), "%d", default_value);
@@ -712,7 +712,7 @@ MessageAgent::get_string (const char *msg, const char* title,
 
   if (title == NULL)
     title = (char*)UAS_String(
-		CATGETS(Set_MessageAgent, 7, "Dtinfo: File a Bug"));
+		MCATGETS(Set_MessageAgent, 7, "Dtinfo: File a Bug"));
 
   static char buffer[256];
 
@@ -729,9 +729,9 @@ MessageAgent::get_string (const char *msg, const char* title,
 
   XmStringLocalized mtfstring;
 
-  mtfstring = CATGETS(Set_AgentLabel, 161, "OK");
+  mtfstring = MCATGETS(Set_AgentLabel, 161, "OK");
   XtVaSetValues((Widget)f_dialog->OkPB(), XmNlabelString, (XmString)mtfstring, NULL);
-  mtfstring = CATGETS(Set_AgentLabel, 162, "Cancel");
+  mtfstring = MCATGETS(Set_AgentLabel, 162, "Cancel");
   XtVaSetValues((Widget)f_dialog->CancelPB(), XmNlabelString, (XmString)mtfstring, NULL);
 
   if (default_value)

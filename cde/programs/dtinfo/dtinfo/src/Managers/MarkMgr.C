@@ -194,7 +194,7 @@ MarkMgr::open_base (const char *filename)
   if (base == NULL)
     {
       message_mgr().error_dialog ((char*)UAS_String(
-	CATGETS(Set_Messages, 32, "Your mark base cannot be opened.")));
+	MCATGETS(Set_Messages, 32, "Your mark base cannot be opened.")));
       return;
     }
 
@@ -219,14 +219,14 @@ MarkMgr::create_mark (UAS_Pointer<UAS_Common> &doc_ptr, const Anchor &anchor,
   if (f_num_bases == 0)
     {
       message_mgr().error_dialog ((char*)UAS_String(
-	CATGETS(Set_Messages, 33, "Dtinfo mark base was not found.\n"
+	MCATGETS(Set_Messages, 33, "Dtinfo mark base was not found.\n"
 				  "Dtinfo cannot create a bookmark.")));
       return (NULL);
     }
   if (!f_can_create)
     {
       message_mgr().error_dialog ((char*)UAS_String(
-	CATGETS(Set_Messages, 34, "This mark base provides read-only permissions.")));
+	MCATGETS(Set_Messages, 34, "This mark base provides read-only permissions.")));
       return (NULL);
     }
 
@@ -264,7 +264,7 @@ MarkMgr::create_mark (UAS_Pointer<UAS_Common> &doc_ptr, const Anchor &anchor,
       assert( n >= 0 );
   }
   else {
-      trimmed_name = strdup(CATGETS(Set_AgentLabel, 213, "Unnamed"));
+      trimmed_name = strdup(MCATGETS(Set_AgentLabel, 213, "Unnamed"));
   }
 #else
   char *new_name = strdup (name);
@@ -310,14 +310,14 @@ MarkMgr::move_mark (UAS_Pointer<UAS_Common> &doc_ptr, const Anchor &anchor,
   if (f_num_bases == 0)
     {
       message_mgr().error_dialog ((char*)UAS_String(
-	CATGETS(Set_Messages, 33, "Dtinfo mark base was not found.\n"
+	MCATGETS(Set_Messages, 33, "Dtinfo mark base was not found.\n"
 				  "Dtinfo cannot create a bookmark.")));
       return (NULL);
     }
   if (!f_can_create)
     {
       message_mgr().error_dialog ((char*)UAS_String(
-	CATGETS(Set_Messages, 34, "This mark base provides read-only permissions.")));
+	MCATGETS(Set_Messages, 34, "This mark base provides read-only permissions.")));
       return (NULL);
     }
 

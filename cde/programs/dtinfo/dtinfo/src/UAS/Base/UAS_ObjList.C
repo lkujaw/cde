@@ -77,7 +77,7 @@ T &
 UAS_ObjList<T>::item (int i) const {
     if (i < 0 || i >= fNumItems)
 	throw (UAS_Exception (
-		(char*)UAS_String(CATGETS(Set_UAS_Base, 3, "File a Bug"))));
+		(char*)UAS_String(MCATGETS(Set_UAS_Base, 3, "File a Bug"))));
     return fItems[i];
 }
 
