@@ -44,6 +44,7 @@
 #ifndef _DtHelpAccessI_h
 #define _DtHelpAccessI_h
 
+#include <time.h>
 
 #ifndef	_XtIntrinsic_h
 /*
