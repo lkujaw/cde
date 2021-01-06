@@ -61,7 +61,7 @@
 #ifndef NO_MESSAGE_CATALOG
 # define TRUE 1
 # define FALSE 0
-# include <nl_types.h>
+# include <Dt/MsgCatP.h>
 #endif
 
 extern Editor *pPadList; /* declared in main.c */

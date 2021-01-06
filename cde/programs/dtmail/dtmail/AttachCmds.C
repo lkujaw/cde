@@ -138,7 +138,7 @@ void AttachAddCmd::doit()
 	    break;
 	}
 	XtVaSetValues(XtParent(fsdialog),
-		XmNtitle, GETMSG(DT_catd, 14, 1, "Add Attachment"),
+		XmNtitle, CATGETS(DT_catd, 14, 1, "Add Attachment"),
 		NULL);
 	XtManageChild(fsdialog);
     }
@@ -208,7 +208,7 @@ void AttachAddCmd::add_file( char *filename )
 
     if(stat(filename, &s) == -1) {
 	sprintf(errormsg, 
-		GETMSG(DT_catd, 14, 2, "Unable to open %s"), 
+		CATGETS(DT_catd, 14, 2, "Unable to open %s"),
 		filename
 	);
 		
@@ -222,31 +222,31 @@ void AttachAddCmd::add_file( char *filename )
 
     if(S_ISFIFO(s.st_mode)) {
 	sprintf(errormsg,
-		GETMSG(DT_catd, 14, 3,
+		CATGETS(DT_catd, 14, 3,
 		    "Cannot attach FIFO files: %s"), filename
 	);
 	validtype = FALSE;
     } else if(S_ISCHR(s.st_mode)) {
 	sprintf(errormsg,
-		GETMSG(DT_catd, 14, 4,
+		CATGETS(DT_catd, 14, 4,
 		    "Cannot attach character special files: %s"), filename
 	);
 	validtype = FALSE;
     } else if(S_ISDIR(s.st_mode)) {
 	sprintf(errormsg,
-		GETMSG(DT_catd, 14, 5,
+		CATGETS(DT_catd, 14, 5,
 		    "Cannot attach directories: %s"), filename
 	);
 	validtype = FALSE;
     } else if(S_ISBLK(s.st_mode)) {
 	sprintf(errormsg,
-		GETMSG(DT_catd, 14, 6,
+		CATGETS(DT_catd, 14, 6,
 		    "Cannot attach block special files: %s"), filename
 	);
 	validtype = FALSE;
     } else if(S_ISSOCK(s.st_mode)) {
 	sprintf(errormsg,
-		GETMSG(DT_catd, 14, 7,
+		CATGETS(DT_catd, 14, 7,
 		    "Cannot attach socket files: %s"), filename
 	);
 	validtype = FALSE;
@@ -263,7 +263,7 @@ void AttachAddCmd::add_file( char *filename )
     fd = open(filename, O_RDONLY);
     if(fd == -1) {
 	sprintf(errormsg, 
-		GETMSG(DT_catd, 14, 8,
+		CATGETS(DT_catd, 14, 8,
 		    "Unable to open %s"),filename
 	);
 
@@ -352,7 +352,7 @@ void AttachFetchCmd::doit()
 // 	    // If contents is NULL then we were unable to get the contents
 // 	    if(contents == NULL) {
 // 		sprintf(error, 
-//			GETMSG(DT_catd, 14, 9,
+//			CATGETS(DT_catd, 14, 9,
 //			    "File contents unavailable: %s"),
 // 			     list[i]->getLabel()
 //		);
@@ -460,7 +460,7 @@ AttachRenameCmd::AttachRenameCmd ( AttachArea *attachArea,
     XtVaSetValues(renameDialog, XmNselectionLabelString, message, NULL);
     XmStringFree(message);
     XtVaSetValues(XtParent(renameDialog),
-	    XmNtitle, GETMSG(DT_catd, 14, 9, "Mailer - Rename Attachment"),
+	    XmNtitle, CATGETS(DT_catd, 14, 9, "Mailer - Rename Attachment"),
 	    NULL);
     XtUnmanageChild(
 	XmSelectionBoxGetChild(renameDialog, XmDIALOG_HELP_BUTTON)
@@ -518,7 +518,7 @@ void AttachRenameCmd::ok( XtPointer callData )
 
     if(_attachArea->getIconSelectedCount() != 1) {
 // 	theInfoDialogManager->post(
-// 		    GETMSG(DT_catd, 14, 12,
+// 		    CATGETS(DT_catd, 14, 12,
 //	"Please select only one attachment to rename"),
 // 		    (void *)NULL,
 // 		    okcb);
@@ -552,7 +552,7 @@ AttachDescriptionCmd::AttachDescriptionCmd ( AttachArea *attachArea,
     XtVaSetValues(descriptionDialog, XmNselectionLabelString, message, NULL);
     XmStringFree(message);
     XtVaSetValues(XtParent(descriptionDialog),
-	    XmNtitle, GETMSG(DT_catd, 14, 10, "Description"),
+	    XmNtitle, CATGETS(DT_catd, 14, 10, "Description"),
 	    NULL);
     XtUnmanageChild(XmSelectionBoxGetChild(descriptionDialog, XmDIALOG_HELP_BUTTON));
     _attachArea->setDescriptionDialog(descriptionDialog);
@@ -620,7 +620,7 @@ void AttachDescriptionCmd::ok( XtPointer callData )
 
     if(_attachArea->getIconSelectedCount() != 1) {
 // 	theInfoDialogManager->post(
-// 		    GETMSG(DT_catd, 14, 12,
+// 		    CATGETS(DT_catd, 14, 12,
 //			    "Please select only one attachment to describe"),
 // 		    (void *)NULL,
 // 		    okcb);
@@ -694,7 +694,7 @@ void AttachSaveAsCmd::doit()
 	    break;
 	}
 	XtVaSetValues(XtParent(fsdialog),
-		XmNtitle, GETMSG(DT_catd, 14, 11, "Save Attachment As"),
+		XmNtitle, CATGETS(DT_catd, 14, 11, "Save Attachment As"),
 		NULL);
 	XtManageChild(fsdialog);
     }
@@ -754,7 +754,7 @@ void ConfirmCallback( XtPointer)
 // 	break;
 //     case ROAM_UNAVAILABLE:
 // // 	theInfoDialogManager->post(
-// // 	    GETMSG(DT_catd, 14, 15, "File Contents Unavailable"),
+// // 	    CATGETS(DT_catd, 14, 15, "File Contents Unavailable"),
 // // 	    (void *)NULL,
 // // 	    (DialogCallback)okcb);
 // 	    return;
@@ -813,13 +813,13 @@ void AttachSaveAsCmd::ok( XtPointer callData )
 // 		    // to a single existing file then we barf!
 // 		    if(_attachArea->getIconSelectedCount() != 1) {
 // 			sprintf(error, 
-//				GETMSG(DT_catd, 14, 16, "Cannot create"));
+//				CATGETS(DT_catd, 14, 16, "Cannot create"));
 // 			sfs = CONFIRM;
 // 		    } else {
 // 			// The file already exists
 // 			completefilename = dirname;
 // 			sprintf(error, 
-//				GETMSG(DT_catd, 14, 17,
+//				CATGETS(DT_catd, 14, 17,
 //				    "File %s exists. Overwrite?"),
 // 					    completefilename);
 // 			sfs = CONFIRM;
@@ -831,7 +831,7 @@ void AttachSaveAsCmd::ok( XtPointer callData )
 // 		    if(stat(buf, &s) != -1) {	// The file exists
 // 			if(S_ISREG(s.st_mode)) {
 // 			    sprintf(error, 
-// 				GETMSG(DT_catd, 14, 18,
+// 				CATGETS(DT_catd, 14, 18,
 //		"File %s exists. Overwrite?"), 
 // 				completefilename);
 // 			    sfs = CONFIRM;
@@ -839,7 +839,7 @@ void AttachSaveAsCmd::ok( XtPointer callData )
 // 			    // We're trying to overwrite something other
 // 			    // than a regular file. FAIL!
 // 			    sprintf(error, 
-//		GETMSG(14, 19, "Cannot create"));
+//		CATGETS(14, 19, "Cannot create"));
 // 			    sfs = CONFIRM;
 // 			}
 // 		    }
@@ -847,7 +847,7 @@ void AttachSaveAsCmd::ok( XtPointer callData )
 // 		    // The file already exists but is not a regular file
 // 		    completefilename = dirname;
 // 		    sprintf(error,
-// 			    GETMSG(
+// 			    CATGETS(
 //    DT_catd, 14, 20, "Cannot create %s"), completefilename);
 // 		    sfs = ERR;
 // 		}
@@ -894,7 +894,7 @@ void AttachSaveAsCmd::ok( XtPointer callData )
 // 		    break;
 // 		case ROAM_UNAVAILABLE:
 // // 		    theInfoDialogManager->post(
-// // 			GETMSG(DT_catd, 14. 21, "File Contents Unavailable"),
+// // 			CATGETS(DT_catd, 14. 21, "File Contents Unavailable"),
 // // 			(void *)NULL, (DialogCallback)okcb);
 // 			return;
 // 		}

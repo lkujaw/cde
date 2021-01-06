@@ -46,11 +46,11 @@ static	int	rexp_errno = 0;
 #else
 #include	<regexp.h>
 #endif
-#include	<nl_types.h>
 #include	<Dt/Dt.h>
 #include	<Dt/DtsMM.h>
 #include	<Dt/Dts.h>
 #include	<Dt/EnvControlP.h>
+#include	<Dt/MsgCatP.h>
 
 #if !defined(NL_CAT_LOCALE)
 #define NL_CAT_LOCALE  0
@@ -185,7 +185,7 @@ rec_list(List *l)
 #endif
 	{
 		/* error */
-		fprintf(stderr, catgets(dtcatd, 1, 36, "error in regular expression %s\n"), l->rec_name?l->rec_name:"(NULL)");
+		fprintf(stderr, CATGETS(dtcatd, 1, 36, "error in regular expression %s\n"), l->rec_name?l->rec_name:"(NULL)");
 		exit(1);
 	}
 
@@ -199,7 +199,7 @@ rec_list(List *l)
 #endif
 	{
 		/* error */
-		fprintf(stderr, catgets(dtcatd, 1, 36, "error in regular expression %s\n"), l->fld_name?l->fld_name:"(NULL)");
+		fprintf(stderr, CATGETS(dtcatd, 1, 36, "error in regular expression %s\n"), l->fld_name?l->fld_name:"(NULL)");
 		exit(1);
 	}
 
@@ -213,7 +213,7 @@ rec_list(List *l)
 #endif
 	{
 		/* error */
-		fprintf(stderr, catgets(dtcatd, 1, 36, "error in regular expression %s\n"), l->fld_value?l->fld_value:"(NULL)");
+		fprintf(stderr, CATGETS(dtcatd, 1, 36, "error in regular expression %s\n"), l->fld_value?l->fld_value:"(NULL)");
 		exit(1);
 	}
 
@@ -227,7 +227,7 @@ rec_list(List *l)
 #endif
 	{
 		/* error */
-		fprintf(stderr, catgets(dtcatd, 1, 36, "error in regular expression %s\n"), l->display_fld?l->display_fld:"(NULL)");
+		fprintf(stderr, CATGETS(dtcatd, 1, 36, "error in regular expression %s\n"), l->display_fld?l->display_fld:"(NULL)");
 		exit(1);
 	}
 
@@ -259,14 +259,14 @@ rec_list(List *l)
 				if((regexec(&regex_fn, fn, 0, NULL, 0) == 0) &&
 				   ((fld_ptr->fieldValue==0?
 					regexec(&regex_fv,
-						catgets(dtcatd, 1, 4, "NULL"),
+						CATGETS(dtcatd, 1, 4, "NULL"),
 						0, NULL, 0):
 					regexec(&regex_fv,
 						fv,
 						0, NULL, 0)) == 0))
 #else
 				if((advance(fn, expbuf_fn) != 0) &&
-				   ((fld_ptr->fieldValue==0?advance(catgets(dtcatd, 1, 4, "NULL"), expbuf_fv):advance(fv, expbuf_fv)) != 0))
+				   ((fld_ptr->fieldValue==0?advance(CATGETS(dtcatd, 1, 4, "NULL"), expbuf_fv):advance(fv, expbuf_fv)) != 0))
 #endif
 				{
 					add_rec(rec, l);
@@ -289,19 +289,19 @@ rec_list(List *l)
 		   (l->display_list&(1<<f_name) ||
 		    l->display_list&(1<<f_value)))
 		{
-			printf(catgets(dtcatd, 1, 5, "=============== %s ===============\n"), 
-				rec_ptr->recordName?(char *)_DtDtsMMBosonToString(rec_ptr->recordName):catgets(dtcatd, 1, 6, ""));
+			printf(CATGETS(dtcatd, 1, 5, "=============== %s ===============\n"),
+				rec_ptr->recordName?(char *)_DtDtsMMBosonToString(rec_ptr->recordName):CATGETS(dtcatd, 1, 6, ""));
 		}
 		else if (l->display_list&(1<<r_name))
 		{
-			printf(catgets(dtcatd, 1, 7, "%s\n"), 
-				rec_ptr->recordName?(char *)_DtDtsMMBosonToString(rec_ptr->recordName):catgets(dtcatd, 1, 8, ""));
+			printf(CATGETS(dtcatd, 1, 7, "%s\n"),
+				rec_ptr->recordName?(char *)_DtDtsMMBosonToString(rec_ptr->recordName):CATGETS(dtcatd, 1, 8, ""));
 		}
 		if(l->display_list&(1<<r_info))
 		{
 			char	*path = (char *)_DtDtsMMBosonToString(rec_ptr->pathId);
 
-			printf(catgets(dtcatd, 1, 9, "loaded from %s\n"), path?path:catgets(dtcatd, 1, 10, "Unknown"));
+			printf(CATGETS(dtcatd, 1, 9, "loaded from %s\n"), path?path:CATGETS(dtcatd, 1, 10, "Unknown"));
 		}
 
 		fld_ptr_list = _DtDtsMMGetPtr(rec_ptr->fieldList);
@@ -324,12 +324,12 @@ rec_list(List *l)
 				if(advance(fn, expbuf_df) !=0)
 #endif
 				{
-					printf(catgets(dtcatd, 1, 11, "\t%s"), 
-						fn?fn:catgets(dtcatd, 1, 12, ""));
-					printf(catgets(dtcatd, 1, 13, " :\t%s"), 
+					printf(CATGETS(dtcatd, 1, 11, "\t%s"),
+						fn?fn:CATGETS(dtcatd, 1, 12, ""));
+					printf(CATGETS(dtcatd, 1, 13, " :\t%s"),
 						fld_ptr->fieldValue?fv:
-							catgets(dtcatd, 1, 14, ""));
-					printf("%s", catgets(dtcatd, 1, 15, "\n"));
+							CATGETS(dtcatd, 1, 14, ""));
+					printf("%s", CATGETS(dtcatd, 1, 15, "\n"));
 				}
 
 			}
@@ -337,15 +337,15 @@ rec_list(List *l)
 			{
 				if(l->display_list&(1<<f_name))
 				{
-					printf(catgets(dtcatd, 1, 11, "\t%s"), fld_ptr->fieldName?fn:catgets(dtcatd, 1, 12, ""));
+					printf(CATGETS(dtcatd, 1, 11, "\t%s"), fld_ptr->fieldName?fn:CATGETS(dtcatd, 1, 12, ""));
 					term++;
 				}
 				if(l->display_list&(1<<f_value))
 				{
-					printf(catgets(dtcatd, 1, 13, " :\t%s"), fld_ptr->fieldValue?fv:catgets(dtcatd, 1, 14, ""));
+					printf(CATGETS(dtcatd, 1, 13, " :\t%s"), fld_ptr->fieldValue?fv:CATGETS(dtcatd, 1, 14, ""));
 					term++;
 				}
-				if(term)printf("%s", catgets(dtcatd, 1, 15, "\n"));
+				if(term)printf("%s", CATGETS(dtcatd, 1, 15, "\n"));
 			}
 			_DtDtsMMSafeFree(fn);
 			_DtDtsMMSafeFree(fv);
@@ -378,7 +378,7 @@ parse_args(List *l, int argc, char **argv)
 
 	for(i = 1; i < argc; i++)
 	{
-		if(strcmp(argv[i], catgets(dtcatd, 1, 16, "-db")) == 0)
+		if(strcmp(argv[i], CATGETS(dtcatd, 1, 16, "-db")) == 0)
 		{
 			if(argv[i+1])
 			{
@@ -393,15 +393,15 @@ parse_args(List *l, int argc, char **argv)
 				error |= 1<<NO_ARGUMENT;
 			}
 		}
-		else if(strcmp(argv[i], catgets(dtcatd, 1, 17, "-w")) == 0)
+		else if(strcmp(argv[i], CATGETS(dtcatd, 1, 17, "-w")) == 0)
 		{
 			state = where;
 		}
-		else if(strcmp(argv[i], catgets(dtcatd, 1, 18, "-l")) == 0)
+		else if(strcmp(argv[i], CATGETS(dtcatd, 1, 18, "-l")) == 0)
 		{
 			state = list;
 		}
-		else if(strcmp(argv[i], catgets(dtcatd, 1, 19, "rec_info")) == 0)
+		else if(strcmp(argv[i], CATGETS(dtcatd, 1, 19, "rec_info")) == 0)
 		{
 			if(state == where)
 			{
@@ -416,7 +416,7 @@ parse_args(List *l, int argc, char **argv)
 				error |= 1<<NO_STATE;
 			}
 		}
-		else if(strcmp(argv[i], catgets(dtcatd, 1, 20, "rec_name")) == 0)
+		else if(strcmp(argv[i], CATGETS(dtcatd, 1, 20, "rec_name")) == 0)
 		{
 			if(state == where)
 			{
@@ -438,7 +438,7 @@ parse_args(List *l, int argc, char **argv)
 				error |= 1<<NO_STATE;
 			}
 		}
-		else if(strcmp(argv[i], catgets(dtcatd, 1, 21, "fld_name")) == 0)
+		else if(strcmp(argv[i], CATGETS(dtcatd, 1, 21, "fld_name")) == 0)
 		{
 			if(state == where)
 			{
@@ -460,10 +460,10 @@ parse_args(List *l, int argc, char **argv)
 				else
 				{
 					l->display_list |= 1<<f_name;
-					if(strcmp(argv[i+1], catgets(dtcatd, 1, 22, "fld_value")) &&
-					   strcmp(argv[i+1], catgets(dtcatd, 1, 21, "fld_name"))  &&
-					   strcmp(argv[i+1], catgets(dtcatd, 1, 20, "rec_name"))  &&
-					   strcmp(argv[i+1], catgets(dtcatd, 1, 19, "rec_info"))  )
+					if(strcmp(argv[i+1], CATGETS(dtcatd, 1, 22, "fld_value")) &&
+					   strcmp(argv[i+1], CATGETS(dtcatd, 1, 21, "fld_name"))  &&
+					   strcmp(argv[i+1], CATGETS(dtcatd, 1, 20, "rec_name"))  &&
+					   strcmp(argv[i+1], CATGETS(dtcatd, 1, 19, "rec_info"))  )
 					{
 						l->display_fld = argv[++i];
 					}
@@ -474,7 +474,7 @@ parse_args(List *l, int argc, char **argv)
 				error |= 1<<NO_STATE;
 			}
 		}
-		else if(strcmp(argv[i], catgets(dtcatd, 1, 22, "fld_value")) == 0)
+		else if(strcmp(argv[i], CATGETS(dtcatd, 1, 22, "fld_value")) == 0)
 		{
 			if(state == where)
 			{
@@ -496,7 +496,7 @@ parse_args(List *l, int argc, char **argv)
 				error |= 1<<NO_STATE;
 			}
 		}
-		else if(strcmp(argv[i], catgets(dtcatd, 1, 23, "all")) == 0)
+		else if(strcmp(argv[i], CATGETS(dtcatd, 1, 23, "all")) == 0)
 		{
 			if(state == where)
 			{
@@ -521,7 +521,7 @@ parse_args(List *l, int argc, char **argv)
 				error |= 1<<NO_STATE;
 			}
 		}
-		else if(strcmp(argv[i], catgets(dtcatd, 1, 26, "-type")) == 0)
+		else if(strcmp(argv[i], CATGETS(dtcatd, 1, 26, "-type")) == 0)
 		{
 			char	*type, *new;
 
@@ -531,12 +531,12 @@ parse_args(List *l, int argc, char **argv)
 			}
 			else
 			{
-				printf(catgets(dtcatd, 1, 27, "%s is of type %s\n"),
+				printf(CATGETS(dtcatd, 1, 27, "%s is of type %s\n"),
 					argv[i+1],
 					type = DtDtsFileToDataType(argv[i+1]));
 				new = (char *)malloc(strlen(type)+5);
 				strcpy(new, type);
-				strcat(new, catgets(dtcatd, 1, 28, "$"));
+				strcat(new, CATGETS(dtcatd, 1, 28, "$"));
 				l->rec_name = new;
 				l->db_name = "DATA_ATTRIBUTES";
 				l->display_list|= 1<<r_info;
@@ -546,7 +546,7 @@ parse_args(List *l, int argc, char **argv)
 			}
 			i++;
 		}
-		else if(strcmp(argv[i], catgets(dtcatd, 1, 35, "-help")) == 0)
+		else if(strcmp(argv[i], CATGETS(dtcatd, 1, 35, "-help")) == 0)
 		{
 			usage();
 		}
@@ -562,11 +562,11 @@ parse_args(List *l, int argc, char **argv)
 			{
 				for(j = 0; j < XtNumber(error_str); j++)
 				{
-					error_str[j] = catgets(dtcatd, 1, 30+j, error_str[j]);
+					error_str[j] = CATGETS(dtcatd, 1, 30+j, error_str[j]);
 				}
 				read_errors = ~0;
 			} 
-			fprintf(stderr, catgets(dtcatd, 1, 24, "Arg = %s\n"), argv[i]);
+			fprintf(stderr, CATGETS(dtcatd, 1, 24, "Arg = %s\n"), argv[i]);
 			for(j = 0; error; j++)
 			{
 				if(error & 1<<j)
@@ -588,7 +588,7 @@ parse_args(List *l, int argc, char **argv)
 
 int usage(void)
 {
-	fprintf(stderr, "%s", catgets(dtcatd, 1, 25, "usage:  dttypes [-help]\n\tdttypes [-type filename]\n\tdttypes [-db database] [-w [rec_name regexp] [fld_name regexp]\n\t\t\t[fld_value regexp]]\n\t\t[-l [rec_name] [rec_info] [fld_name regexp] [fld_value]]\n"));
+	fprintf(stderr, "%s", CATGETS(dtcatd, 1, 25, "usage:  dttypes [-help]\n\tdttypes [-type filename]\n\tdttypes [-db database] [-w [rec_name regexp] [fld_name regexp]\n\t\t\t[fld_value regexp]]\n\t\t[-l [rec_name] [rec_info] [fld_name regexp] [fld_value]]\n"));
 	exit(1);
 }
 
@@ -617,7 +617,7 @@ main(int argc, char **argv)
 	}
 	_DtEnvControl(DT_ENV_SET);
 
-	dtcatd = catopen("dttypes", NL_CAT_LOCALE);
+	dtcatd = CATOPEN("dttypes", NL_CAT_LOCALE);
 	if(dtcatd == (nl_catd)-1)
 	{
 		perror("catopen");
@@ -658,7 +658,7 @@ main(int argc, char **argv)
 		dbs = _DtsMMListDb();
 		for(i = 0; dbs[i]; i++)
 		{
-			printf(catgets(dtcatd, 1, 29, "--------------------- %s ----------------\n"),
+			printf(CATGETS(dtcatd, 1, 29, "--------------------- %s ----------------\n"),
 				dbs[i]);
 			l.db_name = dbs[i];
 			rec_list(&l);

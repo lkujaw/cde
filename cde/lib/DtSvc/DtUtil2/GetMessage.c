@@ -45,7 +45,7 @@
  ************************************<+>*************************************/
 
 #include <stdio.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include "DtSvcLock.h"
 
 #if !defined(NL_CAT_LOCALE)
@@ -80,8 +80,6 @@ _DtGetMessage(
 {
         char *msg;
 	char *lang;
-	nl_catd catopen();
-	char *catgets();
 	static int first = 1;
 	static nl_catd nlmsg_fd;
 
@@ -89,9 +87,9 @@ _DtGetMessage(
 	if ( first ) 
         {
 		first = 0;
-		nlmsg_fd = catopen(filename, NL_CAT_LOCALE);
+		nlmsg_fd = CATOPEN(filename, NL_CAT_LOCALE);
 	}
-	msg=catgets(nlmsg_fd,set,n,s);
+	msg=CATGETS(nlmsg_fd,set,n,s);
 	_DtSvcProcessUnlock();
 	return (msg);
 }

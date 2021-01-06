@@ -116,7 +116,7 @@ abmfP_catgets_prefix_str(
         goto cret;
     MsgSet_set_msg_is_referenced(msg_set, msg_num, TRUE);
 
-    sprintf(str_catg, "catgets(Dtb_project_catd, %d, %d, ",
+    sprintf(str_catg, "CATGETS(Dtb_project_catd, %d, %d, ",
             MsgSet_get_number(msg_set),
             msg_num);
     

@@ -171,7 +171,7 @@ tempbr_show_cb(Widget w, XtPointer data, XtPointer cbs)
 
 #ifdef FNS
 	if (cmfns_use_fns((Props *)c->properties)) {
-		sprintf(msg_buf, catgets(c->DT_catd, 1, 647,
+		sprintf(msg_buf, CATGETS(c->DT_catd, 1, 647,
 			"Looking up %s..."), name);
 		set_message(tb->show_message, msg_buf);
 		XmUpdateDisplay(tb->show_message);
@@ -182,7 +182,7 @@ tempbr_show_cb(Widget w, XtPointer data, XtPointer cbs)
 	}
 #endif
 
-	sprintf(msg_buf, catgets(c->DT_catd, 1, 559, "Browsing %s..."),
+	sprintf(msg_buf, CATGETS(c->DT_catd, 1, 559, "Browsing %s..."),
 		name);
 	set_message(tb->show_message, msg_buf);
 	XFlush(XtDisplay(w));
@@ -206,7 +206,7 @@ make_std_tempbr(Calendar *c)
         else
                 tb = (Tempbr*)c->tempbr;
 
-	title = XtNewString(catgets(c->DT_catd, 1, 560, "Calendar : Show Other Calendar"));
+	title = XtNewString(CATGETS(c->DT_catd, 1, 560, "Calendar : Show Other Calendar"));
 	tb->frame = XtVaCreatePopupShell("frame",
                 xmDialogShellWidgetClass, c->frame,
                 XmNtitle, 		title,
@@ -227,7 +227,7 @@ make_std_tempbr(Calendar *c)
                 NULL);
 
 	label_str = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 410, "User Name:"));
+				CATGETS(c->DT_catd, 1, 410, "User Name:"));
         tb->name_label = XtVaCreateWidget("name_label", 
 		xmLabelWidgetClass, 
 		tb->form,
@@ -278,7 +278,7 @@ make_std_tempbr(Calendar *c)
                 NULL);
  
         label_str = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 562, "Show"));
+				CATGETS(c->DT_catd, 1, 562, "Show"));
         tb->show_button = XtVaCreateWidget("show_button",
 		xmPushButtonWidgetClass, 
 		button_form,
@@ -294,7 +294,7 @@ make_std_tempbr(Calendar *c)
 	XmStringFree(label_str);
 
         label_str = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 680, "Close"));
+				CATGETS(c->DT_catd, 1, 680, "Close"));
         tb->cancel_button = XtVaCreateWidget("cancelButton",
 		xmPushButtonWidgetClass, 
 		button_form,
@@ -311,7 +311,7 @@ make_std_tempbr(Calendar *c)
         XtAddCallback(tb->cancel_button, 
 			XmNactivateCallback, tb_cancel_cb, NULL);
 
-        label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+        label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
         tb->help_button = XtVaCreateWidget("helpButton",
 		xmPushButtonWidgetClass, button_form,
 		XmNlabelString, label_str,
@@ -329,7 +329,7 @@ make_std_tempbr(Calendar *c)
                 (XtCallbackProc)help_cb, (XtPointer) SHOW_OTHER_CAL_HELP_BUTTON);
 
 #ifdef FNS_SUNDEX_DEMO
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 648,
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 648,
 					    "SunDex"));
         tb->show_button = XtVaCreateWidget("sundex_button",
 		xmPushButtonWidgetClass, tb->form,

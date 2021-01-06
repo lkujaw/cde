@@ -50,7 +50,7 @@
 #endif
 
 #include <assert.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <ab_private/util.h>
 
 /*

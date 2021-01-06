@@ -1098,15 +1098,15 @@ abio_check_bil_version(
     STRING      help_buf = NULL;
     STRING	fileName = NULL;
 
-    fileName = name? name : catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 35, "NoName");
+    fileName = name? name : CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 35, "NoName");
     fileName = strdup(fileName);
 
     if (ver > Util_major_version)
     {
-	errmsg = strdup(catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 32,
+	errmsg = strdup(CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 32,
 		"Incompatible BIL version"));
 
-	help_msg = catgets(UTIL_MESSAGE_CATD,
+	help_msg = CATGETS(UTIL_MESSAGE_CATD,
                 UTIL_MESSAGE_SET, 33,
                 "The version of the BIL file %s (%3.2f)\nis not supported in this version of App Builder.");
 
@@ -1116,10 +1116,10 @@ abio_check_bil_version(
     }
     else if (ver == 0.0)
     {
-	errmsg = strdup(catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 30,
+	errmsg = strdup(CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 30,
 			"Unrecognized file format"));
 
-	help_msg = catgets(UTIL_MESSAGE_CATD,
+	help_msg = CATGETS(UTIL_MESSAGE_CATD,
                 UTIL_MESSAGE_SET, 31,
                 "The file %s does not appear to be in BIL\nformat.  Either a BIL header (:bil-version) was\nnot found or the header is corrupt.");
 

@@ -80,7 +80,7 @@ make_timezone(Calendar *c)
         else
                 t = (Timezone*)c->timezone;
 
-	title = XtNewString(catgets(c->DT_catd, 1, 649, "Calendar : Time Zone"));
+	title = XtNewString(CATGETS(c->DT_catd, 1, 649, "Calendar : Time Zone"));
 	t->frame = XtVaCreatePopupShell("frame",
                 xmDialogShellWidgetClass, c->frame,
                 XmNtitle, 		title,
@@ -113,7 +113,7 @@ make_timezone(Calendar *c)
                 XmNtopOffset, 		5,
                 NULL);
  
-        xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 650, "My Time"));
+        xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 650, "My Time"));
         t->mytime = XtVaCreateWidget("myTime",
                 xmToggleButtonGadgetClass, t->timezone_rc_mgr,
 		XmNlabelString, xmstr,
@@ -123,7 +123,7 @@ make_timezone(Calendar *c)
 	XmStringFree(xmstr);
 	XtAddCallback(t->mytime, XmNvalueChangedCallback, tz_mytime_cb, NULL);
  
-        xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 652, "Custom Time"));
+        xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 652, "Custom Time"));
         t->customtime = XtVaCreateWidget("customTime",
                 xmToggleButtonGadgetClass, t->timezone_rc_mgr,
 		XmNlabelString, xmstr,
@@ -132,7 +132,7 @@ make_timezone(Calendar *c)
 	XmStringFree(xmstr);
 	XtAddCallback(t->customtime, XmNvalueChangedCallback, tz_customtime_cb, NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 653, "GMT"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 653, "GMT"));
         t->gmtlabel = XtVaCreateWidget("gmtLabel", xmLabelWidgetClass, t->form,
 		XmNlabelString, xmstr,
 		XmNleftAttachment, XmATTACH_WIDGET,
@@ -174,7 +174,7 @@ make_timezone(Calendar *c)
 	XmTextSetString(text, "-6");
 	*/
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 654, "Hours"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 654, "Hours"));
         t->hourlabel = XtVaCreateWidget("gmtHours", xmLabelWidgetClass, t->form,
 		XmNlabelString, xmstr,
 		XmNleftAttachment, XmATTACH_WIDGET,
@@ -211,7 +211,7 @@ make_timezone(Calendar *c)
                 XmNfractionBase,        4,
                 NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 655, "OK"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 655, "OK"));
        t->okbutton = XtVaCreateWidget("OK", 
 		xmPushButtonWidgetClass, button_form,
 		XmNlabelString, 	xmstr,
@@ -228,7 +228,7 @@ make_timezone(Calendar *c)
 	XmStringFree(xmstr);
 	XtAddCallback(t->okbutton, XmNactivateCallback, tz_ok_cb, NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 460, "Apply"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 460, "Apply"));
        t->applybutton = XtVaCreateWidget("Apply", 
 		xmPushButtonWidgetClass, button_form,
 		XmNlabelString, 	xmstr,
@@ -245,7 +245,7 @@ make_timezone(Calendar *c)
 	XmStringFree(xmstr);
 	XtAddCallback(t->applybutton, XmNactivateCallback, tz_apply_cb, NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 923, "Cancel"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 923, "Cancel"));
 	t->cancelbutton = XtVaCreateWidget("Cancel", 
 		xmPushButtonWidgetClass, button_form,
 		XmNlabelString, 	xmstr,
@@ -262,7 +262,7 @@ make_timezone(Calendar *c)
 	XmStringFree(xmstr);
 	XtAddCallback(t->cancelbutton, XmNactivateCallback, tz_cancel_cb, NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
 	t->helpbutton = XtVaCreateWidget("Help", 
 		xmPushButtonWidgetClass, button_form,
 		XmNlabelString, 	xmstr,
@@ -298,7 +298,7 @@ make_timezone(Calendar *c)
 	cm_strcpy(tmp_buf, (char*)getenv("TZ"));
 	cm_strcpy(t->mytimezone, tmp_buf);
 
-	sprintf(buf, "%s %s", catgets(c->DT_catd, 1, 659, "Time Zone:"),
+	sprintf(buf, "%s %s", CATGETS(c->DT_catd, 1, 659, "Time Zone:"),
 		t->mytimezone);
 	set_message(t->timezone_message, buf);
 	set_message(c->message_text, buf);
@@ -384,7 +384,7 @@ tz_set_timezone(Calendar *c, Timezone *t)
     if (t->timezone_type == mytime)
     {
 	set_timezone(t->mytimezone);
-	sprintf(buf, "%s %s", catgets(c->DT_catd, 1, 659, "Time Zone:"),
+	sprintf(buf, "%s %s", CATGETS(c->DT_catd, 1, 659, "Time Zone:"),
 		t->mytimezone);
 
 	/* get utc time */
@@ -412,7 +412,7 @@ tz_set_timezone(Calendar *c, Timezone *t)
 	cm_strcpy(t->gmttimezone, tmp_buf);
 	sprintf(gmt, "GMT%s", tmp_buf);
 	set_timezone(gmt);
-	sprintf(buf, "%s %s", catgets(c->DT_catd, 1, 659, "Time Zone:"), gmt);
+	sprintf(buf, "%s %s", CATGETS(c->DT_catd, 1, 659, "Time Zone:"), gmt);
     }
     set_message(t->timezone_message, buf);
     paint_canvas(c, NULL, RENDER_CLEAR_FIRST);

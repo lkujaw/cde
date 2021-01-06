@@ -89,7 +89,7 @@
 //////////////////////////////////////////////////////////
 #include <stdlib.h>
 #include <sys/types.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <pwd.h>
 #include <unistd.h>
 
@@ -204,7 +204,7 @@ opt_help_button_CB(Widget wid, XtPointer clientData, XtPointer calldata)
 void OptCmd::create_dlog()
 {
     theRoamApp.busyAllWindows(
-	           GETMSG(DT_catd, 3, 78, "Initializing Mail Options..."));
+	           CATGETS(DT_catd, 3, 78, "Initializing Mail Options..."));
 
     // make a new widget structure
     _opt_dlog = (DtbOptionsDialogInfo)malloc(sizeof(
@@ -216,7 +216,7 @@ void OptCmd::create_dlog()
     /*
      * Open the standard message catalog for the project.
      */
-    Dtb_project_catd = catopen(DTB_PROJECT_CATALOG, NL_CAT_LOCALE);
+    Dtb_project_catd = CATOPEN(DTB_PROJECT_CATALOG, NL_CAT_LOCALE);
 
 #ifdef NEVER
     // Not a fatal error
@@ -347,16 +347,16 @@ options_set_category_pane(
 	return;
 
   if (current_pane != NULL && props_changed) {
-        sprintf(buf, "%s", GETMSG(DT_catd, 15, 1, "You have made unsaved changes.\nYou may save your changes, discard your changes,\nor return to your previous place in the dialog."));
+        sprintf(buf, "%s", CATGETS(DT_catd, 15, 1, "You have made unsaved changes.\nYou may save your changes, discard your changes,\nor return to your previous place in the dialog."));
  
         cmd_ptr->genDialog()->setToQuestionDialog(
-			GETMSG(DT_catd, 5, 2, "Mailer"),
+			CATGETS(DT_catd, 5, 2, "Mailer"),
 			buf);
  
         answer = cmd_ptr->genDialog()->post_and_return(
-			GETMSG(DT_catd, 15, 2, "Save"),
-                        GETMSG(DT_catd, 1, 182, "Cancel"),
-                        GETMSG(DT_catd, 15, 3, "Discard"),
+			CATGETS(DT_catd, 15, 2, "Save"),
+                        CATGETS(DT_catd, 1, 182, "Cancel"),
+                        CATGETS(DT_catd, 15, 3, "Discard"),
                         DTMAILHELPERROR);
  
         if (answer == 1) { //Save
@@ -451,7 +451,7 @@ void OptCmd::update_panes()
   // would like to reset. We need reset the subject back to the message
   // "Dtb_project_catd, 2, 68,"
   
-      XtSetArg(args[0], XmNvalue, GETMSG(Dtb_project_catd, 2, 68, "Out of the office"));
+      XtSetArg(args[0], XmNvalue, CATGETS(Dtb_project_catd, 2, 68, "Out of the office"));
 
       if(tmp_ptr != NULL)
         XtVaSetValues(_opt_dlog->subject_tf,
@@ -507,10 +507,10 @@ void OptCmd::update_source()
     char* helpId;
     int answer = 0;
 
-    genDialog()->setToErrorDialog(GETMSG(DT_catd, 2, 1, "Mailer"),
-      GETMSG(DT_catd, 2, 25, "There were unrecoverable syntax errors found in the ~/.mailrc file.\nMail options settings can be applied in the current session but can\nnot be saved to file."));
+    genDialog()->setToErrorDialog(CATGETS(DT_catd, 2, 1, "Mailer"),
+      CATGETS(DT_catd, 2, 25, "There were unrecoverable syntax errors found in the ~/.mailrc file.\nMail options settings can be applied in the current session but can\nnot be saved to file."));
     helpId = DTMAILHELPERROR;
-    genDialog()->post_and_return(GETMSG(DT_catd, 3, 5, "OK"), helpId);
+    genDialog()->post_and_return(CATGETS(DT_catd, 3, 5, "OK"), helpId);
     return;
   }
   else mail_rc->update(error);
@@ -550,16 +550,16 @@ int OptCmd::doFileLockingCheck()
 
 	if (is_set != use_file_locking)
 	{
-	    char	    *message = GETMSG(DT_catd, 2, 26,
+	    char	    *message = CATGETS(DT_catd, 2, 26,
 "The value of the file locking option has changed.\nTo take immediate effect, folders need to be closed and reopened.\n  o Click on 'Reopen' to reopen folders,\n    making the new option take effect immediately.\n  o Click on 'Continue' to avoid reopening folders.\n    The new option will take effect the next time you open a folder.\n  o Click on 'Cancel' to cancel the Apply and return to editing options.");
             genDialog()->setToQuestionDialog(
-				GETMSG(DT_catd, 2, 1, "Mailer"),
+				CATGETS(DT_catd, 2, 1, "Mailer"),
 				message);
 	    answer =
               genDialog()->post_and_return(
-				GETMSG(DT_catd, 2, 27, "Reopen"),
-				GETMSG(DT_catd, 2, 29, "Cancel"),
-				GETMSG(DT_catd, 2, 28, "Continue"),
+				CATGETS(DT_catd, 2, 27, "Reopen"),
+				CATGETS(DT_catd, 2, 29, "Cancel"),
+				CATGETS(DT_catd, 2, 28, "Continue"),
 				"AdvancedMailOptions");
 
 	    //
@@ -672,11 +672,11 @@ Boolean OptCmd::optionsAreValid()
         if (errMsg != NULL)
 	{
             this->genDialog()->setToQuestionDialog(
-	    		GETMSG(DT_catd, 5, 2, "Mailer"),
+	    		CATGETS(DT_catd, 5, 2, "Mailer"),
 			errMsg);
  
             answer = this->genDialog()->post_and_return(
-			GETMSG(DT_catd, 26, 5, "Continue"),
+			CATGETS(DT_catd, 26, 5, "Continue"),
                         DTMAILHELPERROR);
  
 	    XtFree(errMsg);
@@ -692,11 +692,11 @@ Boolean OptCmd::optionsAreValid()
         if (errMsg != NULL)
 	{
             this->genDialog()->setToQuestionDialog(
-	    		GETMSG(DT_catd, 5, 2, "Mailer"),
+	    		CATGETS(DT_catd, 5, 2, "Mailer"),
 			errMsg);
  
             answer = this->genDialog()->post_and_return(
-			GETMSG(DT_catd, 26, 5, "Continue"),
+			CATGETS(DT_catd, 26, 5, "Continue"),
                         DTMAILHELPERROR);
  
 	    XtFree(errMsg);
@@ -1128,7 +1128,7 @@ void OptCmd::init_advanced_pane()
   user_passwd = getpwuid(euid); // get passwd entry for user 
 
   sprintf(label_str, "%s \"%s\" =",
-	  GETMSG( DT_catd, 20, 2, "Use local name: "), user_passwd->pw_name);
+	  CATGETS( DT_catd, 20, 2, "Use local name: "), user_passwd->pw_name);
 
   label_xm_str = XmStringCreateLocalized(label_str);
 

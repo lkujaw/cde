@@ -58,6 +58,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <locale.h>
+#include <Dt/MsgCatP.h>
 #include "msgfac_msg.h"
 
 #define die(s)                  puts(s), exit(1)
@@ -81,8 +82,6 @@ struct arguments {
 void parse_args(int argc, char *argv[], struct arguments *args);
 
 nl_catd	catderr;	/* error message catalog descriptor */
-
-
 
 /*
  * NAME: main
@@ -112,9 +111,9 @@ int main(int argc,char *argv[])
 	int	n;		   /* # bytes in a character */
 
 	setlocale (LC_ALL,"");
-	catderr = catopen(MF_MSGFAC, 0);
+	catderr = CATOPEN(MF_MSGFAC, 0);
 	if (argc < 3) {
-		die(catgets(catderr,MS_DSPMSG,M_DSPMSG, "Usage: dtdspmsg [-s setno] <catname> <msgno> ['default' arg ... ]"));
+		die(CATGETS(catderr,MS_DSPMSG,M_DSPMSG, "Usage: dtdspmsg [-s setno] <catname> <msgno> ['default' arg ... ]"));
 	}
 
 /*______________________________________________________________________
@@ -127,8 +126,8 @@ int main(int argc,char *argv[])
 	get the message out of the catalog.
   ______________________________________________________________________*/
 
-	catdmsg = catopen(args.catname, 0);
-	message = catgets(catdmsg,args.set,args.msg,args.def);
+	catdmsg = CATOPEN(args.catname, 0);
+	message = CATGETS(catdmsg,args.set,args.msg,args.def);
 
 /*______________________________________________________________________
 
@@ -230,26 +229,26 @@ int main(int argc,char *argv[])
 
 				/* do not allow mixing of reorder types */
 				if (reorder == FALSE) {
-					die(catgets(catderr,MS_DSPMSG,M_REORDER,"\nNone or all arguments must use %n$ format"));
+					die(CATGETS(catderr,MS_DSPMSG,M_REORDER,"\nNone or all arguments must use %n$ format"));
 				}
 				for (idx = 0 ; isanumber(*p) ; p++)
 					idx += idx * 10 + toanumber(*p);
 				idx--;
 				if (*p++ != '$') {
-					die(catgets(catderr,MS_DSPMSG,M_INVRE,"\n% missing from %n$ format"));
+					die(CATGETS(catderr,MS_DSPMSG,M_INVRE,"\n% missing from %n$ format"));
 				}
 				reorder = TRUE;
 			}
 			else {
 				/* do not allow mixing of reorder types */
 				if (reorder == TRUE) {
-					die(catgets(catderr,MS_DSPMSG,M_REORDER,"\nNone or all arguments must use %n$ format"));
+					die(CATGETS(catderr,MS_DSPMSG,M_REORDER,"\nNone or all arguments must use %n$ format"));
 				}
 				reorder = FALSE;	
 			}
 			/* report invalid printf argument number */
 			if (idx < 0 || idx >= args.argmax) {
-				die(catgets(catderr,MS_DSPMSG,M_REINDEX,"\nInvalid argument index"));
+				die(CATGETS(catderr,MS_DSPMSG,M_REINDEX,"\nInvalid argument index"));
 			}
 			/* report unsupported % type */
 			if (*p == 's')
@@ -306,7 +305,7 @@ void parse_args(int argc, char *argv[], struct arguments *args)
 	argc--;				/* Skip the program name */
 	if (!strcmp(*argv,"-s")) {	/* check for a set number */
 		if (argc < 4) 		/* check for sufficient arguments */
-		die(catgets(catderr,MS_DSPMSG,M_DSPMSG, "Usage: dtdspmsg [-s setno] <catname> <msgno> ['default' arg ... ]"));
+		die(CATGETS(catderr,MS_DSPMSG,M_DSPMSG, "Usage: dtdspmsg [-s setno] <catname> <msgno> ['default' arg ... ]"));
 		argv++; 
 		argc--;				/* skip past the '-s' */
 		sscanf(*argv,"%d",&args->set);	/* get the real set number */
@@ -317,7 +316,7 @@ void parse_args(int argc, char *argv[], struct arguments *args)
 	argc--;
 	if (!strcmp(*argv,"-s")) {		/* check for a set number */
 		if (argc < 3) 		/* check for sufficient arguments */
-		die(catgets(catderr,MS_DSPMSG,M_DSPMSG, "Usage: dtdspmsg [-s setno] <catname> <msgno> ['default' arg ... ]"));
+		die(CATGETS(catderr,MS_DSPMSG,M_DSPMSG, "Usage: dtdspmsg [-s setno] <catname> <msgno> ['default' arg ... ]"));
 
 		argv++; 
 		argc--;				/* skip past the '-s' */

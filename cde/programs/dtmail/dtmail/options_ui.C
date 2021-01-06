@@ -1637,7 +1637,7 @@ dtb_options_dialog_create(
     if (instance->dialog == NULL) {
         n = 0;
         XtSetArg(args[n], XmNallowShellResize, True);  ++n;
-        XtSetArg(args[n], XmNtitle, GETMSG(Dtb_project_catd, 2, 1, "Mailer - Mail Options"));  ++n;
+        XtSetArg(args[n], XmNtitle, CATGETS(Dtb_project_catd, 2, 1, "Mailer - Mail Options"));  ++n;
         XtSetArg(args[n], XmNbackground, dtb_cvt_string_to_pixel(parent, "white"));  ++n;
         instance->dialog =
             XmCreateDialogShell(parent,
@@ -1845,7 +1845,7 @@ dtb_options_category_opmenu_create(
         return -1;
 
     if (instance->category_opmenu_label == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 2, "Category:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 2, "Category:"));
         instance->category_opmenu_label =
             XtVaCreateWidget("dtb_options_category_opmenu_label",
                 xmLabelWidgetClass,
@@ -1872,7 +1872,7 @@ dtb_options_category_opmenu_create(
         return -1;
 
     if (instance->category_opmenu_items.Message_Header_List_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 3, "Message Header List"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 3, "Message Header List"));
         instance->category_opmenu_items.Message_Header_List_item =
             XtVaCreateManagedWidget("dtb_options_category_opmenu_message_header_list_item",
                 xmPushButtonWidgetClass,
@@ -1886,7 +1886,7 @@ dtb_options_category_opmenu_create(
         return -1;
 
     if (instance->category_opmenu_items.Message_View_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 4, "Message View"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 4, "Message View"));
         instance->category_opmenu_items.Message_View_item =
             XtVaCreateManagedWidget("dtb_options_category_opmenu_message_view_item",
                 xmPushButtonWidgetClass,
@@ -1900,7 +1900,7 @@ dtb_options_category_opmenu_create(
         return -1;
 
     if (instance->category_opmenu_items.Compose_Window_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 5, "Compose Window"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 5, "Compose Window"));
         instance->category_opmenu_items.Compose_Window_item =
             XtVaCreateManagedWidget("dtb_options_category_opmenu_compose_window_item",
                 xmPushButtonWidgetClass,
@@ -1914,7 +1914,7 @@ dtb_options_category_opmenu_create(
         return -1;
 
     if (instance->category_opmenu_items.Message_Filing_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 6, "Message Filing"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 6, "Message Filing"));
         instance->category_opmenu_items.Message_Filing_item =
             XtVaCreateManagedWidget("dtb_options_category_opmenu_message_filing_item",
                 xmPushButtonWidgetClass,
@@ -1928,7 +1928,7 @@ dtb_options_category_opmenu_create(
         return -1;
 
     if (instance->category_opmenu_items.Vacation_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 7, "Vacation"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 7, "Vacation"));
         instance->category_opmenu_items.Vacation_item =
             XtVaCreateManagedWidget("dtb_options_category_opmenu_vacation_item",
                 xmPushButtonWidgetClass,
@@ -1942,7 +1942,7 @@ dtb_options_category_opmenu_create(
         return -1;
 
     if (instance->category_opmenu_items.Templates_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 8, "Templates"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 8, "Templates"));
         instance->category_opmenu_items.Templates_item =
             XtVaCreateManagedWidget("dtb_options_category_opmenu_templates_item",
                 xmPushButtonWidgetClass,
@@ -1956,7 +1956,7 @@ dtb_options_category_opmenu_create(
         return -1;
 
     if (instance->category_opmenu_items.Aliases_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 9, "Aliases"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 9, "Aliases"));
         instance->category_opmenu_items.Aliases_item =
             XtVaCreateManagedWidget("dtb_options_category_opmenu_aliases_item",
                 xmPushButtonWidgetClass,
@@ -1970,7 +1970,7 @@ dtb_options_category_opmenu_create(
         return -1;
 
     if (instance->category_opmenu_items.Advanced_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 10, "Advanced"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 10, "Advanced"));
         instance->category_opmenu_items.Advanced_item =
             XtVaCreateManagedWidget("dtb_options_category_opmenu_advanced_item",
                 xmPushButtonWidgetClass,
@@ -1985,7 +1985,7 @@ dtb_options_category_opmenu_create(
 
     if (instance->category_opmenu_items.Printing_item == NULL) {
         label_xmstring =
-	  XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 92, "Printing"));
+	  XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 92, "Printing"));
         instance->category_opmenu_items.Printing_item =
             XtVaCreateManagedWidget("dtb_options_category_opmenu_printing_item",
                 xmPushButtonWidgetClass,
@@ -2001,7 +2001,7 @@ dtb_options_category_opmenu_create(
     if (instance->category_opmenu_items.MailRetrieval_item == NULL) {
         label_xmstring =
 	  XmStringCreateLocalized(
-	    GETMSG(Dtb_project_catd, 2, 93, "Mail Retrieval"));
+	    CATGETS(Dtb_project_catd, 2, 93, "Mail Retrieval"));
         instance->category_opmenu_items.MailRetrieval_item =
             XtVaCreateManagedWidget(
 		"dtb_options_category_opmenu_mailretrieval_item",
@@ -2415,7 +2415,7 @@ dtb_options_checkbox_create(
         return -1;
 
     if (instance->checkbox_items.Show_To_recipient_when_mail_is_from_me_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 11, "Show To: recipient when mail is from me"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 11, "Show To: recipient when mail is from me"));
         instance->checkbox_items.Show_To_recipient_when_mail_is_from_me_item =
             XtVaCreateManagedWidget("dtb_options_checkbox_show_to_recipient_when_mail_is_from_me_item",
                 xmToggleButtonWidgetClass,
@@ -2430,7 +2430,7 @@ dtb_options_checkbox_create(
         return -1;
 
     if (instance->checkbox_items.Display_message_numbers_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 12, "Display message numbers"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 12, "Display message numbers"));
         instance->checkbox_items.Display_message_numbers_item =
             XtVaCreateManagedWidget("dtb_options_checkbox_display_message_numbers_item",
                 xmToggleButtonWidgetClass,
@@ -2552,7 +2552,7 @@ dtb_options_destroy_del_msg_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->destroy_del_msg_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 20, "Destroy Deleted Messages:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 20, "Destroy Deleted Messages:"));
         instance->destroy_del_msg_lbl =
             XtVaCreateWidget("dtb_options_destroy_del_msg_lbl",
                 xmLabelWidgetClass,
@@ -2615,7 +2615,7 @@ dtb_options_deleted_msg_cb_create(
         return -1;
 
     if (instance->deleted_msg_cb_items.When_I_close_the_mailbox_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 21, "When I close the mailbox"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 21, "When I close the mailbox"));
         instance->deleted_msg_cb_items.When_I_close_the_mailbox_item =
             XtVaCreateManagedWidget("dtb_options_deleted_msg_cb_when_i_close_the_mailbox_item",
                 xmToggleButtonWidgetClass,
@@ -2630,7 +2630,7 @@ dtb_options_deleted_msg_cb_create(
         return -1;
 
     if (instance->deleted_msg_cb_items.Show_confirmation_notice_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 22, "Show confirmation notice"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 22, "Show confirmation notice"));
         instance->deleted_msg_cb_items.Show_confirmation_notice_item =
             XtVaCreateManagedWidget("dtb_options_deleted_msg_cb_show_confirmation_notice_item",
                 xmToggleButtonWidgetClass,
@@ -2782,7 +2782,7 @@ dtb_options_mail_check_sb_create(
         return -1;
 
     if (instance->mail_check_sb_label == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 13, "Check for new mail every:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 13, "Check for new mail every:"));
         instance->mail_check_sb_label =
             XtVaCreateWidget("dtb_options_mail_check_sb_label",
                 xmLabelWidgetClass,
@@ -2827,7 +2827,7 @@ dtb_options_seconds_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->seconds_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 14, "Seconds"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 14, "Seconds"));
         instance->seconds_lbl =
             XtVaCreateWidget("dtb_options_seconds_lbl",
                 xmLabelWidgetClass,
@@ -2888,7 +2888,7 @@ dtb_options_signal_sb_create(
         return -1;
 
     if (instance->signal_sb_label == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 15, "Signal new mail with:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 15, "Signal new mail with:"));
         instance->signal_sb_label =
             XtVaCreateWidget("dtb_options_signal_sb_label",
                 xmLabelWidgetClass,
@@ -2933,7 +2933,7 @@ dtb_options_beeps_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->beeps_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 16, "Beep(s)"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 16, "Beep(s)"));
         instance->beeps_lbl =
             XtVaCreateWidget("dtb_options_beeps_lbl",
                 xmLabelWidgetClass,
@@ -2994,7 +2994,7 @@ dtb_options_spinbox2_create(
         return -1;
 
     if (instance->spinbox2_label == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 91, " "));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 91, " "));
         instance->spinbox2_label =
             XtVaCreateWidget("dtb_options_spinbox2_label",
                 xmLabelWidgetClass,
@@ -3039,7 +3039,7 @@ dtb_options_flashes_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->flashes_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 17, "Flash(es)"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 17, "Flash(es)"));
         instance->flashes_lbl =
             XtVaCreateWidget("dtb_options_flashes_lbl",
                 xmLabelWidgetClass,
@@ -3100,7 +3100,7 @@ dtb_options_display_sb_create(
         return -1;
 
     if (instance->display_sb_label == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 18, "Display"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 18, "Display"));
         instance->display_sb_label =
             XtVaCreateWidget("dtb_options_display_sb_label",
                 xmLabelWidgetClass,
@@ -3145,7 +3145,7 @@ dtb_options_headers_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->headers_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 19, "Headers"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 19, "Headers"));
         instance->headers_lbl =
             XtVaCreateWidget("dtb_options_headers_lbl",
                 xmLabelWidgetClass,
@@ -3215,7 +3215,7 @@ dtb_options_abr_header_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->abr_header_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 23, "Abbreviated header will not include:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 23, "Abbreviated header will not include:"));
         instance->abr_header_lbl =
             XtVaCreateWidget("dtb_options_abr_header_lbl",
                 xmLabelWidgetClass,
@@ -3420,7 +3420,7 @@ dtb_options_display_row_sb_create(
         return -1;
 
     if (instance->display_row_sb_label == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 18, "Display"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 18, "Display"));
         instance->display_row_sb_label =
             XtVaCreateWidget("dtb_options_display_row_sb_label",
                 xmLabelWidgetClass,
@@ -3465,7 +3465,7 @@ dtb_options_rows_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->rows_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 33, "Rows"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 33, "Rows"));
         instance->rows_lbl =
             XtVaCreateWidget("dtb_options_rows_lbl",
                 xmLabelWidgetClass,
@@ -3526,7 +3526,7 @@ dtb_options_characters_wide_sb_create(
         return -1;
 
     if (instance->characters_wide_sb_label == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 91, " "));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 91, " "));
         instance->characters_wide_sb_label =
             XtVaCreateWidget("dtb_options_characters_wide_sb_label",
                 xmLabelWidgetClass,
@@ -3571,7 +3571,7 @@ dtb_options_char_wide_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->char_wide_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 34, "Characters Wide"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 34, "Characters Wide"));
         instance->char_wide_lbl =
             XtVaCreateWidget("dtb_options_char_wide_lbl",
                 xmLabelWidgetClass,
@@ -3679,9 +3679,9 @@ dtb_options_hidden_fields_list_create(
     /*
      * Convert char* strings to XmStrings
      */
-    hidden_fields_list_list_xmstrings[i++] = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 25, "x-lines"));
-    hidden_fields_list_list_xmstrings[i++] = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 26, "email-version"));
-    hidden_fields_list_list_xmstrings[i++] = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 27, "expires"));
+    hidden_fields_list_list_xmstrings[i++] = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 25, "x-lines"));
+    hidden_fields_list_list_xmstrings[i++] = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 26, "email-version"));
+    hidden_fields_list_list_xmstrings[i++] = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 27, "expires"));
     if (instance->hidden_fields_list == NULL) {
         n = 0;
         XtSetArg(args[n], XmNscrollBarDisplayPolicy, XmAUTOMATIC);  ++n;
@@ -3720,7 +3720,7 @@ dtb_options_hidden_fields_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->hidden_fields_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 28, "Hidden Fields:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 28, "Hidden Fields:"));
         instance->hidden_fields_lbl =
             XtVaCreateWidget("dtb_options_hidden_fields_lbl",
                 xmLabelWidgetClass,
@@ -3757,7 +3757,7 @@ dtb_options_header_fields_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->header_fields_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 24, "Header Field:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 24, "Header Field:"));
         instance->header_fields_lbl =
             XtVaCreateWidget("dtb_options_header_fields_lbl",
                 xmLabelWidgetClass,
@@ -3794,7 +3794,7 @@ dtb_options_h_field_add_create(
     XmString	label_xmstring = NULL;
     
     if (instance->h_field_add == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 29, "Add"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 29, "Add"));
         instance->h_field_add =
             XtVaCreateWidget("dtb_options_h_field_add",
                 xmPushButtonWidgetClass,
@@ -3831,7 +3831,7 @@ dtb_options_h_field_delete_create(
     XmString	label_xmstring = NULL;
     
     if (instance->h_field_delete == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 30, "Delete"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 30, "Delete"));
         instance->h_field_delete =
             XtVaCreateWidget("dtb_options_h_field_delete",
                 xmPushButtonWidgetClass,
@@ -3868,7 +3868,7 @@ dtb_options_h_field_change_create(
     XmString	label_xmstring = NULL;
     
     if (instance->h_field_change == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 31, "Change"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 31, "Change"));
         instance->h_field_change =
             XtVaCreateWidget("dtb_options_h_field_change",
                 xmPushButtonWidgetClass,
@@ -3932,7 +3932,7 @@ dtb_options_wrap_checkbox_create(
         return -1;
 
     if (instance->wrap_checkbox_items.Show_Attachment_List_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 36, "Show Attachment List"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 36, "Show Attachment List"));
         instance->wrap_checkbox_items.Show_Attachment_List_item =
             XtVaCreateManagedWidget("dtb_options_wrap_checkbox_show_attachment_list_item",
                 xmToggleButtonWidgetClass,
@@ -4014,7 +4014,7 @@ dtb_options_confirm_attachment_create(
     if (instance->cfrm_att_checkbox_items.Confirm_Attachment_item == NULL)
     {
         label_xmstring = XmStringCreateLocalized(
-	  GETMSG(Dtb_project_catd, 2, 94, "Confirm attachments over:"));
+	  CATGETS(Dtb_project_catd, 2, 94, "Confirm attachments over:"));
 
         instance->cfrm_att_checkbox_items.Confirm_Attachment_item =
             XtVaCreateManagedWidget(
@@ -4061,7 +4061,7 @@ dtb_options_confirm_attachment_create(
     if (instance->visit_mailb_lbl == NULL)
     {
         label_xmstring =
-	  XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 95, "kilobytes"));
+	  XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 95, "kilobytes"));
         instance->cfrm_att_size_mb_lbl =
             XtVaCreateManagedWidget("dtb_options_cfrm_att_size_mb_lbl",
                 xmLabelWidgetClass,
@@ -4192,7 +4192,7 @@ dtb_options_deadletter_field_create(
         return -1;
 
     if (instance->deadletter_field_label == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 38, "Dead Letter Folder:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 38, "Dead Letter Folder:"));
         instance->deadletter_field_label =
             XtVaCreateWidget("dtb_options_deadletter_field_label",
                 xmLabelWidgetClass,
@@ -4263,7 +4263,7 @@ dtb_options_format_menu_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->format_menu_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 39, "Format Menu Custom Fields"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 39, "Format Menu Custom Fields"));
         instance->format_menu_lbl =
             XtVaCreateWidget("dtb_options_format_menu_lbl",
                 xmLabelWidgetClass,
@@ -4371,7 +4371,7 @@ dtb_options_indent_str_tf_create(
         XtSetArg(args[n], XmNleftOffset, 4);  ++n;
         XtSetArg(args[n], XmNleftAttachment, XmATTACH_WIDGET);  ++n;
         XtSetArg(args[n], XmNtopAttachment, XmATTACH_NONE);  ++n;
-        XtSetArg(args[n], XmNvalue, GETMSG(Dtb_project_catd, 2, 37, ">"));  ++n;
+        XtSetArg(args[n], XmNvalue, CATGETS(Dtb_project_catd, 2, 37, ">"));  ++n;
         XtSetArg(args[n], XmNmaxLength, 80);  ++n;
         XtSetArg(args[n], XmNeditable, True);  ++n;
         XtSetArg(args[n], XmNcursorPositionVisible, True);  ++n;
@@ -4428,7 +4428,7 @@ dtb_options_indent_str_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->indent_str_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 52, "Indent string"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 52, "Indent string"));
         instance->indent_str_lbl =
             XtVaCreateWidget("dtb_options_indent_str_lbl",
                 xmLabelWidgetClass,
@@ -4458,7 +4458,7 @@ dtb_options_reply_include_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->reply_include_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 53, "for Reply Include:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 53, "for Reply Include:"));
         instance->reply_include_lbl =
             XtVaCreateWidget("dtb_options_reply_include_lbl",
                 xmLabelWidgetClass,
@@ -4526,8 +4526,8 @@ dtb_options_list_create(
     /*
      * Convert char* strings to XmStrings
      */
-    list_list_xmstrings[i++] = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 40, "bcc"));
-    list_list_xmstrings[i++] = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 41, "return-receipt"));
+    list_list_xmstrings[i++] = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 40, "bcc"));
+    list_list_xmstrings[i++] = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 41, "return-receipt"));
     if (instance->list == NULL) {
         n = 0;
         XtSetArg(args[n], XmNscrollBarDisplayPolicy, XmAUTOMATIC);  ++n;
@@ -4566,7 +4566,7 @@ dtb_options_menu_labels_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->menu_labels_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 42, "Menu Labels:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 42, "Menu Labels:"));
         instance->menu_labels_lbl =
             XtVaCreateWidget("dtb_options_menu_labels_lbl",
                 xmLabelWidgetClass,
@@ -4669,7 +4669,7 @@ dtb_options_hdr_field_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->hdr_field_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 50, "Header Field:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 50, "Header Field:"));
         instance->hdr_field_lbl =
             XtVaCreateWidget("dtb_options_hdr_field_lbl",
                 xmLabelWidgetClass,
@@ -4707,7 +4707,7 @@ dtb_options_def_value_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->def_value_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 51, "Default Value:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 51, "Default Value:"));
         instance->def_value_lbl =
             XtVaCreateWidget("dtb_options_def_value_lbl",
                 xmLabelWidgetClass,
@@ -4745,7 +4745,7 @@ dtb_options_add_button_create(
     XmString	label_xmstring = NULL;
     
     if (instance->add_button == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 29, "Add"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 29, "Add"));
         instance->add_button =
             XtVaCreateWidget("dtb_options_add_button",
                 xmPushButtonWidgetClass,
@@ -4782,7 +4782,7 @@ dtb_options_del_button_create(
     XmString	label_xmstring = NULL;
     
     if (instance->del_button == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 30, "Delete"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 30, "Delete"));
         instance->del_button =
             XtVaCreateWidget("dtb_options_del_button",
                 xmPushButtonWidgetClass,
@@ -4819,7 +4819,7 @@ dtb_options_change_button_create(
     XmString	label_xmstring = NULL;
     
     if (instance->change_button == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 31, "Change"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 31, "Change"));
         instance->change_button =
             XtVaCreateWidget("dtb_options_change_button",
                 xmPushButtonWidgetClass,
@@ -4948,7 +4948,7 @@ dtb_options_mailb_for_sent_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->mailb_for_sent_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 61, "Mailbox for sent messages:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 61, "Mailbox for sent messages:"));
         instance->mailb_for_sent_lbl =
             XtVaCreateWidget("dtb_options_mailb_for_sent_lbl",
                 xmLabelWidgetClass,
@@ -5068,7 +5068,7 @@ dtb_options_dpy_up_mbox_cb_create(
         return -1;
 
     if (instance->dpy_up_mbox_cb_items.Display_up_to_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 59, "Display up to:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 59, "Display up to:"));
         instance->dpy_up_mbox_cb_items.Display_up_to_item =
             XtVaCreateManagedWidget("dtb_options_dpy_up_mbox_cb_display_up_to_item",
                 xmToggleButtonWidgetClass,
@@ -5128,7 +5128,7 @@ dtb_options_visit_mailb_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->visit_mailb_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 60, "Recently visited mailboxes"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 60, "Recently visited mailboxes"));
         instance->visit_mailb_lbl =
             XtVaCreateWidget("dtb_options_visit_mailb_lbl",
                 xmLabelWidgetClass,
@@ -5212,7 +5212,7 @@ dtb_options_log_cb_create(
         return -1;
 
     if (instance->log_cb_items.Log_all_sent_messages_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 62, "Log all sent messages"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 62, "Log all sent messages"));
         instance->log_cb_items.Log_all_sent_messages_item =
             XtVaCreateManagedWidget("dtb_options_log_cb_log_all_sent_messages_item",
                 xmToggleButtonWidgetClass,
@@ -5374,7 +5374,7 @@ dtb_options_move_menu_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->move_menu_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 57, "Move Menu"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 57, "Move Menu"));
         instance->move_menu_lbl =
             XtVaCreateWidget("dtb_options_move_menu_lbl",
                 xmLabelWidgetClass,
@@ -5411,7 +5411,7 @@ dtb_options_move_menu_lbl2_create(
     XmString	label_xmstring = NULL;
     
     if (instance->move_menu_lbl2 == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 58, "and Copy To Menu:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 58, "and Copy To Menu:"));
         instance->move_menu_lbl2 =
             XtVaCreateWidget("dtb_options_move_menu_lbl2",
                 xmLabelWidgetClass,
@@ -5448,7 +5448,7 @@ dtb_options_path_file_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->path_file_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 54, "Path / File Name:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 54, "Path / File Name:"));
         instance->path_file_lbl =
             XtVaCreateWidget("dtb_options_path_file_lbl",
                 xmLabelWidgetClass,
@@ -5486,7 +5486,7 @@ dtb_options_start_look_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->start_look_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 55, "Start looking in:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 55, "Start looking in:"));
         instance->start_look_lbl =
             XtVaCreateWidget("dtb_options_start_look_lbl",
                 xmLabelWidgetClass,
@@ -5524,7 +5524,7 @@ dtb_options_mm_add_butt_create(
     XmString	label_xmstring = NULL;
     
     if (instance->mm_add_butt == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 29, "Add"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 29, "Add"));
         instance->mm_add_butt =
             XtVaCreateWidget("dtb_options_mm_add_butt",
                 xmPushButtonWidgetClass,
@@ -5561,7 +5561,7 @@ dtb_options_mm_delete_butt_create(
     XmString	label_xmstring = NULL;
     
     if (instance->mm_delete_butt == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 30, "Delete"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 30, "Delete"));
         instance->mm_delete_butt =
             XtVaCreateWidget("dtb_options_mm_delete_butt",
                 xmPushButtonWidgetClass,
@@ -5598,7 +5598,7 @@ dtb_options_mm_change_butt_create(
     XmString	label_xmstring = NULL;
     
     if (instance->mm_change_butt == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 31, "Change"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 31, "Change"));
         instance->mm_change_butt =
             XtVaCreateWidget("dtb_options_mm_change_butt",
                 xmPushButtonWidgetClass,
@@ -5635,7 +5635,7 @@ dtb_options_vacation_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->vacation_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 66, "Vacation Precedence = junk"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 66, "Vacation Precedence = junk"));
         instance->vacation_lbl =
             XtVaCreateWidget("dtb_options_vacation_lbl",
                 xmLabelWidgetClass,
@@ -5730,7 +5730,7 @@ dtb_options_vacation_rb_create(
         return -1;
 
     if (instance->vacation_rb_items.On_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 64, "On"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 64, "On"));
         instance->vacation_rb_items.On_item =
             XtVaCreateManagedWidget("dtb_options_vacation_rb_on_item",
                 xmToggleButtonWidgetClass,
@@ -5745,7 +5745,7 @@ dtb_options_vacation_rb_create(
         return -1;
 
     if (instance->vacation_rb_items.Off_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 65, "Off"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 65, "Off"));
         instance->vacation_rb_items.Off_item =
             XtVaCreateManagedWidget("dtb_options_vacation_rb_off_item",
                 xmToggleButtonWidgetClass,
@@ -5822,7 +5822,7 @@ dtb_options_subject_tf_create(
         XtSetArg(args[n], XmNleftAttachment, XmATTACH_POSITION);  ++n;
         XtSetArg(args[n], XmNtopOffset, 4);  ++n;
         XtSetArg(args[n], XmNtopAttachment, XmATTACH_WIDGET);  ++n;
-        XtSetArg(args[n], XmNvalue, GETMSG(Dtb_project_catd, 2, 68, "Out of the office"));  ++n;
+        XtSetArg(args[n], XmNvalue, CATGETS(Dtb_project_catd, 2, 68, "Out of the office"));  ++n;
         XtSetArg(args[n], XmNmaxLength, 80);  ++n;
         XtSetArg(args[n], XmNeditable, True);  ++n;
         XtSetArg(args[n], XmNcursorPositionVisible, True);  ++n;
@@ -5847,7 +5847,7 @@ dtb_options_msg_list_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->msg_list_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 69, "Message:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 69, "Message:"));
         instance->msg_list_lbl =
             XtVaCreateWidget("dtb_options_msg_list_lbl",
                 xmLabelWidgetClass,
@@ -5884,7 +5884,7 @@ dtb_options_subject_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->subject_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 67, "Subject:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 67, "Subject:"));
         instance->subject_lbl =
             XtVaCreateWidget("dtb_options_subject_lbl",
                 xmLabelWidgetClass,
@@ -5922,7 +5922,7 @@ dtb_options_vacation_rb_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->vacation_rb_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 63, "Vacation:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 63, "Vacation:"));
         instance->vacation_rb_lbl =
             XtVaCreateWidget("dtb_options_vacation_rb_lbl",
                 xmLabelWidgetClass,
@@ -6127,7 +6127,7 @@ dtb_options_templates_list_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->templates_list_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 72, "Templates:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 72, "Templates:"));
         instance->templates_list_lbl =
             XtVaCreateWidget("dtb_options_templates_list_lbl",
                 xmLabelWidgetClass,
@@ -6164,7 +6164,7 @@ dtb_options_menu_label_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->menu_label_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 71, "Menu Label:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 71, "Menu Label:"));
         instance->menu_label_lbl =
             XtVaCreateWidget("dtb_options_menu_label_lbl",
                 xmLabelWidgetClass,
@@ -6202,7 +6202,7 @@ dtb_options_path_filename_label_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->path_filename_label_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 54, "Path / File Name:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 54, "Path / File Name:"));
         instance->path_filename_label_lbl =
             XtVaCreateWidget("dtb_options_path_filename_label_lbl",
                 xmLabelWidgetClass,
@@ -6240,7 +6240,7 @@ dtb_options_tem_add_but_create(
     XmString	label_xmstring = NULL;
     
     if (instance->tem_add_but == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 29, "Add"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 29, "Add"));
         instance->tem_add_but =
             XtVaCreateWidget("dtb_options_tem_add_but",
                 xmPushButtonWidgetClass,
@@ -6277,7 +6277,7 @@ dtb_options_tem_del_but_create(
     XmString	label_xmstring = NULL;
     
     if (instance->tem_del_but == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 30, "Delete"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 30, "Delete"));
         instance->tem_del_but =
             XtVaCreateWidget("dtb_options_tem_del_but",
                 xmPushButtonWidgetClass,
@@ -6314,7 +6314,7 @@ dtb_options_tem_change_but_create(
     XmString	label_xmstring = NULL;
     
     if (instance->tem_change_but == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 31, "Change"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 31, "Change"));
         instance->tem_change_but =
             XtVaCreateWidget("dtb_options_tem_change_but",
                 xmPushButtonWidgetClass,
@@ -6518,7 +6518,7 @@ dtb_options_alias_list_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->alias_list_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 75, "Aliases:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 75, "Aliases:"));
         instance->alias_list_lbl =
             XtVaCreateWidget("dtb_options_alias_list_lbl",
                 xmLabelWidgetClass,
@@ -6555,7 +6555,7 @@ dtb_options_alias_tf_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->alias_tf_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 73, "Alias:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 73, "Alias:"));
         instance->alias_tf_lbl =
             XtVaCreateWidget("dtb_options_alias_tf_lbl",
                 xmLabelWidgetClass,
@@ -6593,7 +6593,7 @@ dtb_options_address_tf_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->address_tf_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 74, "Addresses:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 74, "Addresses:"));
         instance->address_tf_lbl =
             XtVaCreateWidget("dtb_options_address_tf_lbl",
                 xmLabelWidgetClass,
@@ -6631,7 +6631,7 @@ dtb_options_alias_add_but_create(
     XmString	label_xmstring = NULL;
     
     if (instance->alias_add_but == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 29, "Add"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 29, "Add"));
         instance->alias_add_but =
             XtVaCreateWidget("dtb_options_alias_add_but",
                 xmPushButtonWidgetClass,
@@ -6668,7 +6668,7 @@ dtb_options_alias_delete_but_create(
     XmString	label_xmstring = NULL;
     
     if (instance->alias_delete_but == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 30, "Delete"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 30, "Delete"));
         instance->alias_delete_but =
             XtVaCreateWidget("dtb_options_alias_delete_but",
                 xmPushButtonWidgetClass,
@@ -6705,7 +6705,7 @@ dtb_options_al_change_but_create(
     XmString	label_xmstring = NULL;
     
     if (instance->al_change_but == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 31, "Change"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 31, "Change"));
         instance->al_change_but =
             XtVaCreateWidget("dtb_options_al_change_but",
                 xmPushButtonWidgetClass,
@@ -6780,7 +6780,7 @@ dtb_options_update_mailb_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->update_mailb_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 76, "Update mailbox state:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 76, "Update mailbox state:"));
         instance->update_mailb_lbl =
             XtVaCreateWidget("dtb_options_update_mailb_lbl",
                 xmLabelWidgetClass,
@@ -6816,7 +6816,7 @@ dtb_options_frequently_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->frequently_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 77, "Frequently"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 77, "Frequently"));
         instance->frequently_lbl =
             XtVaCreateWidget("dtb_options_frequently_lbl",
                 xmLabelWidgetClass,
@@ -6852,7 +6852,7 @@ dtb_options_seldom_lbl_create(
     XmString	label_xmstring = NULL;
     
     if (instance->seldom_lbl == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 78, "Seldom"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 78, "Seldom"));
         instance->seldom_lbl =
             XtVaCreateWidget("dtb_options_seldom_lbl",
                 xmLabelWidgetClass,
@@ -6947,7 +6947,7 @@ dtb_options_adv_def_cb_create(
         return -1;
 
     if (instance->adv_def_cb_label == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 79, "Defaults:"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 79, "Defaults:"));
         instance->adv_def_cb_label =
             XtVaCreateWidget("dtb_options_adv_def_cb_label",
                 xmLabelWidgetClass,
@@ -6980,7 +6980,7 @@ dtb_options_adv_def_cb_create(
         return -1;
 
     if (instance->adv_def_cb_items.Show_confirmation_notices_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 80, "Show confirmation notices"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 80, "Show confirmation notices"));
         instance->adv_def_cb_items.Show_confirmation_notices_item =
             XtVaCreateManagedWidget("dtb_options_adv_def_cb_show_confirmation_notices_item",
                 xmToggleButtonWidgetClass,
@@ -6995,7 +6995,7 @@ dtb_options_adv_def_cb_create(
         return -1;
 
     if (instance->adv_def_cb_items.Use_strict_MIME_character_encoding_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 81, "Use strict MIME character encoding"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 81, "Use strict MIME character encoding"));
         instance->adv_def_cb_items.Use_strict_MIME_character_encoding_item =
             XtVaCreateManagedWidget("dtb_options_adv_def_cb_use_strict_m_i_m_e_character_encoding_item",
                 xmToggleButtonWidgetClass,
@@ -7010,7 +7010,7 @@ dtb_options_adv_def_cb_create(
         return -1;
 
     if (instance->adv_def_cb_items.Use_network_aware_mail_file_locking_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 82, "Use network aware mail file locking"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 82, "Use network aware mail file locking"));
         instance->adv_def_cb_items.Use_network_aware_mail_file_locking_item =
             XtVaCreateManagedWidget("dtb_options_adv_def_cb_use_network_aware_mail_file_locking_item",
                 xmToggleButtonWidgetClass,
@@ -7025,7 +7025,7 @@ dtb_options_adv_def_cb_create(
         return -1;
 
     if (instance->adv_def_cb_items.Ignore_host_name_in_address_allnet_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 83, "Ignore host name in address (allnet)"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 83, "Ignore host name in address (allnet)"));
         instance->adv_def_cb_items.Ignore_host_name_in_address_allnet_item =
             XtVaCreateManagedWidget("dtb_options_adv_def_cb_ignore_host_name_in_address_allnet_item",
                 xmToggleButtonWidgetClass,
@@ -7040,7 +7040,7 @@ dtb_options_adv_def_cb_create(
         return -1;
 
     if (instance->adv_def_cb_items.Include_me_when_I_Reply_to_all_metoo_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 84, "Include me when I \"Reply to All\" (metoo)"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 84, "Include me when I \"Reply to All\" (metoo)"));
         instance->adv_def_cb_items.Include_me_when_I_Reply_to_all_metoo_item =
             XtVaCreateManagedWidget("dtb_options_adv_def_cb_include_me_when_i_reply_to_all_metoo_item",
                 xmToggleButtonWidgetClass,
@@ -7055,7 +7055,7 @@ dtb_options_adv_def_cb_create(
         return -1;
 
     if (instance->adv_def_cb_items.Use_local_name_username_item == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 85, "Use local name: username ="));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 85, "Use local name: username ="));
         instance->adv_def_cb_items.Use_local_name_username_item =
             XtVaCreateManagedWidget("dtb_options_adv_def_cb_use_local_name_username_item",
                 xmToggleButtonWidgetClass,
@@ -7214,7 +7214,7 @@ dtb_options_local_name_add_but_create(
     XmString	label_xmstring = NULL;
     
     if (instance->local_name_add_but == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 29, "Add"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 29, "Add"));
         instance->local_name_add_but =
             XtVaCreateWidget("dtb_options_local_name_add_but",
                 xmPushButtonWidgetClass,
@@ -7251,7 +7251,7 @@ dtb_options_local_name_del_but_create(
     XmString	label_xmstring = NULL;
     
     if (instance->local_name_del_but == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 30, "Delete"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 30, "Delete"));
         instance->local_name_del_but =
             XtVaCreateWidget("dtb_options_local_name_del_but",
                 xmPushButtonWidgetClass,
@@ -7288,7 +7288,7 @@ dtb_options_local_name_chg_but_create(
     XmString	label_xmstring = NULL;
     
     if (instance->local_name_chg_but == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 31, "Change"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 31, "Change"));
         instance->local_name_chg_but =
             XtVaCreateWidget("dtb_options_local_name_chg_but",
                 xmPushButtonWidgetClass,
@@ -7325,7 +7325,7 @@ dtb_options_ok_button_create(
     XmString	label_xmstring = NULL;
     
     if (instance->ok_button == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 86, "OK"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 86, "OK"));
         instance->ok_button =
             XtVaCreateWidget("dtb_options_ok_button",
                 xmPushButtonWidgetClass,
@@ -7365,7 +7365,7 @@ dtb_options_reset_button_create(
     XmString	label_xmstring = NULL;
     
     if (instance->reset_button == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 87, "Reset"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 87, "Reset"));
         instance->reset_button =
             XtVaCreateWidget("dtb_options_reset_button",
                 xmPushButtonWidgetClass,
@@ -7405,7 +7405,7 @@ dtb_options_cancel_button_create(
     XmString	label_xmstring = NULL;
     
     if (instance->cancel_button == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 88, "Cancel"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 88, "Cancel"));
         instance->cancel_button =
             XtVaCreateWidget("dtb_options_cancel_button",
                 xmPushButtonWidgetClass,
@@ -7476,7 +7476,7 @@ dtb_options_apply_button_create(
     XmString	label_xmstring = NULL;
     
     if (instance->apply_button == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 89, "Apply"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 89, "Apply"));
         instance->apply_button =
             XtVaCreateWidget("dtb_options_apply_button",
                 xmPushButtonWidgetClass,
@@ -7516,7 +7516,7 @@ dtb_options_help_button_create(
     XmString	label_xmstring = NULL;
     
     if (instance->help_button == NULL) {
-        label_xmstring = XmStringCreateLocalized(GETMSG(Dtb_project_catd, 2, 90, "Help"));
+        label_xmstring = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 2, 90, "Help"));
         instance->help_button =
             XtVaCreateWidget("dtb_options_help_button",
                 xmPushButtonWidgetClass,

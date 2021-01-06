@@ -32,7 +32,7 @@
 
 #ifdef I18N_MSG
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 #if !defined(NL_CAT_LOCALE)
 #define NL_CAT_LOCALE 0
@@ -329,8 +329,6 @@ _DtWidgetGetMessage(int set,
 		    char *s)
 {
   char *msg;
-  nl_catd catopen();
-  char *catgets();
   static int first = 1;
   static nl_catd nlmsg_fd;
   
@@ -339,13 +337,13 @@ _DtWidgetGetMessage(int set,
       _DtProcessLock();
       if ( first)
 	{
-	  nlmsg_fd = catopen(_DTWIDGET_CAT_NAME, NL_CAT_LOCALE);
+	  nlmsg_fd = CATOPEN(_DTWIDGET_CAT_NAME, NL_CAT_LOCALE);
 	  first = 0;
 	}
       _DtProcessUnlock();
     }
 
-  msg=catgets(nlmsg_fd,set,n,s);
+  msg=CATGETS(nlmsg_fd,set,n,s);
   return (msg);
 }
 #endif /* I18N_MSG */

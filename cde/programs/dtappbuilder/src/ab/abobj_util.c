@@ -796,19 +796,19 @@ abobj_update_proj_name(
     else
     {
 	proj_win_title = (STRING) util_malloc(
-		strlen(catgets(Dtb_project_catd, 100, 104, "NoName")) 
+		strlen(CATGETS(Dtb_project_catd, 100, 104, "NoName"))
 		+ strlen(".bip") +1);
     	strcpy(proj_win_title, 
-		catgets(Dtb_project_catd, 100, 104, "NoName"));
+		CATGETS(Dtb_project_catd, 100, 104, "NoName"));
     }
 
     strcat(proj_win_title, ".bip");
     new_title = (STRING) util_malloc(
-		strlen(catgets(Dtb_project_catd, 10, 1, "Project Organizer"))
+		strlen(CATGETS(Dtb_project_catd, 10, 1, "Project Organizer"))
 		+ strlen(" - ") + strlen(proj_win_title) +1);
 
     strcpy(new_title, 
-	catgets(Dtb_project_catd, 10, 1, "Project Organizer"));
+	CATGETS(Dtb_project_catd, 10, 1, "Project Organizer"));
     strcat(new_title, " - "); 
     strcat(new_title, proj_win_title); 
     util_free(proj_win_title);
@@ -848,10 +848,10 @@ abobj_update_palette_title(
     else
     {
         proj_win_title = (STRING) util_malloc(
-                strlen(catgets(Dtb_project_catd, 100, 104, "NoName"))
+                strlen(CATGETS(Dtb_project_catd, 100, 104, "NoName"))
                 + strlen(".bip") +1);
         strcpy(proj_win_title,
-                catgets(Dtb_project_catd, 100, 104, "NoName"));
+                CATGETS(Dtb_project_catd, 100, 104, "NoName"));
     }
     strcat(proj_win_title, ".bip");
  
@@ -865,13 +865,13 @@ abobj_update_palette_title(
 	SaveNeeded = TRUE;
 
     new_title = (STRING) util_malloc(
-                strlen(catgets(Dtb_project_catd, 10, 5, "Application Builder"))
+                strlen(CATGETS(Dtb_project_catd, 10, 5, "Application Builder"))
                 + strlen(" - ") + strlen(proj_win_title) + 
-		+ strlen(catgets(Dtb_project_catd, 100, 244, " (Save Needed)")) 
+		+ strlen(CATGETS(Dtb_project_catd, 100, 244, " (Save Needed)"))
 		+1);
 
     strcpy(new_title, 
-	catgets(Dtb_project_catd, 10, 5, "Application Builder"));
+	CATGETS(Dtb_project_catd, 10, 5, "Application Builder"));
     strcat(new_title, " - ");
     strcat(new_title, proj_win_title); 
     util_free(proj_win_title);
@@ -879,7 +879,7 @@ abobj_update_palette_title(
     if (SaveNeeded)
     {
 	strcat(new_title, 
-	    catgets(Dtb_project_catd, 100, 244, " (Save Needed)"));
+	    CATGETS(Dtb_project_catd, 100, 244, " (Save Needed)"));
     }
 
     XtVaSetValues(AB_toplevel, XmNtitle,  new_title, NULL); 

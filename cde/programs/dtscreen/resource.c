@@ -61,7 +61,7 @@
 
 /*              include file for message texts          */
 #include <limits.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #define MF_DTSCREEN "dtscreen.cat"
 
 #include <locale.h>
@@ -247,7 +247,7 @@ Syntax(char *badOption)
     fprintf(stderr, "%s:  bad command line option:  %s.\n\n",
             ProgramName, badOption);
 #else
-    fprintf(stderr, catgets(scmc_catd, 2, 1,
+    fprintf(stderr, CATGETS(scmc_catd, 2, 1,
         "%s:  Bad command line option:  %s.\n\n"), 
         ProgramName, badOption);
 #endif
@@ -286,7 +286,7 @@ Syntax(char *badOption)
     fprintf(stderr, "\nType %s -help for a full description.\n\n",
             ProgramName);
 #else
-    fprintf(stderr, catgets(scmc_catd, 2, 2,
+    fprintf(stderr, CATGETS(scmc_catd, 2, 2,
         "\nType %s -help for a full description.\n\n"), 
         ProgramName);
 #endif
@@ -303,7 +303,7 @@ Help(void)
     fprintf(stderr, "where options include:\n");
 
 #else
-    fprintf(stderr, catgets(scmc_catd, 2, 3,
+    fprintf(stderr, CATGETS(scmc_catd, 2, 3,
         "Usage:\n        %s [-options ...]\n\n\
         where options include:\n"), ProgramName);
 #endif
@@ -316,7 +316,7 @@ Help(void)
     fprintf(stderr, "    %-28s %s\n", "-mode mode", "animation mode");
     fprintf(stderr, "    where mode is one of:\n");
 #else
-    fprintf(stderr, catgets(scmc_catd, 2, 5, 
+    fprintf(stderr, CATGETS(scmc_catd, 2, 5,
          "    %-28s %s\n\t where mode is one of:\n"), 
          "-mode mode", "animation mode");
 #endif
@@ -398,7 +398,7 @@ GetResource(XrmDatabase database, char *parentname, char *parentclass,
                 error("%s: GetResource - couldn't allocate memory");
 #else
 	    {
-                fprintf(stderr, catgets(scmc_catd, 2, 18, 
+                fprintf(stderr, CATGETS(scmc_catd, 2, 18,
                      "%s: GetResource - couldn't allocate memory.\n"),ProgramName);
                 exit(1);
 	    }
@@ -502,7 +502,7 @@ open_display(void)
             error("%s: Malformed -display argument, \"%s\"\n", display);
 #else
 	{
-            fprintf(stderr, catgets(scmc_catd, 2, 19,
+            fprintf(stderr, CATGETS(scmc_catd, 2, 19,
                 "%s: Malformed -display argument:  %s.\n"), ProgramName,display);
             exit(1);
 	}
@@ -515,7 +515,7 @@ open_display(void)
         error("%s: unable to open display %s.\n", display);
 #else
     {
-        fprintf(stderr, catgets(scmc_catd, 2, 17,
+        fprintf(stderr, CATGETS(scmc_catd, 2, 17,
                 "%s: Unable to open display %s.\n"),ProgramName, display);
         exit(1);
     }
@@ -716,7 +716,7 @@ void CheckResources(void)
 #ifdef MIT_R5
         fprintf(stderr, "Unknown mode: ");
 #else
-        fprintf(stderr, "%s", catgets(scmc_catd, 2, 7, 
+        fprintf(stderr, "%s", CATGETS(scmc_catd, 2, 7,
              "Unknown mode: "));
 #endif
 	Syntax(mode);

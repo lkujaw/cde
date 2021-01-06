@@ -33,7 +33,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <ctype.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <ab_private/AB.h>
 #include <ab/util_types.h>
 #include <ab_private/util.h>

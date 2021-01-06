@@ -41,7 +41,7 @@
 
 #include	<locale.h>
 #include	<limits.h>
-#include	<nl_types.h>
+#include	<Dt/MsgCatP.h>
 #include	<langinfo.h>
 #include	<Dt/Collate.h>
 

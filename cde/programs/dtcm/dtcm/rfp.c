@@ -127,25 +127,25 @@ rfp_set_repeat_values(RFP *rfp)
 		return;
 	}
 	else if (limit == 10) {
-        	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 901, "Repeat Every ..."));
+        	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 901, "Repeat Every ..."));
         	XmComboBoxAddItem(rfp->repeat_menu, xmstr, 0, False);
         	XmStringFree(xmstr);
 
 	}
 	else if (limit == 7) {
-        	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 902, "Monday Thru Friday"));
+        	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 902, "Monday Thru Friday"));
         	XmComboBoxAddItem(rfp->repeat_menu, xmstr, 0, False);
         	XmStringFree(xmstr);
 	 
-        	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 903, "Mon, Wed, Fri"));
+        	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 903, "Mon, Wed, Fri"));
         	XmComboBoxAddItem(rfp->repeat_menu, xmstr, 0, False);
         	XmStringFree(xmstr);
-        	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 861, "Tuesday, Thursday"));
+        	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 861, "Tuesday, Thursday"));
         	XmComboBoxAddItem(rfp->repeat_menu, xmstr, 0, False);
         	XmStringFree(xmstr);
 
 		if (rfp->cal->general->version == DATAVER3) {
-        		xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 862, "Repeat Every..."));
+        		xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 862, "Repeat Every..."));
         		XmComboBoxAddItem(rfp->repeat_menu, xmstr, 0, False);
         		XmStringFree(xmstr);
 		}
@@ -227,9 +227,9 @@ rfp_apply_proc(Widget w, XtPointer client_data, XtPointer cbs) {
 	str = XmTextGetString(rfp->repeat_popup_text);
 
 	if (!string_is_number(str)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 969, "Calendar : Error - Repeat Every"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 970, "The Repeat Every value must be an integer with no sign."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 969, "Calendar : Error - Repeat Every"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 970, "The Repeat Every value must be an integer with no sign."));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 
 		XtFree(str);
                 dialog_popup(c->frame,
@@ -258,13 +258,13 @@ rfp_apply_proc(Widget w, XtPointer client_data, XtPointer cbs) {
 
 	switch (op) {
 
-	case REPEAT_DAYS: repeat_str = catgets(c->DT_catd, 1, 825, "Days");
+	case REPEAT_DAYS: repeat_str = CATGETS(c->DT_catd, 1, 825, "Days");
 				break;
 
-	case REPEAT_WEEKS: repeat_str = catgets(c->DT_catd, 1, 826, "Weeks");
+	case REPEAT_WEEKS: repeat_str = CATGETS(c->DT_catd, 1, 826, "Weeks");
 				break;
 
-	case REPEAT_MONTHS: repeat_str = catgets(c->DT_catd, 1, 827, "Months");
+	case REPEAT_MONTHS: repeat_str = CATGETS(c->DT_catd, 1, 827, "Months");
 				break;
 	}
 
@@ -273,7 +273,7 @@ rfp_apply_proc(Widget w, XtPointer client_data, XtPointer cbs) {
 	 */
 	{
 	  char *nl_repeat = XtNewString(repeat_str);
-	  sprintf(buf, catgets(c->DT_catd, 1, 531, "Every %d %s"),
+	  sprintf(buf, CATGETS(c->DT_catd, 1, 531, "Every %d %s"),
 		  rfp->repeat_nth, nl_repeat);
 	  XtFree(nl_repeat);
 	}
@@ -329,7 +329,7 @@ rfp_repeat_every_popup(RFP *rfp) {
 	char		*title;
 	XmString	label_str;
 
-	title = XtNewString(catgets(c->DT_catd, 1, 532,
+	title = XtNewString(CATGETS(c->DT_catd, 1, 532,
 				    "Calendar : Repeat Every"));
 	rfp->repeat_popup_frame = XtVaCreatePopupShell("repeat_popup_frame",
 		xmDialogShellWidgetClass, rfp->parent,
@@ -351,7 +351,7 @@ rfp_repeat_every_popup(RFP *rfp) {
 		XmNfractionBase, 2,
 		NULL);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 460, "Apply"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 460, "Apply"));
         rfp->repeat_apply_button = XtVaCreateWidget("repeat_apply_button",
 		xmPushButtonWidgetClass, rfp->repeat_form_mgr,
 		XmNlabelString,	label_str,
@@ -366,7 +366,7 @@ rfp_repeat_every_popup(RFP *rfp) {
 	XtAddCallback(rfp->repeat_apply_button, 
 			XmNactivateCallback, rfp_apply_proc, rfp);
  
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 680, "Close"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 680, "Close"));
         rfp->repeat_cancel_button = XtVaCreateWidget("repeat_cancel_button",
 		xmPushButtonWidgetClass, rfp->repeat_form_mgr,
 		XmNlabelString,	label_str,
@@ -391,7 +391,7 @@ rfp_repeat_every_popup(RFP *rfp) {
 		XmNbottomOffset, 	5,
                 NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 533,
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 533,
 						"Repeat Every:"));
         label = XtVaCreateWidget("every",
 		xmLabelGadgetClass, rfp->repeat_form_mgr,
@@ -525,7 +525,7 @@ build_rfp(
 		XmNuserData, rfp,
 		NULL);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 836, "Frequency"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 836, "Frequency"));
         rfp->frequency_label = XtVaCreateWidget("frequency_label",
 		xmLabelGadgetClass, 	rfp->rfp_form_mgr,
 		XmNlabelString,		label_str,
@@ -534,7 +534,7 @@ build_rfp(
 		NULL);
 	XmStringFree(label_str);
  
-	tmp = XmStringCreateLocalized(catgets(c->DT_catd, 1, 534, "Occurs:"));
+	tmp = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 534, "Occurs:"));
         rfp->repeat_label = XtVaCreateWidget("repeat",
 		xmLabelGadgetClass, 	rfp->rfp_form_mgr,
 		XmNlabelString,		label_str,
@@ -542,7 +542,7 @@ build_rfp(
 		NULL);
 	XmStringFree(tmp);
 
-	tmp = XmStringCreateLocalized(catgets(c->DT_catd, 1, 535, "For:"));
+	tmp = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 535, "For:"));
         rfp->for_label = XtVaCreateWidget("for",
 		xmLabelGadgetClass, 	rfp->rfp_form_mgr,
         	XmNlabelString, 	tmp,
@@ -550,7 +550,7 @@ build_rfp(
                 NULL);
 	XmStringFree(tmp);
 
-	tmp = XmStringCreateLocalized( catgets(c->DT_catd, 1, 536, "Privacy:"));
+	tmp = XmStringCreateLocalized( CATGETS(c->DT_catd, 1, 536, "Privacy:"));
        	rfp->privacy_label = XtVaCreateWidget("privacy",
 		xmLabelGadgetClass, 	rfp->rfp_form_mgr,
        		XmNlabelString, 	tmp,
@@ -759,7 +759,7 @@ get_rfp_repeat_val(
 			NULL);
 
 	if (sensitive) {
-		char	*forever_str = catgets(calendar->DT_catd, 1, 876, 
+		char	*forever_str = CATGETS(calendar->DT_catd, 1, 876,
 								   "forever"); 
 		str = XmTextGetString(tf);
 		if (strcmp(str, forever_str) == 0) {
@@ -885,15 +885,15 @@ rfp_form_flags_to_appt(RFP *rfp, Dtcm_appointment *a, char *name, int *flagsP)
 			{
 			    if (*flagsP == 0)
 			    {
-			  	char *title = XtNewString(catgets(c->DT_catd, 1, 537,
+			  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 537,
 						"Calendar : Editor - Schedule Appointment"));
-			  	char *text = XtNewString(catgets(c->DT_catd, 1, 538,
+			  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 538,
 						"Would you like to schedule this appointment as the last\nweek of the month or the 4th week of the month?"));
-			  	char *ident1 = XtNewString(catgets(c->DT_catd, 1,
+			  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1,
 						923, "Cancel"));
-			  	char *ident2 = XtNewString(catgets(c->DT_catd, 1,
+			  	char *ident2 = XtNewString(CATGETS(c->DT_catd, 1,
 						540, "Last Week"));
-			  	char *ident3 = XtNewString(catgets(c->DT_catd, 1,
+			  	char *ident3 = XtNewString(CATGETS(c->DT_catd, 1,
 						541, "4th Week"));
 				*flagsP = dialog_popup(rfp->parent,
 					DIALOG_TITLE, title,
@@ -1136,17 +1136,17 @@ set_rfp_repeat_val(RFP *rfp) {
 	} else if (rfp->repeat_type == CSA_X_DT_REPEAT_EVERY_NDAY) {
 		op = REPEAT_EVERY;
 		repeat_scope = repeat_scope_str(c->DT_catd, REPEAT_DAYS);
-		sprintf(buf, catgets(c->DT_catd, 1, 542, "Every %d %s"),
+		sprintf(buf, CATGETS(c->DT_catd, 1, 542, "Every %d %s"),
 			rfp->repeat_nth, repeat_scope);
 	} else if (rfp->repeat_type == CSA_X_DT_REPEAT_EVERY_NWEEK) {
 		op = REPEAT_EVERY;
 		repeat_scope = repeat_scope_str(c->DT_catd, REPEAT_WEEKS);
-		sprintf(buf, catgets(c->DT_catd, 1, 543, "Every %d %s"),
+		sprintf(buf, CATGETS(c->DT_catd, 1, 543, "Every %d %s"),
 			rfp->repeat_nth, repeat_scope);
 	} else if (rfp->repeat_type == CSA_X_DT_REPEAT_EVERY_NMONTH) {
 		op = REPEAT_EVERY;
 		repeat_scope = repeat_scope_str(c->DT_catd, REPEAT_MONTHS);
-		sprintf(buf, catgets(c->DT_catd, 1, 544, "Every %d %s"),
+		sprintf(buf, CATGETS(c->DT_catd, 1, 544, "Every %d %s"),
 			rfp->repeat_nth, repeat_scope);
 	} else
 		return;
@@ -1165,7 +1165,7 @@ set_rfp_repeat_val(RFP *rfp) {
 	if (rfp->for_val == CSA_X_DT_DT_REPEAT_FOREVER) {
 		if(rfp->repeat_type != CSA_X_DT_REPEAT_ONETIME)
 		{
-			sprintf(buf, "%s", catgets(c->DT_catd, 1, 876, "forever"));
+			sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 876, "forever"));
 			xmstr = XmStringCreateLocalized(buf);
 			XmComboBoxSetItem(rfp->for_menu, xmstr);
 			XmStringFree(xmstr);

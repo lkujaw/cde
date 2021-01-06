@@ -307,7 +307,7 @@ update_year(Calendar *c)
 
 	   Use the appropriate strftime conversion for your locale.
 	*/
-	strftime(buf, 100, catgets(c->DT_catd, 1, 1092, "%Y"), 
+	strftime(buf, 100, CATGETS(c->DT_catd, 1, 1092, "%Y"),
 		 _XLocaltime(&c->view->date, localtime_buf));
 	XtVaGetValues(y->year_label, XmNlabelString, &str, NULL);
 	XmStringFree(str);

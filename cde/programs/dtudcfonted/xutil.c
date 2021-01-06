@@ -34,7 +34,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 #include <Xm/Xm.h>
 

@@ -58,7 +58,7 @@
 #define _XOPEN_SOURCE
 #endif
 #include <stdio.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 FILE	*aa_stderr =		NULL;
 char	*aa_argv0 =		"<argv0>";

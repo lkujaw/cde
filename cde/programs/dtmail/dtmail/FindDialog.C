@@ -149,7 +149,7 @@ FindDialog::FindDialog(RoamMenuWindow *parent) : Dialog("find", parent)
   //
   // Initialize the buttons.
   //
-  _buttonData[0].label = strdup(GETMSG(DT_catd, 1, 183, "Find"));
+  _buttonData[0].label = strdup(CATGETS(DT_catd, 1, 183, "Find"));
   _buttonData[0].callback = findCallback;
   _buttonData[0].data = (caddr_t) this;
 
@@ -158,32 +158,32 @@ FindDialog::FindDialog(RoamMenuWindow *parent) : Dialog("find", parent)
    * NL_COMMENT
    * This is an obsolete message.  Replaced by message 220 in set 1
    */
-  _buttonData[1].label = strdup(GETMSG(DT_catd, 1, 184, "Find & Select All"));
+  _buttonData[1].label = strdup(CATGETS(DT_catd, 1, 184, "Find & Select All"));
 #endif
    /*
     * NL_COMMENT
     * This message replaces message 184 in set 1
     */
-  _buttonData[1].label = strdup(GETMSG(DT_catd, 1, 220, "Select All"));
+  _buttonData[1].label = strdup(CATGETS(DT_catd, 1, 220, "Select All"));
   _buttonData[1].callback = findSelectAllCallback;
   _buttonData[1].data = (caddr_t) this;
 
-  _buttonData[2].label = strdup(GETMSG(DT_catd, 1, 185, "Clear"));
+  _buttonData[2].label = strdup(CATGETS(DT_catd, 1, 185, "Clear"));
   _buttonData[2].callback = clearCallback;
   _buttonData[2].data = (caddr_t) this;
 
-  _buttonData[3].label = strdup(GETMSG(DT_catd, 1, 186, "Close"));
+  _buttonData[3].label = strdup(CATGETS(DT_catd, 1, 186, "Close"));
   _buttonData[3].callback = closeCallback;
   _buttonData[3].data = (caddr_t) this;
 
-  _buttonData[4].label = strdup(GETMSG(DT_catd, 1, 187, "Help"));
+  _buttonData[4].label = strdup(CATGETS(DT_catd, 1, 187, "Help"));
   _buttonData[4].callback = HelpCB;
   _buttonData[4].data = (caddr_t) DTMAILFINDDIALOG;
 
-  _text_labels[0] = strdup(GETMSG(DT_catd, 1, 188, "To:"));
-  _text_labels[1] = strdup(GETMSG(DT_catd, 1, 189, "From:"));
-  _text_labels[2] = strdup(GETMSG(DT_catd, 1, 190, "Subject:"));
-  _text_labels[3] = strdup(GETMSG(DT_catd, 1, 191, "Cc:"));
+  _text_labels[0] = strdup(CATGETS(DT_catd, 1, 188, "To:"));
+  _text_labels[1] = strdup(CATGETS(DT_catd, 1, 189, "From:"));
+  _text_labels[2] = strdup(CATGETS(DT_catd, 1, 190, "Subject:"));
+  _text_labels[3] = strdup(CATGETS(DT_catd, 1, 191, "Cc:"));
 
   // These strings should not be translated.  They are
   // the Motif names for the widgets that will be created (they are
@@ -241,7 +241,7 @@ FindDialog::createWorkArea(Widget dialog)
 
   unsigned int		offset;
 
-  _name = GETMSG(DT_catd, 1, 192, "Mailer - Find");
+  _name = CATGETS(DT_catd, 1, 192, "Mailer - Find");
 
   title(_name);
 
@@ -333,8 +333,8 @@ FindDialog::createWorkArea(Widget dialog)
 	}
 
 
-  XmString	strForward = XmStringCreateLocalized(GETMSG(DT_catd, 1, 193, "Forward"));
-  XmString	strBackward = XmStringCreateLocalized(GETMSG(DT_catd, 1, 194, "Backward"));
+  XmString	strForward = XmStringCreateLocalized(CATGETS(DT_catd, 1, 193, "Forward"));
+  XmString	strBackward = XmStringCreateLocalized(CATGETS(DT_catd, 1, 194, "Backward"));
 
   Widget fd_direction
 	= XmVaCreateSimpleRadioBox(fd_form,
@@ -478,7 +478,7 @@ FindDialog::findMatching(Boolean findAll)
    * when searching for a matching message.
    */
 
-  setStatus(GETMSG(DT_catd, 1, 231, "Searching..."));
+  setStatus(CATGETS(DT_catd, 1, 231, "Searching..."));
   busyCursor();
   theRoamApp.busyAllWindows(NULL);
 
@@ -620,9 +620,9 @@ FindDialog::findMatching(Boolean findAll)
 	 * one.  The %d is the number of messages that matched.
 	 */
 	if (matchCount == 1) {
-	    strcpy(line, GETMSG(DT_catd, 1, 232, "1 message selected"));
+	    strcpy(line, CATGETS(DT_catd, 1, 232, "1 message selected"));
 	} else {
-	    sprintf(line, GETMSG(DT_catd, 1, 233, "%d messages selected"), 
+	    sprintf(line, CATGETS(DT_catd, 1, 233, "%d messages selected"),
 			    matchCount);
 	}
 	setStatus(line);
@@ -649,7 +649,7 @@ FindDialog::findMatching(Boolean findAll)
    * This string is displayed on the find dialog status line when
    * no matching messages were found.
    */
-  setStatus(GETMSG(DT_catd, 1, 234, "No matches were found"));
+  setStatus(CATGETS(DT_catd, 1, 234, "No matches were found"));
   return(False);
 }
 

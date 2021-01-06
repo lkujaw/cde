@@ -165,7 +165,7 @@ SAVEUSR         saveusr = { 0 };
  */
 static void     expired (char *sprintbuf)
 {
-    sprintf (sprintbuf, catgets (dtsearch_catd, MS_oe, 71,
+    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oe, 71,
 	PROGNAME "71 %s has expired."),
 	OE_prodname);
     DtSearchAddMessage (sprintbuf);
@@ -288,7 +288,7 @@ static void     save_query (char *prefix, time_t start_time)
      * with a displayable funny character (tilde ~).
      */
     if (usrblk.query == NULL)
-	strcpy (targ, catgets (dtsearch_catd, MS_misc, 1, "<null>"));
+	strcpy (targ, CATGETS(dtsearch_catd, MS_misc, 1, "<null>"));
     else {
 	end = saveusr.lastqry + MAX_LASTQRY - 2;
 	src = usrblk.query;
@@ -326,7 +326,7 @@ void            oe_write_audit_rec (long numhits)
     if ((stream = fopen (OEF_audit, "a ")) == NULL)
 	/* the blank in "a " works around old aix bug */
     {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_misc, 1596,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_misc, 1596,
 		PROGNAME "1596 Cannot open audit file %s: %s"),
 	    OEF_audit, strerror (errno));
 	DtSearchAddMessage (sprintbuf);
@@ -341,7 +341,7 @@ void            oe_write_audit_rec (long numhits)
 	    usrblk.dblk->name,
 	    numhits,
 	    (saveusr.lastqry == NULL) ? \
-	    catgets (dtsearch_catd, MS_misc, 1, "<null>") : saveusr.lastqry);
+	    CATGETS(dtsearch_catd, MS_misc, 1, "<null>") : saveusr.lastqry);
 	if (saveusr.lastqry != NULL) {
 	    free (saveusr.lastqry);
 	    saveusr.lastqry = NULL;
@@ -370,7 +370,7 @@ static int      no_keytypes (void)
     while (--i >= 0)
 	if (keytypes[i].is_selected)
 	    return FALSE;
-    sprintf (sprintbuf, catgets (dtsearch_catd, MS_oe, 440,
+    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oe, 440,
 	    PROGNAME "440 No record keytypes were selected in database '%s'."),
 	usrblk.dblk->label);
     DtSearchAddMessage (sprintbuf);
@@ -539,7 +539,7 @@ void            Opera_Engine (void)
 	    expired (sprintbuf);
 
     if (OE_flags & OE_PERMERR) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_oe, 490,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oe, 490,
 		PROGNAME "490 %s Engine permanently disabled."), OE_prodname);
 	DtSearchAddMessage (sprintbuf);
 	usrblk.retncode = OE_ABORT;
@@ -548,7 +548,7 @@ void            Opera_Engine (void)
 
     /* Ensure that the first call is always an OE_INITIALIZE call */
     if ((usrblk.request != OE_INITIALIZE) && !(OE_flags & OE_INITOK)) {
-	DtSearchAddMessage (catgets (dtsearch_catd, MS_oe, 523,
+	DtSearchAddMessage (CATGETS(dtsearch_catd, MS_oe, 523,
 		PROGNAME "523 Request Denied: First request must "
 		"be Engine Initialization."));
 	usrblk.retncode = OE_NOOP;
@@ -573,7 +573,7 @@ void            Opera_Engine (void)
 	    if (strcmp (usrblk.dblk->name, db->name) == 0)
 		break;
 	if (db == NULL) {
-	    sprintf (sprintbuf, catgets (dtsearch_catd, MS_oe, 48,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oe, 48,
 		    PROGNAME "48 Request Aborted: "
 		    "'%s' database not available at this site."),
 		usrblk.dblk->name);
@@ -874,7 +874,7 @@ NO_TEXT:
 	    break;
 
 	default:
-	    sprintf (sprintbuf, catgets (dtsearch_catd, MS_oe, 367,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oe, 367,
 		    PROGNAME "367: User Interface Error.  "
 		    "%d is invalid request code.\n"),
 		usrblk.request);

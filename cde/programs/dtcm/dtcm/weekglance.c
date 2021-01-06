@@ -137,7 +137,7 @@ format_week_header(Tick date, OrderingType order, char *buf)
 	   Use the appropriate strftime conversion for your locale.
 	*/
 	strftime(buf, 80, 
-		catgets(c->DT_catd, 1, 993, "Week Starting %A, %B %e, %Y"), tm);
+		CATGETS(c->DT_catd, 1, 993, "Week Starting %A, %B %e, %Y"), tm);
 }
  
 static int
@@ -207,13 +207,13 @@ print_week (Calendar *c,
 
 	if (days[0] == (char *)NULL)
 	{
-	  days[0] = XtNewString(catgets(c->DT_catd, 1, 596, "Monday %d"));
-	  days[1] = XtNewString(catgets(c->DT_catd, 1, 597, "Tuesday %d"));
-	  days[2] = XtNewString(catgets(c->DT_catd, 1, 598, "Wednesday %d"));
-	  days[3] = XtNewString(catgets(c->DT_catd, 1, 599, "Thursday %d"));
-	  days[4] = XtNewString(catgets(c->DT_catd, 1, 600, "Friday %d"));
-	  days[5] = XtNewString(catgets(c->DT_catd, 1, 601, "Saturday %d"));
-	  days[6] = XtNewString(catgets(c->DT_catd, 1, 602, "Sunday %d"));
+	  days[0] = XtNewString(CATGETS(c->DT_catd, 1, 596, "Monday %d"));
+	  days[1] = XtNewString(CATGETS(c->DT_catd, 1, 597, "Tuesday %d"));
+	  days[2] = XtNewString(CATGETS(c->DT_catd, 1, 598, "Wednesday %d"));
+	  days[3] = XtNewString(CATGETS(c->DT_catd, 1, 599, "Thursday %d"));
+	  days[4] = XtNewString(CATGETS(c->DT_catd, 1, 600, "Friday %d"));
+	  days[5] = XtNewString(CATGETS(c->DT_catd, 1, 601, "Saturday %d"));
+	  days[6] = XtNewString(CATGETS(c->DT_catd, 1, 602, "Sunday %d"));
 	}
 
 	x_init_printer(xp, LANDSCAPE);
@@ -956,7 +956,7 @@ draw_week(Calendar *c, XRectangle *rect, Boundary boundary)
 				 c->paint_cache, c->paint_cache_size, rect);
                 	current_day += daysec;
 			if (lower_bound > 0) {
-				sprintf(buf, "%s", catgets(c->DT_catd, 1, 623, "Calendar does not display dates prior to January 1, 1970"));
+				sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 623, "Calendar does not display dates prior to January 1, 1970"));
 				footer_message = buf;
 			}
 			else
@@ -975,7 +975,7 @@ draw_week(Calendar *c, XRectangle *rect, Boundary boundary)
                 	fill_day(c, w, x, y, current_day, 
 				 c->paint_cache, c->paint_cache_size, rect);
                 	current_day += daysec;
-			sprintf(buf, "%s", catgets(c->DT_catd, 1, 624, "Calendar does not display dates after December 31, 2037"));
+			sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 624, "Calendar does not display dates after December 31, 2037"));
 			footer_message = buf; 
 			if (upper_bound > 4)
 				clear_hot_btn(c, n); 

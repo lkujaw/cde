@@ -82,28 +82,28 @@ abil_loadmsg(STRING userMessage)
 	if (*File != 0)
 	{
 	    sprintf(tmpMsg, 
-		catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 27, "file: %s"), 
+		CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 27, "file: %s"),
 		File);
 	    strcat(msg, tmpMsg);
 	}
 	if (lineNumber > 0)
 	{
 	    sprintf(tmpMsg, 
-		catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 28, ", line: %d"),
+		CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 28, ", line: %d"),
 		lineNumber);
 	    strcat(msg, tmpMsg);
 	}
 	if (*Current_Object != 0)
 	{
 	    sprintf(tmpMsg, 
-		catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET,29, ", object: %s"),
+		CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET,29, ", object: %s"),
 		Current_Object);
 	    strcat(msg, tmpMsg);
 	}
 	if (*Attribute != 0)
 	{
 	    sprintf(tmpMsg, 
-		catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 30,
+		CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 30,
 		  ", attribute: %s"),
 		Attribute);
 	    strcat(msg, tmpMsg);
@@ -111,23 +111,23 @@ abil_loadmsg(STRING userMessage)
 	if (*Action_Attr != 0)
 	{
 	    sprintf(tmpMsg, 
-		catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 31, 
+		CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 31,
 		   ", action-attribute: %s"),
 		Action_Attr);
 	    strcat(msg, tmpMsg);
 	}
 
-	strcat(msg, catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 32, ", "));
+	strcat(msg, CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 32, ", "));
 	if ( (userMessage == 0) || (*userMessage == 0) )
 	{
-	    strcat(msg, catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 33, 
+	    strcat(msg, CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 33,
 		"syntax error"));
 	}
 	else
 	{
 	    strcat(msg, userMessage);
 	}
-	strcat(msg, catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 34, "\n"));
+	strcat(msg, CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 34, "\n"));
 
 	return msg;
 }
@@ -238,12 +238,12 @@ abil_print_load_err(int errmsg)
     if (!abil_loadmsg_err_printed())
     {
 	if(Errormsg[errmsg].msg_id < 0) {
-	    snprintf(msg, sizeof(msg), "%s", catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 33, 
+	    snprintf(msg, sizeof(msg), "%s", CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 33,
 		"syntax error"));
 	}
 	else {
 	    snprintf(msg, sizeof(msg), "%s", 
-		catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 
+		CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET,
 		Errormsg[errmsg].msg_id,
 		Errormsg[errmsg].def_str));
 	}

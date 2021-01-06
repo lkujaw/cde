@@ -54,7 +54,7 @@
 
 #include <X11/Intrinsic.h>
 #include <csa.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <Xm/Xm.h>
 #include "util.h"
 #include "timeops.h"

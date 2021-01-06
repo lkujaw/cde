@@ -111,9 +111,9 @@ DieFromToolTalkError(Calendar *c, char *errfmt, Tt_status status)
     errmsg = XtMalloc(strlen(errfmt) + strlen(statmsg) + 2);
     sprintf(errmsg, errfmt, statmsg);
 
-    xms_ok = XmStringCreateLocalized(catgets(c->DT_catd, 2, 3, "OK"));
+    xms_ok = XmStringCreateLocalized(CATGETS(c->DT_catd, 2, 3, "OK"));
     xms_errmsg = XmStringCreateLocalized(errmsg);
-    xms_title = XmStringCreateLocalized(catgets(c->DT_catd, 2, 1,
+    xms_title = XmStringCreateLocalized(CATGETS(c->DT_catd, 2, 1,
 			"Calendar - Warning"));
 
     n = 0;

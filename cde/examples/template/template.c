@@ -39,7 +39,7 @@
 
 #include <X11/IntrinsicP.h>
 #include <X11/CoreP.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <Xm/XmAll.h>
 #include <Dt/Dnd.h>
 #include <Dt/Dts.h>
@@ -182,7 +182,7 @@ main(int argc, char **argv)
 			       optionTable, XtNumber(optionTable),
 			       &argc, argv, NULL, NULL, 0);
 
-    msgCatalog = catopen(MessageCatalog, NL_CAT_LOCALE);
+    msgCatalog = CATOPEN(MessageCatalog, NL_CAT_LOCALE);
 
     XtGetApplicationResources(appShell, &argvals,
 			      appResources, XtNumber(appResources),
@@ -195,9 +195,9 @@ main(int argc, char **argv)
     WM_SAVE_YOURSELF = XmInternAtom(XtDisplay(appShell), "WM_SAVE_YOURSELF",
 				    False);
 
-    appnameString = catgets(msgCatalog, 1, 1, "Template");
-    separatorString = catgets(msgCatalog, 1, 5, " - ");
-    untitledString = catgets(msgCatalog, 1, 6, "(untitled)");
+    appnameString = CATGETS(msgCatalog, 1, 1, "Template");
+    separatorString = CATGETS(msgCatalog, 1, 5, " - ");
+    untitledString = CATGETS(msgCatalog, 1, 6, "(untitled)");
 
     if (argvals.printMode != NULL) {
 	/* Load up each file and print it, then exit */
@@ -207,7 +207,7 @@ main(int argc, char **argv)
 		PrintData(wd);
 	    else
 		fprintf(stderr,
-		    catgets(msgCatalog, 1, 10, "template: can't open %s\n"),
+		    CATGETS(msgCatalog, 1, 10, "template: can't open %s\n"),
 		    argv[i]);
 	}
 	DestroyData(wd);
@@ -220,7 +220,7 @@ main(int argc, char **argv)
 
     procid = ttdt_open(&ttfd, appnameString, "CDE", "1.0", True);
     if ((ttrc = tt_ptr_error(procid)) != TT_OK) {
-	errfmt = catgets(msgCatalog, 1, 7, "ttdt_open failed:\n%s");
+	errfmt = CATGETS(msgCatalog, 1, 7, "ttdt_open failed:\n%s");
         statmsg = tt_status_message(ttrc);
         errmsg = XtMalloc(strlen(errfmt) + strlen(statmsg) + 2);
         sprintf(errmsg, errfmt, statmsg);
@@ -232,7 +232,7 @@ main(int argc, char **argv)
     ttrc = ttmedia_ptype_declare(ToolTalkPType, 0, HandleTtMedia,
 				 NULL, True);
     if (tt_is_err(ttrc)) {
-	errfmt = catgets(msgCatalog, 1, 8, "ttmedia_ptype_declare failed:\n%s");
+	errfmt = CATGETS(msgCatalog, 1, 8, "ttmedia_ptype_declare failed:\n%s");
         statmsg = tt_status_message(status);
         errmsg = XtMalloc(strlen(errfmt) + strlen(statmsg) + 2);
         sprintf(errmsg, errfmt, statmsg);
@@ -243,7 +243,7 @@ main(int argc, char **argv)
 
     ttpat = ttdt_session_join(NULL, NULL, NULL, NULL, True);
     if ((ttrc = tt_ptr_error(ttpat)) != TT_OK) {
-	errfmt = catgets(msgCatalog, 1, 9, "ttdt_session_join failed:\n%s");
+	errfmt = CATGETS(msgCatalog, 1, 9, "ttdt_session_join failed:\n%s");
         statmsg = tt_status_message(status);
         errmsg = XtMalloc(strlen(errfmt) + strlen(statmsg) + 2);
         sprintf(errmsg, errfmt, statmsg);
@@ -353,7 +353,7 @@ NewWindow(LoadType loadtype, char *name_or_buf, int len)
 
     pd = XmCreatePulldownMenu(menuBar, "fileMenu", NULL, 0);
 
-    labelString = XmStringCreateLocalized(catgets(msgCatalog, 2, 1, "File"));
+    labelString = XmStringCreateLocalized(CATGETS(msgCatalog, 2, 1, "File"));
     n = 0;
     XtSetArg(args[n], XmNlabelString, labelString); n++;
     XtSetArg(args[n], XmNmnemonic, 'F'); n++;
@@ -362,7 +362,7 @@ NewWindow(LoadType loadtype, char *name_or_buf, int len)
     XtManageChild(cb);
     XmStringFree(labelString);
 
-    labelString = XmStringCreateLocalized(catgets(msgCatalog, 2, 9, "New..."));
+    labelString = XmStringCreateLocalized(CATGETS(msgCatalog, 2, 9, "New..."));
     n = 0;
     XtSetArg(args[n], XmNlabelString, labelString); n++;
     XtSetArg(args[n], XmNmnemonic, 'N'); n++;
@@ -371,7 +371,7 @@ NewWindow(LoadType loadtype, char *name_or_buf, int len)
     XtAddCallback(pb, XmNactivateCallback, NewCb, NULL);
     XmStringFree(labelString);
 
-    labelString = XmStringCreateLocalized(catgets(msgCatalog, 2, 2, "Open..."));
+    labelString = XmStringCreateLocalized(CATGETS(msgCatalog, 2, 2, "Open..."));
     n = 0;
     XtSetArg(args[n], XmNlabelString, labelString); n++;
     XtSetArg(args[n], XmNmnemonic, 'O'); n++;
@@ -380,7 +380,7 @@ NewWindow(LoadType loadtype, char *name_or_buf, int len)
     XtAddCallback(pb, XmNactivateCallback, OpenCb, (XtPointer)wd);
     XmStringFree(labelString);
 
-    labelString = XmStringCreateLocalized(catgets(msgCatalog, 2, 3,
+    labelString = XmStringCreateLocalized(CATGETS(msgCatalog, 2, 3,
 								"Save As..."));
     n = 0;
     XtSetArg(args[n], XmNlabelString, labelString); n++;
@@ -390,7 +390,7 @@ NewWindow(LoadType loadtype, char *name_or_buf, int len)
     XtAddCallback(pb, XmNactivateCallback, SaveCb, (XtPointer)wd);
     XmStringFree(labelString);
 
-    labelString = XmStringCreateLocalized(catgets(msgCatalog, 2, 4, "Print"));
+    labelString = XmStringCreateLocalized(CATGETS(msgCatalog, 2, 4, "Print"));
     n = 0;
     XtSetArg(args[n], XmNlabelString, labelString); n++;
     XtSetArg(args[n], XmNmnemonic, 'P'); n++;
@@ -399,7 +399,7 @@ NewWindow(LoadType loadtype, char *name_or_buf, int len)
     XtAddCallback(pb, XmNactivateCallback, PrintCb, (XtPointer)wd);
     XmStringFree(labelString);
 
-    labelString = XmStringCreateLocalized(catgets(msgCatalog, 2, 5, "Clear"));
+    labelString = XmStringCreateLocalized(CATGETS(msgCatalog, 2, 5, "Clear"));
     n = 0;
     XtSetArg(args[n], XmNlabelString, labelString); n++;
     XtSetArg(args[n], XmNmnemonic, 'C'); n++;
@@ -408,7 +408,7 @@ NewWindow(LoadType loadtype, char *name_or_buf, int len)
     XtAddCallback(pb, XmNactivateCallback, ClearCb, (XtPointer)wd);
     XmStringFree(labelString);
 
-    labelString = XmStringCreateLocalized(catgets(msgCatalog, 2, 6, "Exit"));
+    labelString = XmStringCreateLocalized(CATGETS(msgCatalog, 2, 6, "Exit"));
     n = 0;
     XtSetArg(args[n], XmNlabelString, labelString); n++;
     XtSetArg(args[n], XmNmnemonic, 'E'); n++;
@@ -421,7 +421,7 @@ NewWindow(LoadType loadtype, char *name_or_buf, int len)
 
     pd = XmCreatePulldownMenu(menuBar, "helpMenu", NULL, 0);
 
-    labelString = XmStringCreateLocalized(catgets(msgCatalog, 2, 7, "Help"));
+    labelString = XmStringCreateLocalized(CATGETS(msgCatalog, 2, 7, "Help"));
     n = 0;
     XtSetArg(args[n], XmNlabelString, labelString); n++;
     XtSetArg(args[n], XmNmnemonic, 'H'); n++;
@@ -432,7 +432,7 @@ NewWindow(LoadType loadtype, char *name_or_buf, int len)
 
     XtVaSetValues(menuBar, XmNmenuHelpWidget, cb, NULL);
 
-    labelString = XmStringCreateLocalized(catgets(msgCatalog,2,8, "Overview..."));
+    labelString = XmStringCreateLocalized(CATGETS(msgCatalog,2,8, "Overview..."));
     n = 0;
     XtSetArg(args[n], XmNlabelString, labelString); n++;
     XtSetArg(args[n], XmNmnemonic, 'O'); n++;
@@ -512,7 +512,7 @@ static void HelpCb(Widget w, XtPointer cd, XtPointer cb)
 	XtSetArg(args[n], DtNlocationId, HelpTopic); n++;
 	helpDialog = DtCreateHelpDialog(appShell, "helpDialog", args, n);
 
-	title = catgets(msgCatalog, 1, 4, "Template Help");
+	title = CATGETS(msgCatalog, 1, 4, "Template Help");
 	XtVaSetValues(XtParent(helpDialog), XmNtitle, title, NULL);
     } else {
 	XtVaSetValues(helpDialog,
@@ -561,7 +561,7 @@ static void OpenCb(Widget w, XtPointer cd, XtPointer cb)
 	Arg args[20];
 	int n;
 
-	dialogTitle = XmStringCreateLocalized(catgets(msgCatalog, 1, 2,
+	dialogTitle = XmStringCreateLocalized(CATGETS(msgCatalog, 1, 2,
 					"Template Open"));
 	pattern = XmStringCreateLocalized(SearchPattern);
 	n = 0;
@@ -610,7 +610,7 @@ static void SaveCb(Widget w, XtPointer cd, XtPointer cb)
 	Arg args[20];
 	int n;
 
-	dialogTitle = XmStringCreateLocalized(catgets(msgCatalog, 1, 3,
+	dialogTitle = XmStringCreateLocalized(CATGETS(msgCatalog, 1, 3,
 					"Template Save As"));
 	pattern = XmStringCreateLocalized(SearchPattern);
 	n = 0;

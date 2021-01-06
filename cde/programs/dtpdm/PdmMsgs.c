@@ -36,7 +36,7 @@
 
 #ifdef I18N_MSG
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 #if !defined(NL_CAT_LOCALE)
 #define NL_CAT_LOCALE 0
@@ -81,21 +81,14 @@ DtPdmGetMessage(
 		int n,
 		char * s)
 {
-    char *msg;
-    nl_catd catopen();
-    char *catgets();
     static int first = 1;
     static nl_catd nlmsg_fd;
-    
-    if(set == -1 || n == -1)
-	return s;
-    
+
     if(first) 
     {
 	first = 0;
-	nlmsg_fd = catopen(DTPDM_CAT_NAME, NL_CAT_LOCALE);
+	nlmsg_fd = CATOPEN(DTPDM_CAT_NAME, NL_CAT_LOCALE);
     }
-    msg=catgets(nlmsg_fd,set,n,s);
-    return (msg);
+    return CATGETS(nlmsg_fd,set,n,s);
 }
 #endif /* I18N_MSG */

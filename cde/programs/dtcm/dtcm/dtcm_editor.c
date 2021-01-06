@@ -47,7 +47,7 @@
 #include "dnd.h"
 #include "util.h"
 #include "cm_tty.h"
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <locale.h>
 #if !defined(NL_CAT_LOCALE)
 #define NL_CAT_LOCALE       0
@@ -250,7 +250,7 @@ GetIcon(DTCM_editor *de)
                         drag_xbm_width, drag_xbm_height);
                 if (de->drag_bitmap == 0) {
 
-                        printf("%s", catgets(calendar->DT_catd, 1, 237, "XCreateBitmapFromData() failed for bitmap.\n"));
+                        printf("%s", CATGETS(calendar->DT_catd, 1, 237, "XCreateBitmapFromData() failed for bitmap.\n"));
                         return;
                 }
         }
@@ -259,7 +259,7 @@ GetIcon(DTCM_editor *de)
                         window, (char *) drag_mask_xbm_bits,
                         drag_mask_xbm_width, drag_mask_xbm_height);
                 if (de->drag_mask == 0) {
-                        printf("%s", catgets(calendar->DT_catd, 1, 238, "XCreateBitmapFromData() failed for mask.\n"));
+                        printf("%s", CATGETS(calendar->DT_catd, 1, 238, "XCreateBitmapFromData() failed for mask.\n"));
                         return;
                 }
         }
@@ -320,7 +320,7 @@ ApptConvertCB(
 
         data->bp   = XtNewString(context->data);
         data->size = strlen(data->bp);
-        data->name = XtNewString(catgets(c->DT_catd, 1, 236, "CalendarAppointment"));
+        data->name = XtNewString(CATGETS(c->DT_catd, 1, 236, "CalendarAppointment"));
 }
 
 void
@@ -396,7 +396,7 @@ StandaloneApptDragStart(
 		NULL)
             == NULL) {
  
-                printf("%s", catgets(c->DT_catd, 1, 239, "DragStart returned NULL.\n"));
+                printf("%s", CATGETS(c->DT_catd, 1, 239, "DragStart returned NULL.\n"));
         }
 }
 
@@ -469,11 +469,11 @@ de_quit_handler(Widget w, XtPointer cdata, XtPointer data) {
 	int answer;
 
 	if (de->modified == True) {
-	  	char *title = XtNewString(catgets(de->c->DT_catd, 1, 1008, "Calendar Appointment : Help"));
-		char *text = XtNewString(catgets(de->c->DT_catd, 1, 451, "You have made unsaved changes.\nYou may save your changes, discard your changes, \nor return to your previous place in the dialog."));
-		char *ident1 = XtNewString(catgets(de->c->DT_catd, 1, 452, "Save"));
-		char *ident2 = XtNewString(catgets(de->c->DT_catd, 1, 700, "Discard"));
-		char *ident3 = XtNewString(catgets(de->c->DT_catd, 1, 923, "Cancel"));
+	  	char *title = XtNewString(CATGETS(de->c->DT_catd, 1, 1008, "Calendar Appointment : Help"));
+		char *text = XtNewString(CATGETS(de->c->DT_catd, 1, 451, "You have made unsaved changes.\nYou may save your changes, discard your changes, \nor return to your previous place in the dialog."));
+		char *ident1 = XtNewString(CATGETS(de->c->DT_catd, 1, 452, "Save"));
+		char *ident2 = XtNewString(CATGETS(de->c->DT_catd, 1, 700, "Discard"));
+		char *ident3 = XtNewString(CATGETS(de->c->DT_catd, 1, 923, "Cancel"));
                 answer = dialog_popup(de->top_level,
                         DIALOG_TITLE, title,
                         DIALOG_TEXT, text,
@@ -718,9 +718,9 @@ DieFromToolTalkError(DTCM_editor *de, char *errfmt, Tt_status status)
     errmsg = XtMalloc(strlen(errfmt) + strlen(statmsg) + 2);
     sprintf(errmsg, errfmt, statmsg);
 
-    xms_ok = XmStringCreateLocalized(catgets(de->c->DT_catd, 2, 3, "OK"));
+    xms_ok = XmStringCreateLocalized(CATGETS(de->c->DT_catd, 2, 3, "OK"));
     xms_errmsg = XmStringCreateLocalized(errmsg);
-    xms_title = XmStringCreateLocalized(catgets(de->c->DT_catd, 2, 4,
+    xms_title = XmStringCreateLocalized(CATGETS(de->c->DT_catd, 2, 4,
 			"Calendar : Appointment Editor - Warning"));
 
     n = 0;
@@ -1145,12 +1145,12 @@ main(int argc, char **argv) {
 	set_int_prop(de->p, CP_DAYBEGIN, start);
 	set_int_prop(de->p, CP_DAYEND, stop);
         de->c->calname = cm_strdup(get_char_prop(de->p, CP_DEFAULTCAL));
-        de->c->DT_catd = catopen(DTCM_CAT, NL_CAT_LOCALE);
+        de->c->DT_catd = CATOPEN(DTCM_CAT, NL_CAT_LOCALE);
 
 	/* Open the message catalog for internationalization */
-	calendar->DT_catd = catopen(DTCM_CAT, NL_CAT_LOCALE);
+	calendar->DT_catd = CATOPEN(DTCM_CAT, NL_CAT_LOCALE);
 
-	title = XtNewString(catgets(calendar->DT_catd, 1, 1074, 
+	title = XtNewString(CATGETS(calendar->DT_catd, 1, 1074,
 						"Calendar Appointment"));
 	XtVaSetValues(de->top_level, 
 		XmNtitle, title,
@@ -1166,7 +1166,7 @@ main(int argc, char **argv) {
 		XmNfractionBase, 5,
 		NULL);
 
-	label_str = XmStringCreateLocalized(catgets(de->c->DT_catd, 1, 846, "Save"));
+	label_str = XmStringCreateLocalized(CATGETS(de->c->DT_catd, 1, 846, "Save"));
 	de->attach_button = XtVaCreateWidget("attach_button",
 		xmPushButtonGadgetClass, de->form,
 		XmNlabelString, label_str,
@@ -1182,7 +1182,7 @@ main(int argc, char **argv) {
 	if (!de->file)
 		XtSetSensitive(de->attach_button, False);
 
-	label_str = XmStringCreateLocalized(catgets(de->c->DT_catd, 1, 691, "Reset"));
+	label_str = XmStringCreateLocalized(CATGETS(de->c->DT_catd, 1, 691, "Reset"));
 	de->reset_button = XtVaCreateWidget("reset_button",
 		xmPushButtonGadgetClass, de->form,
 		XmNlabelString, label_str,
@@ -1225,7 +1225,7 @@ main(int argc, char **argv) {
 	 * Add a drag source icon inside the dssw, lower right
 	 */
 	xmstr = XmStringCreateLocalized(
-			catgets(de->c->DT_catd, 1, 627, "Drag Appt"));
+			CATGETS(de->c->DT_catd, 1, 627, "Drag Appt"));
 	de->drag_source = XtVaCreateWidget("drag_source",
 		dtIconGadgetClass, de->form,
 		XmNpixmapPosition, XmPIXMAP_TOP,
@@ -1350,7 +1350,7 @@ main(int argc, char **argv) {
 	status = cmtt_init("AppointmentEditor", de, app, calendar->frame);
 	if (TT_OK != status) {
 	    char *errfmt;
-    	    errfmt = catgets(calendar->DT_catd, 2, 2,
+    	    errfmt = CATGETS(calendar->DT_catd, 2, 2,
 			"Could not connect to ToolTalk:\n%s\n");
             DieFromToolTalkError( de, errfmt, status );
 	}

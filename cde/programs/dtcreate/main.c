@@ -1386,7 +1386,7 @@ main(int argc, char *argv[])
           for (i=1; i<argc; i++) {
             if ((argv[i][0] == '-') && (argv[i][1] == '?')) {
 	       setlocale(LC_ALL, "");
-	       nlmsg_fd = catopen("dtcreate", NL_CAT_LOCALE);
+	       nlmsg_fd = CATOPEN("dtcreate", NL_CAT_LOCALE);
                printf("%s\n",
                       GETMESSAGE(5, 110, "Usage: dtcreate [<filename>] [-?]"));
                exit(0);
@@ -1412,7 +1412,7 @@ main(int argc, char *argv[])
         UxTopLevel = XtAppInitialize(&UxAppContext, CLASS_NAME,
                                      NULL, 0, &argc, argv, NULL, NULL, 0);
 
-        nlmsg_fd = catopen("dtcreate", NL_CAT_LOCALE);
+        nlmsg_fd = CATOPEN("dtcreate", NL_CAT_LOCALE);
 
         UxDisplay = XtDisplay(UxTopLevel);
         UxScreen = XDefaultScreen(UxDisplay);

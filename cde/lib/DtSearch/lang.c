@@ -335,7 +335,7 @@ char	*teskey_parser (PARG *parg)
 	is_hiliting = (parg->flags & PA_HILITING);
 	add_msgs = (parg->flags & PA_MSGS);
 	if (charmap == NULL) {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_lang, 4,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_lang, 4,
 		"%s dblk not initialized.\n"),
 		PROGNAME"801");
 	    DtSearchExit (55);
@@ -350,7 +350,7 @@ char	*teskey_parser (PARG *parg)
 	    cofunction = (READCFP) readchar_ftext;
 	}
 	else {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_lang, 5,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_lang, 5,
 		"%s Program Error: parg contains neither file nor string.\n"),
 		PROGNAME"327");
 	    DtSearchExit (27);
@@ -444,7 +444,7 @@ READ_ANOTHER_WORD:
 				candidate_offset-1, outbuf);
 		    if (add_msgs) {
 			char	msgbuf [DtSrMAXWIDTH_HWORD + 100];
-			sprintf (msgbuf, catgets(dtsearch_catd, MS_lang, 8,
+			sprintf (msgbuf, CATGETS(dtsearch_catd, MS_lang, 8,
 			    "%s '%.*s...' is larger\n"
 			    "than the maximum word size of database '%s'.") ,
 			    PROGNAME"449", maxwordsz,
@@ -503,7 +503,7 @@ READ_ANOTHER_WORD:
 
 	/*------------- UNKNOWN State ------------*/
 	else {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_lang, 10,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_lang, 10,
 		"%s Program Error: Unknown parser state.\n"),
 		PROGNAME"306");
 	    DtSearchExit (26);
@@ -516,7 +516,7 @@ READ_ANOTHER_WORD:
 	    fprintf (aa_stderr, "teskey: etx\n");
 	if (add_msgs) {
 	    char	msgbuf [200];
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_lang, 12,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_lang, 12,
 		"%s '%.120s' is not a valid word in database '%s'.") ,
 		PROGNAME"506", parg->string, dblk->label);
 	    DtSearchAddMessage (msgbuf);
@@ -553,7 +553,7 @@ READ_ANOTHER_WORD:
 	    fprintf (aa_stderr, ", (TOO SHORT, min %d)\n", minwordsz);
 	if (add_msgs) {
 	    char	msgbuf [200];
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_lang, 17,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_lang, 17,
 		"%s '%s' is less than the\n"
 		"minimum word size of database '%s'.") ,
 		PROGNAME"543", parg->string, dblk->label);
@@ -570,7 +570,7 @@ READ_ANOTHER_WORD:
 		fprintf (aa_stderr, ", (STOP LIST)\n");
 	    if (add_msgs) {
 		char	msgbuf [200];
-		sprintf (msgbuf, catgets(dtsearch_catd, MS_lang, 19,
+		sprintf (msgbuf, CATGETS(dtsearch_catd, MS_lang, 19,
 		    "%s The word '%s' is not indexed in database '%s'.") ,
 		    PROGNAME"558", parg->string, dblk->label);
 		DtSearchAddMessage (msgbuf);
@@ -666,7 +666,7 @@ int	load_wordtree (
 	}
 	else {
 	    sprintf (sprintbuf,
-		catgets (dtsearch_catd, MS_misc, 362, "%s: %s: %s."),
+		CATGETS(dtsearch_catd, MS_misc, 362, "%s: %s: %s."),
 		PROGNAME"362", fname, strerror(errno));
 	    DtSearchAddMessage (sprintbuf);
 	    return 2;
@@ -694,7 +694,7 @@ int	load_wordtree (
 	/* If requested confirm all chars are teskey-concordable. */
 	if (do_teskey_test)
 	    if (!is_concordable (token, dblk->charmap)) {
-		sprintf (sprintbuf, catgets (dtsearch_catd, MS_misc, 400,
+		sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_misc, 400,
 		    "%s: %s, line %ld: Invalid chars in word '%s'."),
 		    PROGNAME"400", fname, linecount, token);
 		DtSearchAddMessage (sprintbuf);
@@ -723,7 +723,7 @@ int	load_wordtree (
 
 	    /* test for duplicate word */
 	    if (i == 0) {
-		sprintf (sprintbuf, catgets (dtsearch_catd, MS_misc, 423,
+		sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_misc, 423,
 		    "%s Word '%s' in '%s' is a duplicate."),
 		    PROGNAME"423", token, fname);
 		DtSearchAddMessage (sprintbuf);
@@ -920,7 +920,7 @@ static int	load_include_list (DBLK *dblk, DBLK *dblist)
 	    }
 	    else {
 		sprintf (sprintbuf,
-		    catgets (dtsearch_catd, MS_misc, 362, "%s: %s: %s."),
+		    CATGETS(dtsearch_catd, MS_misc, 362, "%s: %s: %s."),
 		    PROGNAME"1218", dblk->fname_inc, strerror(ENOENT));
 		DtSearchAddMessage (sprintbuf);
 		return FALSE;
@@ -1011,7 +1011,7 @@ static int	load_stop_list (DBLK *dblk, DBLK *dblist)
     i = load_wordtree (&dblk->stoplist, dblk, dblk->fname_stp, TRUE);
     if (i == 1) {
 	sprintf (sprintbuf,
-	    catgets (dtsearch_catd, MS_misc, 362, "%s: %s: %s"),
+	    CATGETS(dtsearch_catd, MS_misc, 362, "%s: %s: %s"),
 	    PROGNAME"1270", dblk->fname_stp, strerror(ENOENT));
 	DtSearchAddMessage (sprintbuf);
     }
@@ -1149,7 +1149,7 @@ static int      load_paice_suffixes (DBLK *dblk, DBLK *dblist)
     fp = fopen (dblk->fname_sfx, "rt");
     if (fp == NULL) {
 	sprintf (msgbuf,
-	    catgets (dtsearch_catd, MS_misc, 362, "%s: %s: %s."),
+	    CATGETS(dtsearch_catd, MS_misc, 362, "%s: %s: %s."),
 	    PROGNAME"181", dblk->fname_sfx, strerror(errno));
 	DtSearchAddMessage (msgbuf);
 	dblk->fname_sfx = NULL;
@@ -1192,7 +1192,7 @@ static int      load_paice_suffixes (DBLK *dblk, DBLK *dblist)
 	/* OPTIONAL TOKEN #2: if next token '*', set 'intact' flag */
 	if ((token = (UCHAR *)_XStrtok(NULL, SFX_DELIMS, strtok_buf)) == NULL) {
 BAD_RULE:
-	    sprintf (msgbuf,  catgets(dtsearch_catd, MS_lang, 51,
+	    sprintf (msgbuf,  CATGETS(dtsearch_catd, MS_lang, 51,
 		"%s %s, Line %d: Invalid Paice Rule for suffix '%s'.") ,
 		PROGNAME"898", dblk->fname_sfx, lineno, suffix);
 	    DtSearchAddMessage (msgbuf);
@@ -1398,7 +1398,7 @@ static char	*paice_stemmer (char *wordin, DBLK *dblk)
 	return "";
 
     if ((rules_table = (PRULE **)dblk->stem_extra) == NULL) {
-	fprintf (aa_stderr, catgets (dtsearch_catd, MS_lang, 31,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_lang, 31,
 	    "%s Stemmer suffixes file never loaded.\n"),
 	    PROGNAME"310");
 	DtSearchExit (2);

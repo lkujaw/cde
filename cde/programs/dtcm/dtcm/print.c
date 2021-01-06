@@ -934,7 +934,7 @@ create_print_dialog(Calendar *c)
 	    print_dir = "";
 	  sprintf(fnamebuf, "%s/%s", print_dir, print_file);
 
-	  title = XtNewString(catgets(c->DT_catd, 1, 728, "Calendar : Print"));
+	  title = XtNewString(CATGETS(c->DT_catd, 1, 728, "Calendar : Print"));
 	  nargs = 0;
 	  XtSetArg(args[nargs], XmNtitle, title); nargs++;
 	  XtSetArg(args[nargs], XmNdeleteResponse, XmUNMAP); nargs++;
@@ -968,19 +968,19 @@ create_print_dialog(Calendar *c)
 	  pd->form = XmCreateForm(pd->pdb, "RangeForm", args, nargs);
 
 	  view = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 976, "Report Type:"));
+			CATGETS(c->DT_catd, 1, 976, "Report Type:"));
 	  day_view = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 977, "Day View"));
+			CATGETS(c->DT_catd, 1, 977, "Day View"));
 	  week_view = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 978, "Week View"));
+			CATGETS(c->DT_catd, 1, 978, "Week View"));
 	  month_view = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 979, "Month View"));
+			CATGETS(c->DT_catd, 1, 979, "Month View"));
 	  year_view = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 980, "Year View"));
+			CATGETS(c->DT_catd, 1, 980, "Year View"));
 	  appt_list = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 981, "Appointment List"));
+			CATGETS(c->DT_catd, 1, 981, "Appointment List"));
 	  todo_list = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 982, "To Do List"));
+			CATGETS(c->DT_catd, 1, 982, "To Do List"));
 
 	  /*
 	   * remember - this returns a RowColumn widget!
@@ -1014,7 +1014,7 @@ create_print_dialog(Calendar *c)
 	  XmStringFree(todo_list);
 	  XmStringFree(view);
 
-	  xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1,
+	  xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1,
 						  731, "From:"));
 	  pd->from_label = XtVaCreateWidget("FromLabel",
 		xmLabelGadgetClass,
@@ -1095,7 +1095,7 @@ create_print_dialog(Calendar *c)
 	  XtManageChild(pd->from_year);
 	  XtManageChild(pd->from_spin);
 
-	  xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1,
+	  xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1,
 						  732, "To:"));
 	  pd->to_label = XtVaCreateWidget("ToLabel",
 		xmLabelGadgetClass,
@@ -1171,7 +1171,7 @@ create_print_dialog(Calendar *c)
 	  XtManageChild(pd->to_year);
 	  XtManageChild(pd->to_spin);
 
-	  xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1,
+	  xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1,
 						  679, "More..."));
 	  nargs = 0;
 	  XtSetArg(args[nargs], XmNlabelString, xmstr); nargs++;
@@ -1241,7 +1241,7 @@ report_error(Calendar *c, char *title, char *errText)
   Props_pu *pu = (Props_pu *)c->properties_pu;
   char *label;
 
-  label = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+  label = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 
   dialog_popup(c->frame,
 	       DIALOG_TITLE, title,
@@ -1268,7 +1268,7 @@ pdm_notify_cb(Widget w, XtPointer uData, XtPointer cbData)
   case XmCR_PDM_NONE:
   case XmCR_PDM_START_ERROR:
   case XmCR_PDM_EXIT_ERROR:
-    errText = XtNewString(catgets(c->DT_catd, 1, 1112, pdmErrorText));
+    errText = XtNewString(CATGETS(c->DT_catd, 1, 1112, pdmErrorText));
     break;
 
   default:
@@ -1277,7 +1277,7 @@ pdm_notify_cb(Widget w, XtPointer uData, XtPointer cbData)
 
   if (errText)
   {
-    title = XtNewString(catgets(c->DT_catd, 1, 1111, setupErrorTitle));
+    title = XtNewString(CATGETS(c->DT_catd, 1, 1111, setupErrorTitle));
 
     report_error(c, title, errText);
 
@@ -1354,9 +1354,9 @@ print_setup_cb(Widget w, XtPointer uData, XtPointer cbData)
 
   if (XmPrintPopupPDM(pd->printShell, w) != XmPDM_NOTIFY_SUCCESS)
   {
-    char *errText = XtNewString(catgets(c->DT_catd, 1, 1112,
+    char *errText = XtNewString(CATGETS(c->DT_catd, 1, 1112,
 					pdmErrorText));
-    char *title = XtNewString(catgets(c->DT_catd, 1, 1111, setupErrorTitle));
+    char *title = XtNewString(CATGETS(c->DT_catd, 1, 1111, setupErrorTitle));
 
     report_error(c, title, errText);
 
@@ -1387,28 +1387,28 @@ print_report(Calendar *c)
   if ((start_date == DATE_BBOT) || (end_date == DATE_BBOT) || 
       (start_date == DATE_AEOT) || (end_date == DATE_BBOT))
   {
-    text = XtNewString(catgets(c->DT_catd, 1, 892,
+    text = XtNewString(CATGETS(c->DT_catd, 1, 892,
 	"The dates for printing must be between 1969 and 2038."));
   }
   else if (start_date <= 0)
   {
-    text = XtNewString(catgets(c->DT_catd, 1, 894,
+    text = XtNewString(CATGETS(c->DT_catd, 1, 894,
 			       "Malformed \"From\" date"));
   }
   else if (end_date <= 0)
   {
-    text = XtNewString(catgets(c->DT_catd, 1, 896,
+    text = XtNewString(CATGETS(c->DT_catd, 1, 896,
 			       "Malformed \"To\" date"));
   }
   else if (start_date > end_date)
   {
-    text = XtNewString(catgets(c->DT_catd, 1, 898,
+    text = XtNewString(CATGETS(c->DT_catd, 1, 898,
 "The \"To\" date for printing must be after the \"From\" date for printing"));
   }
 
   if (text)
   {
-    char *title = XtNewString(catgets(c->DT_catd, 1, 736, printErrorTitle));
+    char *title = XtNewString(CATGETS(c->DT_catd, 1, 736, printErrorTitle));
 
     report_error(c, title, text);
 

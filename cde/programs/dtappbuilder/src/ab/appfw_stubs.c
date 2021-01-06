@@ -663,10 +663,10 @@ appfw_editor_prevent_closeCB(
 	     */
 	    help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
 
-	    xm_buf = XmStringCreateLocalized(catgets(Dtb_project_catd, 100, 248, "Properties for your project have been modified on the\nApplication Framework Editor but not Applied.\nApply Changes or Cancel Close operation."));
+	    xm_buf = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 100, 248, "Properties for your project have been modified on the\nApplication Framework Editor but not Applied.\nApply Changes or Cancel Close operation."));
 
 	    help_data->help_volume = help_data->help_locationID = NULL;
-	    help_data->help_text = XtNewString(catgets(Dtb_project_catd, 100, 249, "Click Apply Changes to apply the changes \nand close the Application Framework Editor.\n\nClick Cancel if you don't want to apply the\nchanges and want the Application Framework\nEditor to remain displayed. You can then click\nReset to undo the changes before closing\nthe Application Framework Editor."));
+	    help_data->help_text = XtNewString(CATGETS(Dtb_project_catd, 100, 249, "Click Apply Changes to apply the changes \nand close the Application Framework Editor.\n\nClick Cancel if you don't want to apply the\nchanges and want the Application Framework\nEditor to remain displayed. You can then click\nReset to undo the changes before closing\nthe Application Framework Editor."));
 
 	    /*
 	     * Pop up warning message dialog

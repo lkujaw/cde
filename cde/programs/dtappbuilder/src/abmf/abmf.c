@@ -48,7 +48,7 @@
 #include <time.h>
 #include <limits.h>
 #include <ctype.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <ab_private/util.h>
 #include <ab_private/obj.h>
 #include <ab_private/objxm.h>
@@ -226,7 +226,7 @@ main(int argc, STRING *argv)
     /*
      * Open the standard message catalog for the project.
      */
-    Dtb_project_catd = catopen("dtcodegen", NL_CAT_LOCALE);
+    Dtb_project_catd = CATOPEN("dtcodegen", NL_CAT_LOCALE);
     if (Dtb_project_catd == (nl_catd)-1)
     {
         fprintf(stderr, 
@@ -268,14 +268,14 @@ main(int argc, STRING *argv)
 	        if (!util_be_silent())
 	        {
 	            util_printf(
-			catgets(Dtb_project_catd, 1, 1,
+			CATGETS(Dtb_project_catd, 1, 1,
 	    "No project file that references module(s) - using defaults\n"));
 	        }
 	    }
 	    else if (numProjFiles == 0)
 	    {
 		util_printf(
-		    catgets(Dtb_project_catd, 1, 2,
+		    CATGETS(Dtb_project_catd, 1, 2,
 		      "No files specified, and no project file found\n"));
 		abmf_usage();
 	    }
@@ -344,7 +344,7 @@ main(int argc, STRING *argv)
     {
 	char *proj_file_name = istr_string_safe(cmdline->proj_file);
         util_printf(
-	    catgets(Dtb_project_catd, 1, 3, "Reading project %s.\n"),
+	    CATGETS(Dtb_project_catd, 1, 3, "Reading project %s.\n"),
                 proj_file_name);
     }
 
@@ -443,7 +443,7 @@ main(int argc, STRING *argv)
 	char *prog_name_string = util_get_program_name();
 
         fprintf(stderr, 
-	    catgets(Dtb_project_catd, 1, 4,
+	    CATGETS(Dtb_project_catd, 1, 4,
 	        "%s: exiting due to error loading project.\n"), 
 		prog_name_string);
         exit(1);
@@ -461,7 +461,7 @@ main(int argc, STRING *argv)
 	char *prog_name_string = util_get_program_name();
 
         fprintf(stderr, 
-	    catgets(Dtb_project_catd, 1, 5,
+	    CATGETS(Dtb_project_catd, 1, 5,
 	      "%s: Nothing to do!\n"), prog_name_string);
         exit(1);
     }
@@ -667,7 +667,7 @@ parse_args(int argc, char *argv[], CmdlineArgs cmdline)
             {
                 if ((argCount + 1) >= argc)
                 {
-                    util_error( catgets(Dtb_project_catd, 1, 6,
+                    util_error( CATGETS(Dtb_project_catd, 1, 6,
 		    "Missing project name for -p option"));
                     abmf_usage();
                 }
@@ -762,7 +762,7 @@ parse_args(int argc, char *argv[], CmdlineArgs cmdline)
             {
 		char *prog_name_string = util_get_program_name();
 
-                fprintf(stderr, catgets(Dtb_project_catd, 1, 7,
+                fprintf(stderr, CATGETS(Dtb_project_catd, 1, 7,
 		    "%s: Illegal option \"%s\"\n\n"), prog_name_string, arg);
                 abmf_usage();
             }
@@ -780,7 +780,7 @@ parse_args(int argc, char *argv[], CmdlineArgs cmdline)
                 if (cmdline->proj_file != NULL)
                 {
                     util_error(
-			catgets(Dtb_project_catd, 1, 8,
+			CATGETS(Dtb_project_catd, 1, 8,
 		    "Only one project file may be specified."));
                     abmf_usage();
                 }
@@ -818,7 +818,7 @@ parse_args(int argc, char *argv[], CmdlineArgs cmdline)
 	char *proj_file_name = istr_string_safe(cmdline->proj_file);
 
         util_printf_err(
-	  catgets(Dtb_project_catd, 1, 9,
+	  CATGETS(Dtb_project_catd, 1, 9,
           "ignoring -noproject (-np) because project file was specified: %s\n"),
 	       proj_file_name);
 	cmdline->use_default_project = FALSE;
@@ -1107,7 +1107,7 @@ load_module(ABObj module)
 	else if (newProject != project)
 	{
 	    util_printf_err(
-	    catgets(Dtb_project_catd, 1, 10,
+	    CATGETS(Dtb_project_catd, 1, 10,
 	             "Unexpected project in file %s. Aborting\n"), fileName);
 	    exit(1);
 	}
@@ -1116,7 +1116,7 @@ load_module(ABObj module)
 	    char *module_name_string = obj_get_name(module);
     
 	    util_printf_err(
-		    catgets(Dtb_project_catd, 1, 11,
+		    CATGETS(Dtb_project_catd, 1, 11,
 		        "Module %s not found in file %s. Aborting\n"),
 		        module_name_string, fileName);
 	    exit(1);
@@ -1136,49 +1136,49 @@ abmf_usage(void)
 
     fprintf(stderr,"\n");
     fprintf(stderr,
-       catgets(Dtb_project_catd, 1, 12,
+       CATGETS(Dtb_project_catd, 1, 12,
 "Usage: %s [options] [project-file] [module-file [module-file] ...]\n\n"), 
 	program_name_string);
 
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 13,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 13,
 "Code is generated for each module specified on the command line, or for\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 14,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 14,
 "all modules in the project, if no modules are specified. If no project\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 15,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 15,
 "file is specified, a project file containing the specified module(s) is\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 16,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 16,
 "searched for in the current directory.\n\n"));
 
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 17,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 17,
 "Files with extension .bip are assumend to be BIL project files, files with\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 18,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 18,
 ".bix extension are assumed to be encapsulated BIL files, and files\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 19,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 19,
 "With a .bil extension are assumed to be BIL module files.\n\n"));
 
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 20,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 20,
 "Options (* = default, + = default with no project file):\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 21,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 21,
 "  -help (-h)        Print out this help message\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 22,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 22,
 "  -main             Write file containing main()\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 23,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 23,
 "  -changed          Only generate files that have changed\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 24,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 24,
 "* -merge	     Merge generated _stubs.c files with previous version\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 25,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 25,
 "  -nomerge          Don't merge existing and new stubs file\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 26,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 26,
 "* -project (-p)     Specify a project to generate code for\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 27,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 27,
 "  -noproject (-np)  Use default project settings, ignore project file\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 28,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 28,
 "+ -showall          Application shows (maps) all windows at startup\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 29,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 29,
 "* -noshowall        Application shows (maps) only initially-visible windows\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 30,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 30,
 "  -silent (-s)      Silent mode, no messages written\n"));
-    fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 31,
+    fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 31,
 "  -verbose (-v)     Verbose mode, detailed progress messages\n\n"));
 
 
@@ -1211,7 +1211,7 @@ find_proj_file(CmdlineArgs cmdline)
     dir= opendir(".");
     if (dir == NULL)
     {
-        perror(catgets(Dtb_project_catd,1,32,"Couldn't open '.'"));
+        perror(CATGETS(Dtb_project_catd,1,32,"Couldn't open '.'"));
         return -1;
     }
 
@@ -1251,17 +1251,17 @@ find_proj_file(CmdlineArgs cmdline)
 	int	i = 0;
 	char    *prog_name_string = util_get_program_name();
 
-	fprintf(stderr, catgets(Dtb_project_catd, 1, 33,
+	fprintf(stderr, CATGETS(Dtb_project_catd, 1, 33,
 	    "%s: Please specify project file (e.g."), prog_name_string);
   	for (i = 0; i < strlist_get_num_strs(&projFiles); ++i)
 	{
 	    fprintf(stderr, ", %s", strlist_get_str(&projFiles, i, NULL));
 	}
-	fprintf(stderr, "%s", catgets(Dtb_project_catd, 1, 34, ")\n"));
+	fprintf(stderr, "%s", CATGETS(Dtb_project_catd, 1, 34, ")\n"));
 	if (!strlist_is_empty(cmdline->files))
 	{
 	    fprintf(stderr,
-		catgets(Dtb_project_catd, 1, 35,
+		CATGETS(Dtb_project_catd, 1, 35,
     		"%s: More than one project contains specified module(s)\n"),
 		prog_name_string);
 	}
@@ -2088,7 +2088,7 @@ abmfP_create_obj_data_for_module(ABObj objInModule)
     memset(objData, 0, objDataBytes);
     if (objData == NULL)
     {
-	util_printf_err(catgets(Dtb_project_catd, 1, 36,
+	util_printf_err(CATGETS(Dtb_project_catd, 1, 36,
 	    "Could not allocate cgen data\n"));
 	return -1;
     }

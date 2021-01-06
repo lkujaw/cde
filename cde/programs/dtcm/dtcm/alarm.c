@@ -218,7 +218,7 @@ mail_it(XtPointer client_data, XtIntervalId *interval_id, CSA_reminder_reference
 	    (appt->mail->value->item.reminder_value->reminder_data.size == 0)) {
 		/* empty recipient */
 		if (debug)
-			fprintf(stderr, "%s", catgets(c->DT_catd, 1, 1,
+			fprintf(stderr, "%s", CATGETS(c->DT_catd, 1, 1,
 				"dtcm: empty recipient in mail reminder\n"));
 		to = appt->author->value->item.calendar_user_value->user_name;
 	} else {
@@ -229,7 +229,7 @@ mail_it(XtPointer client_data, XtIntervalId *interval_id, CSA_reminder_reference
 
 	/* compose subject field */
 	lines = text_to_lines(appt->what->value->item.string_value, 5);
-	sprintf(subbuf, catgets(c->DT_catd, 1, 2, "Reminder- %s"),
+	sprintf(subbuf, CATGETS(c->DT_catd, 1, 2, "Reminder- %s"),
 		(lines) ? lines->s : "\0");
 
 	/* compose message body */
@@ -256,8 +256,8 @@ mail_it(XtPointer client_data, XtIntervalId *interval_id, CSA_reminder_reference
 		pm = (dt == HOUR12 && !adjust_hour(&hr)) ? True : False;
 		if (dt == HOUR12) {
 			sprintf(stopbuf, "%2d:%02d %s", hr, minute(stop),
-				pm ? catgets(c->DT_catd, 1, 3, "pm") :
-				catgets(c->DT_catd, 1, 4, "am"));
+				pm ? CATGETS(c->DT_catd, 1, 3, "pm") :
+				CATGETS(c->DT_catd, 1, 4, "am"));
 		} else {
 			sprintf(stopbuf, "%02d%02d", hr, minute(stop));
 		}
@@ -280,10 +280,10 @@ mail_it(XtPointer client_data, XtIntervalId *interval_id, CSA_reminder_reference
 		destroy_lines(lines);
 
 	if (stopbuf[0] != '\0') {
-		sprintf(bodybuf, catgets(c->DT_catd, 1, 7, "\n\n\t** Calendar Appointment **\n\n\tDate:\t%s\n\tStart:\t%s\n\tEnd:\t%s\n\tWhat:\t%s"),
+		sprintf(bodybuf, CATGETS(c->DT_catd, 1, 7, "\n\n\t** Calendar Appointment **\n\n\tDate:\t%s\n\tStart:\t%s\n\tEnd:\t%s\n\tWhat:\t%s"),
 			datebuf, startbuf, stopbuf, whatbuf);
 	} else {
-		sprintf(bodybuf, catgets(c->DT_catd, 1, 1100, "\n\n\t** Calendar To Do Item **\n\n\tDue Date:\t%s\n\tTime Due:\t%s\n\tWhat:\t\t%s"),
+		sprintf(bodybuf, CATGETS(c->DT_catd, 1, 1100, "\n\n\t** Calendar To Do Item **\n\n\tDue Date:\t%s\n\tTime Due:\t%s\n\tWhat:\t\t%s"),
 			datebuf, startbuf, whatbuf);
 	}
 
@@ -413,7 +413,7 @@ postup_show_proc(Calendar *c, CSA_reminder_reference *r) {
 	/*
 	**  Create the Motif objects
 	*/
-	title = XtNewString(catgets(c->DT_catd, 1, 839, "Calendar : Reminder"));
+	title = XtNewString(CATGETS(c->DT_catd, 1, 839, "Calendar : Reminder"));
 	pu_frame = XtVaCreatePopupShell("pu_frame",
 		topLevelShellWidgetClass, c->postup,
 		XmNtitle, title,
@@ -456,7 +456,7 @@ postup_show_proc(Calendar *c, CSA_reminder_reference *r) {
 		XmNfractionBase, 3,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 680, "Close"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 680, "Close"));
 	pu_close = XtVaCreateManagedWidget("close", 
 		xmPushButtonWidgetClass, button_form, 
                 XmNtopAttachment, 	XmATTACH_FORM,
@@ -590,12 +590,12 @@ postup_show_proc(Calendar *c, CSA_reminder_reference *r) {
 					$6	-> am or pm
 
 				*/
-			        char *am = XtNewString(catgets(c->DT_catd, 
+			        char *am = XtNewString(CATGETS(c->DT_catd,
 							       1, 4, "am"));
-			        char *pm = XtNewString(catgets(c->DT_catd, 
+			        char *pm = XtNewString(CATGETS(c->DT_catd,
 							       1, 3, "pm"));
 				stop_am = adjust_hour(&stop_hr);
-				sprintf(text, catgets(c->DT_catd, 1, 1087,
+				sprintf(text, CATGETS(c->DT_catd, 1, 1087,
 				   "From %1$2d:%2$02d%3$s to %4$2d:%5$02d%6$s"),
 					start_hr, minute(st),
 					(start_am) ? am : pm,
@@ -624,10 +624,10 @@ postup_show_proc(Calendar *c, CSA_reminder_reference *r) {
 				*/
 			        char *meridian = 
 				  XtNewString ((start_am) ? 
-					       catgets(c->DT_catd, 1, 4, "am"):
-					       catgets(c->DT_catd, 1, 3, "pm"));
+					       CATGETS(c->DT_catd, 1, 4, "am"):
+					       CATGETS(c->DT_catd, 1, 3, "pm"));
 				
-				sprintf(text, catgets(c->DT_catd, 1, 1088,
+				sprintf(text, CATGETS(c->DT_catd, 1, 1088,
 				   			"%1$2d:%2$02d%3$s"), 
 					start_hr, minute(st), meridian
 					);
@@ -654,7 +654,7 @@ postup_show_proc(Calendar *c, CSA_reminder_reference *r) {
 					$4	-> stop minute
 
 				*/
-				sprintf(text, catgets(c->DT_catd, 1, 1089,
+				sprintf(text, CATGETS(c->DT_catd, 1, 1089,
 				   "From %1$02d%2$02d to %3$02d%4$02d"),
 					start_hr, minute(st), stop_hr, 
 					minute(sp));
@@ -677,7 +677,7 @@ postup_show_proc(Calendar *c, CSA_reminder_reference *r) {
 					$2	-> start minute
 
 				*/
-				sprintf(text, catgets(c->DT_catd, 1, 1090,
+				sprintf(text, CATGETS(c->DT_catd, 1, 1090,
 							"%1$02d%2$02d"), 
 					start_hr, minute(st));
 			}

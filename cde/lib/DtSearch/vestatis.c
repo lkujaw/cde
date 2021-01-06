@@ -184,14 +184,14 @@ void            release_shm_mem (void)
 {
     if (global_memory_ptr != NULL) {
 	if (shmdt (global_memory_ptr) == -1) {
-	    DtSearchAddMessage (catgets (dtsearch_catd, MS_vestatis, 104,
+	    DtSearchAddMessage (CATGETS(dtsearch_catd, MS_vestatis, 104,
 		PROGNAME "104 Cannot detach shared memory "));
 	    OE_flags |= OE_PERMERR;
 	    usrblk.retncode = OE_ABORT;
 	    return;
 	}
 	if (shmctl (shm_id, IPC_RMID, NULL) == -1) {
-	    DtSearchAddMessage (catgets (dtsearch_catd, MS_vestatis, 110,
+	    DtSearchAddMessage (CATGETS(dtsearch_catd, MS_vestatis, 110,
 		    PROGNAME "110 Cannot remove shared memory "));
 	    OE_flags |= OE_PERMERR;
 	    usrblk.retncode = OE_ABORT;
@@ -224,7 +224,7 @@ static int	init_global_memory (DtSrINT32 addrs, DtSrINT32 r_addrs)
     shm_id = shmget (IPC_PRIVATE, k, SHM_FLAG);
     if ((global_memory_ptr = (char *) shmat (shm_id, (char *) 0, 0)) ==
 	((char *) -1)) {
-	DtSearchAddMessage (catgets (dtsearch_catd, MS_vestatis, 115,
+	DtSearchAddMessage (CATGETS(dtsearch_catd, MS_vestatis, 115,
 		PROGNAME "115 No shared memory available"));
 	OE_flags |= OE_PERMERR;
 	usrblk.retncode = OE_ABORT;
@@ -404,7 +404,7 @@ int             efim_qsort (void)
 		    sptr++;
 
 		    if (sptr == STACKSZ) {
-			fputs (catgets (dtsearch_catd, MS_vestatis, 107,
+			fputs (CATGETS(dtsearch_catd, MS_vestatis, 107,
 			    PROGNAME "107 Qsort stack overflow.\n"),
 			    aa_stderr);
 			OE_flags |= OE_PERMERR;
@@ -433,7 +433,7 @@ int             efim_qsort (void)
 		    sptr++;
 
 		    if (sptr == STACKSZ) {
-			fputs (catgets (dtsearch_catd, MS_vestatis, 107,
+			fputs (CATGETS(dtsearch_catd, MS_vestatis, 107,
 			    PROGNAME "107 Qsort stack overflow.\n"),
 			    aa_stderr);
 			OE_flags |= OE_PERMERR;
@@ -630,7 +630,7 @@ void            get_next_memory_block (size_t node_size)
 	mem_offset += node_size;
 	cur_pos = mem_start;
 	if (mem_start == NULL) {
-	    fprintf (aa_stderr, catgets (dtsearch_catd, MS_vestatis, 310,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_vestatis, 310,
 		"%s Out of Memory.  Need %ld bytes.\n"),
 		PROGNAME "310", total_memory_size);
 	    OE_flags |= OE_PERMERR;
@@ -645,7 +645,7 @@ void            get_next_memory_block (size_t node_size)
 	memory_blocks = (CNCRD_MEMORY_AREA_LIST *)
 	    malloc (sizeof (CNCRD_MEMORY_AREA_LIST) + 2);
 	if (memory_blocks == NULL) {
-	    fputs (catgets (dtsearch_catd, MS_vestatis, 314,
+	    fputs (CATGETS(dtsearch_catd, MS_vestatis, 314,
 		    PROGNAME"314 Out of Memory.\n"), aa_stderr);
 	    OE_flags |= OE_PERMERR;
 	    usrblk.retncode = OE_ABORT;
@@ -761,7 +761,7 @@ void            init_memory (void)
 {
     mem_start = (char *) malloc (MEMORY_SIZE);
     if (mem_start == NULL) {
-	fprintf (aa_stderr, catgets (dtsearch_catd, MS_vestatis, 310,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_vestatis, 310,
 	    "%s Out of Memory.  Need %ld bytes.\n"), PROGNAME "310", MEMORY_SIZE);
 	OE_flags |= OE_PERMERR;
 	usrblk.retncode = OE_ABORT;
@@ -778,7 +778,7 @@ void            init_memory (void)
     memory_blocks = (CNCRD_MEMORY_AREA_LIST *)
 	malloc (sizeof (CNCRD_MEMORY_AREA_LIST) + 2);
     if (memory_blocks == NULL) {
-	fputs (catgets (dtsearch_catd, MS_vestatis, 314,
+	fputs (CATGETS(dtsearch_catd, MS_vestatis, 314,
 		PROGNAME "314 Out of Memory.\n"), aa_stderr);
 	OE_flags |= OE_PERMERR;
 	usrblk.retncode = OE_ABORT;
@@ -1008,7 +1008,7 @@ void            load_ditto_str (void)
 	 */
 	d_crset (&dba1, saveusr.vistano);
 	if (db_status < 0) {
-	    fprintf (aa_stderr, catgets (dtsearch_catd, MS_vestatis, 437,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_vestatis, 437,
 		"%s: db_status = %d, dba = %d:%ld (x'%08.8lx'), vistano = %d\n"),
 		PROGNAME "437", db_status, (dba1 & 0xff000000) >> 24,
 		dba1 & 0xffffff, dba1, saveusr.vistano);
@@ -1019,7 +1019,7 @@ void            load_ditto_str (void)
 	}
 	d_recread (&cur_rec, saveusr.vistano);
 	if (db_status < 0) {
-	    fprintf (aa_stderr, catgets (dtsearch_catd, MS_vestatis, 437,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_vestatis, 437,
 		    "%s: db_status = %d, dba = %d:%ld (x'%08.8lx'), vistano = %d\n"),
 		PROGNAME "437", db_status, (dba1 & 0xff000000) >> 24,
 		dba1 & 0xffffff, dba1, saveusr.vistano);
@@ -1047,7 +1047,7 @@ void            load_ditto_str (void)
 	else {
 	    cur_ditto_mem = malloc (dittosz);
 	    if (cur_ditto_mem == NULL) {
-		fputs ( catgets (dtsearch_catd, MS_vestatis, 504,
+		fputs ( CATGETS(dtsearch_catd, MS_vestatis, 504,
 		    PROGNAME "504 Cannot allocate cur_ditto\n"),
 		    aa_stderr);
 		OE_flags |= OE_PERMERR;
@@ -1150,7 +1150,7 @@ void            load_ditto_str (void)
 
     if (num_hits >= maxhits) {
 	if (!(usrblk.flags & USR_NO_INFOMSGS)) {
-	    sprintf (vestat_msgbuf, catgets (dtsearch_catd, MS_vestatis, 421,
+	    sprintf (vestat_msgbuf, CATGETS(dtsearch_catd, MS_vestatis, 421,
 		"$s Total Number Hits = %ld. Discarded hits beyond maximum number specified."),
 		PROGNAME "421", (long)num_hits);
 	    DtSearchAddMessage (vestat_msgbuf);
@@ -1342,7 +1342,7 @@ static void     stat_search (void)
 	 */
 	if (num_hits > SORT_MESG && !(usrblk.flags & USR_NO_ITERATE)) {
 	    if (!mes_search_box) {
-		DtSearchAddMessage (catgets (dtsearch_catd, MS_vestatis, 990,
+		DtSearchAddMessage (CATGETS(dtsearch_catd, MS_vestatis, 990,
 		    PROGNAME"990 The system is now sorting. Please wait."));
 	    }
 	    usrblk.retncode = OE_SEARCHING;
@@ -1406,7 +1406,7 @@ void            ve_statistical (void)
     /* stat_array size = 1 node for every possible object */
 
     if (usrblk.query[0] == 0) {
-	DtSearchAddMessage (catgets (dtsearch_catd, MS_vestatis,
+	DtSearchAddMessage (CATGETS(dtsearch_catd, MS_vestatis,
 		677, PROGNAME "677 Query field is empty."));
 	usrblk.retncode = OE_BAD_QUERY;
 	return;

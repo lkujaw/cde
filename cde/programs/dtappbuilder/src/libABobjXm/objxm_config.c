@@ -309,7 +309,7 @@ xm_configure_tree(
     if (configCount!= numSalientObjs)
     {
 	fprintf(stderr, "%s",
-	    catgets(OBJXM_MESSAGE_CATD, OBJXM_MESSAGE_SET, 8,
+	    CATGETS(OBJXM_MESSAGE_CATD, OBJXM_MESSAGE_SET, 8,
 	       "INTERNAL ERROR: salient counts don't match.\n") );
 	iRetVal= -1;
 	goto epilogue;
@@ -471,7 +471,7 @@ objxm_comp_get_subobj(
 	char	name[256];
 	obj_get_safe_name(obj, name, 256);
         fprintf(stderr,
-	    catgets(OBJXM_MESSAGE_CATD, OBJXM_MESSAGE_SET, 9,
+	    CATGETS(OBJXM_MESSAGE_CATD, OBJXM_MESSAGE_SET, 9,
 	      "ERROR: objxm_comp_get_subobj - object not xmconfigured: %s\n"),
 	    name);
 			

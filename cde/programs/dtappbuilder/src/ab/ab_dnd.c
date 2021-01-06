@@ -177,7 +177,7 @@ dnd_load_buffer(
 	goto epilogue;
     }
 
-    fileName = dropBuf.name? dropBuf.name : catgets(Dtb_project_catd, 100, 104, "NoName");
+    fileName = dropBuf.name? dropBuf.name : CATGETS(Dtb_project_catd, 100, 104, "NoName");
     fileName = XtNewString(fileName);
     
     if ( (strcmp(dataType, BIX) == 0) ||
@@ -218,7 +218,7 @@ dnd_load_buffer(
     }
     else 
     {
-	fmtStr = XtNewString(catgets(Dtb_project_catd, 100, 103,
+	fmtStr = XtNewString(CATGETS(Dtb_project_catd, 100, 103,
 	"Cannot determine file type for %s.\nDo you want to load the file as a project or a module?"));
 	
 	msg = (STRING) util_malloc(strlen(fmtStr) + strlen(fileName) + 1);
@@ -348,7 +348,7 @@ dnd_load_file(
 	}
 	else
 	{
-            fmtStr = XtNewString(catgets(Dtb_project_catd, 100, 103,
+            fmtStr = XtNewString(CATGETS(Dtb_project_catd, 100, 103,
         	"Cannot determine file type for %s.\nDo you want to load the file as a project or a module?"));
             msg = (STRING) util_malloc(strlen(fmtStr) + strlen(fileName) + 1);
             sprintf(msg, fmtStr, fileName);

@@ -236,7 +236,7 @@ DtMailGenDialog::okCallback(Widget w, XtPointer clientData, XtPointer cbs)
 	obj->setToAboutDialog();
 	// char * helpId = "About";
 	char * helpId = NULL;
-	int answer = obj->post_and_return(GETMSG(DT_catd, 1, 180, "OK"),
+	int answer = obj->post_and_return(CATGETS(DT_catd, 1, 180, "OK"),
 					  helpId);
     }
 }
@@ -441,8 +441,8 @@ DtMailGenDialog::post_and_return(char *helpId)
     // They may have been set via the overloaded post_and_return()
     // method before. Reset them to their default values...
 
-    okLabel = XmStringCreateLocalized(GETMSG(DT_catd, 1, 181, "OK"));
-    cancelLabel = XmStringCreateLocalized(GETMSG(DT_catd, 1, 182, "Cancel"));
+    okLabel = XmStringCreateLocalized(CATGETS(DT_catd, 1, 181, "OK"));
+    cancelLabel = XmStringCreateLocalized(CATGETS(DT_catd, 1, 182, "Cancel"));
 
     // Make sure the dialog exists, and that it is an XmMessageBox
     // or subclass, since the callbacks assume this widget type
@@ -807,8 +807,8 @@ DtMailGenDialog::setToAboutDialog(void)
 	if (NULL == ABOUT_TITLE) {
 	    char *version;
 
-	    ABOUT_TITLE = GETMSG(DT_catd, 1, 235, "Mailer - About Mailer");
-	    version = GETMSG(DT_catd, 1, 236, "Mailer Version %d.%d.%d");
+	    ABOUT_TITLE = CATGETS(DT_catd, 1, 235, "Mailer - About Mailer");
+	    version = CATGETS(DT_catd, 1, 236, "Mailer Version %d.%d.%d");
 
 	    DTMAIL_VERSION = new char [strlen(version) + 16];
 	    sprintf(

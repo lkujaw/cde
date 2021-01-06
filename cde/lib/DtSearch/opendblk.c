@@ -135,7 +135,7 @@ int             open_dblk (DBLK ** dblist, int numpages, int debugging)
 	    db_oflag);
     if (dblist == NULL || numpages < 8) {
 BAD_INPUT:
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_oeinit, 99,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oeinit, 99,
 		"%s Programming Error: Invalid input to open_dblk()."),
 	    PROGNAME "99");
 	DtSearchAddMessage (sprintbuf);
@@ -192,14 +192,14 @@ BAD_INPUT:
 	    if (debugging)
 		fprintf (aa_stderr, PROGNAME "129 UNLINK: cant open '%s'.\n",
 		    temp_file_name);
-	    sprintf (sprintbuf, catgets (dtsearch_catd, MS_oeinit, 317,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oeinit, 317,
 		    "%s Cannot open database file '%s'.\n"
 		    "  Errno %d = %s\n"
 		    "  %s is removing '%s' from list of available databases."),
 		PROGNAME "317", temp_file_name, errno, strerror (errno),
 		OE_prodname, db->name);
 	    if (errno == ENOENT)
-		strcat (sprintbuf, catgets (dtsearch_catd, MS_oeinit, 318,
+		strcat (sprintbuf, CATGETS(dtsearch_catd, MS_oeinit, 318,
 		    "\n  This can usually be corrected by specifying a valid\n"
 		    "  database PATH in the site configuration file."));
 	    DtSearchAddMessage (sprintbuf);
@@ -216,7 +216,7 @@ BAD_INPUT:
 		fprintf (aa_stderr,
 		    PROGNAME "149 UNLINK: cant get status '%s'.\n",
 		    temp_file_name);
-	    sprintf (sprintbuf, catgets (dtsearch_catd, MS_oeinit, 1404,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oeinit, 1404,
 		    "%s Removing database '%s' from list of "
 		    "available databases because status is "
 		    "unavailable for file %s: %s"),
@@ -252,7 +252,7 @@ DELETE_DB:
 
     /* quit if no dblks remain */
     if (vistano <= 0) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_misc, 8,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_misc, 8,
 		"%s No valid databases remain."), PROGNAME "265");
 	DtSearchAddMessage (sprintbuf);
 	return FALSE;
@@ -283,7 +283,7 @@ DELETE_DB:
 
     if (db_status != S_OKAY) {
 	targptr = austext_malloc (totlen + 128, PROGNAME"239", NULL);
-	sprintf (targptr, catgets (dtsearch_catd, MS_vista, 378,
+	sprintf (targptr, CATGETS(dtsearch_catd, MS_vista, 378,
 	    "%s Could not open following database name string:\n  '%s'"),
 	    PROGNAME"378", allnames);
 	DtSearchAddMessage (targptr);

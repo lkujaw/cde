@@ -42,7 +42,7 @@
 
 #include <stdlib.h>
 #include <X11/Intrinsic.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #define DTB_PROJECT_CATALOG	"dtbuilder"
 /* Handle for standard message catalog for the project */
 extern nl_catd	Dtb_project_catd;

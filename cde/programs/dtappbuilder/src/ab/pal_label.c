@@ -161,7 +161,7 @@ label_initialize(
 {
     obj_set_unique_name(obj, "label");
 
-    obj_set_label(obj, catgets(Dtb_project_catd, 6, 69, "Label"));
+    obj_set_label(obj, CATGETS(Dtb_project_catd, 6, 69, "Label"));
     obj_set_is_initially_visible(obj, True);
     obj_set_is_initially_active(obj, True);
 

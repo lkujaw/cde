@@ -227,7 +227,7 @@ p_create_editor_pane(
 	**  Default start time and duration for appointments - use DSSW widget
 	**  for start time stuff.
 	*/
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 644,
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 644,
 						"Appointment Times:"));
         pu->ep_appt_label = XtVaCreateWidget("apptTimes",
 		xmLabelGadgetClass, ep_form_mgr,
@@ -250,7 +250,7 @@ p_create_editor_pane(
 	widgets[2] = pu->ep_dssw.start_menu;
 	widgets[3] = pu->ep_dssw.start_ampm_rc_mgr;
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 645,
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 645,
 						"Duration:"));
         pu->ep_dur_label = widgets[4] = XtVaCreateWidget("duration",
 		xmLabelGadgetClass, pu->ep_dssw.dssw_form_mgr,
@@ -281,7 +281,7 @@ p_create_editor_pane(
 	XtAddCallback(text_field, XmNvalueChangedCallback, p_mark_change, pu);
 	XtAddCallback(pu->ep_dur_cb, XmNselectionCallback, p_mark_change, pu);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 646, "Minutes"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 646, "Minutes"));
         pu->ep_dur_message = widgets[6] = XtVaCreateWidget("message",
 		xmLabelGadgetClass, pu->ep_dssw.dssw_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -386,7 +386,7 @@ p_create_editor_pane(
 	**  Build the stuff for privacy ...
 	*/
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 390, "Privacy:"));
+				CATGETS(c->DT_catd, 1, 390, "Privacy:"));
         pu->privacy_label = XtVaCreateWidget("privacy",
 		xmLabelGadgetClass, 	pu->ep_reminders.bfpm_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -459,13 +459,13 @@ format_hour(char buffer[], int hour, DisplayType dt, Calendar *c)
 {
 	if (dt == HOUR12) {
 		if ((hour == 24) || (hour == 0))
-			cm_strcpy(buffer, catgets(c->DT_catd, 1, 758,"midnight"));
+			cm_strcpy(buffer, CATGETS(c->DT_catd, 1, 758,"midnight"));
 		else if (hour > 12)
 				sprintf(buffer, "%2d:00 %s", hour-12,
-					catgets(c->DT_catd, 1, 3, "pm"));
+					CATGETS(c->DT_catd, 1, 3, "pm"));
 		else
 				sprintf(buffer, "%2d:00 %s", hour,
-					catgets(c->DT_catd, 1, 4, "am"));
+					CATGETS(c->DT_catd, 1, 4, "am"));
 	}
 	else
 		sprintf(buffer, " %02d00", hour);
@@ -565,7 +565,7 @@ p_create_display_pane(Props_pu *p) {
 	**  User Calendar Location label and text field
 	*/
 	xmstr = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 391, "User Calendar Location:"));
+			CATGETS(c->DT_catd, 1, 391, "User Calendar Location:"));
         p->dp_loc_label = XtVaCreateWidget("location",
 		xmLabelGadgetClass, dp_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -595,14 +595,14 @@ p_create_display_pane(Props_pu *p) {
 	   items is mapped.  Pretty stupid.  Thus the positioning happens 
 	   just after the panel is mapped. */
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 392, "Day Boundaries:"));
+				CATGETS(c->DT_catd, 1, 392, "Day Boundaries:"));
         p->dp_day_label = XtVaCreateWidget("dayBoundaries",
 		xmLabelGadgetClass, dp_form_mgr,
 		XmNlabelString, 	xmstr,
                 NULL);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 393, "Begin:"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 393, "Begin:"));
         p->dp_beg_label = XtVaCreateWidget("begin",
 		xmLabelGadgetClass, dp_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -622,14 +622,14 @@ p_create_display_pane(Props_pu *p) {
 	XtAddCallback(p->dp_beg_scale, XmNdragCallback,
 		      p_dp_scale_mod_proc, p);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 759, "value"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 759, "value"));
         p->dp_beg_value = XtVaCreateWidget("begin",
 		xmLabelGadgetClass, dp_form_mgr,
 		XmNlabelString, 	xmstr,
                 NULL);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 394, "End:"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 394, "End:"));
         p->dp_end_label = XtVaCreateWidget("end",
 		xmLabelGadgetClass, dp_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -649,7 +649,7 @@ p_create_display_pane(Props_pu *p) {
 	XtAddCallback(p->dp_end_scale, XmNdragCallback,
 		      p_dp_scale_mod_proc, p);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 760, "value"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 760, "value"));
         p->dp_end_value = XtVaCreateWidget("begin",
 		xmLabelGadgetClass, dp_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -660,7 +660,7 @@ p_create_display_pane(Props_pu *p) {
 	**  12/24 Hour Display label and toggle buttons
 	*/
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 395, "Hour Display:"));
+				CATGETS(c->DT_catd, 1, 395, "Hour Display:"));
         p->dp_hour_label = XtVaCreateWidget("hourDisplay",
 		xmLabelGadgetClass, dp_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -676,7 +676,7 @@ p_create_display_pane(Props_pu *p) {
                 XmNentryClass, 		xmToggleButtonGadgetClass,
                 NULL);
  
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 396, "12 Hour"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 396, "12 Hour"));
         p->dp_hour12_toggle = widgets[0] = XtVaCreateWidget("twelveHour",
                 xmToggleButtonGadgetClass, p->dp_hour_rc_mgr,
 		XmNlabelString, 	xmstr,
@@ -686,7 +686,7 @@ p_create_display_pane(Props_pu *p) {
 	XtAddCallback(p->dp_hour12_toggle, 
 			XmNvalueChangedCallback, p_mark_change, p);
  
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 397, "24 Hour"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 397, "24 Hour"));
         p->dp_hour24_toggle = widgets[1] = XtVaCreateWidget("twentyFourHour",
                 xmToggleButtonGadgetClass, p->dp_hour_rc_mgr,
 		XmNlabelString, 	xmstr,
@@ -702,7 +702,7 @@ p_create_display_pane(Props_pu *p) {
 	**  Default view label and toggle buttons
 	*/
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 398, "Default View:"));
+				CATGETS(c->DT_catd, 1, 398, "Default View:"));
         p->dp_view_label = XtVaCreateWidget("defaultView:",
 		xmLabelGadgetClass, dp_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -719,7 +719,7 @@ p_create_display_pane(Props_pu *p) {
                 NULL);
  
  
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 402, "Day"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 402, "Day"));
         p->dp_view_day_toggle = XtVaCreateWidget("day",
                 xmToggleButtonGadgetClass, p->dp_view_rc_mgr,
 		XmNlabelString, 	xmstr,
@@ -729,7 +729,7 @@ p_create_display_pane(Props_pu *p) {
 	XtAddCallback(p->dp_view_day_toggle, 
 			XmNvalueChangedCallback, p_mark_change, p);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 401, "Week"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 401, "Week"));
         p->dp_view_week_toggle = XtVaCreateWidget("week",
                 xmToggleButtonGadgetClass, p->dp_view_rc_mgr,
 		XmNlabelString, 	xmstr,
@@ -739,7 +739,7 @@ p_create_display_pane(Props_pu *p) {
 	XtAddCallback(p->dp_view_week_toggle, 
 			XmNvalueChangedCallback, p_mark_change, p);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 400, "Month"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 400, "Month"));
         p->dp_view_month_toggle = XtVaCreateWidget("month",
                 xmToggleButtonGadgetClass, p->dp_view_rc_mgr,
 		XmNlabelString, 	xmstr,
@@ -749,7 +749,7 @@ p_create_display_pane(Props_pu *p) {
 	XtAddCallback(p->dp_view_month_toggle, 
 			XmNvalueChangedCallback, p_mark_change, p);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 399, "Year"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 399, "Year"));
         p->dp_view_year_toggle = XtVaCreateWidget("year",
                 xmToggleButtonGadgetClass, p->dp_view_rc_mgr,
 		XmNlabelString, 	xmstr,
@@ -765,7 +765,7 @@ p_create_display_pane(Props_pu *p) {
 	**  Initial Calendar View label and text field
 	*/
 	xmstr = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 403, "Initial Calendar View:"));
+			CATGETS(c->DT_catd, 1, 403, "Initial Calendar View:"));
         p->dp_init_view_label = XtVaCreateWidget("initialView",
 		xmLabelGadgetClass, dp_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -1001,11 +1001,11 @@ p_gap_convert_permissions(
 	}
 
 	if (perm_val == 0) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 750, 
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 750,
 			      "Calendar : Error - Access List and Permissions"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 405,
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 405,
 			      "Please select at least one permission.        "));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, 
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95,
 				"Continue"));
 		dialog_popup(p->frame,
 			DIALOG_TITLE, title,
@@ -1159,9 +1159,9 @@ p_gap_remove_proc(Widget w, XtPointer client_data, XtPointer callback_struct) {
 		XtFree((XtPointer)item_list);
 	}
 	else {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 750, "Calendar : Error - Access List and Permissions"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 408,  "Please select a name first.                   "));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 750, "Calendar : Error - Access List and Permissions"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 408,  "Please select a name first.                   "));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(p->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1279,7 +1279,7 @@ p_create_v4_group_access_pane(Props_pu *p) {
 	**  User Name label, text field, and add button
 	*/
 	xmstr = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 410, "User Name:"));
+			CATGETS(c->DT_catd, 1, 410, "User Name:"));
         p->gap_user_label = XtVaCreateWidget("userName",
 		xmLabelGadgetClass, gap_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -1295,7 +1295,7 @@ p_create_v4_group_access_pane(Props_pu *p) {
 			(XtPointer)p);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 411, "Add Name"));
+				CATGETS(c->DT_catd, 1, 411, "Add Name"));
         p->gap_add_button = XtVaCreateWidget("addName",
 		xmPushButtonGadgetClass, gap_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -1310,8 +1310,8 @@ p_create_v4_group_access_pane(Props_pu *p) {
 	**  Access list stuff and remove button
 	*/
 	{
-	  char *user = XtNewString(catgets(c->DT_catd, 1, 983, "User Name"));
-	  char *perm = XtNewString(catgets(c->DT_catd, 1, 413, "Permissions"));
+	  char *user = XtNewString(CATGETS(c->DT_catd, 1, 983, "User Name"));
+	  char *perm = XtNewString(CATGETS(c->DT_catd, 1, 413, "Permissions"));
 	  buf = (char *)ckalloc(cm_strlen(user) + cm_strlen(perm) + 10);
 	  sprintf(buf, "%-*s%s", NAME_LEN, user, perm);
 	  xmstr = XmStringCreateLocalized(buf);
@@ -1341,7 +1341,7 @@ p_create_v4_group_access_pane(Props_pu *p) {
 	XtManageChild(p->gap_access_list);
 
 	xmstr = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 414, "Remove Name"));
+			CATGETS(c->DT_catd, 1, 414, "Remove Name"));
         p->gap_remove_button = XtVaCreateWidget("removeName",
 		xmPushButtonGadgetClass, gap_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -1353,7 +1353,7 @@ p_create_v4_group_access_pane(Props_pu *p) {
 		XmNactivateCallback, p_gap_remove_proc, p);
 
 	xmstr = XmStringCreateLocalized(
-	       catgets(c->DT_catd, 1, 415, "B = Browse I = Insert D = Delete"));
+	       CATGETS(c->DT_catd, 1, 415, "B = Browse I = Insert D = Delete"));
         p->gap_access_msg = XtVaCreateWidget("browseInsertDelete",
 		xmLabelGadgetClass, gap_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -1364,7 +1364,7 @@ p_create_v4_group_access_pane(Props_pu *p) {
 	**  Finally, permissions label and choice toggle list
 	*/
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 416, "Permissions:"));
+				CATGETS(c->DT_catd, 1, 416, "Permissions:"));
         p->gap_perm_label = XtVaCreateWidget("permissions",
 		xmLabelGadgetClass, gap_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -1381,21 +1381,21 @@ p_create_v4_group_access_pane(Props_pu *p) {
 		XmNentryClass, 		xmToggleButtonGadgetClass,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 417, "Browse"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 417, "Browse"));
         p->gap_browse_toggle = XtVaCreateWidget("browse", 
 		xmToggleButtonGadgetClass, p->gap_perm_rc_mgr,
 		XmNlabelString, 	xmstr,
                 NULL);
 	XmStringFree(xmstr);
 	
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 342, "Insert"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 342, "Insert"));
         p->gap_insert_toggle = XtVaCreateWidget("insert", 
 		xmToggleButtonGadgetClass, p->gap_perm_rc_mgr,
 		XmNlabelString, 	xmstr,
                 NULL);
 	XmStringFree(xmstr);
 	
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 419, "Delete"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 419, "Delete"));
         p->gap_delete_toggle = XtVaCreateWidget("delete", 
 		xmToggleButtonGadgetClass, p->gap_perm_rc_mgr,
 		XmNlabelString, 	xmstr,
@@ -1578,7 +1578,7 @@ p_create_printer_ops_pane(
 		      p_mark_change, (XtPointer)p);
 
 	for (i = 0; i < POP_HDR_NUM_CHOICES; i++)
-	  hdrStrings[i] = XtNewString(catgets(c->DT_catd, 1, 1106 + i,
+	  hdrStrings[i] = XtNewString(CATGETS(c->DT_catd, 1, 1106 + i,
 					      hdrDefaults[i]));
 
 	p->pop_header_frame =
@@ -1617,7 +1617,7 @@ p_create_printer_ops_pane(
 					  DTPRINT_OPTION_FOOTER_RIGHT);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 434, "Include:"));
+				CATGETS(c->DT_catd, 1, 434, "Include:"));
         p->pop_privacy_label = XtVaCreateWidget("include", 
 		xmLabelGadgetClass, pop_form_mgr,
 		XmNlabelString, xmstr,
@@ -1651,7 +1651,7 @@ p_create_printer_ops_pane(
                 XmNleftWidget, 		p->pop_privacy_label,
                 NULL);
  
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 435, 
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 435,
 						"Show Time and Text Appts"));
         p->pop_privacy_public_toggle = XtVaCreateWidget(
 		"showTimeText",
@@ -1663,7 +1663,7 @@ p_create_printer_ops_pane(
 	XtAddCallback(p->pop_privacy_public_toggle,
 		      XmNvalueChangedCallback, p_mark_change, p);
  
-	xmstr = XmStringCreateLocalized( catgets(c->DT_catd, 1, 436, 
+	xmstr = XmStringCreateLocalized( CATGETS(c->DT_catd, 1, 436,
 						"Show Time Only Appts"));
         p->pop_privacy_semi_toggle = XtVaCreateWidget(
 		"showTimeOnly",
@@ -1675,7 +1675,7 @@ p_create_printer_ops_pane(
 	XtAddCallback(p->pop_privacy_semi_toggle,
 		      XmNvalueChangedCallback, p_mark_change, p);
  
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 437, 
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 437,
 						"Show Nothing Appts"));
         p->pop_privacy_private_toggle = XtVaCreateWidget(
 		"showNothing",
@@ -1723,7 +1723,7 @@ p_create_date_format_pane(
 	**  Date ordering label and choice toggle widget
 	*/
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 438, "Date Ordering:"));
+				CATGETS(c->DT_catd, 1, 438, "Date Ordering:"));
        	p->dfp_order_label = XtVaCreateWidget("dateOrdering",
 		xmLabelGadgetClass, dfp_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -1731,7 +1731,7 @@ p_create_date_format_pane(
 	XmStringFree(xmstr);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 442, "Date Separator:"));
+				CATGETS(c->DT_catd, 1, 442, "Date Separator:"));
        	p->dfp_sep_label = XtVaCreateWidget("dateSeparator",
 		xmLabelGadgetClass, dfp_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -1756,7 +1756,7 @@ p_create_date_format_pane(
 		NULL);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 439, "MM | DD | YY"));
+				CATGETS(c->DT_catd, 1, 439, "MM | DD | YY"));
         p->dfp_order_mmddyy_toggle = XtVaCreateWidget("mmddyy",
                 xmToggleButtonGadgetClass, p->dfp_order_rc_mgr,
 		XmNlabelString, xmstr,
@@ -1767,7 +1767,7 @@ p_create_date_format_pane(
 				XmNvalueChangedCallback, p_mark_change, p);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 440, "DD | MM | YY"));
+				CATGETS(c->DT_catd, 1, 440, "DD | MM | YY"));
         p->dfp_order_ddmmyy_toggle = XtVaCreateWidget("ddmmyy",
                 xmToggleButtonGadgetClass, p->dfp_order_rc_mgr,
 		XmNlabelString, xmstr,
@@ -1778,7 +1778,7 @@ p_create_date_format_pane(
 				XmNvalueChangedCallback, p_mark_change, p);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 441, "YY | MM | DD"));
+				CATGETS(c->DT_catd, 1, 441, "YY | MM | DD"));
         p->dfp_order_yymmdd_toggle = XtVaCreateWidget("yymmdd",
                 xmToggleButtonGadgetClass, p->dfp_order_rc_mgr,
 		XmNlabelString, xmstr,
@@ -1807,7 +1807,7 @@ p_create_date_format_pane(
 		XmNtopOffset, 		GAP,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 443, "Blank"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 443, "Blank"));
         p->dfp_sep_blank_toggle = XtVaCreateWidget("blank",
                 xmToggleButtonGadgetClass, p->dfp_sep_rc_mgr,
 		XmNlabelString, xmstr,
@@ -2067,9 +2067,9 @@ p_save_changes(Calendar *c) {
 	}
 
 	if (!save_props(p)) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 454, "Calendar : Error - Options"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 445, "An error occurred writing to ~/.desksetdefaults.\nMake sure you have permission to write to this file."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 454, "Calendar : Error - Options"));
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 445, "An error occurred writing to ~/.desksetdefaults.\nMake sure you have permission to write to this file."));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(pu->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -2238,9 +2238,9 @@ extern void p_defaults_proc_helper(XtPointer client_data){
 	Props_pu	*pu = (Props_pu *)c->properties_pu;
 
 	if (!read_props(p)) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 454, "Calendar : Error - Options"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 448, "An error occurred reading from ~/.desksetdefaults.\nMake sure you have permission to read this file."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 454, "Calendar : Error - Options"));
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 448, "An error occurred reading from ~/.desksetdefaults.\nMake sure you have permission to read this file."));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(pu->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -2283,11 +2283,11 @@ p_flush_changes(Calendar *c) {
 	int		val;
 
 	if (pu->changed_flag == True) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 450, "Calendar : Options - Help"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 451, "You have made unsaved changes.\nYou may save your changes, discard your changes, \nor return to your previous place in the dialog."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 452, "Save"));
-	  	char *ident2 = XtNewString(catgets(c->DT_catd, 1, 700, "Discard"));
-	  	char *ident3 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 450, "Calendar : Options - Help"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 451, "You have made unsaved changes.\nYou may save your changes, discard your changes, \nor return to your previous place in the dialog."));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 452, "Save"));
+	  	char *ident2 = XtNewString(CATGETS(c->DT_catd, 1, 700, "Discard"));
+	  	char *ident3 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
 		answer = dialog_popup(pu->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -2331,7 +2331,7 @@ static void
 p_make_props_pu(Calendar *c) {
 	char		*buf;
 	char		*popuplabel = 
-			     catgets(c->DT_catd, 1, 458, "Calendar : Options");
+			     CATGETS(c->DT_catd, 1, 458, "Calendar : Options");
 	PaneType	pt;
 	Props_pu	*p = (Props_pu *)c->properties_pu;
 	XmString	label;
@@ -2385,23 +2385,23 @@ p_make_props_pu(Calendar *c) {
 	*/
 
 	Pane_XmStrs[EDITOR_PANE] = 
-	  XmStringCreateLocalized(catgets(c->DT_catd, 1, 762, 
+	  XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 762,
 					  "Editor Defaults"));
 	Pane_XmStrs[DISPLAY_PANE] = 
-	  XmStringCreateLocalized(catgets(c->DT_catd, 1, 763, 
+	  XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 763,
 					  "Display Settings"));
 	Pane_XmStrs[GROUP_ACCESS_PANE] = 
-	  XmStringCreateLocalized(catgets(c->DT_catd, 1, 764, 
+	  XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 764,
 					  "Access List and Permissions"));
 	Pane_XmStrs[PRINTER_OPS_PANE] = 
-	  XmStringCreateLocalized(catgets(c->DT_catd, 1, 765, 
+	  XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 765,
 					  "Printer Settings"));
 	Pane_XmStrs[DATE_FORMAT_PANE] = 
-	  XmStringCreateLocalized(catgets(c->DT_catd, 1, 766, 
+	  XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 766,
 					  "Date Format"));
 
 	label = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 459, "Category:"));
+				CATGETS(c->DT_catd, 1, 459, "Category:"));
 
 	p->category_menu = widgets[0] = 
 		XmVaCreateSimpleOptionMenu(p->base_form_mgr,
@@ -2448,7 +2448,7 @@ p_make_props_pu(Calendar *c) {
 		XmNbottomWidget, p->separator2,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 655, "OK"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 655, "OK"));
 	p->ok_button = widgets[3] = XtVaCreateWidget("ok",
 		xmPushButtonGadgetClass, p->base_form_mgr,
 		XmNlabelString, xmstr,
@@ -2470,7 +2470,7 @@ p_make_props_pu(Calendar *c) {
 		XmNbottomWidget, p->ok_button,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 460, "Apply"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 460, "Apply"));
 	p->apply_button = widgets[4] = XtVaCreateWidget("apply",
 		xmPushButtonGadgetClass, p->base_form_mgr,
 		XmNlabelString, xmstr,
@@ -2487,7 +2487,7 @@ p_make_props_pu(Calendar *c) {
 	XmStringFree(xmstr);
 	XtAddCallback(p->apply_button, XmNactivateCallback, p_apply_proc, c);
  
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 691, "Reset"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 691, "Reset"));
 	p->defaults_button = widgets[5] = XtVaCreateWidget("reset",
 		xmPushButtonGadgetClass, p->base_form_mgr,
 		XmNlabelString, xmstr,
@@ -2504,7 +2504,7 @@ p_make_props_pu(Calendar *c) {
 	XtAddCallback(p->defaults_button,
 		XmNactivateCallback, p_defaults_proc, c);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 923, "Cancel"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 923, "Cancel"));
 	p->close_button = widgets[6] = XtVaCreateWidget("close",
 		xmPushButtonGadgetClass, p->base_form_mgr,
 		XmNlabelString, xmstr,
@@ -2520,7 +2520,7 @@ p_make_props_pu(Calendar *c) {
 	XmStringFree(xmstr);
 	XtAddCallback(p->close_button, XmNactivateCallback, p_close_proc, p);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
 	p->help_button = widgets[7] = XtVaCreateWidget("help",
 		xmPushButtonGadgetClass, p->base_form_mgr,
 		XmNlabelString, xmstr,
@@ -2649,9 +2649,9 @@ get_editor_vals_from_ui(Props_pu *pu, Props *p) {
 	dur_txt = XmTextGetString(text);
 
 	if (string_is_number(dur_txt) == False) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 1079, "Calendar : Error - Editor Settings"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 819, "The Duration value must be an integer with no sign.\nYour properties settings have not been saved."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1079, "Calendar : Error - Editor Settings"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 819, "The Duration value must be an integer with no sign.\nYour properties settings have not been saved."));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 
 		XtFree(dur_txt);
 		dialog_popup(pu->frame,
@@ -2668,9 +2668,9 @@ get_editor_vals_from_ui(Props_pu *pu, Props *p) {
 	}
 
 	if (atoi(dur_txt) >= (60 *24)) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 1079, "Calendar : Error - Editor Settings"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 916, "The Duration value must be less than 24 hours.\nYour properties settings have not been saved."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 1079, "Calendar : Error - Editor Settings"));
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 916, "The Duration value must be less than 24 hours.\nYour properties settings have not been saved."));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 
 		XtFree(dur_txt);
 		dialog_popup(pu->frame,
@@ -2689,9 +2689,9 @@ get_editor_vals_from_ui(Props_pu *pu, Props *p) {
 	get_dssw_times(&pu->ep_dssw);
 
 	if (string_is_time(pu->ep_dssw.start_val.val) == False) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 1079, "Calendar : Error - Editor Settings"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 820, "The start value must be a valid time.\nYour properties settings have not been saved."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 1079, "Calendar : Error - Editor Settings"));
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 820, "The start value must be a valid time.\nYour properties settings have not been saved."));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(pu->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -2732,18 +2732,18 @@ get_editor_vals_from_ui(Props_pu *pu, Props *p) {
 	}
 
 	if ((status = get_reminders_vals(&pu->ep_reminders, False)) != REMINDERS_OK) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 1079, "Calendar : Error - Editor Settings"));
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1079, "Calendar : Error - Editor Settings"));
 	  	char *text;
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		switch (status) {
 
-		case ADVANCE_BLANK : text = XtNewString(catgets(c->DT_catd, 1, 908, "You may not set a blank reminder value.\nYour properties settings have not been saved."));
+		case ADVANCE_BLANK : text = XtNewString(CATGETS(c->DT_catd, 1, 908, "You may not set a blank reminder value.\nYour properties settings have not been saved."));
 			break;
 
-		case ADVANCE_CONTAINS_BLANK : text = XtNewString(catgets(c->DT_catd, 1, 909, "You may not set a reminder value with an embedded blank.\nYour properties settings have not been saved."));
+		case ADVANCE_CONTAINS_BLANK : text = XtNewString(CATGETS(c->DT_catd, 1, 909, "You may not set a reminder value with an embedded blank.\nYour properties settings have not been saved."));
 			break;
 
-		case ADVANCE_NONNUMERIC : text = XtNewString(catgets(c->DT_catd, 1, 910, "Reminder values must be a number with an optional sign.\nYour properties settings have not been saved."));
+		case ADVANCE_NONNUMERIC : text = XtNewString(CATGETS(c->DT_catd, 1, 910, "Reminder values must be a number with an optional sign.\nYour properties settings have not been saved."));
 			break;
 
 		}
@@ -2796,9 +2796,9 @@ get_display_vals_from_ui(Props_pu *pu, Props *p) {
 
 	set_char_prop(p, CP_CALLOC, str = XmTextGetString(pu->dp_loc_text));
 	if (blank_buf(str) || embedded_blank(str)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 1083, "Calendar : Error - Display Settings"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 772, "You may not save a blank User Calendar Location\nor one that contains blanks.\nYour properties settings have not been saved."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1083, "Calendar : Error - Display Settings"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 772, "You may not save a blank User Calendar Location\nor one that contains blanks.\nYour properties settings have not been saved."));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(pu->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -2839,9 +2839,9 @@ get_display_vals_from_ui(Props_pu *pu, Props *p) {
 		str = XmTextGetString(pu->dp_init_view_text));
 
 	if (blank_buf(str) || embedded_blank(str)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 1083, "Calendar : Error - Display Settings"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 773, "You may not save a blank Initial Calendar View\nor one that contains blanks.\nYour properties settings have not been saved."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1083, "Calendar : Error - Display Settings"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 773, "You may not save a blank Initial Calendar View\nor one that contains blanks.\nYour properties settings have not been saved."));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(pu->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -2883,15 +2883,15 @@ static void
 print_option_error(Props_pu *pu, int setNum, int msgNum, char *str)
 {
   Calendar *c = pu->cal;
-  char *text = XtNewString(catgets(c->DT_catd, setNum, msgNum, str));
+  char *text = XtNewString(CATGETS(c->DT_catd, setNum, msgNum, str));
   static char *title = (char *)NULL;
   static char *ident1 = (char *)NULL;
 
   if (title == (char *)NULL)
-    title = XtNewString(catgets(c->DT_catd, 1, 1085,
+    title = XtNewString(CATGETS(c->DT_catd, 1, 1085,
 				"Calendar : Error - Printer Settings"));
   if (ident1 == (char *)NULL)
-    ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+    ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 
   dialog_popup(pu->frame,
 	       DIALOG_TITLE, title,

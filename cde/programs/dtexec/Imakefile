@@ -6,11 +6,12 @@ DEPEND_DEFINES = $(DEPENDDEFINES)
 DEFINES = -DMSGLOG_CLIENT_ONLY
 INCLUDES = -I. $(TIRPCINC)
 
-SRCS = DtGetMessage.c Main.c MsgLog.c
-OBJS = DtGetMessage.o Main.o MsgLog.o
+SRCS = DtGetMessage.c Main.c MsgCat.c MsgLog.c
+OBJS = DtGetMessage.o Main.o MsgCat.o MsgLog.o
 
 ComplexProgramTarget(dtexec)
 
 LinkSourceFile(DtSvcLock.h,$(DTSVCSRC)/include)
+LinkSourceFile(MsgCat.c,$(DTSVCSRC)/DtUtil2)
 LinkSourceFile(MsgLog.c,$(DTSVCSRC)/DtUtil2)
 LinkSourceFile(DtGetMessage.c,$(DTSVCSRC)/DtUtil2)

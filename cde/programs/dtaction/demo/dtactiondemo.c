@@ -54,7 +54,7 @@
 
 #include <limits.h>
 #include <stddef.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <signal.h>
 
 #include <errno.h>

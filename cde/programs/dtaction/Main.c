@@ -44,7 +44,7 @@
 #include <limits.h>
 #include <stddef.h>
 #include <unistd.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <signal.h>
 #include <locale.h>
 #include <sys/param.h>		/* for MAXPATHLEN and MAXHOSTNAMELEN */

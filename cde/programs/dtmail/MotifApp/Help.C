@@ -50,10 +50,8 @@
 #include <Dt/Editor.h>
 #include "Help.hh"
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 extern nl_catd catd;
-
-#include "NLS.hh"
 
 void DisplayMain( Widget, char *, char *);
 static Widget helpMain = NULL;
@@ -126,7 +124,7 @@ DisplayVersion (
 
     if (versionMain != NULL) {
 	n = 0;
-	XtSetArg (args[n], XmNtitle, GETMSG(catd, 1, 4,
+	XtSetArg (args[n], XmNtitle, CATGETS(catd, 1, 4,
 	  "DtMail Version Dialog")); n++;
 	if (helpVolume != NULL) {
 	    XtSetArg (args[n], DtNhelpVolume, helpVolume); n++;
@@ -141,7 +139,7 @@ DisplayVersion (
 
 	// Build a new one in our cached list
 	n = 0;
-	XtSetArg (args[n], XmNtitle, GETMSG(catd, 1, 5,
+	XtSetArg (args[n], XmNtitle, CATGETS(catd, 1, 5,
 	  "DtMail Version Dialog")); n++;
 	if (helpVolume != NULL) {
 	    XtSetArg (args[n], DtNhelpVolume, helpVolume); n++;
@@ -190,7 +188,7 @@ HelpMenuCB (
 
 	    switch ((int) status) {
 		case DtHELP_SELECT_ERROR:
-		    printf(GETMSG(catd, 2, 1, "Selection Error, cannot continue\n"));
+		    printf(CATGETS(catd, 2, 1, "Selection Error, cannot continue\n"));
 		    break;
 		case DtHELP_SELECT_VALID:
 		    while (selWidget != NULL) {
@@ -205,10 +203,10 @@ HelpMenuCB (
 		    }
 		    break;
 		case DtHELP_SELECT_ABORT:
-		    printf(GETMSG(catd, 2, 2, "Selection aborted by user.\n"));
+		    printf(CATGETS(catd, 2, 2, "Selection aborted by user.\n"));
 		    break;
 		case DtHELP_SELECT_INVALID:
-		    printf(GETMSG(catd, 1, 6, 
+		    printf(CATGETS(catd, 1, 6,
 			   "You must select a component withing your app.\n"));
 		    break;
 	    }
@@ -260,9 +258,9 @@ DisplayMain(
     if (helpMain != NULL) {
 	n = 0;
 #ifdef undef
-	XtSetArg (args[n], XmNtitle, GETMSG(catd, 1, 7, "DtMail Help")); n++;
+	XtSetArg (args[n], XmNtitle, CATGETS(catd, 1, 7, "DtMail Help")); n++;
 #endif
-	XtSetArg (args[n], XmNtitle, GETMSG(catd, 1, 12, "Mailer : Help")); n++;
+	XtSetArg (args[n], XmNtitle, CATGETS(catd, 1, 12, "Mailer : Help")); n++;
 	if (helpVolume != NULL) {
 	    XtSetArg (args[n], DtNhelpVolume, helpVolume); n++;
 	}
@@ -277,7 +275,7 @@ DisplayMain(
 	
 	// Build a new one in our cached list
 	n = 0;
-	XtSetArg (args[n], XmNtitle, GETMSG(catd, 1, 12, "Mailer : Help")); n++;
+	XtSetArg (args[n], XmNtitle, CATGETS(catd, 1, 12, "Mailer : Help")); n++;
 	if (helpVolume != NULL) {
 	    XtSetArg (args[n], DtNhelpVolume, helpVolume); n++;
 	}
@@ -306,9 +304,9 @@ DisplayErrorHelp(
     if (helpError) {
 	n = 0;
 #ifdef undef
-	XtSetArg (args[n], XmNtitle, GETMSG(catd, 1, 7, "DtMail Help")); n++;
+	XtSetArg (args[n], XmNtitle, CATGETS(catd, 1, 7, "DtMail Help")); n++;
 #endif
-	XtSetArg (args[n], XmNtitle, GETMSG(catd, 1, 12, "Mailer : Help")); n++;
+	XtSetArg (args[n], XmNtitle, CATGETS(catd, 1, 12, "Mailer : Help")); n++;
 	if (helpVolume != NULL) {
 	    XtSetArg (args[n], DtNhelpVolume, helpVolume); n++;
 	}
@@ -323,9 +321,9 @@ DisplayErrorHelp(
 	// when done.
 	n = 0;
 #ifdef undef
-	XtSetArg (args[n], XmNtitle, GETMSG(catd, 1, 8, "DtMail Help")); n++;
+	XtSetArg (args[n], XmNtitle, CATGETS(catd, 1, 8, "DtMail Help")); n++;
 #endif
-	XtSetArg (args[n], XmNtitle, GETMSG(catd, 1, 12, "Mailer : Help")); n++;
+	XtSetArg (args[n], XmNtitle, CATGETS(catd, 1, 12, "Mailer : Help")); n++;
 	if (helpVolume != NULL) {
 	XtSetArg (args[n], DtNhelpVolume, helpVolume); n++;
 	}

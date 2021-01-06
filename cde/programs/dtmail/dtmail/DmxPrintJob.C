@@ -214,13 +214,13 @@ DmxPrintJob::cancel(void)
 							"Dialog",
 							_parent->baseWidget());
             char *errMsg =
-	      GETMSG(
+	      CATGETS(
 	        DT_catd, 21, 23,
 	        "The X Print Server is temporarily out of resources.");
 
-            genDialog->setToErrorDialog(GETMSG(DT_catd, 1, 6, "Mailer"),
+            genDialog->setToErrorDialog(CATGETS(DT_catd, 1, 6, "Mailer"),
                             		errMsg);
-            genDialog->post_and_return(GETMSG(DT_catd, 3, 9, "OK"), NULL);
+            genDialog->post_and_return(CATGETS(DT_catd, 3, 9, "OK"), NULL);
             delete genDialog;
 
 	    theRoamApp.setErrorPrintDisplay(NULL);
@@ -416,19 +416,19 @@ DmxPrintJob::createOutputWidgets (void)
         char		*errMsg = (char *) XtMalloc(1024);
 	char		*i18nMsg;
 
-	i18nMsg = GETMSG(
+	i18nMsg = CATGETS(
 			DT_catd, 21, 2,
 			"One of the following margin specifiers \n has incorrect syntax: \n %s \n %s \n %s \n %s \nContinue using default margins?"
 			);
 
         sprintf(errMsg, i18nMsg, top, right, bottom, left);
         genDialog->setToErrorDialog(
-                            GETMSG(DT_catd, 21, 3, "Mailer"),
+                            CATGETS(DT_catd, 21, 3, "Mailer"),
                             errMsg);
         XtFree(errMsg);
 
         genDialog->post_and_return(
-                            GETMSG(DT_catd, 21, 4, "OK"),
+                            CATGETS(DT_catd, 21, 4, "OK"),
                             NULL);
         delete genDialog;
     }
@@ -471,7 +471,7 @@ DmxPrintJob::doPrint (void)
     //
     if (_parent != NULL) {
         char *buf = new char[1024];
-	char *msg = GETMSG(DT_catd, 21, 1, "Printing %s ...");
+	char *msg = CATGETS(DT_catd, 21, 1, "Printing %s ...");
         sprintf(buf, msg, _filename);
         _parent->setStatus(buf);
 
@@ -526,7 +526,7 @@ DmxPrintJob::doPrint (void)
             XFlush(XtDisplay(_pshell));
 
 	    genDialog = new DtMailGenDialog("Dialog", w);
-            appmessage = (char *) GETMSG(
+            appmessage = (char *) CATGETS(
                                 DT_catd, 21, 14,
                                 "'Print to File'  was unsuccessful.");
  
@@ -548,11 +548,11 @@ DmxPrintJob::doPrint (void)
             }
  
             genDialog->setToErrorDialog(
-                            GETMSG(DT_catd, 21, 3, "Mailer"),
+                            CATGETS(DT_catd, 21, 3, "Mailer"),
                             message);
 #if 0
             genDialog->post_and_return(
-                            GETMSG(DT_catd, 21, 4, "OK"),
+                            CATGETS(DT_catd, 21, 4, "OK"),
                             NULL);
             delete genDialog;
 #else
@@ -887,7 +887,7 @@ DmxPrintJob::getPageHeaderString(
 	    {
 		char	*hdrstr = msg->getMessageHeader(DMXCC);
 
-	        format = GETMSG(DT_catd, 21, 5, "Cc:  %s");
+	        format = CATGETS(DT_catd, 21, 5, "Cc:  %s");
 	        buf = (char *) malloc(strlen(format) + strlen(hdrstr) + 1); 
 	        if (buf != (char *) NULL)
 	          sprintf(buf, format, hdrstr);
@@ -899,7 +899,7 @@ DmxPrintJob::getPageHeaderString(
 	    {
 		char	*hdrstr = msg->getMessageHeader(DMXDATE);
 
-	        format = GETMSG(DT_catd, 21, 6, "Date:  %s");
+	        format = CATGETS(DT_catd, 21, 6, "Date:  %s");
 	        buf = (char *) malloc(strlen(format) + strlen(hdrstr) + 1); 
 	        if (buf != (char *) NULL)
 	          sprintf(buf, format, hdrstr);
@@ -911,7 +911,7 @@ DmxPrintJob::getPageHeaderString(
 	    {
 		char	*hdrstr = msg->getMessageHeader(DMXFROM);
 
-	        format = GETMSG(DT_catd, 21, 7, "From:  %s");
+	        format = CATGETS(DT_catd, 21, 7, "From:  %s");
 	        buf = (char *) malloc(strlen(format) + strlen(hdrstr) + 1); 
 	        if (buf != (char *) NULL)
 	          sprintf(buf, format, hdrstr);
@@ -923,7 +923,7 @@ DmxPrintJob::getPageHeaderString(
 	    {
 		char	*hdrstr = msg->getMessageHeader(DMXSUBJ);
 
-	        format = GETMSG(DT_catd, 21, 8, "Subject:  %s");
+	        format = CATGETS(DT_catd, 21, 8, "Subject:  %s");
 	        buf = (char *) malloc(strlen(format) + strlen(hdrstr) + 1); 
 	        if (buf != (char *) NULL)
 	          sprintf(buf, format, hdrstr);
@@ -935,7 +935,7 @@ DmxPrintJob::getPageHeaderString(
 	    {
 		char	*hdrstr = msg->getMessageHeader(DMXTO);
 
-	        format = GETMSG(DT_catd, 21, 9, "To:  %s");
+	        format = CATGETS(DT_catd, 21, 9, "To:  %s");
 	        buf = (char *) malloc(strlen(format) + strlen(hdrstr) + 1); 
 	        if (buf != (char *) NULL)
 	          sprintf(buf, format, hdrstr);
@@ -948,7 +948,7 @@ DmxPrintJob::getPageHeaderString(
 	    // Allocate space for the format and the translated page number.
 	    //
 	    {
-	        format = GETMSG(DT_catd, 21, 10, "Page %d of %d");
+	        format = CATGETS(DT_catd, 21, 10, "Page %d of %d");
 	        buf = (char *) malloc(strlen(format) + 16); 
 	        if (buf != (char *) NULL)
 	          sprintf(buf, format, _spool_npages_done, _spool_npages_total);
@@ -961,7 +961,7 @@ DmxPrintJob::getPageHeaderString(
 	    {
 		struct passwd	*pw;
 	        
-		format = GETMSG(DT_catd, 21, 11, "Mail For:  %s");
+		format = CATGETS(DT_catd, 21, 11, "Mail For:  %s");
 		pw = getpwuid(getuid());
 	        buf = (char *) malloc(strlen(format) + strlen(pw->pw_name) + 1);
 	        if (buf != (char *) NULL)
@@ -996,14 +996,14 @@ DmxPrintJob::finishedPrintToFile(
     {
 	DtMailGenDialog *genDialog = new DtMailGenDialog("Dialog", w);
 
-        message = (char *) GETMSG(
+        message = (char *) CATGETS(
                                 DT_catd, 21, 14,
                                 "'Print to File'  was unsuccessful.");
         genDialog->setToErrorDialog(
-                            GETMSG(DT_catd, 21, 3, "Mailer"),
+                            CATGETS(DT_catd, 21, 3, "Mailer"),
                             message);
         genDialog->post_and_return(
-                            GETMSG(DT_catd, 21, 4, "OK"),
+                            CATGETS(DT_catd, 21, 4, "OK"),
                             NULL);
         delete genDialog;
     }
@@ -1011,15 +1011,15 @@ DmxPrintJob::finishedPrintToFile(
     {
 	DtMailGenDialog *genDialog = new DtMailGenDialog("Dialog", w);
 
-        message = (char *) GETMSG(
+        message = (char *) CATGETS(
                                 DT_catd, 21, 15,
                                 "'Print to File' completed successfully");
 
         genDialog->setToWarningDialog(
-                            GETMSG(DT_catd, 21, 3, "Mailer"),
+                            CATGETS(DT_catd, 21, 3, "Mailer"),
                             message);
         genDialog->post_and_return(
-                            GETMSG(DT_catd, 21, 4, "OK"),
+                            CATGETS(DT_catd, 21, 4, "OK"),
                             NULL);
         delete genDialog;
     }
@@ -1084,7 +1084,7 @@ DmxPrintJob::pdmNotificationCB(
         case XmCR_PDM_START_ERROR:
         case XmCR_PDM_START_VXAUTH:
         case XmCR_PDM_START_PXAUTH:
-	    message = (char *) GETMSG(
+	    message = (char *) CATGETS(
 			DT_catd, 21, 24,
 			"Print Dialog Manager error - setup failed.");
 	    break;
@@ -1099,10 +1099,10 @@ DmxPrintJob::pdmNotificationCB(
 						"Dialog",
 						thisJob->_parent->baseWidget());
         genDialog->setToErrorDialog(
-                            GETMSG(DT_catd, 21, 3, "Mailer"),
+                            CATGETS(DT_catd, 21, 3, "Mailer"),
                             message);
         genDialog->post_and_return(
-                            GETMSG(DT_catd, 21, 25, "Continue"),
+                            CATGETS(DT_catd, 21, 25, "Continue"),
                             NULL);
         delete genDialog;
     }

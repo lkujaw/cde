@@ -164,7 +164,7 @@ ab_load_bil_file(
 		    /* The first thing in the message is 
 		     * some general text. 
 		     */
-		    init_msg = catgets(Dtb_project_catd, 100, 38, "The following modules are read-only.\nIf you edit these modules, you\nwill not be able to save your edits.");
+		    init_msg = CATGETS(Dtb_project_catd, 100, 38, "The following modules are read-only.\nIf you edit these modules, you\nwill not be able to save your edits.");
 
 		    /* If we have an old buffer lying around, free it */
 		    if (errmsg != (STRING) NULL) 
@@ -193,7 +193,7 @@ ab_load_bil_file(
 
     if (!util_strempty(errmsg))
     {
-	util_set_help_data(catgets(Dtb_project_catd, 100, 92,
+	util_set_help_data(CATGETS(Dtb_project_catd, 100, 92,
 	    "Any changes made to a read-only module cannot be saved,\nunless you save the module to a different file name."),
 	    NULL, NULL);
 	util_puts(errmsg);
@@ -203,7 +203,7 @@ ab_load_bil_file(
 
     if( obj_get_num_children(newProject) == 0 )
     {
-	sprintf(Buf, catgets(Dtb_project_catd, 100, 23,
+	sprintf(Buf, CATGETS(Dtb_project_catd, 100, 23,
 		"%s: Empty project file loaded."), fileName);
 	xm_buf = XmStringCreateLocalized(Buf);
 	dtb_palette_empty_proj_msg_initialize(&dtb_palette_empty_proj_msg);
@@ -443,14 +443,14 @@ ab_check_and_open_bip(
 	else	/* Read-only file */
 	{
     	    /* You can read it but you can't write to it. */
-            sprintf(Buf, catgets(Dtb_project_catd, 100, 17,
+            sprintf(Buf, CATGETS(Dtb_project_catd, 100, 17,
 		"The file %s is a read-only file.\nYou may open the project\nor cancel the operation."), fileName);
 	    xm_buf = XmStringCreateLocalized(Buf);
 	    dtb_palette_open_ro_proj_msg_initialize(
 			&dtb_palette_open_ro_proj_msg);
 
             help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-            help_data->help_text = catgets(Dtb_project_catd, 100, 90,
+            help_data->help_text = CATGETS(Dtb_project_catd, 100, 90,
 		"Opening a read-only project means that any changes that\naffect the project (.bip) file, such as creation of a\nnew module or creation of a cross-module connection,\ncannot be saved, unless you save the project to a\ndifferent file name. You have the option of continuing\nwith the open operation or cancelling it.");
             help_data->help_volume = "";
             help_data->help_locationID = "";
@@ -476,7 +476,7 @@ ab_check_and_open_bip(
     }
     else 
     {
-	sprintf(Buf, catgets(Dtb_project_catd, 100, 20,
+	sprintf(Buf, CATGETS(Dtb_project_catd, 100, 20,
 		"%s does not have read permission."), fileName);
         xm_buf = XmStringCreateLocalized(Buf);
         dtb_palette_error_msg_initialize(&dtb_palette_error_msg);
@@ -550,7 +550,7 @@ ab_check_and_import_bil(
 	    else
 	    {
         	/* You can read it but you can't write to it. */
-        	sprintf(Buf, catgets(Dtb_project_catd, 100, 21,
+        	sprintf(Buf, CATGETS(Dtb_project_catd, 100, 21,
 			    "The file %s is a read-only file.\n\
 			    You may import the module or cancel\n\
 			    the operation."), fileName);
@@ -559,7 +559,7 @@ ab_check_and_import_bil(
 				&dtb_palette_import_ro_msg);
 
                 help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-                help_data->help_text = catgets(Dtb_project_catd, 100, 91,
+                help_data->help_text = CATGETS(Dtb_project_catd, 100, 91,
 		    "Importing a read-only module means that any changes\nthat affect the module cannot be saved, unless you\nsave the module to a different file name. You have\nthe option of continuing with the import operation\nor cancelling it.");
 
                 help_data->help_volume = "";
@@ -585,7 +585,7 @@ ab_check_and_import_bil(
     }
     else
     {
-	sprintf(Buf, catgets(Dtb_project_catd, 100, 9,
+	sprintf(Buf, CATGETS(Dtb_project_catd, 100, 9,
 		"%s does not have read permission."), fileName);
         xm_buf = XmStringCreateLocalized(Buf);  
         dtb_palette_error_msg_initialize(&dtb_palette_error_msg);

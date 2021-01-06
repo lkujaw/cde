@@ -139,13 +139,13 @@ void	hc_decode (
     /* Create hctree from external file? */
     if (hctree == NULL) {
 	if ((hdecode_filebuf = malloc (HDEC_FBUFSZ)) == NULL) {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_huff, 10,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_huff, 10,
 		"%s Out of Memory.\n"),
 		PROGNAME"076");
 	    DtSearchExit (2);
 	}
 	if ((hdecode_file = fopen (hctree_name, "r")) == NULL) {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_huff, 11,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_huff, 11,
 		"%s Cannot open tree file '%s': %s\n"),
 		PROGNAME"082", hctree_name, strerror (errno));
 	    DtSearchExit (2);
@@ -171,7 +171,7 @@ void	hc_decode (
 	}
 	for (i = 0; i <= hctree_root; i++) {
 	    if ((fgets (hdecode_filebuf, HDEC_FBUFSZ, hdecode_file)) == NULL) {
-		fprintf (aa_stderr, catgets(dtsearch_catd, MS_huff, 12,
+		fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_huff, 12,
 		    "%s Invalid format hctree '%s'.\n"),
 		    PROGNAME"106", hctree_name);
 		DtSearchExit (2);
@@ -195,7 +195,7 @@ void	hc_decode (
 
 
     if (encode_id != hctree_id) {
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_huff, 13,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_huff, 13,
 	    "%s Incompatible hctree_ids.\n"),
 	    PROGNAME"118");
 	DtSearchExit (2);

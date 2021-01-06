@@ -27,7 +27,7 @@
 #ifndef __CATMGR_HH__
 #define __CATMGR_HH__
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 #include "Registration.hh"
 

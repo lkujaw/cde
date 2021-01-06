@@ -53,7 +53,7 @@
 #define CM_TTY_H
 
 #include <csa.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include "timeops.h"
 #include "util.h"
 #include "props.h"

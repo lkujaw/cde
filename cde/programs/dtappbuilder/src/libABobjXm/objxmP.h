@@ -47,7 +47,7 @@
 #define _OBJXM_P_H_
 
 #include <X11/Intrinsic.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <ab_private/obj_notify.h>
 #include <ab_private/objxm.h>
 

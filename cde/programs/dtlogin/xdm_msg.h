@@ -30,7 +30,6 @@
 #ifndef _H_XDM_MSG 
 #define _H_XDM_MSG 
 #include <limits.h>
-#include <nl_types.h>
 #define MF_XDM "xdm.cat"
 
 

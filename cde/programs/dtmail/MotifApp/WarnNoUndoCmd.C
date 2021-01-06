@@ -63,17 +63,15 @@
 //////////////////////////////////////////////////////////
 #include "WarnNoUndoCmd.h"
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 extern nl_catd catd;
-
-#include "NLS.hh"
 
 WarnNoUndoCmd::WarnNoUndoCmd ( char *name, char *label, int active) : 
                      AskFirstCmd ( name, label, active )
 {
     _hasUndo = 0;     // Specify that there is no undo
     
-    setQuestion ( GETMSG(catd, 1, 10,
+    setQuestion ( CATGETS(catd, 1, 10,
 	   "This command cannot be undone. Proceed anyway?") );
 }
 

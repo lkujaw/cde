@@ -1940,9 +1940,9 @@ prop_color_ok(
     if (!objxm_color_exists(colorname))
     {
         sprintf(Buf,
-            catgets(Dtb_project_catd, 100, 112, "%s is not a valid color."),
+            CATGETS(Dtb_project_catd, 100, 112, "%s is not a valid color."),
                         colorname);
-	util_set_help_data(catgets(Dtb_project_catd, 100, 113,
+	util_set_help_data(CATGETS(Dtb_project_catd, 100, 113,
 	    	    "The color that was specified is not recognized\nas a valid color name."), NULL, NULL);
 	valid = FALSE;
 
@@ -1977,11 +1977,11 @@ prop_graphic_filename_ok(
 	    valid = True; /* No Filename is valid */
 	else
 	{
-	    util_set_help_data(catgets(Dtb_project_catd, 100, 115,
+	    util_set_help_data(CATGETS(Dtb_project_catd, 100, 115,
 		"If Graphic is specified as the Label Type for\nthe object whose properties are being modified,\nthen a pixmap (.pm, .xpm) or bitmap (.bm, .xbm)\nfile name must be specified in the Graphic Filename\nfield."), NULL, NULL);
 
 	    propP_popup_message(field,
-		catgets(Dtb_project_catd, 100, 114,
+		CATGETS(Dtb_project_catd, 100, 114,
 		   "The \"Graphic Filename\" field cannot be empty."), False);
 	}
     }
@@ -1999,11 +1999,11 @@ prop_graphic_filename_ok(
 	    ext = strrchr(filebase, '.');
 	    ext[0] = '\0'; /* strip off extension */
 
-            util_set_help_data(catgets(Dtb_project_catd, 100, 117,
+            util_set_help_data(CATGETS(Dtb_project_catd, 100, 117,
 		"The graphic file name extension should not be included\nwhen it is specified in the Graphic Filename field."), NULL, NULL);
 
 	    propP_popup_message(field,
-		catgets(Dtb_project_catd, 100, 116,
+		CATGETS(Dtb_project_catd, 100, 116,
 		    "\"Graphic Filename\" field expects the filename\nbase only (no extensions: .pm .xpm .bm .xbm).\nStripping off the extension."), True);
 	    ui_field_set_string(field, filebase);
 	}
@@ -2055,10 +2055,10 @@ prop_help_item_ok(
     }
     if (exists)
     {
-	util_set_help_data(catgets(Dtb_project_catd, 100, 119,
+	util_set_help_data(CATGETS(Dtb_project_catd, 100, 119,
 	    "Two Menubar items cannot both be specified as the\nHelp cascade. To specify a different Menubar item,\nyou must first clear the item that is currently set\nto be the Help cascade, then select the new Menubar\nitem to be the Help cascade."), NULL, NULL);
 
-        sprintf(Buf, catgets(Dtb_project_catd, 100, 118,
+        sprintf(Buf, CATGETS(Dtb_project_catd, 100, 118,
                 "There can only be one Help cascade per Menubar.Item\n\"%s\" is already configured to be the Help cascade,\ntherefore Item \"%s\" cannot also be the Help cascade."),
 		obj_get_label(iobj_list[i]), obj_get_label(item_obj));
 
@@ -2104,10 +2104,10 @@ prop_name_ok(
 
     if (!newname || !*newname)
     {
-	util_set_help_data(catgets(Dtb_project_catd, 100, 121,
+	util_set_help_data(CATGETS(Dtb_project_catd, 100, 121,
 	    "A string must be entered in the Object Name field."),
 	    NULL, NULL);
-    	propP_popup_message( field, catgets(Dtb_project_catd, 100, 120,
+    	propP_popup_message( field, CATGETS(Dtb_project_catd, 100, 120,
 		"A name is required."), False);
 	valid = FALSE;
     }
@@ -2121,11 +2121,11 @@ prop_name_ok(
     {
 	if (other != obj)
 	{
-	    util_set_help_data(catgets(Dtb_project_catd, 100, 123,
+	    util_set_help_data(CATGETS(Dtb_project_catd, 100, 123,
 		"The name specified in the Object Name field is not\na unique name in the module. You must specify a unique\nname for the object."),
 		NULL, NULL);
 
-	    sprintf(Buf, catgets(Dtb_project_catd, 100, 122,
+	    sprintf(Buf, CATGETS(Dtb_project_catd, 100, 122,
 		"Another object in Module \"%s\"\nhas the name \"%s\".\nPlease enter a unique name."), util_strsafe(obj_get_name(module)),newname);
 	    propP_popup_message(field, Buf, False);
 	    valid = FALSE;
@@ -2160,9 +2160,9 @@ prop_number_ok(
 
     	if((s == p) || ((s + strlen(s)) != p))
     	{
-	    util_set_help_data(catgets(Dtb_project_catd, 100, 125,
+	    util_set_help_data(CATGETS(Dtb_project_catd, 100, 125,
 		"The field only accepts integers. You must enter\nan integer value."), NULL, NULL);
-            sprintf(Buf, catgets(Dtb_project_catd, 100, 124,
+            sprintf(Buf, CATGETS(Dtb_project_catd, 100, 124,
 		"\"%s\" must contain an integer."),
                 field_name);
             propP_popup_message(field, Buf, False);
@@ -2174,9 +2174,9 @@ prop_number_ok(
     	value = prop_str_to_int(string);
 	if (value < min_val || value > max_val)
 	{
-            util_set_help_data(catgets(Dtb_project_catd, 100, 127,
+            util_set_help_data(CATGETS(Dtb_project_catd, 100, 127,
 		"The numerical value entered into the field is not valid. Specify a value in the given range."), NULL, NULL);
-	    sprintf(Buf, catgets(Dtb_project_catd, 100, 126,
+	    sprintf(Buf, CATGETS(Dtb_project_catd, 100, 126,
 		"\"%s\" value (%d) out of\nvalid range [%d - %d]."),
 		field_name, value, min_val, max_val);
 	    propP_popup_message(field, Buf, False);
@@ -2217,20 +2217,20 @@ prop_obj_name_ok(
             valid = TRUE;
 	else
 	{
-	    util_set_help_data(catgets(Dtb_project_catd, 100, 129,
+	    util_set_help_data(CATGETS(Dtb_project_catd, 100, 129,
 		"The object specified is not of the correct type.\nFor example, it is an error to specify a button\nas the Popup Menu for a Control Pane."),
 		NULL, NULL);
-	    sprintf(msgbuf, catgets(Dtb_project_catd, 100, 128,
+	    sprintf(msgbuf, CATGETS(Dtb_project_catd, 100, 128,
 		"\"%s\" is not an object of type %s."),
 		objname, objtype_name);
 	}
     }
     else
     {
-	util_set_help_data(catgets(Dtb_project_catd, 100, 136,
+	util_set_help_data(CATGETS(Dtb_project_catd, 100, 136,
 	    "The specified object does not exist or it is\nnot of the correct type."), NULL, NULL);
 
-        sprintf(msgbuf, catgets(Dtb_project_catd, 100, 130,
+        sprintf(msgbuf, CATGETS(Dtb_project_catd, 100, 130,
 		"\"%s\" is not the name of an existing %s."),
                 objname, objtype_name);
     }
@@ -2289,7 +2289,7 @@ prop_submenu_name_ok(
 
 		valid = False;
 
-		fmtStr = XtNewString(catgets(Dtb_project_catd,
+		fmtStr = XtNewString(CATGETS(Dtb_project_catd,
 			100, 132, "Menu \"%s\" is attached as a sub-menu\nto \"%s\". You cannot create a circular\nreference within menus."));
 
 		help_buf = (STRING) util_malloc(strlen(fmtStr) +
@@ -2297,7 +2297,7 @@ prop_submenu_name_ok(
 		sprintf(help_buf, fmtStr, obj_get_name(owner), menu_name);
 
 		util_set_help_data(help_buf, NULL, NULL);
-		sprintf(msgbuf, catgets(Dtb_project_catd, 100, 131,
+		sprintf(msgbuf, CATGETS(Dtb_project_catd, 100, 131,
 		    "Menu \"%s\" is an ancestor of \"%s\"\ntherefore it cannot be attached as a Sub-menu."), menu_name, obj_get_name(owner));
         	propP_popup_message(field, msgbuf, False);
 
@@ -2357,10 +2357,10 @@ prop_string_ok(
     	{
             if (display_notice)
             {
-		util_set_help_data(catgets(Dtb_project_catd, 10, 69,
+		util_set_help_data(CATGETS(Dtb_project_catd, 10, 69,
 		    "Object names are used by the code generator to\ncreate C identifier names. C identifiers must\nbe composed of letters, digits, or underscores.\nTherefore, object names in App Builder must also\nfollow that rule."),
 		     NULL, NULL);
-             	sprintf(Buf, catgets(Dtb_project_catd, 100, 133,
+             	sprintf(Buf, CATGETS(Dtb_project_catd, 100, 133,
 		    "Only letters, digits, and [%s] allowed."), chars);
                 propP_popup_message(field, Buf, False);
             }
@@ -3133,22 +3133,22 @@ handle_auto_apply(
 	{
 	    if (changing_types)
 	    {
-		sprintf(Buf, catgets(Dtb_project_catd, 100, 34,
+		sprintf(Buf, CATGETS(Dtb_project_catd, 100, 34,
 		"Properties for \"%s\" have been modified but not Applied.\
 		\nApply Changes or Cancel Change-ObjectType operation."),
 		loadedObjName);
 
-		help_data->help_text = catgets(Dtb_project_catd, 100,95,
+		help_data->help_text = CATGETS(Dtb_project_catd, 100,95,
 		    "Click Apply Changes to apply the changes to the\ncurrent object and display the new object type.\n\nClick Cancel if you don't want to apply the\nchanges to the current object. You can then\nclick Reset to undo the changes before changing\nto a different object type.");
 	    }
 	    else
 	    {
-		sprintf(Buf, catgets(Dtb_project_catd, 100, 35,
+		sprintf(Buf, CATGETS(Dtb_project_catd, 100, 35,
 		"Properties for \"%s\" have been modified but not Applied.\
 		\nApply Changes or Cancel Close operation."),
 		loadedObjName);
 
-		help_data->help_text = catgets(Dtb_project_catd, 100,96,
+		help_data->help_text = CATGETS(Dtb_project_catd, 100,96,
 		    "Click Apply Changes to apply the changes to the\ncurrent object and close the Property Editor.\n\nClick Cancel if you don't want to apply the\nchanges to the current object and want the\nProperty Editor to remain displayed. You can\nthen click Reset to undo the changes before\nclosing the Property Editor.");
 	    }
 	}
@@ -3156,12 +3156,12 @@ handle_auto_apply(
 	{
 		STRING   newObjName = obj_get_name(new_obj);
 
-		sprintf(Buf, catgets(Dtb_project_catd, 100, 36,
+		sprintf(Buf, CATGETS(Dtb_project_catd, 100, 36,
 		"Properties for \"%s\" have been modified but not Applied.\
 		\nApply Changes or Cancel Load operation for \"%s\"."),
 		 loadedObjName, newObjName);
 
-		help_data->help_text = catgets(Dtb_project_catd, 100,93,
+		help_data->help_text = CATGETS(Dtb_project_catd, 100,93,
 		    "Click Apply Changes to apply the changes to the\ncurrent object and load the selected object.\n\nClick Cancel if you don't want to apply the\nchanges to the current object. You can then\nclick Reset to undo the changes before loading\nthe selected object.");
 	}
 
@@ -4378,7 +4378,7 @@ menu_editCB(
             STRING  help_buf = NULL;
 	    char Buf[256];
 
-            fmtStr = XtNewString(catgets(Dtb_project_catd, 100, 135,
+            fmtStr = XtNewString(CATGETS(Dtb_project_catd, 100, 135,
 		"The menu with the name \"%s\" does not exist in\nthe module \"%s\". Specify a valid menu name."));
 
             help_buf = (STRING) util_malloc(strlen(fmtStr) +
@@ -4386,7 +4386,7 @@ menu_editCB(
             sprintf(help_buf, fmtStr, current_menuname, obj_get_name(module));
 
             util_set_help_data(help_buf, NULL, NULL);
-            sprintf(Buf, catgets(Dtb_project_catd, 100, 134,
+            sprintf(Buf, CATGETS(Dtb_project_catd, 100, 134,
             	"Could not find menu \"%s\" in module \"%s\"."),
 		current_menuname, obj_get_name(module));
             propP_popup_message(pms->field, Buf, False);
@@ -4478,35 +4478,35 @@ void
 strings_init(void)
 {
     LabelForString =
-	XtNewString(catgets(Dtb_project_catd, 100, 215, "Label:"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 215, "Label:"));
     LabelForGraphic =
-	XtNewString(catgets(Dtb_project_catd, 100, 216, "Graphic Filename:"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 216, "Graphic Filename:"));
     NoneItem =
-	XtNewString(catgets(Dtb_project_catd, 100, 217, "None"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 217, "None"));
     XFieldStr =
-	XtNewString(catgets(Dtb_project_catd, 100, 218, "X Field"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 218, "X Field"));
     YFieldStr =
-	XtNewString(catgets(Dtb_project_catd, 100, 219, "Y Field"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 219, "Y Field"));
     WFieldStr =
-	XtNewString(catgets(Dtb_project_catd, 100, 220, "Width Field"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 220, "Width Field"));
     HFieldStr =
-	XtNewString(catgets(Dtb_project_catd, 100, 221, "Height Field"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 221, "Height Field"));
     OffsetFieldStr =
-	XtNewString(catgets(Dtb_project_catd, 100, 222, "Offset Field"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 222, "Offset Field"));
     PercentageFieldStr =
-	XtNewString(catgets(Dtb_project_catd, 100, 223, "Percentage Field"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 223, "Percentage Field"));
     menu_strs[0] =
-	XtNewString(catgets(Dtb_project_catd, 100, 224, "None"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 224, "None"));
     menu_strs[1] =
-	XtNewString(catgets(Dtb_project_catd, 100, 225, "Create New Menu..."));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 225, "Create New Menu..."));
     menu_strs[2] =
-	XtNewString(catgets(Dtb_project_catd, 100, 226, "Menus"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 226, "Menus"));
     menu_strs[3] =
-	XtNewString(catgets(Dtb_project_catd, 100, 227, "Edit Current..."));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 227, "Edit Current..."));
     RowColFieldStr =
-	XtNewString(catgets(Dtb_project_catd, 100, 250, "Rows/Columns Field"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 250, "Rows/Columns Field"));
     VertSpacingFieldStr =
-        XtNewString(catgets(Dtb_project_catd, 100, 251, "Vertical Spacing Field"));
+        XtNewString(CATGETS(Dtb_project_catd, 100, 251, "Vertical Spacing Field"));
     HorizSpacingFieldStr =
-	XtNewString(catgets(Dtb_project_catd, 100, 252, "Horizontal Spacing Field"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 252, "Horizontal Spacing Field"));
 }

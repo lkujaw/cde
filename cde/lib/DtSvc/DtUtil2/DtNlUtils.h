@@ -34,13 +34,12 @@
 /**************************************************************************/
 
 #ifdef NLS16
-
 #include <stdlib.h>
 #include <locale.h>
 #include <string.h>
 #include <limits.h>
-#include <nl_types.h>
 #include <langinfo.h>
+#include <Dt/MsgCatP.h>
 #endif
 
 #include <X11/Intrinsic.h>

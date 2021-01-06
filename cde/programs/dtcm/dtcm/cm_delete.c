@@ -61,7 +61,7 @@ static  char sccsid[] = "@(#)cm_delete.c 1.29 95/03/17 Copyr 1993 Sun Microsyste
 #include <sys/resource.h>
 #include <sys/wait.h>
 #include <csa.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <locale.h>
 #include <Dt/Dt.h>
 #include <Dt/EnvControlP.h>
@@ -118,7 +118,7 @@ cm_args(int argc, char **argv)
 			argv = grab(++argv,cm_view,'-');
 			break;
 		default:
-			fprintf(stderr, "%s", catgets(DT_catd, 1, 187, "Usage:\n\tdtcm_delete [-c calendar] [-d <mm/dd/yy>] [-v view]\n"));
+			fprintf(stderr, "%s", CATGETS(DT_catd, 1, 187, "Usage:\n\tdtcm_delete [-c calendar] [-d <mm/dd/yy>] [-v view]\n"));
 			exit(1);
 		}
 	}
@@ -142,7 +142,7 @@ int main(int argc, char **argv)
 	init_time();
 	setlocale(LC_ALL, "");
 	_DtEnvControl(DT_ENV_SET); /* set up environment variables */
-	DT_catd = catopen(DTCM_CAT, NL_CAT_LOCALE);
+	DT_catd = CATOPEN(DTCM_CAT, NL_CAT_LOCALE);
 	cm_tty_load_props(&p);
 	cm_args(argc,argv);		/* parse command line */
 	target = (cm_strlen(cm_target)) ? cm_target : cm_get_credentials();
@@ -167,10 +167,10 @@ int main(int argc, char **argv)
 	stat = csa_logon(NULL, &csa_user, NULL, NULL, NULL, &c_handle, NULL);
 
 	if (stat != CSA_SUCCESS) {
-	  	char *format = strdup(catgets(DT_catd, 1, 188,
+	  	char *format = strdup(CATGETS(DT_catd, 1, 188,
 					   "\nCould not open calendar %s\n"));
 		fprintf(stderr, format,
-			target ? target : catgets(DT_catd, 1, 189, "UNKNOWN"));
+			target ? target : CATGETS(DT_catd, 1, 189, "UNKNOWN"));
 		free(format);
 		free(uname);
 		free(loc);
@@ -186,7 +186,7 @@ int main(int argc, char **argv)
 			free(loc);
 			exit(0);
 		}
-		fprintf(stdout, "%s", catgets(DT_catd, 1, 190,
+		fprintf(stdout, "%s", CATGETS(DT_catd, 1, 190,
 				       "Item to delete (number)? "));
 		fgets(index, 9, stdin);
 		fprintf(stdout,"\n\n");

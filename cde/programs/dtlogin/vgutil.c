@@ -54,7 +54,6 @@
  *
  ***************************************************************************/
 
-#include <nl_types.h>
 #include <stdio.h>
 #include <setjmp.h>
 #include <time.h>
@@ -64,6 +63,7 @@
 
 #include <X11/Xlibint.h>
 #include <Xm/Xm.h>
+#include <Dt/MsgCatP.h>
 
 #include "vg.h"
 #include "vgmsg.h"
@@ -734,7 +734,7 @@ LogError( unsigned char *fmt, ...)
 void
 CloseCatalog(void)
 {
-    catclose(nl_fd);
+    CATCLOSE(nl_fd);
 }
 
 /***************************************************************************
@@ -773,7 +773,7 @@ OpenCatalog(void)
      */
     if (NULL != langenv)
     {
-	nl_fd = catopen(NLS_CATALOG, NL_CAT_LOCALE);
+	nl_fd = CATOPEN(NLS_CATALOG, NL_CAT_LOCALE);
 	if (0 > (long) nl_fd)
 	  LogError((unsigned char*) MC_DEF_LOG_NO_MSGCAT, langenv);
     }
@@ -794,7 +794,7 @@ ReadCatalog(int setn, int msgn, char *dflt)
     if ((0 > (long) nl_fd) || (NULL == langenv))
       return (unsigned char*) dflt;
     else
-      return (unsigned char*) catgets(nl_fd, setn, msgn, dflt);
+      return (unsigned char*) CATGETS(nl_fd, setn, msgn, dflt);
 }
  
 /***************************************************************************
@@ -1127,48 +1127,3 @@ ToPixel( Widget w, int orientation, int pixel )
 			      XmPIXELS));
     }
 }
-
-
-
-#if 0
-/***************************************************************************
- *
- *  _DtMessage Catalog Stubs
- *
- *  These stub routines can be used for porting to systems that do not yet
- *  support message catalogs. Replace the above "0" with an appropriate
- *  define for your target system. Do the same for the external defines
- *  in "vg.h".
- ***************************************************************************/
-
-nl_catd
-catopen(name, oflag)
-  char	  *name;
-  int	   oflag;
-
-{
-  return (555);
-}
-
-  
-int
-catclose(catd)
-  nl_catd  catd;
-
-{
-  return;
-}
-  
-
-char *
-catgets(catd, set_num, msg_num, def_str)
-  nl_catd  catd;
-  int	   set_num;
-  int	   msg_num;
-  char	  *def_str;
-
-{
-    return (def_str);
-}    
-
-#endif

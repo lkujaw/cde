@@ -164,7 +164,7 @@ projP_show_save_as_bil_chooser(
     /* Pass along the client_data to the okCallback */
     ok_callback[0].closure = (XtPointer) obj;
 
-    ok_label = XmStringCreateLocalized(catgets(Dtb_project_catd, 100, 237, "Save"));
+    ok_label = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 100, 237, "Save"));
     XtVaSetValues(AB_generic_chooser,
                 XmNautoUnmanage, FALSE,
                 XtVaTypedArg, XmNpattern,
@@ -176,7 +176,7 @@ projP_show_save_as_bil_chooser(
                 NULL);
     XmStringFree(ok_label);
 
-    title = XtNewString(catgets(Dtb_project_catd, 100, 242, "Save BIL File"));
+    title = XtNewString(CATGETS(Dtb_project_catd, 100, 242, "Save BIL File"));
     XtVaSetValues(XtParent(AB_generic_chooser),
                 XmNtitle, title,
                 XmNpopdownCallback, &popdown_callback,
@@ -235,13 +235,13 @@ save_as_bil_okCB(
     }
     if (util_file_is_directory(fullpath))
     {
-        sprintf(Buf, catgets(Dtb_project_catd, 100, 73,
+        sprintf(Buf, CATGETS(Dtb_project_catd, 100, 73,
                 "Cannot save the module to %s.\n%s is a directory not a file."), fullpath, fullpath);
         xm_buf = XmStringCreateLocalized(Buf);
         dtb_proj_error_msg_initialize(&dtb_proj_error_msg);
 
 	help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-	help_data->help_text = catgets(Dtb_project_catd, 100, 87,
+	help_data->help_text = CATGETS(Dtb_project_catd, 100, 87,
 	    "The file name you specified for saving the\nmodule is a directory. Type another file name\nfor the module.");
 	help_data->help_volume = "";
 	help_data->help_locationID = "";
@@ -273,13 +273,13 @@ save_as_bil_okCB(
 	}
 	else
         {
-	    sprintf(Buf, catgets(Dtb_project_catd, 100, 76,
+	    sprintf(Buf, CATGETS(Dtb_project_catd, 100, 76,
 		    "Cannot save module to \"%s\".\n\"%s\" does not have write permission."), mod_dir, mod_dir);
 	    xm_buf = XmStringCreateLocalized(Buf);
 	    dtb_proj_error_msg_initialize(&dtb_proj_error_msg);
 
             help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-            help_data->help_text = catgets(Dtb_project_catd, 100, 88, 
+            help_data->help_text = CATGETS(Dtb_project_catd, 100, 88,
 		"The directory you specified for saving is not\nwritable by you. Therefore, the module cannot\nbe saved. Try saving the module to another\ndirectory.");
             help_data->help_volume = ""; 
             help_data->help_locationID = ""; 
@@ -341,10 +341,10 @@ projP_save_export_bil(
 	}
 	else
 	{
-	    sprintf(Buf, catgets(Dtb_project_catd, 100, 7,
+	    sprintf(Buf, CATGETS(Dtb_project_catd, 100, 7,
 		    "%s is a read-only file."), old_filename);
 
-	    util_set_help_data(catgets(Dtb_project_catd, 100, 81,
+	    util_set_help_data(CATGETS(Dtb_project_catd, 100, 81,
 		"The changes that were made cannot be saved\nbecause you do not have permission to write\nto the file."), NULL, NULL);
 	    util_printf_err(Buf);
 	}

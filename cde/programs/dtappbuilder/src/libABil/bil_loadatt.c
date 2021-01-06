@@ -1352,7 +1352,7 @@ bilP_load_att_name(BIL_TOKEN valueToken)
 
 	    obj_name = obj_get_name(load_obj);
 	    sprintf(msg, 
-		catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 36,
+		CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 36,
 		  "Duplicate name.  Changed to %s.\n\t(This may be a conflict with the interface or project name)\n"), obj_name);
 	    abil_print_custom_load_err(msg);
 	}
@@ -1986,7 +1986,7 @@ bilP_load_att_type(BIL_TOKEN valueToken)
 	
 	 /* REMIND: make cat entry!
 	 sprintf(msg, 
-		catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 36,
+		CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 36,
 		  "Duplicate name.  Changed to %s.\n\t(This may be a conflict with the interface or project name)\n"),
 		    obj_name);
 	*/
@@ -2139,7 +2139,7 @@ bilP_load_list_value(BIL_TOKEN token)
 	    	obj_set_drag_types(loadObj, dndTypeFlag);
 	    else
         	util_dprintf(1, "%s", 
-			abil_loadmsg(catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 48,
+			abil_loadmsg(CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 48,
 			"only 1 drag-type allowed - discarding additional drag-type")));
 	break;
 

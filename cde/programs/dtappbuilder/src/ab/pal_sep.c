@@ -157,7 +157,7 @@ separator_initialize(
 {
     obj_set_unique_name(obj, "separator");
 
-    obj_set_label(obj, catgets(Dtb_project_catd, 22, 46, "Separator"));
+    obj_set_label(obj, CATGETS(Dtb_project_catd, 22, 46, "Separator"));
     obj_set_line_style(obj, AB_LINE_ETCHED_IN);
     obj_set_is_initially_visible(obj, True);
     obj_set_is_initially_active(obj, True);

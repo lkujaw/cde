@@ -931,12 +931,12 @@ abmfP_write_add_callbacks_and_actions(
                             util_strsafe(util_when_to_string(when));
 
                         if(src_obj_name == NULL) {
-                            util_printf_err(catgets(Dtb_project_catd, 1, 74,
+                            util_printf_err(CATGETS(Dtb_project_catd, 1, 74,
                                "Ignoring unsupported WHEN - obj:<unnamed> when:%s\n"),
                                when_string);
                         }
                         else {
-                            util_printf_err(catgets(Dtb_project_catd, 1, 75,
+                            util_printf_err(CATGETS(Dtb_project_catd, 1, 75,
                                "Ignoring unsupported WHEN - obj:%s when:%s\n"),
                                src_obj_name, when_string);
                         }

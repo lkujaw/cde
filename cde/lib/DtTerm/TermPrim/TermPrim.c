@@ -73,7 +73,7 @@ extern char * _DtTermPrimGetMessage( char *filename, int set, int n, char *s );
 #include <Xm/ManagerP.h>
 #include <signal.h>
 #include <ctype.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <wchar.h>
 #if defined(__linux__) || defined(hpV4)
 # include <sys/types.h> /* For FD_* macros. */
@@ -3776,10 +3776,10 @@ _DtTermPrimGetMessage(
                          */
                         nlmsg_fd = (nl_catd) -1;
                 else
-                        nlmsg_fd = catopen(filename, NL_CAT_LOCALE);
+                        nlmsg_fd = CATOPEN(filename, NL_CAT_LOCALE);
         }
 	_DtTermProcessUnlock();
-        msg=catgets(nlmsg_fd,set,n,s);
+        msg=CATGETS(nlmsg_fd,set,n,s);
         return (msg);
 }
 

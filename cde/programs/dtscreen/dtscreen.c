@@ -101,10 +101,10 @@
 
 /*              include file for message texts          */
 #include <limits.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #define MF_DTSCREEN "dtscreen"
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <locale.h>
 nl_catd  scmc_catd;   /* Cat descriptor for scmc conversion */
 
@@ -198,7 +198,7 @@ allocpixel(Colormap cmap, char *name, char *def)
                 name, def);
 
 #else
-        fprintf(stderr, catgets(scmc_catd, 2, 35, 
+        fprintf(stderr, CATGETS(scmc_catd, 2, 35,
              "couldn't allocate: %s, using %s instead\n"),
                 name, def);
 #endif
@@ -225,7 +225,7 @@ main(int argc, char *argv[])
 
     /* set locale to what is defined by local environment */
     setlocale(LC_ALL,"");
-    scmc_catd = catopen(MF_DTSCREEN, NL_CAT_LOCALE);
+    scmc_catd = CATOPEN(MF_DTSCREEN, NL_CAT_LOCALE);
 
     ProgramName = strrchr(argv[0], '/');
     if (ProgramName)
@@ -264,7 +264,7 @@ main(int argc, char *argv[])
       */
       if (!DtSaverGetWindows(dsp, &winprop, &nitems))
       {
-        fprintf(stderr, catgets(scmc_catd, 2, 40,
+        fprintf(stderr, CATGETS(scmc_catd, 2, 40,
              "%s: Cannot locate window in which to draw. Using the -create\n"
              "option will cause %s to create its own window.\n"),
              ProgramName, ProgramName);

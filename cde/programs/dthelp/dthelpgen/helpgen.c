@@ -24,7 +24,7 @@
 #include <dirent.h>
 #include <errno.h>
 #include <locale.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <signal.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -226,9 +226,9 @@ GetMessage (
 	   */
 	  nlmsg_fd = (nl_catd) -1;
 	else
-	  nlmsg_fd = catopen(catFileName, NL_CAT_LOCALE);
+	  nlmsg_fd = CATOPEN(catFileName, NL_CAT_LOCALE);
       }
-    msg=catgets(nlmsg_fd,set,n,s);
+    msg=CATGETS(nlmsg_fd,set,n,s);
     return (msg);
 
 }

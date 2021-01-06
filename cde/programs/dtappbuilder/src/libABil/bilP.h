@@ -46,7 +46,7 @@
 #define _ABIL_BIL_P_H_
 
 #include <stdio.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <ab_private/bil_parse.h>
 #include <ab/util_types.h>
 #include <ab_private/obj.h>

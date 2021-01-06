@@ -122,7 +122,7 @@ char           *nowstring (time_t * now)
     }
     time_ptr = _XLocaltime(now, localtime_buf);
     strftime (buf, sizeof (buf),
-	catgets (dtsearch_catd, MS_misc, 2, "%Y/%m/%d,%H:%M:%S"),
+	CATGETS(dtsearch_catd, MS_misc, 2, "%Y/%m/%d,%H:%M:%S"),
 	time_ptr);
     return buf;
 }  /* nowstring() */
@@ -342,8 +342,8 @@ void           *austext_malloc (size_t size, char *location, void *ignore)
 
     ptr = ((aa_argv0) ? aa_argv0 : "");
     if (location == NULL)
-	location = catgets (dtsearch_catd, MS_misc, 1, "<null>");
-    outofmem_msg = catgets (dtsearch_catd, MS_misc, 3,
+	location = CATGETS(dtsearch_catd, MS_misc, 1, "<null>");
+    outofmem_msg = CATGETS(dtsearch_catd, MS_misc, 3,
 	"*** %sOut of Memory at %s asking for %lu bytes! ***\n");
     fprintf (aa_stderr, outofmem_msg, ptr, location, size);
     fflush (aa_stderr);

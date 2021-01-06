@@ -44,7 +44,18 @@
 extern "C" {
 #endif
 
-extern char *_DtCatgetsCached(nl_catd catd, int set, int num, char *dflt);
+#define CATOPEN(name,oflag) catopen(name,oflag)
+#define CATCLOSE(catd) _DtCatclose(catd)
+#define CATGETS(catd,set,num,dflt) _DtCatgets(catd,set,num,dflt)
+extern char *_DtCatgets(nl_catd catd, int set, int num, const char *dflt);
+extern int _DtCatclose(nl_catd catd);
+
+#if 0 /* TODO: Decide between !I18N_MSG and NO_MESSAGE_CATALOG */
+typedef int nl_catd;
+#define CATOPEN(name,oflag) 0
+#define CATCLOSE(catd) 0
+#define CATGETS(catd,set,num,dflt) dflt
+#endif
 
 #ifdef __cplusplus
 }

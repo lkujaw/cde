@@ -400,12 +400,6 @@ DtMailEnv::DtMailEnv()
   _error_minor_code = DTME_NoError;
 }
 
-#ifdef hpV4
-#define GETMSG(catd, set, msg, dft) _DtCatgetsCached(catd, set, msg, dft)
-#else
-#define GETMSG(catd, set, msg, dft) catgets(catd, set, msg, dft)
-#endif
-
 char *
 DtMailEnv::getMessageText(int set, int msg, char *dft)
 {
@@ -415,10 +409,10 @@ DtMailEnv::getMessageText(int set, int msg, char *dft)
     if ((oneTimeFlag == 0) && (_errorCatalog == (nl_catd) -1))
     {
 	oneTimeFlag++;
-	_errorCatalog = catopen((char*) DtMailCatalogDataFile, NL_CAT_LOCALE);
+	_errorCatalog = CATOPEN((char*) DtMailCatalogDataFile, NL_CAT_LOCALE);
     }
     if (_errorCatalog != (nl_catd) -1)
-      message = GETMSG(_errorCatalog, set, msg, dft);
+      message = CATGETS(_errorCatalog, set, msg, dft);
 
     return message;
 }

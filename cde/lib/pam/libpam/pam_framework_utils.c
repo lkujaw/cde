@@ -41,7 +41,7 @@
 #include <shadow.h>
 #include <locale.h>
 #include <stdio.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <X11/Xthreads.h>
 
 #include <X11/Xos.h>
@@ -304,7 +304,7 @@ __pam_msg_cleanup(
 {
 	_pam_msg_data *msg_data = (_pam_msg_data *) data;
 
-	catclose(msg_data->fd);
+	CATCLOSE(msg_data->fd);
 	free(msg_data);
 }
 
@@ -395,20 +395,20 @@ __pam_get_i18n_msg(
 	    int status = pam_get_data(pamh, filename, (void**) &msg_data);
 
 	    if (status == PAM_SUCCESS) {
-		return (catgets(msg_data->fd, set, n, s));
+		return (CATGETS(msg_data->fd, set, n, s));
 	    }
 
 	    if (status == PAM_NO_MODULE_DATA) {
 		/*
 		 * No message file descriptor found, make and store one.
 		 */
-		nlmsg_fd = catopen(filename, NL_CAT_LOCALE);
-		msg = catgets(nlmsg_fd, set, n, s);
+		nlmsg_fd = CATOPEN(filename, NL_CAT_LOCALE);
+		msg = CATGETS(nlmsg_fd, set, n, s);
 
 		if ((msg_data = (_pam_msg_data *)
 		    calloc(1, sizeof (_pam_msg_data))) == NULL) {
 			output_msg = __pam_thread_backup(msg);
-			catclose(nlmsg_fd);
+			CATCLOSE(nlmsg_fd);
 			return (output_msg);
 		}
 
@@ -421,10 +421,10 @@ __pam_get_i18n_msg(
 
 	/* NULL pamh */
 
-	nlmsg_fd = catopen(filename, NL_CAT_LOCALE);
-	msg = catgets(nlmsg_fd, set, n, s);
+	nlmsg_fd = CATOPEN(filename, NL_CAT_LOCALE);
+	msg = CATGETS(nlmsg_fd, set, n, s);
 	output_msg = __pam_thread_backup(msg);
-	catclose(nlmsg_fd);
+	CATCLOSE(nlmsg_fd);
 	return (output_msg);
 
 }

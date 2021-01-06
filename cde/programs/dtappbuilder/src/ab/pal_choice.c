@@ -203,16 +203,16 @@ choice_initialize(
     {
 	case AB_CHOICE_NONEXCLUSIVE:
 	    obj_set_unique_name(obj, "checkbox");
-	    obj_set_label(obj, catgets(Dtb_project_catd, 100, 253, "Choice:"));
+	    obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 253, "Choice:"));
 	    break;
 	case AB_CHOICE_OPTION_MENU:
             obj_set_unique_name(obj, "optionmenu");
-	    obj_set_label(obj, catgets(Dtb_project_catd, 100, 254, "Options:"));
+	    obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 254, "Options:"));
 	    break;
         case AB_CHOICE_EXCLUSIVE: 
 	default:
             obj_set_unique_name(obj, "radiobox");
-            obj_set_label(obj, catgets(Dtb_project_catd, 100, 253, "Choice:"));
+            obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 253, "Choice:"));
             break;
     }
 
@@ -227,8 +227,8 @@ choice_initialize(
     obj_set_num_columns(obj, 1);
 
     /* Add initial items to Choice */
-    items[0] = catgets(Dtb_project_catd, 6, 70, "itemA");
-    items[1] = catgets(Dtb_project_catd, 6, 71, "itemB");
+    items[0] = CATGETS(Dtb_project_catd, 6, 70, "itemA");
+    items[1] = CATGETS(Dtb_project_catd, 6, 71, "itemB");
     for (i=0; i < XtNumber(items); i++)
     {
         iobj = obj_create(AB_TYPE_ITEM, NULL);

@@ -52,7 +52,7 @@ extern "C" { extern int seteuid(uid_t); }
 #ifdef hpux
 static char **msg_strings = NULL;
 
-// Cannot use multiple catgets paramemter calls in functions because the 
+// Cannot use multiple catgets parameter calls in functions because the
 // previous catgets returned value is overwritten by later catgets calls
 // Example: this would fail on HP systems
 //    sprintf(buf, "%s %s" catgets(...), catgets(...))
@@ -63,7 +63,7 @@ char *Catgets(nl_catd catd, int set_num, int msg_num, char *s)
       return s;
 
    if (!msg_strings[msg_num])
-      msg_strings[msg_num] = strdup(catgets(catd, set_num, msg_num, s));
+      msg_strings[msg_num] = strdup(CATGETS(catd, set_num, msg_num, s));
    return msg_strings[msg_num];
 }
 #endif
@@ -89,9 +89,9 @@ int main(int argc, char **argv)
       errno = 0;
 
 #ifdef NL_CAT_LOCALE
-      dtprintinfo_cat = catopen("dtprintinfo", NL_CAT_LOCALE);
+      dtprintinfo_cat = CATOPEN("dtprintinfo", NL_CAT_LOCALE);
 #else
-      dtprintinfo_cat = catopen("dtprintinfo", 0);
+      dtprintinfo_cat = CATOPEN("dtprintinfo", 0);
 #endif
 
       if ((nl_catd) errno)

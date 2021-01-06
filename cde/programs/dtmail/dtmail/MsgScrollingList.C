@@ -442,7 +442,7 @@ MsgScrollingList::load_headers(
  * There is only space to display 1 character.  If "N" needs to be translated,
  * please make sure the translation is only 1 character.
  */
-   new_status = XmStringCreateLocalized(GETMSG(DT_catd, 1, 110, "N"));
+   new_status = XmStringCreateLocalized(CATGETS(DT_catd, 1, 110, "N"));
    read_status = XmStringCreateLocalized(" ");
 #endif
 
@@ -579,7 +579,7 @@ MsgScrollingList::load_headers(
  * There is only space to display 1 character.  If "N" needs to be translated,
  * please make sure the translation is only 1 character.
  */
-    new_status = XmStringCreateLocalized(GETMSG(DT_catd, 1, 111, "N"));
+    new_status = XmStringCreateLocalized(CATGETS(DT_catd, 1, 111, "N"));
     read_status = XmStringCreateLocalized(" ");
 #endif
 
@@ -873,7 +873,7 @@ MsgScrollingList::deleteSelected(Boolean silent)
 	    * of the message that gets printed if more than one message 
 	    * is moved.
 	    */
-	    str = GETMSG(DT_catd, 3, 84, "%d messages deleted"); 
+	    str = CATGETS(DT_catd, 3, 84, "%d messages deleted");
 	}
 	else
 	{
@@ -883,7 +883,7 @@ MsgScrollingList::deleteSelected(Boolean silent)
 	    * form of the message that gets printed if only one message 
 	    * is moved.
 	    */
-	    str = GETMSG(DT_catd, 3, 85, "%d message deleted"); 
+	    str = CATGETS(DT_catd, 3, 85, "%d message deleted");
 	}
 	status_message = new char[strlen(str) + 10];
 	sprintf(status_message, str, position_count);
@@ -954,8 +954,8 @@ MsgScrollingList::copySelected(
 	    DtMailGenDialog *dialog = _parent->genDialog();
 
 	    dialog->setToErrorDialog(
-				GETMSG(DT_catd, 3, 50, "Mailer"),
-            			GETMSG(DT_catd, 2, 16, "No message selected."));
+				CATGETS(DT_catd, 3, 50, "Mailer"),
+            			CATGETS(DT_catd, 2, 16, "No message selected."));
 	    dialog->post_and_return(helpId);
 	}
 	return(1);
@@ -968,7 +968,7 @@ MsgScrollingList::copySelected(
     // The following is an error message.  "mailrc" is the name of the
     // mail resource file.  Translate as appropriate.
     //
-    parent()->message(GETMSG(DT_catd, 2, 15,"Error - Unable to get mailrc."));
+    parent()->message(CATGETS(DT_catd, 2, 15,"Error - Unable to get mailrc."));
     return(1);
     }
 
@@ -1060,7 +1060,7 @@ MsgScrollingList::copySelected(
 	    // mail folder.  This is the plural form of the message that gets
 	    // printed if more than one message is moved.
 	    //
-	    str = GETMSG(DT_catd, 3, 65, "%d messages moved to %s"); 
+	    str = CATGETS(DT_catd, 3, 65, "%d messages moved to %s");
 	} else {
 	    // NL_COMMENT
 	    // The following sentence means %d number of mail messages have 
@@ -1068,7 +1068,7 @@ MsgScrollingList::copySelected(
 	    // mail folder.  This is the singular form of the message that
 	    // gets printed if only one message is moved.
 	    //
-	    str = GETMSG(DT_catd, 3, 66, "%d message moved to %s"); 
+	    str = CATGETS(DT_catd, 3, 66, "%d message moved to %s");
 	}
 
     } else {
@@ -1078,14 +1078,14 @@ MsgScrollingList::copySelected(
 	    // copied to the %s mail folder.  This is the plural form of the
 	    // message that gets printed if more than one message is copied.
 	    //
-	    str = GETMSG(DT_catd, 3, 67, "%d messages copied to %s"); 
+	    str = CATGETS(DT_catd, 3, 67, "%d messages copied to %s");
 	} else {
 	    // NL_COMMENT
 	    // The following sentence means %d number of mail messages have been
 	    // copied to the %s mail folder.  This is the singular form of the
 	    // message that gets printed if only one message is copied.
 	    //
-	    str = GETMSG(DT_catd, 3, 68, "%d message copied to %s"); 
+	    str = CATGETS(DT_catd, 3, 68, "%d message copied to %s");
 	}
 
     }
@@ -1584,7 +1584,7 @@ MsgScrollingList::display_no_message()
 	 * No mail message has been selected by the user.
 	 */
 
-    parent()->message(GETMSG(DT_catd, 2, 16, "No message selected."));
+    parent()->message(CATGETS(DT_catd, 2, 16, "No message selected."));
     _displayed_item_position = 0;
     _selected_item_position = 0;
 
@@ -1642,7 +1642,7 @@ MsgScrollingList::viewInSeparateWindow(DtMailEnv &mail_error)
 	     * raised in front of existing windows so the user can see it.
 	     */
 	    parent()->message(
-			GETMSG(
+			CATGETS(
 				DT_catd, 3, 69,
 				"View already exists.  Raising it."));
 	    newview->displayInCurrentWorkspace();
@@ -2056,7 +2056,7 @@ MsgScrollingList::undelete_messages(MsgHndArray *tmpMHlist)
 // gregl - new_status and read_status are not used in this function.
 //	   either comment them out (like I'm doing) or free them.
 //
-    new_status = XmStringCreateLocalized(GETMSG(DT_catd, 1, 112, "N"));
+    new_status = XmStringCreateLocalized(CATGETS(DT_catd, 1, 112, "N"));
     read_status = XmStringCreateLocalized(" ");
 #endif
 
@@ -2174,7 +2174,7 @@ MsgScrollingList::undelete_last_deleted()
  * There is only space to display 1 character.  If "N" needs to be translated,
  * please make sure the translation is only 1 character.
  */
-    new_status = XmStringCreateLocalized(GETMSG(DT_catd, 1, 113, "N"));
+    new_status = XmStringCreateLocalized(CATGETS(DT_catd, 1, 113, "N"));
     read_status = XmStringCreateLocalized(" ");
 #endif
 
@@ -2515,7 +2515,7 @@ MsgScrollingList::formatHeader(DtMailHeaderLine & info,
 	attach_symbol[1] = 0;
 	attachment_glyph = XmStringCreate((char *)attach_symbol, "attach");
 	no_attachment_glyph = XmStringCreateLocalized(" ");
-	new_status = XmStringCreateLocalized(GETMSG(DT_catd, 1, 114, "N"));
+	new_status = XmStringCreateLocalized(CATGETS(DT_catd, 1, 114, "N"));
 	read_status = XmStringCreateLocalized(" ");
     }
     
@@ -2621,14 +2621,14 @@ MsgScrollingList::formatHeader(DtMailHeaderLine & info,
             // Refer to strftime man page for explanation of the date format.
 	    now = time(NULL);
 	    if (USE_YEAR_FORMAT_SECONDS < now - ds.dtm_date)
-	      dateformat = GETMSG(DT_catd, 1, 259, "%a %b %d  %Y");
+	      dateformat = CATGETS(DT_catd, 1, 259, "%a %b %d  %Y");
 	    else
 	    {
 
 #ifdef sun
-	        dateformat = GETMSG(DT_catd, 1, 260, "%a %b %d %k:%M");
+	        dateformat = CATGETS(DT_catd, 1, 260, "%a %b %d %k:%M");
 #else
-	        dateformat = GETMSG(DT_catd, 1, 261, "%a %b %d %H:%M");
+	        dateformat = CATGETS(DT_catd, 1, 261, "%a %b %d %H:%M");
 #endif
 	    }
 
@@ -2644,7 +2644,7 @@ MsgScrollingList::formatHeader(DtMailHeaderLine & info,
 	memset(&epoch, 0, sizeof(tm));
 
         /* Refer to strftime man page for explanation of the date format.  */
-	dateformat = GETMSG(DT_catd, 1, 259, "%a %b %d  %Y");
+	dateformat = CATGETS(DT_catd, 1, 259, "%a %b %d  %Y");
 	SafeStrftime(date, BUFSIZ, dateformat, &epoch);
     }
     
@@ -3000,12 +3000,12 @@ MsgScrollingList::layoutLabels()
     #ifdef sun
 	SafeStrftime(buf,
 	     sizeof(buf), 
-	     GETMSG(DT_catd, 1, 222, "%a %b %d %k:%M"), 
+	     CATGETS(DT_catd, 1, 222, "%a %b %d %k:%M"),
 	     tm);
     #else
         SafeStrftime(buf, 
 	     sizeof(buf), 
-	     GETMSG(DT_catd, 1, 223, "%a %b %d %H:%M"), 
+	     CATGETS(DT_catd, 1, 223, "%a %b %d %H:%M"),
 	     tm);
     #endif
 

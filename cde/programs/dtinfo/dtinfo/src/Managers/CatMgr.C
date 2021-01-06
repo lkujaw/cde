@@ -54,14 +54,14 @@ CatMgr::CatMgr() : f_msg(NULL), f_default(NULL)
 	cerr << "(WARNING) NLSPATH not specified" <<  '\n' << flush;
 #endif
 
-    f_catd = catopen(CATALOG_PREFIX, NL_CAT_LOCALE);
+    f_catd = CATOPEN(CATALOG_PREFIX, NL_CAT_LOCALE);
 
     // setup default message
     if (is_open(f_catd)) {
 #ifdef DEBUG	
 	cerr << "(DEBUG) catopen succeeded." << '\n' << flush;
 #endif
-	char* msg = ::catgets(f_catd, Set_CatMgr, DEFAULT_MSG,
+	char* msg = ::CATGETS(f_catd, Set_CatMgr, DEFAULT_MSG,
 						"default message not found.");
 	len = strlen(msg);
 	f_default = new char[len + 1];
@@ -94,7 +94,7 @@ CatMgr::~CatMgr()
 	delete[] f_default;
 
     if (is_open(f_catd)) {
-	int status = catclose(f_catd);
+	int status = CATCLOSE(f_catd);
 	if (status < 0) {
 #ifdef DEBUG
 	    cerr << "(ERROR) catclose failed." << '\n' << flush;
@@ -127,9 +127,9 @@ CatMgr::catgets(int set_num, int msg_num, const char* def)
     if (is_open(f_catd)) {
 	char* msg;
 	if (def)
-	    msg = ::catgets(f_catd, set_num, msg_num, def);
+	    msg = ::CATGETS(f_catd, set_num, msg_num, def);
 	else
-	    msg = ::catgets(f_catd, set_num, msg_num, f_default);
+	    msg = ::CATGETS(f_catd, set_num, msg_num, f_default);
 	int msglen = strlen(msg);
 	len = msglen;
 	f_msg = new char[msglen + 1];

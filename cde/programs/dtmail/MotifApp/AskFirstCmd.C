@@ -65,10 +65,8 @@
 #include "QuestionDialogManager.h"
 
 #include <stdlib.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 extern nl_catd catd;
-
-#include "NLS.hh"
 
 AskFirstCmd::AskFirstCmd ( char *name, 
 			   char *label, 
@@ -77,7 +75,7 @@ AskFirstCmd::AskFirstCmd ( char *name,
     _dialog = NULL;
     _question = NULL;
     _dialogParentWidget = NULL;
-    setQuestion ( GETMSG(catd, 1, 1,
+    setQuestion ( CATGETS(catd, 1, 1,
 	   "Do you really want to execute this command?"));
 }
 

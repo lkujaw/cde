@@ -201,7 +201,7 @@ custdlg_initialize(
     }
     obj_set_unique_name(obj, "dialog");
 
-    obj_set_label(obj, catgets(Dtb_project_catd, 100, 256, "Custom Dialog"));
+    obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 256, "Custom Dialog"));
     obj_set_bg_color(obj, "white");
     obj_set_is_initially_visible(obj, False);
     obj_set_is_initially_active(obj, True);
@@ -813,7 +813,7 @@ custdlg_create_area(
         obj_set_x(label, 1);
         obj_set_y(label, 1);
 	pal_initialize_obj(label);
-	obj_set_label(label, catgets(Dtb_project_catd, 100, 264, "footer message"));
+	obj_set_label(label, CATGETS(Dtb_project_catd, 100, 264, "footer message"));
 	obj_set_label_alignment(label, AB_ALIGN_LEFT);
 	obj_set_unique_name(label,
 		ab_ident_from_name_and_label(obj_get_name(obj), "label"));
@@ -853,9 +853,9 @@ custdlg_create_buttons(
     int     startpos, endpos;
     int		i;
 
-    button_labels[0] = catgets(Dtb_project_catd, 100, 265, "Button1");
-    button_labels[1] = catgets(Dtb_project_catd, 100, 266, "Button2");
-    button_labels[2] = catgets(Dtb_project_catd, 100, 267, "Button3");
+    button_labels[0] = CATGETS(Dtb_project_catd, 100, 265, "Button1");
+    button_labels[1] = CATGETS(Dtb_project_catd, 100, 266, "Button2");
+    button_labels[2] = CATGETS(Dtb_project_catd, 100, 267, "Button3");
 
     endpos = 0;
     for(i=0; i < XtNumber(button_names); i++)

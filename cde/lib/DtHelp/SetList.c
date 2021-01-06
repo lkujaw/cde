@@ -72,10 +72,6 @@
 #include "XInterfaceI.h"
 #include "XUICreateI.h"
 
-#ifdef NLS16
-#include <nl_types.h>
-#endif
-
 /********    Private Function Declarations    ********/
 /********    End Public Function Declarations    ********/
 

@@ -225,7 +225,7 @@ static void     user_args_processor (int argc, char **argv)
 
     if (argc <= 1) {
 PRINT_USAGE:
-	    printf (catgets (dtsearch_catd, MS_cravel, 1,
+	    printf (CATGETS(dtsearch_catd, MS_cravel, 1,
 "\nUSAGE: %s -d<dbname> [options] infile\n"
 "       Listed default file name extensions can be overridden.\n"
 "  -d<dbname>  1 - 8 char database name, incl optional path prefix.\n"
@@ -261,7 +261,7 @@ PRINT_USAGE:
 	    case 'd':	/* (D)ictionary */
 		/* May include both dicname and dicpath */
 		if (!segregate_dicname (argptr + 2)) {
-		    printf (catgets (dtsearch_catd, MS_cravel, 246,
+		    printf (CATGETS(dtsearch_catd, MS_cravel, 246,
 			"\n%s '%s' is invalid path/dictionary name.\n"),
 			PROGNAME, argptr);
 		    goto PRINT_USAGE;
@@ -286,7 +286,7 @@ PRINT_USAGE:
 	    case 'p':
 		if ((recs_per_dot = atoi (argptr + 2)) <= 0) {
 		    recs_per_dot = RECS_PER_DOT;
-		    printf (catgets (dtsearch_catd, MS_cravel, 582,
+		    printf (CATGETS(dtsearch_catd, MS_cravel, 582,
 			    "%sIgnored invalid progress dot argument '%s'.\n"),
 			PROGNAME "582 ", argptr);
 		}
@@ -300,7 +300,7 @@ PRINT_USAGE:
 	    case 'h':
 		duprec_hashsize = atol (argptr + 2);
 		if (duprec_hashsize == 0UL)
-		    printf (catgets (dtsearch_catd, MS_cravel, 13,
+		    printf (CATGETS(dtsearch_catd, MS_cravel, 13,
 			"%s Duplicate record id checking disabled.\n"),
 			PROGNAME);
 		break;
@@ -312,7 +312,7 @@ PRINT_USAGE:
 
 	    default:
 UNKNOWN_ARG:
-		printf (catgets (dtsearch_catd, MS_cravel, 14,
+		printf (CATGETS(dtsearch_catd, MS_cravel, 14,
 		    "\n%s Unknown command line argument '%s'.\n"),
 		    PROGNAME, argptr);
 	}	/* endswitch */
@@ -320,7 +320,7 @@ UNKNOWN_ARG:
 
     /* validate input file name */
     if (argc <= 0) {
-	puts (catgets (dtsearch_catd, MS_cravel, 15,
+	puts (CATGETS(dtsearch_catd, MS_cravel, 15,
 		"\nMissing required input file name.\a"));
 	goto PRINT_USAGE;
     }
@@ -329,7 +329,7 @@ UNKNOWN_ARG:
 
     /* check for missing database name */
     if (dicname[0] == 0) {
-	puts (catgets (dtsearch_catd, MS_cravel, 16,
+	puts (CATGETS(dtsearch_catd, MS_cravel, 16,
 		"\nNo database name specified (-d argument).\a"));
 	goto PRINT_USAGE;
     }
@@ -351,7 +351,7 @@ static void     count_all_records (void)
 {
     char            keybuf[DtSrMAX_DB_KEYSIZE + 4];
 
-    printf (catgets (dtsearch_catd, MS_cravel, 17,
+    printf (CATGETS(dtsearch_catd, MS_cravel, 17,
 	    "%s Initializing total record count "
 	    "in database by actually counting...\n"),
 	    PROGNAME);
@@ -388,7 +388,7 @@ static void     read_dbrec (void)
 {
     RECFRST (PROGNAME "285", OR_DBREC, 0);	/* seqtl retrieval */
     if (db_status != S_OKAY) {
-	printf (catgets (dtsearch_catd, MS_misc, 13,
+	printf (CATGETS(dtsearch_catd, MS_misc, 13,
 	    "%sNo DB record in database '%s'.\n"
 	    "  The usual cause is failure to initialize "
 	    "the database (run initausd).\n"),
@@ -426,7 +426,7 @@ static void     read_dbrec (void)
 
     /* Confirm compatible program-database version numbers */
     if (!is_compatible_version (dbrec.or_version, SCHEMA_VERSION)) {
-	printf (catgets(dtsearch_catd, MS_misc, 14,
+	printf (CATGETS(dtsearch_catd, MS_misc, 14,
 	    "%s Program schema version '%s' incompatible with "
 	    "database '%s' version '%s'.\n") ,
 	    PROGNAME"245", SCHEMA_VERSION, dicname, dbrec.or_version);
@@ -443,7 +443,7 @@ static void     read_dbrec (void)
 	    blobs_are_used = TRUE;
 	    if (!(dbrec.or_compflags & ORC_COMPBLOB)) {
 		/* = don't compress blobs */
-		printf (catgets (dtsearch_catd, MS_cravel, 717,
+		printf (CATGETS(dtsearch_catd, MS_cravel, 717,
 		    "%s Aborting: Uncompressed blobs not yet supported.\n"),
 		    PROGNAME"717");
 		DtSearchExit (5);
@@ -464,7 +464,7 @@ static void     read_dbrec (void)
 	maxdba = dbrec.or_maxdba;
     }
 
-    printf (catgets (dtsearch_catd, MS_cravel, 18,
+    printf (CATGETS(dtsearch_catd, MS_cravel, 18,
 	"%s: '%s' schema ver = %s, rec count = %ld, last slot = %ld.\n"),
 	aa_argv0, dicname, dbrec.or_version,
 	(long)system_reccount, (long)maxdba);
@@ -500,7 +500,7 @@ static void     write_dbrec (void)
     }
     if (db_status != S_OKAY)
 	vista_abort (PROGNAME "344");
-    printf (catgets (dtsearch_catd, MS_cravel, 19,
+    printf (CATGETS(dtsearch_catd, MS_cravel, 19,
 	    "%s: Final database record count = %ld, last slot = %ld.\n"),
 	aa_argv0, (long)system_reccount, (long)maxdba);
     return;
@@ -521,7 +521,7 @@ static void     print_progress (void)
     if (bytes_in <= 0L)
 	bytes_in = fstat_input.st_size;  /* make final msg "100%" */
     TERMINATE_LINE
-    printf (catgets (dtsearch_catd, MS_cravel, 20,
+    printf (CATGETS(dtsearch_catd, MS_cravel, 20,
 	"%s: %ld input records processed in %ldm %lds, (%ld%%).\n"
 	"  %ld duplicates, %ld new, %ld updates.\n"),
 	aa_argv0,
@@ -545,7 +545,7 @@ static void     print_exit_code (int exit_code)
 	putchar ('\n');
 	dotcount = 0;
     }
-    printf ( catgets(dtsearch_catd, MS_cravel, 2,
+    printf ( CATGETS(dtsearch_catd, MS_cravel, 2,
 	"%s: Exit code = %d\n") ,
 	aa_argv0, exit_code);
     fflush (aa_stderr);
@@ -589,7 +589,7 @@ static int      load_next_miscrec (int first_call)
 	if ((totbytes = dbrec.or_fzkeysz + dbrec.or_abstrsz) <= 0)
 	    return FALSE;
 	if (dbrec.or_fzkeysz > 0) {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_cravel, 522,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_cravel, 522,
 		"%s This version of %s does not support semantic databases.\n"),
 		PROGNAME"522", aa_argv0);
 	    DtSearchExit (13);
@@ -638,7 +638,7 @@ static int      load_next_miscrec (int first_call)
 		break;
 
 	    default:
-		fprintf (aa_stderr, catgets (dtsearch_catd, MS_misc, 25,
+		fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_misc, 25,
 			"%sAbort due to program error.\n"),
 		    PROGNAME "549 ");
 		DtSearchExit (54);
@@ -877,16 +877,16 @@ int             main (int argc, char *argv[])
 
     /* Init globals */
     setlocale (LC_ALL, "");
-    dtsearch_catd = catopen (FNAME_DTSRCAT, 0);
+    dtsearch_catd = CATOPEN(FNAME_DTSRCAT, 0);
 
     aa_argv0 = argv[0];
     time (&starttime);
     tmptr = localtime (&starttime);
     starttimeobjd = tm2objdate (tmptr);
     strftime (linebuf, sizeof (linebuf),
-	catgets (dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
+	CATGETS(dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
 	tmptr);
-    printf (catgets (dtsearch_catd, MS_misc, 23,
+    printf (CATGETS(dtsearch_catd, MS_misc, 23,
 	"%s: Version %s.  Run %s.\n"),
 	aa_argv0,
 	DtSrVERSION,
@@ -919,13 +919,13 @@ int             main (int argc, char *argv[])
     src = getcwd (linebuf, sizeof (linebuf));
     if (!src)
 	src = getenv ("PWD");
-    printf (catgets (dtsearch_catd, MS_misc, 24,
+    printf (CATGETS(dtsearch_catd, MS_misc, 24,
 	"%s: cwd = '%s', fzkfile = '%s'\n"),
 	aa_argv0,
-	(src) ? src : catgets (dtsearch_catd, MS_misc, 6, "<unknown>"),
+	(src) ? src : CATGETS(dtsearch_catd, MS_misc, 6, "<unknown>"),
 	fname_input);
     if ((infile = fopen (fname_input, "r")) == NULL) {
-	fprintf (aa_stderr, catgets (dtsearch_catd, MS_misc, 12,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_misc, 12,
 	    "%sUnable to open %s:\n  %s\n"),
 	    PROGNAME "326 ", fname_input, strerror (errno));
 	DtSearchExit (6);
@@ -939,7 +939,7 @@ int             main (int argc, char *argv[])
      * create correctly sized buffers for them.
      */
     if (dbrec.or_fzkeysz > 0) {
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_cravel, 522,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_cravel, 522,
 	    "%s This version of %s does not support semantic databases.\n"),
 	    PROGNAME"523", aa_argv0);
 	DtSearchExit (13);
@@ -950,19 +950,19 @@ int             main (int argc, char *argv[])
 
     /* Get input file size for progress msgs */
     if (fstat (fileno (infile), &fstat_input) == -1) {
-	fprintf (aa_stderr, catgets (dtsearch_catd, MS_cravel, 29,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_cravel, 29,
 	    "%s Unable to get status for %s: %s\n"),
 	    PROGNAME"337", fname_input, strerror (errno));
 	DtSearchExit (10);
     }
     if (fstat_input.st_size <= 0L) {
-	fprintf (aa_stderr, catgets (dtsearch_catd, MS_cravel, 30,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_cravel, 30,
 	    "%s File %s is empty.\n"),
 	    PROGNAME"343", fname_input);
 	DtSearchExit (7);
     }
 
-    printf (catgets (dtsearch_catd, MS_cravel, 31,
+    printf (CATGETS(dtsearch_catd, MS_cravel, 31,
 	"%s: Each dot = %d records processed.\n"),
 	aa_argv0, recs_per_dot);
 
@@ -1016,7 +1016,7 @@ int             main (int argc, char *argv[])
 
 	if (shutdown_now) {
 	    TERMINATE_LINE
-	    printf (catgets (dtsearch_catd, MS_misc, 15,
+	    printf (CATGETS(dtsearch_catd, MS_misc, 15,
 		"%sReceived abort signal %d.\n"),
 		PROGNAME"373 ", shutdown_now);
 	    write_dbrec ();	/* at least update reccount and maxdba */
@@ -1040,7 +1040,7 @@ int             main (int argc, char *argv[])
     INVALID_FORMAT:
 	    normal_exitcode = EXIT_WARNING;
 	    TERMINATE_LINE
-	    printf (catgets (dtsearch_catd, MS_cravel, 579,
+	    printf (CATGETS(dtsearch_catd, MS_cravel, 579,
 		"%s Discarded rec #%ld: Invalid .fzk file format.\n"),
 		cptr, input_reccount);
 	    if (strcmp (linebuf, parg.etxdelim) != 0)
@@ -1081,7 +1081,7 @@ int             main (int argc, char *argv[])
 	if (strlen (db_key) > DtSrMAX_DB_KEYSIZE - 1) {
 	    normal_exitcode = EXIT_WARNING;
 	    TERMINATE_LINE
-	    printf (catgets (dtsearch_catd, MS_cravel, 33,
+	    printf (CATGETS(dtsearch_catd, MS_cravel, 33,
 		"%s Discarded rec #%ld:  Key too long:\n  '%s'.\n"),
 		PROGNAME"606", input_reccount, db_key);
 	    discard_to_ETX (&parg);
@@ -1090,7 +1090,7 @@ int             main (int argc, char *argv[])
 	if (!isalnum (db_key[0])) {
 	    normal_exitcode = EXIT_WARNING;
 	    TERMINATE_LINE
-	    printf (catgets (dtsearch_catd, MS_cravel, 927,
+	    printf (CATGETS(dtsearch_catd, MS_cravel, 927,
 		"%s Discarded rec #%ld:  First char (keytype) of key\n"
 		"  '%s' is not alphanumeric.\n"),
 		PROGNAME"927", input_reccount, db_key);
@@ -1102,7 +1102,7 @@ int             main (int argc, char *argv[])
 	i = is_duprec (db_key);
 	if (i == 2) {
 	    TERMINATE_LINE
-	    printf (catgets (dtsearch_catd, MS_cravel, 34,
+	    printf (CATGETS(dtsearch_catd, MS_cravel, 34,
 		"%s Out of Memory!  "
 		"Set -h arg to a smaller number,\n"
 		"  or reduce the number of input records.\n"),
@@ -1112,7 +1112,7 @@ int             main (int argc, char *argv[])
 	else if (i == 1) {	/* skip duplicate record id */
 	    normal_exitcode = EXIT_WARNING;
 	    TERMINATE_LINE
-	    printf (catgets (dtsearch_catd, MS_cravel, 35,
+	    printf (CATGETS(dtsearch_catd, MS_cravel, 35,
 		"%s: Discarded duplicate rec #%ld '%s'.\n"),
 		aa_argv0, input_reccount, db_key);
 	    duplicate_recids++;
@@ -1157,7 +1157,7 @@ int             main (int argc, char *argv[])
 		goto INVALID_FORMAT;
 	    }
 	    TERMINATE_LINE
-	    printf (catgets (dtsearch_catd, MS_cravel, 1086,
+	    printf (CATGETS(dtsearch_catd, MS_cravel, 1086,
 		"%s Record '%s' has invalid date format--"
 		"using run date.\n"),
 		PROGNAME"1086", uniqkey);
@@ -1202,7 +1202,7 @@ int             main (int argc, char *argv[])
 	    gen_vec (fname_huffcode_tab);
 	    if (dbrec_hufid != gen_vec_hufid && dbrec_hufid != -1L) {
 		TERMINATE_LINE
-		printf (catgets (dtsearch_catd, MS_cravel, 1153,
+		printf (CATGETS(dtsearch_catd, MS_cravel, 1153,
 		    "%s Current data compression table id"
 		    " in '%s' is %ld.\n"
 		    "  Database '%s' previously compressed"
@@ -1223,7 +1223,7 @@ int             main (int argc, char *argv[])
 	if ((linebuf[0] = readchar_ftext (&parg)) == 0) {
 	    normal_exitcode = EXIT_WARNING;
 	    TERMINATE_LINE
-	    printf ( catgets(dtsearch_catd, MS_cravel, 1215,
+	    printf ( CATGETS(dtsearch_catd, MS_cravel, 1215,
 		"%s Warning.  Record '%s' has no text.\n"),
 		PROGNAME"1215" , uniqkey);
 	    continue;
@@ -1273,7 +1273,7 @@ int             main (int argc, char *argv[])
      */
     if (created_reccount <= 0L && updated_reccount <= 0L) {
 	normal_exitcode = EXIT_VANISH;
-	fprintf (stderr, catgets (dtsearch_catd, MS_cravel, 1048,
+	fprintf (stderr, CATGETS(dtsearch_catd, MS_cravel, 1048,
 		"%sDatabase objects not changed because input "
 		"file effectively empty.\n"),
 	    PROGNAME "1048 ");

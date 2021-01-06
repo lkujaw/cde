@@ -163,11 +163,11 @@ static void
 invalid_date_msg(Calendar *c, Widget widget)
 {
 	Browser *b = (Browser*)c->browser;
-	char *title = XtNewString(catgets(c->DT_catd, 1, 1070, 
+	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1070,
 				  "Calendar : Error - Compare Calendars"));
-	char *text = XtNewString(catgets(c->DT_catd, 1, 20,
+	char *text = XtNewString(CATGETS(c->DT_catd, 1, 20,
 					 "Invalid Date In Go To Field."));
-	char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 
 	dialog_popup(b->frame,
 		DIALOG_TITLE, title,
@@ -271,7 +271,7 @@ make_browser(Calendar *c)
 		upform_min	= 200;
 	}
 
-	title = XtNewString(catgets(c->DT_catd, 1, 1010, 
+	title = XtNewString(CATGETS(c->DT_catd, 1, 1010,
 					"Calendar : Compare Calendars"));
 	b->frame = XtVaCreatePopupShell("frame",
                 xmDialogShellWidgetClass, c->frame,
@@ -308,7 +308,7 @@ make_browser(Calendar *c)
 		XmNpaneMinimum, upform_min,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 22, "Browse Menu Items"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 22, "Browse Menu Items"));
         b->list_label = XtVaCreateWidget("browseMenuLabel", 
 		xmLabelGadgetClass, b->upper_form,
 		XmNlabelString, xmstr,
@@ -318,7 +318,7 @@ make_browser(Calendar *c)
                 NULL);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 21, "Edit List..."));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 21, "Edit List..."));
         b->edit_list = XtVaCreateWidget("editList",
 		xmPushButtonGadgetClass, b->upper_form,
 		XmNlabelString, xmstr,
@@ -361,17 +361,17 @@ make_browser(Calendar *c)
 	 * Create the "go to" option menu for time navigation
 	 */
 	prev_week =
-	   XmStringCreateLocalized(catgets(c->DT_catd, 1, 23, "Prev Week"));
+	   XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 23, "Prev Week"));
 	this_week =
-	   XmStringCreateLocalized(catgets(c->DT_catd, 1, 24, "This Week"));
+	   XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 24, "This Week"));
 	next_week =
-	   XmStringCreateLocalized(catgets(c->DT_catd, 1, 25, "Next Week"));
+	   XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 25, "Next Week"));
 	prev_month =
-	   XmStringCreateLocalized(catgets(c->DT_catd, 1, 26, "Prev Month"));
+	   XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 26, "Prev Month"));
 	next_month =
-	   XmStringCreateLocalized(catgets(c->DT_catd, 1, 27, "Next Month"));
+	   XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 27, "Next Month"));
 	goto_label =
-	   XmStringCreateLocalized(catgets(c->DT_catd, 1, 28, "Go To:"));
+	   XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 28, "Go To:"));
 
 	/*
 	 * remember - this returns a RowColumn widget!
@@ -452,7 +452,7 @@ make_browser(Calendar *c)
 		xmFormWidgetClass, b->outer_pane,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 29, "Schedule..."));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 29, "Schedule..."));
        	b->schedule = XtVaCreateWidget("schedule",
 		xmPushButtonGadgetClass, b->action,
 		XmNlabelString, xmstr,
@@ -462,7 +462,7 @@ make_browser(Calendar *c)
 	XmStringFree(xmstr);
 	XtAddCallback(b->schedule, XmNactivateCallback, schedule_cb, (XtPointer)c);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 30, "Mail..."));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 30, "Mail..."));
        	b->mail = XtVaCreateWidget("mail",
 		xmPushButtonGadgetClass, b->action,
 		XmNlabelString, xmstr,
@@ -475,7 +475,7 @@ make_browser(Calendar *c)
 
 	XtSetSensitive(b->mail, c->tt_procid == NULL ? False : True);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 923, "Cancel"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 923, "Cancel"));
        	b->cancel = XtVaCreateWidget("cancel",
 		xmPushButtonGadgetClass, b->action,
 		XmNlabelString, xmstr,
@@ -486,7 +486,7 @@ make_browser(Calendar *c)
 	XmStringFree(xmstr);
 	XtAddCallback(b->cancel, XmNactivateCallback, cancel_cb, (XtPointer)c);
 
-        xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+        xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
         b->helpbutton = XtVaCreateWidget("help",
 		xmPushButtonGadgetClass, b->action,
                 XmNlabelString, xmstr,
@@ -693,10 +693,10 @@ mb_display_footermess(Browser *b, Calendar *c)
 	XtVaGetValues(b->browse_list, XmNselectedItemCount, &num_cals, NULL);
         if (num_cals == 1)
                 sprintf(buf, "%d %s", num_cals,
-			catgets(c->DT_catd, 1, 31, "Calendar Displayed"));
+			CATGETS(c->DT_catd, 1, 31, "Calendar Displayed"));
         else
                 sprintf(buf,  "%d %s", num_cals,
-			catgets(c->DT_catd, 1, 32, "Calendars Displayed"));
+			CATGETS(c->DT_catd, 1, 32, "Calendars Displayed"));
 	set_message(b->message_text, buf);
 }
 
@@ -1117,11 +1117,11 @@ register_names(char *name, Calendar *c)
 	while ((bd = (BlistData *)CmDataListGetData(bl->blist_data, i++))
 	       && strcmp(bd->name, name) != 0);
 	if (!bd) {
-	        char *title = XtNewString(catgets(c->DT_catd, 1, 1070,
+	        char *title = XtNewString(CATGETS(c->DT_catd, 1, 1070,
 				"Calendar : Error - Compare Calendars"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 607,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 607,
 				"Internal error registering calendar name."));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(b->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,

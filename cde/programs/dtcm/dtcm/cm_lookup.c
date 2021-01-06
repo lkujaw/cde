@@ -60,7 +60,7 @@ static  char sccsid[] = "@(#)cm_lookup.c 1.30 95/03/08 Copyr 1993 Sun Microsyste
 #include <unistd.h>
 #include <sys/resource.h>
 #include <sys/wait.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <locale.h>
 #include "cm_tty.h"
 #include "util.h"
@@ -115,7 +115,7 @@ cm_args(int argc, char **argv)
 			argv = grab(++argv,cm_view,'-');
 			break;
 		default:
-			fprintf(stderr, "%s", catgets(DT_catd, 1, 207, "Usage:\n\tdtcm_lookup [ -c calendar ][ -d <mm/dd/yy> ] [ -v view ]\n"));
+			fprintf(stderr, "%s", CATGETS(DT_catd, 1, 207, "Usage:\n\tdtcm_lookup [ -c calendar ][ -d <mm/dd/yy> ] [ -v view ]\n"));
 			exit(1);
 		}
 	}
@@ -139,7 +139,7 @@ int main(int argc, char **argv)
 	init_time();
 	_DtEnvControl(DT_ENV_SET); /* set up environment variables */
 	setlocale(LC_ALL, "");
-	DT_catd = catopen(DTCM_CAT, NL_CAT_LOCALE);
+	DT_catd = CATOPEN(DTCM_CAT, NL_CAT_LOCALE);
 	cm_tty_load_props(&p);
 	cm_args(argc,argv);		/* parse command line */
 
@@ -161,10 +161,10 @@ int main(int argc, char **argv)
 	stat = csa_logon(NULL, &csa_user, NULL, NULL, NULL, &c_handle, NULL);
 
 	if (stat != CSA_SUCCESS) {
-		char *format = cm_strdup(catgets(DT_catd, 1, 208, 
+		char *format = cm_strdup(CATGETS(DT_catd, 1, 208,
 				   "\nCould not open calendar \"%s\"\n"));
 		fprintf(stderr, format, 
-			target ? target : catgets(DT_catd, 1, 209, "UNKNOWN"));
+			target ? target : CATGETS(DT_catd, 1, 209, "UNKNOWN"));
 		free(format);
 		free(uname);
 		free(loc);

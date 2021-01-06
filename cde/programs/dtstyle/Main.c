@@ -54,7 +54,7 @@
 # include <time.h>
 #endif
 #ifndef NO_MESSAGE_CATALOG
-# include <nl_types.h>
+# include <Dt/MsgCatP.h>
 # define TRUE 1
 # define FALSE 0
 #endif

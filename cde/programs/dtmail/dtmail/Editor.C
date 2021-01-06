@@ -109,12 +109,12 @@ Editor::set_message(DtMail::Message * msg,
 	char * ins_bracket;
 	switch (brackets) {
 	  case BF_FORWARD:
-	    ins_bracket = GETMSG(DT_catd, 1, 195, "------------- Begin Forwarded Message -------------\n\n");
+	    ins_bracket = CATGETS(DT_catd, 1, 195, "------------- Begin Forwarded Message -------------\n\n");
 	    break;
 	    
 	  case BF_INCLUDE:
 	  default:
-	    ins_bracket = GETMSG(DT_catd, 1, 196, "------------- Begin Included Message -------------\n\n");
+	    ins_bracket = CATGETS(DT_catd, 1, 196, "------------- Begin Included Message -------------\n\n");
 	    break;
 	}
 
@@ -265,7 +265,7 @@ Editor::set_message(DtMail::Message * msg,
 	// of text checksums more.
 	//
 	//if (bp->checksum(error) == DtMailCheckBad) {
-	//    *status_string = GETMSG(DT_catd, 1, -1, "Digital signature did not match.");
+	//    *status_string = CATGETS(DT_catd, 1, -1, "Digital signature did not match.");
 	//}
     }
     delete [] line;
@@ -274,12 +274,12 @@ Editor::set_message(DtMail::Message * msg,
 	char * ins_bracket;
 	switch (brackets) {
 	  case BF_FORWARD:
-	    ins_bracket = GETMSG(DT_catd, 1, 197, "------------- End Forwarded Message -------------\n\n");
+	    ins_bracket = CATGETS(DT_catd, 1, 197, "------------- End Forwarded Message -------------\n\n");
 	    break;
 	    
 	  case BF_INCLUDE:
 	  default:
-	    ins_bracket = GETMSG(DT_catd, 1, 198, "------------- End Included Message -------------\n\n");
+	    ins_bracket = CATGETS(DT_catd, 1, 198, "------------- End Included Message -------------\n\n");
 	    break;
 	}
 
@@ -327,7 +327,7 @@ Editor::set_attachment(
     if ((format == IF_BRACKETED) && (brackets == BF_INCLUDE))
     {
 	char * ins_bracket =
-	  GETMSG(
+	  CATGETS(
 		DT_catd, 1, 249,
 		"------------- Begin Included Attachment -------------\n\n");
 
@@ -345,7 +345,7 @@ Editor::set_attachment(
     {
         if (NULL != indent_str)
           append_to_contents(indent_str, strlen(indent_str));
-	input = GETMSG(DT_catd, 1, 251, "       Attachment Name:  ");
+	input = CATGETS(DT_catd, 1, 251, "       Attachment Name:  ");
         append_to_contents(input, strlen(input));
         append_to_contents(name, strlen(name));
         append_newline_to_contents();
@@ -355,7 +355,7 @@ Editor::set_attachment(
     {
         if (NULL != indent_str)
           append_to_contents(indent_str, strlen(indent_str));
-	input = GETMSG(DT_catd, 1, 252, "     Attachment DtType:  ");
+	input = CATGETS(DT_catd, 1, 252, "     Attachment DtType:  ");
         append_to_contents(input, strlen(input));
         append_to_contents(dttype, strlen(dttype));
         append_newline_to_contents();
@@ -366,7 +366,7 @@ Editor::set_attachment(
     {
         if (NULL != indent_str)
           append_to_contents(indent_str, strlen(indent_str));
-	input = GETMSG(DT_catd, 1, 253, "Attachment ContentType:  ");
+	input = CATGETS(DT_catd, 1, 253, "Attachment ContentType:  ");
         append_to_contents(input, strlen(input));
         append_to_contents(mimetype, strlen(mimetype));
         append_newline_to_contents();
@@ -376,7 +376,7 @@ Editor::set_attachment(
     {
         if (NULL != indent_str)
           append_to_contents(indent_str, strlen(indent_str));
-	input = GETMSG(DT_catd, 1, 254, "Attachment Description:  ");
+	input = CATGETS(DT_catd, 1, 254, "Attachment Description:  ");
         append_to_contents(input, strlen(input));
         append_to_contents(description, strlen(description));
         append_newline_to_contents();
@@ -385,7 +385,7 @@ Editor::set_attachment(
     if ((format == IF_BRACKETED) && (brackets == BF_INCLUDE))
     {
 	char * ins_bracket =
-	  GETMSG(
+	  CATGETS(
 		DT_catd, 1, 250,
 		"------------- End Included Attachment -------------\n\n");
 

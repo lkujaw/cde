@@ -183,13 +183,13 @@ combo_box_initialize(
 
     obj_set_unique_name(obj, "combobox");
 
-    obj_set_label(obj, catgets(Dtb_project_catd, 100, 255, "ComboBox:"));
+    obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 255, "ComboBox:"));
     obj_set_label_position(obj, AB_CP_WEST);
     obj_set_height(obj, -1);
 
     /* Add initial items to list */
-    items[0] = catgets(Dtb_project_catd, 6, 70, "itemA");
-    items[1] = catgets(Dtb_project_catd, 6, 71, "itemB");
+    items[0] = CATGETS(Dtb_project_catd, 6, 70, "itemA");
+    items[1] = CATGETS(Dtb_project_catd, 6, 71, "itemB");
     for (i=0; i < XtNumber(items); i++)
     {
         iobj = obj_create(AB_TYPE_ITEM, NULL);

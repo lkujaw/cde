@@ -60,7 +60,7 @@ static  char sccsid[] = "@(#)cm_insert.c 1.31 95/05/19 Copyr 1993 Sun Microsyste
 #include <unistd.h>
 #include <sys/resource.h>
 #include <sys/wait.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <locale.h>
 #include "util.h"
 #include "getdate.h"
@@ -145,8 +145,8 @@ cm_args(int argc, char **argv)
 			argv = grab(++argv,cm_appt_file,'-');
 			break;
 		default:
-			fprintf(stderr, "%s", catgets(DT_catd, 1, 191, "Usage:\n\tdtcm_insert [ -c calendar ] [-d <mm/dd/yy>] [ -v view ]\n"));
-			fprintf(stderr, "%s", catgets(DT_catd, 1, 192, "                   [-w what string] [-s <HH:MMam/pm>] [-e <HH:MMam/pm>]\n"));
+			fprintf(stderr, "%s", CATGETS(DT_catd, 1, 191, "Usage:\n\tdtcm_insert [ -c calendar ] [-d <mm/dd/yy>] [ -v view ]\n"));
+			fprintf(stderr, "%s", CATGETS(DT_catd, 1, 192, "                   [-w what string] [-s <HH:MMam/pm>] [-e <HH:MMam/pm>]\n"));
 			exit(1);
 		}
 	}
@@ -179,15 +179,15 @@ prompt_for_insert(Props *p) {
         format_tick(now(), get_int_prop(p, CP_DATEORDERING),
 		    get_int_prop(p, CP_DATESEPARATOR), date_str);
 
-	printf("%s", catgets(DT_catd, 1, 193, "Please enter the information for the appointment you wish to add.\nDefaults will be shown in parentheses.\n"));
-	prompt_for_line(catgets(DT_catd, 1, 194, 
+	printf("%s", CATGETS(DT_catd, 1, 193, "Please enter the information for the appointment you wish to add.\nDefaults will be shown in parentheses.\n"));
+	prompt_for_line(CATGETS(DT_catd, 1, 194,
 		"Calendar (%s): "), cm_get_credentials(), cm_target);
-	prompt_for_line(catgets(DT_catd, 1, 195, 
+	prompt_for_line(CATGETS(DT_catd, 1, 195,
 		"Date (%s): "), date_str, cm_date);
 	while (valid != TRUE)
 	{
 		format_time(now(), dt, cm_start);
-		prompt_for_line(catgets(DT_catd, 1, 196, 
+		prompt_for_line(CATGETS(DT_catd, 1, 196,
 			"Start (%s): "), cm_start, cm_start);
 		if (cm_start[0])
 		{
@@ -195,7 +195,7 @@ prompt_for_insert(Props *p) {
 			if (valid_time(p, timecopy))
 				valid = TRUE;
 			else
-				printf("%s", catgets(DT_catd, 1, 197, "You have entered an invalid time.  Please try again:\n"));
+				printf("%s", CATGETS(DT_catd, 1, 197, "You have entered an invalid time.  Please try again:\n"));
 			free(timecopy);
 		}
 	}
@@ -207,23 +207,23 @@ prompt_for_insert(Props *p) {
 	format_time(next, dt, cm_end);
 	if (cm_start[0])
 		prompt_for_line(
-			catgets(DT_catd, 1, 198, "End (%s): "), cm_end, cm_end);
+			CATGETS(DT_catd, 1, 198, "End (%s): "), cm_end, cm_end);
 	else
 		prompt_for_line(
-			catgets(DT_catd, 1, 199, "End (%s): "), "None", cm_end);
+			CATGETS(DT_catd, 1, 199, "End (%s): "), "None", cm_end);
 
-	snprintf(cm_repeatstr, sizeof(cm_repeatstr), "%s", catgets(DT_catd, 1, 200, "One Time"));
+	snprintf(cm_repeatstr, sizeof(cm_repeatstr), "%s", CATGETS(DT_catd, 1, 200, "One Time"));
 
-	prompt_for_line(catgets(DT_catd, 1, 201, 
+	prompt_for_line(CATGETS(DT_catd, 1, 201,
 			"Repeat (%s): "), cm_repeatstr, cm_repeatstr);
 
-	if (strcmp(cm_repeatstr, catgets(DT_catd, 1, 200, "One Time"))) {
-		sprintf(buf, "%s", catgets(DT_catd, 1, 203, "no default"));
+	if (strcmp(cm_repeatstr, CATGETS(DT_catd, 1, 200, "One Time"))) {
+		sprintf(buf, "%s", CATGETS(DT_catd, 1, 203, "no default"));
 		prompt_for_line(
-			catgets(DT_catd, 1, 204, "For (%s): "), buf, cm_for);
+			CATGETS(DT_catd, 1, 204, "For (%s): "), buf, cm_for);
 	}
 
-	printf("%s", catgets(DT_catd, 1, 205, 
+	printf("%s", CATGETS(DT_catd, 1, 205,
 		"What (you may enter up to 5 lines, use ^D to finish):\n"));
 	cm_what[0] = '\0';
 	for (index = 0; index < 5; index++)
@@ -268,7 +268,7 @@ main(int argc, char **argv)
 	init_time();
         _DtEnvControl(DT_ENV_SET); /* set up environment variables */
 	setlocale(LC_ALL, "");
-	DT_catd = catopen(DTCM_CAT, NL_CAT_LOCALE);
+	DT_catd = CATOPEN(DTCM_CAT, NL_CAT_LOCALE);
 	cm_tty_load_props(&p);
 	dt = get_int_prop(p, CP_DEFAULTDISP);
 #ifdef FNS
@@ -297,11 +297,11 @@ main(int argc, char **argv)
 		csa_user.calendar_address = target;
 		stat = csa_logon(NULL, &csa_user, NULL, NULL, NULL, &c_handle, NULL);
 		if (stat != CSA_SUCCESS) {
-		  	char *format = cm_strdup(catgets(DT_catd, 1, 206, 
+		  	char *format = cm_strdup(CATGETS(DT_catd, 1, 206,
 					   "\nCould not open calendar %s\n"));
 			fprintf(stderr, format,
 				target ? target : 
-				catgets(DT_catd, 1, 209, "UNKNOWN"));
+				CATGETS(DT_catd, 1, 209, "UNKNOWN"));
 			free(format);
 			free(uname);
 			free(loc);
@@ -344,11 +344,11 @@ main(int argc, char **argv)
 		csa_user.calendar_address = target;
 		stat = csa_logon(NULL, &csa_user, NULL, NULL, NULL, &c_handle, NULL);
 		if (stat !=CSA_SUCCESS) {
-		  	char *format = cm_strdup(catgets(DT_catd, 1, 206, 
+		  	char *format = cm_strdup(CATGETS(DT_catd, 1, 206,
 					   "\nCould not open calendar %s\n"));
 			fprintf(stderr, format, 
 				target ? target : 
-				catgets(DT_catd, 1, 209, "UNKNOWN"));
+				CATGETS(DT_catd, 1, 209, "UNKNOWN"));
 			free(format);
 			free(uname);
 			free(loc);

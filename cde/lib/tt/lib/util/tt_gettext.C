@@ -103,7 +103,7 @@ _tt_gettext(
 #endif // OPT_DGETTEXT
 
 #if defined(OPT_CATGETS)
-static char *
+static const char *
 _tt__catgets(
 	int		set_num,
 	int		msg_num,
@@ -111,12 +111,15 @@ _tt__catgets(
 )
 {
 	static nl_catd catalog = 0;
-	if (catalog == 0) {
+	if (catalog == (nl_catd) 0) {
 		catalog = catopen(
 #if defined(OPT_BUG_AIX)
 			(char *)
 #endif
 				  tt_err_domain, NL_CAT_LOCALE );
+	}
+	if (catalog == (nl_catd) -1) {
+		return default_string;
 	}
 	return catgets( catalog, set_num, msg_num,
 #if defined(OPT_BUG_SUNOS_5) || defined(OPT_BUG_AIX)
@@ -126,7 +129,7 @@ _tt__catgets(
 }
 #endif // OPT_CATGETS
 
-char *
+const char *
 _tt_catgets(
 	int		set_num,
 	int		msg_num,

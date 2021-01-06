@@ -219,25 +219,25 @@ objxm_pixmap_conversion_error_msg(
     char	file_buf[BUF_SIZE];
 
     if (obj != NULL)
-    	sprintf(buf, catgets(OBJXM_MESSAGE_CATD, 203, 14,
+    	sprintf(buf, CATGETS(OBJXM_MESSAGE_CATD, 203, 14,
 		"Warning: %s :\n"), util_strsafe(obj_get_name(obj)));
     else
 	strcpy(buf, "");
 
-    sprintf(buf2, catgets(OBJXM_MESSAGE_CATD, 203, 15,
+    sprintf(buf2, CATGETS(OBJXM_MESSAGE_CATD, 203, 15,
 		"Graphic File base '%s'\ncould not be converted to a Pixmap because\n"), filebase);
     strcat(buf, buf2);
 
     if (status == ERR_BAD_PARAM2)
-	strcat(buf, catgets(OBJXM_MESSAGE_CATD, 203, 16,
+	strcat(buf, CATGETS(OBJXM_MESSAGE_CATD, 203, 16,
 		"File base is an empty string."));
     else
     {
-	strcat(buf, catgets(OBJXM_MESSAGE_CATD, 203, 17,
+	strcat(buf, CATGETS(OBJXM_MESSAGE_CATD, 203, 17,
 		"None of the following files could be converted to a Pixmap:\n"));
 
 	if ((int)(strlen(buf) + (4 * (strlen(filebase) + 4))) > LG_BUF_SIZE)
-	    strcat(buf, catgets(OBJXM_MESSAGE_CATD, 203, 18,
+	    strcat(buf, CATGETS(OBJXM_MESSAGE_CATD, 203, 18,
 		"filenames too long to display\n"));
 	else
 	{
@@ -248,7 +248,7 @@ objxm_pixmap_conversion_error_msg(
 	}
     }
 
-    util_set_help_data(catgets(OBJXM_MESSAGE_CATD, 203, 20,
+    util_set_help_data(CATGETS(OBJXM_MESSAGE_CATD, 203, 20,
 	"The graphic file name specified could not be converted\ninto a pixmap. App Builder searches for a file of the\nform Filename.pm, Filename.xpm, Filename.bm, and\nFilename.xbm.\n\nEither none of those files exists in the directory specified\n(via the Graphic Filename field or if no path was specified,\nthen the current working directory), or a file exists but may\nbe corrupt."), NULL, NULL);
 
     return(buf);

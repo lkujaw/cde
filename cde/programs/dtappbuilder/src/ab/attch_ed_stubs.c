@@ -3517,9 +3517,9 @@ get_wrn_response(
     	switch(wrn_type)
     	{
 	    case ATTCH_ED_WRN_LOAD:
-            	help_data->help_text = XtNewString(catgets(Dtb_project_catd, 100, 93, "Click Apply Changes to apply the changes to the\ncurrent object and load the selected object.\n\nClick Cancel if you don't want to apply the\nchanges to the current object. You can then\nclick Reset to undo the changes before loading\nthe selected object."));
+            	help_data->help_text = XtNewString(CATGETS(Dtb_project_catd, 100, 93, "Click Apply Changes to apply the changes to the\ncurrent object and load the selected object.\n\nClick Cancel if you don't want to apply the\nchanges to the current object. You can then\nclick Reset to undo the changes before loading\nthe selected object."));
     	    	sprintf(wrn_string, 
-		    catgets(Dtb_project_catd, 100, 43, 
+		    CATGETS(Dtb_project_catd, 100, 43,
 		    "Attachments for \"%s\"\n\
 		    have been modified but not Applied.\n\n\
 		    You can Apply the Changes or Cancel the\n\
@@ -3528,9 +3528,9 @@ get_wrn_response(
 	    	break;
 
 	    case ATTCH_ED_WRN_CHANGE_OBJTYPE:
-            	help_data->help_text = XtNewString(catgets(Dtb_project_catd, 100, 95, "Click Apply Changes to apply the changes to the\ncurrent object and display the new object type.\n\nClick Cancel if you don't want to apply the\nchanges to the current object. You can then\nclick Reset to undo the changes before changing\nto a different object type."));
+            	help_data->help_text = XtNewString(CATGETS(Dtb_project_catd, 100, 95, "Click Apply Changes to apply the changes to the\ncurrent object and display the new object type.\n\nClick Cancel if you don't want to apply the\nchanges to the current object. You can then\nclick Reset to undo the changes before changing\nto a different object type."));
     	    	sprintf(wrn_string, 
-		    catgets(Dtb_project_catd, 100, 44, 
+		    CATGETS(Dtb_project_catd, 100, 44,
 		    "Attachments for \"%s\"\n\
 		    have been modified but not Applied.\n\n\
 		    You can Apply the Changes or Cancel the\n\
@@ -3539,9 +3539,9 @@ get_wrn_response(
 	    	break;
 
 	    case ATTCH_ED_WRN_CLOSE:
-            	help_data->help_text = XtNewString(catgets(Dtb_project_catd, 100, 247, "Click Apply Changes to apply the changes to the\ncurrent object and close the Attachments Editor.\n\nClick Cancel if you don't want to apply the\nchanges to the current object and want the\nAttachments Editor to remain displayed. You can\nthen click Reset to undo the changes before\nclosing the Attachments Editor."));
+            	help_data->help_text = XtNewString(CATGETS(Dtb_project_catd, 100, 247, "Click Apply Changes to apply the changes to the\ncurrent object and close the Attachments Editor.\n\nClick Cancel if you don't want to apply the\nchanges to the current object and want the\nAttachments Editor to remain displayed. You can\nthen click Reset to undo the changes before\nclosing the Attachments Editor."));
     	    	sprintf(wrn_string, 
-		    catgets(Dtb_project_catd, 100, 45, 
+		    CATGETS(Dtb_project_catd, 100, 45,
 		    "Attachments for \"%s\"\n\
 		    have been modified but not Applied.\n\n\
 		    You can Apply the Changes or Cancel the\n\
@@ -3704,7 +3704,7 @@ attch_ed_verify_props(void)
 	/*
 	 * Fetch format string
 	 */
-	format_str = XtNewString(catgets(Dtb_project_catd, 100, 245, 
+	format_str = XtNewString(CATGETS(Dtb_project_catd, 100, 245,
 		"Attachments for \"%s\"\ncannot be modified because it is\na member of the group \"%s\"."));
 
 	/*
@@ -3733,7 +3733,7 @@ attch_ed_verify_props(void)
 	 * Malloc/setup struct for help text
 	 */
 	help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-	help_data->help_text = catgets(Dtb_project_catd, 100, 246,
+	help_data->help_text = CATGETS(Dtb_project_catd, 100, 246,
 		"Group objects have attributes that determine what\nattachments their members will have, therefore setting\nattachments for group members is not allowed. This only\napplies to group objects that have layout type Vertical,\nHorizontal, or Row-column. Click Cancel or Reset to\nundo your changes on the Attachments Editor.");
 	help_data->help_volume = NULL;
 	help_data->help_locationID = NULL;

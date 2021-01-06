@@ -61,7 +61,7 @@ static  char sccsid[] = "@(#)calendarA.c 1.196 95/04/12 Copyr 1991 Sun Microsyst
 #include <sys/utsname.h> /* SYS_NMLN */
 #endif /* SVR4 specific includes */
 #include <locale.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <dirent.h>
 #include <ctype.h>
 #include <string.h>
@@ -995,22 +995,22 @@ make_view_menu(Calendar *c)
 	Arg al[10];
 	int ac;
 
-        day_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 33, "Day"));
-        week_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 34, "Week"));
+        day_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 33, "Day"));
+        week_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 34, "Week"));
         month_str = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 35, "Month"));
-        year_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 36, "Year"));
+			CATGETS(c->DT_catd, 1, 35, "Month"));
+        year_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 36, "Year"));
         tz_str = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 37, "Time Zone..."));
+			CATGETS(c->DT_catd, 1, 37, "Time Zone..."));
 	apptlist_str = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 38, "Appointment List..."));
+			CATGETS(c->DT_catd, 1, 38, "Appointment List..."));
 	todo_str = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 965, "To Do List..."));
-	view_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 40, "View"));
+			CATGETS(c->DT_catd, 1, 965, "To Do List..."));
+	view_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 40, "View"));
 	findappts = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 41, "Find..."));
+			CATGETS(c->DT_catd, 1, 41, "Find..."));
 	gotodate = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 42, "Go to Date..."));
+			CATGETS(c->DT_catd, 1, 42, "Go to Date..."));
 
         view_menu = XmCreatePulldownMenu(c->menu_bar, "viewMenu", NULL, 0);
 
@@ -1229,11 +1229,11 @@ browse_cb(Widget w, XtPointer client_data, XtPointer cbs) {
 	Browselist	*bl = (Browselist *)c->browselist;
 
 	if (!(bd = (BlistData *)CmDataListGetData(bl->blist_data, idx))) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 1072,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1072,
 				"Calendar : Error - Browse"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 610,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 610,
 				"Internal error retrieving calendar name."));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(c->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1274,7 +1274,7 @@ make_file_menu(Calendar *c)
 
 	ac = 0;
 	xmstr = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 68, "Print Current View"));
+			CATGETS(c->DT_catd, 1, 68, "Print Current View"));
 	XtSetArg(al[ac], XmNlabelString, xmstr); ac++;
 	pr_current = XmCreatePushButtonGadget(file_menu, "printCurrent", 
 					      al, ac);
@@ -1282,7 +1282,7 @@ make_file_menu(Calendar *c)
 	XmStringFree(xmstr);
 
 	ac = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 69, "Print..."));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 69, "Print..."));
 	XtSetArg(al[ac], XmNlabelString, xmstr); ac++;
 	print = XmCreatePushButtonGadget(file_menu, "print", al, ac);
         XtAddCallback(print, XmNactivateCallback, print_cb, NULL);
@@ -1293,7 +1293,7 @@ make_file_menu(Calendar *c)
 
 	ac = 0;
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 72, "Options..."));
+				CATGETS(c->DT_catd, 1, 72, "Options..."));
 	XtSetArg(al[ac], XmNlabelString, xmstr); ac++;
 	opts = XmCreatePushButtonGadget(file_menu, "options", al, ac);
 	XtAddCallback(opts, XmNactivateCallback, edit_cb, (XtPointer) 1);
@@ -1303,7 +1303,7 @@ make_file_menu(Calendar *c)
 	sep = XmCreateSeparatorGadget(file_menu, "separator2", al, ac);
 
 	ac = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 73, "Exit"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 73, "Exit"));
 	XtSetArg(al[ac], XmNlabelString, xmstr); ac++;
 	exit = XmCreatePushButtonGadget(file_menu, "exit", al, ac);
 	XtAddCallback(exit, XmNactivateCallback, quit_handler, (XtPointer) c);
@@ -1313,7 +1313,7 @@ make_file_menu(Calendar *c)
 
 	ac = 0;
 	XtSetArg(al[ac], XmNsubMenuId, file_menu); ac++;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 65, "File"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 65, "File"));
 	XtSetArg(al[ac], XmNlabelString, xmstr); ac++;
 	file_btn = (Widget) XmCreateCascadeButton(c->menu_bar, "file", al, ac);
         XtAddCallback(file_btn, XmNhelpCallback, (XtCallbackProc)help_cb, 
@@ -1331,11 +1331,11 @@ make_edit_menu(Calendar *c)
 	int ac;
 
 	appt_str = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 74, "Appointment..."));
+			CATGETS(c->DT_catd, 1, 74, "Appointment..."));
         todo_str = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 966, "To Do..."));
+			CATGETS(c->DT_catd, 1, 966, "To Do..."));
         edit_str = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 76, "Edit"));
+			CATGETS(c->DT_catd, 1, 76, "Edit"));
 
 	edit_menu = XmCreatePulldownMenu(c->menu_bar, "editMenu", NULL, 0);
 
@@ -1373,18 +1373,18 @@ make_help_menu(Calendar *c)
 	Widget	cascade, help_menu, w_overview, w_tasks, w_ref, w_onitem, 
 		w_using, w_about, w_sep;
 
-        help = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+        help = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
         overview = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 612, "Overview..."));
-        tasks = XmStringCreateLocalized(catgets(c->DT_catd, 1, 79, "Tasks..."));
+			CATGETS(c->DT_catd, 1, 612, "Overview..."));
+        tasks = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 79, "Tasks..."));
         ref = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 80, "Reference..."));
+			CATGETS(c->DT_catd, 1, 80, "Reference..."));
         onitem = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 964, "On Item"));
+			CATGETS(c->DT_catd, 1, 964, "On Item"));
         using = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 82, "Using Help..."));
+			CATGETS(c->DT_catd, 1, 82, "Using Help..."));
         about = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 613, "About Calendar..."));   
+			CATGETS(c->DT_catd, 1, 613, "About Calendar..."));
 
         help_menu = XmCreatePulldownMenu(c->menu_bar, "helpMenu", NULL, 0);
 
@@ -1515,7 +1515,7 @@ update_browse_menu_names(Calendar *c) {
 		NULL);
 
 	ac = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 84,
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 84,
 						"Show Other Calendar..."));
 	XtSetArg(al[ac], XmNlabelString, xmstr); ac++;
 	item = XmCreatePushButtonGadget(c->browse_menu, "showOther", al, ac);
@@ -1523,7 +1523,7 @@ update_browse_menu_names(Calendar *c) {
 	XmStringFree(xmstr);
 
 	ac = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 85,
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 85,
 						"Compare Calendars..."));
 	XtSetArg(al[ac], XmNlabelString, xmstr); ac++;
 	item = XmCreatePushButtonGadget(c->browse_menu, "compare", al, ac);
@@ -1531,7 +1531,7 @@ update_browse_menu_names(Calendar *c) {
 	XmStringFree(xmstr);
 
 	ac = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 86,
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 86,
 						"Menu Editor..."));
 	XtSetArg(al[ac], XmNlabelString, xmstr); ac++;
 	item = XmCreatePushButtonGadget(c->browse_menu, "editMenu", al, ac);
@@ -1575,7 +1575,7 @@ make_browse_menu(Calendar *c) {
 	 */
 	update_browse_menu_names(c);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 87, "Browse"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 87, "Browse"));
         XtSetArg(al[ac], XmNsubMenuId, c->browse_menu); ac++;
         XtSetArg(al[ac], XmNlabelString, xmstr); ac++;
         c->browse_button = XmCreateCascadeButton(c->menu_bar, "browse", al, ac);
@@ -1624,7 +1624,7 @@ make_buttons(Calendar *c)
 	Screen          *s;
 
         today_str = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 88, "Today"));
+			CATGETS(c->DT_catd, 1, 88, "Today"));
         ac=0;
 	XtSetArg(al[ac], XmNleftAttachment, XmATTACH_FORM); ac++;
 	XtSetArg(al[ac], XmNrightAttachment, XmATTACH_FORM); ac++;
@@ -1946,7 +1946,7 @@ quit_handler(Widget w, XtPointer cdata, XtPointer cbs) {
 	Calendar	*c = (Calendar *)cdata;
 
 	if (debug)
-	  fprintf(stderr, "%s", catgets(c->DT_catd, 1, 89, "in quit_handler\n"));
+	  fprintf(stderr, "%s", CATGETS(c->DT_catd, 1, 89, "in quit_handler\n"));
 
 	if (editor_showing((Editor*) c->editor) ||
 	    todo_showing((ToDo*) c->todo))
@@ -2033,20 +2033,20 @@ error_open(Calendar *c) {
 	char		*name, *host;
 	Props_pu	*p = (Props_pu *)c->properties_pu;
 
-	char *nl_user = XtNewString(catgets(c->DT_catd, 1, 92, "User name"));
-	char *nl_host = XtNewString(catgets(c->DT_catd, 1, 93, "Host"));
-	char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	char *nl_user = XtNewString(CATGETS(c->DT_catd, 1, 92, "User name"));
+	char *nl_host = XtNewString(CATGETS(c->DT_catd, 1, 93, "Host"));
+	char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 	char *title = 
-	  XtNewString(catgets(c->DT_catd, 1, 94, "Calendar : Error"));
+	  XtNewString(CATGETS(c->DT_catd, 1, 94, "Calendar : Error"));
 
 	name = cm_target2name(c->calname);
 	host = cm_target2host(c->calname);
 
-	sprintf(buf, "%s %s", catgets(c->DT_catd, 1, 90,
+	sprintf(buf, "%s %s", CATGETS(c->DT_catd, 1, 90,
 			"Error opening Calendar file"), c->calname);
 	set_message(c->message_text, buf);
 
-	sprintf(buf, "%s\n%s: %s, %s: %s", catgets(c->DT_catd, 1, 91,
+	sprintf(buf, "%s\n%s: %s, %s: %s", CATGETS(c->DT_catd, 1, 91,
 				   		"rpc.cmsd is not responding for your user name.\nMake sure the inetd process is running and the entry\nin inetd.conf for rpc.cmsd is correct for your host."),
 		nl_user, name,
 		nl_host, host);
@@ -2074,16 +2074,16 @@ error_noloc(Calendar *c, char *name)
         char            buf[BUFSIZ];
         Props_pu        *p = (Props_pu *)c->properties_pu;
 
-	char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 	char *title = 
-	  XtNewString(catgets(c->DT_catd, 1, 94, "Calendar : Error"));
+	  XtNewString(CATGETS(c->DT_catd, 1, 94, "Calendar : Error"));
 
         sprintf(buf, "%s %s",
-		catgets(c->DT_catd, 1, 108, "No Calendar Location specified for"),
+		CATGETS(c->DT_catd, 1, 108, "No Calendar Location specified for"),
 		name);
         set_message(c->message_text, buf);
 
-	sprintf(buf, "%s", catgets(c->DT_catd, 1, 109, "No location specified; add a hostname to the\nInitial Calendar View in Properties/Display Settings.  If\nyou ran Calendar (dtcm) with the -c option, verify you specified a hostname."));
+	sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 109, "No location specified; add a hostname to the\nInitial Calendar View in Properties/Display Settings.  If\nyou ran Calendar (dtcm) with the -c option, verify you specified a hostname."));
         dialog_popup(c->frame,
                 DIALOG_TITLE, title,
                 DIALOG_TEXT, buf,
@@ -2200,7 +2200,7 @@ open_user_calendar(Calendar *c, Boolean retry)
 			NULL, &cb_ext);
 
 	if (c->my_cal_version < DTCM_DATA_VER)
-		set_message(c->message_text, catgets(c->DT_catd, 1, 186,
+		set_message(c->message_text, CATGETS(c->DT_catd, 1, 186,
 		       "Calendar (dtcm) and rpc.cmsd versions are different."));
 
 	if (!viewother) {
@@ -2209,7 +2209,7 @@ open_user_calendar(Calendar *c, Boolean retry)
 		   Message 113 : ``Calendar'' is used in the main titlebar 
 		   of the tool: Calendar : user@host.
 		 */
-		sprintf(buf, "%s : %s", catgets(c->DT_catd, 1, 113, "Calendar"),
+		sprintf(buf, "%s : %s", CATGETS(c->DT_catd, 1, 113, "Calendar"),
 					c->calname);
         	XtVaSetValues(c->frame, XmNtitle, buf, NULL);
 	}
@@ -2265,7 +2265,7 @@ open_initial_calendar(
 	c->general->version = get_data_version(c->cal_handle);
 
 	if (c->general->version < DTCM_DATA_VER)
-		set_message(c->message_text, catgets(c->DT_catd, 1, 186,
+		set_message(c->message_text, CATGETS(c->DT_catd, 1, 186,
 		       "Calendar (dtcm) and rpc.cmsd versions are different."));
 
 
@@ -2277,7 +2277,7 @@ open_initial_calendar(
 	csa_register_callback(c->cal_handle, flags,
 			update_handler, NULL, &cb_ext);
 
-	sprintf(buf, "%s : %s", catgets(c->DT_catd, 1, 113, "Calendar"),
+	sprintf(buf, "%s : %s", CATGETS(c->DT_catd, 1, 113, "Calendar"),
 					c->view->current_calendar);
         XtVaSetValues(c->frame, XmNtitle, buf, NULL);
 
@@ -2648,7 +2648,7 @@ init_calendar(int argc, char **argv)
 		cm_strdup(calendar->app_data->default_calendar);
 
  	/* Open the message catalog for internationalization */
-	calendar->DT_catd = catopen(DTCM_CAT, NL_CAT_LOCALE);
+	calendar->DT_catd = CATOPEN(DTCM_CAT, NL_CAT_LOCALE);
 
         ac=0;
 	XtSetArg(al[ac], XmNfractionBase, 100); ac++;
@@ -2735,7 +2735,7 @@ init_calendar(int argc, char **argv)
 	status = cmtt_init("Calendar", calendar, app, calendar->frame);
 	if (TT_OK != status) {
 	    char *errfmt;
-    	    errfmt = catgets(calendar->DT_catd, 2, 2,
+    	    errfmt = CATGETS(calendar->DT_catd, 2, 2,
 			"Could not connect to ToolTalk:\n%s\n");
             DieFromToolTalkError( calendar, errfmt, status );
 	}
@@ -2783,7 +2783,7 @@ init_calendar(int argc, char **argv)
 				calendar->general->version =
 					calendar->my_cal_version;
 				sprintf(buf, "%s : %s", 
-					catgets(calendar->DT_catd, 1, 113, 
+					CATGETS(calendar->DT_catd, 1, 113,
 								"Calendar"),
 					calendar->calname);
         			XtVaSetValues(calendar->frame, XmNtitle, buf,
@@ -2938,31 +2938,31 @@ init_strings(void)
 {
 	char *display_lang="C";
 
-	months[1] = strdup(catgets(calendar->DT_catd, 1, 114, "January"));
-	months[2] = strdup(catgets(calendar->DT_catd, 1, 115, "February"));
-	months[3] = strdup(catgets(calendar->DT_catd, 1, 116, "March"));
-	months[4] = strdup(catgets(calendar->DT_catd, 1, 117, "April"));
-	months[5] = strdup(catgets(calendar->DT_catd, 1, 118, "May"));
-	months[6] = strdup(catgets(calendar->DT_catd, 1, 119, "June"));
-	months[7] = strdup(catgets(calendar->DT_catd, 1, 120, "July"));
-	months[8] = strdup(catgets(calendar->DT_catd, 1, 121, "August"));
-	months[9] = strdup(catgets(calendar->DT_catd, 1, 122, "September"));
-	months[10] = strdup(catgets(calendar->DT_catd, 1, 123, "October"));
-	months[11] = strdup(catgets(calendar->DT_catd, 1, 124, "November"));
-	months[12] = strdup(catgets(calendar->DT_catd, 1, 125, "December"));
+	months[1] = strdup(CATGETS(calendar->DT_catd, 1, 114, "January"));
+	months[2] = strdup(CATGETS(calendar->DT_catd, 1, 115, "February"));
+	months[3] = strdup(CATGETS(calendar->DT_catd, 1, 116, "March"));
+	months[4] = strdup(CATGETS(calendar->DT_catd, 1, 117, "April"));
+	months[5] = strdup(CATGETS(calendar->DT_catd, 1, 118, "May"));
+	months[6] = strdup(CATGETS(calendar->DT_catd, 1, 119, "June"));
+	months[7] = strdup(CATGETS(calendar->DT_catd, 1, 120, "July"));
+	months[8] = strdup(CATGETS(calendar->DT_catd, 1, 121, "August"));
+	months[9] = strdup(CATGETS(calendar->DT_catd, 1, 122, "September"));
+	months[10] = strdup(CATGETS(calendar->DT_catd, 1, 123, "October"));
+	months[11] = strdup(CATGETS(calendar->DT_catd, 1, 124, "November"));
+	months[12] = strdup(CATGETS(calendar->DT_catd, 1, 125, "December"));
 
-	months2[1] = strdup(catgets(calendar->DT_catd, 1, 126, "Jan"));
-	months2[2] = strdup(catgets(calendar->DT_catd, 1, 127, "Feb"));
-	months2[3] = strdup(catgets(calendar->DT_catd, 1, 128, "Mar"));
-	months2[4] = strdup(catgets(calendar->DT_catd, 1, 129, "Apr"));
-	months2[5] = strdup(catgets(calendar->DT_catd, 1, 130, "May"));
-	months2[6] = strdup(catgets(calendar->DT_catd, 1, 131, "Jun"));
-	months2[7] = strdup(catgets(calendar->DT_catd, 1, 132, "Jul"));
-	months2[8] = strdup(catgets(calendar->DT_catd, 1, 133, "Aug"));
-	months2[9] = strdup(catgets(calendar->DT_catd, 1, 134, "Sep"));
-	months2[10] = strdup(catgets(calendar->DT_catd, 1, 135, "Oct"));
-	months2[11] = strdup(catgets(calendar->DT_catd, 1, 136, "Nov"));
-	months2[12] = strdup(catgets(calendar->DT_catd, 1, 137, "Dec"));
+	months2[1] = strdup(CATGETS(calendar->DT_catd, 1, 126, "Jan"));
+	months2[2] = strdup(CATGETS(calendar->DT_catd, 1, 127, "Feb"));
+	months2[3] = strdup(CATGETS(calendar->DT_catd, 1, 128, "Mar"));
+	months2[4] = strdup(CATGETS(calendar->DT_catd, 1, 129, "Apr"));
+	months2[5] = strdup(CATGETS(calendar->DT_catd, 1, 130, "May"));
+	months2[6] = strdup(CATGETS(calendar->DT_catd, 1, 131, "Jun"));
+	months2[7] = strdup(CATGETS(calendar->DT_catd, 1, 132, "Jul"));
+	months2[8] = strdup(CATGETS(calendar->DT_catd, 1, 133, "Aug"));
+	months2[9] = strdup(CATGETS(calendar->DT_catd, 1, 134, "Sep"));
+	months2[10] = strdup(CATGETS(calendar->DT_catd, 1, 135, "Oct"));
+	months2[11] = strdup(CATGETS(calendar->DT_catd, 1, 136, "Nov"));
+	months2[12] = strdup(CATGETS(calendar->DT_catd, 1, 137, "Dec"));
 	
 	/* NL_COMMENT
 	   Attention Translator:
@@ -2980,23 +2980,23 @@ init_strings(void)
 		Sun --> Sunday
 
 	*/
-	days[0] = strdup(catgets(calendar->DT_catd, 1, 138, "Sun"));
-	days[1] = strdup(catgets(calendar->DT_catd, 1, 139, "Mon"));
-	days[2] = strdup(catgets(calendar->DT_catd, 1, 140, "Tue"));
-	days[3] = strdup(catgets(calendar->DT_catd, 1, 141, "Wed"));
-	days[4] = strdup(catgets(calendar->DT_catd, 1, 142, "Thu"));
-	days[5] = strdup(catgets(calendar->DT_catd, 1, 143, "Fri"));
-	days[6] = strdup(catgets(calendar->DT_catd, 1, 144, "Sat"));
-	days[7] = strdup(catgets(calendar->DT_catd, 1, 138, "Sun"));
+	days[0] = strdup(CATGETS(calendar->DT_catd, 1, 138, "Sun"));
+	days[1] = strdup(CATGETS(calendar->DT_catd, 1, 139, "Mon"));
+	days[2] = strdup(CATGETS(calendar->DT_catd, 1, 140, "Tue"));
+	days[3] = strdup(CATGETS(calendar->DT_catd, 1, 141, "Wed"));
+	days[4] = strdup(CATGETS(calendar->DT_catd, 1, 142, "Thu"));
+	days[5] = strdup(CATGETS(calendar->DT_catd, 1, 143, "Fri"));
+	days[6] = strdup(CATGETS(calendar->DT_catd, 1, 144, "Sat"));
+	days[7] = strdup(CATGETS(calendar->DT_catd, 1, 138, "Sun"));
 
-	days2[0] = strdup(catgets(calendar->DT_catd, 1, 146, "Sunday"));
-	days2[1] = strdup(catgets(calendar->DT_catd, 1, 147, "Monday"));
-	days2[2] = strdup(catgets(calendar->DT_catd, 1, 148, "Tuesday"));
-	days2[3] = strdup(catgets(calendar->DT_catd, 1, 149, "Wednesday"));
-	days2[4] = strdup(catgets(calendar->DT_catd, 1, 150, "Thursday"));
-	days2[5] = strdup(catgets(calendar->DT_catd, 1, 151, "Friday"));
-	days2[6] = strdup(catgets(calendar->DT_catd, 1, 152, "Saturday"));
-	days2[7] = strdup(catgets(calendar->DT_catd, 1, 146, "Sunday"));
+	days2[0] = strdup(CATGETS(calendar->DT_catd, 1, 146, "Sunday"));
+	days2[1] = strdup(CATGETS(calendar->DT_catd, 1, 147, "Monday"));
+	days2[2] = strdup(CATGETS(calendar->DT_catd, 1, 148, "Tuesday"));
+	days2[3] = strdup(CATGETS(calendar->DT_catd, 1, 149, "Wednesday"));
+	days2[4] = strdup(CATGETS(calendar->DT_catd, 1, 150, "Thursday"));
+	days2[5] = strdup(CATGETS(calendar->DT_catd, 1, 151, "Friday"));
+	days2[6] = strdup(CATGETS(calendar->DT_catd, 1, 152, "Saturday"));
+	days2[7] = strdup(CATGETS(calendar->DT_catd, 1, 146, "Sunday"));
 
 	/* NL_COMMENT
 	   Attention Translator:
@@ -3013,14 +3013,14 @@ init_strings(void)
 		S --> Saturday (message 160)
 
 	*/
-	days3[0] = strdup(catgets(calendar->DT_catd, 1, 154, "S"));
-	days3[1] = strdup(catgets(calendar->DT_catd, 1, 155, "M"));
-	days3[2] = strdup(catgets(calendar->DT_catd, 1, 156, "T"));
-	days3[3] = strdup(catgets(calendar->DT_catd, 1, 157, "W"));
-	days3[4] = strdup(catgets(calendar->DT_catd, 1, 158, "T"));
-	days3[5] = strdup(catgets(calendar->DT_catd, 1, 159, "F"));
-	days3[6] = strdup(catgets(calendar->DT_catd, 1, 160, "S"));
-	days3[7] = strdup(catgets(calendar->DT_catd, 1, 154, "S"));
+	days3[0] = strdup(CATGETS(calendar->DT_catd, 1, 154, "S"));
+	days3[1] = strdup(CATGETS(calendar->DT_catd, 1, 155, "M"));
+	days3[2] = strdup(CATGETS(calendar->DT_catd, 1, 156, "T"));
+	days3[3] = strdup(CATGETS(calendar->DT_catd, 1, 157, "W"));
+	days3[4] = strdup(CATGETS(calendar->DT_catd, 1, 158, "T"));
+	days3[5] = strdup(CATGETS(calendar->DT_catd, 1, 159, "F"));
+	days3[6] = strdup(CATGETS(calendar->DT_catd, 1, 160, "S"));
+	days3[7] = strdup(CATGETS(calendar->DT_catd, 1, 154, "S"));
 
 	/* NL_COMMENT
 	   Attention Translator:
@@ -3037,14 +3037,14 @@ init_strings(void)
 		SAT --> Saturday
 
 	*/
-	days4[0] = strdup(catgets(calendar->DT_catd, 1, 170, "SUN"));
-	days4[1] = strdup(catgets(calendar->DT_catd, 1, 171, "MON"));
-	days4[2] = strdup(catgets(calendar->DT_catd, 1, 172, "TUE"));
-	days4[3] = strdup(catgets(calendar->DT_catd, 1, 173, "WED"));
-	days4[4] = strdup(catgets(calendar->DT_catd, 1, 174, "THU"));
-	days4[5] = strdup(catgets(calendar->DT_catd, 1, 175, "FRI"));
-	days4[6] = strdup(catgets(calendar->DT_catd, 1, 176, "SAT"));
-	days4[7] = strdup(catgets(calendar->DT_catd, 1, 170, "SUN"));
+	days4[0] = strdup(CATGETS(calendar->DT_catd, 1, 170, "SUN"));
+	days4[1] = strdup(CATGETS(calendar->DT_catd, 1, 171, "MON"));
+	days4[2] = strdup(CATGETS(calendar->DT_catd, 1, 172, "TUE"));
+	days4[3] = strdup(CATGETS(calendar->DT_catd, 1, 173, "WED"));
+	days4[4] = strdup(CATGETS(calendar->DT_catd, 1, 174, "THU"));
+	days4[5] = strdup(CATGETS(calendar->DT_catd, 1, 175, "FRI"));
+	days4[6] = strdup(CATGETS(calendar->DT_catd, 1, 176, "SAT"));
+	days4[7] = strdup(CATGETS(calendar->DT_catd, 1, 170, "SUN"));
 }
 
 
@@ -3069,7 +3069,7 @@ switch_it(Calendar *c, char *new_calendar, WindowType win)
 	 */
         if (strcmp(new_calendar, c->view->current_calendar) == 0 &&
 	    c->cal_handle) {
-		sprintf(buf, catgets(c->DT_catd, 1, 178,
+		sprintf(buf, CATGETS(c->DT_catd, 1, 178,
 			"You Are Already Browsing %s"), new_calendar);
 		set_message(c->message_text, buf);
 		if (tb && tb->show_message)
@@ -3095,9 +3095,9 @@ switch_it(Calendar *c, char *new_calendar, WindowType win)
 	} else {
 		if ((user = cm_target2name(new_calendar)) == NULL) {
 			if (!strcmp(new_calendar, ""))
-				sprintf(buf, "%s", catgets(c->DT_catd, 1, 619, "Please enter a calendar name in the format: <user>@<hostname>"));
+				sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 619, "Please enter a calendar name in the format: <user>@<hostname>"));
 			else
-				sprintf(buf, catgets(c->DT_catd, 1, 620,
+				sprintf(buf, CATGETS(c->DT_catd, 1, 620,
 		"Unknown calendar. Calendar name needed: <name>%s"),
 				new_calendar);
 			set_message(c->message_text, buf);
@@ -3108,9 +3108,9 @@ switch_it(Calendar *c, char *new_calendar, WindowType win)
 
 		if ((loc = cm_target2location(new_calendar)) == NULL) {
 			if (!strcmp(new_calendar, ""))
-				sprintf(buf, "%s", catgets(c->DT_catd, 1, 619, "Please enter a calendar name in the format: <user>@<hostname>"));
+				sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 619, "Please enter a calendar name in the format: <user>@<hostname>"));
 			else
-				sprintf(buf, catgets(c->DT_catd, 1, 622,
+				sprintf(buf, CATGETS(c->DT_catd, 1, 622,
 	"Unknown calendar. Hostname needed: %s@<hostname>"),
 				user);
 			set_message(c->message_text, buf);
@@ -3161,7 +3161,7 @@ switch_it(Calendar *c, char *new_calendar, WindowType win)
 	new_version = get_data_version(new_cal_handle);
 
 	if (new_version < DTCM_DATA_VER)
-		set_message(c->message_text, catgets(c->DT_catd, 1, 186,
+		set_message(c->message_text, CATGETS(c->DT_catd, 1, 186,
 		       "Calendar (dtcm) and rpc.cmsd versions are different."));
 
 	/*
@@ -3201,7 +3201,7 @@ switch_it(Calendar *c, char *new_calendar, WindowType win)
 	/*
 	 * Set the title bars on all the windows!
 	 */
-	sprintf(buf, "%s : %s", catgets(c->DT_catd, 1, 113, "Calendar"),
+	sprintf(buf, "%s : %s", CATGETS(c->DT_catd, 1, 113, "Calendar"),
 				new_calendar);
 	XtVaSetValues(c->frame, XmNtitle, buf, NULL);
  
@@ -3239,12 +3239,12 @@ switch_it(Calendar *c, char *new_calendar, WindowType win)
 	if (tb && tb->show_message) {
 		char	buf[128];
 		char *calendar = 
-		  XtNewString(catgets(c->DT_catd, 1, 919, "Calendar"));
+		  XtNewString(CATGETS(c->DT_catd, 1, 919, "Calendar"));
 
 		sprintf (buf, "%s %s %s",
 			calendar,
 			new_calendar,
-			catgets(c->DT_catd, 1, 920, "displayed."));
+			CATGETS(c->DT_catd, 1, 920, "displayed."));
 		XtFree(calendar);
 		set_message(tb->show_message, buf);
 	}

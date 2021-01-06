@@ -1217,40 +1217,40 @@ abobj_strings_init(void)
     char 	*attach_str;
 
     props_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 137, "Props"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 137, "Props"));
     undo_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 138, "Undo"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 138, "Undo"));
     cut_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 139, "Cut"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 139, "Cut"));
     copy_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 140, "Copy"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 140, "Copy"));
     paste_str = 
-    	XtNewString(catgets(Dtb_project_catd, 100, 141, "Paste"));
+    	XtNewString(CATGETS(Dtb_project_catd, 100, 141, "Paste"));
     delete_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 142, "Delete"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 142, "Delete"));
     align_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 143, "Align"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 143, "Align"));
     distr_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 144, "Distribute"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 144, "Distribute"));
     group_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 145, "Group"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 145, "Group"));
     ungroup_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 146, "Ungroup"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 146, "Ungroup"));
     mk_paned_win_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 147, "Make Paned Window"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 147, "Make Paned Window"));
     unmk_paned_win_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 148, "Unmake Paned Window"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 148, "Unmake Paned Window"));
     attach_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 149, "Attachments..."));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 149, "Attachments..."));
 
     prop_menu[0].label = 
-	XtNewString(catgets(Dtb_project_catd, 100, 150, "Revolving..."));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 150, "Revolving..."));
     prop_menu[1].label = 
-	XtNewString(catgets(Dtb_project_catd, 100, 151, "Fixed..."));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 151, "Fixed..."));
 
     obj_menu_items[0].label = props_str;
     obj_menu_items[1].label = 
-	XtNewString(catgets(Dtb_project_catd, 100, 152, "Browse..."));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 152, "Browse..."));
     obj_menu_items[3].label = undo_str;
     obj_menu_items[4].label = cut_str;
     obj_menu_items[5].label = copy_str;
@@ -1264,11 +1264,11 @@ abobj_strings_init(void)
     obj_menu_items[14].label = unmk_paned_win_str;
     obj_menu_items[15].label = attach_str;
     obj_menu_items[17].label = 
-	XtNewString(catgets(Dtb_project_catd, 100, 153, "NextLayer"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 153, "NextLayer"));
 
     browser_menu_items[0].label = props_str;
     browser_menu_items[1].label = 
-	XtNewString(catgets(Dtb_project_catd, 100, 154, "Tearoff Browser..."));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 154, "Tearoff Browser..."));
     browser_menu_items[3].label = undo_str;
     browser_menu_items[4].label = cut_str;
     browser_menu_items[5].label = copy_str;
@@ -1280,11 +1280,11 @@ abobj_strings_init(void)
     browser_menu_items[12].label = unmk_paned_win_str;
     browser_menu_items[13].label = attach_str;
     browser_menu_items[15].label = 
-	XtNewString(catgets(Dtb_project_catd, 100, 155, "Expand"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 155, "Expand"));
     browser_menu_items[16].label = 
-	XtNewString(catgets(Dtb_project_catd, 100, 156, "Expand All"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 156, "Expand All"));
     browser_menu_items[17].label = 
-	XtNewString(catgets(Dtb_project_catd, 100, 157, "Collapse"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 157, "Collapse"));
 
     layout_menu_items[0].label = align_str;
     layout_menu_items[1].label = distr_str;

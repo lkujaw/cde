@@ -122,7 +122,7 @@ brwsP_create_find_box(
 			args,
 			num_args);
 
-	title = XtNewString(catgets(Dtb_project_catd, 100, 230, 
+	title = XtNewString(CATGETS(Dtb_project_catd, 100, 230,
 			"Module Browser: Find Object"));
         XtVaSetValues(XtParent(ui->find_box), 
 			XmNtitle, title,
@@ -130,9 +130,9 @@ brwsP_create_find_box(
 	XtFree(title);
 
 	sel_label = XmStringCreateLocalized(
-		catgets(Dtb_project_catd, 100, 231, "Object Name"));
+		CATGETS(Dtb_project_catd, 100, 231, "Object Name"));
 	ok_label = XmStringCreateLocalized(
-		catgets(Dtb_project_catd, 100, 232, "Find"));
+		CATGETS(Dtb_project_catd, 100, 232, "Find"));
 	XtVaSetValues(ui->find_box,
 		XmNselectionLabelString, sel_label,
 		XmNokLabelString, ok_label,

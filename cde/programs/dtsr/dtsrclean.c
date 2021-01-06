@@ -196,7 +196,7 @@ static void     signal_shutdown (int sig)
 /* Prints usage statement to stderr. */
 static void     print_usage (void)
 {
-    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 1,
+    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 1,
 "\nUSAGE: %s [options] <dbname> <newpath>\n"
 "       Compresses unused d99 space and validates d00-d99 links.\n"
 "  -p<N>     Progress dots printed every <N> records (default %lu).\n"
@@ -250,12 +250,12 @@ static void     print_progress (char *label)
     }
 
     TERMINATE_LINE ();
-    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 2,
+    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 2,
 	"%s: %s Compression %d%% (about %lu KB) in %ld:%02ld min:sec.\n") ,
 	aa_argv0, label, compression, bytes_in / 1000L,
 	seconds / 60UL, seconds % 60UL);
     if (*label == 'F')
-	fprintf (aa_stderr,  catgets(dtsearch_catd, MS_dtsrclean, 3,
+	fprintf (aa_stderr,  CATGETS(dtsearch_catd, MS_dtsrclean, 3,
 	    "%s: Counted %ld WORDS in %s.d99.\n") ,
 	    aa_argv0, (long)reccount, arg_dbname);
     return;
@@ -275,21 +275,21 @@ static void     end_of_job (int exitcode, int show_flags)
 {
     TERMINATE_LINE ();
     if (exitcode >= 100) {
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 66,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 66,
 	    "%s Aborting after interrupt signal %d.\n"),
 	    PROGNAME"66", exitcode - 100);
     }
     if (validation_mode && corruption_count == 0L)
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 4,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 4,
 	    "%s: No corrupted links detected.\n") ,
 	    aa_argv0);
     if (corruption_count > 0L) {
 	if (max_corruption > 0L && corruption_count >= max_corruption)
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 193,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 193,
 		"%s Aborting at %ld corrupted links.\n"),
 		PROGNAME"193", corruption_count);
 	else
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 194,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 194,
 		"%s Detected%s %ld corrupted/incomplete link(s).\n"),
 		PROGNAME"194",
 		(validation_mode) ? " and corrected" : "",
@@ -301,7 +301,7 @@ static void     end_of_job (int exitcode, int show_flags)
     if (show_flags & SHOW_USAGE)
 	print_usage ();
     if (show_flags & SHOW_EXITCODE)
-	fprintf (aa_stderr,  catgets(dtsearch_catd, MS_dtsrclean, 5,
+	fprintf (aa_stderr,  CATGETS(dtsearch_catd, MS_dtsrclean, 5,
 	"%s: Exit code = %d.\n") , aa_argv0, exitcode);
     DtSearchExit (exitcode);
 }  /* end_of_job() */
@@ -342,7 +342,7 @@ static void     user_args_processor (int argc, char **argv)
 		    goto UNKNOWN_ARG;
 
 	    case 'm':
-		fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 301,
+		fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 301,
 		    "%s The -m argument is no longer necessary.\n"),
 		    PROGNAME"301");
 		break;
@@ -356,7 +356,7 @@ static void     user_args_processor (int argc, char **argv)
 		else {
 	INVALID_ARG:
 		    fprintf (aa_stderr,
-			catgets(dtsearch_catd, MS_dtsrclean, 177,
+			CATGETS(dtsearch_catd, MS_dtsrclean, 177,
 			"%s Invalid %.2s argument.\n"),
 			PROGNAME"177", argptr);
 		    oops = TRUE;
@@ -368,7 +368,7 @@ static void     user_args_processor (int argc, char **argv)
 		if (argptr[2] != '\0') {
 		    if ((frecids = fopen (argptr + 2, "w")) == NULL) {
 			fprintf (aa_stderr,
-			    catgets(dtsearch_catd, MS_dtsrclean, 802,
+			    CATGETS(dtsearch_catd, MS_dtsrclean, 802,
 			    "%s Unable to open '%s' to output"
 			    " unreferenced d00 records:\n  %s\n"),
 			    PROGNAME"802", argptr, strerror(errno));
@@ -395,7 +395,7 @@ static void     user_args_processor (int argc, char **argv)
 
 	UNKNOWN_ARG:
 	    default:
-		fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 159,
+		fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 159,
 		    "%s Unknown argument: '%s'.\n"),
 		    PROGNAME"159", argptr);
 		oops = TRUE;
@@ -409,15 +409,15 @@ static void     user_args_processor (int argc, char **argv)
      */
     if (argc != 2) {
 	if (argc <= 0)
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 210,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 210,
 		"%s Missing required dbname argument.\n"),
 		PROGNAME"210");
 	if (argc <= 1)
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 211,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 211,
 		"%s Missing required newpath argument.\n"),
 		PROGNAME"211");
 	if (argc > 2)
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 212,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 212,
 		"%s Too many arguments.\n"),
 		PROGNAME"212");
 	oops = TRUE;
@@ -428,7 +428,7 @@ static void     user_args_processor (int argc, char **argv)
     /* DBNAME */
     arg_dbname = argv[0];
     if (strlen (arg_dbname) > 8) {
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 229,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 229,
 	    "%s Invalid database name '%s'.\n"),
 	    PROGNAME"229", arg_dbname);
 	end_of_job (2, SHOW_USAGE);
@@ -464,7 +464,7 @@ static void     validation_error (DB_ADDR dbaorig)
 	slot = ((slot + 1) * recslots - dba_offset)
 	    | (OR_D00 << 24);
 
-    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 6,
+    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 6,
 	"  DBA = %d:%ld (x%02x:%06lx),  orig addr val = x%08lx\n"
 	"  Word='%c%s' offset=%ld addrs=%ld free=%d\n") ,
 	OR_D00, slot, OR_D00, slot, dbaorig,
@@ -490,14 +490,14 @@ static void     open_all_files
     struct stat     fstatbuf;
 
     if ((*fp = fopen (fname, mode)) == NULL) {
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 439,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 439,
 	    "%s Can't open %s: %s\n"),
 	    PROGNAME"439", fname, strerror (errno));
 	*oops = TRUE;
 	return;
     }
     if (fstat (fileno (*fp), &fstatbuf) == -1) {
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 440,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 440,
 	    "%s Can't access status of %s: %s\n"),
 	    PROGNAME"440", fname, strerror (errno));
 	*oops = TRUE;
@@ -505,7 +505,7 @@ static void     open_all_files
     }
     if (size)
 	if ((*size = fstatbuf.st_size) <= 0L) {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 499,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 499,
 		"%s %s is empty.\n"),
 		PROGNAME"499", fname);
 	    *oops = TRUE;
@@ -524,7 +524,7 @@ static void     copy_old_d2x_to_new
     char            readbuf[1024 + 32];
     int             i, j;
 
-    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 7,
+    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 7,
 	"%s: Copying from old d2x files to %s...\n") ,
 	aa_argv0, fname_new);
     for (;;) {	/* loop ends when eof set on input stream */
@@ -532,14 +532,14 @@ static void     copy_old_d2x_to_new
 	i = fread (readbuf, 1, sizeof (readbuf), fp_old);
 	/* byte swap not required on pure copy operation */
 	if (errno) {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 517,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 517,
 		"%s Read error on %s: %s.\n"),
 		PROGNAME"517", fname_old, strerror (errno));
 	    end_of_job (3, SHOW_EXITCODE);
 	}
 	j = fwrite (readbuf, 1, i, fp_new);
 	if (i != j) {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 489,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 489,
 		"%s Write error on %s: %s.\n"),
 		PROGNAME"489", fname_new, strerror (errno));
 	    end_of_job (3, SHOW_EXITCODE);
@@ -705,7 +705,7 @@ static void     copy_new_d99 (long keyfield)
 	    ret = fread (word_addrs, sizeof(DB_ADDR), (size_t)num_reads, fp_d99_old);
 	    if (errno || -1 == ret) {
 		TERMINATE_LINE ();
-		fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 657,
+		fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 657,
 		    "%s Read error on %s: %s.\n"),
 		    PROGNAME"657", fname_d99_old, strerror (errno));
 		end_of_job (4, SHOW_PROGRESS + SHOW_EXITCODE);
@@ -779,7 +779,7 @@ static void     copy_new_d99 (long keyfield)
 		    if (dbaorig == -1L) {
 			TERMINATE_LINE ();
 			fprintf (aa_stderr,
-			    catgets(dtsearch_catd, MS_dtsrclean, 111,
+			    CATGETS(dtsearch_catd, MS_dtsrclean, 111,
 			    "*** %s DBA in d99 = -1.  "
 			    "Probable overrun into expansion\n"
 			    "  area due to incorrect count values "
@@ -806,7 +806,7 @@ static void     copy_new_d99 (long keyfield)
 		    if (dba >= total_num_addrs) {
 			TERMINATE_LINE ();
 			fprintf (aa_stderr,
-			    catgets(dtsearch_catd, MS_dtsrclean, 222,
+			    CATGETS(dtsearch_catd, MS_dtsrclean, 222,
 			    "*** %s DBA in d99 not in d00,"
 			    " slot > max num docs.\n"),
 			    PROGNAME"222");
@@ -833,7 +833,7 @@ static void     copy_new_d99 (long keyfield)
 			    *bvptr |= (is_odd_nibble) ? 0x04 : 0x40;
 			    TERMINATE_LINE ();
 			    fprintf (aa_stderr,
-				catgets(dtsearch_catd, MS_dtsrclean, 333,
+				CATGETS(dtsearch_catd, MS_dtsrclean, 333,
 				"*** %s DBA in d99 does not exist in d00.\n"),
 				PROGNAME"333");
 			    validation_error (dbaorig);
@@ -921,7 +921,7 @@ static void     copy_new_d99 (long keyfield)
 		if (num_writes != num_reads) {
 	    WRITE_ERROR:
 		    fprintf (aa_stderr,
-			catgets(dtsearch_catd, MS_dtsrclean, 665,
+			CATGETS(dtsearch_catd, MS_dtsrclean, 665,
 			"%s Write error on %s: %s.\n"),
 			PROGNAME"665", fname_d99_new, strerror(errno));
 		    end_of_job (4, SHOW_PROGRESS + SHOW_EXITCODE);
@@ -1001,13 +1001,13 @@ int             main (int argc, char *argv[])
 
     aa_argv0 = argv[0];
     setlocale (LC_ALL, "");
-    dtsearch_catd = catopen (FNAME_DTSRCAT, 0);
+    dtsearch_catd = CATOPEN(FNAME_DTSRCAT, 0);
 
     time (&starttime);
     strftime (dbfpath, sizeof (dbfpath),	/* just use any ol' buffer */
-	catgets (dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
+	CATGETS(dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
 	localtime (&starttime));
-    printf ( catgets(dtsearch_catd, MS_dtsrclean, 11,
+    printf ( CATGETS(dtsearch_catd, MS_dtsrclean, 11,
 	"%s Version %s.  Run %s.\n") ,
 	aa_argv0, AUSAPI_VERSION, dbfpath);
 
@@ -1037,11 +1037,11 @@ int             main (int argc, char *argv[])
     if ((ptr = getenv ("DBFPATH")) != NULL) {
 	if (*ptr == 0)
 	    fprintf (aa_stderr,
-		 catgets(dtsearch_catd, MS_dtsrclean, 12,
+		 CATGETS(dtsearch_catd, MS_dtsrclean, 12,
 		"%s: Ignoring empty DBFPATH environment variable.\n") ,
 		aa_argv0);
 	else {
-	    fprintf (aa_stderr,  catgets(dtsearch_catd, MS_dtsrclean, 13,
+	    fprintf (aa_stderr,  CATGETS(dtsearch_catd, MS_dtsrclean, 13,
 		"%s: Using DBFPATH = '%s'.\n") ,
 		aa_argv0, ptr);
 	    snprintf(full_dbname_old, sizeof(full_dbname_old), "%s", ptr);
@@ -1068,7 +1068,7 @@ int             main (int argc, char *argv[])
 	*ptr = '\0';
     }
     if (strcmp (full_dbname_old, full_dbname_new) == 0) {
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 393,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 393,
 	    "%s Old and new directories are identical: '%s'.\n"),
 	    PROGNAME"393", full_dbname_old);
 	end_of_job (2, SHOW_USAGE);
@@ -1079,10 +1079,10 @@ int             main (int argc, char *argv[])
      */
     strcat (full_dbname_old, arg_dbname);
     strcat (full_dbname_new, arg_dbname);
-    fprintf (aa_stderr,  catgets(dtsearch_catd, MS_dtsrclean, 14,
+    fprintf (aa_stderr,  CATGETS(dtsearch_catd, MS_dtsrclean, 14,
 	"%s: Old files: '%s.d2x, .d99'.\n") ,
 	aa_argv0, full_dbname_old);
-    fprintf (aa_stderr,  catgets(dtsearch_catd, MS_dtsrclean, 15,
+    fprintf (aa_stderr,  CATGETS(dtsearch_catd, MS_dtsrclean, 15,
 	"%s: New files: '%s.d2x, .d99'.\n") ,
 	aa_argv0, full_dbname_new);
 
@@ -1126,16 +1126,16 @@ int             main (int argc, char *argv[])
 	    oops = TRUE;
 	}
 	if (oops) {
-	    fprintf (aa_stderr,  catgets(dtsearch_catd, MS_dtsrclean, 24,
+	    fprintf (aa_stderr,  CATGETS(dtsearch_catd, MS_dtsrclean, 24,
 		"%s: One or more new files already exist.\n") ,
 		aa_argv0);
 	    if (overlay_no) {
-		fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 463,
+		fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 463,
 		    "%s Command line argument disallows file overlay.\n"),
 		    PROGNAME"463");
 		end_of_job (2, SHOW_EXITCODE);
 	    }
-	    fputs (catgets(dtsearch_catd, MS_dtsrclean, 45,
+	    fputs (CATGETS(dtsearch_catd, MS_dtsrclean, 45,
 		"    Is it ok to overlay files in new directory? [y/n] "),
 		aa_stderr);
 
@@ -1203,7 +1203,7 @@ int             main (int argc, char *argv[])
      * all holes were filled with good records.
      */
     total_num_addrs = (dbrec.or_maxdba - (dba & 0xffffff) + 1) / recslots + 1;
-    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 25,
+    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 25,
 	"%s: curr reccnt=%ld, mxdba=%ld, sl/rec=%ld, tot#adr=%ld.\n") ,
 	aa_argv0, (long)dbrec.or_reccount, (long)dbrec.or_maxdba,
 	(long)dbrec.or_recslots, (long)total_num_addrs);
@@ -1216,7 +1216,7 @@ int             main (int argc, char *argv[])
 	 */
 	max_bitvec = (total_num_addrs >> 1) + 2;
 	if ((bit_vector = malloc ((size_t)max_bitvec + 64)) == NULL) {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 465,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 465,
 		"%s WARNING: Can't allocate memory for bit vector.\n"
 		"  'Validate' mode switched off.\n"),
 		PROGNAME"465");
@@ -1233,7 +1233,7 @@ int             main (int argc, char *argv[])
 	 * records. 
 	 */
 	x = dbrec.or_reccount / 50 + 1;	/* x = recs per dot */
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 26,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 26,
 	    "%s: Reading d00 file.  Each dot appx %ld database documents...\n"),
 	    aa_argv0, (long)x);
 	reccount = 0;
@@ -1260,7 +1260,7 @@ int             main (int argc, char *argv[])
 	    dba1 = (dba + dba_offset) / recslots;  /* ="rec number", base 1 */
 	    if (dba1 >= total_num_addrs) {
 		TERMINATE_LINE ();
-		fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 561,
+		fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 561,
 		    "%s DBA '%d:%ld' (rec #%ld) in d00 exceeds "
 		    "total num addrs %ld;\n"
 		    "  Bit vector overflow because maxdba %ld"
@@ -1286,12 +1286,12 @@ int             main (int argc, char *argv[])
 	/* confirm that RECCOUNT record holds the correct number */
 	if (dbrec.or_reccount == reccount) {
 	    fprintf (aa_stderr,
-		 catgets(dtsearch_catd, MS_dtsrclean, 27,
+		 CATGETS(dtsearch_catd, MS_dtsrclean, 27,
 		"%s: Confirmed %ld DOCUMENTS in %s.d00.\n") ,
 		aa_argv0, (long)dbrec.or_reccount, arg_dbname);
 	}
 	else {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 28,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 28,
 		"%s: %ld DOCUMENTS actually in %s.d00 not ="
 		" %ld count stored there.\n"
 		"  Count will be corrected in new d00 file.\n") ,
@@ -1310,7 +1310,7 @@ EXIT_INIT_VALIDATION:;
     dot_count = DOTS_PER_MSG;	/* force initial msg after first
 				 * blk of recs */
     TERMINATE_LINE ();
-    fprintf (aa_stderr, catgets(dtsearch_catd, MS_dtsrclean, 29,
+    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_dtsrclean, 29,
 	"%s: Compressing into %s.  Each dot appx %lu words...\n") ,
 	aa_argv0, arg_newpath, (unsigned long)recs_per_dot);
 
@@ -1362,7 +1362,7 @@ EXIT_INIT_VALIDATION:;
 		    CRSET (PROGNAME "734", &dba, 0);
 		    CRREAD (PROGNAME "735", OR_OBJKEY, readbuf, 0);
 		    fprintf (aa_stderr,
-			catgets(dtsearch_catd, MS_dtsrclean, 444,
+			CATGETS(dtsearch_catd, MS_dtsrclean, 444,
 			"*** %s d00 record '%s' is not referenced in d99.\n"
 			"  DBA = %d:%ld (x%02x:%06lx).\n") ,
 			PROGNAME"444", readbuf, OR_D00,

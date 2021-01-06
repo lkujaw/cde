@@ -656,7 +656,7 @@ do_auto_apply(
     {   
     	if (changing_objects) 
     	{
-    	    sprintf(buffer, catgets(Dtb_project_catd, 100, 31,
+    	    sprintf(buffer, CATGETS(Dtb_project_catd, 100, 31,
 		"Drag and drop properties for \"%s\"\n\
 		have been modified but not Applied.\n\n\
 		You can Apply the Changes or Cancel the\n\
@@ -666,7 +666,7 @@ do_auto_apply(
     	{
 	    if(new_obj != (ABObj) NULL) 
 	    {
-    	    	sprintf(buffer, catgets(Dtb_project_catd, 100, 32,
+    	    	sprintf(buffer, CATGETS(Dtb_project_catd, 100, 32,
 		"Drag and drop properties for \"%s\"\n\
 		have been modified but not Applied.\n\n\
 		You can Apply the Changes or Cancel the\n\
@@ -674,7 +674,7 @@ do_auto_apply(
 	    }
 	    else 
 	    {
-    	    	sprintf(buffer,catgets(Dtb_project_catd, 100, 33,
+    	    	sprintf(buffer,CATGETS(Dtb_project_catd, 100, 33,
 		"Drag and drop properties for \"%s\"\n\
 		have been modified but not Applied.\n\n\
 		You can Apply the Changes or Cancel the\n\

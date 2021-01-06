@@ -65,10 +65,6 @@
 #include "SelectionI.h"
 #include "VirtFuncsI.h"
 
-#ifdef NLS16
-#include <nl_types.h>
-#endif
-
 /******************************************************************************
  *
  * Private Macros

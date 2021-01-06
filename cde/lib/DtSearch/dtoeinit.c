@@ -179,8 +179,8 @@ void            oe_initialize (void)
 	    if (usrblk.query != NULL)
 		ptr = usrblk.query;
 	    else
-		ptr = catgets (dtsearch_catd, MS_misc, 6, "<unknown>");
-	    sprintf (sprintbuf, catgets (dtsearch_catd, MS_oeinit, 137,
+		ptr = CATGETS(dtsearch_catd, MS_misc, 6, "<unknown>");
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oeinit, 137,
 		    "%s User Interface version %s and Engine "
 		    "version %s are incompatible."),
 		PROGNAME"137", ptr, AUSAPI_VERSION);
@@ -192,7 +192,7 @@ void            oe_initialize (void)
 
     /* Load site configuration (ocf) file and create dblks list */
     if (!load_ocf()) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_oeinit, 202,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oeinit, 202,
 	    "%s Initialization failed due to errors in configuration file."),
 	    PROGNAME"202");
 	DtSearchAddMessage (sprintbuf);
@@ -227,7 +227,7 @@ void            oe_initialize (void)
      */
     if (!ve_initialize()) {
 INIT_FAILED:
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_oeinit, 266,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_oeinit, 266,
 		"%s Initialization failed due to errors in database,\n"
 		"  language, or related files."),
 	    PROGNAME "266");
@@ -276,7 +276,7 @@ DELETE_DB:
 
     /* Abort if fatal dictionary load errors */
     if (good_dblk_count <= 0) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_misc, 8,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_misc, 8,
 	    "%s No valid databases remain."),
 	    PROGNAME"265");
 	DtSearchAddMessage (sprintbuf);

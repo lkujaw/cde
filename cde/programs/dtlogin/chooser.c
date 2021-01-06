@@ -100,10 +100,6 @@ in this Software without prior written authorization from the X Consortium.
 #include    <stdio.h>
 #include    <ctype.h>
 #include    <locale.h>
-#include    <nl_types.h>
-#ifndef NL_CAT_LOCALE
-#define NL_CAT_LOCALE 0
-#endif
 
 #ifdef SVR4
 #include    <sys/sockio.h>

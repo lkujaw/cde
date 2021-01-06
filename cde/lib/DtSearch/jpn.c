@@ -731,7 +731,7 @@ ENTIRE_SUBSTR_IS_WORD:
     } /* end state switch */
 
     /* Should never get here... */
-    fprintf (aa_stderr, catgets(dtsearch_catd, MS_lang, 20,
+    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_lang, 20,
 	"%s Program Error: Unknown jstate %d.\n") ,
 	PROGNAME"246", last_jstate);
     DtSearchExit (46);
@@ -865,7 +865,7 @@ FILL_ANOTHER_SUBSTRING:
 		fputs ("jpnparser: js=ETX\n", aa_stderr);
             if (add_msgs) {
                 char    msgbuf [DtSrMAXWIDTH_HWORD + 100];
-                sprintf (msgbuf, catgets(dtsearch_catd, MS_lang, 21,
+                sprintf (msgbuf, CATGETS(dtsearch_catd, MS_lang, 21,
 		    "%s '%.*s' is not a valid Japanese word.") ,
                     PROGNAME"812", DtSrMAXWIDTH_HWORD, save_parg_string);
                 DtSearchAddMessage (msgbuf);
@@ -980,7 +980,7 @@ static int	load_jpntree (
 	}
 	else {
 	    sprintf (sprintbuf,
-		catgets (dtsearch_catd, MS_misc, 362, "%s: %s: %s."),
+		CATGETS(dtsearch_catd, MS_misc, 362, "%s: %s: %s."),
 		PROGNAME"362", fname, strerror(errno));
 	    DtSearchAddMessage (sprintbuf);
 	    return 2;
@@ -1010,7 +1010,7 @@ static int	load_jpntree (
 	    
 	/* Test for word too short */
 	if (strlen((char*)readbuf) < 4) {
-	    sprintf (sprintbuf, catgets(dtsearch_catd, MS_lang, 23,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_lang, 23,
 		"%s Word '%s' on line %ld is too short.") ,
 		PROGNAME"1074", readbuf, linecount);
 	    DtSearchAddMessage (sprintbuf);
@@ -1043,7 +1043,7 @@ static int	load_jpntree (
 		    /* Test for duplicate word */
 		    if (i == 0) {
 			sprintf (sprintbuf,
-			    catgets (dtsearch_catd, MS_misc, 423,
+			    CATGETS(dtsearch_catd, MS_misc, 423,
 			    "%s Word '%s' in '%s' is a duplicate."),
 			    PROGNAME"423", readbuf, fname);
 			DtSearchAddMessage (sprintbuf);
@@ -1090,7 +1090,7 @@ static int	load_jpntree (
 	    fprintf (aa_stderr,
 		PROGNAME"1185 load '%s' unsuccessful, %d comments discarded.\n",
 		fname, comment_count);
-	sprintf (sprintbuf, catgets(dtsearch_catd, MS_lang, 24,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_lang, 24,
 	    "%s No Japanese words in word file '%s'.") ,
 	    PROGNAME"1186", fname);
 	DtSearchAddMessage (sprintbuf);
@@ -1154,7 +1154,7 @@ int      load_jpn_language (DBLK *dblk, DBLK *dblist)
 	path[0] = 0;
     else {
 	if (strlen (dblk->path) > _POSIX_PATH_MAX - 14) {
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_lang, 25,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_lang, 25,
 		"%s Database '%s' path too long: '%s'.") ,
 		PROGNAME"759", dblk->name, dblk->path);
 	    DtSearchAddMessage (msgbuf);

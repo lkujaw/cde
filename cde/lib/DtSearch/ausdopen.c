@@ -104,7 +104,7 @@ int	austext_dopen (
     /* Test dbname */
     if (dbname == NULL) {
 INVALID_DBNAME:
-	sprintf (sprintbuf, catgets (dtsearch_catd, 13, 348,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, 13, 348,
 	    "%s Invalid database name '%s'."),
 	    PROGNAME"348", NULLORSTR(dbname));
 	DtSearchAddMessage (sprintbuf);
@@ -175,7 +175,7 @@ INVALID_DBNAME:
     SETPAGES (PROGNAME "283", cache, 4);
     d_open (dbdbuf, "o");
     if (db_status != S_OKAY) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, 13, 379,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, 13, 379,
 	    "%s Could not open database '%s':\n  %s."),
 	    PROGNAME"379", dbdbuf, vista_msg (PROGNAME"379"));
 	DtSearchAddMessage (sprintbuf);

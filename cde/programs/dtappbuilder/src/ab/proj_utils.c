@@ -438,7 +438,7 @@ proj_show_save_proj_as_chooser(
     info->child = (Widget) encap_cbox;
     info->chooser_type = AB_SAVE_PROJ_AS_CHOOSER;
 
-    ok_label = XmStringCreateLocalized(catgets(Dtb_project_catd, 100, 237, "Save"));
+    ok_label = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 100, 237, "Save"));
     XtVaSetValues(AB_generic_chooser,
                 XmNautoUnmanage, FALSE,
                 XtVaTypedArg, XmNpattern,
@@ -450,7 +450,7 @@ proj_show_save_proj_as_chooser(
                 NULL);
     XmStringFree(ok_label);
 
-    title = XtNewString(catgets(Dtb_project_catd, 100, 238, "Save Project"));
+    title = XtNewString(CATGETS(Dtb_project_catd, 100, 238, "Save Project"));
     XtVaSetValues(XtParent(AB_generic_chooser),
                 XmNtitle, title,
                 XmNpopdownCallback, &popdown_callback,
@@ -536,14 +536,14 @@ save_proj_as_okCB(
     }
     if (util_file_is_directory(proj_filename))
     {
-        sprintf(Buf, catgets(Dtb_project_catd, 100, 71,
+        sprintf(Buf, CATGETS(Dtb_project_catd, 100, 71,
                 "Cannot save the project to %s.\n%s is a directory not a file."), proj_filename, proj_filename);
         xm_buf = XmStringCreateLocalized(Buf);
 
 	dtb_proj_error_msg_initialize(&dtb_proj_error_msg);
 
         help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-        help_data->help_text = catgets(Dtb_project_catd, 100, 85,
+        help_data->help_text = CATGETS(Dtb_project_catd, 100, 85,
                 "The file name you specified for saving the project\nis a directory. Type another file name for the project.");
         help_data->help_volume = ""; 
         help_data->help_locationID = ""; 
@@ -590,16 +590,16 @@ save_proj_as_okCB(
 	    XtVaGetValues(widget, XmNuserData, &chooserInfo, NULL);
 	    if (chooserInfo->writeEncapsulated)
 	    {
-		sprintf(Buf, catgets(Dtb_project_catd, 100, 77,
+		sprintf(Buf, CATGETS(Dtb_project_catd, 100, 77,
 		    "Cannot save encapsulated project to \"%s\".\n\"%s\" does not have write permission."), proj_dir, proj_dir);
 	    }
 	    else
 	    {
-		sprintf(Buf, catgets(Dtb_project_catd, 100, 74,
+		sprintf(Buf, CATGETS(Dtb_project_catd, 100, 74,
 		    "Cannot save project to \"%s\".\n\"%s\" does not have write permission."), proj_dir, proj_dir);
 	    }
 
-	    util_set_help_data(catgets(Dtb_project_catd, 100, 83,
+	    util_set_help_data(CATGETS(Dtb_project_catd, 100, 83,
 		"The directory you specified for saving is not\nwritable by you. Therefore, the project cannot\nbe saved.  Try saving the project to another directory."), NULL, NULL);
 
             util_printf_err(Buf);
@@ -694,15 +694,15 @@ save_proj_as_bip(
 			new_file, MAXPATHLEN);
 	new_name_len = strlen(new_file);
 	old_name_len = strlen(old_file);
- 	msg_len = strlen(catgets(Dtb_project_catd, 100, 101, MSG));
+ 	msg_len = strlen(CATGETS(Dtb_project_catd, 100, 101, MSG));
 	msg = (STRING)util_malloc((2*old_name_len)+new_name_len+msg_len +1);
 
-	help_data.help_text = catgets(Dtb_project_catd, 100, 102, HLP_MSG);
+	help_data.help_text = CATGETS(Dtb_project_catd, 100, 102, HLP_MSG);
 	help_data.help_volume = NULL;
 	help_data.help_locationID = NULL;
 	if (msg)
 	{
-	    sprintf(msg, catgets(Dtb_project_catd, 100, 101, MSG),
+	    sprintf(msg, CATGETS(Dtb_project_catd, 100, 101, MSG),
 			new_file, old_file, old_file);
 	    xm_msg = XmStringCreateLocalized(msg);
 	    answer = dtb_show_modal_message(AB_generic_chooser,
@@ -838,17 +838,17 @@ proj_show_name_dlg(
  
 
     help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-    help_data->help_text = XtNewString(catgets(Dtb_project_catd, 100, 41,
+    help_data->help_text = XtNewString(CATGETS(Dtb_project_catd, 100, 41,
                         "Type in a name for the new module. A valid name\ncan consist of letters, underscore (_), and digits,\nhowever the name must begin with either a letter or\nan underscore."));
     help_data->help_volume = "";
     help_data->help_locationID = "";
 
-    dialog_title = XtNewString(catgets(Dtb_project_catd, 100, 40, 
+    dialog_title = XtNewString(CATGETS(Dtb_project_catd, 100, 40,
 	"Application Builder"));
-    textf_lbl = XtNewString(catgets(Dtb_project_catd, 100, 111, "Module Name:"));
-    btn1_lbl = XtNewString(catgets(Dtb_project_catd, 100, 108, "Apply"));
-    btn2_lbl = XtNewString(catgets(Dtb_project_catd, 100, 109, "Cancel"));
-    btn3_lbl = XtNewString(catgets(Dtb_project_catd, 100, 110, "Help"));
+    textf_lbl = XtNewString(CATGETS(Dtb_project_catd, 100, 111, "Module Name:"));
+    btn1_lbl = XtNewString(CATGETS(Dtb_project_catd, 100, 108, "Apply"));
+    btn2_lbl = XtNewString(CATGETS(Dtb_project_catd, 100, 109, "Cancel"));
+    btn3_lbl = XtNewString(CATGETS(Dtb_project_catd, 100, 110, "Help"));
 
     answer = ui_popup_modal_prompt( parent, 
 		dialog_title, textf_lbl, init_name, btn1_lbl, btn2_lbl, 
@@ -948,7 +948,7 @@ proj_show_export_bil_chooser(
     /* Pass along the client_data to the okCallback */
     ok_callback[0].closure = (XtPointer) obj;
 
-    ok_label = XmStringCreateLocalized(catgets(Dtb_project_catd, 100, 243, "Export"));
+    ok_label = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 100, 243, "Export"));
     XtVaSetValues(AB_generic_chooser,
                 XmNautoUnmanage, FALSE,
                 XtVaTypedArg, XmNpattern,
@@ -960,7 +960,7 @@ proj_show_export_bil_chooser(
                 NULL);
     XmStringFree(ok_label);
 
-    title = XtNewString(catgets(Dtb_project_catd, 100, 239, "Export Module"));
+    title = XtNewString(CATGETS(Dtb_project_catd, 100, 239, "Export Module"));
     XtVaSetValues(XtParent(AB_generic_chooser),
                 XmNtitle, title,
                 XmNpopdownCallback, &popdown_callback,
@@ -1012,13 +1012,13 @@ export_bil_okCB(
     }
     if (util_file_is_directory(fullpath))
     {
-        sprintf(Buf, catgets(Dtb_project_catd, 100, 72,
+        sprintf(Buf, CATGETS(Dtb_project_catd, 100, 72,
                 "Cannot export the module to %s.\n%s is a directory not a file."), fullpath, fullpath);
         xm_buf = XmStringCreateLocalized(Buf);
         dtb_proj_error_msg_initialize(&dtb_proj_error_msg);
 
 	help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-	help_data->help_text = catgets(Dtb_project_catd, 100, 84,
+	help_data->help_text = CATGETS(Dtb_project_catd, 100, 84,
 		"The file name you specified for exporting the\nmodule is a directory. Type another file name\nfor the module.");
 	help_data->help_volume = "";
 	help_data->help_locationID = "";
@@ -1074,13 +1074,13 @@ export_bil_okCB(
 	}
 	else
         {
-	    sprintf(Buf, catgets(Dtb_project_catd, 100, 78,
+	    sprintf(Buf, CATGETS(Dtb_project_catd, 100, 78,
                     "Cannot export module to \"%s\".\n\"%s\" does not have write permission."), mod_dir, mod_dir);
             xm_buf = XmStringCreateLocalized(Buf);
 	    dtb_proj_error_msg_initialize(&dtb_proj_error_msg);
 
             help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-            help_data->help_text = catgets(Dtb_project_catd, 100, 86,
+            help_data->help_text = CATGETS(Dtb_project_catd, 100, 86,
 		"The directory you specified for exporting is not\nwritable by you. Therefore, the module cannot be\nexported. Try exporting the module to another\ndirectory.");
             help_data->help_volume = "";
             help_data->help_locationID = "";
@@ -1122,22 +1122,22 @@ proj_overwrite_existing_file(
     {
 	if (!encapsulating)
 	{
-	    sprintf(Buf, catgets(Dtb_project_catd, 100, 3, 
+	    sprintf(Buf, CATGETS(Dtb_project_catd, 100, 3,
 			"File \"%s\" exists and\nis a read-only file. You can save your\nwork by saving to a different filename."), file);
 	}
 	else
 	{
-	    sprintf(Buf, catgets(Dtb_project_catd, 100, 53, 
+	    sprintf(Buf, CATGETS(Dtb_project_catd, 100, 53,
 			"File \"%s\" exists and\nis a read-only file. To save the encapsulated file,\nyou must save it to a different file name."), file);
 	}
 
-	util_set_help_data(catgets(Dtb_project_catd, 100, 79,
+	util_set_help_data(CATGETS(Dtb_project_catd, 100, 79,
 		"The file name you specified for saving already exists\nand cannot be overwritten, since it is not writable by\nyou. Your edits can be saved if you type a different\nfile name."), NULL, NULL);
 
 	util_error(Buf);
 	return (-1);
     }
-    sprintf(Buf, catgets(Dtb_project_catd, 100, 4, 
+    sprintf(Buf, CATGETS(Dtb_project_catd, 100, 4,
 	    "File \"%s\" exists.  You can:"), file);
     xm_buf = XmStringCreateLocalized(Buf); 
 
@@ -1197,7 +1197,7 @@ proj_save_needed(
     *proj_dir = 0;
     if (!proj_is_exploded(project))
     {
-	sprintf(Buf, catgets(Dtb_project_catd, 100, 5,
+	sprintf(Buf, CATGETS(Dtb_project_catd, 100, 5,
 	"Project %s was loaded from an encapsulated file (%s).\n\
 	It will be saved as a normal project, with one file per module."),
 	    projName,
@@ -1245,10 +1245,10 @@ proj_save_needed(
 	    }
             else
             {
-		sprintf(Buf, catgets(Dtb_project_catd, 100, 74,
+		sprintf(Buf, CATGETS(Dtb_project_catd, 100, 74,
 		    "Cannot save project to \"%s\".\n\"%s\" does not have write permission."), proj_dir, proj_dir);
 
-		util_set_help_data(catgets(Dtb_project_catd, 100, 83,
+		util_set_help_data(CATGETS(Dtb_project_catd, 100, 83,
 		     "The directory you specified for saving is not\nwritable by you. Therefore, the project cannot\nbe saved. Try saving the project to another directory."), NULL, NULL);
 
 		util_printf_err(Buf);
@@ -1375,10 +1375,10 @@ proj_save_encapsulated(
 	}
 	else
         {
-            sprintf(Buf, catgets(Dtb_project_catd, 100, 77,
+            sprintf(Buf, CATGETS(Dtb_project_catd, 100, 77,
               "Cannot save encapsulated project to \"%s\".\n\"%s\" does not have write permission."), proj_dir, proj_dir);
 
-	    util_set_help_data(catgets(Dtb_project_catd, 100, 83,
+	    util_set_help_data(CATGETS(Dtb_project_catd, 100, 83,
 		 "The directory you specified for saving is not\nwritable by you. Therefore, the project cannot\nbe saved. Try saving the project to another directory."), NULL, NULL);
 
             util_printf_err(Buf);
@@ -1850,18 +1850,18 @@ proj_name_proj(void)
     STRING		btn3_lbl = NULL;
 
     help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-    help_data->help_text = XtNewString(catgets(Dtb_project_catd, 100, 42,
+    help_data->help_text = XtNewString(CATGETS(Dtb_project_catd, 100, 42,
                         "Type in a name for the new project. A valid\nname can consist of letters, underscore (_),\nand digits, however the name must begin with\neither a letter or an underscore."));
     help_data->help_volume = "";
     help_data->help_locationID = "";
 
-    dialog_title = XtNewString(catgets(Dtb_project_catd, 100, 40, 
+    dialog_title = XtNewString(CATGETS(Dtb_project_catd, 100, 40,
 	"Application Builder"));
-    textf_lbl = XtNewString(catgets(Dtb_project_catd, 100, 107, "Project Name:"));
+    textf_lbl = XtNewString(CATGETS(Dtb_project_catd, 100, 107, "Project Name:"));
     def_name = XtNewString("project");
-    btn1_lbl = XtNewString(catgets(Dtb_project_catd, 100, 108, "Apply"));
-    btn2_lbl = XtNewString(catgets(Dtb_project_catd, 100, 109, "Cancel"));
-    btn3_lbl = XtNewString(catgets(Dtb_project_catd, 100, 110, "Help"));
+    btn1_lbl = XtNewString(CATGETS(Dtb_project_catd, 100, 108, "Apply"));
+    btn2_lbl = XtNewString(CATGETS(Dtb_project_catd, 100, 109, "Cancel"));
+    btn3_lbl = XtNewString(CATGETS(Dtb_project_catd, 100, 110, "Help"));
 
     /* Popup the name dialog for the project */
     answer = ui_popup_modal_prompt( dtb_get_toplevel_widget(), 
@@ -1977,7 +1977,7 @@ create_save_encap_cbox(
     XmString    label_xmstring = NULL;
 
     label_xmstring = XmStringCreateLocalized(
-	catgets(Dtb_project_catd, 100, 240, "Save As Encapsulated Project"));
+	CATGETS(Dtb_project_catd, 100, 240, "Save As Encapsulated Project"));
     encap_toggle = XtVaCreateManagedWidget("encap_toggle",
                         xmToggleButtonWidgetClass,
                         parent,
@@ -2004,7 +2004,7 @@ create_export_format_cbox(
     XmString    label_xmstring = NULL;
 
     label_xmstring = XmStringCreateLocalized(
-	catgets(Dtb_project_catd, 100, 241, "Save As UIL"));
+	CATGETS(Dtb_project_catd, 100, 241, "Save As UIL"));
     format_toggle = XtVaCreateManagedWidget("format_toggle",
                         xmToggleButtonWidgetClass,
                         parent,
@@ -2238,7 +2238,7 @@ export_uil_file(
 	** The file already exists, so post an overwrite dialog and
 	** see what the user wants to do.
 	*/
-	sprintf(Buf, catgets(Dtb_project_catd, 100, 4,
+	sprintf(Buf, CATGETS(Dtb_project_catd, 100, 4,
 		"File \"%s\" exists.  You can:"), fullpath);
 	xm_buf = XmStringCreateLocalized(Buf);
 	dtb_proj_overwrite_msg_initialize(&dtb_proj_overwrite_msg);
@@ -2554,7 +2554,7 @@ proj_verify_name(
 	     */
             if ((obj != NULL) && (obj != newObj))
             {
-		sprintf(Buf, catgets(Dtb_project_catd, 100, 6,
+		sprintf(Buf, CATGETS(Dtb_project_catd, 100, 6,
 		    "%s is not a unique name for the module."), 
 		    new_name );
 		xm_buf = XmStringCreateLocalized(Buf);

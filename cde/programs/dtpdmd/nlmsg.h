@@ -36,65 +36,46 @@
 #ifndef _PdmdMsgs_h
 #define _PdmdMsgs_h
 
-#ifdef I18N_MSG
-#include <nl_types.h>
-#define DTPDMD_GETMESSAGE(set, number, string) \
-    DtPdmdGetMessage(set, number, string)
+#include <Dt/MsgCatP.h>
 
-#else /* I18N_MSG */
-#define DTPDMD_GETMESSAGE(set, number, string) (string)
-#endif /* I18N_MSG */
+#define PDMD_MSG_1 DtPdmdGetMessage(1, 1, DtPdmdMsg_0001)
+#define PDMD_MSG_2 DtPdmdGetMessage(1, 2, DtPdmdMsg_0002)
+#define PDMD_MSG_3 DtPdmdGetMessage(1, 3, DtPdmdMsg_0003)
+#define PDMD_MSG_4 DtPdmdGetMessage(1, 4, DtPdmdMsg_0004)
+#define PDMD_MSG_5 DtPdmdGetMessage(1, 5, DtPdmdMsg_0005)
+#define PDMD_MSG_6 DtPdmdGetMessage(1, 6, DtPdmdMsg_0006)
+#define PDMD_MSG_7 DtPdmdGetMessage(1, 7, DtPdmdMsg_0007)
+#define PDMD_MSG_8 DtPdmdGetMessage(1, 8, DtPdmdMsg_0008)
+#define PDMD_MSG_9 DtPdmdGetMessage(1, 9, DtPdmdMsg_0009)
+#define PDMD_MSG_10 DtPdmdGetMessage(1, 10, DtPdmdMsg_0010)
+#define PDMD_MSG_11 DtPdmdGetMessage(1, 11, DtPdmdMsg_0011)
+#define PDMD_MSG_12 DtPdmdGetMessage(1, 12, DtPdmdMsg_0012)
+#define PDMD_MSG_13 DtPdmdGetMessage(1, 13, DtPdmdMsg_0013)
+#define PDMD_MSG_14 DtPdmdGetMessage(1, 14, DtPdmdMsg_0014)
+#define PDMD_MSG_15 DtPdmdGetMessage(1, 15, DtPdmdMsg_0015)
+#define PDMD_MSG_16 DtPdmdGetMessage(1, 16, DtPdmdMsg_0016)
 
-/*** const causes the HP compiler to complain.  Remove reference until   ***
- *** the build and integration people can figure out how to get this to  ***
- *** work.                                                               ***/
-
-/* #define CONST	const */
-#define CONST
-
-#define PDMD_MSG_1 DTPDMD_GETMESSAGE(1, 1, DtPdmdMsg_0001)
-#define PDMD_MSG_2 DTPDMD_GETMESSAGE(1, 2, DtPdmdMsg_0002)
-#define PDMD_MSG_3 DTPDMD_GETMESSAGE(1, 3, DtPdmdMsg_0003)
-#define PDMD_MSG_4 DTPDMD_GETMESSAGE(1, 4, DtPdmdMsg_0004)
-#define PDMD_MSG_5 DTPDMD_GETMESSAGE(1, 5, DtPdmdMsg_0005)
-#define PDMD_MSG_6 DTPDMD_GETMESSAGE(1, 6, DtPdmdMsg_0006)
-#define PDMD_MSG_7 DTPDMD_GETMESSAGE(1, 7, DtPdmdMsg_0007)
-#define PDMD_MSG_8 DTPDMD_GETMESSAGE(1, 8, DtPdmdMsg_0008)
-#define PDMD_MSG_9 DTPDMD_GETMESSAGE(1, 9, DtPdmdMsg_0009)
-#define PDMD_MSG_10 DTPDMD_GETMESSAGE(1, 10, DtPdmdMsg_0010)
-#define PDMD_MSG_11 DTPDMD_GETMESSAGE(1, 11, DtPdmdMsg_0011)
-#define PDMD_MSG_12 DTPDMD_GETMESSAGE(1, 12, DtPdmdMsg_0012)
-#define PDMD_MSG_13 DTPDMD_GETMESSAGE(1, 13, DtPdmdMsg_0013)
-#define PDMD_MSG_14 DTPDMD_GETMESSAGE(1, 14, DtPdmdMsg_0014)
-#define PDMD_MSG_15 DTPDMD_GETMESSAGE(1, 15, DtPdmdMsg_0015)
-#define PDMD_MSG_16 DTPDMD_GETMESSAGE(1, 16, DtPdmdMsg_0016)
-
-extern CONST char DtPdmdMsg_0001[];
-extern CONST char DtPdmdMsg_0002[];
-extern CONST char DtPdmdMsg_0003[];
-extern CONST char DtPdmdMsg_0004[];
-extern CONST char DtPdmdMsg_0005[];
-extern CONST char DtPdmdMsg_0006[];
-extern CONST char DtPdmdMsg_0007[];
-extern CONST char DtPdmdMsg_0008[];
-extern CONST char DtPdmdMsg_0009[];
-extern CONST char DtPdmdMsg_0010[];
-extern CONST char DtPdmdMsg_0011[];
-extern CONST char DtPdmdMsg_0012[];
-extern CONST char DtPdmdMsg_0013[];
-extern CONST char DtPdmdMsg_0014[];
-extern CONST char DtPdmdMsg_0015[];
-extern CONST char DtPdmdMsg_0016[];
-
-#ifdef I18N_MSG
+extern const char DtPdmdMsg_0001[];
+extern const char DtPdmdMsg_0002[];
+extern const char DtPdmdMsg_0003[];
+extern const char DtPdmdMsg_0004[];
+extern const char DtPdmdMsg_0005[];
+extern const char DtPdmdMsg_0006[];
+extern const char DtPdmdMsg_0007[];
+extern const char DtPdmdMsg_0008[];
+extern const char DtPdmdMsg_0009[];
+extern const char DtPdmdMsg_0010[];
+extern const char DtPdmdMsg_0011[];
+extern const char DtPdmdMsg_0012[];
+extern const char DtPdmdMsg_0013[];
+extern const char DtPdmdMsg_0014[];
+extern const char DtPdmdMsg_0015[];
+extern const char DtPdmdMsg_0016[];
 
 /* Message IDs */
 
-extern const char * DtPdmGetMessage(
-				    int set,
-				    int n,
-				    const char * s);
-
-#endif /* I18N_MSG */
+const char *DtPdmdGetMessage(int set,
+                             int n,
+                             const char *s);
 
 #endif /* _PdmdMsgs_h */

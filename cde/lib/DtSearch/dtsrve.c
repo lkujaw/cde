@@ -107,7 +107,7 @@ char    *strupr(char *);
  */
 void            dummy_workproc (void)
 {
-    fputs (catgets (dtsearch_catd, MS_ve, 26,
+    fputs (CATGETS(dtsearch_catd, MS_ve, 26,
 	PROGNAME "26 Called dummy_workproc().\n"),
 	aa_stderr);
     return;
@@ -201,7 +201,7 @@ int             ve_initialize (void)
 	RECFRST (PROGNAME "285", OR_DBREC, db->vistano); /* seqtl retrieval */
 	if (db_status != S_OKAY) {
     NO_DBREC:
-	    sprintf (msgbuf, catgets (dtsearch_catd, MS_misc, 13,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_misc, 13,
 		    "%s No DB record in database '%s'."),
 		PROGNAME "853 ", db->name);
 	    DtSearchAddMessage (msgbuf);
@@ -222,14 +222,14 @@ int             ve_initialize (void)
 
 	/*-------------- DBREC SANITY CHECKS ----------------*/
 	if (db->dbrec.or_reccount <= 0) {
-	    sprintf (msgbuf, catgets (dtsearch_catd, MS_ve, 167,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_ve, 167,
 		     "%s No data in database '%s'."),
 		PROGNAME"167 ", db->name);
 	    DtSearchAddMessage (msgbuf);
 	    goto DELETE_DB;
 	}
 	if (!is_compatible_version (db->dbrec.or_version, SCHEMA_VERSION)) {
-	    sprintf (msgbuf, catgets (dtsearch_catd, MS_ve, 178,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_ve, 178,
 		    "%s Database '%s' version '%s' incompatible"
 		    " with Engine version '%s'."),
 		PROGNAME"178 ",
@@ -238,7 +238,7 @@ int             ve_initialize (void)
 	    goto DELETE_DB;
 	}
 	if (db->dbrec.or_reccount > db->dbrec.or_maxdba) {
-	    sprintf (msgbuf, catgets (dtsearch_catd, MS_ve, 251,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_ve, 251,
 		    "%s Database '%s' corrupted: "
 		    "Incompatible record counts and database addresses.\n"),
 		PROGNAME" 251", db->name);
@@ -246,7 +246,7 @@ int             ve_initialize (void)
 	    goto DELETE_DB;
 	}
 	if (db->dbrec.or_maxwordsz < MAXWIDTH_SWORD - 1) {
-	    sprintf (msgbuf, catgets (dtsearch_catd, MS_ve, 185,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_ve, 185,
 		"%s Database '%s' maximum word size %d is too short."),
 		PROGNAME" 185", db->name, db->dbrec.or_maxwordsz);
 	    DtSearchAddMessage (msgbuf);
@@ -257,7 +257,7 @@ int             ve_initialize (void)
 	     * for now, huffman decompress table hardcoded and
 	     * linked in 
 	     */
-	    sprintf (msgbuf, catgets (dtsearch_catd, MS_ve, 156,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_ve, 156,
 		"%s Incompatible data compression table used for database '%s'.\n"
 		"  Database compressed with %ld, "
 		"engine decompressor is %ld.\n"),
@@ -289,7 +289,7 @@ int             ve_initialize (void)
 		fprintf (aa_stderr, "--> opening '%s'\n", d9x_fname);
 
 	    if ((db->syofile = fopen (d9x_fname, open_mode)) == NULL) {
-		sprintf (msgbuf, catgets (dtsearch_catd, MS_oeinit, 317,
+		sprintf (msgbuf, CATGETS(dtsearch_catd, MS_oeinit, 317,
 			default_cant_open_msg), PROGNAME "286",
 		    d9x_fname, errno, strerror (errno), OE_prodname, db->name);
 		DtSearchAddMessage (msgbuf);
@@ -301,7 +301,7 @@ int             ve_initialize (void)
 		fprintf (aa_stderr, "--> opening '%s'\n", d9x_fname);
 
 	    if ((db->syifile = fopen (d9x_fname, open_mode)) == NULL) {
-		sprintf (msgbuf, catgets (dtsearch_catd, MS_oeinit, 317,
+		sprintf (msgbuf, CATGETS(dtsearch_catd, MS_oeinit, 317,
 			default_cant_open_msg), PROGNAME "298",
 		    d9x_fname, errno, strerror (errno), OE_prodname, db->name);
 		DtSearchAddMessage (msgbuf);
@@ -337,7 +337,7 @@ DELETE_DB:
 
     /* Quit if no dblks remain */
     if (good_dblk_count <= 0) {
-	sprintf (msgbuf, catgets (dtsearch_catd, MS_misc, 8,
+	sprintf (msgbuf, CATGETS(dtsearch_catd, MS_misc, 8,
 		"%s No valid databases remain."), PROGNAME "246");
 	DtSearchAddMessage (msgbuf);
 	return FALSE;
@@ -419,14 +419,14 @@ int             ve_append_notes (void)
 
     /* Test if function is disabled */
     if (!OE_enable_usernotes || usrblk.dblk->dbrec.or_dbflags & ORD_NONOTES) {
-	sprintf (mybuf, catgets (dtsearch_catd, MS_ve, 309,
+	sprintf (mybuf, CATGETS(dtsearch_catd, MS_ve, 309,
 		"%s User notes disabled "), PROGNAME" 309");
 	ptr = mybuf + strlen (mybuf);
 	if (!OE_enable_usernotes)
-	    strcpy (ptr, catgets (dtsearch_catd, MS_ve, 310,
+	    strcpy (ptr, CATGETS(dtsearch_catd, MS_ve, 310,
 		"for entire Engine."));
 	else
-	    sprintf (ptr, catgets (dtsearch_catd, MS_ve, 311,
+	    sprintf (ptr, CATGETS(dtsearch_catd, MS_ve, 311,
 		"for database '%s'."),
 		usrblk.dblk->name);
 	DtSearchAddMessage (mybuf);
@@ -435,7 +435,7 @@ int             ve_append_notes (void)
 
     /* Test for invalid dba */
     if (usrblk.dba == NULL_DBA) {
-	DtSearchAddMessage (catgets (dtsearch_catd, MS_ve, 157,
+	DtSearchAddMessage (CATGETS(dtsearch_catd, MS_ve, 157,
 		PROGNAME "157 Client Program Error: "
 		"Null database address in usrblk.dba."));
 	OE_flags |= OE_PERMERR;
@@ -452,7 +452,7 @@ int             ve_append_notes (void)
     for (;;) {
 	if ((semaphore_file = fopen (OEF_notessem, "r+")) == NULL) {
 	    sprintf (mybuf,
-		catgets (dtsearch_catd, MS_ve, 183, 
+		CATGETS(dtsearch_catd, MS_ve, 183,
 		    "%s Could not open user notes semaphore file '%s': %s.\n"),
 		PROGNAME "183 ", OEF_notessem, strerror (errno));
 	    DtSearchAddMessage (mybuf);
@@ -478,7 +478,7 @@ int             ve_append_notes (void)
 	fclose (semaphore_file);
 	if (++i > NOTES_SEM_DELAY) {
 	    sprintf (mybuf,
-		catgets (dtsearch_catd, MS_ve, 199,
+		CATGETS(dtsearch_catd, MS_ve, 199,
 		    "%s Could not acquire user notes semaphore '%s' "
 		    "within %d tries.\n"),
 		PROGNAME " 199", OEF_notessem, NOTES_SEM_DELAY);
@@ -503,9 +503,9 @@ int             ve_append_notes (void)
     appendbufptr = entirebufptr + strlen (entirebufptr);
     time (&mystamp);
     time_ptr = _XLocaltime(&mystamp, localtime_buf);
-    strftime (mybuf, sizeof (mybuf), catgets (dtsearch_catd, MS_ve, 332,
+    strftime (mybuf, sizeof (mybuf), CATGETS(dtsearch_catd, MS_ve, 332,
 	    "%Y/%m/%d at %H:%M %Z"), time_ptr);
-    sprintf (appendbufptr, catgets (dtsearch_catd, MS_ve, 333,
+    sprintf (appendbufptr, CATGETS(dtsearch_catd, MS_ve, 333,
 	    "\n    <User Note Appended by '%s' on %s>\n"),
 	usrblk.userid, mybuf);
     strcat (appendbufptr, usrblk.query);	/* now add user's text */
@@ -544,7 +544,7 @@ int             ve_append_notes (void)
     /* Also append the note to the backup flat file */
     if ((backup_file = fopen (OEF_notesnot, "at ")) == NULL) {
 	sprintf (mybuf,
-	    catgets (dtsearch_catd, MS_ve, 230,
+	    CATGETS(dtsearch_catd, MS_ve, 230,
 		"%s Could not open user notes backup file '%s': %s."),
 	    PROGNAME " 230", OEF_notesnot, strerror (errno));
 	DtSearchAddMessage (mybuf);
@@ -713,7 +713,7 @@ int             ve_getrec_dba (LLIST ** bloblist)
 
     /* Test for invalid dba */
     if (dba == NULL_DBA) {
-	DtSearchAddMessage (catgets (dtsearch_catd, MS_ve, 157,
+	DtSearchAddMessage (CATGETS(dtsearch_catd, MS_ve, 157,
 		PROGNAME "245 Client Program Error: "
 		"Null database address in usrblk.dba."));
 	OE_flags |= OE_PERMERR;
@@ -727,7 +727,7 @@ int             ve_getrec_dba (LLIST ** bloblist)
      */
     d_crset (&dba, vistano);
     if (db_status == S_INVADDR) {
-	sprintf (msgbuf, catgets (dtsearch_catd, MS_ve, 142,
+	sprintf (msgbuf, CATGETS(dtsearch_catd, MS_ve, 142,
 		"%s Client Error: Requested record with invalid\n"
 		"  database addr %ld (%d:%ld, x'%08.8lx') for database '%s'."),
 	    PROGNAME "142 ", dba, dba >> 24, dba & 0xffffff, dba, usrblk.dblk->label);
@@ -951,7 +951,7 @@ DtSrINT32         ve_reckey2dba (void)
     if (usrblk.query == NULL) {
 	null_query = TRUE;
 	usrblk.query = "";
-	DtSearchAddMessage (catgets (dtsearch_catd, MS_ve, 398,
+	DtSearchAddMessage (CATGETS(dtsearch_catd, MS_ve, 398,
 		PROGNAME "398 NULL query string."));
     }
     if (strncmp (usrblk.query, debugkey, strlen (debugkey)) == 0) {

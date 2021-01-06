@@ -2881,7 +2881,7 @@ brws_build_module_menu(
     if (!shown_modules_exist)
     {
 	label = XmStringCreateLocalized(
-	    catgets(Dtb_project_catd, 100, 229, "No modules to browse"));
+	    CATGETS(Dtb_project_catd, 100, 229, "No modules to browse"));
 	mpb = XtVaCreateManagedWidget(name,
 		xmPushButtonWidgetClass,
 		pulldown,

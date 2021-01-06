@@ -906,7 +906,7 @@ locate_obj_parent(
 		        (nobj = trav_next(&trav)) != NULL; )
 			if (obj_is_menubar(nobj))
 			{
-			    i18n_msg = catgets(Dtb_project_catd, 100, 11,
+			    i18n_msg = CATGETS(Dtb_project_catd, 100, 11,
 				"There is already a Menubar for this window.");
 
 			    /* If we have an old buffer lying around, free it */
@@ -923,7 +923,7 @@ locate_obj_parent(
 	    }
 	    if (obj_parent == NULL)
 	    {
-                i18n_msg = catgets(Dtb_project_catd, 100, 15,
+                i18n_msg = CATGETS(Dtb_project_catd, 100, 15,
 			"Menubars must be dropped on a Main Window.");
 
                 /* If we have an old buffer lying around, free it */
@@ -944,7 +944,7 @@ locate_obj_parent(
                 obj_is_window(obj_get_root(obj_parent)) &&
 		!obj_is_file_chooser(obj_parent))))
 	    {
-		i18n_msg = catgets(Dtb_project_catd, 100, 12,
+		i18n_msg = CATGETS(Dtb_project_catd, 100, 12,
 			"Containers must be dropped on\na Main Window or Custom Dialog."); 
 		/* If we have an old buffer lying around, free it */     
 		if (errmsg != (STRING) NULL)
@@ -1176,7 +1176,7 @@ locate_obj_parent(
 	    {
 		if (obj_is_control_panel(obj))
 		{
-                    i18n_msg = catgets(Dtb_project_catd, 100, 59,
+                    i18n_msg = CATGETS(Dtb_project_catd, 100, 59,
 			"Control Panes must be dropped on a Main Window,\nCustom Dialog, or another pane.");
 
                     /* If we have an old buffer lying around, free it */
@@ -1211,7 +1211,7 @@ locate_obj_parent(
 		(!(obj_is_container(obj_parent) &&
                 !obj_is_menubar(obj_parent))))
 	    {
-                i18n_msg = catgets(Dtb_project_catd, 100, 13,
+                i18n_msg = CATGETS(Dtb_project_catd, 100, 13,
 			"Panes must be dropped on a Main Window,\nCustom Dialog, or another pane.");
 
                 /* If we have an old buffer lying around, free it */
@@ -1231,7 +1231,7 @@ locate_obj_parent(
 		(!obj_is_control_panel(obj_get_root(obj_parent)) && 
 		!obj_is_group(obj_get_root(obj_parent))))
 	    {
-                i18n_msg = catgets(Dtb_project_catd, 100, 14, 
+                i18n_msg = CATGETS(Dtb_project_catd, 100, 14,
 			"Controls must be dropped on\na Control Pane or Group."); 
                 /* If we have an old buffer lying around, free it */
                 if (errmsg != (STRING) NULL) 
@@ -1245,7 +1245,7 @@ locate_obj_parent(
         }
         else
  	{
-            i18n_msg = catgets(Dtb_project_catd, 100, 16,
+            i18n_msg = CATGETS(Dtb_project_catd, 100, 16,
 			"Unknown object type.");
 
             /* If we have an old buffer lying around, free it */

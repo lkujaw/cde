@@ -95,7 +95,7 @@ make_goto(Calendar *c)
         else
                 g = (Goto*)c->goTo;
 
-	title = XtNewString(catgets(c->DT_catd, 1, 715, "Calendar : Go to Date"));
+	title = XtNewString(CATGETS(c->DT_catd, 1, 715, "Calendar : Go to Date"));
 	g->frame = XtVaCreatePopupShell("frame",
                 xmDialogShellWidgetClass, c->frame,
                 XmNtitle, title,
@@ -114,7 +114,7 @@ make_goto(Calendar *c)
 		XmNmarginHeight,        0,
                 NULL);
 
-        xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 293, "Date:"));
+        xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 293, "Date:"));
         g->datelabel = XtVaCreateWidget("Date:", 
 		xmLabelWidgetClass, 	g->form,
                 XmNleftAttachment, 	XmATTACH_FORM,
@@ -163,7 +163,7 @@ make_goto(Calendar *c)
                 XmNfractionBase,        3,
                 NULL);
 
-        xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 294, "Go To"));
+        xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 294, "Go To"));
         g->datebutton = XtVaCreateWidget("goTo", 
 		xmPushButtonWidgetClass, button_form,
                 XmNtopAttachment, 	XmATTACH_WIDGET,
@@ -178,7 +178,7 @@ make_goto(Calendar *c)
         XtAddCallback(g->datebutton, XmNactivateCallback, goto_date, NULL);
 	XmStringFree(xmstr);
 
-        xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 680, "Close"));
+        xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 680, "Close"));
         g->cancelbutton = XtVaCreateWidget("cancel", 
 		xmPushButtonWidgetClass, button_form,
                 XmNtopAttachment, 	XmATTACH_WIDGET,
@@ -193,7 +193,7 @@ make_goto(Calendar *c)
 	XmStringFree(xmstr);
 
 
-        xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+        xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
         g->helpbutton = XtVaCreateWidget("help", 
 		xmPushButtonWidgetClass, button_form,
                 XmNtopAttachment, 	XmATTACH_WIDGET,
@@ -259,7 +259,7 @@ goto_date(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs)
  
 	date = XmTextGetString(g->datetext);
 	if ((date == NULL) || (*date == '\0')) {
-		sprintf(message, "%s", catgets(c->DT_catd, 1, 297, "Please type in a date"));
+		sprintf(message, "%s", CATGETS(c->DT_catd, 1, 297, "Please type in a date"));
 		set_message(g->goto_message, message);
                 return;
 	}
@@ -272,24 +272,24 @@ goto_date(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs)
                 gotodate = cm_getdate(date, NULL);
         }
 	if (!strcmp(today, date)) {
-		sprintf(message, catgets(c->DT_catd, 1, 298, "You are already viewing %s"), date);
+		sprintf(message, CATGETS(c->DT_catd, 1, 298, "You are already viewing %s"), date);
 		set_message(g->goto_message, message);
 		return;
 	}
  
 
 	if (gotodate == DATE_BBOT) {
-		sprintf(message, "%s", catgets(c->DT_catd, 1, 814, "You must enter a date after 1969 and before 2038"));
+		sprintf(message, "%s", CATGETS(c->DT_catd, 1, 814, "You must enter a date after 1969 and before 2038"));
 		set_message(g->goto_message, message);
                 return;
 	}
 	else if (gotodate == DATE_AEOT) {
-		sprintf(message, "%s", catgets(c->DT_catd, 1, 814, "You must enter a date after 1969 and before 2038"));
+		sprintf(message, "%s", CATGETS(c->DT_catd, 1, 814, "You must enter a date after 1969 and before 2038"));
 		set_message(g->goto_message, message);
                 return;
 	}
         else if (gotodate <= 0) {
-		sprintf(message, "%s", catgets(c->DT_catd, 1, 299, "Invalid Date"));
+		sprintf(message, "%s", CATGETS(c->DT_catd, 1, 299, "Invalid Date"));
 		set_message(g->goto_message, message);
                 return;
         }

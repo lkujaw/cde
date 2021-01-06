@@ -98,7 +98,7 @@ display_help(Calendar *c, ArgList args, int nargs)
   if (!c->mainhelpdialog)
   {
     Arg oneArg;
-    char *title = XtNewString(catgets(c->DT_catd, 1, 1076, "Calendar : Help"));
+    char *title = XtNewString(CATGETS(c->DT_catd, 1, 1076, "Calendar : Help"));
 
     XtSetArg(oneArg, XmNtitle, title);
     c->mainhelpdialog =
@@ -154,7 +154,7 @@ void show_main_help(Widget w, XtPointer clientData, XtPointer cbs)
                switch ((int)status)
                   {
                     case DtHELP_SELECT_ERROR:
-                      printf("%s", catgets(c->DT_catd, 1, 350, "Selection Error, cannot continue\n"));
+                      printf("%s", CATGETS(c->DT_catd, 1, 350, "Selection Error, cannot continue\n"));
                     break;
                     case DtHELP_SELECT_VALID:
                       while (selWidget != NULL)
@@ -174,9 +174,9 @@ void show_main_help(Widget w, XtPointer clientData, XtPointer cbs)
 
                     case DtHELP_SELECT_INVALID:
 		      {
-			char *title = XtNewString(catgets(c->DT_catd, 1, 110, "Calendar : Error - Help"));
-			char *text = XtNewString(catgets(c->DT_catd, 1, 352, "You must select a component within your application."));
-			char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+			char *title = XtNewString(CATGETS(c->DT_catd, 1, 110, "Calendar : Error - Help"));
+			char *text = XtNewString(CATGETS(c->DT_catd, 1, 352, "You must select a component within your application."));
+			char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 			dialog_popup(c->frame,
 				     DIALOG_TITLE, title,
 				     DIALOG_TEXT, text,

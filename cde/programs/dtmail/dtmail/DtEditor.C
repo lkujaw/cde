@@ -786,10 +786,10 @@ CDEM_DtWidgetEditor::modifyData(
     {
 	
 	if( !begin_ins_bracket)
-	    begin_ins_bracket = GETMSG(DT_catd, 1, 201,
+	    begin_ins_bracket = CATGETS(DT_catd, 1, 201,
 		"\n------------- Begin Included Message -------------\n"); 
 	if(!end_ins_bracket) 
-	    end_ins_bracket = GETMSG(DT_catd, 1, 202,
+	    end_ins_bracket = CATGETS(DT_catd, 1, 202,
 		"\n------------- End Included Message -------------\n"); 
 	
 	size_t begin_len = strlen(begin_ins_bracket); 

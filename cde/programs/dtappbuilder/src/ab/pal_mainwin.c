@@ -170,7 +170,7 @@ mainwin_initialize(
 
     obj_set_unique_name(obj, "mainwindow");
 
-    obj_set_label(obj, catgets(Dtb_project_catd, 100, 258, "Main Window"));
+    obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 258, "Main Window"));
     obj_set_bg_color(obj, "white");
     obj_set_is_initially_visible(obj, True);
     obj_set_is_initially_iconic(obj, False);
@@ -797,7 +797,7 @@ mainwin_create_area(
         obj_set_x(label, 1);
         obj_set_y(label, 1);
 	pal_initialize_obj(label);
-	obj_set_label(label, catgets(Dtb_project_catd, 100, 264, "footer message"));
+	obj_set_label(label, CATGETS(Dtb_project_catd, 100, 264, "footer message"));
 	obj_set_label_alignment(label, AB_ALIGN_LEFT);
 	obj_set_unique_name(label,
 		ab_ident_from_name_and_label(obj_get_name(obj), "label"));

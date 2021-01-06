@@ -30,7 +30,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>

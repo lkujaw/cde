@@ -337,10 +337,10 @@ void            open_outfile (void)
     if (!outmode_specified)
 	if ((temp = fopen (outfile, "r")) != NULL) {
 	    fclose (temp);
-	    printf ( catgets(dtsearch_catd, MS_chandel, 3,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 3,
 		"Output file '%s' already exists.\n") ,
 		outfile);
-	    printf ( "%s", catgets(dtsearch_catd, MS_chandel, 4,
+	    printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 4,
 		"Append, overwrite, or quit? [a,o,q] ") );
 	    i = tolower (getchar ());
 
@@ -355,7 +355,7 @@ void            open_outfile (void)
 	outstream = stdout;
     else {
 	if ((outstream = fopen (outfile, outmode)) == NULL) {
-	    printf ( catgets(dtsearch_catd, MS_chandel, 7,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 7,
 		"Unable to open output file '%s'.\n") , outfile);
 	    exit (FILE_ERROR);
 	}
@@ -572,7 +572,7 @@ void            process_profile (void)
 
     /*-- open file --*/
     if ((prof = fopen (profile, "r")) == NULL) {
-	printf ( catgets(dtsearch_catd, MS_chandel, 11,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 11,
 		"\nError - unable to open profile file '%s'.\n") , profile);
 	exit (FILE_ERROR);
     }
@@ -627,7 +627,7 @@ void            process_profile (void)
 		if (validate_id (tok))
 		    strcpy (line_current->name, tok);
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 			"Error line %d: invalid identifier '%s'.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -636,7 +636,7 @@ void            process_profile (void)
 		/*-- get first value token --*/
 		tok = my_strtok ('\0', del_string);
 		if (!tok) {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 13,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 13,
 			"Error line %d - identifier '%s' missing value(s).\n") ,
 			line_num, line_current->name);
 		    bad_profile = TRUE;
@@ -647,7 +647,7 @@ void            process_profile (void)
 		else
 		    line_current->comp->column_number = atoi (tok);
 		if (line_current->comp->column_number == 0) {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 14,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 14,
 			"Error line %d - zero or bad value for '%s'.\n"
 			"  offensive token: %s.\n") ,
 			line_num, line_current->name, tok);
@@ -658,7 +658,7 @@ void            process_profile (void)
 		tok = my_strtok ('\0', "\"");
 		if (!tok) {
 		    if (line_current->comp->column_number == ANY) {
-			printf ( catgets(dtsearch_catd, MS_chandel, 15,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 15,
 			"Error line %d - for identifier '%s', column has "
 			"been set to ANY\n  but there is no "
 			"identifying signature string.\n") , 
@@ -694,7 +694,7 @@ void            process_profile (void)
 		    else
 			line_current->comp->column_number = atoi (tok);
 		    if (line_current->comp->column_number == 0) {
-			printf ( catgets(dtsearch_catd, MS_chandel, 16,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 16,
 			"Error line %d - zero or bad value for "
 			"identifier '%s'\n  offensive token: %s.\n") ,
 			    line_num, line_current->name, tok);
@@ -705,13 +705,13 @@ void            process_profile (void)
 		    tok = my_strtok ('\0', "\"");
 		    if (!tok) {
 			if (line_current->comp->column_number == ANY)
-			    printf ( catgets(dtsearch_catd, MS_chandel, 15,
+			    printf ( CATGETS(dtsearch_catd, MS_chandel, 15,
 			        "Error line %d - for identifier '%s', column has "
 			        "been set to ANY\n  but there is no "
 			        "identifying signature string.\n") , 
 				line_num, line_current->name);
 			else
-			    printf ( catgets(dtsearch_catd, MS_chandel, 18,
+			    printf ( CATGETS(dtsearch_catd, MS_chandel, 18,
 				"Error line %d - missing value for "
 				"identifier '%s'\n") ,
 				line_num, line_current->name);
@@ -753,7 +753,7 @@ void            process_profile (void)
 			field_current->is_month = TRUE;
 		}
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 			"Error line %d: invalid identifier '%s'.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -763,7 +763,7 @@ void            process_profile (void)
 		    /*-- get constant value --*/
 		    tok = my_strtok (NULL, "\"");
 		    if (!tok) {
-			printf ( catgets(dtsearch_catd, MS_chandel, 93,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 93,
 			    "Error line %d - '%s' string not "
 			    "enclosed in double quotes.\n"),
 			    line_num, field_current->name);
@@ -777,7 +777,7 @@ void            process_profile (void)
 		    /*-- get line id --*/
 		    tok = my_strtok ('\0', del_string);
 		    if (!tok) {
-			printf ( catgets(dtsearch_catd, MS_chandel, 13,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 13,
 			    "Error line %d - identifier '%s' missing value(s).\n") ,
 			    line_num, line_current->name);
 			bad_profile = TRUE;
@@ -788,7 +788,7 @@ void            process_profile (void)
 		    /*-- get "string"  --*/
 		    tok = my_strtok ('\0', "\"");
 		    if (!tok) {
-			printf ( catgets(dtsearch_catd, MS_chandel, 93,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 93,
 			    "Error line %d - '%s' string not "
 			    "enclosed in double quotes.\n"),
 			    line_num, field_current->name);
@@ -801,7 +801,7 @@ void            process_profile (void)
 		    /*-- get offset --*/
 		    tok = my_strtok ('\0', del_string);
 		    if (!tok) {
-			printf ( catgets(dtsearch_catd, MS_chandel, 13,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 13,
 			"Error line %d - identifier '%s' missing value(s).\n") ,
 			    line_num, line_current->name);
 			bad_profile = TRUE;
@@ -813,7 +813,7 @@ void            process_profile (void)
 		    tok = my_strtok ('\0', del_string);
 	/*******if (!tok && field_current->length == ANY) ************/
 		    if (!tok) {
-			printf ( catgets(dtsearch_catd, MS_chandel, 13,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 13,
 			"Error line %d - identifier '%s' missing value(s).\n") ,
 			    line_num, line_current->name);
 			bad_profile = TRUE;
@@ -831,14 +831,14 @@ void            process_profile (void)
 	    case DELIMITER:
 		/*-- get next token - should be name of line --*/
 		if (warnings &&(bot_defined || top_defined))
-		    printf ( catgets(dtsearch_catd, MS_chandel, 23,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 23,
 			"Warning line %d: Delimiter redefined.\n") ,
 			line_num);
 		tok = my_strtok ('\0', del_string);
 		if (validate_id (tok))
 		    strcpy (top_rec_name, tok);
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 			"Error line %d: invalid identifier '%s'.\n"),
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -857,7 +857,7 @@ void            process_profile (void)
 		    bot_defined = TRUE;
 		} else {
 BAD_DELIM_VAL:
-		    printf ( catgets(dtsearch_catd, MS_chandel, 25,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 25,
 			"Error line %d: delimiter not specified as "
 			"'top' or 'bottom'.\n") ,
 		    line_num);
@@ -883,7 +883,7 @@ BAD_DELIM_VAL:
 		}
 		/* if it was a valid token */
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 26,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 26,
 			"Error line %d: invalid token '%s'.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -911,7 +911,7 @@ BAD_DELIM_VAL:
 		}
 		/* if it was a valid token */
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 27,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 27,
 			"Error line %d: invalid token '%s'.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -950,7 +950,7 @@ BAD_DELIM_VAL:
 			}
 			/* if in else */
 			else {
-			    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+			    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 				"Error line %d: invalid identifier '%s'.\n") ,
 				line_num, tok);
 			    bad_profile = TRUE;
@@ -959,7 +959,7 @@ BAD_DELIM_VAL:
 		}
 		/* if validate... */
 		else {
-		    printf (catgets(dtsearch_catd, MS_chandel, 12,
+		    printf (CATGETS(dtsearch_catd, MS_chandel, 12,
 			"Error line %d: invalid identifier '%s'.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -998,7 +998,7 @@ BAD_DELIM_VAL:
 			}
 			/* if in else */
 			else {
-			    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+			    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 				"Error line %d: invalid identifier '%s'.\n") ,
 				line_num, tok);
 			    bad_profile = TRUE;
@@ -1007,7 +1007,7 @@ BAD_DELIM_VAL:
 		}
 		/* if validate... */
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 			"Error line %d: invalid identifier '%s'.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -1046,7 +1046,7 @@ BAD_DELIM_VAL:
 			}
 			/* if in else */
 			else {
-			    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+			    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 				"Error line %d: invalid identifier '%s'.\n") ,
 				line_num, tok);
 			    bad_profile = TRUE;
@@ -1055,7 +1055,7 @@ BAD_DELIM_VAL:
 		}
 		/* if validate... */
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 			"Error line %d: invalid identifier '%s'.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -1094,7 +1094,7 @@ BAD_DELIM_VAL:
 			}
 			/* if in else */
 			else {
-			    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+			    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 				"Error line %d: invalid identifier '%s'.\n") ,
 				line_num, tok);
 			    bad_profile = TRUE;
@@ -1103,7 +1103,7 @@ BAD_DELIM_VAL:
 		}
 		/* if validate... */
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 12,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 12,
 			"Error line %d: invalid identifier '%s'.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -1116,13 +1116,13 @@ BAD_DELIM_VAL:
 		    goto BAD_IMAGE;
 		for (i = 0; i < strlen (tok); i++)
 		    tok[i] = tolower (tok[i]);
-		if (strcmp (tok, catgets (dtsearch_catd, MS_chandel, 34,"all")) == 0)
+		if (strcmp (tok, CATGETS(dtsearch_catd, MS_chandel, 34,"all")) == 0)
 		    imagemode = INCLUDE;
-		else if (strcmp (tok, catgets (dtsearch_catd, MS_chandel, 35, "none")) == 0)
+		else if (strcmp (tok, CATGETS(dtsearch_catd, MS_chandel, 35, "none")) == 0)
 		    imagemode = EXCLUDE;
 		else {
 BAD_IMAGE:
-		    printf ( catgets(dtsearch_catd, MS_chandel, 36,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 36,
 			"Error line %d: image mode must be 'all' or "
 			"'none' -'%s' not recognized.\n") ,
 			NULLORSTR(tok));
@@ -1143,7 +1143,7 @@ BAD_IMAGE:
 		    textmode = EXCLUDE;
 		else {
 BAD_TEXT:
-		    printf ( catgets(dtsearch_catd, MS_chandel, 37,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 37,
 			"Error line %d: text mode must be 'all' or "
 			"'none' - '%s' not recognized.\n") , NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -1154,14 +1154,14 @@ BAD_TEXT:
 	    case KEYCHAR:
 		/*-- get next token - should be character for key type --*/
 		if (warnings && key_defined)
-		    printf ( catgets(dtsearch_catd, MS_chandel, 38,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 38,
 			"Warning line %d: Key character redefined.\n") ,
 			line_num);
 		tok = my_strtok ('\0', del_string);
 		if (validate_id (tok))
 		    key_char = tok[0];
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 39,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 39,
 			"Error line %d: invalid Key Character:'%c'.\n") ,
 			line_num, (tok)?tok[0]:'?');
 		    bad_profile = TRUE;
@@ -1172,7 +1172,7 @@ BAD_TEXT:
 
 	    case DATEFLD:
 		if (date_pos_defined) {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 110,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 110,
 			"Warning line %d - date field redefined.\n") ,
 			line_num);
 		    null_date_specified = FALSE;
@@ -1187,7 +1187,7 @@ BAD_TEXT:
 		    strcpy (date_current->field_id, tok);
 		else {
 		    /* Msg #111 used two places */
-		    printf ( catgets(dtsearch_catd, MS_chandel, 111,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 111,
 			"Error line %d - bad identifier '%s' for date.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -1211,7 +1211,7 @@ BAD_TEXT:
 			strcpy (date_current->field_id, tok);
 		    else {
 			/* Msg #111 used two places */
-			printf ( catgets(dtsearch_catd, MS_chandel, 111,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 111,
 			    "Error line %d - bad identifier '%s' for date.\n"),
 			    line_num, NULLORSTR(tok));
 			bad_profile = TRUE;
@@ -1225,7 +1225,7 @@ BAD_TEXT:
 	    case KEY:
 		/*-- building the key --*/
 		if (warnings && key_pos_defined)
-		    printf ( catgets(dtsearch_catd, MS_chandel, 40,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 40,
 			"Warning line %d - key field redefined.\n") ,
 			line_num);
 		key_table = (struct key_id *) malloc (sizeof (struct key_id));
@@ -1245,7 +1245,7 @@ BAD_TEXT:
 			strcpy (key_current->field_id, tok);
 		}
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 43,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 43,
 			"Error line %d - bad identifier '%s' for key.\n") ,
 			line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -1260,7 +1260,7 @@ BAD_TEXT:
 		    if (validate_id (tok))
 			strcpy (key_current->field_id, tok);
 		    else {
-			printf ( catgets(dtsearch_catd, MS_chandel, 43,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 43,
 			    "Error line %d - bad identifier '%s' for key.\n") ,
 			    line_num, tok);
 			bad_profile = TRUE;
@@ -1283,7 +1283,7 @@ BAD_TEXT:
 		    discard = FALSE;
 		else {
 BAD_DISCARD:
-		    printf ( catgets(dtsearch_catd, MS_chandel, 45,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 45,
 			"Error line %d: unknown option for 'discard': "
 			"'%s'.\n") , line_num, NULLORSTR(tok));
 		    bad_profile = TRUE;
@@ -1302,7 +1302,7 @@ BAD_DISCARD:
 		    del_blanklines = FALSE;
 		else {
 BAD_DELBLANKLINES:
-		    printf ( catgets(dtsearch_catd, MS_chandel, 46,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 46,
 			"Error line %d: unknown option for "
 			"'delblanklines': '%s'.\n") ,
 			line_num, NULLORSTR(tok));
@@ -1342,7 +1342,7 @@ BAD_DELBLANKLINES:
 			break;
 		    default:
 BAD_ABSTR:
-			printf ( catgets(dtsearch_catd, MS_chandel, 47,
+			printf ( CATGETS(dtsearch_catd, MS_chandel, 47,
 			"Error line %d: Unknown option for abstract :'%s'\n"),
 			line_num, NULLORSTR(tok));
 			bad_profile = TRUE;
@@ -1351,7 +1351,7 @@ BAD_ABSTR:
 		break;
 
 	    default:
-		printf ( catgets(dtsearch_catd, MS_chandel, 48,
+		printf ( CATGETS(dtsearch_catd, MS_chandel, 48,
 			"Error line %d -unknown identifier type '%s'.\n") ,
 		    line_num,  NULLORSTR(tok));
 		bad_profile = TRUE;
@@ -1359,7 +1359,7 @@ BAD_ABSTR:
 	}			/* main switch for each line in profile */
     } while (TRUE);		/* read-a-line do loop */
     if (!date_pos_defined)
-        fprintf (aa_stderr,  catgets(dtsearch_catd, MS_chandel, 115,
+        fprintf (aa_stderr,  CATGETS(dtsearch_catd, MS_chandel, 115,
             "%s Default object dates will be '%s'.\n") ,
 	    PROGNAME"1288", now_str);
     if (bad_profile)
@@ -1368,17 +1368,17 @@ BAD_ABSTR:
     /*---- Process tables, and check for identifiers referenced ----*/
     if (!top_defined && !bot_defined) {
 	bad_profile = TRUE;
-	printf ( "%s", catgets(dtsearch_catd, MS_chandel, 49,
+	printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 49,
 		"Error - delimiter not defined.\n") );
     }
     if (!key_defined) {
 	bad_profile = TRUE;
-	printf ( "%s", catgets(dtsearch_catd, MS_chandel, 50,
+	printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 50,
 		"Error - key-type character never defined.\n") );
     }
     if (!key_pos_defined) {
 	bad_profile = TRUE;
-	printf ( "%s", catgets(dtsearch_catd, MS_chandel, 51,
+	printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 51,
 		"Error - key never defined.\n") );
     }
     if (bad_profile)
@@ -1392,12 +1392,12 @@ BAD_ABSTR:
 	line_current = line_current->next;
     }
     if (top_rec_name[0] != 0 && top_rec == NULL) {
-	printf ( catgets(dtsearch_catd, MS_chandel, 52,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 52,
 		"Error - delimiter defined as '%s' was never found.\n") ,
 	    top_rec_name);
 	bad_profile = TRUE;
     } else if (strcmp (top_rec->head->text, line_mode) == 0) {
-	printf ( catgets(dtsearch_catd, MS_chandel, 53,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 53,
 	    "Error - delimiter defined as '%s' references a physical "
 	    "line in the record.\n   Since the delimiter defines the "
 	    "physical lines\n  it cannot be referenced as a physical line.\n"),
@@ -1416,7 +1416,7 @@ BAD_ABSTR:
 	    line_current = line_current->next;
 	}
 	if (!found && !field_current->constant) {
-	    printf ( catgets(dtsearch_catd, MS_chandel, 54,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 54,
 		"Error - for field '%s', no line identifier matches '%s'.\n") ,
 		field_current->name, field_current->line_id);
 	    bad_profile = TRUE;
@@ -1436,7 +1436,7 @@ BAD_ABSTR:
 	    field_current = field_current->next;
 	}
 	if (!found) {
-	    printf ( catgets(dtsearch_catd, MS_chandel, 55,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 55,
 		"Error - field include/exclude list included\n"
 		"  the field '%s', which was never defined.\n") ,
 		finclude_current->field_id);
@@ -1457,7 +1457,7 @@ BAD_ABSTR:
 	    line_current = line_current->next;
 	}
 	if (!found) {
-	    printf ( catgets(dtsearch_catd, MS_chandel, 56,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 56,
 		"Error - image include/exclude list included\n"
 		"  the line '%s', which was never defined.\n") ,
 		include_current->line_id);
@@ -1478,7 +1478,7 @@ BAD_ABSTR:
 	    line_current = line_current->next;
 	}
 	if (!found) {
-	    printf ( catgets(dtsearch_catd, MS_chandel, 57,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 57,
 		"Error - text include/exclude list included\n"
 		"  the line '%s', which was never defined.\n") ,
 		include_current->line_id);
@@ -1505,7 +1505,7 @@ BAD_ABSTR:
             }
         }
         if (!found) {
-            printf ( catgets(dtsearch_catd, MS_chandel, 116,
+            printf ( CATGETS(dtsearch_catd, MS_chandel, 116,
 		"Error - date references undefined field '%s'.\n"),
                 date_current->field_id);
             bad_profile = TRUE;
@@ -1538,7 +1538,7 @@ END_DATE_TABLE:
 	    field_current = field_current->next;
 	}
 	if (!found) {
-	    printf ( catgets(dtsearch_catd, MS_chandel, 58,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 58,
 		"Error - key definition references field '%s'\n"
 		"  which was never defined.\n") ,
 		key_current->field_id);
@@ -1558,7 +1558,7 @@ END_DATE_TABLE:
 	    field_current = field_current->next;
 	}
 	if (!found) {
-	    printf ( catgets(dtsearch_catd, MS_chandel, 59,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 59,
 		"Error - abstract definition references field '%s'\n"
 		"  which was never defined.\n") ,
 		abstract_current->field_id);
@@ -1691,7 +1691,7 @@ void            write_record (void)
 
     /* Test final record write to check for full filesystem */
     if (fprintf (outstream, "%c\n", CNTRL_L) <= 0) {
-	printf ( catgets(dtsearch_catd, MS_chandel, 124,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 124,
 	    "%s Unable to write to output file '%s':\n  %s\n") ,
 	    PROGNAME"1663", outfile, strerror(errno));
 	DtSearchExit (2);
@@ -1715,7 +1715,7 @@ static void	mmm_to_digits (struct field_id *fld)
     int		i;
 
     if (months == NULL)
-	months = strdup (catgets(dtsearch_catd, MS_chandel, 125,
+	months = strdup (CATGETS(dtsearch_catd, MS_chandel, 125,
 	    "JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC"));
     for (i=0; i<3; i++)
 	valbuf[i] = toupper (fld->value[i]);
@@ -1954,7 +1954,7 @@ void	process_record (void)
 
     BAD_DATE_VALUE:
 	objdate_tmptr = &nowtm;
-	printf ( catgets(dtsearch_catd, MS_chandel, 133,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 133,
 	    "Warning - '%s' is invalid date specification.\n"
 	    "  Using '%s' date for record number %ld that began: %.30s\n") ,
 	    date_value, now_str, rec_count, record_head->text);
@@ -1981,12 +1981,12 @@ void	process_record (void)
 	key_current = key_current->next;
     }
     if (dummy && warnings) {
-	printf ( catgets(dtsearch_catd, MS_chandel, 68,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 68,
 		"Warning - fields necessary for key not found.\n"
 		"  discarding record #%ld that began:\n  %s\n") ,
 	    rec_count, record_head->text);
     } else if (discard && meaningless && warnings) {
-	printf ( catgets(dtsearch_catd, MS_chandel, 69,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 69,
 		"Warning - record #ld deemed meaningless, discarding...\n"
 		"  record began: %.60s\n") ,
 	    rec_count, record_head->text);
@@ -2061,7 +2061,7 @@ void            process_infile (void)
 	instream = stdin;
     else {
 	if ((instream = fopen (infile, "rt")) == NULL) {
-	    printf ( catgets(dtsearch_catd, MS_chandel, 70,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 70,
 		" Unable to open input file '%s'.\n") , infile);
 	    exit (FILE_ERROR);
 	}
@@ -2197,7 +2197,7 @@ static void	usage_msg (void)
 
     if (!warnings)
 	return;
-    printf (catgets (dtsearch_catd, MS_chandel, 71, default_text),
+    printf (CATGETS(dtsearch_catd, MS_chandel, 71, default_text),
       aa_argv0, EXT_FZKEY);
     return;
 } /* usage_msg() */
@@ -2225,7 +2225,7 @@ static void	user_arg_processor (int argc, char **argv)
 
 	    case 'w':
 		if ((screen_width = atoi (argptr + 2)) == 0) {
-		    printf ( "%s", catgets(dtsearch_catd, MS_chandel, 72,
+		    printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 72,
 			"Invalid screen width specified.\n") );
 		    bad_parm = TRUE;
 		}
@@ -2242,7 +2242,7 @@ static void	user_arg_processor (int argc, char **argv)
 		else if (argptr[2] == 'a')
 		    strcpy (outmode, "a");
 		else {
-		    printf ( catgets(dtsearch_catd, MS_chandel, 75,
+		    printf ( CATGETS(dtsearch_catd, MS_chandel, 75,
 			"'%s' is invalid output mode.\n") , argptr);
 		    bad_parm = TRUE;
 		}		/* else */
@@ -2250,14 +2250,14 @@ static void	user_arg_processor (int argc, char **argv)
 		break;
 
 	    default:
-		printf ( catgets(dtsearch_catd, MS_chandel, 76,
+		printf ( CATGETS(dtsearch_catd, MS_chandel, 76,
 			"Unknown command line argument '%s'.\n") , argptr);
 		bad_parm = TRUE;
 	}			/*--switch--*/
     }				/*--while--*/
 
     if (argc-- <= 0) {
-	printf ( "%s", catgets(dtsearch_catd, MS_chandel, 77,
+	printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 77,
 		"Missing required profile-file name.\n") );
 	bad_parm = TRUE;
     }
@@ -2274,7 +2274,7 @@ static void	user_arg_processor (int argc, char **argv)
     }
 
     if (argc-- <= 0) {
-	printf ( "%s", catgets(dtsearch_catd, MS_chandel, 78,
+	printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 78,
 		"Missing required input-file name.\n") );
 	bad_parm = TRUE;
     }
@@ -2292,7 +2292,7 @@ static void	user_arg_processor (int argc, char **argv)
          strcat(outfile,EXT_FZKEY);
 *****************/
 	if (strcmp (infile, "-") == 0) {
-	    printf ( "%s", catgets(dtsearch_catd, MS_chandel, 79, "Error - using "
+	    printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 79, "Error - using "
 		"stdin as input, output filename is required!\n") );
 	    exit (FILE_ERROR);
 	} else {
@@ -2321,38 +2321,38 @@ static void	user_arg_processor (int argc, char **argv)
 /*-- Sanity checks --*/
     /*-- duplicates? --*/
     if (strcmp (infile, profile) == 0) {
-	printf ( catgets(dtsearch_catd, MS_chandel, 80,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 80,
 		"Profile file and input file have same name:'%s'.\n") ,
 	    infile);
 	bad_parm = TRUE;
     }				/* if */
     if (strcmp (infile, outfile) == 0 && strcmp (infile, "-")) {
-	printf ( catgets(dtsearch_catd, MS_chandel, 81,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 81,
 		"Input file and output file have same name:'%s'.\n") ,
 	    infile);
 	bad_parm = TRUE;
     }				/* if */
     if (strcmp (profile, outfile) == 0) {
-	printf ( catgets(dtsearch_catd, MS_chandel, 82,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 82,
 		"Profile file and output file have same name:'%s'.\n") ,
 	    profile);
 	bad_parm = TRUE;
     }				/* if */
     if(warnings)
 	{
-	printf ( catgets(dtsearch_catd, MS_chandel, 83,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 83,
 		"        Profile file: %s\n") , profile);
 	if (strcmp (infile, "-") == 0)
-	    printf ( "%s", catgets(dtsearch_catd, MS_chandel, 84,
+	    printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 84,
 		"          Input file: stdin\n") );
 	else
-	    printf ( catgets(dtsearch_catd, MS_chandel, 85,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 85,
 		"          Input file: %s\n") , infile);
 	if (strcmp (outfile, "-") == 0)
-	    printf ( "%s", catgets(dtsearch_catd, MS_chandel, 86,
+	    printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 86,
 		"         Output file: stdout\n") );
 	else
-	    printf ( catgets(dtsearch_catd, MS_chandel, 87,
+	    printf ( CATGETS(dtsearch_catd, MS_chandel, 87,
 		"         Output file: %s\n") , outfile);
 	}
 }				/*--user_args_processor--*/
@@ -2377,8 +2377,8 @@ int             main (int argc, char **argv)
     /*-- Initialization --*/
     aa_argv0 = argv[0];
     setlocale (LC_ALL, "");
-    dtsearch_catd = catopen (FNAME_DTSRCAT, 0);
-    printf ( catgets(dtsearch_catd, MS_chandel, 88,
+    dtsearch_catd = CATOPEN(FNAME_DTSRCAT, 0);
+    printf ( CATGETS(dtsearch_catd, MS_chandel, 88,
 	"%s. %s %s Text Filter.\n") ,
 	aa_argv0, PRODNAME, DtSrVERSION);
 
@@ -2399,7 +2399,7 @@ int             main (int argc, char **argv)
 	signal (SIGINT, flag_shutdown);
 	signal (SIGTERM, flag_shutdown);
 	open_outfile ();
-	printf ( catgets(dtsearch_catd, MS_chandel, 89,
+	printf ( CATGETS(dtsearch_catd, MS_chandel, 89,
 		"\nInterrupt with CTRL-C to exit gracefully "
 		"at record boundary.\n  Each dot is %ld records...\n"),
 	    RECS_PER_DOT);
@@ -2407,17 +2407,17 @@ int             main (int argc, char **argv)
 	oops = fclose (outstream);
 	fclose (instream);
 	if (oops < 0) {
-	    printf ( "%s", catgets(dtsearch_catd, MS_chandel, 90,
+	    printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 90,
 		"\nError closing output file - disk full?\n") );
 	    exit (FILE_ERROR);
 	}
     }
     else {
-	printf ( "%s", catgets(dtsearch_catd, MS_chandel, 91,
+	printf ( "%s", CATGETS(dtsearch_catd, MS_chandel, 91,
 		"Quitting due to errors in profile file.\n") );
 	exit (BAD_PROFILE);
     }
-    printf ( catgets(dtsearch_catd, MS_chandel, 92,
+    printf ( CATGETS(dtsearch_catd, MS_chandel, 92,
 	"\n%s: Normal completion.  %ld records processed.  Exit code = 0.\n"),
 	aa_argv0, rec_count);
     return 0;

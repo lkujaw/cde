@@ -1195,7 +1195,7 @@ init_new_item(
 
     new_iobj->label_type = AB_LABEL_STRING;
     newlabel = get_unique_default_label(pis->item_list,
-        catgets(Dtb_project_catd, 100, 268, "Item"));
+        CATGETS(Dtb_project_catd, 100, 268, "Item"));
     obj_set_label(new_iobj, newlabel);
 
     abobj_set_item_name(new_iobj, obj_get_module(current_obj),

@@ -524,37 +524,37 @@ do_auto_apply(
  
     	if (changing_objects) 
     	{
-    	    sprintf(buffer, catgets(Dtb_project_catd, 100, 31,
+    	    sprintf(buffer, CATGETS(Dtb_project_catd, 100, 31,
 		"Help properties for \"%s\"\n\
 		have been modified but not Applied.\n\n\
 		You can Apply the Changes or Cancel the\n\
 		Load operation for \"%s\"."),old_name, new_name);
 
-	    help_data->help_text = catgets(Dtb_project_catd, 100, 93,
+	    help_data->help_text = CATGETS(Dtb_project_catd, 100, 93,
 	    "Click Apply Changes to apply the changes to the\ncurrent object and load the selected object.\n\nClick Cancel if you don't want to apply the\nchanges to the current object. You can then\nclick Reset to undo the changes before loading\nthe selected object.");
     	}
     	else 
     	{
 	    if(new_obj != (ABObj) NULL) 
 	    {
-    	    	sprintf(buffer, catgets(Dtb_project_catd, 100, 32,
+    	    	sprintf(buffer, CATGETS(Dtb_project_catd, 100, 32,
 		"Help properties for \"%s\"\n\
 		have been modified but not Applied.\n\n\
 		You can Apply the Changes or Cancel the\n\
 		Close operation."), old_name);
 
-	    	help_data->help_text = catgets(Dtb_project_catd, 100, 94,
+	    	help_data->help_text = CATGETS(Dtb_project_catd, 100, 94,
 		"Click Apply Changes to apply the changes to the\ncurrent object and close the Help Editor.\n\nClick Cancel if you don't want to apply the\nchanges to the current object and want the Help\nEditor to remain displayed.  You can then click\nReset to undo the changes before closing the\nHelp Editor.");
 	    }
 	    else 
 	    {
-    	    	sprintf(buffer,catgets(Dtb_project_catd, 100, 33,
+    	    	sprintf(buffer,CATGETS(Dtb_project_catd, 100, 33,
 		"Help properties for \"%s\"\n\
 		have been modified but not Applied.\n\n\
 		You can Apply the Changes or Cancel the\n\
 		'Change Object-Type' operation."), old_name);
 
-            	help_data->help_text = catgets(Dtb_project_catd, 100, 95,
+            	help_data->help_text = CATGETS(Dtb_project_catd, 100, 95,
 		"Click Apply Changes to apply the changes to the\ncurrent object and display the new object type.\n\nClick Cancel if you don't want to apply the\nchanges to the current object. You can then\nclick Reset to undo the changes before changing\nto a different object type.");
 	    }
     	}

@@ -313,7 +313,7 @@ UndelFromListDialog::createWorkArea ( Widget parent )
 		XmNentryAlignment, XmALIGNMENT_CENTER,
 		NULL);
 
-    labelStr = XmStringCreateLocalized(GETMSG(DT_catd, 1, 14,
+    labelStr = XmStringCreateLocalized(CATGETS(DT_catd, 1, 14,
            "Sender"));
 
     l1 = XtVaCreateManagedWidget("Label1", xmLabelGadgetClass,
@@ -327,7 +327,7 @@ UndelFromListDialog::createWorkArea ( Widget parent )
     // XtAddCallback(l1, XmNhelpCallback, HelpCB, helpId);
 
 
-    labelStr = XmStringCreateLocalized(GETMSG(DT_catd, 1, 15,
+    labelStr = XmStringCreateLocalized(CATGETS(DT_catd, 1, 15,
            "Subject"));
     l2 = XtVaCreateManagedWidget("Label2",
                                 xmLabelGadgetClass, rowOfLabels,
@@ -341,7 +341,7 @@ UndelFromListDialog::createWorkArea ( Widget parent )
     /* add help callback */
     // XtAddCallback(l2, XmNhelpCallback, HelpCB, helpId);
 
-    labelStr = XmStringCreateLocalized(GETMSG(DT_catd, 1, 16,
+    labelStr = XmStringCreateLocalized(CATGETS(DT_catd, 1, 16,
            "Date and Time"));
     l3 = XtVaCreateManagedWidget("Label3",
                         xmLabelGadgetClass, rowOfLabels,
@@ -353,7 +353,7 @@ UndelFromListDialog::createWorkArea ( Widget parent )
     /* add help callback */
     // XtAddCallback(l3, XmNhelpCallback, HelpCB, helpId);
 
-    labelStr = XmStringCreateLocalized(GETMSG(DT_catd, 1, 17,
+    labelStr = XmStringCreateLocalized(CATGETS(DT_catd, 1, 17,
            "Size"));
     l4 = XtVaCreateManagedWidget("Label4",
                 xmLabelGadgetClass, rowOfLabels,
@@ -506,7 +506,7 @@ UndelFromListDialog::addToRowOfButtons()
 
     _undelete_button = new DoUndeleteCmd(
 	                        "Undelete", 
-	                        GETMSG(DT_catd, 1, 115, "Undelete"), 
+	                        CATGETS(DT_catd, 1, 115, "Undelete"),
 	                        TRUE, 
 	                        this);
     ci = new ButtonInterface (rowOfButtons, _undelete_button);
@@ -522,7 +522,7 @@ UndelFromListDialog::addToRowOfButtons()
 
     _close_button = new CloseUndelCmd(
 				"Close",
-				GETMSG(DT_catd, 1, 116, "Close"), 
+				CATGETS(DT_catd, 1, 116, "Close"),
 				TRUE, 
 				this);
     ci = new ButtonInterface (rowOfButtons, _close_button);

@@ -42,7 +42,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include "DtSvcLock.h"
 
 /*****************************************************************************
@@ -79,7 +79,7 @@ Dt11GetMessage(
 	_DtSvcProcessLock();
         if ( NULL == nlmsg_filename || 0 != strcmp(nlmsg_filename, filename) )
         {
-		nlmsg_fd = catopen(filename, NL_CAT_LOCALE);
+		nlmsg_fd = CATOPEN(filename, NL_CAT_LOCALE);
 		if (nlmsg_filename)
 		{
 		    free(nlmsg_filename);
@@ -87,7 +87,7 @@ Dt11GetMessage(
 		}
 		nlmsg_filename = strdup(filename);
         }
-        msg=catgets(nlmsg_fd,set,n,s);
+        msg=CATGETS(nlmsg_fd,set,n,s);
 	_DtSvcProcessUnlock();
         return (msg);
 }

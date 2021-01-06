@@ -216,8 +216,8 @@ menu_initialize(
     obj_set_is_initially_active(obj, True);
 
     /* Add initial items to Choice */
-    items[0] = catgets(Dtb_project_catd,   6, 136, "Item1");
-    items[1] = catgets(Dtb_project_catd, 100, 259, "Item2");
+    items[0] = CATGETS(Dtb_project_catd,   6, 136, "Item1");
+    items[1] = CATGETS(Dtb_project_catd, 100, 259, "Item2");
     for (i=0; i < XtNumber(items); i++)
     {
         iobj = obj_create(AB_TYPE_ITEM, NULL);

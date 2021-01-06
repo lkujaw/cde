@@ -68,7 +68,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
-#include <nl_types.h>		/* for nl_catd */
+#include <Dt/MsgCatP.h>	/* for nl_catd */
 #include "vista.h"
 #include "dberr.h"	/* retained for default vista msgs */
 
@@ -121,7 +121,7 @@ int             dberr (int verrno)
  */
 void            dbautorec (void)
 {
-    fputs (catgets (dtsearch_catd, MS_vista, 304,
+    fputs (CATGETS(dtsearch_catd, MS_vista, 304,
 	"\n*** db_VISTA auto recovery in process...\n"),
 	aa_stderr);
     db_status = S_RECOVERY;
@@ -151,19 +151,19 @@ char           *vista_msg (char *location)
 
     /* Assemble standard Raima err msg */
     if (location == NULL)
-	location = catgets (dtsearch_catd, MS_vista, 303,
+	location = CATGETS(dtsearch_catd, MS_vista, 303,
 	    "(unspecified location)");
-    sprintf (vista_errmsg, catgets (dtsearch_catd, MS_vista, 311,
+    sprintf (vista_errmsg, CATGETS(dtsearch_catd, MS_vista, 311,
 	"*** DB Error at %s, db_status = %d: %n"),
 	location, db_status, &i);
     msgtarg = vista_errmsg + i;
 
     if (db_status == S_UNAVAIL) {	/* +5, usually at d_open() time */
-	strcpy (msgtarg, catgets (dtsearch_catd, MS_vista, 315,
+	strcpy (msgtarg, CATGETS(dtsearch_catd, MS_vista, 315,
 	    "Database in use by other users."));
     }
     else if (db_status >= 0)
-	strcpy (msgtarg, catgets (dtsearch_catd, MS_vista, 312,
+	strcpy (msgtarg, CATGETS(dtsearch_catd, MS_vista, 312,
 		"Programming Error."));
     else {
 	if (db_status < 0 && db_status > -100)
@@ -171,22 +171,22 @@ char           *vista_msg (char *location)
 	else if (db_status <= -900)
 	    defaultmsg = system_error[-(db_status + 900)];
 	else
-	    defaultmsg = catgets (dtsearch_catd, MS_vista, 313,
+	    defaultmsg = CATGETS(dtsearch_catd, MS_vista, 313,
 		"Unknown Error.");
-	strcpy (msgtarg, catgets (dtsearch_catd, MS_vista, -db_status,
+	strcpy (msgtarg, CATGETS(dtsearch_catd, MS_vista, -db_status,
 	    defaultmsg));
     }
     msgtarg += strlen (msgtarg);
 
     /* Append system errno msg */
-    sprintf (msgtarg, catgets (dtsearch_catd, MS_vista, 301,
+    sprintf (msgtarg, CATGETS(dtsearch_catd, MS_vista, 301,
 	    "\n*** System I/O errno %d = %s"),
 	vista_syserrno, strerror (vista_syserrno));
     msgtarg += strlen (msgtarg);
 
     /* Append additional information for common user error msgs */
     if (db_status == S_NOFILE) {
-	strcpy (msgtarg, catgets (dtsearch_catd, MS_vista, 302,
+	strcpy (msgtarg, CATGETS(dtsearch_catd, MS_vista, 302,
 	    "\n"
 	    "*** The usual cause for this kind of error is a missing\n"
 	    "*** or read-only database file, or some system limit\n"

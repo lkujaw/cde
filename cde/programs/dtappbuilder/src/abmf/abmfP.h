@@ -51,7 +51,7 @@
 #include <stdio.h>		/* FILE*, BUFSIZ */
 #include <stdint.h>
 #include <sys/param.h>		/* MAXPATHLEN, ... */
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <X11/Intrinsic.h>
 #include <ab_private/obj.h>
 #include <ab_private/trav.h>

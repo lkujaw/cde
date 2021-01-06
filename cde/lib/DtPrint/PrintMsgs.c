@@ -37,8 +37,8 @@
 #ifdef I18N_MSG
 
 #include <stdio.h>
-#include <nl_types.h>
 #include <X11/Intrinsic.h>
+#include <Dt/MsgCatP.h>
 #include <Dt/PrintI.h>
 
 #if !defined(NL_CAT_LOCALE)
@@ -155,86 +155,6 @@ const char _DtPrMsgPrintDlgMgr_0001[] = "Banner Page Title:";
 const char _DtPrMsgPrintDlgMgr_0002[] = "Print Command Options:";
 
 #if defined(I18N_MSG)
-
-#if defined(hpV4)
-/*
- * Wrapper around catgets -- this makes sure the message string is saved
- * in a safe location; so repeated calls to catgets() do not overwrite
- * the catgets() internal buffer.  This has been a problem on HP systems.
- */
-static char *catgets_cached(nl_catd catd, int set, int num, char *dflt)
-{
-#define INITIAL_NMSGS_PER_SET	300
-#define INITIAL_NSETS		50
-
-  /* array to hold messages from catalog */
-  static char	***cached_msgs = NULL;
-  static int	nmsgs_per_set = INITIAL_NMSGS_PER_SET;
-  static int	nsets = INITIAL_NSETS;
-  
-  char		**setptr;
-  int		i, multiplier;
-  Cardinal	size;
-
-  char* message;
-
-  /* convert to a zero based index */
-  int		setIdx = set - 1;
-  int		numIdx = num - 1;
-
-  _DtPrintProcessLock();
-  
-  if (NULL == cached_msgs)
-  {
-      size = sizeof(char**) * nsets;
-      cached_msgs = (char***) XtMalloc(size);
-      memset((char*) cached_msgs, 0, size);
-  }
-  else if (setIdx >= nsets)
-  {
-      for (multiplier=2; setIdx > multiplier*nsets; multiplier++) {}
-      size = sizeof(char**) * nsets;
-      cached_msgs = (char***) XtRealloc((char*) cached_msgs, multiplier * size);
-      memset((char*) (cached_msgs + size), 0, multiplier * size);
-      nsets *= multiplier;
-  }
-
-  if (NULL == cached_msgs[setIdx])
-  {
-      size = sizeof(char*) * nmsgs_per_set;
-      cached_msgs[setIdx] = (char**) XtMalloc(size);
-      memset((char*) cached_msgs[setIdx], 0, size);
-  }
-  else if (numIdx >= nmsgs_per_set)
-  {
-      for (multiplier=2; numIdx > multiplier*nsets; multiplier++) {}
-      size = sizeof(char*) * nmsgs_per_set;
-
-      for (i=0; i<nmsgs_per_set; i++)
-      {
-	  if (NULL != cached_msgs[i])
-	  {
-              cached_msgs[i] =
-		(char**) XtRealloc((char*) cached_msgs[i], multiplier * size);
-              memset((char*) (cached_msgs[i] + size), 0, multiplier * size);
-	  }
-      }
-      nmsgs_per_set *= multiplier;
-  }
-
-  setptr = cached_msgs[setIdx];
-  if (NULL == setptr[numIdx])
-    setptr[numIdx] = strdup(catgets(catd, set, num, dflt));
-  
-  message = setptr[numIdx];
-
-  _DtPrintProcessUnlock();
-
-  return message;
-}
-#endif /* hpV4 */
-
-
 /*
  * ------------------------------------------------------------------------
  * Name: _DtPrintGetMessage
@@ -256,9 +176,6 @@ _DtPrintGetMessage(
 		   int n,
 		   char * s)
 {
-        char *msg;
-	nl_catd catopen();
-	char *catgets();
 	static int first = 1;
 	static nl_catd nlmsg_fd;
 
@@ -268,16 +185,10 @@ _DtPrintGetMessage(
 	    if(first) 
 	    {
 		first = 0;
-		nlmsg_fd = catopen(_DTPRINT_CAT_NAME, NL_CAT_LOCALE);
+		nlmsg_fd = CATOPEN(_DTPRINT_CAT_NAME, NL_CAT_LOCALE);
 	    }
 	    _DtPrintProcessUnlock();
 	}
-#if defined(hpV4)
-	msg=catgets_cached(nlmsg_fd,set,n,s);
-#else
-	msg=catgets(nlmsg_fd,set,n,s);
-#endif
-	return (msg);
-
+	return CATGETS(nlmsg_fd,set,n,s);
 }
 #endif /* I18N_MSG */

@@ -197,8 +197,8 @@ list_initialize(
     obj_set_is_initially_active(obj, True);
 
     /* Add initial items to list */
-    items[0] = catgets(Dtb_project_catd, 6, 70, "itemA");
-    items[1] = catgets(Dtb_project_catd, 6, 71, "itemB");
+    items[0] = CATGETS(Dtb_project_catd, 6, 70, "itemA");
+    items[1] = CATGETS(Dtb_project_catd, 6, 71, "itemB");
     for (i=0; i < XtNumber(items); i++)
     {
         iobj = obj_create(AB_TYPE_ITEM, NULL);

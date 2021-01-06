@@ -117,7 +117,7 @@ void            count_words (int index)
     else if (index == 4)
 	vista_field = OR_HWORDKEY;
     else {
-	printf (catgets (dtsearch_catd, MS_dtsrkdump, 1,
+	printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 1,
 	    "%s Program Error Abort.\a\n"),
 	    PROGNAME"030");
 	DtSearchExit (4);
@@ -164,7 +164,7 @@ void            count_words (int index)
 		printf ("\" ");
 		while (tabstop++ < 22)
 		    putchar (' ');
-		printf (catgets(dtsearch_catd, MS_dtsrkdump, 2,
+		printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 2,
 		    "%c dba=%d:%-7ld ofs=%-9ld adr=%-6ld fre=%ld\n"),
 		    (addrs >= dbrec.or_reccount) ? '*' : ' ',
 		    dba >> 24, dba & 0xffffff, offset, addrs, free);
@@ -227,17 +227,17 @@ int             main (int argc, char *argv[])
     sscanf ("$Revision: /main/3 $", "%*s %s", rcs_revision);
 
     setlocale (LC_ALL, "");
-    dtsearch_catd = catopen (FNAME_DTSRCAT, 0);
+    dtsearch_catd = CATOPEN(FNAME_DTSRCAT, 0);
 
     strftime (buf, sizeof (buf), "%m/%d/%Y, %I:%M %p",
 	localtime (&now));
-    printf (catgets(dtsearch_catd, MS_dtsrkdump, 3,
+    printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 3,
 	"%s %s, engine %s.  %s.\n"),
 	aa_argv0, rcs_revision, AUSAPI_VERSION, buf);
 
     if (argc <= 1) {
 PRINT_USAGE:
-	printf (catgets(dtsearch_catd, MS_dtsrkdump, 4,
+	printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 4,
 	    "\nUSAGE: %s -o|w|ow [-v] [-t<N> | -p<N>] dbname\n"
 	    "       Reads DtSearch key files and prints summary report.\n"
 	    "  -o        Keys examined are OBJECT record keys.\n"
@@ -291,7 +291,7 @@ PRINT_USAGE:
 			percent = atof (ptr + 1);
 			if (percent <= 0.0 || percent > 100.0) {
 			    fprintf (stderr,
-				catgets (dtsearch_catd, MS_dtsrkdump, 5,
+				CATGETS(dtsearch_catd, MS_dtsrkdump, 5,
 				"%s Invalid percent value %lf.\a\n"),
 				PROGNAME"195", percent);
 			    goto PRINT_USAGE;
@@ -304,7 +304,7 @@ PRINT_USAGE:
 			do_wordkeys = TRUE;
 			if ((min_threshold = atol (ptr + 1)) <= 0L) {
 			    fprintf (stderr,
-				catgets (dtsearch_catd, MS_dtsrkdump, 53,
+				CATGETS(dtsearch_catd, MS_dtsrkdump, 53,
 				"%s Invalid threshold value.\a\n"),
 				PROGNAME"198");
 			    goto PRINT_USAGE;
@@ -314,7 +314,7 @@ PRINT_USAGE:
 
 		    default:
 			fprintf (stderr,
-			    catgets (dtsearch_catd, MS_dtsrkdump, 55,
+			    CATGETS(dtsearch_catd, MS_dtsrkdump, 55,
 			    "%s Unknown command line argument '%c'.\a\n"),
 			    PROGNAME"278", *ptr);
 			goto PRINT_USAGE;
@@ -325,13 +325,13 @@ PRINT_USAGE:
 
     oops = FALSE;
     if (argc <= 0) {
-	printf (catgets (dtsearch_catd, MS_dtsrkdump, 56,
+	printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 56,
 	    "%s Missing required database name.\a\n"),
 	    PROGNAME"267");
 	oops = TRUE;
     }
     if (!do_wordkeys && !do_objkeys) {
-	printf (catgets (dtsearch_catd, MS_dtsrkdump, 57,
+	printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 57,
 	    "%s Either -o or -w must be specified.\a\n"),
 	    PROGNAME"271");
 	oops = TRUE;
@@ -359,7 +359,7 @@ PRINT_USAGE:
     /* test for valid database name */
     i = strlen (ptr);
     if (i < 1 || i > 8) {
-	fprintf (stderr, catgets (dtsearch_catd, MS_dtsrkdump, 58,
+	fprintf (stderr, CATGETS(dtsearch_catd, MS_dtsrkdump, 58,
 	    "%s Invalid database name '%s'.\a\n"),
 	    PROGNAME"297", ptr);
 	goto PRINT_USAGE;
@@ -375,7 +375,7 @@ PRINT_USAGE:
     }
     maxdba = dbrec.or_maxdba;
 
-    printf (catgets(dtsearch_catd, MS_dtsrkdump, 60,
+    printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 60,
 	"%s: '%s' reccount=%ld maxdba=%ld recslots=%hd minw=%hd maxw=%hd\n"),
 	aa_argv0, dbname, dbrec.or_reccount,
 	dbrec.or_maxdba, dbrec.or_recslots,
@@ -392,7 +392,7 @@ PRINT_USAGE:
 
 
 	if (min_threshold > 1 && min_threshold < dbrec.or_reccount) {
-	    printf (catgets(dtsearch_catd, MS_dtsrkdump, 70,
+	    printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 70,
 		"%s Will only list words occurring "
 		"in %ld or more records.\n"),
 		aa_argv0, min_threshold);
@@ -400,7 +400,7 @@ PRINT_USAGE:
 		(float) min_threshold / (float) dbrec.or_reccount > .90;
 	}
 	else {
-	    printf (catgets(dtsearch_catd, MS_dtsrkdump, 80,
+	    printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 80,
 		"%s: Listing all words in database.\n"),
 		aa_argv0);
 	    listing_most_words = TRUE;
@@ -445,7 +445,7 @@ PRINT_USAGE:
 		while (i++ < DtSrMAX_DB_KEYSIZE)
 		    putchar (' ');
 
-		printf (catgets(dtsearch_catd, MS_dtsrkdump, 100,
+		printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 100,
 		    "dba x%08lx, %6ld\n"), dba, dba);
 	    }	/* end verbose */
 
@@ -471,11 +471,11 @@ PRINT_USAGE:
 	if (dbpath[0] == 0)
 	    buf[0] = 0;
 	else
-	    sprintf (buf, catgets(dtsearch_catd, MS_dtsrkdump, 110,
+	    sprintf (buf, CATGETS(dtsearch_catd, MS_dtsrkdump, 110,
 		" in %s"), dbpath);
-	printf (catgets(dtsearch_catd, MS_dtsrkdump, 120,
+	printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 120,
 	    "Object Summary for '%s'%s:\n"), dbname, buf);
-	puts (catgets(dtsearch_catd, MS_dtsrkdump, 130,
+	puts (CATGETS(dtsearch_catd, MS_dtsrkdump, 130,
 	    "Object Count by Keytypes:"));
 	total = 0L;
 	for (i = 0; i < 256; i++) {
@@ -487,16 +487,16 @@ PRINT_USAGE:
 		    printf (" x%02x %6ld\n", i, counters[i]);
 	    }
 	}
-	printf (catgets(dtsearch_catd, MS_dtsrkdump, 160,
+	printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 160,
 	    "TOTAL Objects Count = %ld\n"), total);
-	printf (catgets(dtsearch_catd, MS_dtsrkdump, 170,
+	printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 170,
 	    "Largest Object DBA  = %ld\n"), maxdba);
 	free (counters);
     }	/* end do_objkeys */
 
     if (do_wordkeys) {
 	if (listing_most_words)
-	    printf (catgets(dtsearch_catd, MS_dtsrkdump, 180,
+	    printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 180,
 		"%s: * Words marked with asterisk occur in every record.\n"),
 		aa_argv0);
 
@@ -519,16 +519,16 @@ PRINT_USAGE:
 	if (dbpath[0] == 0)
 	    buf[0] = 0;
 	else
-	    sprintf (buf, catgets(dtsearch_catd, MS_dtsrkdump, 110,
+	    sprintf (buf, CATGETS(dtsearch_catd, MS_dtsrkdump, 110,
 		" in %s"), dbpath);
-	printf (catgets(dtsearch_catd, MS_dtsrkdump, 200,
+	printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 200,
 	    "Words Summary for '%s'%s:\n"), dbname, buf);
 	total = 0L;
 	for (i = 0; i < 6; i++) {
 	    printf (word_labels[i], counters[i]);
 	    total += counters[i];
 	}
-	printf (catgets(dtsearch_catd, MS_dtsrkdump, 210,
+	printf (CATGETS(dtsearch_catd, MS_dtsrkdump, 210,
 	    "TOTAL Words Count = %ld\n"), total);
 	free (counters);
     }	/* end do_wordkeys */

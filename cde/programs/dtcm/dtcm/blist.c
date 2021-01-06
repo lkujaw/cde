@@ -96,7 +96,7 @@ bl_pending_change(Widget w, XtPointer data, XtPointer cbs) {
 		   of the string so the footer will use two lines and the
 		   editor will grow vertically.
 		*/
-		set_message(bl->message, catgets(c->DT_catd, 1, 841, "Click on \"Add Name\" to add a name, \"Apply\" to commit changes."));
+		set_message(bl->message, CATGETS(c->DT_catd, 1, 841, "Click on \"Add Name\" to add a name, \"Apply\" to commit changes."));
 		bl->bl_pending_message_up = True;
 		XtSetSensitive(bl->add_button, True);
 	}
@@ -163,14 +163,14 @@ blist_removenames(Widget widget, XtPointer client_data, XtPointer call_data) {
 	set_message(bl->message, " ");
 	XmListGetSelectedPos(bl->browse_list, &pos_list, &pos_cnt);
 	if (pos_cnt <= 0) {
-		set_message(bl->message, catgets(calendar->DT_catd, 1, 17,
+		set_message(bl->message, CATGETS(calendar->DT_catd, 1, 17,
 					      "Select a name to remove"));
 		return;
 	}
 
 	for (i = 0; i < pos_cnt; i++) {
 		if (pos_list[i] == 1) {
-			set_message(bl->message, catgets(calendar->DT_catd, 1,
+			set_message(bl->message, CATGETS(calendar->DT_catd, 1,
 				16, "You may not remove the default calendar"));
 			rejected_name++;
 			continue;
@@ -294,13 +294,13 @@ blist_addname(Widget widget, XtPointer client_data, XtPointer cbs) {
 
 
 	if (blank_buf(new_name)) {
-		set_message(bl->message, catgets(c->DT_catd, 1, 603,
+		set_message(bl->message, CATGETS(c->DT_catd, 1, 603,
 			"Type a name to add in the User Name field"));
 		return;
 	}
 
 	if (embedded_blank(new_name)) {
-                set_message(bl->message, catgets(c->DT_catd, 1, 684,
+                set_message(bl->message, CATGETS(c->DT_catd, 1, 684,
                         "User Names may not have embedded blanks or tabs"));
                 return;
         }
@@ -313,7 +313,7 @@ blist_addname(Widget widget, XtPointer client_data, XtPointer cbs) {
 		cm_select_text(bl->username, e->xbutton.time);
 	} else {
 		sprintf(buf, "%s %s", new_name,
-			catgets(c->DT_catd, 1, 604, "is already in the list"));
+			CATGETS(c->DT_catd, 1, 604, "is already in the list"));
 		set_message(bl->message, buf);
 	}
 	XtVaSetValues(bl->form, XmNresizePolicy, XmRESIZE_ANY, NULL);
@@ -546,7 +546,7 @@ make_browselist(Calendar *c)
 	if (!bl)
 		return;
 
-	title = XtNewString(catgets(c->DT_catd, 1, 963, 
+	title = XtNewString(CATGETS(c->DT_catd, 1, 963,
 				    "Calendar : Menu Editor"));
 	bl->frame = XtVaCreatePopupShell("menu_editor_frame",
                 xmDialogShellWidgetClass, c->frame,
@@ -565,7 +565,7 @@ make_browselist(Calendar *c)
                 NULL);
 
 	label_str = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 410, "User Name:"));
+				CATGETS(c->DT_catd, 1, 410, "User Name:"));
        	bl->username_label = XtVaCreateWidget("name_label",
 		xmLabelGadgetClass, bl->form,
 		XmNlabelString, 	label_str,
@@ -582,7 +582,7 @@ make_browselist(Calendar *c)
 	bl->edit_rc_mgr = XmCreateRowColumn(bl->form, "edit_rc_mgr", args, ac);
 
 	label_str = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 686, "Add Name"));
+				CATGETS(c->DT_catd, 1, 686, "Add Name"));
        	bl->add_button = XtVaCreateWidget("add_button",
 		xmPushButtonWidgetClass, bl->edit_rc_mgr,
 		XmNlabelString, 	label_str,
@@ -593,7 +593,7 @@ make_browselist(Calendar *c)
 				blist_addname, (XtPointer)c);
 
 	label_str = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 687, "Remove Name"));
+				CATGETS(c->DT_catd, 1, 687, "Remove Name"));
    	bl->remove_button = XtVaCreateWidget("remove_button",
 		xmPushButtonWidgetClass, bl->edit_rc_mgr,
 		XmNlabelString, 	label_str,
@@ -632,7 +632,7 @@ make_browselist(Calendar *c)
                 NULL);
 
 	label_str = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 688, "Browse Menu Items"));
+			CATGETS(c->DT_catd, 1, 688, "Browse Menu Items"));
        	bl->list_label = XtVaCreateWidget("list_label", 
 		xmLabelWidgetClass, bl->form,
 		XmNlabelString, 	label_str,
@@ -671,7 +671,7 @@ make_browselist(Calendar *c)
                 XmNbottomOffset,        5,
                 NULL);
 	
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 655, "OK"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 655, "OK"));
 	bl->ok_button = XtVaCreateWidget("ok_button",
 		xmPushButtonWidgetClass,
 		button_form,
@@ -689,7 +689,7 @@ make_browselist(Calendar *c)
 		      		(XtPointer)c);
 
 	label_str = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 460, "Apply"));
+				CATGETS(c->DT_catd, 1, 460, "Apply"));
 	bl->apply_button = XtVaCreateWidget("apply_button",
 		xmPushButtonWidgetClass,
 		button_form,
@@ -707,7 +707,7 @@ make_browselist(Calendar *c)
 		      		(XtPointer)c);
 
 	label_str = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 691, "Reset"));
+				CATGETS(c->DT_catd, 1, 691, "Reset"));
         bl->reset_button = XtVaCreateWidget("reset_button",
 		xmPushButtonWidgetClass,
 		button_form,
@@ -725,7 +725,7 @@ make_browselist(Calendar *c)
 			blist_reset_cb, (XtPointer)c);
 
 	label_str = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 923, "Cancel"));
+				CATGETS(c->DT_catd, 1, 923, "Cancel"));
         bl->cancel_button = XtVaCreateWidget("cancel_button",
 	 	xmPushButtonWidgetClass,
 		button_form,
@@ -742,7 +742,7 @@ make_browselist(Calendar *c)
 	XtAddCallback(bl->cancel_button, XmNactivateCallback, blist_cancel_cb,
 				(XtPointer)c);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
         bl->help_button = XtVaCreateWidget("help_button",
 		xmPushButtonWidgetClass,
 		button_form,

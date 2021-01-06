@@ -53,7 +53,7 @@
 #include <Dt/HelpQuickD.h>
 #include <Dt/HelpDialog.h>
 #include <Dt/Session.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include "palette_ui.h"
 #include "about_box_ui.h"
 #include "brws_ui.h"
@@ -345,7 +345,7 @@ init_ab(ABInitProcInfo init_info)
 
         if ((*file_name) == 0)
         {
-            sprintf(errmsg_buf, catgets(Dtb_project_catd, 100, 2, "File not found: %s"), user_file_name);
+            sprintf(errmsg_buf, CATGETS(Dtb_project_catd, 100, 2, "File not found: %s"), user_file_name);
             errmsg = errmsg_buf;
         }
         else
@@ -379,7 +379,7 @@ init_ab(ABInitProcInfo init_info)
 		}
                 if ((ret < 0) && (answer != DTB_ANSWER_CANCEL))
                 {
-                    sprintf(errmsg_buf, catgets(Dtb_project_catd, 100, 1, "Could not import module %s"), file_name);
+                    sprintf(errmsg_buf, CATGETS(Dtb_project_catd, 100, 1, "Could not import module %s"), file_name);
                     errmsg = errmsg_buf;
                 }
             }
@@ -388,7 +388,7 @@ init_ab(ABInitProcInfo init_info)
 		STRING              fmtStr = NULL, msg = NULL;
 		XmString            xm_str = NULL;
 
-		fmtStr = XtNewString(catgets(Dtb_project_catd, 100, 103,
+		fmtStr = XtNewString(CATGETS(Dtb_project_catd, 100, 103,
                 	"Cannot determine file type for %s.\nDo you want to load the file as a project or a module?"));
             	msg = (STRING) util_malloc(strlen(fmtStr) + strlen(file_name) + 1);
             	sprintf(msg, fmtStr, file_name);
@@ -933,7 +933,7 @@ create_import_rbox(
                 NULL);
 
     label_xmstring = XmStringCreateLocalized(
-			catgets(Dtb_project_catd, 100, 46,"Import Format:"));
+			CATGETS(Dtb_project_catd, 100, 46,"Import Format:"));
     rbox_label = XtVaCreateManagedWidget("rbox_label",
                 xmLabelWidgetClass,
                 format_rbox,
@@ -956,7 +956,7 @@ create_import_rbox(
     XtManageChild(rbox);
 
     label_xmstring = XmStringCreateLocalized(
-			catgets(Dtb_project_catd, 100, 47,"BIL"));
+			CATGETS(Dtb_project_catd, 100, 47,"BIL"));
     BIL_item = XtVaCreateManagedWidget("bil_item",
                 xmToggleButtonWidgetClass,
                 rbox,
@@ -970,7 +970,7 @@ create_import_rbox(
     label_xmstring = NULL;
 
     label_xmstring = XmStringCreateLocalized(
-			catgets(Dtb_project_catd, 100, 48,"UIL"));
+			CATGETS(Dtb_project_catd, 100, 48,"UIL"));
     UIL_item = XtVaCreateManagedWidget("uil_item",
                 xmToggleButtonWidgetClass,
                 rbox,
@@ -1010,7 +1010,7 @@ create_import_rbox(
 		NULL);
 
     label_xmstring = XmStringCreateLocalized(
-                        catgets(Dtb_project_catd, 100, 49,"Import By:"));
+                        CATGETS(Dtb_project_catd, 100, 49,"Import By:"));
     rbox_label = XtVaCreateManagedWidget("rbox_label",
                 xmLabelWidgetClass,
                 method_rbox,
@@ -1029,7 +1029,7 @@ create_import_rbox(
     XtManageChild(rbox);
 
     label_xmstring = XmStringCreateLocalized(
-			catgets(Dtb_project_catd, 100, 50,"Copy"));
+			CATGETS(Dtb_project_catd, 100, 50,"Copy"));
     Copy_item = XtVaCreateManagedWidget("Copy_item",
                 xmToggleButtonWidgetClass,
                 rbox,
@@ -1043,7 +1043,7 @@ create_import_rbox(
     label_xmstring = NULL;
 
     label_xmstring = XmStringCreateLocalized(
-			catgets(Dtb_project_catd, 100, 51,"Reference"));
+			CATGETS(Dtb_project_catd, 100, 51,"Reference"));
     Ref_item = XtVaCreateManagedWidget("Ref_item",
 		xmToggleButtonWidgetClass,
                 rbox,
@@ -1293,7 +1293,7 @@ main(int argc, char **argv)
     /*
      * Open the standard message catalog for the project.
      */
-    Dtb_project_catd = catopen(DTB_PROJECT_CATALOG, NL_CAT_LOCALE);
+    Dtb_project_catd = CATOPEN(DTB_PROJECT_CATALOG, NL_CAT_LOCALE);
     if (Dtb_project_catd == (nl_catd)-1)
     {
         fprintf(stderr, "WARNING: Could not open message catalog: %s. Messages will be defaults.\n",
@@ -1501,8 +1501,8 @@ main(int argc, char **argv)
 
     XtVaSetValues(dtb_palette_ab_palette_main.ab_palette_main,
         XmNallowShellResize, True,
-        XmNtitle, XtNewString(catgets(Dtb_project_catd, 6, 1, "Application Builder")),
-        XmNiconName, XtNewString(catgets(Dtb_project_catd, 6, 135, "dtbuilder")),
+        XmNtitle, XtNewString(CATGETS(Dtb_project_catd, 6, 1, "Application Builder")),
+        XmNiconName, XtNewString(CATGETS(Dtb_project_catd, 6, 135, "dtbuilder")),
         XmNinitialState, NormalState,
         XmNmwmDecorations, MWM_DECOR_ALL | MWM_DECOR_RESIZEH,
         XmNmwmFunctions, MWM_FUNC_ALL | MWM_FUNC_RESIZE,
@@ -2018,7 +2018,7 @@ proj_show_open_chooserCB(
 			NULL);
 
 	/* Set up help info for shared chooser */
-	tmp_txt = catgets(Dtb_project_catd,110,1,"Use the File Selection Dialog to specify which file should be used for saving and loading modules or projects");
+	tmp_txt = CATGETS(Dtb_project_catd,110,1,"Use the File Selection Dialog to specify which file should be used for saving and loading modules or projects");
 	chooser_help_data.help_text = XtMalloc(strlen(tmp_txt)+1);
 	strcpy(chooser_help_data.help_text,tmp_txt);
     }
@@ -2034,7 +2034,7 @@ proj_show_open_chooserCB(
     info->child = (Widget) NULL;
     info->chooser_type = AB_OPEN_PROJ_CHOOSER;
 
-    ok_label = XmStringCreateLocalized(catgets(Dtb_project_catd, 100, 233, "Open"));
+    ok_label = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 100, 233, "Open"));
     XtVaSetValues(AB_generic_chooser,
                 XmNautoUnmanage, FALSE,
                 XtVaTypedArg, XmNpattern,
@@ -2047,7 +2047,7 @@ proj_show_open_chooserCB(
                 NULL);
     XmStringFree(ok_label);
 
-    title = XtNewString(catgets(Dtb_project_catd, 100, 234, "Open Project"));
+    title = XtNewString(CATGETS(Dtb_project_catd, 100, 234, "Open Project"));
     XtVaSetValues(XtParent(AB_generic_chooser),
                 XmNtitle, title,
 		XmNpopdownCallback, &popdown_callback,
@@ -2240,7 +2240,7 @@ proj_show_import_chooserCB(
     info->ImportAsBil = TRUE;
     info->ImportByCopy = TRUE;
 
-    ok_label = XmStringCreateLocalized(catgets(Dtb_project_catd, 100, 235, "Import"));
+    ok_label = XmStringCreateLocalized(CATGETS(Dtb_project_catd, 100, 235, "Import"));
     XtVaSetValues(AB_generic_chooser,
                 XmNautoUnmanage, FALSE,
                 XtVaTypedArg, XmNpattern,
@@ -2252,7 +2252,7 @@ proj_show_import_chooserCB(
                 NULL);
     XmStringFree(ok_label);
 
-    title = XtNewString(catgets(Dtb_project_catd, 100, 236, "Import File"));
+    title = XtNewString(CATGETS(Dtb_project_catd, 100, 236, "Import File"));
     XtVaSetValues(XtParent(AB_generic_chooser),
                 XmNtitle, title,
                 XmNpopdownCallback, &popdown_callback,

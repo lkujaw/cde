@@ -250,28 +250,28 @@ build_dssw(
 		XmNautoUnmanage, 	False,
 		NULL);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 828, "Date:"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 828, "Date:"));
         dssw->date_label = XtVaCreateWidget("date_label",
 		xmLabelGadgetClass, 	dssw->dssw_form_mgr,
 		XmNlabelString,		label_str,
                 NULL);
 	XmStringFree(label_str);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 829, "Start:"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 829, "Start:"));
         dssw->start_label = XtVaCreateWidget("start_label",
 		xmLabelGadgetClass, 	dssw->dssw_form_mgr,
 		XmNlabelString,		label_str,
                 NULL);
 	XmStringFree(label_str);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 832, "End:"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 832, "End:"));
         dssw->stop_label = XtVaCreateWidget("stop_label",
 		xmLabelGadgetClass, 	dssw->dssw_form_mgr,
 		XmNlabelString,		label_str,
                 NULL);
 	XmStringFree(label_str);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 835, "What:"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 835, "What:"));
         dssw->what_label = XtVaCreateWidget("what_label",
 		xmLabelGadgetClass, 	dssw->dssw_form_mgr,
 		XmNlabelString,		label_str,
@@ -311,7 +311,7 @@ build_dssw(
 		XmNentryClass, 		xmToggleButtonGadgetClass,
 		NULL);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 830, "AM"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 830, "AM"));
         child[0] = dssw->start_am = XtVaCreateWidget("start_am",
 		xmToggleButtonGadgetClass, dssw->start_ampm_rc_mgr,
 		XmNlabelString,		label_str,
@@ -319,7 +319,7 @@ build_dssw(
 		NULL);      
 	XmStringFree(label_str);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 831, "PM"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 831, "PM"));
         child[1] = dssw->start_pm = XtVaCreateWidget("start_pm",
 		xmToggleButtonGadgetClass, dssw->start_ampm_rc_mgr,
 		XmNlabelString,		label_str,
@@ -357,7 +357,7 @@ build_dssw(
 		XmNentryClass, 		xmToggleButtonGadgetClass,
 		NULL);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 833, "AM"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 833, "AM"));
         child[0] = dssw->stop_am = XtVaCreateWidget("stop_am",
 		xmToggleButtonGadgetClass, dssw->stop_ampm_rc_mgr,
 		XmNlabelString,		label_str,
@@ -365,7 +365,7 @@ build_dssw(
 		NULL);      
 	XmStringFree(label_str);
 
-	label_str = XmStringCreateLocalized(catgets(c->DT_catd, 1, 834, "PM"));
+	label_str = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 834, "PM"));
         child[1] = dssw->stop_pm = XtVaCreateWidget("stop_pm",
 		xmToggleButtonGadgetClass, dssw->stop_ampm_rc_mgr,
 		XmNlabelString,		label_str,
@@ -633,13 +633,13 @@ dssw_form_flags_to_appt(DSSW *dssw, Dtcm_appointment *a, char *name, Tick t, int
 		if (stop_tick < start_tick) {
 		    if (*flagsP == 0)
 		    {
-		  	char *title = XtNewString(catgets(calendar->DT_catd, 1, 248,
+		  	char *title = XtNewString(CATGETS(calendar->DT_catd, 1, 248,
 					"Calendar : Schedule Appointment"));
-		  	char *ident1 = XtNewString(catgets(calendar->DT_catd, 1,
+		  	char *ident1 = XtNewString(CATGETS(calendar->DT_catd, 1,
 					923, "Cancel"));
-		  	char *ident2 = XtNewString(catgets(calendar->DT_catd, 1,
+		  	char *ident2 = XtNewString(CATGETS(calendar->DT_catd, 1,
 					250, "Next Day"));
-			sprintf(buf, "%s", catgets(calendar->DT_catd, 1, 247,
+			sprintf(buf, "%s", CATGETS(calendar->DT_catd, 1, 247,
 				"This appointment has an end time earlier than\nits begin time.  Do you want to\nschedule it into the next day?"));
 			*flagsP = dialog_popup(dssw->parent,
 				DIALOG_TITLE, title,

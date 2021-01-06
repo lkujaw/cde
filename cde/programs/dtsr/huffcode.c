@@ -266,14 +266,14 @@ static int      build_tree (void)
 	 * tree level, quit. 
 	 */
 	if (hctree1[i].sort > MAX_BITLEN) {
-	    fprintf (stderr, "%s", catgets(dtsearch_catd, MS_huff, 30,
+	    fprintf (stderr, "%s", CATGETS(dtsearch_catd, MS_huff, 30,
 		"\n183 Bit strings have grown too large.  You probably "
 		"have literals\n  turned off with grossly unbalanced "
 		"character counts.\n\7"));
 	    exit (2);
 	}
 	if (hctree1[curr].count >= total_count) {
-	    fprintf (stderr, "%s", catgets(dtsearch_catd, MS_huff, 31,
+	    fprintf (stderr, "%s", CATGETS(dtsearch_catd, MS_huff, 31,
 		"\n191 Programming Error:  Still trying to build\n"
 		"  Huffman Code Tree after root created.\n\7"));
 	    exit (2);
@@ -391,7 +391,7 @@ static char    *char_label (int x)
 		return buf;
 	    }
 	    else if (x >= 128) {
-		snprintf(buf, sizeof(buf), "%s", catgets(dtsearch_catd, MS_huff, 32,
+		snprintf(buf, sizeof(buf), "%s", CATGETS(dtsearch_catd, MS_huff, 32,
 		    "(nonascii char, high bit set)"));
 		return buf;
 	    }
@@ -476,7 +476,7 @@ static void     init_treebase (void)
 	    != NULL) {
 	    i = atoi (strtok (filebuf, DELIMITERS));	/* char */
 	    if (i < 0 || i > 256) {
-		fprintf (stderr, catgets(dtsearch_catd, MS_huff, 33,
+		fprintf (stderr, CATGETS(dtsearch_catd, MS_huff, 33,
 		    "366 Invalid file format for %s.\n"),
 		    filename_huf);
 		exit (2);
@@ -534,13 +534,13 @@ static void     huffman_code (time_t idstamp)
      * Open both output files and verify they are not write protected.
      */
     if ((outstream_huc = fopen (filename_huc, "w")) == NULL) {
-	fprintf (stderr, catgets(dtsearch_catd, MS_huff, 34,
+	fprintf (stderr, CATGETS(dtsearch_catd, MS_huff, 34,
 	    "424 File '%s' failed to open for write.  Is it read-only?\n"),
 	    filename_huc);
 	exit (2);
     }
     if ((outstream_huf = fopen (filename_huf, "w")) == NULL) {
-	fprintf (stderr, catgets(dtsearch_catd, MS_huff, 34,
+	fprintf (stderr, CATGETS(dtsearch_catd, MS_huff, 34,
 	    "439 File '%s' failed to open for write.  Is it read-only?\n"),
 	    filename_huf);
 	exit (2);
@@ -602,7 +602,7 @@ static void     huffman_code (time_t idstamp)
 /****************************************/
 static void     print_usage (void)
 {
-    fprintf (stderr, catgets(dtsearch_catd, MS_huff, 35,
+    fprintf (stderr, CATGETS(dtsearch_catd, MS_huff, 35,
 "USAGE: huffcode [-lN | -l-] [-o] <huffname> [<infile>]\n"
 "  -l<N> specifies the 'literal' threshold count.  Any character occurring\n"
 "       <= <N> times will be coded with the Huffman literal.  Default is -l0,\n"
@@ -663,7 +663,7 @@ static void     user_args_processor (int argc, char **argv)
 
 	BADARG:
 	    default:
-		fprintf (stderr, catgets(dtsearch_catd, MS_huff, 36,
+		fprintf (stderr, CATGETS(dtsearch_catd, MS_huff, 36,
 		    "'%s' is invalid argument.\n"), argptr);
 		print_usage ();
 		exit (2);	/* ABORT program */
@@ -673,7 +673,7 @@ static void     user_args_processor (int argc, char **argv)
 
     /* test for required tree file name */
     if (argc <= 0) {
-	fprintf (stderr, "%s", catgets(dtsearch_catd, MS_huff, 37,
+	fprintf (stderr, "%s", CATGETS(dtsearch_catd, MS_huff, 37,
 	    "576 Missing Huffman Code file names prefix.\n"));
 	print_usage ();
 	exit (2);
@@ -695,7 +695,7 @@ static void     user_args_processor (int argc, char **argv)
     if (!OK_to_overwrite)
 	if ((stream = fopen (filename_huc, "r")) != NULL) {
 	    fclose (stream);
-	    printf (catgets(dtsearch_catd, MS_huff, 38,
+	    printf (CATGETS(dtsearch_catd, MS_huff, 38,
 		"Decode file '%s' already exists.  "
 		"Is it OK to overwrite it? [y/n] "),
 		filename_huc);
@@ -729,8 +729,8 @@ int             main (int argc, char *argv[])
     time_t          now, start_stamp;
 
     setlocale (LC_ALL, "");
-    dtsearch_catd = catopen (FNAME_DTSRCAT, 0);
-    printf (catgets(dtsearch_catd, MS_huff, 40,
+    dtsearch_catd = CATOPEN(FNAME_DTSRCAT, 0);
+    printf (CATGETS(dtsearch_catd, MS_huff, 40,
 	"HUFFCODE Version %s\n"), AUSAPI_VERSION);
 
     /* validate user's command line arguments */
@@ -739,15 +739,15 @@ int             main (int argc, char *argv[])
     /* initialize tree table, using the table file if it exists */
     init_treebase ();
     if (total_count == 0L)
-	printf ("%s", catgets(dtsearch_catd, MS_huff, 41,
+	printf ("%s", CATGETS(dtsearch_catd, MS_huff, 41,
 	    "Huffman Code Tables will be newly created.\n"));
     else
-	printf (catgets(dtsearch_catd, MS_huff, 42,
+	printf (CATGETS(dtsearch_catd, MS_huff, 42,
 	    "Table '%s' already contains %ld Kbytes from previous runs.\n"),
 	    filename_huf, total_count / 1000L);
 
     if (!input_file_specified && no_huffcode_file) {
-	fprintf (stderr, catgets(dtsearch_catd, MS_huff, 43,
+	fprintf (stderr, CATGETS(dtsearch_catd, MS_huff, 43,
 	    "645 Input file not specified and '%s' table file\n"
 	    "   doesn't exist--nothing to do!\n"),
 	    filename_huf);
@@ -759,14 +759,14 @@ int             main (int argc, char *argv[])
     if (input_file_specified) {
 	if ((instream = fopen (filename_input, "rb")) == NULL) {
     BAD_INPUT_FILE:
-	    fprintf (stderr, catgets(dtsearch_catd, MS_huff, 44,
+	    fprintf (stderr, CATGETS(dtsearch_catd, MS_huff, 44,
 		"Could not open input file '%s' or access status: %s\n"),
 		filename_input, strerror (errno));
 	    exit (2);
 	}
 	if (fstat (fileno (instream), &fstat_input) == -1)
 	    goto BAD_INPUT_FILE;
-	printf (catgets(dtsearch_catd, MS_huff, 45,
+	printf (CATGETS(dtsearch_catd, MS_huff, 45,
 	    "Input file '%s' contains about %ld Kbytes.\n"),
 	    filename_input, fstat_input.st_size / 1000L);
 
@@ -777,7 +777,7 @@ int             main (int argc, char *argv[])
 
 	    /* echo progress to user every so often */
 	    if (!(++bytes_in % 10000L))
-		printf (catgets(dtsearch_catd, MS_huff, 46,
+		printf (CATGETS(dtsearch_catd, MS_huff, 46,
 		    "\r%ld%% done. %2ld Kbytes read.  "
 		    "Estimate %3ld seconds to completion.   "),
 		    (bytes_in * 100L) / fstat_input.st_size,
@@ -793,13 +793,13 @@ int             main (int argc, char *argv[])
     /* build huffman code tree, write out files */
     time (&now);	/* this will be the official tree id time
 			 * stamp */
-    printf (catgets(dtsearch_catd, MS_huff, 47,
+    printf (CATGETS(dtsearch_catd, MS_huff, 47,
 	"Identifying timestamp will be '%ld'.\n"
 	"%s Huffman Code Tables in '%s' and '%s'..."),
 	now,
 	(no_huffcode_file) ?
-	    catgets(dtsearch_catd, MS_huff, 48, "Creating") :
-	    catgets(dtsearch_catd, MS_huff, 49, "Rebuilding"),
+	    CATGETS(dtsearch_catd, MS_huff, 48, "Creating") :
+	    CATGETS(dtsearch_catd, MS_huff, 49, "Rebuilding"),
 	filename_huf,
 	filename_huc);
     huffman_code (now);

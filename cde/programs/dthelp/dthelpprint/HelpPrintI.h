@@ -423,7 +423,7 @@ void _DtHPrGetPrOffsetArg(
 char * _DtHPrGetMessage(
         int set,
         int n,
-        char *s);
+        const char *s);
 
 #endif /* DTHELPRPINTP_H */
 

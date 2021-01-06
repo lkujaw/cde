@@ -75,79 +75,79 @@ util_err_string(int errCode)
     switch (errCode)
     {
 	case ERR_INTERNAL:	
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 4, "Internal error");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 4, "Internal error");
 	break;
 	case ERR_RECURSION:	
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 5, "Recursive function calls");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 5, "Recursive function calls");
 	break;
 	case ERR_NOT_ALLOWED:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 6, "Permission denied");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 6, "Permission denied");
 	break;
 	case ERR_DATA_SPACE_FULL:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 8, "Data space is full");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 8, "Data space is full");
 	break;
 	case ERR_BUFFER_TOO_SMALL:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 9, "Buffer is too small");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 9, "Buffer is too small");
 	break;
 	case ERR_NOT_IMPLEMENTED: 
-	err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 10, "Functionality is not implemented");
+	err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 10, "Functionality is not implemented");
 	break;
 	case ERR_NOT_INITIALIZED: 
-	err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 11, "Not initialized");
+	err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 11, "Not initialized");
 	break;
 	case ERR_CLIENT: 
-	err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 12, "Client error");
+	err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 12, "Client error");
 	break;
 	case ERR_NOT_FOUND: 
-	err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 13, "Not found");
+	err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 13, "Not found");
 	break;
 	case ERR_DUPLICATE_KEY: 
-	err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 14, "Duplicate key");
+	err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 14, "Duplicate key");
 	break;
 	case ERR_BAD_PARAM: 
-	err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 15, "Bad parameter");
+	err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 15, "Bad parameter");
 	break;
 	case ERR_IO: 
-	err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 16, "I/O error");
+	err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 16, "I/O error");
 	break;
 	case ERR_FILE_NOT_FOUND: 
-	err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 17, "File not found");
+	err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 17, "File not found");
 	break;
 	case ERR_OPEN:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 18, "Could not open file");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 18, "Could not open file");
 	break;
 	case ERR_WRITE:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 19, "Could not write to file");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 19, "Could not write to file");
 	break;
 	case ERR_READ:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 20, "Could not read file");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 20, "Could not read file");
 	break;
 	case ERR_EOF:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 21, "End of file");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 21, "End of file");
 	break;
 	case ERR_BAD_FILE_FORMAT:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 22, "Bad file format");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 22, "Bad file format");
 	break;
 	case ERR_RENAME:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 23, "Could not rename file");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 23, "Could not rename file");
 	break;
 	case ERR_MEMORY:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 24, "Memory error");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 24, "Memory error");
 	break;
 	case ERR_NO_MEMORY:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 25, "No memory");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 25, "No memory");
 	break;
 	case ERR_MEMORY_CORRUPT:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 26, "Memory is corrupt");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 26, "Memory is corrupt");
 	break;
 	case ERR_MULTIPLE_FREE:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 27, "Multiple free of memory");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 27, "Multiple free of memory");
 	break;
 	case ERR_READ_ONLY:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 28, "Read-only file");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 28, "Read-only file");
 	break;
 	case ERR_BACKUP:
-	    err= catgets(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 29, "Could not backup file");
+	    err= CATGETS(UTIL_MESSAGE_CATD, UTIL_MESSAGE_SET, 29, "Could not backup file");
 	break;
     }
 

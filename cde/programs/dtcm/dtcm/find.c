@@ -94,7 +94,7 @@ make_find(Calendar *c)
         else
                 f = (Find*)c->find;
 
-	title = XtNewString(catgets(c->DT_catd, 1, 283, "Calendar : Find"));
+	title = XtNewString(CATGETS(c->DT_catd, 1, 283, "Calendar : Find"));
 	f->frame = XtVaCreatePopupShell("frame",
                 xmDialogShellWidgetClass, 
 		c->frame,
@@ -113,7 +113,7 @@ make_find(Calendar *c)
 		XmNmarginHeight, 	0,
                 NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 284, "Find:"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 284, "Find:"));
         f->apptstr_label = XtVaCreateWidget("label", 
 		xmLabelWidgetClass, 
 		f->form,
@@ -153,7 +153,7 @@ make_find(Calendar *c)
                 NULL);
  
         xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 973, "Search all"));
+				CATGETS(c->DT_catd, 1, 973, "Search all"));
         f->search_all = XtVaCreateWidget("searchAll",
                 xmToggleButtonGadgetClass, 
 		f->search_rc_mgr,
@@ -165,7 +165,7 @@ make_find(Calendar *c)
 									NULL);
  
         xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 974, "Search from"));
+				CATGETS(c->DT_catd, 1, 974, "Search from"));
         f->search_range = XtVaCreateWidget("searchrange",
                 xmToggleButtonGadgetClass, 
 		f->search_rc_mgr,
@@ -209,7 +209,7 @@ make_find(Calendar *c)
 
 	format_tick(cursor, ot, sep, buffer);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 975, "to"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 975, "to"));
         f->search_tolabel = XtVaCreateWidget("tolabel", 
 		xmLabelWidgetClass, 
 		f->form,
@@ -247,7 +247,7 @@ make_find(Calendar *c)
                 NULL);
  
 	xmstr = XmStringCreateLocalized(
-		catgets(c->DT_catd, 1, 848, "Date"));
+		CATGETS(c->DT_catd, 1, 848, "Date"));
         f->date_label = XtVaCreateWidget("finddatelabel", 
 		xmLabelWidgetClass, 
 		f->form,
@@ -260,7 +260,7 @@ make_find(Calendar *c)
                 NULL);
 	XmStringFree(xmstr);
 	xmstr = XmStringCreateLocalized(
-		catgets(c->DT_catd, 1, 849, "Time"));
+		CATGETS(c->DT_catd, 1, 849, "Time"));
         f->time_label = XtVaCreateWidget("findtimelabel", 
 		xmLabelWidgetClass, 
 		f->form,
@@ -273,7 +273,7 @@ make_find(Calendar *c)
                 NULL);
 	XmStringFree(xmstr);
 	xmstr = XmStringCreateLocalized(
-		catgets(c->DT_catd, 1, 850, "What"));
+		CATGETS(c->DT_catd, 1, 850, "What"));
         f->what_label = XtVaCreateWidget("findwhatlabel", 
 		xmLabelWidgetClass, 
 		f->form,
@@ -320,7 +320,7 @@ make_find(Calendar *c)
 		XmNbottomOffset, 	5,
                 NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 285, "Find"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 285, "Find"));
         f->find_button = XtVaCreateWidget("findbutton", 
 		xmPushButtonGadgetClass, 
 		button_form,
@@ -338,7 +338,7 @@ make_find(Calendar *c)
 	XmStringFree(xmstr);
 		
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 851, "Show Appointment"));
+				CATGETS(c->DT_catd, 1, 851, "Show Appointment"));
 	f->show_button = XtVaCreateWidget("show", 
 		xmPushButtonGadgetClass, 
 		button_form,
@@ -355,7 +355,7 @@ make_find(Calendar *c)
 
 	XtAddCallback(f->show_button, XmNactivateCallback, show_appt, NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 680, "Close"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 680, "Close"));
 	f->cancel_button = XtVaCreateWidget("cancel", 
 		xmPushButtonGadgetClass, 
 		button_form,
@@ -372,7 +372,7 @@ make_find(Calendar *c)
 
 	XtAddCallback(f->cancel_button, XmNactivateCallback, f_cancel_cb, NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
 	f->help_button = XtVaCreateWidget("help", 
 		xmPushButtonGadgetClass, 
 		button_form,
@@ -587,7 +587,7 @@ find_appts(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs
 	astr = XmTextGetString(f->apptstr);
 
         if (astr == NULL || *astr == '\0') {
-		sprintf(message, "%s", catgets(c->DT_catd, 1, 290, "Specify Appt String to Match."));
+		sprintf(message, "%s", CATGETS(c->DT_catd, 1, 290, "Specify Appt String to Match."));
 		set_message(f->find_message, message);
                 return;
         }
@@ -612,12 +612,12 @@ find_appts(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs
 		if (start == DATE_BBOT)
 			start = get_bot();
 		else if (start == DATE_AEOT) {
-                        sprintf(message, "%s", catgets(c->DT_catd, 1, 810, "Please enter a start date after 1/1/1970"));
+                        sprintf(message, "%s", CATGETS(c->DT_catd, 1, 810, "Please enter a start date after 1/1/1970"));
                         set_message(f->find_message, message);
                         return;
                 }
 		else if (start <= 0) {
-                        sprintf(message, "%s", catgets(c->DT_catd, 1, 811, "Malformed start date"));
+                        sprintf(message, "%s", CATGETS(c->DT_catd, 1, 811, "Malformed start date"));
                         set_message(f->find_message, message);
                         return;
                 }
@@ -628,18 +628,18 @@ find_appts(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs
 		if (end_of_time == DATE_AEOT)
 			end_of_time = real_eot;
 		else if (end_of_time == DATE_BBOT) {
-                        sprintf(message, "%s", catgets(c->DT_catd, 1, 812, "Please enter an end date before 1/1/2038"));
+                        sprintf(message, "%s", CATGETS(c->DT_catd, 1, 812, "Please enter an end date before 1/1/2038"));
                         set_message(f->find_message, message);
                         return;
                 }
 		else if (end_of_time <= 0) {
-                        sprintf(message, "%s", catgets(c->DT_catd, 1, 813, "Malformed end date"));
+                        sprintf(message, "%s", CATGETS(c->DT_catd, 1, 813, "Malformed end date"));
                         set_message(f->find_message, message);
                         return;
                 }
 
 		if (start >= end_of_time) {
-			sprintf(message, "%s", catgets(c->DT_catd, 1, 713, "You must choose a begin date before the end date."));
+			sprintf(message, "%s", CATGETS(c->DT_catd, 1, 713, "You must choose a begin date before the end date."));
                 	set_message(f->find_message, message);
                 	return;
         	}
@@ -722,9 +722,9 @@ find_appts(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs
 
 		if (match_total != last_match_total) {
 			if (match_total == 1)
-				sprintf(message, catgets(c->DT_catd, 1, 631, "%d match found"), match_total);
+				sprintf(message, CATGETS(c->DT_catd, 1, 631, "%d match found"), match_total);
 			else if (match_total > 1)
-				sprintf(message, catgets(c->DT_catd, 1, 292, "%d matches found"), match_total);
+				sprintf(message, CATGETS(c->DT_catd, 1, 292, "%d matches found"), match_total);
 
 			set_message(f->find_message, message);
 		}
@@ -751,11 +751,11 @@ find_appts(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs
         }  /* end for range.end loop */
 
 	if (match_total == 0)
-		sprintf(message, "%s", catgets(c->DT_catd, 1, 291, "Appointment Not Found."));
+		sprintf(message, "%s", CATGETS(c->DT_catd, 1, 291, "Appointment Not Found."));
 	else if (match_total == 1)
-		sprintf(message, catgets(c->DT_catd, 1, 631, "%d match found"), match_total);
+		sprintf(message, CATGETS(c->DT_catd, 1, 631, "%d match found"), match_total);
 	else
-		sprintf(message, catgets(c->DT_catd, 1, 292, "%d matches found"), match_total);
+		sprintf(message, CATGETS(c->DT_catd, 1, 292, "%d matches found"), match_total);
 	set_message(f->find_message, message);
 	free_appt_struct(&appt);
 	_DtTurnOffHourGlass(f->frame);
@@ -781,12 +781,12 @@ show_appt(Widget widget, XtPointer client_data, XmPushButtonCallbackStruct *cbs)
 
 	XtVaGetValues(f->find_list, XmNitemCount, &list_cnt, NULL);
 	if (list_cnt == 0) {
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 714, "There are no appointments in the list.  You must find one before showing an appointment."));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 714, "There are no appointments in the list.  You must find one before showing an appointment."));
 		set_message(f->find_message, buf);
 		return;
 	}
 	if (!XmListGetSelectedPos(f->find_list, &pos_list, &pos_cnt)) {
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 632, "Please select an appointment from the list to show"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 632, "Please select an appointment from the list to show"));
 		set_message(f->find_message, buf);
 		return;
 	}

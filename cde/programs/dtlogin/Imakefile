@@ -166,7 +166,8 @@ INCLUDES = -I$(XPROJECTROOT)/include/freetype2
                   dpylist.o error.o file.o mitauth.o protodpy.o policy.o \
                   reset.o resource.o server.o session.o socket.o util.o \
                   verify.o sysauth.o fontpath.o $(DESOBJS) qualify.o choose.o \
-		  netaddr.o xdmcp.o $(PAM_OBJS) $(SOLARIS_OBJS)
+		  netaddr.o xdmcp.o $(PAM_OBJS) $(SOLARIS_OBJS) \
+		  $(CDELIBSRC)/DtSvc/DtUtil2/MsgCat.o
 
           PROG2 = dtgreet
 #ifdef AlphaArchitecture

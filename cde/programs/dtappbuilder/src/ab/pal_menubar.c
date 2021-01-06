@@ -179,9 +179,9 @@ menubar_initialize(
     obj_set_is_initially_active(obj, True);
 
     /* Add initial cascades to Choice */
-    cascades[0] = catgets(Dtb_project_catd, 6, 20, "File");
-    cascades[1] = catgets(Dtb_project_catd, 6, 21, "Edit");
-    cascades[2] = catgets(Dtb_project_catd, 6, 25, "Help");
+    cascades[0] = CATGETS(Dtb_project_catd, 6, 20, "File");
+    cascades[1] = CATGETS(Dtb_project_catd, 6, 21, "Edit");
+    cascades[2] = CATGETS(Dtb_project_catd, 6, 25, "Help");
     for (i=0; i < XtNumber(cascades); i++)
     {
         iobj = obj_create(AB_TYPE_ITEM, NULL);

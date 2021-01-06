@@ -52,9 +52,7 @@
 #include <errno.h>
 #include <pwd.h>
 #include <time.h>
-#ifndef sun /* don't need the nl_types.h file */
-#include <nl_types.h>
-#endif /* ! sun */
+#include <Dt/MsgCatP.h>
 
 #include <Xm/XmP.h>
 

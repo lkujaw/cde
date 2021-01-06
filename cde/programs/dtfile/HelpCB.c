@@ -58,7 +58,7 @@
 #include <stdlib.h>
 #include <limits.h>
 #include <errno.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 #include <Xm/XmP.h>
 #include <Xm/MessageB.h>

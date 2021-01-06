@@ -53,7 +53,7 @@ static char sccsid[] = "@(#)props.c 1.13 94/11/07 Copyr 1991 Sun Microsystems, I
 
 #include <EUSCompat.h>
 #include <sys/param.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -339,15 +339,15 @@ init_props(void)
 
     is_inited = 1;
 
-    libdtcm_catd = catopen(LIBDTCM_CAT, NL_CAT_LOCALE);
+    libdtcm_catd = CATOPEN(LIBDTCM_CAT, NL_CAT_LOCALE);
     if ((nl_catd) -1 == libdtcm_catd) return;
 
     dflt = def_props[CP_DATEORDERING];
-    str = catgets(libdtcm_catd, 1, 1, dflt);
+    str = CATGETS(libdtcm_catd, 1, 1, dflt);
     def_props[CP_DATEORDERING] = strdup(str);
 
     dflt = def_props[CP_DEFAULTDISP];
-    str = catgets(libdtcm_catd, 1, 2, dflt);
+    str = CATGETS(libdtcm_catd, 1, 2, dflt);
     def_props[CP_DEFAULTDISP] = strdup(str);
 }
 

@@ -342,7 +342,7 @@ static int	load_or_wordrecs (void)
 		/* Probable corrupted database.  The btree
 		 * read succeeded but the record read failed.
 		 */
-		sprintf (msgbuf, catgets(dtsearch_catd, MS_boolsrch, 6,
+		sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolsrch, 6,
 		    "%s Database Error.  Word '%s' is\n"
 		    "listed in database '%s' but has no index record.") ,
 		    PROGNAME"295", usrblk.stems[stemno], usrblk.dblk->label);
@@ -359,7 +359,7 @@ static int	load_or_wordrecs (void)
 		    (long) wordrec->or_hwaddrs,
 		    (long) wordrec->or_hwfree);
 	    if (wordrec->or_hwaddrs > OE_words_hitlimit) {
-		sprintf (msgbuf, catgets (dtsearch_catd, MS_boolsrch, 14,
+		sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolsrch, 14,
 		    "%s '%s' has more than %ld hits.\n"
 		    "Please remove it from the query or raise the WHITLIM\n"
 		    "value in the search engine configuration file."),
@@ -1110,7 +1110,7 @@ static DB_ADDR	read_d99 (struct or_hwordrec *wordrec)
 	}
 	if (fread (readbuf, sizeof(DB_ADDR), request_read, fptr)
 		!= request_read) {
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolsrch, 28,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolsrch, 28,
 		"%s Database Read Error in %s.d99.") ,
 		PROGNAME"428", usrblk.dblk->name);
 	    DtSearchAddMessage (msgbuf);
@@ -1342,13 +1342,13 @@ static void	read_stem_bitvec_WK (void)
 	 * The bit number is the remainder after division by 8.
 	 */
 	if ((byteno = d99recno >> 3) >= bitveclen) {
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolsrch, 32,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolsrch, 32,
 		"%s Database Error: %s '%s'\n"
 		"in database '%s' has invalid d99 record number %ld.") ,
 		PROGNAME"394",
 		(usrblk.search_type == 'W') ?
-			catgets(dtsearch_catd, MS_boolsrch, 33, "Word") :
-			catgets(dtsearch_catd, MS_boolsrch, 34, "Stem of"),
+			CATGETS(dtsearch_catd, MS_boolsrch, 33, "Word") :
+			CATGETS(dtsearch_catd, MS_boolsrch, 34, "Stem of"),
 		usrblk.stems [save_stemno],
 		usrblk.dblk->label,
 		d99recno);
@@ -1427,7 +1427,7 @@ void	boolean_search (void)
     if (	saveusr.stemcount <= 0		||
 		final_truthtab.pmsz <= 0	||
 		final_truthtab.pmsz >= 256	) {
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_boolsrch, 35,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_boolsrch, 35,
 	    "%s Program Error: stemct=%d pmsz=%d\n") ,
 	    PROGNAME"1404", saveusr.stemcount, final_truthtab.pmsz);
 	DtSearchExit (14);
@@ -1556,7 +1556,7 @@ void	boolean_search (void)
      * generated if a NOT operator was included in the query.
      */
     if (need_zero_permute) {
-	sprintf (msgbuf, catgets (dtsearch_catd, MS_boolsrch, 15,
+	sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolsrch, 15,
 	    "%s Your query requires retrieving every\n"
 	    "document in the database that does not have any of\n"
 	    "your query words.  This type of search may take an\n"

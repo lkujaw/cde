@@ -53,7 +53,6 @@
 #endif
 #include <limits.h>
 #include <locale.h>
-#include <nl_types.h>
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>

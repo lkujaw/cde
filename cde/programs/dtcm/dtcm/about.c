@@ -124,7 +124,7 @@ show_about(
 		return;
 	}
 
-	title = XtNewString(catgets(c->DT_catd, 1, 922, "About Calendar"));
+	title = XtNewString(CATGETS(c->DT_catd, 1, 922, "About Calendar"));
 	dialog = XtVaCreatePopupShell("about_dialog",
 		xmDialogShellWidgetClass,
 		c->frame,
@@ -173,7 +173,7 @@ show_about(
 
 	if (!image || image == XmUNSPECIFIED_PIXMAP) {
         	xstr = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 917, "Missing\nGraphics"));
+			CATGETS(c->DT_catd, 1, 917, "Missing\nGraphics"));
 		XtVaSetValues(icon_label,
 			XmNlabelType, 			XmSTRING,
 			XmNlabelString, 		xstr,
@@ -200,7 +200,7 @@ show_about(
                 XmNshadowType,                  XmSHADOW_IN,
 		NULL);
 
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 340, "Calendar"));
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 340, "Calendar"));
 	name_label =
 	    XtVaCreateWidget("about_name_label",
 		xmLabelWidgetClass,
@@ -219,13 +219,13 @@ show_about(
 	XmStringFree(xstr);
 
 	sprintf(buf, "%s %d.%d.%d", 
-				catgets(c->DT_catd, 1, 671, "Version"), 
+				CATGETS(c->DT_catd, 1, 671, "Version"),
 				DtVERSION, DtREVISION, DtUPDATE_LEVEL); 
 #if DTCM_INTERNAL_REV > 0
 	strcpy(buf2, buf);
 	sprintf(buf, "%s (%s %d)", 
 				buf2,
-				catgets(c->DT_catd, 1, 672, "Revision"), 
+				CATGETS(c->DT_catd, 1, 672, "Revision"),
 				DTCM_INTERNAL_REV);
 #endif
 
@@ -248,7 +248,7 @@ show_about(
 
 	XmStringFree(xstr);
 
-	sprintf(buf, "%s %d", catgets(c->DT_catd, 1, 967, 
+	sprintf(buf, "%s %d", CATGETS(c->DT_catd, 1, 967,
 				"Calendar Server Version"), 
 			        get_server_version(c->my_cal_handle));
 
@@ -271,7 +271,7 @@ show_about(
 
 	XmStringFree(xstr);
 
-	sprintf(buf, "%s %d", catgets(c->DT_catd, 1, 968, 
+	sprintf(buf, "%s %d", CATGETS(c->DT_catd, 1, 968,
 				"Calendar Data Version"), 
 			        c->my_cal_version);
 
@@ -328,7 +328,7 @@ show_about(
 		NULL);
 
 	XmStringFree(xstr);
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 674,
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 674,
 					   "Copyright (c) 1993, 1994, 1995:"));
 	copyright_label =
 	    XtVaCreateWidget("copyright_label",
@@ -347,7 +347,7 @@ show_about(
 		NULL);
 
 	XmStringFree(xstr);
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 675, 
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 675,
 						"Hewlett-Packard Company"));
 	hp_label =
 	    XtVaCreateWidget("hp_label",
@@ -366,7 +366,7 @@ show_about(
 		NULL);
 
 	XmStringFree(xstr);
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 676, 
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 676,
 				"International Business Machines Corp."));
 	ibm_label =
 	    XtVaCreateWidget("ibm_label",
@@ -385,7 +385,7 @@ show_about(
 		NULL);
 
 	XmStringFree(xstr);
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 677, 
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 677,
 						"Novell, Inc."));
 	novell_label =
 	    XtVaCreateWidget("novell_label",
@@ -404,7 +404,7 @@ show_about(
 		NULL);
 
 	XmStringFree(xstr);
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 678, 
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 678,
 						"Sun Microsystems, Inc."));
 	sun_label =
 	    XtVaCreateWidget("sun_label",
@@ -426,7 +426,7 @@ show_about(
 #endif
 
 #ifdef CREDITS
-	xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 679, "More..."));
+	xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 679, "More..."));
 	more_button = XtVaCreateWidget("more_button",
 		xmPushButtonGadgetClass, 
 		main_form,
@@ -457,7 +457,7 @@ show_about(
 		XmNrightOffset,			0,
 		NULL);
 
-	xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 680, "Close"));
+	xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 680, "Close"));
 	close_button = XtVaCreateWidget("close_button",
 		xmPushButtonGadgetClass, main_form,
 		XmNlabelString, 		xstr,
@@ -577,7 +577,7 @@ do_credits(
 		return;
 	}
 
-	title = XtNewString(catgets(c->DT_catd, 1, 681, "Calendar Contributors"));
+	title = XtNewString(CATGETS(c->DT_catd, 1, 681, "Calendar Contributors"));
 	dialog = XtVaCreatePopupShell("contrib_dialog",
 		xmDialogShellWidgetClass,
 		c->frame,
@@ -611,7 +611,7 @@ do_credits(
 
 	if (!image || image == XmUNSPECIFIED_PIXMAP) {
         	xstr = XmStringCreateLocalized(
-			catgets(c->DT_catd, 1, 918, "Missing\nGraphics"));
+			CATGETS(c->DT_catd, 1, 918, "Missing\nGraphics"));
 		XtVaSetValues(icon_label,
 			XmNlabelType, 			XmSTRING,
 			XmNlabelString, 		xstr,
@@ -636,7 +636,7 @@ do_credits(
 		XmNrightAttachment, 		XmATTACH_FORM,
 		NULL);
 
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 682, 
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 682,
 				"This application was brought to you by:"));
 	title_label =
 	    XtVaCreateWidget("title_label",
@@ -679,7 +679,7 @@ do_credits(
 		XmStringFree(xstr);
 	}
 
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 1002, 
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 1002,
 				"Also contributing:"));
 	title_label =
 	    XtVaCreateWidget("title_label",
@@ -735,7 +735,7 @@ do_credits(
 		XmNrightOffset,			0,
 		NULL);
 
-	xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 680, "Close"));
+	xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 680, "Close"));
 	close_button = XtVaCreateWidget("close_button",
 		xmPushButtonGadgetClass, main_form,
 		XmNlabelString, 		xstr,

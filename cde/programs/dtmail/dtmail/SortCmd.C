@@ -50,7 +50,7 @@ SortCmd::doit()
 	DtMail::MailBox		*mbox;
 	int			current_msg;
 
-    	theRoamApp.busyAllWindows(GETMSG(DT_catd, 1, 219, "Sorting..."));
+    	theRoamApp.busyAllWindows(CATGETS(DT_catd, 1, 219, "Sorting..."));
 
 	// Get Mailbox
 	mbox = _sortparent->mailbox();

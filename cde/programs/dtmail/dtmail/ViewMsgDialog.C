@@ -356,19 +356,19 @@ ViewMsgDialog::construct_edit_menu()
     
     _edit_copy = new EditCopyCmd(
 			"Copy",
-			GETMSG(DT_catd, 1, 161, "Copy"), 
+			CATGETS(DT_catd, 1, 161, "Copy"),
 			TRUE, 
 			this
 		     );
 
     _edit_select_all = new EditSelectAllCmd(
 			"Select All",
-			GETMSG(DT_catd, 1, 162, "Select All"), 
+			CATGETS(DT_catd, 1, 162, "Select All"),
 			TRUE,
 			this
 		    );
 
-    cmdList = new CmdList("Edit", GETMSG(DT_catd, 1, 163, "Edit"));
+    cmdList = new CmdList("Edit", CATGETS(DT_catd, 1, 163, "Edit"));
     cmdList->add(_edit_copy);
     cmdList->add(_edit_select_all);
     
@@ -385,8 +385,8 @@ ViewMsgDialog::construct_attachment_menu()
 
     _attach_save_as	= new SaveAttachCmd (
 				"Save As...",
-				GETMSG(DT_catd, 1, 164, "Save As..."),
-				GETMSG(DT_catd, 1, 165, "Mailer - Attachments - Save As"),
+				CATGETS(DT_catd, 1, 164, "Save As..."),
+				CATGETS(DT_catd, 1, 165, "Mailer - Attachments - Save As"),
 				FALSE, 
 				ViewMsgDialog::save_attachment_callback,
 				this,
@@ -394,12 +394,12 @@ ViewMsgDialog::construct_attachment_menu()
 
     _attach_select_all = new SelectAllAttachsCmd(
 				"Select All",
-				GETMSG(DT_catd, 1, 166, "Select All"), 
+				CATGETS(DT_catd, 1, 166, "Select All"),
 				this);
 
     _attachmentMenuList = new CmdList( 
 				"Attachments",
-				GETMSG(DT_catd, 1, 167, "Attachments") );
+				CATGETS(DT_catd, 1, 167, "Attachments") );
 
     _attachmentMenuList->add(_attach_save_as);
     _attachmentMenuList->add(_attach_select_all);
@@ -415,7 +415,7 @@ ViewMsgDialog::construct_attachment_popup(void)
 
     LabelCmd *title     = new LabelCmd (
 			"Mailer - Attachments",
-			GETMSG(DT_catd, 1, 168, "Mailer - Attachments"), TRUE);
+			CATGETS(DT_catd, 1, 168, "Mailer - Attachments"), TRUE);
     SeparatorCmd *separator = new SeparatorCmd("Separator","Separator", TRUE );
 
     _attachmentPopupMenuList->add(title);
@@ -438,7 +438,7 @@ ViewMsgDialog::construct_text_popup(void)
 
     LabelCmd *title     = new LabelCmd (
 			"Mailer - Text",
-			GETMSG(DT_catd, 1, 169, "Mailer - Text"), TRUE);
+			CATGETS(DT_catd, 1, 169, "Mailer - Text"), TRUE);
     SeparatorCmd *separator = new SeparatorCmd("Separator", "Separator", TRUE );
 
     _textPopupMenuList->add(title);
@@ -462,20 +462,20 @@ ViewMsgDialog::construct_help_menu()
     // Separator for menu items
     
     SeparatorCmd *separator= new SeparatorCmd("Separator", "Separator", TRUE );
-    _overview = new OnAppCmd("Overview", GETMSG(DT_catd, 1, 170, "Overview"), 
+    _overview = new OnAppCmd("Overview", CATGETS(DT_catd, 1, 170, "Overview"),
 				TRUE, this);
-    _tasks = new TasksCmd("Tasks", GETMSG(DT_catd, 1, 171, "Tasks"), 
+    _tasks = new TasksCmd("Tasks", CATGETS(DT_catd, 1, 171, "Tasks"),
 				TRUE, this);
     _reference = new ReferenceCmd("Reference",
-				GETMSG(DT_catd, 1, 172, "Reference"), 
+				CATGETS(DT_catd, 1, 172, "Reference"),
 				TRUE, this);
     _on_item = new OnItemCmd("On Item",
-				GETMSG(DT_catd, 1, 173, "On Item"), 
+				CATGETS(DT_catd, 1, 173, "On Item"),
 				TRUE, this);
     _using_help = new UsingHelpCmd("Using Help",
-				GETMSG(DT_catd, 1, 174, "Using Help"), 
+				CATGETS(DT_catd, 1, 174, "Using Help"),
 				TRUE, this);
-    cmdList = new CmdList( "Help", GETMSG(DT_catd, 1, 175, "Help") );
+    cmdList = new CmdList( "Help", CATGETS(DT_catd, 1, 175, "Help") );
     cmdList->add ( _overview );
     cmdList->add ( separator );
     cmdList->add ( _tasks );
@@ -487,7 +487,7 @@ ViewMsgDialog::construct_help_menu()
     cmdList->add ( separator );
 
     _about_mailer = new RelNoteCmd("About Mailer",
-				    GETMSG(DT_catd, 1, 176, "About Mailer..."),
+				    CATGETS(DT_catd, 1, 176, "About Mailer..."),
     				    TRUE, this);
     cmdList->add ( _about_mailer );
 
@@ -535,11 +535,11 @@ ViewMsgDialog::save_selected_attachment(
 
 
 	  _genDialog->setToErrorDialog(
-		    GETMSG(DT_catd, 1, 177, "Mailer"),		  
-		    GETMSG(DT_catd, 2, 20, "An attachment needs to be selected before issuing the\n\"Save As\" command to save to a file.") );
+		    CATGETS(DT_catd, 1, 177, "Mailer"),
+		    CATGETS(DT_catd, 2, 20, "An attachment needs to be selected before issuing the\n\"Save As\" command to save to a file.") );
 	  helpId = DTMAILHELPSELECTATTACH;
 	  answer = _genDialog->post_and_return(
-			GETMSG(DT_catd, 3, 75, "OK"), helpId );
+			CATGETS(DT_catd, 3, 75, "OK"), helpId );
 	  return;
       }
 

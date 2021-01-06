@@ -385,18 +385,18 @@ void AttachArea::setAttachmentsLabel( )
 
 	if((last_displayCount == 0 && displayCount == 1) ||
 	   (last_displayCount == 2 && displayCount == 1)) {
-	    sprintf(c, GETMSG(DT_catd, 12, 1, "Attachment"));
+	    sprintf(c, CATGETS(DT_catd, 12, 1, "Attachment"));
 	    XtVaSetValues(_attachments_label,
 		XtVaTypedArg, XmNlabelString, XtRString, c, strlen(c)+1,
 		NULL);
 	} else if(last_displayCount == 1 && displayCount == 2) {
-	    sprintf(c, GETMSG(DT_catd, 12, 2, "Attachments"));
+	    sprintf(c, CATGETS(DT_catd, 12, 2, "Attachments"));
 	    XtVaSetValues(_attachments_label,
 		XtVaTypedArg, XmNlabelString, XtRString, c, strlen(c)+1,
 		NULL);
 	}
 	if(last_displayCount != displayCount) {
-	    sprintf(c, GETMSG(DT_catd, 12, 3, "displayCount"));
+	    sprintf(c, CATGETS(DT_catd, 12, 3, "displayCount"));
 	    XtVaSetValues(_no_attachments_label,
 		XtVaTypedArg, XmNlabelString, XtRString, c, strlen(c)+1,
 		NULL);
@@ -610,9 +610,9 @@ AttachArea::addAttachment(
     bp = msg->newBodyPart(mail_error, lastAttBP);	
 
     if (SafeAccess(filename, F_OK) != 0) {
-	sprintf(buf, GETMSG(DT_catd, 3, 34, "%s does not exist."),
+	sprintf(buf, CATGETS(DT_catd, 3, 34, "%s does not exist."),
 		filename);
-	answer = this->handleErrorDialog(GETMSG(DT_catd, 1, 81, "Mailer"), 
+	answer = this->handleErrorDialog(CATGETS(DT_catd, 1, 81, "Mailer"),
 					 buf);
 	delete [] buf;
 	delete [] errormsg;
@@ -623,33 +623,33 @@ AttachArea::addAttachment(
 
     if(S_ISFIFO(s.st_mode)) {
 	sprintf(errormsg,
-		GETMSG(DT_catd, 12, 4, "Cannot attach FIFO files: %s"), filename);
+		CATGETS(DT_catd, 12, 4, "Cannot attach FIFO files: %s"), filename);
 	validtype = FALSE;
     } else if(S_ISCHR(s.st_mode)) {
 	sprintf(
 	    errormsg,
-	    GETMSG(DT_catd, 12, 5, "Cannot attach character special files: %s"), filename
+	    CATGETS(DT_catd, 12, 5, "Cannot attach character special files: %s"), filename
 	);
 	validtype = FALSE;
     } else if(S_ISDIR(s.st_mode)) {
 	sprintf(
 	    errormsg,
-	    GETMSG(DT_catd, 12, 6, "Cannot attach directories: %s"), filename
+	    CATGETS(DT_catd, 12, 6, "Cannot attach directories: %s"), filename
 	);
 	validtype = FALSE;
     } else if(S_ISBLK(s.st_mode)) {
 	sprintf(errormsg,
-		GETMSG(DT_catd, 12, 7, "Cannot attach block special files: %s"), filename
+		CATGETS(DT_catd, 12, 7, "Cannot attach block special files: %s"), filename
 	);
 	validtype = FALSE;
     } else if(S_ISSOCK(s.st_mode)) {
 	sprintf(errormsg,
-		GETMSG(DT_catd, 12, 8, "Cannot attach socket files: %s"), filename
+		CATGETS(DT_catd, 12, 8, "Cannot attach socket files: %s"), filename
 	);
 	validtype = FALSE;
     }
     if(validtype == FALSE) {
-	answer = this->handleErrorDialog(GETMSG(DT_catd, 1, 81, "Mailer"), 
+	answer = this->handleErrorDialog(CATGETS(DT_catd, 1, 81, "Mailer"),
 					 errormsg,
                                          NULL);
 	delete [] buf;
@@ -660,9 +660,9 @@ AttachArea::addAttachment(
     fd = SafeOpen(filename, O_RDONLY);
 	
     if (fd < 0) {
-	sprintf(buf, GETMSG(DT_catd, 3, 35, "Unable to open %s."), filename);
+	sprintf(buf, CATGETS(DT_catd, 3, 35, "Unable to open %s."), filename);
         helpId = DTMAILHELPNOOPEN;
-	answer = this->handleErrorDialog(GETMSG(DT_catd, 1, 82, "Mailer"), 
+	answer = this->handleErrorDialog(CATGETS(DT_catd, 1, 82, "Mailer"),
 					 buf,
                                          helpId);
 	delete [] buf;
@@ -686,9 +686,9 @@ AttachArea::addAttachment(
 
 	if (!buffer) {
             sprintf(buf, "%s",
-		    GETMSG(DT_catd, 3, 36, "Unable to allocate memory."));
+		    CATGETS(DT_catd, 3, 36, "Unable to allocate memory."));
             helpId = DTMAILHELPNOALLOCMEM;
-	    answer = this->handleErrorDialog(GETMSG(DT_catd, 1, 83, "Mailer"), 
+	    answer = this->handleErrorDialog(CATGETS(DT_catd, 1, 83, "Mailer"),
 					     buf,
                                              helpId);
 	    return(NULL);
@@ -1170,7 +1170,7 @@ AttachArea::addToRowOfAttachmentsStatus()
     // Size of first label
     
     labelStr2 = XmStringCreateLocalized(
-			GETMSG(DT_catd, 3, 37, "Summary of attachments"));
+			CATGETS(DT_catd, 3, 37, "Summary of attachments"));
 
 
     _attachments_summary = XtCreateManagedWidget("Attachments_Summary", 
@@ -1276,7 +1276,7 @@ AttachArea::attachment_summary(
     char * tmp2;
 
     if ((live == 1) && (dead == 0)) {
-	tmp1 = GETMSG(DT_catd, 3, 38, "attachment");
+	tmp1 = CATGETS(DT_catd, 3, 38, "attachment");
 	buf = new char[strlen(tmp1) + 64];
     	sprintf(buf, "%d %s", live, tmp1);
     }
@@ -1284,13 +1284,13 @@ AttachArea::attachment_summary(
 	/* NL_COMMENT
 	 * "attachments" is the plural form of "attachment".
 	 */
-	tmp1 = GETMSG(DT_catd, 3, 39, "attachments");
+	tmp1 = CATGETS(DT_catd, 3, 39, "attachments");
 	buf = new char[strlen(tmp1) + 64];
 	sprintf(buf, "%d %s", live, tmp1);
     }
     else if ((live >= 0) && (dead > 0)) {
-	tmp1 = GETMSG(DT_catd, 3, 40, "attachments");
-	tmp2 = GETMSG(DT_catd, 3, 41, "deleted");
+	tmp1 = CATGETS(DT_catd, 3, 40, "attachments");
+	tmp2 = CATGETS(DT_catd, 3, 41, "deleted");
 	buf = new char[strlen(tmp1) + strlen(tmp2) + 64];
 	sprintf(buf, "%d %s, %d %s", live, tmp1, dead, tmp2);
     }

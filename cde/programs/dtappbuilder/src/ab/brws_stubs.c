@@ -179,12 +179,12 @@ brwsP_orientation(
 
     if (props->orientation == BRWS_VERTICAL)  {
         props->orientation = BRWS_HORIZONTAL;
-        str = catgets(Dtb_project_catd, 100, 66, "Vertical");
+        str = CATGETS(Dtb_project_catd, 100, 66, "Vertical");
         xmlabel = XmStringCreateLocalized(str);
     }
     else  {
         props->orientation = BRWS_VERTICAL;
-        str = catgets(Dtb_project_catd, 100, 67, "Horizontal");
+        str = CATGETS(Dtb_project_catd, 100, 67, "Horizontal");
         xmlabel = XmStringCreateLocalized(str);
     }
 
@@ -220,9 +220,9 @@ brwsP_obj_glyph(
     if (!ab || !ab->module)
         return;
 
-    hide_str = XtNewString(catgets(Dtb_project_catd, 100, 60, 
+    hide_str = XtNewString(CATGETS(Dtb_project_catd, 100, 60,
 	"Hide Object Glyph"));
-    show_str = XtNewString(catgets(Dtb_project_catd, 100, 61, 
+    show_str = XtNewString(CATGETS(Dtb_project_catd, 100, 61,
 	"Show Object Glyph"));
 
     browser_show_view_elements(ab->module,
@@ -255,9 +255,9 @@ brwsP_obj_class(
     if (!b || !b->module)
         return;
 
-    hide_str = XtNewString(catgets(Dtb_project_catd, 100, 62, 
+    hide_str = XtNewString(CATGETS(Dtb_project_catd, 100, 62,
 	"Hide Object Type"));
-    show_str = XtNewString(catgets(Dtb_project_catd, 100, 63, 
+    show_str = XtNewString(CATGETS(Dtb_project_catd, 100, 63,
 	"Show Object Type"));
 
     browser_show_view_elements(b->module,
@@ -290,9 +290,9 @@ brwsP_obj_name(
     if (!ab || !ab->module)
         return;
 
-    hide_str = XtNewString(catgets(Dtb_project_catd, 100, 64, 
+    hide_str = XtNewString(CATGETS(Dtb_project_catd, 100, 64,
 	"Hide Object Name"));
-    show_str = XtNewString(catgets(Dtb_project_catd, 100, 65, 
+    show_str = XtNewString(CATGETS(Dtb_project_catd, 100, 65,
 	"Show Object Name"));
 
     browser_show_view_elements(ab->module,

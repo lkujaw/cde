@@ -1010,13 +1010,13 @@ cm_load_font_error(CMGraphicsInfo *gInfo, char *fontPattern)
   char *title;
   char *label;
 
-  errFmt = catgets(c->DT_catd, 1, 1119,
+  errFmt = CATGETS(c->DT_catd, 1, 1119,
 		   "Warning - Unable to load font %s.");
   errText = (char *)XtMalloc((strlen(errFmt) + strlen(fontPattern) + 1) *
 			     sizeof(char));
   sprintf(errText, errFmt, fontPattern);
-  label = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
-  title = XtNewString(catgets(c->DT_catd, 1, 1118,
+  label = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
+  title = XtNewString(CATGETS(c->DT_catd, 1, 1118,
 			      "Calendar : Warning - Print"));
 
   dialog_popup(c->frame,
@@ -1999,7 +1999,7 @@ local_dayname(Calendar *c, char **array_place, int dayNum)
     497, 491, 492, 493, 494, 495, 496
   };
 
-  source = catgets(c->DT_catd, 1,
+  source = CATGETS(c->DT_catd, 1,
 		   dayCatIndex[dayNum], defaultDays[dayNum]);
 
   _len = strlen( source );
@@ -2031,7 +2031,7 @@ local_dayname3(Calendar *c, char **array_place, int dayNum)
     480, 481, 482, 483, 484, 485, 486
   };
 
-  source = catgets(c->DT_catd, 1,
+  source = CATGETS(c->DT_catd, 1,
 		   dayCatIndex[dayNum], defaultDays[dayNum]);
 
   _len = strlen( source );
@@ -2079,7 +2079,7 @@ get_report_type_string(CMGraphicsInfo *gInfo)
     unsigned long to_len = 0;
     unsigned long _len;
 
-    str = catgets(c->DT_catd, 1, catIndex[reportType],
+    str = CATGETS(c->DT_catd, 1, catIndex[reportType],
 		  defaultStrs[reportType]);
 
     _len = strlen( str );
@@ -2121,20 +2121,20 @@ filePrintReportStatus(Calendar *c, Boolean ok)
   char *label;
   Pixmap pixmap;
 
-  label = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+  label = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
   if (!ok)
   {
-    errText = XtNewString(catgets(c->DT_catd, 1, 1115,
+    errText = XtNewString(CATGETS(c->DT_catd, 1, 1115,
 				  "Error - unable to print to file."));
-    title = XtNewString(catgets(c->DT_catd, 1, 1114,
+    title = XtNewString(CATGETS(c->DT_catd, 1, 1114,
 				"Calendar : Error - Print To File"));
     pixmap = pu->xm_error_pixmap;
   }
   else
   {
-    errText = XtNewString(catgets(c->DT_catd, 1, 1117,
+    errText = XtNewString(CATGETS(c->DT_catd, 1, 1117,
 				  "Print to file has completed."));
-    title = XtNewString(catgets(c->DT_catd, 1, 1116,
+    title = XtNewString(CATGETS(c->DT_catd, 1, 1116,
 				"Calendar : Print To File"));
     pixmap = pu->xm_info_pixmap;
   }
@@ -2160,11 +2160,11 @@ showBadAllocError(Calendar *c)
   char *label;
   Pixmap pixmap;
 
-  label = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
-  errText = XtNewString(catgets(c->DT_catd, 1, 1122,
+  label = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
+  errText = XtNewString(CATGETS(c->DT_catd, 1, 1122,
 				"Print job failed.\n\n\
 The X Print Server is temporarily out of resources."));
-  title = XtNewString(catgets(c->DT_catd, 1, 1121,
+  title = XtNewString(CATGETS(c->DT_catd, 1, 1121,
 				"Calendar : Print Server Error"));
   pixmap = pu->xm_error_pixmap;
 
@@ -2626,7 +2626,7 @@ x_print_header(void *gInfoP, char *buf, int pageNum, int numPages)
     numPages++;
 
   /* print creation notice at bottom */ 
-  cm_strcpy(str2, catgets(c->DT_catd, 1, 468, "Page"));
+  cm_strcpy(str2, CATGETS(c->DT_catd, 1, 468, "Page"));
   {
     char *to = NULL;
     unsigned long to_len = 0;
@@ -2641,7 +2641,7 @@ x_print_header(void *gInfoP, char *buf, int pageNum, int numPages)
   }
   cm_strcpy(str2, euc_to_octal(str2));
 
-  str = catgets(c->DT_catd, 1, 476, "of");
+  str = CATGETS(c->DT_catd, 1, 476, "of");
   {
     char *to = NULL;
     unsigned long to_len = 0;
@@ -2703,7 +2703,7 @@ x_day_header (void *gInfoP)
 		  gInfo->topMarginY + dayBoxVOffset + gInfo->u.dayInfo.tab1,
 		  gInfo->normalWd);
 
-  str = catgets(c->DT_catd, 1, 470, "Morning");
+  str = CATGETS(c->DT_catd, 1, 470, "Morning");
 
   {
     char *to = NULL;
@@ -2723,7 +2723,7 @@ x_day_header (void *gInfoP)
 		 (gInfo->u.dayInfo.tab1 / 2),
 		 CENTER_AT_X | CENTER_AT_Y);
 
-  str = catgets(c->DT_catd, 1, 471, "Afternoon");
+  str = CATGETS(c->DT_catd, 1, 471, "Afternoon");
 
   {
     char *to = NULL;
@@ -2756,8 +2756,8 @@ x_day_timeslots(void *gInfoP, int i, Boolean more)
   Calendar *c = gInfo->c;
 
   sprintf (hourbuf, "%d", (morning(i) || (i == 12)) ? i : (i - 12) );
-  sprintf (modbuf, "%s", morning(i) ? catgets(c->DT_catd, 1, 4, "am") :
-	   catgets(c->DT_catd, 1, 3, "pm"));
+  sprintf (modbuf, "%s", morning(i) ? CATGETS(c->DT_catd, 1, 4, "am") :
+	   CATGETS(c->DT_catd, 1, 3, "pm"));
 
   /* --- print hourly boxes for appt entries --- */
   if (i == 12)
@@ -3005,10 +3005,10 @@ x_print_list_range(Calendar *c, CSA_sint32 appt_type, int item_data,
 	format_date(start + 1, ot, buf2, 1, 0, 0);
 
 	if (appt_type == CSA_TYPE_TODO)
-		sprintf(buf, catgets(c->DT_catd, 1, 899,
+		sprintf(buf, CATGETS(c->DT_catd, 1, 899,
 				     "To Do List Beginning: %s"), buf2);
 	else
-		sprintf(buf, catgets(c->DT_catd, 1, 900,
+		sprintf(buf, CATGETS(c->DT_catd, 1, 900,
 				     "Appt List Beginning: %s"), buf2);
 
 	setup_range(&range_attrs, &ops, &i, start, end, appt_type,

@@ -963,9 +963,9 @@ aa_argv0 = argv[0];
     time (&starttime);
     time_ptr = _XLocaltime(&starttime, localtime_buf);
     strftime (dbfpath, sizeof (dbfpath),   /* just use any ol' buffer */
-        catgets (dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
+        CATGETS(dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
         time_ptr);
-    printf (catgets (dtsearch_catd, MS_misc, 23,
+    printf (CATGETS(dtsearch_catd, MS_misc, 23,
         "%s: Version %s%s.  Run %s.\n"),
         aa_argv0, AUSAPI_VERSION, betabuf, dbfpath);
 

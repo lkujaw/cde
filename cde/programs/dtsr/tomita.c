@@ -126,7 +126,7 @@ char		parsed_recid [2048];
 /* Called from inside DtSearchExit() at austext_exit_last */
 static void     print_exit_code (int exit_code)
 {
-    printf ( catgets(dtsearch_catd, MS_tomita, 3,
+    printf ( CATGETS(dtsearch_catd, MS_tomita, 3,
 	"%s: Exit Code = %d.\n") ,
 	aa_argv0, exit_code);
     return;
@@ -145,7 +145,7 @@ static void     print_exit_code (int exit_code)
 static void	kill_delete (int sig)
 {
     shutdown_now = TRUE;
-    printf ( catgets(dtsearch_catd, MS_tomita, 1,
+    printf ( CATGETS(dtsearch_catd, MS_tomita, 1,
 	"\n%s Received interrupt %d.\n"
 	"  Program will stop after current batch of deletions.\n") ,
 	PROGNAME"069", sig);
@@ -190,14 +190,14 @@ static int      change_database (char *newname)
 
     /* Invalid newname.  If deleting, just say which database is invalid. */
     retncode = 1;
-    fprintf (aa_stderr,  catgets(dtsearch_catd, MS_tomita, 4,
+    fprintf (aa_stderr,  CATGETS(dtsearch_catd, MS_tomita, 4,
 	"%s Database '%s' not found.\n") ,
 	PROGNAME"114", newname);
     if (prog == 'D')
 	return FALSE;
 
     /* If browsing, tell user his options */
-    fprintf (aa_stderr, "%s", catgets(dtsearch_catd, MS_tomita, 5,
+    fprintf (aa_stderr, "%s", CATGETS(dtsearch_catd, MS_tomita, 5,
 	"Available choices are:") );
     for (db = usrblk.dblist; db != NULL; db = db->link)
 	fprintf (aa_stderr, "   '%s'", db->name);
@@ -233,7 +233,7 @@ static int      parse_infbuf (char *infbuf)
     /* Parse first token (database name) */
     if ((ptr = strtok (mybuf, " \t")) == NULL) {
 	/* Msg #8 is used in two places */
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_tomita, 8,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_tomita, 8,
 	    "%s Invalid input format: %.30s...\n") ,
 	    PROGNAME"152", infbuf);
 	retncode = 1;
@@ -259,7 +259,7 @@ static int      parse_infbuf (char *infbuf)
     ptr = strtok (ptr, (*ptr == '\"') ? "\"" : " \t");
     if (ptr == NULL) {
 	/* Msg #8 is used in two places */
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_tomita, 8,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_tomita, 8,
 	    "%s Invalid input format: %.30s...\n") ,
 	    PROGNAME"176", infbuf);
 	retncode = 1;
@@ -306,7 +306,7 @@ static int      browser (void)
 	}
 
 	/* Write main menu prompt */
-	printf ( catgets(dtsearch_catd, MS_tomita, 10,
+	printf ( CATGETS(dtsearch_catd, MS_tomita, 10,
 	    "\n---------- SHOW NEXT RECORD ----------- Database = '%s'\n"
 	    "q      QUIT.                        Current Record Count = %ld\n"
 	    "p      Toggle PAUSE from %s.\n"
@@ -352,7 +352,7 @@ static int      browser (void)
 	    case 'r':
 		if (usrblk.objrec.or_objkey[0] == 0) {
 		    fprintf (aa_stderr,
-			catgets(dtsearch_catd, MS_tomita, 11,
+			CATGETS(dtsearch_catd, MS_tomita, 11,
 			"%s Record buffer empty.\n"),
 			PROGNAME"267");
 		    continue;
@@ -369,7 +369,7 @@ static int      browser (void)
 	    case 'n':
 		if (inf == NULL) {
 		    fprintf (aa_stderr,
-			catgets(dtsearch_catd, MS_tomita, 12,
+			CATGETS(dtsearch_catd, MS_tomita, 12,
 			"%s Input file unavailable.\n"),
 			PROGNAME"282");
 		    continue;
@@ -378,7 +378,7 @@ static int      browser (void)
 		if ((fgets (infbuf, sizeof (infbuf), inf)) == NULL)
 		{
 		    fprintf (aa_stderr,
-			catgets(dtsearch_catd, MS_tomita, 13,
+			CATGETS(dtsearch_catd, MS_tomita, 13,
 			"%s No more records in input file.\n"),
 			PROGNAME"288");
 		    fclose (inf);
@@ -400,7 +400,7 @@ static int      browser (void)
 		ptr = strtok (userbuf, "\"");
 		if (ptr == NULL || *ptr == 0) {
 		    fprintf (aa_stderr,
-			catgets(dtsearch_catd, MS_tomita, 14,
+			CATGETS(dtsearch_catd, MS_tomita, 14,
 			"%s Invalid Record ID.\n"),
 			PROGNAME"303");
 		    continue;
@@ -417,13 +417,13 @@ static int      browser (void)
 		 */
 		fprintf (outf, DISCARD_FORMAT, usrblk.dblk->name,
 		    usrblk.objrec.or_objkey, usrblk.userid, datestr);
-		printf ( catgets(dtsearch_catd, MS_tomita, 15,
+		printf ( CATGETS(dtsearch_catd, MS_tomita, 15,
 		    "%s '%s' appended to file of confirmed deletions.\n") ,
 		    PROGNAME"317", usrblk.objrec.or_objkey);
 		continue;
 
 	    default:
-		printf ("%s", catgets(dtsearch_catd, MS_tomita, 16, "...what?\n"));
+		printf ("%s", CATGETS(dtsearch_catd, MS_tomita, 16, "...what?\n"));
 		continue;
 	}	/* end switch */
 
@@ -439,7 +439,7 @@ static int      browser (void)
 	 * address 
 	 */
 	if (usrblk.retncode == OE_WRAPPED)
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_tomita, 17,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_tomita, 17,
 		"%s %s Engine wrapped to next record.\n") ,
 		PROGNAME"333", OE_prodname);
 	else if (usrblk.retncode != OE_OK)
@@ -453,14 +453,14 @@ static int      browser (void)
 
 DISPLAY_RECORD:
 	/* display the record's cleartext, character by character */
-	printf ( catgets(dtsearch_catd, MS_tomita, 18,
+	printf ( CATGETS(dtsearch_catd, MS_tomita, 18,
 	    "\n\n"
 	    "Record:    '%s'\n"
 	    "Abstract:  '%s'\n"
 	    "--------------------------------------\n") ,
 	    usrblk.objrec.or_objkey,
 	    (usrblk.abstrbufsz > 0) ? usrblk.abstrbuf :
-                                      catgets (dtsearch_catd, MS_misc, 1, "<null>"));
+                                      CATGETS(dtsearch_catd, MS_misc, 1, "<null>"));
 
 	pause_counter = 0;
 	for (ptr = usrblk.cleartext; *ptr != 0; ptr++) {
@@ -472,7 +472,7 @@ DISPLAY_RECORD:
 	    if (pausing && *ptr == '\n') {
 		if (++pause_counter >= PAUSE_ROWS) {
 		    /* Msg 21 is used in two places */
-		    printf ( "%s", catgets(dtsearch_catd, MS_tomita, 21,
+		    printf ( "%s", CATGETS(dtsearch_catd, MS_tomita, 21,
 			"\n...push ENTER to continue... ") );
 
 		    *userbuf = '\0';
@@ -491,7 +491,7 @@ DISPLAY_RECORD:
 
 	/* display the user notes if any, character by character */
 	if (usrblk.notes != NULL) {
-	    printf ( catgets(dtsearch_catd, MS_tomita, 20,
+	    printf ( CATGETS(dtsearch_catd, MS_tomita, 20,
 		"--------------------------------------\n"
 		"End of Text Blob for '%s':\n\n"
 		"User Notes:\n"
@@ -504,7 +504,7 @@ DISPLAY_RECORD:
 		    if (pausing && *ptr == '\n')
 			if (++pause_counter >= PAUSE_ROWS) {
 			    /* Msg 21 is used in two places */
-			    printf ( "%s", catgets(dtsearch_catd, MS_tomita, 21,
+			    printf ( "%s", CATGETS(dtsearch_catd, MS_tomita, 21,
 				"\n...push ENTER to continue... ") );
 
 		            *userbuf = '\0';
@@ -633,7 +633,7 @@ KEEP_READING:
 		first_err = FALSE;
 		fputc ('\n', aa_stderr);
 	    }
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_tomita, 24,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_tomita, 24,
 		"%s Database %s, '%s' not found.\n") ,
 		PROGNAME"482", parsed_dbname, parsed_recid);
 	    continue;
@@ -676,7 +676,7 @@ static void     deleter (char *infname)
     char            buf[128];
 
     if (!yesarg) {
-	printf ( catgets(dtsearch_catd, MS_tomita, 25,
+	printf ( CATGETS(dtsearch_catd, MS_tomita, 25,
     "\nDO NOT CONTINUE under any of the following circumstances:\n"
     "-> If the input file which lists record ids to be deleted is not\n"
     "      named '%s'.\n"
@@ -738,7 +738,7 @@ static void     deleter (char *infname)
 	seconds = elapsed - (3600L * hours);	/* remaining after hours */
 	minutes = seconds / 60L;
 	seconds = seconds - (60L * minutes);
-	printf ( catgets(dtsearch_catd, MS_tomita, 26,
+	printf ( CATGETS(dtsearch_catd, MS_tomita, 26,
 	    "%s %ld read, %ld deleted, %ldh %2ldm %2lds elapsed.\n"
 	    "  Database '%s': Current record count = %ld, Batch size = %d.\n") ,
 	    aa_argv0, records_read, records_deleted,
@@ -768,7 +768,7 @@ static void     deleter (char *infname)
     minutes = seconds / 60L;
     seconds = seconds - (60L * minutes);	/* remaining after hours
 						 * & mins */
-    printf ( catgets(dtsearch_catd, MS_tomita, 27,
+    printf ( CATGETS(dtsearch_catd, MS_tomita, 27,
 	"%s %ld records read from input file.  %ld were deleted and\n"
 	"  %ld were not found in %ld hours, %ld minutes, %ld seconds,\n") ,
 	aa_argv0, records_read, records_deleted,
@@ -779,7 +779,7 @@ static void     deleter (char *infname)
     elapsed = (records_deleted) ? elapsed / records_deleted : 0L;
     minutes = elapsed / 60L;
     seconds = elapsed - (60L * minutes);
-    printf ( catgets(dtsearch_catd, MS_tomita, 28,
+    printf ( CATGETS(dtsearch_catd, MS_tomita, 28,
 	"  or an average of %ld minutes, %ld seconds per record deleted.\n"),
 	minutes, seconds);
     return;
@@ -799,12 +799,12 @@ int             main (int argc, char *argv[])
 
     aa_argv0 = argv[0];
     setlocale (LC_ALL, "");
-    dtsearch_catd = catopen (FNAME_DTSRCAT, 0);
+    dtsearch_catd = CATOPEN(FNAME_DTSRCAT, 0);
     time (&mytime);
     strftime (timebuf, sizeof (timebuf),
-        catgets(dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
+        CATGETS(dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
 	localtime (&mytime));
-    printf (catgets(dtsearch_catd, MS_tomita, 29,
+    printf (CATGETS(dtsearch_catd, MS_tomita, 29,
 	"%s.  Run %s.\n") ,
 	aa_argv0, timebuf);
     austext_exit_last = print_exit_code;
@@ -816,7 +816,7 @@ int             main (int argc, char *argv[])
     /* Validate program number argument */
     if (argc < 2) {
 BAD_ARGS:
-	fprintf (aa_stderr, catgets(dtsearch_catd, MS_tomita, 30,
+	fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_tomita, 30,
 	    "\nUSAGE: %s [options]\n"
 	    "  -i    Input file name.  If not specified, defaults to %s.\n"
 	    "  -d[v] Print debug statements.\n"
@@ -877,7 +877,7 @@ BAD_ARGS:
 		break;
 
 	    default:
-		fprintf (aa_stderr, catgets(dtsearch_catd, MS_tomita, 31,
+		fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_tomita, 31,
 		    "\n%s Unknown argument '%s'.\n") ,
 		    PROGNAME"689", arg);
 		goto BAD_ARGS;
@@ -891,7 +891,7 @@ BAD_ARGS:
      */
     if ((inf = fopen (infname, "r")) == NULL) {
 	if (prog == 'D') {
-	    fprintf (aa_stderr, catgets(dtsearch_catd, MS_tomita, 32,
+	    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_tomita, 32,
 		"%s Unable to open input file '%s'.\n") ,
 		PROGNAME"710", infname);
 	    goto BAD_ARGS;
@@ -905,7 +905,7 @@ BAD_ARGS:
 	if ((outf = fopen (outfname, "a ")) == NULL)
 	    /* the blank in "a " works around old aix bug */
 	{
-	    fprintf (aa_stderr,  catgets(dtsearch_catd, MS_tomita, 33,
+	    fprintf (aa_stderr,  CATGETS(dtsearch_catd, MS_tomita, 33,
 		"\n%s Unable to open output file '%s'.\n") ,
 		PROGNAME"721", outfname);
 	    goto BAD_ARGS;
@@ -913,7 +913,7 @@ BAD_ARGS:
     }
 
     /* Initialize the opera engine, i.e. open the database */
-    printf ( catgets(dtsearch_catd, MS_tomita, 34,
+    printf ( CATGETS(dtsearch_catd, MS_tomita, 34,
 	"Initializing %s engine...\n"),
 	OE_prodname);
     strcpy (usrblk.userid, "ToMiTa");
@@ -931,7 +931,7 @@ BAD_ARGS:
 
     usrblk.request = OE_SHUTDOWN;
     Opera_Engine ();
-    printf ( "%s", catgets(dtsearch_catd, MS_tomita, 36,
+    printf ( "%s", CATGETS(dtsearch_catd, MS_tomita, 36,
 	"Normal engine shutdown.\n") );
     DtSearchExit (0);
 }  /* main() */

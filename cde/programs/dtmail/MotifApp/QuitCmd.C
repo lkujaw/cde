@@ -66,17 +66,15 @@
 #include "MainWindow.h"
 #include "Application.h"
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 extern nl_catd catd;
-
-#include "NLS.hh"
 
 QuitCmd::QuitCmd ( char *name, char *label, int active, MainWindow *mywindow) : 
                  WarnNoUndoCmd ( name, label, active ) 
 {
     _mywindow = mywindow;
     _dialogParentWidget = _mywindow->baseWidget();
-    setQuestion ( GETMSG(catd, 1, 9, "Close this folder?") );
+    setQuestion ( CATGETS(catd, 1, 9, "Close this folder?") );
 }
 
 void QuitCmd::doit()

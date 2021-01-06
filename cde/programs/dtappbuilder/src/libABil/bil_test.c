@@ -49,7 +49,7 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <ab_private/util.h>

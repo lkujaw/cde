@@ -1118,20 +1118,20 @@ proj_open_proj_okCB(
     }
     else if (!util_file_exists(proj_filename))
     {
-        sprintf(Buf, catgets(Dtb_project_catd, 100, 8,
+        sprintf(Buf, CATGETS(Dtb_project_catd, 100, 8,
 		"The file %s does not exist."), proj_filename);
 	util_printf_err(Buf);
     }
     else if (!util_file_is_regular_file(proj_filename))
     {
-	sprintf(Buf, catgets(Dtb_project_catd, 100, 69,
+	sprintf(Buf, CATGETS(Dtb_project_catd, 100, 69,
                 "Cannot open %s.\n%s is not a regular file."),
 		proj_filename, proj_filename);
         xm_buf = XmStringCreateLocalized(Buf);
         dtb_proj_error_msg_initialize(&dtb_proj_error_msg);
 
 	help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-	help_data->help_text = catgets(Dtb_project_catd, 100, 89,
+	help_data->help_text = CATGETS(Dtb_project_catd, 100, 89,
 	    "The file you specified is a directory or\nanother special file.");
 	help_data->help_volume = "";
 	help_data->help_locationID = "";
@@ -1198,20 +1198,20 @@ proj_import_okCB(
 	/* If the file specified does not exist, keep up the file
 	 * chooser so that the user can specify another file.
 	 */
-	sprintf(Buf, catgets(Dtb_project_catd, 100, 8,
+	sprintf(Buf, CATGETS(Dtb_project_catd, 100, 8,
 		"The file %s does not exist."), file_name);
 	util_printf_err(Buf);
     }
     else if (!util_file_is_regular_file(file_name))
     {
-        sprintf(Buf, catgets(Dtb_project_catd, 100, 70,
+        sprintf(Buf, CATGETS(Dtb_project_catd, 100, 70,
                 "Cannot import %s.\n%s is not a regular file."),
 		file_name, file_name);
         xm_buf = XmStringCreateLocalized(Buf);
         dtb_proj_error_msg_initialize(&dtb_proj_error_msg);
 
         help_data = (DtbObjectHelpData) util_malloc(sizeof(DtbObjectHelpDataRec));
-        help_data->help_text = catgets(Dtb_project_catd, 100, 89, 
+        help_data->help_text = CATGETS(Dtb_project_catd, 100, 89,
             "The file you specified is a directory or\nanother special file.");
         help_data->help_volume = ""; 
         help_data->help_locationID = ""; 
@@ -1247,7 +1247,7 @@ proj_import_okCB(
             }
             else
             {
-		sprintf(Buf, catgets(Dtb_project_catd, 100, 9,
+		sprintf(Buf, CATGETS(Dtb_project_catd, 100, 9,
 			"%s does not have read permission."),
 			file_name);
 		util_printf_err(Buf);

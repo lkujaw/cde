@@ -1601,7 +1601,7 @@ set_standard_action_type(
     XtUnmanageChild(volume_rowcol);
     hide_execute_code_win();
 
-    xm_label_str = XmStringCreateLocalized(catgets(Dtb_project_catd,
+    xm_label_str = XmStringCreateLocalized(CATGETS(Dtb_project_catd,
 100, 54, ARGUMENT_LABEL));
     XtVaSetValues(arg_label, XmNlabelString, xm_label_str, NULL);
     XmStringFree(xm_label_str);
@@ -1631,7 +1631,7 @@ set_call_function_action_type(
     XtUnmanageChild(location_rowcol);
     hide_execute_code_win();
 
-    xm_label_str = XmStringCreateLocalized(catgets(Dtb_project_catd,
+    xm_label_str = XmStringCreateLocalized(CATGETS(Dtb_project_catd,
 			100, 55, FUNCTION_LABEL));
     XtVaSetValues(arg_label, XmNlabelString, xm_label_str, NULL);
     XmStringFree(xm_label_str);
@@ -1664,7 +1664,7 @@ set_execute_code_action_type(
     XtUnmanageChild(volume_rowcol);
     XtUnmanageChild(location_rowcol);
 
-    xm_label_str = XmStringCreateLocalized(catgets(Dtb_project_catd,
+    xm_label_str = XmStringCreateLocalized(CATGETS(Dtb_project_catd,
 			100, 56, CODE_LABEL));
     XtVaSetValues(arg_label, XmNlabelString, xm_label_str, NULL);
     XmStringFree(xm_label_str);

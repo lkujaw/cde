@@ -60,7 +60,7 @@ static  char sccsid[] = "@(#)cm_lookup.c 1.21 94/08/05 Copyr 1993 Sun Microsyste
 #include <unistd.h>
 #include <sys/resource.h>
 #include <sys/wait.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <locale.h>
 #include "cm_tty.h"
 #include "util.h"
@@ -106,7 +106,7 @@ grab(char**argv,				/* command line arguments */
 
 static void
 usage_msg() {
-	fprintf(stderr,catgets(DT_catd, 1, 696, "Usage:\n\tdtcm_admin [ -d ] [ -a action ] [ -c calendar ][ -s <mm/dd/yy> ] [ -e <mm/dd/yy> ] [-f filename]\n"));
+	fprintf(stderr,CATGETS(DT_catd, 1, 696, "Usage:\n\tdtcm_admin [ -d ] [ -a action ] [ -c calendar ][ -s <mm/dd/yy> ] [ -e <mm/dd/yy> ] [-f filename]\n"));
 }
 
 static void
@@ -122,7 +122,7 @@ cm_args(int argc, char **argv)
 			else if (strcmp(*argv, "restore") == 0)
 				Mode = restore;
 			else {
-				fprintf(stderr,catgets(DT_catd, 1, 697, "You have specified an unsupported administration operation \"%s\".\n"), *argv);
+				fprintf(stderr,CATGETS(DT_catd, 1, 697, "You have specified an unsupported administration operation \"%s\".\n"), *argv);
 				usage_msg();
 				exit(1);
 			}
@@ -167,7 +167,7 @@ int main(int argc, char **argv)
 
 	init_time();
 	setlocale(LC_ALL, "");
-	DT_catd = catopen(DTCM_CAT, NL_CAT_LOCALE);
+	DT_catd = CATOPEN(DTCM_CAT, NL_CAT_LOCALE);
 	cm_tty_load_props(&p);
 	cm_args(argc,argv);		/* parse command line */
 
@@ -187,7 +187,7 @@ int main(int argc, char **argv)
 	if (cm_file[0]) {
 		if (Mode == archive) {
 			if ((output_stream = fopen(cm_file, "w")) == NULL) {
-				fprintf(stderr, catgets(DT_catd, 1, 698, "\nCould not open output file \"%s\"\n"), cm_file);
+				fprintf(stderr, CATGETS(DT_catd, 1, 698, "\nCould not open output file \"%s\"\n"), cm_file);
 				exit(1);
 			}
 
@@ -195,7 +195,7 @@ int main(int argc, char **argv)
 
 		if (Mode == restore) {
 			if ((input_stream = fopen(cm_file, "r")) == NULL) {
-				fprintf(stderr, catgets(DT_catd, 1, 699, "\nCould not open input file \"%s\"\n"), cm_file);
+				fprintf(stderr, CATGETS(DT_catd, 1, 699, "\nCould not open input file \"%s\"\n"), cm_file);
 				exit(1);
 			}
 		}
@@ -207,10 +207,10 @@ int main(int argc, char **argv)
 	stat = csa_logon(NULL, &csa_user, NULL, NULL, NULL, &c_handle, NULL);
 
 	if (stat != CSA_SUCCESS) {
-	  	char *format = XtNewString(catgets(DT_catd, 1, 208, 
+	  	char *format = XtNewString(CATGETS(DT_catd, 1, 208,
 					 "\nCould not open calendar \"%s\"\n"));
 		fprintf(stderr, format, 
-			target ? target : catgets(DT_catd, 1, 209, "UNKNOWN"));
+			target ? target : CATGETS(DT_catd, 1, 209, "UNKNOWN"));
 		XtFree(format);
 		free(uname);
 		free(loc);

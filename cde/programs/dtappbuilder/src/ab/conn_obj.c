@@ -960,7 +960,7 @@ connP_make_conn_string(
 	strcat(conn_string, unknown_str);
     }
     
-    strcat(conn_string, catgets(Dtb_project_catd, 100, 196, " on "));
+    strcat(conn_string, CATGETS(Dtb_project_catd, 100, 196, " on "));
     modname = abobj_get_moduled_name(src_obj);
     strcat(conn_string, (char*)modname);
     XtFree(modname);
@@ -995,7 +995,7 @@ connP_make_conn_string(
 		strcat(conn_string, unknown_str);
 	    }
 	    
-	    strcat(conn_string, catgets(Dtb_project_catd, 100, 196, " on "));
+	    strcat(conn_string, CATGETS(Dtb_project_catd, 100, 196, " on "));
 	    modname = abobj_get_moduled_name(target_obj);
 	    strcat(conn_string, (char*)modname);
 	    XtFree(modname);
@@ -1003,7 +1003,7 @@ connP_make_conn_string(
 	break;
 
       case AB_FUNC_USER_DEF:
-	strcat(conn_string, catgets(Dtb_project_catd, 100, 197, "Call function"));
+	strcat(conn_string, CATGETS(Dtb_project_catd, 100, 197, "Call function"));
 	strcat(conn_string, " \"");
 	{
 	    ISTRING	istr_val = action_info->func_value.func_name;
@@ -1015,20 +1015,20 @@ connP_make_conn_string(
 	break;
 
       case AB_FUNC_CODE_FRAG:
-	strcat(conn_string, catgets(Dtb_project_catd, 100, 198, "Execute Code"));
+	strcat(conn_string, CATGETS(Dtb_project_catd, 100, 198, "Execute Code"));
 	break;
 
       case AB_FUNC_ON_ITEM_HELP:
-	strcat(conn_string, catgets(Dtb_project_catd, 100, 199, "Activate On-Item Help"));
+	strcat(conn_string, CATGETS(Dtb_project_catd, 100, 199, "Activate On-Item Help"));
 	break;
 
       case AB_FUNC_HELP_VOLUME:
-	strcat(conn_string, catgets(Dtb_project_catd, 100, 200, "Access Help Volume"));
+	strcat(conn_string, CATGETS(Dtb_project_catd, 100, 200, "Access Help Volume"));
 	strcat(conn_string, " \"");
 	strcat(conn_string, obj_get_func_help_volume(action_obj)?
 		obj_get_func_help_volume(action_obj):"");
 	strcat(conn_string, "\" ");
-	strcat(conn_string, catgets(Dtb_project_catd, 100, 201, "at location"));
+	strcat(conn_string, CATGETS(Dtb_project_catd, 100, 201, "at location"));
 	strcat(conn_string, " \"");
 	strcat(conn_string, obj_get_func_help_location(action_obj)?
 		obj_get_func_help_location(action_obj):"");
@@ -1522,85 +1522,85 @@ extern void
 conn_strings_init(void)
 {
       unknown_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 158, "??unknown??"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 158, "??unknown??"));
       invalid_str = 
-	XtNewString(catgets(Dtb_project_catd, 100, 159, "??invalid??"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 159, "??invalid??"));
 
       when_labels[AB_WHEN_UNDEF] = unknown_str;
       when_labels[AB_WHEN_ACTION1] =
-	XtNewString(catgets(Dtb_project_catd, 100, 160, "Action1 Activated"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 160, "Action1 Activated"));
       when_labels[AB_WHEN_ACTION2] =
-	XtNewString(catgets(Dtb_project_catd, 100, 161, "Action2 Activated"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 161, "Action2 Activated"));
       when_labels[AB_WHEN_ACTION3] =
-	XtNewString(catgets(Dtb_project_catd, 100, 162, "Action3 Activated"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 162, "Action3 Activated"));
       when_labels[AB_WHEN_ACTIVATED] =
-	XtNewString(catgets(Dtb_project_catd, 100, 163, "Activated"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 163, "Activated"));
       when_labels[AB_WHEN_AFTER_CREATED] =
-	XtNewString(catgets(Dtb_project_catd, 100, 164, "Created"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 164, "Created"));
       when_labels[AB_WHEN_AFTER_RESIZED] =
-	XtNewString(catgets(Dtb_project_catd, 100, 165, "Resized"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 165, "Resized"));
       when_labels[AB_WHEN_BEFORE_TEXT_CHANGED] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 166, "Before Text Changed"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 166, "Before Text Changed"));
       when_labels[AB_WHEN_CANCEL] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 167, "Cancel Activated"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 167, "Cancel Activated"));
       when_labels[AB_WHEN_DESTROYED] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 168, "Destroyed"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 168, "Destroyed"));
       when_labels[AB_WHEN_DOUBLE_CLICKED_ON] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 169, "Double Clicked On"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 169, "Double Clicked On"));
       when_labels[AB_WHEN_DRAGGED] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 170, "Dragged"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 170, "Dragged"));
       when_labels[AB_WHEN_DRAGGED_FROM] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 171, "Dragged From"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 171, "Dragged From"));
       when_labels[AB_WHEN_DROPPED_ON] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 172, "Dropped On"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 172, "Dropped On"));
       when_labels[AB_WHEN_HIDDEN] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 173, "Hidden"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 173, "Hidden"));
       when_labels[AB_WHEN_ITEM_SELECTED] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 174, "Item Selected"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 174, "Item Selected"));
       when_labels[AB_WHEN_OK] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 175, "Ok Activated"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 175, "Ok Activated"));
       when_labels[AB_WHEN_POPPED_DOWN] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 176, "Popped Down"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 176, "Popped Down"));
       when_labels[AB_WHEN_POPPED_UP] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 177, "Popped Up"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 177, "Popped Up"));
       when_labels[AB_WHEN_REPAINT_NEEDED] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 178, "Repaint Needed"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 178, "Repaint Needed"));
       when_labels[AB_WHEN_SESSION_SAVE] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 179, "Session Save"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 179, "Session Save"));
       when_labels[AB_WHEN_SESSION_RESTORE] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 180, "Session Restore"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 180, "Session Restore"));
       when_labels[AB_WHEN_SHOWN] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 181, "Shown"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 181, "Shown"));
       when_labels[AB_WHEN_TEXT_CHANGED] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 182, "Text Changed"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 182, "Text Changed"));
       when_labels[AB_WHEN_TOGGLED] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 183, "Toggled"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 183, "Toggled"));
       when_labels[AB_WHEN_TOOLTALK_DO_COMMAND] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 184, "ToolTalk Do Command"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 184, "ToolTalk Do Command"));
       when_labels[AB_WHEN_TOOLTALK_GET_STATUS] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 185, "ToolTalk Get Status"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 185, "ToolTalk Get Status"));
       when_labels[AB_WHEN_TOOLTALK_PAUSE_RESUME] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 186, "ToolTalk Pause/Resume"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 186, "ToolTalk Pause/Resume"));
       when_labels[AB_WHEN_TOOLTALK_QUIT] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 187, "ToolTalk Quit"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 187, "ToolTalk Quit"));
       when_labels[AB_WHEN_VALUE_CHANGED] =  
-	XtNewString(catgets(Dtb_project_catd, 100, 188, "Value Changed"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 188, "Value Changed"));
       when_labels[AB_WHEN_NUM_VALUES] = invalid_str;
 
       stdact_labels[AB_STDACT_UNDEF] = unknown_str;
       stdact_labels[AB_STDACT_DISABLE] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 189, "Disable"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 189, "Disable"));
       stdact_labels[AB_STDACT_ENABLE] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 190, "Enable"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 190, "Enable"));
       stdact_labels[AB_STDACT_HIDE] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 191, "Hide"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 191, "Hide"));
       stdact_labels[AB_STDACT_SET_LABEL] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 192, "Set Label"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 192, "Set Label"));
       stdact_labels[AB_STDACT_SET_TEXT] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 193, "Set Text"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 193, "Set Text"));
       stdact_labels[AB_STDACT_SET_VALUE] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 194, "Set Value"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 194, "Set Value"));
       stdact_labels[AB_STDACT_SHOW] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 195, "Show"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 195, "Show"));
       stdact_labels[AB_BUILTIN_ACTION_NUM_VALUES] = invalid_str;
 }

@@ -781,10 +781,10 @@ XmTextEditor::modifyPasteData(
 		{
 
 		if( !begin_ins_bracket)
-			begin_ins_bracket = GETMSG(DT_catd, 1, 199,
+			begin_ins_bracket = CATGETS(DT_catd, 1, 199,
 				"\n------------- Begin Included Message -------------\n"); 
 		if(!end_ins_bracket) 
-			end_ins_bracket = GETMSG(DT_catd, 1, 200,
+			end_ins_bracket = CATGETS(DT_catd, 1, 200,
 				"\n------------- End Included Message -------------\n"); 
 		
 		size_t begin_len = strlen(begin_ins_bracket); 

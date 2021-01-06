@@ -117,7 +117,7 @@ p_create_v5_group_access_pane(
 	 * side.
 	 */
         xstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 410, "User Name:"));
+				CATGETS(c->DT_catd, 1, 410, "User Name:"));
 	p->gap2_user_label =
 	    XtVaCreateWidget("gap2_label_user_name",
 		xmLabelGadgetClass,
@@ -129,7 +129,7 @@ p_create_v5_group_access_pane(
 	XmStringFree(xstr);
 
         xstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 738, "Access List:"));
+				CATGETS(c->DT_catd, 1, 738, "Access List:"));
 	p->gap2_access_label =
 	    XtVaCreateWidget("gap2_label_access",
 		xmLabelGadgetClass,
@@ -141,7 +141,7 @@ p_create_v5_group_access_pane(
 	XmStringFree(xstr);
 
         xstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 739, "Access Rights:"));
+				CATGETS(c->DT_catd, 1, 739, "Access Rights:"));
 	p->gap2_permissions_label =
 	    XtVaCreateWidget("gap2_label_permissions",
 		xmLabelGadgetClass,
@@ -189,7 +189,7 @@ p_create_v5_group_access_pane(
 		XmNrightOffset, 		GAP,
 		NULL);
 
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 740, "Add"));
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 740, "Add"));
         p->gap2_add_button =
             XtVaCreateWidget("gap2_button_add",
                 xmPushButtonWidgetClass,
@@ -206,7 +206,7 @@ p_create_v5_group_access_pane(
 	XmStringFree(xstr);
 	XtAddCallback(p->gap2_add_button, XmNactivateCallback, GAPAddProc, p);
 
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 419, "Delete"));
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 419, "Delete"));
         p->gap2_delete_button =
             XtVaCreateWidget("gap2_button_delete",
                 xmPushButtonWidgetClass,
@@ -226,7 +226,7 @@ p_create_v5_group_access_pane(
 	XtAddCallback(p->gap2_delete_button, XmNactivateCallback,
 		      p_gap_remove_proc, p);
 
-        xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 343, "Change"));
+        xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 343, "Change"));
         p->gap2_change_button =
             XtVaCreateWidget("gap2_button_change",
                 xmPushButtonWidgetClass,
@@ -368,7 +368,7 @@ CreatePermissions(
 		XmNshadowType,                  XmSHADOW_IN,
 		NULL);
 
-	xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 743, "Public:"));
+	xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 743, "Public:"));
 	p->gap2_public_label =
 	    XtVaCreateWidget("gap2_public_label",
 		xmLabelGadgetClass,
@@ -379,7 +379,7 @@ CreatePermissions(
 	XmStringFree (xstr);
 
 	xstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 744, "Semiprivate:"));
+				CATGETS(c->DT_catd, 1, 744, "Semiprivate:"));
 	p->gap2_semi_label =
 	    XtVaCreateWidget("gap2_semi_label",
 		xmLabelGadgetClass,
@@ -391,7 +391,7 @@ CreatePermissions(
 
 	XmStringFree (xstr);
 
-	xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 745, "Private:"));
+	xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 745, "Private:"));
 	p->gap2_private_label =
 	    XtVaCreateWidget("gap2_private_label",
 		xmLabelGadgetClass,
@@ -409,7 +409,7 @@ CreatePermissions(
 
 	/* Create the labels and toggles for the permissions */
 
-	xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 40, "View"));
+	xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 40, "View"));
 	p->gap2_view_label =
 	    XtVaCreateWidget("gap2_view_label",
 		xmLabelGadgetClass,
@@ -439,7 +439,7 @@ CreatePermissions(
 #endif /* __ppc */
 	if (label_offset < 0) label_offset = 0;
 
-	xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 342, "Insert"));
+	xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 342, "Insert"));
 
 	p->gap2_insert_label =
 	    XtVaCreateWidget("gap2_insert_label",
@@ -459,7 +459,7 @@ CreatePermissions(
 		XmNwidth,	&insert_label_width,
 		NULL);
 
-	xstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 343, "Change"));
+	xstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 343, "Change"));
 
 	/* 
 	 * If label is greater than the allocated space for the
@@ -685,11 +685,11 @@ GAPAddProc(
 	/* Get the user's name and host */
 	if (!(user_name = (char *)XmTextGetString(p->gap2_user_text)) ||
 	    !*user_name) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 750, 
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 750,
 			      "Calendar : Error - Access List and Permissions"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 749,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 749,
 		      "Name and Access Rights must be set to add an item to the Access List."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95,
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95,
 						   "Continue"));
 
 		XtFree(user_name);
@@ -774,13 +774,13 @@ ChangeExistingGAPEntry(
 	Calendar 	*c = calendar;
 	int		 answer;
 
-	char *title = XtNewString(catgets(c->DT_catd, 1, 1078, 
+	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1078,
 			"Calendar : Access List and Permissions - Add"));
-	char *text = XtNewString(catgets(c->DT_catd, 1, 751,
+	char *text = XtNewString(CATGETS(c->DT_catd, 1, 751,
 		"This entry already exists in the Access List.  Do you wish to change it?"));
-	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 343,
+	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 343,
 			"Change"));
-	char *ident2 = XtNewString(catgets(c->DT_catd, 1, 923,
+	char *ident2 = XtNewString(CATGETS(c->DT_catd, 1, 923,
 			"Cancel"));
 
 	answer = dialog_popup(p->frame,
@@ -819,11 +819,11 @@ GAPChangeProc(
 
 	/* An item to change must be selected in the access list */
 	if (!XmListGetSelectedPos(p->gap2_access_list, &item_list, &item_cnt)) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 750,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 750,
 			      "Calendar : Error - Access List and Permissions"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 408,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 408,
 			      "Please select a name first.                   "));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(p->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -845,11 +845,11 @@ GAPChangeProc(
 	/* Get the user's name and host */
 	if (!(user_name = (char *)XmTextGetString(p->gap2_user_text)) ||
 	    !*user_name) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 750, 
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 750,
 			      "Calendar : Error - Access List and Permissions"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 756,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 756,
 	              "Name and Access rights must be set to change an item in the Access List"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 
 		XtFree(user_name);
                 dialog_popup(p->frame,

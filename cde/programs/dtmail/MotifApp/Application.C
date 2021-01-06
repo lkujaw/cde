@@ -70,7 +70,7 @@
 #include <sys/types.h>
 #include <time.h>
 #include <unistd.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <string.h>
 
 #include "EUSDebug.hh"
@@ -96,34 +96,6 @@ Application::_appResources[] = {
 // If NL_CAT_LOCALE is not defined in other platforms, set it to 0
 #elif !defined(NL_CAT_LOCALE)	
 #define NL_CAT_LOCALE 0
-#endif
-
-#ifdef hpV4
-/*
- * Wrapper around catgets -- this makes sure the message string is saved
- * in a safe location; so repeated calls to catgets() do not overwrite
- * the catgets() internal buffer.  This has been a problem on HP systems.
- */
-char *catgets_cache2(nl_catd catd, int set, int num, char *dflt)
-{
-
-#define MSGS_PER_SET_MAX        12
-#define NUM_SETS_MAX            2
-
-  /* array to hold messages from catalog */
-  static  char *MsgCat[NUM_SETS_MAX][MSGS_PER_SET_MAX];
-  
-  /* convert to a zero based index */
-  int setIdx = set - 1;
-  int numIdx = num - 1;
-  
-  if ( ! MsgCat[setIdx][numIdx] ) {
-    MsgCat[setIdx][numIdx] = strdup( catgets(catd, set, num, dflt));
-  }
-  
-  return MsgCat[setIdx][numIdx];
-}
-
 #endif
 
 Application *theApplication = NULL;
@@ -261,7 +233,7 @@ Application::~Application()
   #endif
 #endif
 
-    catclose(catd);
+    CATCLOSE(catd);
 
     // In an MT environment, calling exit() causes threads to
     // hang and a deadlock results.
@@ -387,7 +359,7 @@ void
 Application::open_catalog()
 {
     // open message catalog file
-    catd = catopen("MotifApp", NL_CAT_LOCALE);
+    catd = CATOPEN("MotifApp", NL_CAT_LOCALE);
 }
 
 void

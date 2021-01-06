@@ -81,7 +81,7 @@ static int write_i18n_declarations(GenCodeInfo genCodeInfo, ABObj project);
  */
 static char        *I18n_Includes[] =
 {
-    "<nl_types.h>",
+    "<Dt/MsgCatP.h>",
     NULL,
 };
 

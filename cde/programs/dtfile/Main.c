@@ -125,10 +125,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#ifndef sun /* don't need the nl_types.h file */
-#include <nl_types.h>
-#endif /* !sun */
-
 #include <locale.h>
 
 #include <Xm/XmP.h>
@@ -165,6 +161,7 @@
 #include <Dt/UserMsg.h>
 #include <Dt/Wsm.h>
 #include <Dt/WsmP.h>
+#include <Dt/MsgCatP.h>
 #include <Dt/DtNlUtils.h>
 #include <Dt/CommandM.h>
 #include <Dt/EnvControlP.h>

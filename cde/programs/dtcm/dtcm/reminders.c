@@ -212,15 +212,15 @@ r_set_bfpm_vals(
 		switch ( scope ) {
 		  case TIME_MINS :
 		      xmstr = XmStringCreateLocalized(
-		catgets( calendar->DT_catd, 1, 877, time_scope_str(scope) ) );
+		CATGETS( calendar->DT_catd, 1, 877, time_scope_str(scope) ) );
 		      break;
 		  case TIME_HRS :
 		      xmstr = XmStringCreateLocalized(
-		catgets( calendar->DT_catd, 1, 878, time_scope_str(scope) ) );
+		CATGETS( calendar->DT_catd, 1, 878, time_scope_str(scope) ) );
 		      break;
 		  case TIME_DAYS :
 		      xmstr = XmStringCreateLocalized(
-		catgets( calendar->DT_catd, 1, 879, time_scope_str(scope) ) );
+		CATGETS( calendar->DT_catd, 1, 879, time_scope_str(scope) ) );
 		      break;
 		  default :
 		      xmstr = XmStringCreateLocalized(time_scope_str(scope));
@@ -249,15 +249,15 @@ r_set_bfpm_vals(
 	switch ( scope ) {
 	  case TIME_MINS :
 	      xmstr = XmStringCreateLocalized(
-		catgets( calendar->DT_catd, 1, 877, time_scope_str(scope) ) );
+		CATGETS( calendar->DT_catd, 1, 877, time_scope_str(scope) ) );
 	      break;
 	  case TIME_HRS :
 	      xmstr = XmStringCreateLocalized(
-		catgets( calendar->DT_catd, 1, 878, time_scope_str(scope) ) );
+		CATGETS( calendar->DT_catd, 1, 878, time_scope_str(scope) ) );
 	      break;
 	  case TIME_DAYS :
 	      xmstr = XmStringCreateLocalized(
-		catgets( calendar->DT_catd, 1, 879, time_scope_str(scope) ) );
+		CATGETS( calendar->DT_catd, 1, 879, time_scope_str(scope) ) );
 	      break;
 	  default :
 	      xmstr = XmStringCreateLocalized(time_scope_str(scope));
@@ -362,7 +362,7 @@ build_reminders(Reminders *r, Calendar *c, Widget parent) {
 		NULL);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 985, "Reminders"));
+				CATGETS(c->DT_catd, 1, 985, "Reminders"));
         r->alarm_label = XtVaCreateWidget("Reminders",
 		xmLabelGadgetClass, r->bfpm_form_mgr,
 		XmNlabelString,         xmstr,
@@ -376,7 +376,7 @@ build_reminders(Reminders *r, Calendar *c, Widget parent) {
 	/* Create the 4 toggle items to see which one is the longest */
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 986, "Beep"));
+				CATGETS(c->DT_catd, 1, 986, "Beep"));
 	r->beep_toggle = XtVaCreateWidget("Beep",
 		xmToggleButtonGadgetClass, r->bfpm_form_mgr,
 		XmNlabelString,         xmstr,
@@ -386,7 +386,7 @@ build_reminders(Reminders *r, Calendar *c, Widget parent) {
 
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 987, "Flash"));
+				CATGETS(c->DT_catd, 1, 987, "Flash"));
 	r->flash_toggle = XtVaCreateWidget("Flash",
 		xmToggleButtonGadgetClass, r->bfpm_form_mgr,
 		XmNlabelString,         xmstr,
@@ -396,7 +396,7 @@ build_reminders(Reminders *r, Calendar *c, Widget parent) {
 
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 988, "Popup"));
+				CATGETS(c->DT_catd, 1, 988, "Popup"));
 	r->popup_toggle = XtVaCreateWidget("Popup",
 		xmToggleButtonGadgetClass, r->bfpm_form_mgr,
 		XmNlabelString,         xmstr,
@@ -406,7 +406,7 @@ build_reminders(Reminders *r, Calendar *c, Widget parent) {
 
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 989, "Mail"));
+				CATGETS(c->DT_catd, 1, 989, "Mail"));
 	r->mail_toggle = XtVaCreateWidget("Mail",
 		xmToggleButtonGadgetClass, r->bfpm_form_mgr,
 		XmNlabelString,         xmstr,
@@ -416,7 +416,7 @@ build_reminders(Reminders *r, Calendar *c, Widget parent) {
 
 
 	xmstr = XmStringCreateLocalized(
-                           catgets(c->DT_catd, 1, 990, "Mail To:" ) );
+                           CATGETS(c->DT_catd, 1, 990, "Mail To:" ) );
         r->mailto_label = XtVaCreateManagedWidget("MailTo",
                 xmLabelGadgetClass, r->bfpm_form_mgr,
                 XmNlabelString, xmstr,
@@ -675,13 +675,13 @@ reminder_err_msg(Widget frame, char *name, Reminder_val_op op, Pixmap p)
 
         switch(op) {
         case ADVANCE_BLANK:
-                sprintf(buf, "%s", catgets(c->DT_catd, 1, 775, "You must specify a reminder advance\nOperation was cancelled.  Calendar"));
+                sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 775, "You must specify a reminder advance\nOperation was cancelled.  Calendar"));
                 break;
         case ADVANCE_CONTAINS_BLANK:
-                sprintf(buf, "%s", catgets(c->DT_catd, 1, 776, "A reminder advance may not contain an embedded blank\nOperation was cancelled.  Calendar"));
+                sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 776, "A reminder advance may not contain an embedded blank\nOperation was cancelled.  Calendar"));
                 break;
         case ADVANCE_NONNUMERIC:
-                sprintf(buf, "%s", catgets(c->DT_catd, 1, 777, "Advance values must be a number with an optional sign\nOperation was cancelled.  Calendar"));
+                sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 777, "Advance values must be a number with an optional sign\nOperation was cancelled.  Calendar"));
                 break;
         case REMINDERS_OK:
         default:
@@ -690,9 +690,9 @@ reminder_err_msg(Widget frame, char *name, Reminder_val_op op, Pixmap p)
 
  
         sprintf(buf2, "%s %s", buf, name);
-	title = XtNewString(catgets(c->DT_catd, 1, 364,
+	title = XtNewString(CATGETS(c->DT_catd, 1, 364,
                         "Calendar : Error - Editor"));
-	ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
         dialog_popup(frame, DIALOG_TITLE, title,
                 DIALOG_TEXT, buf2,
                 BUTTON_IDENT, 1, ident1,

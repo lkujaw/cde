@@ -380,7 +380,7 @@ abmfP_calloc(size_t n, size_t size)
 
     if (p = (STRING) calloc(n, size))
 	return p;
-    util_error(catgets(Dtb_project_catd, 1, 83, "calloc: out of memory"));
+    util_error(CATGETS(Dtb_project_catd, 1, 83, "calloc: out of memory"));
     return NULL;
 }
 
@@ -394,7 +394,7 @@ abmfP_malloc(size_t size)
 
     if (p = malloc(size))
 	return p;
-    util_error(catgets(Dtb_project_catd, 1, 84, "malloc: out of memory"));
+    util_error(CATGETS(Dtb_project_catd, 1, 84, "malloc: out of memory"));
     return NULL;
 }
 
@@ -408,7 +408,7 @@ abmfP_realloc(void *buf, unsigned int size)
 
     if (p = realloc(buf, size))
 	return p;
-    util_error(catgets(Dtb_project_catd, 1, 85, "realloc: out of memory"));
+    util_error(CATGETS(Dtb_project_catd, 1, 85, "realloc: out of memory"));
     return NULL;
 }
 

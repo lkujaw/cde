@@ -37,7 +37,7 @@
 #define _PdmMsgs_h
 
 #ifdef I18N_MSG
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #define DTPDM_GETMESSAGE(set, number, string) \
     DtPdmGetMessage(set, number, string)
 

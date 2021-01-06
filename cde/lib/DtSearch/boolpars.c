@@ -134,14 +134,14 @@ void	add_syntax_errmsg (int msgno)
     switch (msgno) {
 	case 1:
 	    /* Message #2 is called in two places */
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 2,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 2,
 		"%s Query field is empty."),
 		PROGNAME"086");
 	    DtSearchAddMessage (msgbuf);
 	    break;
 
 	case 2:
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 5,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 5,
 		"%s Boolean operators must be positioned\n"
 		"between words or expressions.  Two sequential words\n"
 		"without an operator are interpreted as being separated\n"
@@ -151,14 +151,14 @@ void	add_syntax_errmsg (int msgno)
 	    break;
 
 	case 3:
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 6,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 6,
 		"%s Expression in parentheses is missing."),
 		PROGNAME"093");
 	    DtSearchAddMessage (msgbuf);
 	    break;
 
 	case 4:
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 7,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 7,
 		"%s NOT operator (~) must be positioned to\n"
 		"the left of the word or expression it qualifies."),
 		PROGNAME"098");
@@ -167,7 +167,7 @@ void	add_syntax_errmsg (int msgno)
 
 	case 5:
 	    /* Message #3 is called in two places */
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 3,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 3,
 		"%s COLLOCATION operator (@) may\n"
 		"only be positioned between two words."),
 		PROGNAME"111");
@@ -175,7 +175,7 @@ void	add_syntax_errmsg (int msgno)
 	    break;
 
 	case 6:
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 4,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 4,
 		"%s One or more words in your\n"
 		"query are not stored in database '%s'.") ,
 		PROGNAME"089", usrblk.dblk->label);
@@ -183,7 +183,7 @@ void	add_syntax_errmsg (int msgno)
 	    break;
 
 	default:
-	    sprintf (msgbuf,  catgets(dtsearch_catd, MS_boolpars, 8,
+	    sprintf (msgbuf,  CATGETS(dtsearch_catd, MS_boolpars, 8,
 		"%s Invalid boolean query.  Syntax Error #%d.") ,
 		PROGNAME"100", msgno);
 	    DtSearchAddMessage (msgbuf);
@@ -288,7 +288,7 @@ static TRUTHTAB	*get_stem_truthtab (char *newstem, char *origword)
     /* Add new stem to array */
     if (stemno == saveusr.stemcount) {
 	if (++saveusr.stemcount > DtSrMAX_STEMCOUNT) {
-	    sprintf (msgbuf, catgets (dtsearch_catd, MS_boolpars, 9,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 9,
 		"%s Too many terms in boolean query."),
 		PROGNAME"1513");
 	    DtSearchAddMessage (msgbuf);
@@ -490,7 +490,7 @@ TRUTHTAB	*boolyac_COLLOC (
 
     if (word1tt->stemno < 0  ||  word2tt->stemno < 0) {
 	/* Message #3 is called in two places */
-	sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 3,
+	sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 3,
 	    "%s COLLOCATION operator (@) may\n"
 	    "only be positioned between two words."),
 	    PROGNAME"371");
@@ -498,7 +498,7 @@ TRUTHTAB	*boolyac_COLLOC (
 	return NULL;
     }
     if (word1tt->stemno == word2tt->stemno) {
-	sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 12,
+	sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 12,
 	    "%s Collocation operator is not\n"
 	    "permitted between identical words."),
 	    PROGNAME"377");
@@ -533,7 +533,7 @@ void	yyerror (char *msg) {
 	else if (parser_invalid_wordcount > 0)
 	    add_syntax_errmsg(6);
 	else {
-	    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 1,
+	    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 1,
 		"%s Your search string is an invalid\n"
 		"boolean query.  Please reformulate and try again."),
 		PROGNAME"001");
@@ -700,7 +700,7 @@ GET_ANOTHER_TOKEN:
 
 	    if ((usrblk.dblk->dbrec.or_dbaccess & ORA_BLOB) == 0) {
 		retn_token = ERROR_TOKEN;
-		sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 10,
+		sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 10,
 		    "%s Collocation searches not available for database '%s'."),
 		    PROGNAME"2567", usrblk.dblk->label);
 		DtSearchAddMessage (msgbuf);
@@ -709,7 +709,7 @@ GET_ANOTHER_TOKEN:
 	    yylval.int_val = atoi (yytext + 1);
 	    if (yylval.int_val <= 0) {
 		retn_token = ERROR_TOKEN;
-		sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 11,
+		sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 11,
 		    "%s Collocation operator '%.*s' is invalid.\n"
 		    "Correct format is '@n' where n is greater than zero.") ,
 		    PROGNAME"294", DtSrMAXWIDTH_HWORD, yytext);
@@ -778,7 +778,7 @@ GET_ANOTHER_TOKEN:
 		    goto GET_ANOTHER_TOKEN;
 		retn_token = ERROR_TOKEN;
 		if (!DtSearchHasMessages()) {
-		    sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 13,
+		    sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 13,
 			"%s Word '%.*s' is invalid.") ,
 			PROGNAME"315", DtSrMAXWIDTH_HWORD, yytext);
 		    DtSearchAddMessage (msgbuf);
@@ -787,7 +787,7 @@ GET_ANOTHER_TOKEN:
 	    }
 	    if (strlen(stembufp) != strlen(yytext)) {
 		retn_token =		ERROR_TOKEN;
-		sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 14,
+		sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 14,
 		    "%s String '%.*s' is not a single word.") ,
 		    PROGNAME"634", DtSrMAXWIDTH_HWORD, yytext);
 		DtSearchAddMessage (msgbuf);
@@ -869,7 +869,7 @@ int	boolean_parse (void)
     if (usrblk.query == NULL) {
 EMPTY_QUERY:
 	/* Message #2 is called in two places */
-	sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 2,
+	sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 2,
 	    "%s Query is empty."), PROGNAME"289");
 	DtSearchAddMessage (msgbuf);
 	return FALSE;
@@ -935,7 +935,7 @@ EMPTY_QUERY:
     }
 
     if (final_truthtab.pmsz <= 0) {
-	sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 15,
+	sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 15,
 	    "%s Your query cannot logically return\n"
 	    "any records.  Please reformulate and try again."),
 	    PROGNAME"334");
@@ -943,7 +943,7 @@ EMPTY_QUERY:
 	return FALSE;
     }
     if (final_truthtab.pmsz >= 256) {
-	sprintf (msgbuf, catgets(dtsearch_catd, MS_boolpars, 16,
+	sprintf (msgbuf, CATGETS(dtsearch_catd, MS_boolpars, 16,
 	    "%s Your query will return entire database\n" 
 	    "'%s'.  Please reformulate and try again.") ,
 	    PROGNAME"341", usrblk.dblk->label);

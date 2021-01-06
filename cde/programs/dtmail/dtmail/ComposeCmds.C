@@ -238,7 +238,7 @@ ComposeFamily::Display_entire_msg(DtMailMessageHandle msgno,
 	    char	*att;
 	    Editor	*editor = compose->get_editor()->textEditor();
 	    
-	    att = GETMSG(
+	    att = CATGETS(
 			DT_catd, 1, 255,
 			"------------------ Attachments ------------------\n");
 
@@ -348,8 +348,8 @@ ComposeCmd::doit()
     if (newsend == NULL) {
 	DtMailGenDialog * dialog = _parent->genDialog();
 	
-	dialog->setToErrorDialog(GETMSG(DT_catd, 1, 203, "Mailer"),
-				 GETMSG(DT_catd, 1, 204, "Unable to create a compose window."));
+	dialog->setToErrorDialog(CATGETS(DT_catd, 1, 203, "Mailer"),
+				 CATGETS(DT_catd, 1, 204, "Unable to create a compose window."));
 	char * helpId = DTMAILHELPNOCOMPOSE;
 	int answer = dialog->post_and_return(helpId);
     }
@@ -387,8 +387,8 @@ ForwardCmd::doit()
     if ( newsend == NULL ) {
 	DtMailGenDialog * dialog = _parent->genDialog();
 	
-	dialog->setToErrorDialog(GETMSG(DT_catd, 1, 205, "Mailer"),
-				 GETMSG(DT_catd, 1, 206, "Unable to create a compose window."));
+	dialog->setToErrorDialog(CATGETS(DT_catd, 1, 205, "Mailer"),
+				 CATGETS(DT_catd, 1, 206, "Unable to create a compose window."));
 	char * helpId = DTMAILHELPNOCOMPOSE;
 	int answer = dialog->post_and_return(helpId);
     }
@@ -469,8 +469,8 @@ ReplyCmd::doit()
 	    if ( newsend == NULL ) {
 		DtMailGenDialog * dialog = _parent->genDialog();
 		
-		dialog->setToErrorDialog(GETMSG(DT_catd, 1, 207, "Mailer"),
-					 GETMSG(DT_catd, 1, 208, "Unable to create a compose window."));
+		dialog->setToErrorDialog(CATGETS(DT_catd, 1, 207, "Mailer"),
+					 CATGETS(DT_catd, 1, 208, "Unable to create a compose window."));
 		char * helpId = DTMAILHELPNOCOMPOSE;
 		int answer = dialog->post_and_return(helpId);
 	    }
@@ -613,8 +613,8 @@ ReplyAllCmd::doit()
 	    if ( newsend == NULL ) {
 		dialog = _parent->genDialog();
 		
-		dialog->setToErrorDialog(GETMSG(DT_catd, 1, 209, "Mailer"),
-					 GETMSG(DT_catd, 1, 210, "Unable to create a compose window."));
+		dialog->setToErrorDialog(CATGETS(DT_catd, 1, 209, "Mailer"),
+					 CATGETS(DT_catd, 1, 210, "Unable to create a compose window."));
 		char * helpId = DTMAILHELPNOCOMPOSE;
 		int answer = dialog->post_and_return(helpId);
 	    }
@@ -768,8 +768,8 @@ TemplateCmd::doit()
     //
     int fd = SafeOpen(fullpath, O_RDONLY);
     if (fd < 0) {
-	dialog->setToErrorDialog(GETMSG(DT_catd, 1, 211, "Mailer"),
-				 GETMSG(DT_catd, 1, 212, "The template does not exist."));
+	dialog->setToErrorDialog(CATGETS(DT_catd, 1, 211, "Mailer"),
+				 CATGETS(DT_catd, 1, 212, "The template does not exist."));
 	char * helpId = DTMAILHELPNOTEMPLATE;
 	int answer = dialog->post_and_return(helpId);
 	free(fullpath);
@@ -778,8 +778,8 @@ TemplateCmd::doit()
 
     struct stat buf;
     if (SafeFStat(fd, &buf) < 0) {
-	dialog->setToErrorDialog(GETMSG(DT_catd, 1, 213, "Mailer"),
-				 GETMSG(DT_catd, 1, 214, "The template appears to be corrupt."));
+	dialog->setToErrorDialog(CATGETS(DT_catd, 1, 213, "Mailer"),
+				 CATGETS(DT_catd, 1, 214, "The template appears to be corrupt."));
 	char * helpId = DTMAILHELPCORRUPTTEMPLATE;
 	int answer = dialog->post_and_return(helpId);
 	SafeClose(fd);
@@ -798,8 +798,8 @@ TemplateCmd::doit()
 	free_buf = 1;
 	mbuf.buffer = new char[mbuf.size];
 	if (mbuf.buffer == NULL) {
-	    dialog->setToErrorDialog(GETMSG(DT_catd, 1, 215, "Mailer"),
-				     GETMSG(DT_catd, 1, 216, "There is not enough memory to load the template."));
+	    dialog->setToErrorDialog(CATGETS(DT_catd, 1, 215, "Mailer"),
+				     CATGETS(DT_catd, 1, 216, "There is not enough memory to load the template."));
 	    char * helpId = DTMAILHELPNOMEMTEMPLATE;
 	    int answer = dialog->post_and_return(helpId);
 	    SafeClose(fd);
@@ -808,8 +808,8 @@ TemplateCmd::doit()
 	}
 
 	if (SafeRead(fd, mbuf.buffer, (unsigned int)mbuf.size) < mbuf.size) {
-	    dialog->setToErrorDialog(GETMSG(DT_catd, 1, 217, "Mailer"),
-				     GETMSG(DT_catd, 1, 218, "The template appears to be corrupt."));
+	    dialog->setToErrorDialog(CATGETS(DT_catd, 1, 217, "Mailer"),
+				     CATGETS(DT_catd, 1, 218, "The template appears to be corrupt."));
 	    char * helpId = DTMAILHELPERROR;
 	    int answer = dialog->post_and_return(helpId);
 	    SafeClose(fd);

@@ -102,7 +102,7 @@ void            gen_vec (char *fname_huffcode_tab)
     _Xstrtokparams  strtok_buf;
 
     if ((tab_stream = fopen (fname_huffcode_tab, "r")) == NULL) {
-	printf (catgets(dtsearch_catd, MS_huff, 1,
+	printf (CATGETS(dtsearch_catd, MS_huff, 1,
 	    "%s: Cannot open huffman encode file '%s':\n"
 	    "  %s\n  Exit Code = 2\n"),
 	    PROGNAME"222", fname_huffcode_tab, strerror (errno));

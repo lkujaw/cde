@@ -260,7 +260,7 @@ get_keyword(FILE *file, int lastChar)
 	 */
 	char	msg[256];
 	sprintf(msg, 
-	    catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 35,
+	    CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 35,
 	      "unknown keyword - %s"), 
 	    tokenText);
 	abil_print_custom_load_err(msg);
@@ -378,7 +378,7 @@ AByyerror(const char *message)
     if (strlen(tokenText) > 0) 
     {
 	sprintf(tokenMsg, 
-	  catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 37, ", near '%s'"),
+	  CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 37, ", near '%s'"),
 	  tokenText);
     }
     sprintf(errMsg, "%s%s\n", message, tokenMsg);

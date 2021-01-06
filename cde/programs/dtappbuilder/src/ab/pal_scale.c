@@ -177,12 +177,12 @@ scale_initialize(
     if (obj_get_read_only(obj) == False)
     {
         obj_set_unique_name(obj, "scale");
-        obj_set_label(obj, catgets(Dtb_project_catd, 100, 260, "Scale:"));
+        obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 260, "Scale:"));
     }
     else /* Gauge */
     {
     	obj_set_unique_name(obj, "gauge");
-        obj_set_label(obj, catgets(Dtb_project_catd, 100, 261, "Gauge:"));
+        obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 261, "Gauge:"));
     }
     obj_set_label_position(obj, AB_CP_NORTH);
 

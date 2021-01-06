@@ -35,7 +35,7 @@
 #include <stdlib.h>
 #include <locale.h> /* dtex add */
 #include <math.h> /* dtex add */
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 #include<X11/Xlib.h>
 #include<X11/Xutil.h>

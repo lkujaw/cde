@@ -136,7 +136,7 @@ static char        *Session_Includes[] =
  */
 static char        *I18n_Includes[] =
 {
-    "<nl_types.h>",
+    "<Dt/MsgCatP.h>",
     NULL,
 };
 
@@ -997,7 +997,7 @@ write_main_msg_i18n(
     abio_puts(codeFile, abmfP_comment_end);
     
     abio_puts(codeFile,
-       "Dtb_project_catd = catopen(DTB_PROJECT_CATALOG, NL_CAT_LOCALE);\n");
+       "Dtb_project_catd = CATOPEN(DTB_PROJECT_CATALOG, NL_CAT_LOCALE);\n");
     abio_puts(codeFile, "if (Dtb_project_catd == (nl_catd)-1)\n");
     abmfP_write_c_block_begin(genCodeInfo);
     abio_puts(codeFile,

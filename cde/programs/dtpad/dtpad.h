@@ -745,7 +745,7 @@ extern void RestoreInitialServerResources(
 extern char * _DtpadGetMessage(
 	int set,
 	int number,
-	char *string);
+	const char *string);
 #endif
 
 

@@ -57,7 +57,7 @@ static  char sccsid[] = "@(#)cm_tty.c 1.91 95/07/27 Copyr 1993 Sun Microsystems,
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <sys/param.h>
 #include <sys/types.h>
 #include "cm_tty.h"
@@ -197,25 +197,25 @@ mini_err_msg(
 
 	if (type == TTY_Insert)
 		fprintf(stderr, "%s", 
-			catgets(catd, 1, 1042, "Insert Access Denied: "));
+			CATGETS(catd, 1, 1042, "Insert Access Denied: "));
 	else if (type == TTY_Delete)
 		fprintf(stderr, "%s", 
-			catgets(catd, 1, 1043, "Delete Access Denied: "));
+			CATGETS(catd, 1, 1043, "Delete Access Denied: "));
 	else
 		fprintf(stderr, "%s", 
-			catgets(catd, 1, 1044, "Lookup Access Denied: "));
+			CATGETS(catd, 1, 1044, "Lookup Access Denied: "));
 
 	if (appt_what && appt_what[0] != '\0') {
 		buf = cm_strdup(appt_what);
 		if (ptr = strrchr(buf, '\n'))
 			*ptr = '\0';
 		fprintf(stderr, "%s '%s'\n", 
-				catgets(catd, 1, 1045, "Cancelled for"),
+				CATGETS(catd, 1, 1045, "Cancelled for"),
 				buf);
 		free(buf);
 	} else
 		fprintf(stderr, "%s\n", 
-				catgets(catd, 1, 1046, 
+				CATGETS(catd, 1, 1046,
 					"Appointment Cancelled\n"));
 }
 
@@ -243,14 +243,14 @@ query_user(void *client_data) {
 	*/
 
 	if (what_str && what_str[0] != '\0')
-		fprintf(stdout, catgets(catd_global, 1, 1047, 
+		fprintf(stdout, CATGETS(catd_global, 1, 1047,
 			"This appointment: '%s' has an end\n"), what_str);
 	else
-		fprintf(stdout, "%s", catgets(catd_global, 1, 1048, 
+		fprintf(stdout, "%s", CATGETS(catd_global, 1, 1048,
 			"This appointment has an end\n"));
-	fprintf(stdout, "%s", catgets(catd_global, 1, 1049, 
+	fprintf(stdout, "%s", CATGETS(catd_global, 1, 1049,
 			"time earlier than its begin time.  Do you\n"));
-	fprintf(stdout, "%s", catgets(catd_global, 1, 1050,
+	fprintf(stdout, "%s", CATGETS(catd_global, 1, 1050,
 			"want to schedule it into the next day? [Y/N]  "));
 	fgets(ans, sizeof(ans)-1, stdin);
 	fprintf(stdout, "\n");
@@ -314,17 +314,17 @@ cm_tty_delete(
 			Option [1-4]: "
 
 		*/
-		fprintf(stdout, catgets(catd, 1, 1051, 
+		fprintf(stdout, CATGETS(catd, 1, 1051,
 		     "The appointment '%s' is part of a repeating series.  "),
 		      appt->what->value->item.string_value);
-		fprintf(stdout, "%s", catgets(catd, 1, 1052, "Do you want to:"));
-		fprintf(stdout, "%s", catgets(catd, 1, 1053, 
+		fprintf(stdout, "%s", CATGETS(catd, 1, 1052, "Do you want to:"));
+		fprintf(stdout, "%s", CATGETS(catd, 1, 1053,
 					"\n\t1.  Delete all of them"));
-		fprintf(stdout, "%s", catgets(catd, 1, 1054, 
+		fprintf(stdout, "%s", CATGETS(catd, 1, 1054,
 					"\n\t2.  Delete this one only"));
-		fprintf(stdout, "%s", catgets(catd, 1, 1055, "\n\t3.  Delete forward"));
-		fprintf(stdout, "%s", catgets(catd, 1, 1056, "\n\t4.  Cancel"));
-		fprintf(stdout, "%s", catgets(catd, 1, 1057, "\n\tOption [1-4]: "));
+		fprintf(stdout, "%s", CATGETS(catd, 1, 1055, "\n\t3.  Delete forward"));
+		fprintf(stdout, "%s", CATGETS(catd, 1, 1056, "\n\t4.  Cancel"));
+		fprintf(stdout, "%s", CATGETS(catd, 1, 1057, "\n\tOption [1-4]: "));
 		fgets(ans, sizeof(ans)-1, stdin);
 		fprintf(stdout, "\n");
 	}
@@ -459,36 +459,36 @@ cm_tty_insert(nl_catd catd, CSA_session_handle target, int version,
 	
 		switch(op) {
 		case INVALID_DATE:
-			t1 = catgets(catd, 1, 1058, "Invalid Date specified.\n");
+			t1 = CATGETS(catd, 1, 1058, "Invalid Date specified.\n");
 			break;
 		case INVALID_START:
-			t1 = catgets(catd, 1, 1059, 
+			t1 = CATGETS(catd, 1, 1059,
 					"Invalid Start time specified.\n");
 			break;
 		case INVALID_TIME:
 			t1 = "Invalid Due time specified.\n";
 			break;
 		case INVALID_STOP:
-			t1 = catgets(catd, 1, 1060, 
+			t1 = CATGETS(catd, 1, 1060,
 					"Invalid Stop time specified.\n");
 			break;
 		case MISSING_DATE:
-			t1 = catgets(catd, 1, 1061, 
+			t1 = CATGETS(catd, 1, 1061,
 					"Empty or missing Date field.\n");
 			break;
 		case MISSING_START:
-			t1 = catgets(catd, 1, 1062, 
+			t1 = CATGETS(catd, 1, 1062,
 					"Empty or missing Start field.\n");
 			break;
 		case MISSING_TIME:
 			t1 = "Empty or missing Due time field.\n";
 			break;
 		case MISSING_WHAT:
-			t1 = catgets(catd, 1, 1063, 
+			t1 = CATGETS(catd, 1, 1063,
 					"Empty or missing What field.\n");
 			break;
 		case REPEAT_FOR_MISMATCH:
-			t1 = catgets(catd, 1, 1064, 
+			t1 = CATGETS(catd, 1, 1064,
 					"Repeat and For field mismatch.\n");
 			break;
 		case VALID_APPT:
@@ -497,7 +497,7 @@ cm_tty_insert(nl_catd catd, CSA_session_handle target, int version,
 			break;
 		default:
 			op = CANCEL_APPT;
-			t1 = catgets(catd, 1, 1065, 
+			t1 = CATGETS(catd, 1, 1065,
 					"Insert appointment was cancelled\n");
 			break;
 		}
@@ -514,7 +514,7 @@ cm_tty_insert(nl_catd catd, CSA_session_handle target, int version,
 				csa_free((CSA_buffer)new_entry);
 		} else {
 		  	char *msg = strdup(t1);
-			fprintf(stderr, "%s%s\n", msg, catgets(catd, 1, 1066, 
+			fprintf(stderr, "%s%s\n", msg, CATGETS(catd, 1, 1066,
 					"Appointment was not inserted."));
 			free(msg);
 			ret_stat = -1;
@@ -591,7 +591,7 @@ cm_tty_lookup(nl_catd catd, CSA_session_handle target, int version, char *date, 
 		tick = now();
 	else if ((tick = cm_getdate(date, NULL)) < 0) {
 		fprintf(stdout,	"\n%s %s\n\n", 
-				catgets(catd, 1, 1067, "Invalid date specified:"),
+				CATGETS(catd, 1, 1067, "Invalid date specified:"),
 				date);
 		return(0);
 	}
@@ -640,7 +640,7 @@ cm_tty_lookup(nl_catd catd, CSA_session_handle target, int version, char *date, 
 		if (day != last_day) {
 			cm_tty_format_header(p, start_tick, date_str);
 			fprintf(stdout,	"\n%s %s:\n", 
-				catgets(catd, 1, 1068, "Appointments for"),
+				CATGETS(catd, 1, 1068, "Appointments for"),
 				date_str);
 		}
 		last_day = day;
@@ -679,7 +679,7 @@ cm_tty_lookup(nl_catd catd, CSA_session_handle target, int version, char *date, 
 	if (*list == NULL) {
 		cm_tty_format_header(p, start + 1, date_str);
 		fprintf(stdout,	"\n%s %s\n\n", 
-				catgets(catd, 1, 1069, "No Appointments for"),
+				CATGETS(catd, 1, 1069, "No Appointments for"),
 				date_str);
 	}
 	return a_total;
@@ -779,17 +779,17 @@ default_repeat_scope_str(
 	if (!default_repeat_scope_strs[DAILY]) {
 		default_repeat_scope_strs[ONE_TIME] = strdup("\0");
 		default_repeat_scope_strs[DAILY] = 
-				strdup(catgets(catd, 1, 994, "days")); 
+				strdup(CATGETS(catd, 1, 994, "days"));
 		default_repeat_scope_strs[WEEKLY] = 
-				strdup(catgets(catd, 1, 995, "weeks")); 
+				strdup(CATGETS(catd, 1, 995, "weeks"));
 		default_repeat_scope_strs[EVERY_TWO_WEEKS] = 
-				strdup(catgets(catd, 1, 996, "biweeks")); 
+				strdup(CATGETS(catd, 1, 996, "biweeks"));
 		default_repeat_scope_strs[MONTHLY_BY_DATE] = 
-				strdup(catgets(catd, 1, 997, "months")); 
+				strdup(CATGETS(catd, 1, 997, "months"));
 		default_repeat_scope_strs[MONTHLY_BY_WEEKDAY] = 
 				default_repeat_scope_strs[MONTHLY_BY_DATE];
 		default_repeat_scope_strs[YEARLY] = 
-				strdup(catgets(catd, 1, 998, "years")); 
+				strdup(CATGETS(catd, 1, 998, "years"));
 		default_repeat_scope_strs[MONDAY_THRU_FRIDAY] = 
 				default_repeat_scope_strs[WEEKLY];
 		default_repeat_scope_strs[MON_WED_FRI] = 
@@ -2316,25 +2316,25 @@ init_repeat_strs(
 	nl_catd		catd,
 	char	      **repeat_strs)
 {
-	repeat_strs[ONE_TIME] = strdup(catgets(catd, 1, 852, "One Time")); 
-	repeat_strs[DAILY] = strdup(catgets(catd, 1, 853, "Daily")); 
-	repeat_strs[WEEKLY] = strdup(catgets(catd, 1, 854, "Weekly")); 
+	repeat_strs[ONE_TIME] = strdup(CATGETS(catd, 1, 852, "One Time"));
+	repeat_strs[DAILY] = strdup(CATGETS(catd, 1, 853, "Daily"));
+	repeat_strs[WEEKLY] = strdup(CATGETS(catd, 1, 854, "Weekly"));
 	repeat_strs[EVERY_TWO_WEEKS] = 
-			strdup(catgets(catd, 1, 855, "Every Two Weeks")); 
+			strdup(CATGETS(catd, 1, 855, "Every Two Weeks"));
 	repeat_strs[MONTHLY_BY_DATE] = 
-			strdup(catgets(catd, 1, 856, "Monthly By Date")); 
+			strdup(CATGETS(catd, 1, 856, "Monthly By Date"));
 	repeat_strs[MONTHLY_BY_WEEKDAY] = 
-			strdup(catgets(catd, 1, 857, "Monthly By Weekday")); 
+			strdup(CATGETS(catd, 1, 857, "Monthly By Weekday"));
 	repeat_strs[YEARLY] = 
-			strdup(catgets(catd, 1, 858, "Yearly")); 
+			strdup(CATGETS(catd, 1, 858, "Yearly"));
 	repeat_strs[MONDAY_THRU_FRIDAY] = 
-			strdup(catgets(catd, 1, 859, "Monday Thru Friday")); 
+			strdup(CATGETS(catd, 1, 859, "Monday Thru Friday"));
 	repeat_strs[MON_WED_FRI] = 
-			strdup(catgets(catd, 1, 860, "Mon, Wed, Fri")); 
+			strdup(CATGETS(catd, 1, 860, "Mon, Wed, Fri"));
 	repeat_strs[TUESDAY_THURSDAY] = 
-			strdup(catgets(catd, 1, 861, "Tuesday, Thursday")); 
+			strdup(CATGETS(catd, 1, 861, "Tuesday, Thursday"));
 	repeat_strs[REPEAT_EVERY] = 
-			strdup(catgets(catd, 1, 862, "Repeat Every...")); 
+			strdup(CATGETS(catd, 1, 862, "Repeat Every..."));
 }
 
 extern char*
@@ -2364,11 +2364,11 @@ repeat_scope_str(
 {
 	if (!repeat_scope_strs[0]) {
 		repeat_scope_strs[REPEAT_DAYS] = 
-				strdup(catgets(catd, 1, 994, "days")); 
+				strdup(CATGETS(catd, 1, 994, "days"));
 		repeat_scope_strs[REPEAT_WEEKS] = 
-				strdup(catgets(catd, 1, 995, "weeks")); 
+				strdup(CATGETS(catd, 1, 995, "weeks"));
 		repeat_scope_strs[REPEAT_MONTHS] = 
-				strdup(catgets(catd, 1, 997, "months")); 
+				strdup(CATGETS(catd, 1, 997, "months"));
 	}
 
 	if (op >= REPEAT_DAYS && op <= REPEAT_MONTHS)
@@ -2406,11 +2406,11 @@ time_scope_str_i18n(
 {
 	if (!time_scope_strs_i18n[0]) {
 		time_scope_strs_i18n[TIME_MINS] = 
-					strdup(catgets(catd, 1, 877, "Mins")); 
+					strdup(CATGETS(catd, 1, 877, "Mins"));
 		time_scope_strs_i18n[TIME_HRS] = 
-					strdup(catgets(catd, 1, 878, "Hrs")); 
+					strdup(CATGETS(catd, 1, 878, "Hrs"));
 		time_scope_strs_i18n[TIME_DAYS] = 
-					strdup(catgets(catd, 1, 879, "Days")); 
+					strdup(CATGETS(catd, 1, 879, "Days"));
 	}
 
 	if (op >= TIME_MINS && op <= TIME_DAYS)
@@ -2655,7 +2655,7 @@ validate_rfp(
 		   If it is a CSA_X_DT_REPEAT_ONETIME then 
 			f_buf == ``0''.
 		 */
-		if (strcasecmp(f_buf, catgets(catd, 1, 876, "forever")) == 0) {
+		if (strcasecmp(f_buf, CATGETS(catd, 1, 876, "forever")) == 0) {
 			repeat_times = CSA_X_DT_DT_REPEAT_FOREVER;
 			repeat_forever = True;
 		} else {

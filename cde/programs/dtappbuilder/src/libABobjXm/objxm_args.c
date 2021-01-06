@@ -546,7 +546,7 @@ objxm_comp_set_color_args(
 		    if (status == ERR) /* Color couldn't be allocated! */
 		    {
                     	obj_get_safe_name(rootObj, name, 256);
-                    	util_printf_err(catgets(OBJXM_MESSAGE_CATD,
+                    	util_printf_err(CATGETS(OBJXM_MESSAGE_CATD,
 				OBJXM_MESSAGE_SET, 21,
 				"WARNING: Object '%s'\nCould not allocate Background color \"%s\".\n\
 Object's Background will default to white."),
@@ -572,7 +572,7 @@ Object's Background will default to white."),
 		    if (status == ERR) /* Color couldn't be allocated! */
 		    {
                     	obj_get_safe_name(rootObj, name, 256);
-                    	util_printf_err(catgets(OBJXM_MESSAGE_CATD,
+                    	util_printf_err(CATGETS(OBJXM_MESSAGE_CATD,
                         	OBJXM_MESSAGE_SET, 22,
                                 "WARNING: Object '%s'\nCould not allocate Foreground color \"%s\".\n\
 Object's Foreground will default to black."),
@@ -1667,7 +1667,7 @@ objxmP_set_attachment_arg(
 	    {
 		char	name[256];
 		obj_get_safe_name(obj, name, 256);
-	        util_printf_err(catgets(OBJXM_MESSAGE_CATD, OBJXM_MESSAGE_SET, 3,
+	        util_printf_err(CATGETS(OBJXM_MESSAGE_CATD, OBJXM_MESSAGE_SET, 3,
 		      "ERROR: %s: NULL Object attachment\n"), name);
 	    }
 	    break;

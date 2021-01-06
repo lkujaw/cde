@@ -124,7 +124,7 @@ void            aa_check_initialization (void)
     if (aa_is_initialized)
 	return;
     fprintf (aa_stderr,
-	catgets (dtsearch_catd, 2, 37,
+	CATGETS(dtsearch_catd, 2, 37,
 	    "%s First API function call must be DtSearchInit().\n"),
 	PROGNAME"37");
     DtSearchExit (37);
@@ -183,7 +183,7 @@ DtSrObjdate     DtSearchValidDateString (char *datestr)
 #endif
 INVALID_DATESTR:
 	sprintf (msgbuf,
-	    catgets (dtsearch_catd, 2, 115,
+	    CATGETS(dtsearch_catd, 2, 115,
 		"%s '%s' is invalid or incomplete date string.\n"
 		"The correct format is '[yy]yy [mm [dd]]'."),
 	    PROGNAME"115", datestr);

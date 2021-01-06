@@ -37,7 +37,7 @@
 #define _DtPrintMsgsP_h
 
 #ifdef I18N_MSG
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #define DTPRINT_GETMESSAGE(set, number, string) \
     _DtPrintGetMessage(set, number, string)
 

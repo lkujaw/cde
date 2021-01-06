@@ -265,7 +265,7 @@ attr_is_undef(
 	    if ( obj_get_packing(obj) == AB_PACK_UNDEF )		
 	    {
 		util_error(
-		    catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 41,
+		    CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 41,
 		       "packing is undefined\n"));
 		return (True);
 	    }
@@ -285,7 +285,7 @@ attr_is_undef(
 	    if ( obj_get_menu_type(obj) == AB_MENU_UNDEF )
 	    {
 		util_error(
-		    catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 42,
+		    CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 42,
 		       "menu type is undefined\n"));
 		return (True);
 	    }
@@ -299,7 +299,7 @@ attr_is_undef(
 	    if (obj_get_ref_point(obj) == AB_CP_UNDEF)
 	    {
 		util_error(
-		    catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 42,
+		    CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 42,
 			"reference point is undefined\n"));
 		return (True);
 	    }
@@ -3195,7 +3195,7 @@ store_project_tree(
     else
     {
 	util_printf_err(
-	    catgets(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 45,
+	    CATGETS(ABIL_MESSAGE_CATD, ABIL_MESSAGE_SET, 45,
 	     "Cannot save project; Either nothing to store or NULL filename."));
     }
 

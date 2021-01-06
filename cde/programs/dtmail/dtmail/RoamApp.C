@@ -380,7 +380,7 @@ int dieFromTtError(Tt_status errid, char *procname, char *errmsg, char *helpid)
     /* Do not die on warnings or TT_OK */
     if ( tt_is_err(errid) )
     {
-	char		*title = GETMSG(DT_catd, 2, 1, "Mailer");
+	char		*title = CATGETS(DT_catd, 2, 1, "Mailer");
 	char		*errmsg = tt_status_message(errid);
         DtMailEnv	 error;
 
@@ -388,7 +388,7 @@ int dieFromTtError(Tt_status errid, char *procname, char *errmsg, char *helpid)
 
 	error.logError(
 		DTM_TRUE,
-		GETMSG(DT_catd, 2, 30, "%s returned ToolTalk error: %s\n"), 
+		CATGETS(DT_catd, 2, 30, "%s returned ToolTalk error: %s\n"),
 		procname, tt_status_message(errid));
 
 	DtMailGenDialog *exit_dialog = new DtMailGenDialog(
@@ -396,7 +396,7 @@ int dieFromTtError(Tt_status errid, char *procname, char *errmsg, char *helpid)
 					   theApplication->baseWidget());
 	exit_dialog->setToErrorDialog(title, errmsg);
 	if (NULL == helpid) helpid = DTMAILHELPERROR;
-	exit_dialog->post_and_return(GETMSG(DT_catd, 1, 1, "OK"), helpid);
+	exit_dialog->post_and_return(CATGETS(DT_catd, 1, 1, "OK"), helpid);
 
 	XtRemoveAllCallbacks(theApplication->baseWidget(), XmNdestroyCallback);
 	exit(1);
@@ -925,12 +925,12 @@ void pspace_signal( int )
                 // Serious error here -- No Space on Filesystem --
         sprintf(errMsg,"Insufficient paging space, \n Mailer cannot perform any operations.\n Please contact the System Administrator to \n correct the paging space problem ");
         genDialog->setToErrorDialog(
-                            GETMSG(DT_catd, 1, 6, "Mailer"),
+                            CATGETS(DT_catd, 1, 6, "Mailer"),
                             errMsg);
         XtFree(errMsg);
 
         genDialog->post_and_return(
-                            GETMSG(DT_catd, 3, 9, "OK"),
+                            CATGETS(DT_catd, 3, 9, "OK"),
                             NULL);
         delete genDialog;
     }
@@ -1230,7 +1230,7 @@ void RoamApp::initialize(int *argcp, char **argv)
     roam_tt_procid = ttdt_open( &roam_tt_fd, "DTMAIL", "SunSoft", "%I", 1 );
     dieFromTtError(tt_ptr_error(roam_tt_procid),
 		"initialize.ttdt_open",
-		GETMSG(DT_catd, 2, 2, "ToolTalk is not initialized.  Mailer cannot run without ToolTalk.\nTry starting /usr/dt/bin/dtsession, or contact your System Administrator."),
+		CATGETS(DT_catd, 2, 2, "ToolTalk is not initialized.  Mailer cannot run without ToolTalk.\nTry starting /usr/dt/bin/dtsession, or contact your System Administrator."),
 		DTMAILHELPCANTINITTOOLTALK);
 
     // This is for supporting old ptype where RFC_822_Message is
@@ -1288,13 +1288,13 @@ void RoamApp::initialize(int *argcp, char **argv)
 						"MailRcDialog",
                                          	theApplication->baseWidget());
         mailrc_dialog->setToQuestionDialog(
-				GETMSG(DT_catd, 2, 1, "Mailer"),
-        			GETMSG(DT_catd, 2, 22,
+				CATGETS(DT_catd, 2, 1, "Mailer"),
+        			CATGETS(DT_catd, 2, 22,
 					"There were unrecoverable syntax errors found in the ~/.mailrc file.\nCheck for more messages on terminal. Fix the errors and restart dtmail.\nIf you choose to continue you will not be able to save any changes made\nin the options dialog to file.") );
         helpId = DTMAILHELPERROR;
         answer = mailrc_dialog->post_and_return(
-					GETMSG(DT_catd, 2, 23, "Continue"),
-					GETMSG(DT_catd, 2, 24, "Exit"),
+					CATGETS(DT_catd, 2, 23, "Continue"),
+					CATGETS(DT_catd, 2, 24, "Exit"),
 					helpId);
 	if (answer == 2) {
 	    XtRemoveAllCallbacks(
@@ -1330,19 +1330,19 @@ void RoamApp::initialize(int *argcp, char **argv)
 
     	    DtMailGenDialog *install_errDialog =
 		new DtMailGenDialog("Dialog", theApplication->baseWidget());
-            sprintf(buf, "%s", GETMSG(DT_catd, 2, 4,
+            sprintf(buf, "%s", CATGETS(DT_catd, 2, 4,
                 "Mailer has not been properly installed,\n\
 and cannot run because the execution group\n\
 is incorrectly set."));
 
             install_errDialog->setToErrorDialog(
-                                GETMSG(DT_catd, 1, 6, "Mailer"),
+                                CATGETS(DT_catd, 1, 6, "Mailer"),
                                 buf);
 
             // No choice at this state other than to OK.
             helpId = DTMAILHELPBADGROUPID;
             answer = install_errDialog->post_and_return(
-                                GETMSG(DT_catd, 3, 9, "OK"),
+                                CATGETS(DT_catd, 3, 9, "OK"),
                                 helpId);
 	    XtRemoveAllCallbacks(
 		theApplication->baseWidget(),
@@ -1355,7 +1355,7 @@ is incorrectly set."));
       free((void*) value);
 
     _options = new OptCmd("Mail Options...",
-                          GETMSG(DT_catd, 1, 2,"Mail Options..."),
+                          CATGETS(DT_catd, 1, 2,"Mail Options..."),
                           TRUE,
                           _w);
 
@@ -1364,7 +1364,7 @@ is incorrectly set."));
 	SendMsgDialog *compose = theCompose.getWin();
 
 	if (dead_letter) {
-            char *ttl = GETMSG(DT_catd, 1, 262, "Dead Letter Message");
+            char *ttl = CATGETS(DT_catd, 1, 262, "Dead Letter Message");
 	    compose->loadDeadLetter(dead_letter);
 	    compose->setTitle(ttl);
 	    compose->setIconTitle(ttl);
@@ -1479,7 +1479,7 @@ is incorrectly set."));
 
     // Get the vacation handle before the new RoamMenuWindow
     // This is for setting the Vacation title stripe on the window
-    _vacation = new VacationCmd("Vacation", GETMSG(DT_catd, 1, 3, "Vacation"));
+    _vacation = new VacationCmd("Vacation", CATGETS(DT_catd, 1, 3, "Vacation"));
 
     // DtMail only supports the "Mail" message.  
     // If DtMail is started by ToolTalk, then we assume that the 
@@ -1559,7 +1559,7 @@ RoamApp::~RoamApp()
     }
 #endif
 
-    catclose(DT_catd);
+    CATCLOSE(DT_catd);
     if (_appTimeoutId)
       XtRemoveTimeOut(_appTimeoutId);
 }
@@ -1724,11 +1724,11 @@ RoamApp::showBusyState(
     switch (busy_state)
     {
     case DtMailBusyState_AutoSave:
-      self->busyAllWindows(GETMSG(DT_catd, 3, 1, "Auto-saving..."));
+      self->busyAllWindows(CATGETS(DT_catd, 3, 1, "Auto-saving..."));
       break;
 
     case DtMailBusyState_NewMail:
-      self->busyAllWindows(GETMSG(DT_catd, 3, 86, "Checking for new mail..."));
+      self->busyAllWindows(CATGETS(DT_catd, 3, 86, "Checking for new mail..."));
       break;
 
     case DtMailBusyState_NotBusy:
@@ -1782,7 +1782,7 @@ RoamApp::globalAddToCachedContainerList(char *destname)
 void
 RoamApp::globalPropChange(void)
 {
-    busyAllWindows(GETMSG(DT_catd, 1, 4, "Updating properties..."));
+    busyAllWindows(CATGETS(DT_catd, 1, 4, "Updating properties..."));
 
     for (int win = 0; win < _numWindows; win++) {
 	_windows[win]->propsChanged();
@@ -2191,5 +2191,5 @@ void
 RoamApp::open_catalog()
 {
     Application::open_catalog();      // Open Motif Application message catalog file
-    DT_catd = catopen(DTMAIL_CAT, NL_CAT_LOCALE); // Open DtMail message catalog file
+    DT_catd = CATOPEN(DTMAIL_CAT, NL_CAT_LOCALE); // Open DtMail message catalog file
 }

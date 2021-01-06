@@ -295,7 +295,7 @@ static void     print_exit_code (int exit_code)
     /* Put total seconds into totalstart */
     if (totalstart > 0)
 	totalstart = time (NULL) - totalstart;
-    printf (catgets (dtsearch_catd, MS_cborodin, 206,
+    printf (CATGETS(dtsearch_catd, MS_cborodin, 206,
 	"%s: Exit Code = %d, Total elapsed time %ldm %lds.\n"),
 	aa_argv0, exit_code, totalstart / 60L, totalstart % 60L);
     return;
@@ -380,7 +380,7 @@ void            write_to_file (TREENODE * output_node)
 	print_dba = print_dba->next_dba;
 	num_addrs_for_word++;
 	if (num_addrs_for_word >= batch_size) {
-	    printf (catgets (dtsearch_catd, MS_cborodin, 280,
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 280,
 		"\n%s num_addrs_for_word (%ld) >= batchsz (%ld).\n"),
 		PROGNAME"280", (long)num_addrs_for_word, (long)batch_size);
 	    DtSearchExit (91);
@@ -449,7 +449,7 @@ void            traverse_tree (void)
 
     /* Dheck for the empty tree */
     if (root_node == NULL) {
-	printf (catgets (dtsearch_catd, MS_cborodin, 288,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 288,
 	    "%s Abort. There are no words in the input file %s.\n"),
 	    PROGNAME"288", fname_input);
 	DtSearchExit (34);
@@ -522,7 +522,7 @@ void            traverse_tree (void)
 /********************************************************/
 static void     print_usage_msg (void)
 {
-                    printf (catgets (dtsearch_catd, MS_cborodin, 17,
+                    printf (CATGETS(dtsearch_catd, MS_cborodin, 17,
 "\n"
 "USAGE: %s -d<dbname> [options] <infile>\n"
 "       Listed default file name extensions can be overridden.\n"
@@ -631,7 +631,7 @@ void            user_args_processor (int argc, char **argv)
 
 	    case 'r':
 		if ((recs_per_dot = atoi (argptr + 2)) <= 0) {
-		    printf (catgets (dtsearch_catd, MS_cborodin, 577,
+		    printf (CATGETS(dtsearch_catd, MS_cborodin, 577,
 			"%s Invalid arg '%s'.  Using default -r%d.\n"),
 			PROGNAME"577", argptr, RECS_PER_DOT);
 		    recs_per_dot = RECS_PER_DOT;
@@ -641,7 +641,7 @@ void            user_args_processor (int argc, char **argv)
 	    case 'h':
 		duprec_hashsize = atol (argptr + 2);
 		if (duprec_hashsize == 0UL)
-		    printf (catgets (dtsearch_catd, MS_cborodin, 539,
+		    printf (CATGETS(dtsearch_catd, MS_cborodin, 539,
 			"%s Duplicate record id checking disabled.\n"),
 			PROGNAME"539");
 		break;
@@ -649,7 +649,7 @@ void            user_args_processor (int argc, char **argv)
 	    case 'b':
 		batch_size = atol (argptr + 2);
 		if (batch_size <= 0L) {
-		    printf (catgets (dtsearch_catd, MS_cborodin, 595,
+		    printf (CATGETS(dtsearch_catd, MS_cborodin, 595,
 			"%s Invalid batch size argument '%s'.\n"),
 			PROGNAME"595", argptr);
 		    goto BADPARM;
@@ -666,7 +666,7 @@ void            user_args_processor (int argc, char **argv)
 		    else
 			cache_size = CACHE_SIZE;
 CACHE_ADJUSTED:
-		    printf (catgets (dtsearch_catd, MS_cborodin, 600,
+		    printf (CATGETS(dtsearch_catd, MS_cborodin, 600,
 			    "%sCache size readjusted to %d.\n"),
 			PROGNAME "600 ", cache_size);
 		    break;
@@ -703,7 +703,7 @@ CACHE_ADJUSTED:
 	    case 'd':
 		/* May include both dicname and dicpath */
 		if (!segregate_dicname (argptr + 2)) {
-		    printf (catgets (dtsearch_catd, MS_cborodin, 550,
+		    printf (CATGETS(dtsearch_catd, MS_cborodin, 550,
 			"%s '%s' is invalid path/database name.\n"),
 			PROGNAME"550", argptr);
 		    goto BADPARM;
@@ -712,7 +712,7 @@ CACHE_ADJUSTED:
 
 	    case 'i':		/* (I)nput buffer size */
 		if ((inbufsz = atol (argptr + 2)) <= 0) {
-		    printf (catgets (dtsearch_catd, MS_cborodin, 558,
+		    printf (CATGETS(dtsearch_catd, MS_cborodin, 558,
 			"%s Invalid input buffer size '%s'.\n"),
 			PROGNAME"558", argptr);
 		    goto BADPARM;
@@ -720,7 +720,7 @@ CACHE_ADJUSTED:
 		break;
 
 	    default:
-		printf (catgets (dtsearch_catd, MS_cborodin, 567,
+		printf (CATGETS(dtsearch_catd, MS_cborodin, 567,
 		    "%s Unknown command line argument '%s'.\n"),
 		    PROGNAME"567", argptr);
 BADPARM:
@@ -732,7 +732,7 @@ BADPARM:
 
     /* Validate input file name */
     if (argc-- <= 0) {
-	printf (catgets (dtsearch_catd, MS_cborodin, 580,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 580,
 	    "%s Missing required input file name.\n"),
 	    PROGNAME"580");
 	goto BADPARM;
@@ -743,7 +743,7 @@ BADPARM:
 
     /* Check for missing database name */
     if (dicname[0] == 0) {
-	printf (catgets (dtsearch_catd, MS_cborodin, 589,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 589,
 	    "%s No database name specified (-d argument).\a\n"),
 	    PROGNAME"589");
 	goto BADPARM;
@@ -786,7 +786,7 @@ static void	put_addrs_2_dtbs_addr_file (
     DtSrINT32		num_addrs;
 
     if (nitems >= batch_size) {
-	printf ( catgets(dtsearch_catd, MS_cborodin, 6,
+	printf ( CATGETS(dtsearch_catd, MS_cborodin, 6,
 	    "put_addrs_2_dtbs_addr_file() nitems=%d, batchsz=%ld\n") ,
 	    (int)nitems, (long)batch_size);
 	DtSearchExit (58);
@@ -837,7 +837,7 @@ static void	put_addrs_2_dtbs_addr_file (
 	num_writes = fwrite (word_addrs_ii, sizeof(DB_ADDR), (size_t)num_addrs,
 	    dtbs_addr_fp);
 	if (num_writes != num_addrs) {
-	    printf (catgets (dtsearch_catd, MS_cborodin, 776, msg_776),
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 776, msg_776),
 		PROGNAME"776", strerror(errno));
 	    DtSearchExit (76);
 	}
@@ -848,7 +848,7 @@ static void	put_addrs_2_dtbs_addr_file (
 	num_writes = fwrite (addrs_array, sizeof(DB_ADDR),
 	    (size_t)got_word.or_hwfree, dtbs_addr_fp);
 	if (num_writes != got_word.or_hwfree) {
-	    printf (catgets (dtsearch_catd, MS_cborodin, 776, msg_776),
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 776, msg_776),
 		PROGNAME"786", strerror(errno));
 	    DtSearchExit (86);
 	}
@@ -863,7 +863,7 @@ static void	put_addrs_2_dtbs_addr_file (
 	num_writes = fwrite (addrs_array, sizeof(DB_ADDR),
 		(size_t)nitems, dtbs_addr_fp);
 	if (num_writes != nitems) {
-	    printf (catgets (dtsearch_catd, MS_cborodin, 776, msg_776),
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 776, msg_776),
 		PROGNAME"798", strerror(errno));
 	    DtSearchExit (87);
 	}
@@ -871,7 +871,7 @@ static void	put_addrs_2_dtbs_addr_file (
 	num_writes = fwrite (word_addrs_ii, sizeof(DB_ADDR),
 		(size_t)num_addrs, dtbs_addr_fp);
 	if (num_writes != num_addrs) {
-	    printf (catgets (dtsearch_catd, MS_cborodin, 776, msg_776),
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 776, msg_776),
 		PROGNAME"889", strerror(errno));
 	    DtSearchExit (89);
 	}
@@ -934,7 +934,7 @@ void            write_2_dtbs_addr_file (void)
 
     num_addrs_ii = got_word.or_hwaddrs;
     if (num_addrs_ii > or_reccount) {
-	printf (catgets (dtsearch_catd, MS_cborodin, 713,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 713,
 	    "\n%s Word '%s' occurs in %ld records,\n"
 	    "  but there are only %ld records in database!\n"
 	    "  (This may be a good candidate for the stoplist).\n"),
@@ -947,7 +947,7 @@ void            write_2_dtbs_addr_file (void)
 
     if (fseek (dtbs_addr_fp, (long) got_word.or_hwoffset, SEEK_SET) != 0)
 	{
-	printf (catgets (dtsearch_catd, MS_cborodin, 875,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 875,
 	    "\n%s Could not fseek d99 file to offset %ld.\n"),
 	    PROGNAME"875", got_word.or_hwoffset);
 	DtSearchExit (98);
@@ -955,7 +955,7 @@ void            write_2_dtbs_addr_file (void)
     num_reads = fread (word_addrs_ii, sizeof(DB_ADDR),
 	(size_t)num_addrs_ii, dtbs_addr_fp);
     if (num_reads != num_addrs_ii) {
-	printf (catgets (dtsearch_catd, MS_cborodin, 848,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 848,
 	    "\n%s Could not fread %ld bytes (%ld dba's) of d99 file\n"
 	    "  at offset %ld.  Number of dba's read (return code) = %ld.\n"),
 	    PROGNAME"848", sizeof(DB_ADDR) * num_addrs_ii, (long)num_addrs_ii,
@@ -990,7 +990,7 @@ void            write_2_dtbs_addr_file (void)
 	    temp1 = (*(word_addrs_ii + i) >> 8) - 1;	/* = rec#, base 0 */
 	    cur_byte = temp1 >> 3;	/* get matching byte# in bit vector */
 	    if (cur_byte >= bit_vector_size) {
-		printf ( catgets(dtsearch_catd, MS_cborodin, 9,
+		printf ( CATGETS(dtsearch_catd, MS_cborodin, 9,
 		    "\n%s Corrupted d99 file for word '%s',\n"
 		    " database address %ld @ file position %ld => bitvector[%ld],"
 		    " but max bitvector allocation = %ld.\n") ,
@@ -1134,7 +1134,7 @@ void            write_new_word_2_dtbs (void)
 	num_writes = fwrite (record_addr_word, sizeof(DB_ADDR),
 	    (size_t)got_word.or_hwfree, dtbs_addr_fp);
 	if (num_writes != got_word.or_hwfree) {
-	    printf (catgets (dtsearch_catd, MS_cborodin, 776, msg_776),
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 776, msg_776),
 		PROGNAME"960", strerror(errno));
 	    DtSearchExit (96);
 	}
@@ -1167,7 +1167,7 @@ void            fill_data1 (char *node_word)
 
     count_word_ii++;
     if (shutdown_now) {
-	printf (catgets (dtsearch_catd, MS_cborodin, 164,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 164,
 	    "\n%s Abort due to signal %d.  Database %s\n"
 	    "  probably corrupted.  Restore backup database.\n"),
 	    PROGNAME"164", shutdown_now, dicname);
@@ -1186,7 +1186,7 @@ void            fill_data1 (char *node_word)
 		(((float) num_of_diff_words /
 		    (float) count_word_ii - 1.) *
 		(float) (time (NULL) - timestart));
-	    printf (catgets (dtsearch_catd, MS_cborodin, 849,
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 849,
 		"\n%s: Word #%ld, %.0f%% done.  Est %lum %02lus "
 		"to completion.\n"),
 		aa_argv0, count_word_ii,
@@ -1296,7 +1296,7 @@ static void	load_into_bintree (
 	     */
 	    else {
 		if ((newdba = malloc (sizeof(DBALIST))) == NULL) {
-		    printf (catgets (dtsearch_catd, MS_cborodin, 374,
+		    printf (CATGETS(dtsearch_catd, MS_cborodin, 374,
 			msg_374), PROGNAME"1150");
 		    DtSearchExit (26);
 		}
@@ -1379,15 +1379,15 @@ main (int argc, char **argv)
 
     /******************* INITIALIZE ******************/
     setlocale (LC_ALL, "");
-    dtsearch_catd = catopen (FNAME_DTSRCAT, 0);
+    dtsearch_catd = CATOPEN(FNAME_DTSRCAT, 0);
 
     aa_argv0 = strdup (argv[0]);
     time (&elapsed);
     tmptr = localtime (&elapsed);
     strftime (buf, sizeof(buf),
-	catgets (dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
+	CATGETS(dtsearch_catd, MS_misc, 22, "%A, %b %d %Y, %I:%M %p"),
 	tmptr);
-    printf (catgets (dtsearch_catd, MS_cborodin, 1, "%s.  Run %s.\n"),
+    printf (CATGETS(dtsearch_catd, MS_cborodin, 1, "%s.  Run %s.\n"),
 	aa_argv0, buf);
     austext_exit_last = print_exit_code;
     batch_size = BATCH_SIZE;
@@ -1430,7 +1430,7 @@ main (int argc, char **argv)
     /* Load database's parser, stemmer, and linguistic files into dblk. */
     if (!load_language (&dblk, NULL)) {
 	puts (DtSearchGetMessages());
-	printf (catgets (dtsearch_catd, MS_cborodin, 1097,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 1097,
 	    "%s Aborting due to errors in loading language files.\n"),
 	    PROGNAME"1097");
 	DtSearchExit(3);
@@ -1481,7 +1481,7 @@ main (int argc, char **argv)
 	new_dtbs_file = TRUE;
 	if (dtbs_addr_fp == NULL) {
 	    /* msg 1068 used multiple places */
-	    printf (catgets (dtsearch_catd, MS_cborodin, 1068,
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 1068,
 		"%s Can't open new inverted index file '%s': %s\n"),
 		PROGNAME"1068", dtbs_addr_file, strerror(errno));
 	    DtSearchExit (13);
@@ -1493,7 +1493,7 @@ main (int argc, char **argv)
 	/* read Header Information from d99 file */
 	if (!fread_d99_header (&fl_hdr, dtbs_addr_fp)) {
 	    /* msg 1068 used multiple places */
-	    printf (catgets (dtsearch_catd, MS_cborodin, 1068,
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 1068,
 		"%s Can't read header data for '%s': %s\n"),
 		PROGNAME"1422", dtbs_addr_file, strerror(errno));
 	    DtSearchExit (13);
@@ -1506,14 +1506,14 @@ main (int argc, char **argv)
 	printf (PROGNAME"1336 Can't getcwd: %s.\n", strerror(errno));
     if (!src)
 	src = getenv ("PWD");
-    printf (catgets (dtsearch_catd, MS_misc, 24,
+    printf (CATGETS(dtsearch_catd, MS_misc, 24,
 	"%s: current working directory = '%s', .fzk file = '%s'\n"),
 	aa_argv0,
-	(src) ? src : catgets (dtsearch_catd, MS_misc, 6, "<unknown>"),
+	(src) ? src : CATGETS(dtsearch_catd, MS_misc, 6, "<unknown>"),
 	fname_input);
     if ((instream = fopen (fname_input, "rt")) == NULL) {
 BAD_INPUT_FILE:
-	printf (catgets (dtsearch_catd, MS_cborodin, 1083,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 1083,
 	    "%s Can't read input file '%s': %s\n"),
 	    PROGNAME"1083", fname_input, strerror(errno));
 	DtSearchExit (14);
@@ -1538,7 +1538,7 @@ BAD_INPUT_FILE:
      * the language's parser() a 'word' at a time, which
      * ultimately means a byte at a time.
      */
-    printf (catgets (dtsearch_catd, MS_cborodin, 1108,
+    printf (CATGETS(dtsearch_catd, MS_cborodin, 1108,
 	"%s: Beginning Pass 1, reading records from '%s'.\n"
 	"   Each dot = %d records.\n"),
 	aa_argv0, fname_input, recs_per_dot);
@@ -1560,7 +1560,7 @@ BAD_INPUT_FILE:
 	inbuf [inbufsz] = 0;	/* just to be sure */
 
 	if (shutdown_now) {
-	    printf (catgets (dtsearch_catd, MS_cborodin, 164,
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 164,
 		"\n%s: %s Abort due to signal %d.  Database %s\n"
 		"  possibly corrupted.  Restore backup database.\n"),
 		aa_argv0, PROGNAME"1299", shutdown_now, dicname);
@@ -1576,7 +1576,7 @@ BAD_INPUT_FILE:
 	/*----- READ LINE #2, abstract -----*/
 	if (fgets (inbuf, inbufsz, instream) == NULL) {
 INVALID_FZK_FORMAT:
-	    printf (catgets (dtsearch_catd, MS_cborodin, 1129,
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 1129,
 		"%s: %s Invalid .fzk file format.\n"),
 		fname_input, PROGNAME"1129");
 	    DtSearchExit (22);
@@ -1593,7 +1593,7 @@ INVALID_FZK_FORMAT:
 
 	/* If necessary, discard long keys exactly like cravel */
 	if (strlen (cptr) >= DtSrMAX_DB_KEYSIZE) {
-	    printf (catgets (dtsearch_catd, MS_cborodin, 659,
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 659,
 		"\n%s: %s Discarding record, key too long:\n  '%s'.\n"),
 		aa_argv0, PROGNAME"659", cptr);
 	    discard_to_ETX (&parg);
@@ -1604,7 +1604,7 @@ INVALID_FZK_FORMAT:
 	/* Skip duplicate record ids in same order as dtsrload */
 	i = is_duprec (db_key);
 	if (i == 2) {	/* out of memory */
-	    printf (catgets (dtsearch_catd, MS_cborodin, 374, msg_374),
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 374, msg_374),
 		    PROGNAME"1317");
 	    DtSearchExit (57);
 	}
@@ -1612,7 +1612,7 @@ INVALID_FZK_FORMAT:
 	    duplicate_recids++;
 	    if (dotcount > 0)
 		    putchar ('\n');
-	    printf (catgets (dtsearch_catd, MS_cborodin, 1402,
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 1402,
 		"%s: Discarded duplicate rec #%lu '%s'.\n"),
 		aa_argv0, record_count, db_key);
 	    discard_to_ETX (&parg);
@@ -1631,7 +1631,7 @@ INVALID_FZK_FORMAT:
 	    normal_retncode = 1;	/* = 'warning' */
 	    if (dotcount > 0)
 		putchar ('\n');
-	    printf (catgets (dtsearch_catd, MS_cborodin, 1168,
+	    printf (CATGETS(dtsearch_catd, MS_cborodin, 1168,
 		"%s: %s Discarded '%s', key not in database.\n"),
 		aa_argv0, PROGNAME"1168", displayable(db_key));
 	    discard_to_ETX (&parg);
@@ -1653,7 +1653,7 @@ INVALID_FZK_FORMAT:
 	 * if user failed to run dtsrload before dtsrindex?
 	 */
 	if (dba < 1  ||  dba > or_maxdba) {
-	    printf ( catgets(dtsearch_catd, MS_cborodin, 21,
+	    printf ( CATGETS(dtsearch_catd, MS_cborodin, 21,
 		"\n%s '%s' record overflows word counter array.\n"
 		"Record number %ld > maxdba %ld, dba=%ld, "
 		"recslots=%ld, offs=%d.\n") ,
@@ -1665,7 +1665,7 @@ INVALID_FZK_FORMAT:
 	temp_dba = dba - 1;	/* = rec# starting at 0 */
 	cur_byte = temp_dba >> 3;	/* bits to bytes: div by 8 */
 	if (cur_byte >= bit_vector_size) {
-	    printf ( catgets(dtsearch_catd, MS_cborodin, 22,
+	    printf ( CATGETS(dtsearch_catd, MS_cborodin, 22,
 		"\n%s '%s' record in database (dba=%ld)\n"
 		"  overflows bitvector allocation (%ld >= %ld).\n") ,
 		PROGNAME"1475", displayable(db_key), (long)dba,
@@ -1687,7 +1687,7 @@ INVALID_FZK_FORMAT:
 		    (((float) fstat_input.st_size /
 		    (float) bytes_in - 1.) *
 		    (float) (time (NULL) - timestart));
-		printf (catgets (dtsearch_catd, MS_cborodin, 1190,
+		printf (CATGETS(dtsearch_catd, MS_cborodin, 1190,
 		    "\n%s: Rec #%lu, %.0f%% done.  "
 		    "Est %lum %02lus to end Pass 1.\n"),
 		    aa_argv0,
@@ -1748,20 +1748,20 @@ INVALID_FZK_FORMAT:
     }
     if (duplicate_recids > 0L) {
 	normal_retncode = 1;	/* 'warning' */
-	sprintf (buf, catgets (dtsearch_catd, MS_cborodin, 40,
+	sprintf (buf, CATGETS(dtsearch_catd, MS_cborodin, 40,
 	    "Ignored %ld duplicate records"),
 	    duplicate_recids);
     }
     else
-	strcpy (buf, catgets (dtsearch_catd, MS_cborodin, 41,
+	strcpy (buf, CATGETS(dtsearch_catd, MS_cborodin, 41,
 	    "No duplicate records found"));
-    printf (catgets (dtsearch_catd, MS_cborodin, 1225,
+    printf (CATGETS(dtsearch_catd, MS_cborodin, 1225,
 	"%s: Pass 1 completed in %lum %lus, read %lu records.\n"
 	"  %s, parsed %lu words.\n"),
 	aa_argv0, elapsed / 60L, elapsed % 60L, record_count,
 	buf, num_of_diff_words);
     if (record_count > batch_size) {
-	printf (catgets (dtsearch_catd, MS_cborodin, 33,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 33,
 	    "\n%s Number of incoming records exceeded %d.\n"
 	    "  This will usually result in 'Out of Paging Space' "
 	    "error in Pass 2\n"
@@ -1774,7 +1774,7 @@ INVALID_FZK_FORMAT:
     /*----------------- PASS 2:  -----------------
      * Traverse completed binary tree and write it to d99 file.
      */
-    printf (catgets (dtsearch_catd, MS_cborodin, 1233,
+    printf (CATGETS(dtsearch_catd, MS_cborodin, 1233,
 	"%s: Beginning Pass 2: batch index traversal and database update.\n"
 	"  Each dot = %d words.\n"),
 	aa_argv0, words_per_dot);
@@ -1788,7 +1788,7 @@ INVALID_FZK_FORMAT:
 
     /* Write header information to the d99 file */
     if (!fwrite_d99_header (&fl_hdr, dtbs_addr_fp)) {
-	printf (catgets (dtsearch_catd, MS_cborodin, 776, msg_776),
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 776, msg_776),
 	    PROGNAME"1723", strerror(errno));
 	DtSearchExit (13);
     }
@@ -1796,11 +1796,11 @@ INVALID_FZK_FORMAT:
     fclose (dtbs_addr_fp);
 
     elapsed = time (NULL) - timestart;
-    printf (catgets (dtsearch_catd, MS_cborodin, 1246,
+    printf (CATGETS(dtsearch_catd, MS_cborodin, 1246,
 	"%s: Pass 2 completed in %lum %lus, updated %lu words.\n"),
 	aa_argv0, elapsed / 60L, elapsed % 60L, count_word_ii);
     if (normal_retncode == 1)
-	printf (catgets (dtsearch_catd, MS_cborodin, 2,
+	printf (CATGETS(dtsearch_catd, MS_cborodin, 2,
 	    "%s: Warnings were detected.\n"), aa_argv0);
     DtSearchExit (normal_retncode);
 

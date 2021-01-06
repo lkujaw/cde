@@ -133,7 +133,7 @@ paint_day_header(Calendar *c, Tick date, void *rect)
 
 	   Use the appropriate strftime conversion for your locale.
 	*/
-	strftime(buf, 100, catgets(c->DT_catd, 1, 992, "%A, %B %e, %Y"), tm);
+	strftime(buf, 100, CATGETS(c->DT_catd, 1, 992, "%A, %B %e, %Y"), tm);
 	inrange = today_inrange(c, date);
 	x = gr_center(c->view->winw-(int)MOBOX_AREA_WIDTH, buf,
 			c->fonts->labelfont) + (int)MOBOX_AREA_WIDTH;
@@ -1088,13 +1088,13 @@ display_monthpanels(Calendar *c)
 	if ((panel_year == firstyear) && (panel_month == 1)) {
 		XtUnmapWidget(d->month_panels[0]);
 		XtMapWidget(d->month_panels[2]);
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 623, "Calendar does not display dates prior to January 1, 1970"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 623, "Calendar does not display dates prior to January 1, 1970"));
 		set_message(c->message_text, buf);
 	}
 	else if ((panel_year == lastyear) && (panel_month == 12)) {
 		XtMapWidget(d->month_panels[0]);
 		XtUnmapWidget(d->month_panels[2]);
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 624, "Calendar does not display dates after December 31, 2037"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 624, "Calendar does not display dates after December 31, 2037"));
 		set_message(c->message_text, buf);
 	}
 	else {

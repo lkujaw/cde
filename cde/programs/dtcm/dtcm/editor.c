@@ -128,7 +128,7 @@ appt_to_form(Editor *e, CSA_entry_handle a) {
 		free_appt_struct(&appt);
 		return;
 	}
-	sprintf(buf, "%s:  %s",	catgets(e->cal->DT_catd, 1, 251, "Author"),
+	sprintf(buf, "%s:  %s",	CATGETS(e->cal->DT_catd, 1, 251, "Author"),
 		appt->author->value->item.calendar_user_value->user_name);
 	set_message(e->message_text, buf);
 	free_appt_struct(&appt);
@@ -200,7 +200,7 @@ e_build_view_popup(Editor *e) {
 	/*
 	**  Dialog shell and stuff
 	*/
-	title = XtNewString(catgets(c->DT_catd, 1, 1086, 
+	title = XtNewString(CATGETS(c->DT_catd, 1, 1086,
 				    "Calendar : Appointment List"));
 	e->view_frame = XtVaCreatePopupShell("appt_list",
 		xmDialogShellWidgetClass, 	e->cal->frame,
@@ -219,7 +219,7 @@ e_build_view_popup(Editor *e) {
 			XmNautoUnmanage, 	False,
       			NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 680, "Close"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 680, "Close"));
 	e->view_cancel_button = XtVaCreateWidget("cancel",
 			xmPushButtonWidgetClass, 	e->view_form,
       			XmNlabelString, 		xmstr,
@@ -234,7 +234,7 @@ e_build_view_popup(Editor *e) {
 
 	XtAddCallback(e->view_cancel_button, XmNactivateCallback, (XtCallbackProc) e_view_cancel_cb, e);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
 	e->view_help_button = XtVaCreateWidget("help",
       			xmPushButtonWidgetClass, 	e->view_form,
       			XmNlabelString, 		xmstr,
@@ -257,7 +257,7 @@ e_build_view_popup(Editor *e) {
 		XmNbottomOffset,	5,
                 NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 703, "context"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 703, "context"));
         e->view_list_label= XtVaCreateWidget("type_label",
                 xmLabelGadgetClass, 	e->view_form,
                 XmNtopAttachment, 	XmATTACH_FORM,
@@ -367,7 +367,7 @@ e_expand_ui_proc(Widget w, XtPointer client_data, XtPointer data) {
 		XtRealizeWidget(e->rfp.rfp_form_mgr);
 		XtRealizeWidget(e->reminders.bfpm_form_mgr);
 
-		xmstr = XmStringCreateLocalized(catgets(e->cal->DT_catd, 1, 625,
+		xmstr = XmStringCreateLocalized(CATGETS(e->cal->DT_catd, 1, 625,
 							"Less"));
 		XtVaSetValues(e->expand_ui_button, XmNlabelString, xmstr,
 			      NULL);
@@ -383,7 +383,7 @@ e_expand_ui_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 		expand_state_closed = False;
 	} else {
-		xmstr = XmStringCreateLocalized(catgets(e->cal->DT_catd, 1, 626,
+		xmstr = XmStringCreateLocalized(CATGETS(e->cal->DT_catd, 1, 626,
 							"More"));
 		XtVaSetValues(e->expand_ui_button, XmNlabelString, xmstr,
 			      NULL);
@@ -454,12 +454,12 @@ e_insert_proc(Widget w, XtPointer client_data, XtPointer data) {
 		 * Make sure user really meant to insert appointment
 		 * into somebody elses calendar.
 		 */
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 210, "The appointment will be scheduled in the calendar\nyou are currently browsing.  Do you still want to schedule it?"));
-		sprintf(buf2, "%s %s", catgets(c->DT_catd, 1, 211, "Schedule in"),
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 210, "The appointment will be scheduled in the calendar\nyou are currently browsing.  Do you still want to schedule it?"));
+		sprintf(buf2, "%s %s", CATGETS(c->DT_catd, 1, 211, "Schedule in"),
 			c->view->current_calendar);
-		title = XtNewString(catgets(c->DT_catd, 1, 212,
+		title = XtNewString(CATGETS(c->DT_catd, 1, 212,
 					    "Calendar : Schedule Appointment"));
-		ident = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
+		ident = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
 		answer = dialog_popup(e->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, buf,
@@ -498,12 +498,12 @@ e_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 		 * Make sure user really meant to delete appointment
 		 * from somebody elses calendar.
 		 */
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 1004, "This appointment is in a calendar owned by someone else.\nDo you want to delete it anyway ?"));
-		sprintf(buf2, "%s %s", catgets(c->DT_catd, 1, 1005, "Delete from"),
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 1004, "This appointment is in a calendar owned by someone else.\nDo you want to delete it anyway ?"));
+		sprintf(buf2, "%s %s", CATGETS(c->DT_catd, 1, 1005, "Delete from"),
 			c->view->current_calendar);
-		title = XtNewString(catgets(c->DT_catd, 1, 252,
+		title = XtNewString(CATGETS(c->DT_catd, 1, 252,
 				"Calendar : Appointment Editor - Delete"));
-		ident = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
+		ident = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
 		answer = dialog_popup(e->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, buf,
@@ -518,11 +518,11 @@ e_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 	_DtTurnOnHourGlass(e->frame);
 	if (!XmListGetSelectedPos(e->appt_list, &item_list, &item_cnt)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 252,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 252,
 				"Calendar : Appointment Editor - Delete"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 253,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 253,
 				"Select an appointment and DELETE again."));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(e->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -537,11 +537,11 @@ e_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 	} 
 
 	if (!(a = editor_nth_appt(e, item_list[0] - 1))) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 252,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 252,
 				"Calendar : Appointment Editor - Delete"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 256,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 256,
 				"Internal error selecting appointment.\nAppointment was not deleted."));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(e->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -574,15 +574,15 @@ e_change_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 	if (strcmp(c->calname, c->view->current_calendar) != 0) {
 		char buf[BUFSIZ], buf2[BUFSIZ];
-		char *title = XtNewString(catgets(c->DT_catd, 1, 258,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 258,
 				"Calendar : Appointment Editor - Change"));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
 		/*
 		 * Make sure user really meant to insert appointment
 		 * into somebody elses calendar.
 		 */
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 1003, "This appointment is in a calendar owned by someone else.\nDo you want to change it anyway ?"));
-		sprintf(buf2, "%s %s", catgets(c->DT_catd, 1, 1006, "Change in"),
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 1003, "This appointment is in a calendar owned by someone else.\nDo you want to change it anyway ?"));
+		sprintf(buf2, "%s %s", CATGETS(c->DT_catd, 1, 1006, "Change in"),
 			c->view->current_calendar);
 		answer = dialog_popup(e->frame,
 			DIALOG_TITLE, title,
@@ -598,11 +598,11 @@ e_change_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 	_DtTurnOnHourGlass(e->frame);
 	if (!XmListGetSelectedPos(e->appt_list, &item_list, &item_cnt)) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 258,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 258,
 				"Calendar : Appointment Editor - Change"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 259,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 259,
 				"Select an appointment and CHANGE again."));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(e->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -617,11 +617,11 @@ e_change_proc(Widget w, XtPointer client_data, XtPointer data) {
 	} 
 
 	if (!(old_a = editor_nth_appt(e, item_list[0] - 1))) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 1075,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 1075,
 				"Calendar : Error - Change Appointment"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 1007,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 1007,
 				"Internal error selecting appointment.\nAppointment was not changed."));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(e->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -777,7 +777,7 @@ e_make_editor(Calendar *c)
 	**  first separator.
 	*/
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 628, "Time  What"));
+				CATGETS(c->DT_catd, 1, 628, "Time  What"));
 	e->list_label = XtVaCreateWidget("label",
 		xmLabelGadgetClass, 	e->base_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -802,7 +802,7 @@ e_make_editor(Calendar *c)
 	/*
 	**  Create insert, delete, change, and clear buttons
 	*/
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 342, "Insert"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 342, "Insert"));
         e->insert_button = XtVaCreateWidget("Insert",
 		xmPushButtonWidgetClass, e->base_form_mgr,
 		XmNlabelString,		xmstr,
@@ -816,7 +816,7 @@ e_make_editor(Calendar *c)
 	XtAddCallback(e->insert_button, XmNactivateCallback, e_insert_proc, e);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 343, "Change"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 343, "Change"));
         e->change_button = XtVaCreateWidget("Change",
 		xmPushButtonWidgetClass, e->base_form_mgr,
 		XmNlabelString,		xmstr,
@@ -831,7 +831,7 @@ e_make_editor(Calendar *c)
 	XtAddCallback(e->change_button, XmNactivateCallback, e_change_proc, e);
 	XmStringFree(xmstr);
  
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 419, "Delete"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 419, "Delete"));
         e->delete_button = XtVaCreateWidget("Delete",
 		xmPushButtonWidgetClass, e->base_form_mgr,
 		XmNlabelString,		xmstr,
@@ -846,7 +846,7 @@ e_make_editor(Calendar *c)
 	XtAddCallback(e->delete_button, XmNactivateCallback, e_delete_proc, e);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 803, "Clear"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 803, "Clear"));
         e->clear_button = XtVaCreateWidget("Clear",
 		xmPushButtonWidgetClass, e->base_form_mgr,
 		XmNlabelString,		xmstr,
@@ -860,7 +860,7 @@ e_make_editor(Calendar *c)
 	XtAddCallback(e->clear_button, XmNactivateCallback, e_clear_proc, e);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 923, "Cancel"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 923, "Cancel"));
         e->close_button = XtVaCreateWidget("Cancel",
 		xmPushButtonWidgetClass, e->base_form_mgr,
 		XmNlabelString,		xmstr,
@@ -874,7 +874,7 @@ e_make_editor(Calendar *c)
 	XtAddCallback(e->close_button, XmNactivateCallback, e_close_proc, e);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
         e->help_button = XtVaCreateWidget("Help",
 		xmPushButtonWidgetClass, e->base_form_mgr,
 		XmNlabelString,		xmstr,
@@ -908,7 +908,7 @@ e_make_editor(Calendar *c)
 		XmNbottomWidget, 	e->separator2,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 626, "More"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 626, "More"));
         e->expand_ui_button = XtVaCreateWidget("expand_ui_button",
 		xmPushButtonWidgetClass, e->base_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -952,7 +952,7 @@ e_make_editor(Calendar *c)
 	 * Add a drag source icon inside the dssw, lower right
 	 */
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 627, "Drag Appt"));
+				CATGETS(c->DT_catd, 1, 627, "Drag Appt"));
 	e->drag_source = XtVaCreateWidget("drag_source",
 		dtIconGadgetClass, 	e->dssw.dssw_form_mgr,
 		XmNpixmapPosition, 	XmPIXMAP_TOP,
@@ -1156,21 +1156,21 @@ set_list_title(Editor *e) {
 
 	switch (e->view_list_glance) {
 		case yearGlance:
-				header = catgets(c->DT_catd, 1, 704, "Year of %d");
+				header = CATGETS(c->DT_catd, 1, 704, "Year of %d");
 				sprintf(buffer, header, year(e->view_list_date));
 				break;
 		case monthGlance:
-				header = catgets(c->DT_catd, 1, 705, "%s");
+				header = CATGETS(c->DT_catd, 1, 705, "%s");
 				format_date(e->view_list_date+1, get_int_prop(p, CP_DATEORDERING), buffer2, 0, 0, 0);
 				sprintf(buffer, header, buffer2);
 				break;
 		case weekGlance:
-				header = catgets(c->DT_catd, 1, 706, "Week of %s");
+				header = CATGETS(c->DT_catd, 1, 706, "Week of %s");
 				format_date(e->view_list_date+1, get_int_prop(p, CP_DATEORDERING), buffer2, 1, 0, 0);
 				sprintf(buffer, header, buffer2);
 				break;
 		case dayGlance:
-				header = catgets(c->DT_catd, 1, 707, "%s");
+				header = CATGETS(c->DT_catd, 1, 707, "%s");
 				format_date(e->view_list_date+1, get_int_prop(p, CP_DATEORDERING), buffer2, 1, 0, 0);
 				sprintf(buffer, header, buffer2);
 				break;
@@ -1492,12 +1492,12 @@ editor_change(Dtcm_appointment *new_a, CSA_entry_handle old_a, CSA_entry_handle 
 	    (appt->repeat_type->value->item.sint32_value == CSA_X_DT_REPEAT_OTHER_WEEKLY) ||
 	    (appt->repeat_type->value->item.sint32_value == CSA_X_DT_REPEAT_OTHER_MONTHLY) ||
 	    (appt->repeat_type->value->item.sint32_value == CSA_X_DT_REPEAT_OTHER_YEARLY)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 258,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 258,
                                       "Calendar : Appointment Editor - Change"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 708,
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 708,
                                         "This appointment repeats in an unknown fashion.  All occurrences will be changed\nDo you still wish to change it?"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	  	char *ident4 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	  	char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
                 answer = dialog_popup(e->frame,
                                 DIALOG_TITLE, title,
                                 DIALOG_TEXT, text,
@@ -1512,15 +1512,15 @@ editor_change(Dtcm_appointment *new_a, CSA_entry_handle old_a, CSA_entry_handle 
 	}
 	else if (appt->repeat_type->value->item.sint32_value != 
 		CSA_X_DT_REPEAT_ONETIME) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 258,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 258,
 				"Calendar : Appointment Editor - Change"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 268,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 268,
 				"This appointment is part of a repeating series.\nDo you want to change ...?"));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-		char *ident2 = XtNewString(catgets(c->DT_catd, 1, 270,
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+		char *ident2 = XtNewString(CATGETS(c->DT_catd, 1, 270,
 				"This One Only"));
-		char *ident3 = XtNewString(catgets(c->DT_catd, 1, 271, "Forward"));
-		char *ident4 = XtNewString(catgets(c->DT_catd, 1, 272, "All"));
+		char *ident3 = XtNewString(CATGETS(c->DT_catd, 1, 271, "Forward"));
+		char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 272, "All"));
 		answer = dialog_popup(e->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1654,15 +1654,15 @@ editor_delete(CSA_entry_handle entry, Calendar *c) {
 
 	if (appt->repeat_type->value) {
 		if (appt->repeat_type->value->item.sint32_value != CSA_X_DT_REPEAT_ONETIME) {
-			char *title = XtNewString(catgets(c->DT_catd, 1, 252,
+			char *title = XtNewString(CATGETS(c->DT_catd, 1, 252,
 				      "Calendar : Appointment Editor - Delete"));
-			char *text = XtNewString(catgets(c->DT_catd, 1, 274,
+			char *text = XtNewString(CATGETS(c->DT_catd, 1, 274,
 					"This appointment is part of a repeating series.\nDo you want to delete ...?"));
-			char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-			char *ident2 = XtNewString(catgets(c->DT_catd, 1, 270,
+			char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+			char *ident2 = XtNewString(CATGETS(c->DT_catd, 1, 270,
 					"This One Only"));
-			char *ident3 = XtNewString(catgets(c->DT_catd, 1, 271, "Forward"));
-			char *ident4 = XtNewString(catgets(c->DT_catd, 1, 272, "All"));
+			char *ident3 = XtNewString(CATGETS(c->DT_catd, 1, 271, "Forward"));
+			char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 272, "All"));
 			answer = dialog_popup(e->frame,
 				DIALOG_TITLE, title,
 				DIALOG_TEXT, text,
@@ -1681,12 +1681,12 @@ editor_delete(CSA_entry_handle entry, Calendar *c) {
 		}
 	}
 	else if (appt->recurrence_rule->value) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 252,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 252,
                                       "Calendar : Appointment Editor - Delete"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 711,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 711,
                                         "This appointment repeats in an unknown fashion.  All occurrences will be deleted\nDo you still wish to delete it?"));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-		char *ident4 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+		char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
                 answer = dialog_popup(e->frame,
                                 DIALOG_TITLE, title,
                                 DIALOG_TEXT, text,
@@ -1753,12 +1753,12 @@ editor_insert(Dtcm_appointment *appt, CSA_entry_handle *new_a, Calendar *c) {
 	if ((appt->repeat_type) && (appt->repeat_type->value) &&
            (appt->repeat_type->value->item.sint32_value != CSA_X_DT_REPEAT_ONETIME))
 	{
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 1101,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1101,
 					"Insert Appointment"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 984,
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 984,
 					"This appointment is part of a repeating series.\nDo you want to insert appointment ...?"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	  	char *ident4 = XtNewString(catgets(c->DT_catd, 1, 272, "All"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	  	char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 272, "All"));
 			answer = dialog_popup(e->frame,
 				DIALOG_TITLE, title,
 				DIALOG_TEXT, text,
@@ -1872,7 +1872,7 @@ set_editor_title(Editor *e, char *name) {
 	Calendar	*c = e->cal;
 
 	if (e->frame) {
-		sprintf(buf, "%s - %s", catgets(c->DT_catd, 1, 279,
+		sprintf(buf, "%s - %s", CATGETS(c->DT_catd, 1, 279,
 			"Calendar : Appointment Editor"), name);
 		XtVaSetValues(e->frame, XmNtitle, buf,
 			NULL);
@@ -1932,11 +1932,11 @@ show_editor_view(Calendar *c, Glance glance) {
 
 
 	if (build_editor_view(e, glance, False) <= 0) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 280,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 280,
 				"Calendar : Error - Appointment List"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 281,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 281,
 				"Sorry, no appointments to list.     "));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(e->cal->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,

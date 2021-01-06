@@ -89,47 +89,47 @@ create_repeat_menu(Widget parent, XtCallbackProc cb_func, XtPointer data) {
 	XtSetArg(args[ac], XmNpositionMode, XmONE_BASED); ++ac;
 	cb = XmCreateComboBox(parent, "repeat_cb", args, ac);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 200, "One Time"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 200, "One Time"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 853, "Daily"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 853, "Daily"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 854, "Weekly"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 854, "Weekly"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 855, "Every Two Weeks"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 855, "Every Two Weeks"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 856, "Monthly By Date"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 856, "Monthly By Date"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 857, "Monthly By Weekday"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 857, "Monthly By Weekday"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 858, "Yearly"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 858, "Yearly"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 859, "Monday Thru Friday"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 859, "Monday Thru Friday"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 860, "Mon, Wed, Fri"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 860, "Mon, Wed, Fri"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 861, "Tuesday, Thursday"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 861, "Tuesday, Thursday"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 862, "Repeat Every..."));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 862, "Repeat Every..."));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
@@ -160,59 +160,59 @@ create_for_menu(Widget parent) {
 	 */
 	XtVaSetValues(cb, XmNwidth, 80, NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 863, "2"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 863, "2"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 864, "3"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 864, "3"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 865, "4"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 865, "4"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 866, "5"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 866, "5"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 867, "6"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 867, "6"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 868, "7"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 868, "7"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 869, "8"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 869, "8"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 870, "9"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 870, "9"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 871, "10"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 871, "10"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 872, "11"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 872, "11"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 873, "12"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 873, "12"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 874, "13"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 874, "13"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 875, "14"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 875, "14"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 876, "forever"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 876, "forever"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
@@ -237,15 +237,15 @@ create_privacy_menu(Widget parent) {
 	XtSetArg(args[ac], XmNpositionMode, XmONE_BASED); ++ac;
 	cb = XmCreateComboBox(parent, "privacy_cb", args, ac);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 721, "Others See Time And Text"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 721, "Others See Time And Text"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 722, "Others See Time Only"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 722, "Others See Time Only"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 723, "Others See Nothing"));
+	xmstr = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 723, "Others See Nothing"));
 	XmComboBoxAddItem((Widget)cb, xmstr, 0, False);
 	XmStringFree(xmstr);
 
@@ -323,7 +323,7 @@ set_time_submenu(Widget parent,
 	}
 
 	if (nt) {
-		xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 353, 
+		xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 353,
 							"No Time"));
 		(*widget_list)[allocation_counter++] =
 		menuitem = XtVaCreateWidget("noTime",
@@ -338,7 +338,7 @@ set_time_submenu(Widget parent,
 	}
 
 	if (ad) {
-		xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 354,
+		xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 354,
 							"All Day"));
 		(*widget_list)[allocation_counter++] =
 		menuitem = XtVaCreateWidget("allDay",
@@ -413,7 +413,7 @@ create_time_scope_menu(Widget parent,
 	option_m = XmCreateOptionMenu(parent, "option_m", args, ac);
 
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 877, "Mins"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 877, "Mins"));
 	menuitems[0] = XtVaCreateWidget("timescope0",
 		xmPushButtonGadgetClass, menu,
 		XmNlabelString, xmstr,
@@ -424,7 +424,7 @@ create_time_scope_menu(Widget parent,
 			      callback, client_data);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 878, "Hrs"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 878, "Hrs"));
 	menuitems[1] = XtVaCreateWidget("timescope1",
 		xmPushButtonGadgetClass, menu,
 		XmNlabelString, xmstr,
@@ -435,7 +435,7 @@ create_time_scope_menu(Widget parent,
 			      callback, client_data);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 879, "Days"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 879, "Days"));
 	menuitems[2] = XtVaCreateWidget("timescope2",
 		xmPushButtonGadgetClass, menu,
 		XmNlabelString, xmstr,
@@ -479,7 +479,7 @@ create_repeat_scope_menu(Widget parent, XmString label,
 
 
 	sprintf(buf, "repeatscope%d", REPEAT_DAYS); 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 816, "Days"));;
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 816, "Days"));;
 	menuitems[0] = XtVaCreateWidget(buf,
 		xmPushButtonGadgetClass, menu,
 		XmNlabelString, xmstr,
@@ -491,7 +491,7 @@ create_repeat_scope_menu(Widget parent, XmString label,
 	XmStringFree(xmstr);
 
 	sprintf(buf, "repeatscope%d", REPEAT_WEEKS); 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 817, "Weeks"));;
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 817, "Weeks"));;
 	menuitems[1] = XtVaCreateWidget(buf,
 		xmPushButtonGadgetClass, menu,
 		XmNlabelString, xmstr,
@@ -503,7 +503,7 @@ create_repeat_scope_menu(Widget parent, XmString label,
 	XmStringFree(xmstr);
 
 	sprintf(buf, "repeatscope%d", REPEAT_MONTHS); 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 818, "Months"));;
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 818, "Months"));;
 	menuitems[2] = XtVaCreateWidget(buf,
 		xmPushButtonGadgetClass, menu,
 		XmNlabelString, xmstr,
@@ -768,7 +768,7 @@ dialog_popup(Widget parent, ...) {
 		case BUTTON_HELP:
 			help_str = cm_strdup(va_arg(pvar, char *));
 			xmstr = XmStringCreateLocalized(
-					catgets(c->DT_catd, 1, 77, "Help"));
+					CATGETS(c->DT_catd, 1, 77, "Help"));
 			button = XtVaCreateWidget("help_button",
 				xmPushButtonGadgetClass, form,
 				XmNlabelString, xmstr,
@@ -891,55 +891,55 @@ editor_err_msg(Widget frame, char *name, Validate_op op, Pixmap p) {
 
 	switch(op) {
 	case COULD_NOT_OPEN_FILE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 355, "Unable to open callog file.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 355, "Unable to open callog file.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, CMSD_ERROR_HELP);
 		break;
 	case CANCEL_APPT:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 356, "Per user request, Operation was cancelled.\nCalendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 356, "Per user request, Operation was cancelled.\nCalendar"));
 		help_button = False;
 		break;
 	case INVALID_DATE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 357, "Invalid value in DATE field.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 357, "Invalid value in DATE field.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, DATE_ERROR_HELP);
 		break;
 	case INVALID_START:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 358, "Invalid value in START field.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 358, "Invalid value in START field.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, START_ERROR_HELP);
 		break;
 	case INVALID_TIME_DUE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 1011, "Invalid value in the \"Time Due\" field.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 1011, "Invalid value in the \"Time Due\" field.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, START_ERROR_HELP);
 		break;
 	case INVALID_STOP:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 359, "Invalid value in END field.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 359, "Invalid value in END field.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, STOP_ERROR_HELP);
 		break;
 	case MISSING_DATE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 360, "You must provide a DATE value.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 360, "You must provide a DATE value.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, MISSING_FIELD_ERROR_HELP);
 		break;
 	case MISSING_START:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 361, "You must provide a START value.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 361, "You must provide a START value.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, MISSING_FIELD_ERROR_HELP);
 		break;
 	case MISSING_WHAT:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 362, "You must provide a WHAT value.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 362, "You must provide a WHAT value.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, MISSING_FIELD_ERROR_HELP);
 		break;
 	case REPEAT_FOR_MISMATCH:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 363, "Invalid or mismatched REPEAT and FOR values.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 363, "Invalid or mismatched REPEAT and FOR values.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, REPEAT_FOR_ERROR_HELP);
 		break;
 	case INVALID_NOTIME_APPT:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 724, "No Time appointments must have a WHAT value specified.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 724, "No Time appointments must have a WHAT value specified.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, NO_TIME_ERROR_HELP);
 		break;
 	case INVALID_TIME:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 1104, "Invalid value in TIME DUE field.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 1104, "Invalid value in TIME DUE field.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, START_ERROR_HELP);
 		break;
 	case MISSING_TIME:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 1105, "You must provide a TIME DUE value.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 1105, "You must provide a TIME DUE value.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, MISSING_FIELD_ERROR_HELP);
 		break;
 	case VALID_APPT:
@@ -949,9 +949,9 @@ editor_err_msg(Widget frame, char *name, Validate_op op, Pixmap p) {
 
 	sprintf(buf2, "%s %s", buf, name);
 	if (help_button) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 914,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 914,
 					"Calendar : Error - Editor"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, 
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95,
 						"Continue"));
 		dialog_popup(frame, DIALOG_TITLE, title,
 			DIALOG_TEXT, buf2,
@@ -963,9 +963,9 @@ editor_err_msg(Widget frame, char *name, Validate_op op, Pixmap p) {
 		XtFree(title);
 	}
 	else {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 914,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 914,
 					"Calendar : Error - Editor"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, 
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95,
 						"Continue"));
 		dialog_popup(frame, DIALOG_TITLE, title,
 			DIALOG_TEXT, buf2,
@@ -994,83 +994,83 @@ backend_err_msg(
 
 	switch(stat) {
 	case CSA_E_CALENDAR_EXISTS:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 367, "Calendar already exists.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 367, "Calendar already exists.\nOperation was cancelled.  Calendar"));
 		help_button = False;
 		break;
 	case CSA_E_CALENDAR_NOT_EXIST:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 368, "Calendar does not exist.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 368, "Calendar does not exist.\nOperation was cancelled.  Calendar"));
 		help_button = False;
 		break;
 	case CSA_X_DT_E_ENTRY_NOT_FOUND:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 725, "Calendar Entry does not exist.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 725, "Calendar Entry does not exist.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_INVALID_ENTRY_HANDLE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 881, "Internal Error #1: Invalid calendar/entry handle.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 881, "Internal Error #1: Invalid calendar/entry handle.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_INVALID_SESSION_HANDLE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 882, "Internal Error #2: Invalid session handle.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 882, "Internal Error #2: Invalid session handle.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_NO_AUTHORITY:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 370, "Authorization error.  Permission denied.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 370, "Authorization error.  Permission denied.\nOperation was cancelled.  Calendar"));
 		help_button = False;
 		break;
 	case CSA_E_INVALID_PARAMETER:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 883, "Internal Error #3: Invalid data value.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 883, "Internal Error #3: Invalid data value.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_READONLY:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 884, "Internal Error #4: Value specified for a read-only attribute.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 884, "Internal Error #4: Value specified for a read-only attribute.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_INVALID_ATTRIBUTE_VALUE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 885, "Internal Error #5: Incorrect data type specified for an attribute value.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 885, "Internal Error #5: Incorrect data type specified for an attribute value.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_UNSUPPORTED_ATTRIBUTE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 886, "Internal Error #6: Specified attribute is not supported on this calendar version.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 886, "Internal Error #6: Specified attribute is not supported on this calendar version.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_NOT_SUPPORTED:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 887, "Internal Error #7: Specified function is not supported on this calendar version.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 887, "Internal Error #7: Specified function is not supported on this calendar version.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_INVALID_ENUM:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 888, "Internal Error #8: Invalid operator specified.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 888, "Internal Error #8: Invalid operator specified.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_INSUFFICIENT_MEMORY:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 378, "Memory allocation error - not enough memory.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 378, "Memory allocation error - not enough memory.\nOperation was cancelled.  Calendar"));
 		sprintf(error_buf, MEMORY_ALLOC_ERROR_HELP);
 		break;
 	case CSA_E_DISK_FULL:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 907, "No space left for calendar file.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 907, "No space left for calendar file.\nOperation was cancelled.  Calendar"));
 		break;
 	case CSA_E_SERVICE_UNAVAILABLE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 921, "Couldn't access calendar: "));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 921, "Couldn't access calendar: "));
 		break;
 	case CSA_X_DT_E_INVALID_SERVER_LOCATION:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 641, "Server failed to get network address\nfor the specified location:  invalid hostname."));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 641, "Server failed to get network address\nfor the specified location:  invalid hostname."));
 		break;
 	case CSA_X_DT_E_SERVICE_NOT_REGISTERED:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 642, "rpc.cmsd daemon is not registered.\nPlease verify rpc.cmsd is installed correctly on your system."));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 642, "rpc.cmsd daemon is not registered.\nPlease verify rpc.cmsd is installed correctly on your system."));
 		sprintf(error_buf, CMSD_ERROR_HELP);
 		break;
 	case CSA_X_DT_E_SERVER_TIMEOUT:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 727, "Your request timed out\nPlease verify rpc.cmsd is installed correctly on your system."));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 727, "Your request timed out\nPlease verify rpc.cmsd is installed correctly on your system."));
 		sprintf(error_buf, CMSD_ERROR_HELP);
 		break;
 	case CSA_E_FAILURE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 643, "Couldn't access calendar. Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 643, "Couldn't access calendar. Calendar"));
 		break;
 	case CSA_E_INVALID_RULE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 1120, "The event cannot be scheduled in the given time frame.\nThe operation was cancelled."));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 1120, "The event cannot be scheduled in the given time frame.\nThe operation was cancelled."));
 		break;
 	case CSA_SUCCESS:
 		return;
 	default:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 383, "Unknown error.\nOperation was cancelled.  Calendar"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 383, "Unknown error.\nOperation was cancelled.  Calendar"));
 		break;
 	}
 
 	sprintf(buf2, "%s %s", buf, name);
 	if (help_button) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 890,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 890,
 						"Calendar : Error - Services"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, 
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95,
 						"Continue"));
 		dialog_popup(frame, DIALOG_TITLE, title,
 			DIALOG_TEXT, buf2,
@@ -1082,9 +1082,9 @@ backend_err_msg(
 		XtFree(title);
 	}
 	else {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 890,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 890,
 						"Calendar : Error - Services"));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, 
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95,
 						"Continue"));
 		dialog_popup(frame, DIALOG_TITLE, title,
 			DIALOG_TEXT, buf2,
@@ -1112,11 +1112,11 @@ query_user(void *user_data) {
 	char		*ident2;
 	static int	answer;
 
-	sprintf(buf, "%s", catgets(c->DT_catd, 1, 386,
+	sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 386,
 		"That appointment has an end time earlier than its begin time.\nDo you want to schedule it into the next day?"));
-	title = XtNewString(catgets(c->DT_catd, 1, 248, "Calendar : Schedule Appointment"));
-	ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	ident2 = XtNewString(catgets(c->DT_catd, 1, 389, "Next Day"));
+	title = XtNewString(CATGETS(c->DT_catd, 1, 248, "Calendar : Schedule Appointment"));
+	ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	ident2 = XtNewString(CATGETS(c->DT_catd, 1, 389, "Next Day"));
 	answer = dialog_popup(c->frame,
 		DIALOG_TITLE, title,
 		DIALOG_TEXT, buf,

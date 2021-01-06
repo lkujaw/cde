@@ -30,8 +30,6 @@
 
 #ifndef _H_MSGFAC_MSG 
 #define _H_MSGFAC_MSG 
-#include <limits.h>
-#include <nl_types.h>
 #define MF_MSGFAC "msgfac.cat"
 
 

@@ -458,10 +458,10 @@ Attachment::invokeAction(int index)
 	char *buf = new char[2048];
 
 	sprintf(buf, "%s",
-		GETMSG(DT_catd, 3, 81, "This attachment may contain commands that can cause serious\ndamage.  It is recommended that you only execute it after you\nare certain it is safe to do so.\n\nPress OK if you are certain it is safe,\nCancel to cancel execution."));
+		CATGETS(DT_catd, 3, 81, "This attachment may contain commands that can cause serious\ndamage.  It is recommended that you only execute it after you\nare certain it is safe to do so.\n\nPress OK if you are certain it is safe,\nCancel to cancel execution."));
 
 	answer = parent()->handleQuestionDialog(
-					GETMSG(DT_catd, 1, 86, "Mailer"),
+					CATGETS(DT_catd, 1, 86, "Mailer"),
 					buf,
 					DTMAILHELPEXECUTEOK);
 	delete [] buf;
@@ -600,11 +600,11 @@ Attachment::saveToFile(DtMailEnv &, char *filename)
 
     if (SafeAccess(filename, F_OK) == 0) {
 
-	sprintf(buf, GETMSG(DT_catd, 3, 42, "%s already exists. Replace?"),
+	sprintf(buf, CATGETS(DT_catd, 3, 42, "%s already exists. Replace?"),
 		filename);
         helpId = DTMAILHELPALREADYEXISTS;
 
-	answer = parent()->handleQuestionDialog(GETMSG(DT_catd,
+	answer = parent()->handleQuestionDialog(CATGETS(DT_catd,
 							1, 85,
 							"Mailer"), 
 						buf,
@@ -616,9 +616,9 @@ Attachment::saveToFile(DtMailEnv &, char *filename)
 	}
 
 	if (unlink(filename) < 0) {
-	    sprintf(buf, GETMSG(DT_catd, 3, 43, "Unable to replace %s."), filename);
+	    sprintf(buf, CATGETS(DT_catd, 3, 43, "Unable to replace %s."), filename);
             helpId = DTMAILHELPNOREPLACE;
-	    answer = parent()->handleErrorDialog(GETMSG(DT_catd,
+	    answer = parent()->handleErrorDialog(CATGETS(DT_catd,
 							 1, 86,
 							 "Mailer"), 
 						 buf,
@@ -642,9 +642,9 @@ Attachment::saveToFile(DtMailEnv &, char *filename)
     //
     int fd = SafeOpen(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
     if (fd < 0) {
-	sprintf(buf, GETMSG(DT_catd, 3, 44, "Unable to create %s."), filename);
+	sprintf(buf, CATGETS(DT_catd, 3, 44, "Unable to create %s."), filename);
         helpId = DTMAILHELPNOCREATE;
-	answer = parent()->handleErrorDialog(GETMSG(DT_catd, 1, 87, "Mailer"), 
+	answer = parent()->handleErrorDialog(CATGETS(DT_catd, 1, 87, "Mailer"),
 					     buf,
                                              helpId);
 	delete [] buf;
@@ -652,10 +652,10 @@ Attachment::saveToFile(DtMailEnv &, char *filename)
     }
 
     if (SafeWrite(fd, _myContents, (unsigned int)_myContentsSize) < _myContentsSize) {
-	sprintf(buf, GETMSG(DT_catd, 3, 45, "Unable to create %s."), 
+	sprintf(buf, CATGETS(DT_catd, 3, 45, "Unable to create %s."),
 		filename);
         helpId = DTMAILHELPNOCREATE;
-	answer = parent()->handleErrorDialog(GETMSG(DT_catd, 1, 88, "Mailer"), 
+	answer = parent()->handleErrorDialog(CATGETS(DT_catd, 1, 88, "Mailer"),
 					     buf,
                                              helpId);
 	SafeClose(fd);
@@ -887,10 +887,10 @@ Attachment::action(
 	 * Post a dialog explaining that the action was invalid
 	 */
 	sprintf(buf, "%s",
-		GETMSG(
+		CATGETS(
 			DT_catd, 3, 91, "Cannot execute invalid action."));
 
-	answer = parent()->handleErrorDialog(GETMSG(DT_catd, 1, 86, "Mailer"),
+	answer = parent()->handleErrorDialog(CATGETS(DT_catd, 1, 86, "Mailer"),
 					     buf);
 
 	unregisterAction(id);	
@@ -902,9 +902,9 @@ Attachment::action(
 	 * Post a dialog explaining that the action failed.
 	 */
 	sprintf(buf, "%s",
-		GETMSG(DT_catd, 3, 92, "Executing action failed!"));
+		CATGETS(DT_catd, 3, 92, "Executing action failed!"));
 
-	answer = parent()->handleErrorDialog(GETMSG(DT_catd, 1, 86, "Mailer"),
+	answer = parent()->handleErrorDialog(CATGETS(DT_catd, 1, 86, "Mailer"),
 					     buf);
 
 	unregisterAction(id);	

@@ -47,11 +47,11 @@
 #define _AB_H_
 
 #include <Xm/Xm.h>
-#include <nl_types.h>		/* Necessary for message I18N */
 #include <ab_private/obj.h>
 #include <ab_private/vwr.h>
 #include <ab_private/ab_utils.h>
-#include <Dt/Dt.h>              /* for version information */
+#include <Dt/Dt.h>		/* for version information */
+#include <Dt/MsgCatP.h>	/* for message I18N */
 
 
 #define MODE_BUILD	1

@@ -56,7 +56,6 @@
 #include <sys/resource.h>
 #include <time.h>
 #include <unistd.h>
-#include <nl_types.h>
 #include <util/tt_gettext.h>
 #include <tt_const.h>
 #include <sys/types.h>

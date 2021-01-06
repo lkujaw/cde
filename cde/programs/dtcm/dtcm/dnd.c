@@ -327,11 +327,11 @@ schedule_appt(Calendar *c, Dtcm_appointment *a) {
 		 * Make sure user really meant to insert appointment
 		 * into somebody elses calendar.
 		 */
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 212,
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 212,
 				"Calendar : Schedule Appointment"));
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 210, "The appointment will be scheduled in the calendar\nyou are currently browsing.  Do you still want to schedule it?"));
-		sprintf(buf2, "%s %s", catgets(c->DT_catd, 1, 211, "Schedule in"),
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 210, "The appointment will be scheduled in the calendar\nyou are currently browsing.  Do you still want to schedule it?"));
+		sprintf(buf2, "%s %s", CATGETS(c->DT_catd, 1, 211, "Schedule in"),
 			c->view->current_calendar);
 		answer = dialog_popup(c->frame,
 			DIALOG_TITLE, title,
@@ -356,7 +356,7 @@ schedule_appt(Calendar *c, Dtcm_appointment *a) {
 
 		_csa_iso8601_to_tick(a->time->value->item.string_value, &tick);
 		format_tick(tick, ot, st, date_buf);
-		sprintf(buf, catgets(c->DT_catd, 1, 214,
+		sprintf(buf, CATGETS(c->DT_catd, 1, 214,
 				     "Appointment scheduled: %s"), date_buf);
 		set_message(c->message_text, buf);
 		return 1;
@@ -410,57 +410,57 @@ drag_load_proc(char *filename, Calendar *c) {
 				  (void *)c, c->general->version);
 	if (list->count <= 0) {
 		op = CANCEL_APPT;
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 842, 
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 842,
 	     "The information transferred did not\ncontain any appointments."));
 	}
 
 	switch(op) {
 	case COULD_NOT_OPEN_FILE:
-	  	msg = XtNewString(catgets(c->DT_catd, 1, 843, 
+	  	msg = XtNewString(CATGETS(c->DT_catd, 1, 843,
 					"Drag and Drop operation failed."));
 		sprintf(buf, "%s\n%s",
 			msg,
-			catgets(c->DT_catd, 1, 844, 
+			CATGETS(c->DT_catd, 1, 844,
 			      "Unable to locate the transferred information."));
 		XtFree(msg);
 		break;
 	case INVALID_DATE:
 		sprintf(buf, "%s",
-			catgets(c->DT_catd, 1, 218, "Invalid DATE specified"));
+			CATGETS(c->DT_catd, 1, 218, "Invalid DATE specified"));
 		break;
 	case INVALID_START:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 219,
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 219,
 					   "Invalid START time specified"));
 		break;
 	case INVALID_STOP:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 220,
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 220,
 					   "Invalid END time specified"));
 		break;
 	case MISSING_DATE:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 221,
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 221,
 					   "Empty or missing DATE field"));
 		break;
 	case MISSING_START:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 222,
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 222,
 					   "Empty or missing START field"));
 		break;
 	case MISSING_WHAT:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 223,
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 223,
 					   "Empty or missing WHAT field"));
 		break;
 	case REPEAT_FOR_MISMATCH:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 224,
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 224,
 					   "REPEAT and FOR field mismatch"));
 		break;
 	case VALID_APPT:
 		break;
 	case CANCEL_APPT:
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 225,
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 225,
 					   "Schedule appointment was cancelled."));
 		break;
 	default:
 		op = CANCEL_APPT;
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 225,
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 225,
 					   "Schedule appointment was cancelled."));
 		break;
 	}
@@ -475,11 +475,11 @@ drag_load_proc(char *filename, Calendar *c) {
 		ret_val = schedule_appt(c, a);
 		if (ret_val < 0) {
 			op = CANCEL_APPT;
-			sprintf(buf, "%s", catgets(c->DT_catd, 1, 226,
+			sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 226,
 				"Internal error scheduling appointment."));
 		} else if (ret_val == 0) {
 			op = CANCEL_APPT;
-			sprintf(buf, "%s", catgets(c->DT_catd, 1, 225,
+			sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 225,
 				"Schedule appointment was cancelled."));
 		}
 		++i;
@@ -491,9 +491,9 @@ drag_load_proc(char *filename, Calendar *c) {
 	CmDataListDestroy(list, B_FALSE);
 
 	if (op != VALID_APPT) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 1073,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1073,
 					  "Calendar : Error - Drag and Drop"));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(c->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, buf,
@@ -533,10 +533,10 @@ get_appt_struct(DragContext *context) {
 		list = ((ToDo *) context->editor)->todo_list;
 
         if (list && !XmListGetSelectedPos(list, &item_list, &item_cnt)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 230, 
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 230,
 				"Calendar : Error - Drag Appointment"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 231, "Select an appointment and DRAG again."));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 231, "Select an appointment and DRAG again."));
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
                 answer = dialog_popup(c->frame,
                         DIALOG_TITLE, title,
                         DIALOG_TEXT, text,
@@ -563,10 +563,10 @@ get_appt_struct(DragContext *context) {
 
 
         if (!entry) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 230, 
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 230,
 					"Calendar : Error - Drag Appointment"));
-		char *ident = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
-		sprintf(buf, "%s", catgets(c->DT_catd, 1, 845,
+		char *ident = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
+		sprintf(buf, "%s", CATGETS(c->DT_catd, 1, 845,
 		"Drag and Drop operation Failed\nInternal consistency error."));
                 answer = dialog_popup(c->frame,
                         DIALOG_TITLE, title,
@@ -611,7 +611,7 @@ ApptConvertCB(
 
         data->bp   = XtNewString(context->data);
         data->size = strlen(data->bp);
-        data->name = XtNewString(catgets(c->DT_catd, 1, 236, "CalendarAppointment"));
+        data->name = XtNewString(CATGETS(c->DT_catd, 1, 236, "CalendarAppointment"));
 }
 
 /*
@@ -636,7 +636,7 @@ GetIcon(Calendar *calendar)
                         drag_xbm_width, drag_xbm_height);
                 if (e->drag_bitmap == 0) {
 
-                        printf("%s", catgets(calendar->DT_catd, 1, 237, "XCreateBitmapFromData() failed for bitmap.\n"));
+                        printf("%s", CATGETS(calendar->DT_catd, 1, 237, "XCreateBitmapFromData() failed for bitmap.\n"));
                         return;
                 }
                 else
@@ -647,7 +647,7 @@ GetIcon(Calendar *calendar)
                         window, (char *) drag_mask_xbm_bits,
                         drag_mask_xbm_width, drag_mask_xbm_height);
                 if (e->drag_mask == 0) {
-                        printf("%s", catgets(calendar->DT_catd, 1, 238, "XCreateBitmapFromData() failed for mask.\n"));
+                        printf("%s", CATGETS(calendar->DT_catd, 1, 238, "XCreateBitmapFromData() failed for mask.\n"));
                         return;
                 }
                 else
@@ -798,7 +798,7 @@ TranslationDragStart(
 			     DtNsourceIcon, e->drag_icon,
 			     NULL) == NULL) {
  
-                printf("%s", catgets(calendar->DT_catd, 1, 239, 
+                printf("%s", CATGETS(calendar->DT_catd, 1, 239,
 					"DragStart returned NULL.\n"));
         }
 }
@@ -953,7 +953,7 @@ ApptDragStart(
 		NULL)
             == NULL) {
  
-                printf("%s", catgets(calendar->DT_catd, 1, 239,
+                printf("%s", CATGETS(calendar->DT_catd, 1, 239,
 			       "DragStart returned NULL.\n"));
         }
 }

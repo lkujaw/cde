@@ -649,13 +649,13 @@ RoamMenuWindow::initialize()
     {
 	fprintf(
 		stderr, "%s",
-		GETMSG(DT_catd, 2, 3,
+		CATGETS(DT_catd, 2, 3,
 		  "Unable to initialize windows. Exiting.\n"));
 	exit(1);
     }
 
     busyCursor();
-    setStatus(GETMSG(DT_catd, 3, 2, "Initializing..."));
+    setStatus(CATGETS(DT_catd, 3, 2, "Initializing..."));
 
     // XInternAtom(XtDisplay(this->baseWidget()) ,"STRING", False);
     // XInternAtom(XtDisplay(this->baseWidget()) ,"MESSAGES", False);
@@ -1530,18 +1530,18 @@ RoamMenuWindow::open(
             if (create_flag == DTM_FALSE)
 	    {
 		sprintf(buf,
-			GETMSG(DT_catd, 
+			CATGETS(DT_catd,
 				3, 3, 
 				"The mailbox %s does not exist.\nCreate a mailbox with this name?"),
 			_mailbox_fullpath);
-		_genDialog->setToQuestionDialog(GETMSG(DT_catd, 
+		_genDialog->setToQuestionDialog(CATGETS(DT_catd,
 							3, 4, "Mailer"),
 					     buf);
 		helpId = DTMAILHELPERROR;
-		answer = _genDialog->post_and_return(GETMSG(DT_catd, 
+		answer = _genDialog->post_and_return(CATGETS(DT_catd,
 							     3, 5, 
 							     "OK"), 
-						     GETMSG(DT_catd,
+						     CATGETS(DT_catd,
 							     1, 5,
 							     "Cancel"),
 						     helpId);
@@ -1560,15 +1560,15 @@ RoamMenuWindow::open(
                 //     The full file path is not valid so that we need flag
                 //     an error
                 sprintf(buf,
-                        GETMSG(DT_catd,
+                        CATGETS(DT_catd,
                                 3, 44,
                                 "Unable to create %s."),
                         _mailbox_fullpath);
-                _genDialog->setToQuestionDialog(GETMSG(DT_catd,
+                _genDialog->setToQuestionDialog(CATGETS(DT_catd,
                                                         3, 4, "Mailer"),
                                              buf);
                 helpId =  DTMAILHELPNOCREATE;
-                answer = _genDialog->post_and_return(GETMSG(DT_catd,
+                answer = _genDialog->post_and_return(CATGETS(DT_catd,
                                                              3, 5,
                                                              "OK"),
                                                      helpId);
@@ -1581,17 +1581,17 @@ RoamMenuWindow::open(
 	{
 	    // See if they want to take the lock.
 // 	    sprintf(buf, 
-// 		    GETMSG(DT_catd, 3, 6, "The mailbox %s is locked.\n\
+// 		    CATGETS(DT_catd, 3, 6, "The mailbox %s is locked.\n\
 // You can manually unlock the mailbox and try again\n\
 // or contact your System Administrator."),
 // 		   _mailbox_fullpath);
 
 // 	    _genDialog->setToErrorDialog(
-// 				GETMSG(DT_catd, 3, 7, "Mailer"),
+// 				CATGETS(DT_catd, 3, 7, "Mailer"),
 // 				buf);
 // 	    helpId = DTMAILHELPTAKELOCK;
 // 	    _genDialog->post_and_return(
-// 				GETMSG(DT_catd, 3, 8, "OK"),
+// 				CATGETS(DT_catd, 3, 8, "OK"),
 // 				helpId);
 
 // 	    error.setError(DTME_GetLockRefused);
@@ -1608,20 +1608,20 @@ RoamMenuWindow::open(
 	else if ((DTMailError_t)error == DTME_BadRunGroup)
 	{
 
-	    sprintf(buf, "%s", GETMSG(DT_catd, 2, 4,
+	    sprintf(buf, "%s", CATGETS(DT_catd, 2, 4,
 		   "Mailer has not been properly installed,\n\
 and cannot run because the execution group\n\
 is incorrectly set."));
 
 	    _genDialog->setToQuestionDialog(
-				GETMSG(DT_catd, 1, 6, "Mailer"),
+				CATGETS(DT_catd, 1, 6, "Mailer"),
 				buf);
 	    
 	    // No choice at this state other than to OK.
 
 	    helpId = DTMAILHELPBADGROUPID;
 	    answer = _genDialog->post_and_return(
-				GETMSG(DT_catd, 3, 9, "OK"),
+				CATGETS(DT_catd, 3, 9, "OK"),
 				helpId);
             delete [] buf;
 	    return;
@@ -1633,49 +1633,49 @@ is incorrectly set."));
 	     * The %s is the name of the mailbox the user doesn't have
 	     * permission to view.
 	     */
-	    sprintf(buf, GETMSG(DT_catd, 2, 5,
+	    sprintf(buf, CATGETS(DT_catd, 2, 5,
 		   "You do not have permission to view %s"), _mailbox_fullpath);
 
 	    _genDialog->setToQuestionDialog(
-				GETMSG(DT_catd, 1, 7, "Mailer"),
+				CATGETS(DT_catd, 1, 7, "Mailer"),
 				buf);
 	    
 	    // No choice at this state other than to OK.
 
 	    helpId = DTMAILHELPNOVIEW;
 	    answer = _genDialog->post_and_return(
-				GETMSG(DT_catd, 3, 10, "OK"),
+				CATGETS(DT_catd, 3, 10, "OK"),
 				helpId);
     	    delete [] buf;
 	    return;
 	}
 	else if ((DTMailError_t)error == DTME_IsDirectory)
 	{
-	    sprintf(buf, GETMSG(DT_catd, 2, 6,
+	    sprintf(buf, CATGETS(DT_catd, 2, 6,
 		    "The mailbox %s is a directory and can not be opened."),
 		    _mailbox_fullpath);
 
-	    _genDialog->setToQuestionDialog(GETMSG(DT_catd, 1, 8, "Mailer"),
+	    _genDialog->setToQuestionDialog(CATGETS(DT_catd, 1, 8, "Mailer"),
 					    buf);
 
 	    helpId = DTMAILHELPDIRECTORYONLY;
-	    answer = _genDialog->post_and_return(GETMSG(DT_catd, 3, 11, "OK"),
+	    answer = _genDialog->post_and_return(CATGETS(DT_catd, 3, 11, "OK"),
 						 helpId);
     	    delete [] buf;
 	    return;
 	}
 	else if ((DTMailError_t)error == DTME_AlreadyOpened)
 	{
-           sprintf(buf, GETMSG(DT_catd,20,1,
+           sprintf(buf, CATGETS(DT_catd,20,1,
                    "The mailbox %s is already open."), _mailbox_fullpath);
  
-           _genDialog->setToQuestionDialog(GETMSG(DT_catd, 1, 8, "Mailer"),
+           _genDialog->setToQuestionDialog(CATGETS(DT_catd, 1, 8, "Mailer"),
                                            buf);
  
            // there is no help message for this error
            // open a defect and put helpId later
            helpId = NULL;
-           answer = _genDialog->post_and_return(GETMSG(DT_catd, 3, 11, "OK"),
+           answer = _genDialog->post_and_return(CATGETS(DT_catd, 3, 11, "OK"),
                                                 helpId);
            delete [] buf;
            return;
@@ -1790,13 +1790,13 @@ RoamMenuWindow::propsChanged(void)
 	    displayInCurrentWorkspace();
 	    sprintf(
 		buf, "%s",
-		GETMSG(DT_catd, 99, 99,"The INBOX path has changed.\nReopen?"));
+		CATGETS(DT_catd, 99, 99,"The INBOX path has changed.\nReopen?"));
 	    _genDialog->setToQuestionDialog(
-					GETMSG(DT_catd, 3, 22, "Mailer"),
+					CATGETS(DT_catd, 3, 22, "Mailer"),
 					buf);
 	    answer = _genDialog->post_and_return(
-					GETMSG(DT_catd, 3, 29, "OK"),
-					GETMSG(DT_catd, 3, 19, "Cancel"),
+					CATGETS(DT_catd, 3, 29, "OK"),
+					CATGETS(DT_catd, 3, 19, "Cancel"),
 					DTMAILHELPERROR);
 
 	    rmw = ses->getRMW(inbox_path);
@@ -2119,7 +2119,7 @@ RoamMenuWindow::mapnotify()
 		if (NULL != _msgsPopupMoveMenu)
 		  XtSetSensitive(_msgsPopupMoveMenu, FALSE);
 		
-		char * readonly = GETMSG(DT_catd, 20, 3, "Read Only");
+		char * readonly = CATGETS(DT_catd, 20, 3, "Read Only");
 		setTitle(readonly);
 	    }
 
@@ -2224,7 +2224,7 @@ RoamMenuWindow::message( char *text )
     XmString labelStr;
 
     if (text_size > 0) {
-	str = GETMSG(DT_catd, 3, 12, "%s");
+	str = CATGETS(DT_catd, 3, 12, "%s");
 	buf = new char[strlen(str) + text_size + 1];
 	sprintf(buf, str, text);
 	labelStr = XmStringCreateLocalized(buf);
@@ -2283,7 +2283,7 @@ RoamMenuWindow::message_summary(
 
     mailrc->getValue(error, "nerdmode", &value);
     if (error.isSet()) {
-	str = GETMSG(DT_catd, 3, 13, "Message %d of %d, %d new, %d deleted"); 
+	str = CATGETS(DT_catd, 3, 13, "Message %d of %d, %d new, %d deleted");
     }
     else {
 	str = "Message 0x%x of 0x%x, ignoring 0x%x, 0x%x forgotten";
@@ -2319,7 +2319,7 @@ RoamMenuWindow::message_selected(
 	 * "Message 3 of 10, 2 new, 6 deleted"
 	 * This means ??? -- Explain to translator.
 	 */
-    str = GETMSG(DT_catd, 3, 14, "Message %d of %d, %d new, %d deleted"); 
+    str = CATGETS(DT_catd, 3, 14, "Message %d of %d, %d new, %d deleted");
     buf = new char[strlen(str) + 20];
     sprintf(buf, str, msg_num, num_msgs, num_new, num_deleted);
     
@@ -2395,7 +2395,7 @@ RoamMenuWindow::queryExpunge()
 
     if (NULL != _mailbox && _mailbox->mailBoxWritable(error) == DTM_TRUE)
     {
-      theRoamApp.busyAllWindows(GETMSG(DT_catd, 3, 15, "Saving..."));
+      theRoamApp.busyAllWindows(CATGETS(DT_catd, 3, 15, "Saving..."));
 
       if (_list->get_num_deleted_messages())
       {
@@ -2443,21 +2443,21 @@ RoamMenuWindow::queryExpunge()
 		 */
 		_genDialog->setToQuestionDialog(
 #ifdef undef
-		    GETMSG(DT_catd, 3, 16, "Mailer"),
-		    GETMSG(DT_catd, 3, 17, "Destroy the messages you have marked\nfor deletion in this mailbox?"));
+		    CATGETS(DT_catd, 3, 16, "Mailer"),
+		    CATGETS(DT_catd, 3, 17, "Destroy the messages you have marked\nfor deletion in this mailbox?"));
 #endif // undef
 		/* NL_COMMENT
 		 * This dialog comes up when the user tries to quit the
 		 * mailbox.  The user is asked if they want to destroy
 		 * the deleted messages.
 		 */
-		    GETMSG(DT_catd, 3, 87, "Mailer - Close"),
-		    GETMSG(DT_catd, 3, 88, "Destroy the deleted messages and close this mailbox?"));
+		    CATGETS(DT_catd, 3, 87, "Mailer - Close"),
+		    CATGETS(DT_catd, 3, 88, "Destroy the deleted messages and close this mailbox?"));
 		char * helpId = DTMAILHELPDESTROYMARKMSG;
 		int answer = _genDialog->post_and_return(
-				GETMSG(DT_catd, 3, 89, "Destroy and Close"),
-				GETMSG(DT_catd, 3, 73, "Cancel"),
-				GETMSG(DT_catd, 3, 90, "Retain and Close"),
+				CATGETS(DT_catd, 3, 89, "Destroy and Close"),
+				CATGETS(DT_catd, 3, 73, "Cancel"),
+				CATGETS(DT_catd, 3, 90, "Retain and Close"),
 				helpId);
 		if (answer == 1)
 		{
@@ -2541,7 +2541,7 @@ RoamMenuWindow::quit(Boolean delete_win)
 	char	*msg;
 
         busyCursor();
-	msg = GETMSG(
+	msg = CATGETS(
 		DT_catd,
 		21, 22, "Close pending:  waiting for task to terminate ...");
 	setStatus(msg);
@@ -2573,7 +2573,7 @@ RoamMenuWindow::quit_silently()
 
     if (_mailbox->mailBoxWritable(error) == DTM_TRUE) {
 
-      theRoamApp.busyAllWindows(GETMSG(DT_catd, 3, 15, "Saving..."));
+      theRoamApp.busyAllWindows(CATGETS(DT_catd, 3, 15, "Saving..."));
 
       if (_list->get_num_deleted_messages()) {
 	// We need to deal with deleted messages, based on what the
@@ -2622,7 +2622,7 @@ RoamMenuWindow::quit_silently()
 	char	*msg;
 
         busyCursor();
-	msg = GETMSG(
+	msg = CATGETS(
 		DT_catd,
 		21, 22, "Close pending:  waiting for task to terminate ...");
 	setStatus(msg);
@@ -2680,7 +2680,7 @@ void RoamMenuWindow::view_mail_file(char *filename, DtMailBoolean create)
     char		*plus_filename = NULL;
     char		*relative_filename = NULL;
 
-    theRoamApp.busyAllWindows(GETMSG(DT_catd, 3, 20, "Opening mailbox..."));
+    theRoamApp.busyAllWindows(CATGETS(DT_catd, 3, 20, "Opening mailbox..."));
 
     // If the first character of destname is alphanumeric, we can
     // safely assume that it is relative to the root folder directory.
@@ -2715,9 +2715,9 @@ void RoamMenuWindow::view_mail_file(char *filename, DtMailBoolean create)
 
 	    sprintf(
 		buf,
-		GETMSG(DT_catd, 3, 3, "The mailbox %s does not exist.\nCreate a mailbox with this name?"),
+		CATGETS(DT_catd, 3, 3, "The mailbox %s does not exist.\nCreate a mailbox with this name?"),
 		filename);
-	    dialog->setToQuestionDialog(GETMSG(DT_catd, 3, 22, "Mailer"), buf);
+	    dialog->setToQuestionDialog(CATGETS(DT_catd, 3, 22, "Mailer"), buf);
 	    answer = dialog->post_and_return(DTMAILHELPERROR);
 	    delete [] buf;
 	    if (2 == answer) goto do_unbusy;
@@ -2749,7 +2749,7 @@ RoamMenuWindow::move_callback(void *client_data, char *selection)
     mail_error.clear();
     RoamMenuWindow *obj = (RoamMenuWindow *) client_data;
 
-    theRoamApp.busyAllWindows(GETMSG(DT_catd, 3, 15, "Saving..."));
+    theRoamApp.busyAllWindows(CATGETS(DT_catd, 3, 15, "Saving..."));
     obj->_mailbox->save();
     theRoamApp.unbusyAllWindows();
 
@@ -2766,7 +2766,7 @@ RoamMenuWindow::copy_callback(void *client_data, char *selection)
     mail_error.clear();
     RoamMenuWindow *obj = (RoamMenuWindow *) client_data;
 
-    theRoamApp.busyAllWindows(GETMSG(DT_catd, 3, 15, "Saving..."));
+    theRoamApp.busyAllWindows(CATGETS(DT_catd, 3, 15, "Saving..."));
     obj->_mailbox->save();
     theRoamApp.unbusyAllWindows();
 
@@ -2793,9 +2793,9 @@ RoamMenuWindow::create_new_container(char *filename)
         char *buf = new char[2048];
 	sprintf(
 		buf,
-		GETMSG(DT_catd, 3, 21, "%s already exists.\nOverwrite?"),
+		CATGETS(DT_catd, 3, 21, "%s already exists.\nOverwrite?"),
 		filename);
-	_genDialog->setToQuestionDialog(GETMSG(DT_catd, 3, 22, "Mailer"), buf);
+	_genDialog->setToQuestionDialog(CATGETS(DT_catd, 3, 22, "Mailer"), buf);
 	answer = _genDialog->post_and_return(DTMAILHELPERROR);
 	if (answer == 2) {
 	    delete [] buf;
@@ -2805,11 +2805,11 @@ RoamMenuWindow::create_new_container(char *filename)
 	if (unlink(filename) < 0)
 	{
 	    sprintf(buf, 
-		GETMSG(DT_catd, 3, 23,
+		CATGETS(DT_catd, 3, 23,
 		  "Unable to overwrite %s.\nCheck file permissions and retry."),
 		filename);
 
-	    _genDialog->setToErrorDialog(GETMSG(DT_catd, 3, 24, "Mailer"), buf);
+	    _genDialog->setToErrorDialog(CATGETS(DT_catd, 3, 24, "Mailer"), buf);
 	    (void) _genDialog->post_and_return(DTMAILHELPERROR);
 	    delete [] buf;
 	    return;
@@ -2851,7 +2851,7 @@ RoamMenuWindow::addToRowOfButtons()
 
     _delete_button = new DeleteCmd ( 
 				"Delete",
-				GETMSG(DT_catd, 1, 9, "Delete"), 
+				CATGETS(DT_catd, 1, 9, "Delete"),
 				TRUE, this );
     ci  = new ButtonInterface (_rowOfButtons, _delete_button);
     w = ci->baseWidget();
@@ -2868,7 +2868,7 @@ RoamMenuWindow::addToRowOfButtons()
 
     _next_button  = new NextCmd ( 
 			"Next",
-			GETMSG(DT_catd, 1, 10, "Next"), 
+			CATGETS(DT_catd, 1, 10, "Next"),
 			TRUE, this );
     ci  = new ButtonInterface (_rowOfButtons, _next_button);
     w = ci->baseWidget();
@@ -2887,7 +2887,7 @@ RoamMenuWindow::addToRowOfButtons()
 
     _previous_button = new PrevCmd ( 
 				"Previous",
-				GETMSG(DT_catd, 1, 11, "Previous"), 
+				CATGETS(DT_catd, 1, 11, "Previous"),
 				TRUE, this );
     ci  = new ButtonInterface (_rowOfButtons, _previous_button);
     w = ci->baseWidget();
@@ -2906,7 +2906,7 @@ RoamMenuWindow::addToRowOfButtons()
 
     _replySender_button = new ReplyCmd (
 				"Reply to Sender",
-				GETMSG(DT_catd, 1, 12, "Reply to Sender"), 
+				CATGETS(DT_catd, 1, 12, "Reply to Sender"),
 				TRUE, 
 				this, 
 				FALSE );
@@ -2926,7 +2926,7 @@ RoamMenuWindow::addToRowOfButtons()
     prev_widget = w;
 
 
-    _print_button  = new PrintCmd ( "Print", GETMSG(DT_catd, 1, 13, "Print"),
+    _print_button  = new PrintCmd ( "Print", CATGETS(DT_catd, 1, 13, "Print"),
 				TRUE, TRUE, this);
     ci  = new ButtonInterface (_rowOfButtons, _print_button);
     w = ci->baseWidget();
@@ -3000,7 +3000,7 @@ RoamMenuWindow::addToRowOfLabels(MsgScrollingList *msglist)
     XmStringFree(spaces);
     spaces = XmStringCreateLocalized("    ");
 
-    basexms = XmStringCreateLocalized(GETMSG(DT_catd, 1, 14, "Sender"));
+    basexms = XmStringCreateLocalized(CATGETS(DT_catd, 1, 14, "Sender"));
     _sender_xms = XmStringConcat(basexms, spaces);
     _sender_key_xms = XmStringConcat(basexms, spaces_arrow);
     XmStringFree(basexms);
@@ -3029,7 +3029,7 @@ RoamMenuWindow::addToRowOfLabels(MsgScrollingList *msglist)
     // printHelpId("Sender", _sender_lbl);
     // XtAddCallback(_sender_lbl, XmNhelpCallback, HelpCB, helpId);
 
-    basexms = XmStringCreateLocalized(GETMSG(DT_catd, 1, 15, "Subject"));
+    basexms = XmStringCreateLocalized(CATGETS(DT_catd, 1, 15, "Subject"));
     _subject_xms = XmStringConcat(basexms, spaces);
     _subject_key_xms = XmStringConcat(basexms, spaces_arrow);
     XmStringFree(basexms);
@@ -3058,7 +3058,7 @@ RoamMenuWindow::addToRowOfLabels(MsgScrollingList *msglist)
     // printHelpId("Subject", _subject_lbl);
     // XtAddCallback(_subject_lbl, XmNhelpCallback, HelpCB, helpId);
 
-    basexms = XmStringCreateLocalized(GETMSG(DT_catd, 1, 16,"Date and Time"));
+    basexms = XmStringCreateLocalized(CATGETS(DT_catd, 1, 16,"Date and Time"));
     _date_xms = XmStringConcat(basexms, spaces);
     _date_key_xms = XmStringConcat(basexms, spaces_arrow);
     XmStringFree(basexms);
@@ -3087,7 +3087,7 @@ RoamMenuWindow::addToRowOfLabels(MsgScrollingList *msglist)
     // printHelpId("DateTime", _subject_lbl);
     // XtAddCallback(_date_lbl, XmNhelpCallback, HelpCB, helpId);
 
-    basexms = XmStringCreateLocalized(GETMSG(DT_catd, 1, 17, "Size"));
+    basexms = XmStringCreateLocalized(CATGETS(DT_catd, 1, 17, "Size"));
     _size_xms = XmStringConcat(basexms, spaces);
     _size_key_xms = XmStringConcat(basexms, spaces_arrow);
     XmStringFree(basexms);
@@ -3132,11 +3132,11 @@ RoamMenuWindow::addToRowOfMessageStatus()
 
     // Size of first label
     
-    labelStr1 = XmStringCreateLocalized(GETMSG(DT_catd, 3, 25,
+    labelStr1 = XmStringCreateLocalized(CATGETS(DT_catd, 3, 25,
 	   "Loading container..."));
 
     labelStr2 = XmStringCreateLocalized(
-			GETMSG(DT_catd, 3, 26, "Folder Summary Information"));
+			CATGETS(DT_catd, 3, 26, "Folder Summary Information"));
 
     _message = XtCreateManagedWidget(
 			"Message_Status_Text", xmLabelWidgetClass,
@@ -3292,15 +3292,15 @@ RoamMenuWindow::createOpenContainerList(CmdList * open_container)
 
     _open_container_inbox = new OpenInboxCmd(
 					"Inbox",
-					GETMSG(DT_catd, 1, 221, "Inbox"),
+					CATGETS(DT_catd, 1, 221, "Inbox"),
 					(FALSE == this->inbox()),
 					this);
 
     _open_container_other = new UnifiedSelectMailboxCmd(
 				"Open",
-				GETMSG(DT_catd, 1, 246, "Other Mailboxes..."), 
-				GETMSG(DT_catd, 1, 26, "Mailer - Open"),
-				GETMSG(DT_catd, 1, 27, "Open"),
+				CATGETS(DT_catd, 1, 246, "Other Mailboxes..."),
+				CATGETS(DT_catd, 1, 26, "Mailer - Open"),
+				CATGETS(DT_catd, 1, 27, "Open"),
 				TRUE,
 				RoamMenuWindow::file_selection_callback,
 				this,
@@ -3383,34 +3383,34 @@ RoamMenuWindow::construct_file_menu()
     // Create the "Container" item in the menubar.  And fill 
     // with items below the "Container" item in the menubar.
     
-    cmdList = new CmdList( "Mailbox", GETMSG(DT_catd, 1, 18, "Mailbox") );
+    cmdList = new CmdList( "Mailbox", CATGETS(DT_catd, 1, 18, "Mailbox") );
     _file_cmdlist = cmdList;
 
     _file_check_new_mail	= new CheckForNewMailCmd(
 				"Check for New Mail",
-				GETMSG(DT_catd, 1, 19, "Check for New Mail"), 
+				CATGETS(DT_catd, 1, 19, "Check for New Mail"),
 				TRUE, 
 				this);
     if (this->inbox()) { // Deactivate the Open Inbox item 
 	_file_open_inbox	       = new OpenInboxCmd(
 					"Open Inbox",
-					GETMSG(DT_catd, 1, 20, "Open Inbox"),
+					CATGETS(DT_catd, 1, 20, "Open Inbox"),
 					FALSE,
 					this);
     }
     else { // Activate the Open Inbox item.
 	_file_open_inbox	       = new OpenInboxCmd(
 					"Open Inbox",
-					GETMSG(DT_catd, 1, 21, "Open Inbox"),
+					CATGETS(DT_catd, 1, 21, "Open Inbox"),
 					TRUE,
 					this);
     }
 
     _file_new_container     = new UnifiedSelectMailboxCmd( 
 				"New...",
-				GETMSG(DT_catd, 1, 22, "New..."),
-				GETMSG(DT_catd, 1, 23, "Mailer - New"),
-				GETMSG(DT_catd, 1, 24, "New"),
+				CATGETS(DT_catd, 1, 22, "New..."),
+				CATGETS(DT_catd, 1, 23, "Mailer - New"),
+				CATGETS(DT_catd, 1, 24, "New"),
 				TRUE,
 				RoamMenuWindow::create_container_callback,
 				this,
@@ -3419,9 +3419,9 @@ RoamMenuWindow::construct_file_menu()
 #if defined(USE_OLD_FILE_OPEN)
     _file_open              = new UnifiedSelectMailboxCmd(
 				"Open...",
-				GETMSG(DT_catd, 1, 25, "Open..."), 
-				GETMSG(DT_catd, 1, 26, "Mailer - Open"),
-				GETMSG(DT_catd, 1, 27, "Open"),
+				CATGETS(DT_catd, 1, 25, "Open..."),
+				CATGETS(DT_catd, 1, 26, "Mailer - Open"),
+				CATGETS(DT_catd, 1, 27, "Open"),
 				TRUE,
 				RoamMenuWindow::file_selection_callback,
 				this,
@@ -3430,12 +3430,12 @@ RoamMenuWindow::construct_file_menu()
 
     _open_container_cmdlist = new CmdList(
 				"Open Container",
-				GETMSG(DT_catd, 1, 245, "Open"));
+				CATGETS(DT_catd, 1, 245, "Open"));
     createOpenContainerList(_open_container_cmdlist);
 
     _file_destroy_deleted_msgs  = new DestroyCmd(
 					"Destroy Deleted Message",
-					GETMSG(DT_catd, 1, 28, 
+					CATGETS(DT_catd, 1, 28,
 						"Destroy Deleted Messages"), 
 					      TRUE,
 					      this);
@@ -3443,7 +3443,7 @@ RoamMenuWindow::construct_file_menu()
 
     _file_quit              = new QuitCmd (
 				"Close",
-				GETMSG(DT_catd, 1, 29, "Close"), 
+				CATGETS(DT_catd, 1, 29, "Close"),
 				TRUE, 
 				this);
     
@@ -3490,7 +3490,7 @@ RoamMenuWindow::createCopyList(CmdList * copy_to)
 
     _copyto_inbox = new CopyToInboxCmd(
 			    	"Inbox",
-			    	GETMSG(DT_catd, 1, 221, "Inbox"), 
+			    	CATGETS(DT_catd, 1, 221, "Inbox"),
 			    	TRUE, 
 			    	this);
 
@@ -3516,7 +3516,7 @@ RoamMenuWindow::createCopyList(CmdList * copy_to)
 
     _move_copy_button = new MoveCopyCmd (
 				"Other Mailboxes...",
-                                GETMSG(DT_catd, 1, 65, "Other Mailboxes..."),
+                                CATGETS(DT_catd, 1, 65, "Other Mailboxes..."),
                                 TRUE,
                                 RoamMenuWindow::move_callback,
                                 RoamMenuWindow::copy_callback,
@@ -3524,8 +3524,8 @@ RoamMenuWindow::createCopyList(CmdList * copy_to)
                                 this->baseWidget(),
 				only_show_mailboxes);
     _copyto_other = new CopyCmd(
-			        GETMSG(DT_catd, 1, 237, "Copy"),
-                                GETMSG(DT_catd, 1, 65, "Other Mailboxes..."),
+			        CATGETS(DT_catd, 1, 237, "Copy"),
+                                CATGETS(DT_catd, 1, 65, "Other Mailboxes..."),
 				TRUE,
 				this,
 				(MoveCopyCmd *) _move_copy_button);
@@ -3605,55 +3605,55 @@ RoamMenuWindow::construct_message_menu()
     
     _msg_open		= new OpenMsgCmd(
 				"Open",
-				GETMSG(DT_catd, 1, 30, "Open"), 
+				CATGETS(DT_catd, 1, 30, "Open"),
 				TRUE, this);
 
     _msg_save_as	= new SaveAsTextCmd (
 				"Save As Text...",
-				GETMSG(DT_catd, 1, 31, "Save As Text..."),
-				GETMSG(DT_catd, 1, 32, "Mailer - Message - Save As Text"),
+				CATGETS(DT_catd, 1, 31, "Save As Text..."),
+				CATGETS(DT_catd, 1, 32, "Mailer - Message - Save As Text"),
 				TRUE,
 				get_editor()->textEditor(),
 				this,
 				this->baseWidget());
 
-    _copyto_cmdlist = new CmdList("Copy To", GETMSG(DT_catd, 1, 33, "Copy To"));
+    _copyto_cmdlist = new CmdList("Copy To", CATGETS(DT_catd, 1, 33, "Copy To"));
     createCopyList(_copyto_cmdlist);
 
     _msg_print		= new PrintCmd(
 				"Print...",
-				GETMSG(DT_catd, 1, 34, "Print..."), 
+				CATGETS(DT_catd, 1, 34, "Print..."),
 				TRUE, FALSE, this);
 
     _msg_find		= new FindCmd (
 				"Find...",
- 				GETMSG(DT_catd, 1, 35, "Find..."), 
+ 				CATGETS(DT_catd, 1, 35, "Find..."),
  				TRUE, this );
 
     _msg_select_all = new SelectAllCmd (
 				"Select All",
-				GETMSG(DT_catd, 1, 36, "Select All"),
+				CATGETS(DT_catd, 1, 36, "Select All"),
 				TRUE, this );
 
     _msg_delete		= new DeleteCmd(
 				"Delete",
-				GETMSG(DT_catd, 1, 37, "Delete"),
+				CATGETS(DT_catd, 1, 37, "Delete"),
 				TRUE, this);
 
     _msg_undelete_last       = new UndeleteCmd ( 
 				"Undelete Last",
-				GETMSG(DT_catd, 1, 38, "Undelete Last"), 
+				CATGETS(DT_catd, 1, 38, "Undelete Last"),
 				TRUE, this, FALSE );
 
     _msg_undelete_from_list   = new UndeleteCmd(
 				"Undelete From List...",
-				GETMSG(DT_catd, 1, 39, 
+				CATGETS(DT_catd, 1, 39,
 					"Undelete From List..."), 
 				TRUE, this, TRUE);
 
     // Message Menu
     
-    cmdList = new CmdList( "Message", GETMSG(DT_catd, 1, 40, "Message") );
+    cmdList = new CmdList( "Message", CATGETS(DT_catd, 1, 40, "Message") );
     _msg_cmdlist = cmdList;
 
     cmdList->add(_msg_open);
@@ -3690,7 +3690,7 @@ RoamMenuWindow::construct_message_popup(void)
 
    LabelCmd *title     = new LabelCmd (
 			"Mailer - Messages",
-                        GETMSG(DT_catd, 1, 42, "Mailer - Messages"), TRUE);
+                        CATGETS(DT_catd, 1, 42, "Mailer - Messages"), TRUE);
    _msgsPopup_separator = new SeparatorCmd( "Separator","Separator", TRUE );
    _msgsPopup_cmdlist->add(title);
    _msgsPopup_cmdlist->add(_msgsPopup_separator);
@@ -3729,19 +3729,19 @@ RoamMenuWindow::construct_edit_menu()
     
     _edit_copy = new EditCopyCmd(
 			"Copy",
-			GETMSG(DT_catd, 1, 43, "Copy"), 
+			CATGETS(DT_catd, 1, 43, "Copy"),
 			TRUE, 
 			this
 		     );
 
     _edit_select_all = new EditSelectAllCmd(
 			"Select All",
-			GETMSG(DT_catd, 1, 44, "Select All"), 
+			CATGETS(DT_catd, 1, 44, "Select All"),
 			TRUE,
 			this
 		    );
 
-    cmdList = new CmdList("Edit", GETMSG(DT_catd, 1, 45, "Edit"));
+    cmdList = new CmdList("Edit", CATGETS(DT_catd, 1, 45, "Edit"));
     _edit_cmdlist = cmdList;
 
     cmdList->add(_edit_copy);
@@ -3760,7 +3760,7 @@ RoamMenuWindow::construct_text_popup(void)
 
     LabelCmd *title     = new LabelCmd (
 			"Mailer - Text",
-			GETMSG(DT_catd, 1, 46, "Mailer - Text"), TRUE);
+			CATGETS(DT_catd, 1, 46, "Mailer - Text"), TRUE);
     _textPopup_separator = new SeparatorCmd( "Separator","Separator", TRUE );
 
     _textPopup_cmdlist->add(title);
@@ -3784,46 +3784,46 @@ void RoamMenuWindow::construct_view_menu()
     
     _view_next		= new NextCmd ( 
 				"Next",
-				GETMSG(DT_catd, 1, 47, "Next"), TRUE, this );
+				CATGETS(DT_catd, 1, 47, "Next"), TRUE, this );
     _view_previous		= new PrevCmd ( 
 				"Previous",
-				GETMSG(DT_catd, 1, 48, "Previous"), TRUE, this );
+				CATGETS(DT_catd, 1, 48, "Previous"), TRUE, this );
     
     _view_abbrev_headers = new AbbrevHeadersCmd(
 				"Abbreviated Headers",
-				GETMSG(DT_catd, 1, 49, "Abbreviated Headers"), 
+				CATGETS(DT_catd, 1, 49, "Abbreviated Headers"),
 				this);
 
 
     _view_sortTD = new SortCmd ("By Date/Time", 
-				GETMSG(DT_catd, 1, 50, "By Date/Time"),
+				CATGETS(DT_catd, 1, 50, "By Date/Time"),
 				TRUE,
 				this,
 				SortTimeDate);
     _view_sortSender = new SortCmd ("By Sender",
-				GETMSG(DT_catd, 1, 51, "By Sender"),
+				CATGETS(DT_catd, 1, 51, "By Sender"),
 				TRUE,
 				this,
 				SortSender);
     _view_sortSubject = new SortCmd ("By Subject",
-				GETMSG(DT_catd, 1, 52, "By Subject"),
+				CATGETS(DT_catd, 1, 52, "By Subject"),
 				TRUE,
 				this,
 				SortSubject);
     _view_sortSize = new SortCmd ("By Size",
-				GETMSG(DT_catd, 1, 53, "By Size"),
+				CATGETS(DT_catd, 1, 53, "By Size"),
 				TRUE,
 				this,
 				SortSize);
     _view_sortStatus = new SortCmd ("By Status",
-				GETMSG(DT_catd, 1, 54, "By Status"),
+				CATGETS(DT_catd, 1, 54, "By Status"),
 				TRUE,
 				this,
 				SortStatus);
 
     // View Menu
     
-    cmdList = new CmdList( "View", GETMSG(DT_catd, 1, 55, "View") );
+    cmdList = new CmdList( "View", CATGETS(DT_catd, 1, 55, "View") );
     _view_cmdlist = cmdList;
     
     cmdList->add(_view_next);
@@ -3853,46 +3853,46 @@ RoamMenuWindow::construct_compose_menu()
     
     _comp_new	= new ComposeCmd ( 
 			"New Message",
-			GETMSG(DT_catd, 1, 56, "New Message"), 
+			CATGETS(DT_catd, 1, 56, "New Message"),
 			TRUE, 
 			this );
     _comp_new_include = new ForwardCmd ( 
 			"New, Include All",
-			GETMSG(DT_catd, 1, 57, "New, Include All"), 
+			CATGETS(DT_catd, 1, 57, "New, Include All"),
 			TRUE, 
 			this, 
 			FALSE );
     _comp_forward	= new ForwardCmd ( 
 			"Forward Message",
-			GETMSG(DT_catd, 1, 58, "Forward Message"), 
+			CATGETS(DT_catd, 1, 58, "Forward Message"),
 			TRUE, 
 			this, 
 			TRUE );
 
     _comp_replySender = new ReplyCmd ( 
 			      "Reply to Sender",
-			      GETMSG(DT_catd, 1, 59, "Reply to Sender"), 
+			      CATGETS(DT_catd, 1, 59, "Reply to Sender"),
 			      TRUE, 
 			      this, 
 			      FALSE );
 
     _comp_replyAll	= new ReplyAllCmd ( 
 			"Reply to All",
-			GETMSG(DT_catd, 1, 60, "Reply to All"), 
+			CATGETS(DT_catd, 1, 60, "Reply to All"),
 			TRUE, 
 			this, 
 			FALSE );
 
     _comp_replySinclude= new ReplyCmd ( 
 			"Reply to Sender, Include",
-			GETMSG(DT_catd, 1, 61, "Reply to Sender, Include"), 
+			CATGETS(DT_catd, 1, 61, "Reply to Sender, Include"),
 			TRUE, 
 			this, 
 			TRUE );	
 
     _comp_replyAinclude= new ReplyAllCmd ( 
 			"Reply to All, Include",
-			GETMSG(DT_catd, 1, 62, "Reply to All, Include"), 
+			CATGETS(DT_catd, 1, 62, "Reply to All, Include"),
 			TRUE, 
 			this, 
 			TRUE );	
@@ -3900,7 +3900,7 @@ RoamMenuWindow::construct_compose_menu()
     
     // Compose Menu
     
-    cmdList = new CmdList( "Compose", GETMSG(DT_catd, 1, 63, "Compose") );
+    cmdList = new CmdList( "Compose", CATGETS(DT_catd, 1, 63, "Compose") );
     _comp_cmdlist = cmdList;
     cmdList->add(_comp_new);
     cmdList->add(_comp_new_include);
@@ -3929,21 +3929,21 @@ RoamMenuWindow::construct_move_menu()
 
     if (_move_cmdlist != NULL)
       delete _move_cmdlist;
-    _move_cmdlist = new CmdList( "Move", GETMSG(DT_catd, 1, 64, "Move") );
+    _move_cmdlist = new CmdList( "Move", CATGETS(DT_catd, 1, 64, "Move") );
 
     _move_separator = new SeparatorCmd("Separator","Separator", TRUE );
 
     _move_inbox = new MoveToInboxCmd(
                   		"Inbox",
-       		  		GETMSG(DT_catd, 1, 221, "Inbox"),
+       		  		CATGETS(DT_catd, 1, 221, "Inbox"),
  		  		TRUE, 
   		  		this);
 
     // We expect _move_copy_button to have been initialized already when
     // we constructed the copy menu.
     _move_other = new MoveCmd(
-				GETMSG(DT_catd, 1, 90, "Move"),
-                                GETMSG(DT_catd, 1, 65, "Other Mailboxes..."),
+				CATGETS(DT_catd, 1, 90, "Move"),
+                                CATGETS(DT_catd, 1, 65, "Other Mailboxes..."),
 				TRUE,
 				this,
 				(MoveCopyCmd *) _move_copy_button);
@@ -4032,8 +4032,8 @@ RoamMenuWindow::construct_attachment_menu()
 
     _att_save	= new SaveAttachCmd (
 				"Save As...",
-				GETMSG(DT_catd, 1, 66, "Save As..."),
-				GETMSG(DT_catd, 1, 67, "Mailer - Attachments - Save As"),
+				CATGETS(DT_catd, 1, 66, "Save As..."),
+				CATGETS(DT_catd, 1, 67, "Mailer - Attachments - Save As"),
 				FALSE, 
 				RoamMenuWindow::save_attachment_callback,
 				this,
@@ -4041,14 +4041,14 @@ RoamMenuWindow::construct_attachment_menu()
 
     _att_select_all = new SelectAllAttachsCmd(
 					"Select All",
-					GETMSG(
+					CATGETS(
 					    DT_catd, 1, 68, "Select All"
 					),
 					this);
 
     _att_cmdlist = new CmdList( 
 					"Attachments",
-					GETMSG(
+					CATGETS(
 						DT_catd, 1, 69, 
 						"Attachments"
 					) 
@@ -4070,7 +4070,7 @@ RoamMenuWindow::construct_attachment_popup(void)
 
     LabelCmd *title     = new LabelCmd (
 			"Mailer - Attachments",
-			GETMSG(DT_catd, 1, 70, "Mailer - Attachments"), TRUE);
+			CATGETS(DT_catd, 1, 70, "Mailer - Attachments"), TRUE);
     _attPopup_separator = new SeparatorCmd( "Separator","Separator", TRUE );
 
     _attPopup_cmdlist->add(title);
@@ -4091,19 +4091,19 @@ RoamMenuWindow::construct_help_menu()
     // Separator for menu items
     
     _help_separator= new SeparatorCmd( "Separator","Separator", TRUE );
-    _help_overview = new OnAppCmd("Overview", GETMSG(DT_catd, 1, 71, "Overview"), 
+    _help_overview = new OnAppCmd("Overview", CATGETS(DT_catd, 1, 71, "Overview"),
 				TRUE, this);
-    _help_tasks = new TasksCmd("Tasks", GETMSG(DT_catd, 1, 72, "Tasks"), 
+    _help_tasks = new TasksCmd("Tasks", CATGETS(DT_catd, 1, 72, "Tasks"),
 				TRUE, this);
     _help_reference = new ReferenceCmd("Reference",
-				GETMSG(DT_catd, 1, 73, "Reference"), 
+				CATGETS(DT_catd, 1, 73, "Reference"),
 				TRUE, this);
-    _help_on_item = new OnItemCmd("On Item", GETMSG(DT_catd, 1, 74, "On Item"), 
+    _help_on_item = new OnItemCmd("On Item", CATGETS(DT_catd, 1, 74, "On Item"),
 				TRUE, this);
     _help_using_help = new UsingHelpCmd("Using Help",
-				GETMSG(DT_catd, 1, 75, "Using Help"), 
+				CATGETS(DT_catd, 1, 75, "Using Help"),
 				TRUE, this);
-    cmdList = new CmdList( "Help", GETMSG(DT_catd, 1, 76, "Help") );
+    cmdList = new CmdList( "Help", CATGETS(DT_catd, 1, 76, "Help") );
     _help_cmdlist = cmdList;
 
     cmdList->add ( _help_overview );
@@ -4117,7 +4117,7 @@ RoamMenuWindow::construct_help_menu()
     cmdList->add ( _help_separator );
 
     _help_about_mailer = new RelNoteCmd("About Mailer...", 
-				    GETMSG(DT_catd, 1, 77, "About Mailer..."),
+				    CATGETS(DT_catd, 1, 77, "About Mailer..."),
     				    TRUE, this);
     cmdList->add ( _help_about_mailer );
 
@@ -4168,7 +4168,7 @@ RoamMenuWindow::load_mailbox(
     // Now load the messages into the scrolling list.
     // This will get the DtMailMessageHandles into the _msgs array and
     // it will also get their XmStrings into the CharArray of the _list.
-    theRoamApp.busyAllWindows(GETMSG(DT_catd, 3, 27, "Loading..."));
+    theRoamApp.busyAllWindows(CATGETS(DT_catd, 3, 27, "Loading..."));
 	
     // Call load_headers() to get the XmStrings into the XmList!
 
@@ -4183,7 +4183,7 @@ RoamMenuWindow::load_mailbox(
     // If no messages
 
     if (count == 0) {
-	this->message(GETMSG(DT_catd, 3, 28, "Empty container"));
+	this->message(CATGETS(DT_catd, 3, 28, "Empty container"));
 	setIconName(EmptyIcon);
     }
 
@@ -4286,12 +4286,12 @@ RoamMenuWindow::syncViewAndStore(
 
       case DTMC_BADSTATE:
 
-	errmsg = GETMSG(DT_catd, 1, 238, "Mailer is confused about the state of this mailbox.\nIt may be that another process has rewritten this mailbox in an unexpected way.\n\nSelecting OK will cause the Mailer to close and reopen the mailbox.\nNOTE that any changes made to the mailbox since the last save may be lost.");
+	errmsg = CATGETS(DT_catd, 1, 238, "Mailer is confused about the state of this mailbox.\nIt may be that another process has rewritten this mailbox in an unexpected way.\n\nSelecting OK will cause the Mailer to close and reopen the mailbox.\nNOTE that any changes made to the mailbox since the last save may be lost.");
 	this->_genDialog->setToErrorDialog(
-				GETMSG(DT_catd, 2, 10, "Mailer"),
+				CATGETS(DT_catd, 2, 10, "Mailer"),
 				errmsg);
 	answer = this->_genDialog->post_and_return(
-				GETMSG(DT_catd, 3, 29, "OK"),
+				CATGETS(DT_catd, 3, 29, "OK"),
 				DTMAILHELPUNKNOWNSTATE);
 
 	this->reopen_mail_file();
@@ -4301,13 +4301,13 @@ RoamMenuWindow::syncViewAndStore(
 
       case DTMC_ACCESSFAILED:
 	
-	errmsg = GETMSG(DT_catd, 1, 239, "Mailer can no longer access this mailbox.\nIt may be that another process has deleted the mailbox file.\n\nSelecting OK will cause the Mailer to close and reopen the mailbox.\nNOTE that any changes made to the mailbox since the last save may be lost.\n\nSelecting CANCEL will leave the mailbox unchanged.");
+	errmsg = CATGETS(DT_catd, 1, 239, "Mailer can no longer access this mailbox.\nIt may be that another process has deleted the mailbox file.\n\nSelecting OK will cause the Mailer to close and reopen the mailbox.\nNOTE that any changes made to the mailbox since the last save may be lost.\n\nSelecting CANCEL will leave the mailbox unchanged.");
 	this->_genDialog->setToErrorDialog(
-				GETMSG(DT_catd, 2, 10, "Mailer"),
+				CATGETS(DT_catd, 2, 10, "Mailer"),
 				errmsg);
 	answer = this->_genDialog->post_and_return(
-				GETMSG(DT_catd, 3, 29, "OK"),
-				GETMSG(DT_catd, 3, 19, "Cancel"),
+				CATGETS(DT_catd, 3, 29, "OK"),
+				CATGETS(DT_catd, 3, 19, "Cancel"),
 				DTMAILHELPUNKNOWNSTATE);
 	this->normalCursor();
 	if (answer == 1)
@@ -4327,11 +4327,11 @@ RoamMenuWindow::syncViewAndStore(
 
 	    sprintf(buffer, "%s", errmsgarg);
 	    this->_genDialog->setToTextFieldDialog(
-				GETMSG(DT_catd, 2, 10, "Mailer"),
+				CATGETS(DT_catd, 2, 10, "Mailer"),
 				buffer, DTM_TRUE);
 	    answer = this->_genDialog->post_and_return(
-				GETMSG(DT_catd, 3, 29, "Ok"),
-				GETMSG(DT_catd, 3, 19, "Cancel"),
+				CATGETS(DT_catd, 3, 29, "Ok"),
+				CATGETS(DT_catd, 3, 19, "Cancel"),
 				DTMAILHELPUNKNOWNSTATE);
 	    this->normalCursor();
 	    delete [] buffer;
@@ -4356,15 +4356,15 @@ RoamMenuWindow::syncViewAndStore(
 	    char *buffer = new char[2048];
 	    char *errmsgarg =	va_arg(args, char*);
 
-	    errmsg = GETMSG(DT_catd, 1, 256, "Mail server access failed:\n%s");
+	    errmsg = CATGETS(DT_catd, 1, 256, "Mail server access failed:\n%s");
 
 	    sprintf(buffer, errmsg, errmsgarg);
 	    this->_genDialog->setToErrorDialog(
-				GETMSG(DT_catd, 2, 10, "Mailer"),
+				CATGETS(DT_catd, 2, 10, "Mailer"),
 				buffer);
 	    answer = this->_genDialog->post_and_return(
-				GETMSG(DT_catd, 1, 257, "Options..."),
-				GETMSG(DT_catd, 3, 19, "Cancel"),
+				CATGETS(DT_catd, 1, 257, "Options..."),
+				CATGETS(DT_catd, 3, 19, "Cancel"),
 				DTMAILHELPUNKNOWNSTATE);
 	    this->normalCursor();
 	    delete [] buffer;
@@ -4386,15 +4386,15 @@ RoamMenuWindow::syncViewAndStore(
 	    char *errmsgarg =	va_arg(args, char*);
 
 	    errmsg =
-	      GETMSG(DT_catd, 1, 258, "User Getmail command failed:\n%s");
+	      CATGETS(DT_catd, 1, 258, "User Getmail command failed:\n%s");
 
 	    sprintf(buffer, errmsg, errmsgarg);
 	    this->_genDialog->setToErrorDialog(
-				GETMSG(DT_catd, 2, 10, "Mailer"),
+				CATGETS(DT_catd, 2, 10, "Mailer"),
 				buffer);
 	    answer = this->_genDialog->post_and_return(
-				GETMSG(DT_catd, 1, 257, "Options..."),
-				GETMSG(DT_catd, 3, 19, "Cancel"),
+				CATGETS(DT_catd, 1, 257, "Options..."),
+				CATGETS(DT_catd, 3, 19, "Cancel"),
 				DTMAILHELPUNKNOWNSTATE);
 	    this->normalCursor();
     	    delete [] buffer;
@@ -4426,11 +4426,11 @@ RoamMenuWindow::syncViewAndStore(
 
 	    sprintf(buffer, "%s", errmsgarg);
 	    this->_genDialog->setToErrorDialog(
-				GETMSG(DT_catd, 2, 10, "Mailer"),
+				CATGETS(DT_catd, 2, 10, "Mailer"),
 				buffer);
 	    answer = this->_genDialog->post_and_return(
-				GETMSG(DT_catd, 1, 257, "Options..."),
-				GETMSG(DT_catd, 3, 19, "Cancel"),
+				CATGETS(DT_catd, 1, 257, "Options..."),
+				CATGETS(DT_catd, 3, 19, "Cancel"),
 				DTMAILHELPUNKNOWNSTATE);
 	    this->normalCursor();
 	    delete [] buffer;
@@ -4447,14 +4447,14 @@ RoamMenuWindow::syncViewAndStore(
 
       case DTMC_INODECHANGED:
 	
-	errmsg = GETMSG(DT_catd, 1, 240, "Mailer can no longer access this mailbox.\nAnother process has rewritten the mailbox file changing the inode.\n\nSelecting OK will cause the Mailer to close and reopen the mailbox.\nNOTE that any changes made to the mailbox since the last save may be lost.\n\nSelecting CANCEL will leave the mailbox unchanged.");
+	errmsg = CATGETS(DT_catd, 1, 240, "Mailer can no longer access this mailbox.\nAnother process has rewritten the mailbox file changing the inode.\n\nSelecting OK will cause the Mailer to close and reopen the mailbox.\nNOTE that any changes made to the mailbox since the last save may be lost.\n\nSelecting CANCEL will leave the mailbox unchanged.");
 
 	this->_genDialog->setToErrorDialog(
-				GETMSG(DT_catd, 2, 10, "Mailer"),
+				CATGETS(DT_catd, 2, 10, "Mailer"),
 				errmsg);
 	answer = this->_genDialog->post_and_return(
-				GETMSG(DT_catd, 3, 29, "OK"),
-				GETMSG(DT_catd, 3, 19, "Cancel"),
+				CATGETS(DT_catd, 3, 29, "OK"),
+				CATGETS(DT_catd, 3, 19, "Cancel"),
 				DTMAILHELPUNKNOWNSTATE);
 	this->normalCursor();
 	if (answer == 1)
@@ -4477,10 +4477,10 @@ RoamMenuWindow::syncViewAndStore(
 
 	// The file is lock by another mailer.
 	// Should we ask for the lock?
-	_genDialog->setToQuestionDialog(GETMSG(DT_catd, 3, 16, "Mailer"),
-	   GETMSG(DT_catd, 3, 82, "Someone else is using this mailbox.\nWould you like to demand exclusive access?"));
-	answer = _genDialog->post_and_return(GETMSG(DT_catd, 3, 18, "OK"),
-	   GETMSG(DT_catd, 3, 19, "Cancel"), DTMAILHELPTAKELOCK);
+	_genDialog->setToQuestionDialog(CATGETS(DT_catd, 3, 16, "Mailer"),
+	   CATGETS(DT_catd, 3, 82, "Someone else is using this mailbox.\nWould you like to demand exclusive access?"));
+	answer = _genDialog->post_and_return(CATGETS(DT_catd, 3, 18, "OK"),
+	   CATGETS(DT_catd, 3, 19, "Cancel"), DTMAILHELPTAKELOCK);
 
 	this->normalCursor();
 	if (answer == 1) {
@@ -4493,10 +4493,10 @@ RoamMenuWindow::syncViewAndStore(
 
       // We are not able to obtain a TT lock on this folder,
       // ask user if he wants to open it as read only.
-      _genDialog->setToQuestionDialog(GETMSG(DT_catd, 3, 16, "Mailer"),
-				      GETMSG(DT_catd, 3, 83, "Mailer is unable to obtain exclusive access to this mailbox.\nWould you like to open this mailbox read-only?"));
-	answer = _genDialog->post_and_return(GETMSG(DT_catd, 3, 18, "OK"),
-					     GETMSG(DT_catd, 3, 19, "Cancel"),
+      _genDialog->setToQuestionDialog(CATGETS(DT_catd, 3, 16, "Mailer"),
+				      CATGETS(DT_catd, 3, 83, "Mailer is unable to obtain exclusive access to this mailbox.\nWould you like to open this mailbox read-only?"));
+	answer = _genDialog->post_and_return(CATGETS(DT_catd, 3, 18, "OK"),
+					     CATGETS(DT_catd, 3, 19, "Cancel"),
 					     DTMAILHELPOPENREADONLY);
 	this->normalCursor();
 	if (answer == 1) {
@@ -4508,11 +4508,11 @@ RoamMenuWindow::syncViewAndStore(
     case DTMC_READWRITEOVERRIDE:
       // We are not able to obtain a lock on this folder,
       // ask user if he wants to open it as read only.
-      _genDialog->setToQuestionDialog(GETMSG(DT_catd, 3, 16, "Mailer"),
-				      GETMSG(DT_catd, 3, 94, "Mailer is unable to obtain exclusive access to this\nmailbox because the system is not responding.\n\nFor this time only, you can choose to open this mailbox\nread-only, or to open it read-write without exclusive\naccess (use only if no one else is using this mailbox)."));
-	answer = _genDialog->post_and_return(GETMSG(DT_catd, 3, 95, "Read-only"),
-					     GETMSG(DT_catd, 3, 19, "Cancel"),
-					     GETMSG(DT_catd, 3, 96, "Read-Write"), 
+      _genDialog->setToQuestionDialog(CATGETS(DT_catd, 3, 16, "Mailer"),
+				      CATGETS(DT_catd, 3, 94, "Mailer is unable to obtain exclusive access to this\nmailbox because the system is not responding.\n\nFor this time only, you can choose to open this mailbox\nread-only, or to open it read-write without exclusive\naccess (use only if no one else is using this mailbox)."));
+	answer = _genDialog->post_and_return(CATGETS(DT_catd, 3, 95, "Read-only"),
+					     CATGETS(DT_catd, 3, 19, "Cancel"),
+					     CATGETS(DT_catd, 3, 96, "Read-Write"),
 					     DTMAILHELPOPENREADWRITEOVERRIDE);
 	this->normalCursor();
 	// Now the tricky part - since this method can only return 
@@ -4536,10 +4536,10 @@ RoamMenuWindow::syncViewAndStore(
         char *buffer		= new char[2048];
 	char *lockpath		= va_arg(args, char*);
 	char *errormsg		= va_arg(args, char*);
-	char *cancel		= GETMSG(DT_catd, 3, 19, "Cancel");
-        char *ok		= GETMSG(DT_catd, 3, 18, "OK");
-        char *mailer		= GETMSG(DT_catd, 3, 16, "Mailer");
-        char *msgfmt		= GETMSG(DT_catd, 3, 97, "%s\n\nThis may indicate that another Mailer has opened\n%s\n\nYou may open this mailbox READ ONLY by choosing '%s'.\n\nOtherwise, you may choose '%s',\nmake sure that another Mailer has not opened this mailbox,\ndelete %s,\nand reopen this mailbox.");
+	char *cancel		= CATGETS(DT_catd, 3, 19, "Cancel");
+        char *ok		= CATGETS(DT_catd, 3, 18, "OK");
+        char *mailer		= CATGETS(DT_catd, 3, 16, "Mailer");
+        char *msgfmt		= CATGETS(DT_catd, 3, 97, "%s\n\nThis may indicate that another Mailer has opened\n%s\n\nYou may open this mailbox READ ONLY by choosing '%s'.\n\nOtherwise, you may choose '%s',\nmake sure that another Mailer has not opened this mailbox,\ndelete %s,\nand reopen this mailbox.");
 
         // We are not able to obtain a .dtmail lock on this folder,
         // ask user if he wants to open it as read only.
@@ -4620,7 +4620,7 @@ RoamMenuWindow::showConversionStatus(
 
     if ((now_complete > (previously_complete + 5)) ||
 	(now_complete == 100)) {
-	str = GETMSG(DT_catd, 1, 79, "Converting... %d percent complete"); 
+	str = CATGETS(DT_catd, 1, 79, "Converting... %d percent complete");
 	// Estimate 4 characters for numbers and 1 null terminator.
 	buf = new char[strlen(str) + 5];   
 	sprintf(buf, str, now_complete);
@@ -4720,11 +4720,11 @@ RoamMenuWindow::postErrorDialog(
     // Assume that the char *text that comes in has already 
     // been processed for i18n.
 
-    _genDialog->setToErrorDialog(GETMSG(DT_catd, 2, 13, "Mailer"), 
+    _genDialog->setToErrorDialog(CATGETS(DT_catd, 2, 13, "Mailer"),
 				 (char *)text_str);
     
     helpId = DTMAILHELPERROR;
-    int i = _genDialog->post_and_return(GETMSG(DT_catd, 3, 31, "OK"), helpId);
+    int i = _genDialog->post_and_return(CATGETS(DT_catd, 3, 31, "OK"), helpId);
 
     // Clear the Error
     mail_error.clear();
@@ -4766,7 +4766,7 @@ RoamMenuWindow::expunge(void)
     // First order of business - busy out active windows
     //
     theRoamApp.busyAllWindows(
-	GETMSG(DT_catd, 3, 32, "Destroying deleted messages..."));
+	CATGETS(DT_catd, 3, 32, "Destroying deleted messages..."));
 
     // Before changing the state of any deleted/undeleted lists,
     // perform the destroy deleted operation and make sure that
@@ -4971,11 +4971,11 @@ RoamMenuWindow::save_selected_attachment(
 
 
 	  _genDialog->setToErrorDialog(
-		    GETMSG(DT_catd, 1, 80, "Mailer"),		  
-		    GETMSG(DT_catd, 2, 14, "An attachment needs to be selected before issuing the\n\"Save As\" command to save to a file.") );
+		    CATGETS(DT_catd, 1, 80, "Mailer"),
+		    CATGETS(DT_catd, 2, 14, "An attachment needs to be selected before issuing the\n\"Save As\" command to save to a file.") );
 	  helpId = DTMAILHELPSELECTATTACH;
 	  answer = _genDialog->post_and_return(
-			GETMSG(DT_catd, 3, 33, "OK"), helpId );
+			CATGETS(DT_catd, 3, 33, "OK"), helpId );
 	  return;
       }
 
@@ -5398,7 +5398,7 @@ RoamMenuWindow::setTitle(char *suffix)
     DtMailEnv		mail_error;
     MailSession		*ses = theRoamApp.session();
     DtMail::Session	*d_session = ses->session();
-    char *prefix = GETMSG(DT_catd, 1, 6, "Mailer");
+    char *prefix = CATGETS(DT_catd, 1, 6, "Mailer");
     char *path = NULL;
     char *new_title;
     char *format;
@@ -5434,7 +5434,7 @@ void
 RoamMenuWindow::setVacationTitle()
 {
     // Add "[Vacation]" to the title of the roam menu window 
-    char *vacation = GETMSG(DT_catd, 1, 3, "Vacation");
+    char *vacation = CATGETS(DT_catd, 1, 3, "Vacation");
     setTitle(vacation);
 }
 
@@ -5471,12 +5471,12 @@ Widget parent=NULL;
                 sprintf(errMsg,"Insufficient space on %s filesystem. Dtmail unable to show any new \n messages, delete messages, or save further changes to the open \n mailbox. Please contact your System Administrator to correct the \n filesystem space problem.",fsname);
 	    free(fsname);
             genDialog->setToErrorDialog(
-                                GETMSG(DT_catd, 1, 6, "Mailer"),
+                                CATGETS(DT_catd, 1, 6, "Mailer"),
                                 errMsg);
             XtFree(errMsg);
 
             genDialog->post_and_return(
-                                GETMSG(DT_catd, 3, 9, "OK"),
+                                CATGETS(DT_catd, 3, 9, "OK"),
                                 NULL);
             delete genDialog;
 }

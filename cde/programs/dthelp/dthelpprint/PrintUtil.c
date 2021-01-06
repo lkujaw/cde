@@ -40,7 +40,7 @@ $COPYRIGHT$:
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <nl_types.h>  /* for message cat processing */
+#include <Dt/MsgCatP.h>  /* for message cat processing */
 #if defined(sun)
 #include <locale.h>
 #else
@@ -245,14 +245,10 @@ $ARGS$:
 char * _DtHPrGetMessage(
         int set,
         int n,
-        char *s)
+        const char *s)
 {       /*$CODE$*/
-   char *msg;
-   char *lang;
-   nl_catd catopen();
-   char *catgets();
    static int s_First = 1;
-   static nl_catd s_Nlmsg_fd;
+   static nl_catd s_Nlmsg_fd = (nl_catd) -1;
    static char * s_CatFileName = NULL;
 
    if ( s_First ) 
@@ -264,23 +260,9 @@ char * _DtHPrGetMessage(
          s_CatFileName = strdup(HELPPRINT_CAT);
       }
       s_First = 0;
-
-      lang = (char *) getenv ("LANG");
-
-      /* If LANG is not set or if LANG=C, then there
-       * is no need to open the message catalog - just
-       * return the built-in string "s".  */
-      if (!lang || !(strcmp (lang, "C"))) 
-         s_Nlmsg_fd = (nl_catd) -1;
-      else
-         s_Nlmsg_fd = catopen(s_CatFileName, 0);
+      s_Nlmsg_fd = CATOPEN(s_CatFileName, 0);
    }  /* end of first-time processing */
 
-   msg = catgets(s_Nlmsg_fd,set,n,s);
-   return (msg);
-
+   return CATGETS(s_Nlmsg_fd, set, n, s);
 }
 #endif  /* NO_MESSAGE_CATALOG */
-
-
-

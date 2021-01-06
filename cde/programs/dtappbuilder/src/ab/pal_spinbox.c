@@ -186,7 +186,7 @@ spinbox_initialize(
 {
     obj_set_unique_name(obj, "spinbox");
 
-    obj_set_label(obj, catgets(Dtb_project_catd, 100, 262, "SpinBox:"));
+    obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 262, "SpinBox:"));
     obj_set_label_position(obj, AB_CP_NORTH);
     obj_set_width(obj, spinbox_init_width);
     obj_set_text_type(obj, AB_TEXT_NUMERIC);

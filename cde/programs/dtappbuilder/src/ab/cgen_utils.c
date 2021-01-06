@@ -2406,7 +2406,7 @@ check_path_to_cmd(STRING *cmdList, BOOL *allowWarnUserInOut)
 		util_strncpy(dirName, foundCmd, dirNameLen+1);
 		/*util_dprintf(2, "directory: '%s'\n", dirName);*/
 
-        	sprintf(buffer, catgets(Dtb_project_catd, 100, 52,
+        	sprintf(buffer, CATGETS(Dtb_project_catd, 100, 52,
                     "Your PATH does not contain the command %s.\n"
 		    "In order to access this command, may I append this\n"
 		    "directory to your path?:\n"

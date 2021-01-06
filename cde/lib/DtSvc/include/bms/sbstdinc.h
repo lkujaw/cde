@@ -52,7 +52,7 @@
 #include <sys/stat.h>
 #include <stdio.h>
 #include <fcntl.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 /************************************************************************/
 /* Routines not defined in include files (yet).				*/

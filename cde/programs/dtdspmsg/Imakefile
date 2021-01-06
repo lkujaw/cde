@@ -1,5 +1,6 @@
 XCOMM $XConsortium: Imakefile /main/8 1996/10/09 14:04:16 drk $
 
+DEFINES = -DNO_XLIB
 SYS_LIBRARIES = -lm $(DYNLIBSYSLIB) $(REGEXSYSLIB)
 
 #ifdef HPArchitecture
@@ -9,6 +10,7 @@ EXTRA_DEFINES = +e
 PROGRAMS=dtdspmsg
 
 SRCS =  dtdspmsg.c
-OBJS =  dtdspmsg.o
+OBJS =  dtdspmsg.o MsgCat.o
 
 ComplexProgramTarget($(PROGRAMS))
+LinkSourceFile(MsgCat.c,$(DTSVCSRC)/DtUtil2)

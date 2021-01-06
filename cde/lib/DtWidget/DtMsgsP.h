@@ -40,7 +40,7 @@
 #define CONST
 
 #ifdef I18N_MSG
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #define DTWIDGET_GETMESSAGE(set, number, string)\
     (char *) _DtWidgetGetMessage(set, number, string)
 

@@ -266,9 +266,9 @@ projP_save_mod_proc(
 		    }
 	            else
 	            {
-			sprintf(Buf, catgets(Dtb_project_catd, 100, 10,
+			sprintf(Buf, CATGETS(Dtb_project_catd, 100, 10,
 			    "The file %s is a read-only file.\nCannot save edits."), file);
-			util_set_help_data(catgets(Dtb_project_catd, 100, 81,
+			util_set_help_data(CATGETS(Dtb_project_catd, 100, 81,
 				"The changes that were made cannot be saved\nbecause you do not have permission to write\nto the file."),
 				NULL, NULL);
 			util_printf_err(Buf);
@@ -276,9 +276,9 @@ projP_save_mod_proc(
 		}
 		else
 		{   
-		    sprintf(Buf, catgets(Dtb_project_catd, 100, 76,
+		    sprintf(Buf, CATGETS(Dtb_project_catd, 100, 76,
 			"Cannot save module to \"%s\".\n\"%s\" does not have write permission."), mod_dir, mod_dir);
-		    sprintf(help_buf, catgets(Dtb_project_catd, 100, 82,
+		    sprintf(help_buf, CATGETS(Dtb_project_catd, 100, 82,
 			"You do not have permission to write to the\ndirectory \"%s\"."), mod_dir);
 		    util_set_help_data(help_buf, NULL, NULL);
                     util_printf_err(Buf);
@@ -634,7 +634,7 @@ projP_remove_proc(
                 /* The first thing in the message is 
 		 * some general text.
 		 */
-                init_msg = catgets(Dtb_project_catd, 100, 68,
+                init_msg = CATGETS(Dtb_project_catd, 100, 68,
                         "The following module(s) have unsaved edits. Removing the\nmodule(s) from the project will discard your changes.\nPlease confirm.");
 
                 /* If we have an old buffer lying around, free it */

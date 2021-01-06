@@ -145,7 +145,7 @@ appt_to_form(ToDo *t, CSA_entry_handle a) {
 		t->completed_val = False;
 	XmToggleButtonGadgetSetState(t->completed_toggle,
 		t->completed_val, True);
-	sprintf(buf, "%s:  %s",	catgets(t->cal->DT_catd, 1, 565, "Author"),
+	sprintf(buf, "%s:  %s",	CATGETS(t->cal->DT_catd, 1, 565, "Author"),
 		appt->author->value->item.calendar_user_value->user_name);
 	set_message(t->message_text, buf);
 	free_appt_struct(&appt);
@@ -354,11 +354,11 @@ flush_view_changes(ToDo *t){
 	int		answer;
 
 	if (t->view_list_modified) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 778, "Calendar : To Do List - Help"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 451, "You have made unsaved changes.\nYou may save your changes, discard your changes, \nor return to your previous place in the dialog."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 452, "Save"));
-	  	char *ident2 = XtNewString(catgets(c->DT_catd, 1, 700, "Discard"));
-	  	char *ident3 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 778, "Calendar : To Do List - Help"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 451, "You have made unsaved changes.\nYou may save your changes, discard your changes, \nor return to your previous place in the dialog."));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 452, "Save"));
+	  	char *ident2 = XtNewString(CATGETS(c->DT_catd, 1, 700, "Discard"));
+	  	char *ident3 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
 		answer = dialog_popup(t->view_frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -476,10 +476,10 @@ create_filter_menu(Widget parent, XtCallbackProc cb_func, XtPointer data) {
 	int			ac = 0;
 	Arg			args[5];
 
-	label = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 40, "View"));
-	option1 = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 272, "All"));
-	option2 = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 783, "Pending"));
-	option3 = XmStringCreateLocalized(catgets(calendar->DT_catd, 1, 784, "Completed"));
+	label = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 40, "View"));
+	option1 = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 272, "All"));
+	option2 = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 783, "Pending"));
+	option3 = XmStringCreateLocalized(CATGETS(calendar->DT_catd, 1, 784, "Completed"));
 
 	menu = XmCreatePulldownMenu(parent, "_pulldown", NULL, 0);
 
@@ -536,7 +536,7 @@ t_build_view_popup(ToDo *t) {
 	/*
 	**  Dialog shell and form
 	*/
-	title = XtNewString(catgets(c->DT_catd, 1, 1012, "Calendar : To Do List"));
+	title = XtNewString(CATGETS(c->DT_catd, 1, 1012, "Calendar : To Do List"));
 	t->view_frame = XtVaCreatePopupShell("todo_list",
 		xmDialogShellWidgetClass, c->frame,
 		XmNtitle, title,
@@ -554,7 +554,7 @@ t_build_view_popup(ToDo *t) {
 			XmNautoUnmanage, False,
       			NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 655, "OK"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 655, "OK"));
 
 
 	t->view_ok_button = XtVaCreateWidget("ok",
@@ -575,7 +575,7 @@ t_build_view_popup(ToDo *t) {
 	XtAddCallback(t->view_ok_button, XmNactivateCallback, (XtCallbackProc) t_view_ok_cb, t);
 
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 460, "Apply"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 460, "Apply"));
 
 	t->view_apply_button = XtVaCreateWidget("apply",
       				xmPushButtonWidgetClass, t->view_form,
@@ -591,7 +591,7 @@ t_build_view_popup(ToDo *t) {
 
 	XtAddCallback(t->view_apply_button, XmNactivateCallback, (XtCallbackProc) t_view_apply_cb, t);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 923, "Cancel"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 923, "Cancel"));
 
 	t->view_cancel_button = XtVaCreateWidget("cancel",
       				xmPushButtonWidgetClass, t->view_form,
@@ -608,7 +608,7 @@ t_build_view_popup(ToDo *t) {
 
 	XtAddCallback(t->view_cancel_button, XmNactivateCallback, (XtCallbackProc) t_view_cancel_cb, t);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
 
 	t->view_help_button = XtVaCreateWidget("help",
       				xmPushButtonWidgetClass, t->view_form,
@@ -634,7 +634,7 @@ t_build_view_popup(ToDo *t) {
 		XmNbottomOffset,	5,
                 NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 789, "To Do Type:"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 789, "To Do Type:"));
 	label= XtVaCreateWidget("type_label",
                 xmLabelGadgetClass, 	t->view_form,
 		XmNtopAttachment, 	XmATTACH_FORM,
@@ -657,7 +657,7 @@ t_build_view_popup(ToDo *t) {
 		XmNleftOffset, 		5,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 790, "context"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 790, "context"));
 	t->view_list_label= XtVaCreateWidget("type_label",
                 xmLabelGadgetClass, 	t->view_form,
 		XmNtopAttachment, 	XmATTACH_WIDGET,
@@ -743,7 +743,7 @@ t_expand_ui_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 		XtSetSensitive(t->rfp.rfp_form_mgr, False);
 
-		xmstr = XmStringCreateLocalized(catgets(t->cal->DT_catd, 1, 625,
+		xmstr = XmStringCreateLocalized(CATGETS(t->cal->DT_catd, 1, 625,
 							"Less"));
 		XtVaSetValues(t->expand_ui_button, XmNlabelString, xmstr,
 			      NULL);
@@ -766,7 +766,7 @@ t_expand_ui_proc(Widget w, XtPointer client_data, XtPointer data) {
 		expand_state_closed = False;
 	} else {
 		XtSetSensitive(t->rfp.rfp_form_mgr, False);
-		xmstr = XmStringCreateLocalized(catgets(t->cal->DT_catd, 1, 626,
+		xmstr = XmStringCreateLocalized(CATGETS(t->cal->DT_catd, 1, 626,
 							"More"));
 		XtVaSetValues(t->expand_ui_button, XmNlabelString, xmstr,
 			      NULL);
@@ -873,10 +873,10 @@ t_form_to_appt(ToDo *t) {
 
 	str = XmTextGetString(t->dssw.what_text);
 	if (!first_line_contains_text(str)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 837, "Calendar : Error - To Do Editor"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 913,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 837, "Calendar : Error - To Do Editor"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 913,
 				"A To Do item must have text in the first line of the What item."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(t->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -979,12 +979,12 @@ t_insert_proc(Widget w, XtPointer client_data, XtPointer data) {
 	  op = ONE_TIME;
 
 	if (op != ONE_TIME) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 1102,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1102,
 					"Insert To Do"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 1103,
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 1103,
 					"This To Do is part of a repeating series.\nDo you want to insert the item ...?"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	  	char *ident4 = XtNewString(catgets(c->DT_catd, 1, 272, "All"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	  	char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 272, "All"));
 		answer = dialog_popup(c->frame,
 				DIALOG_TITLE, title,
 				DIALOG_TEXT, text,
@@ -1051,10 +1051,10 @@ t_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 	_DtTurnOnHourGlass(t->frame);
 	if (!XmListGetSelectedPos(t->todo_list, &item_list, &item_cnt)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 566, "Calendar : Error - To Do Editor"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 567,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 566, "Calendar : Error - To Do Editor"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 567,
 				"Select a To Do and DELETE again."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(t->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1069,10 +1069,10 @@ t_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 	} 
 
 	if (!(entry = t_nth_appt(t, item_list[0] - 1))) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 566, "Calendar : Error - To Do Editor"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 570,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 566, "Calendar : Error - To Do Editor"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 570,
 				"Internal error selecting To Do.\nTo Do was not deleted."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(t->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1105,14 +1105,14 @@ t_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 	if (appt->repeat_type->value) {
 		if (appt->repeat_type->value->item.sint32_value !=
 		    CSA_X_DT_REPEAT_ONETIME) {
-		  char *title = XtNewString(catgets(c->DT_catd, 1, 591, "Calendar : To Do Editor"));
-		  char *text = XtNewString(catgets(c->DT_catd, 1, 573,
+		  char *title = XtNewString(CATGETS(c->DT_catd, 1, 591, "Calendar : To Do Editor"));
+		  char *text = XtNewString(CATGETS(c->DT_catd, 1, 573,
 					"This To Do is part of a repeating series.\nDo you want to delete ...?"));
-		  char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-		  char *ident2 = XtNewString(catgets(c->DT_catd, 1, 270,
+		  char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+		  char *ident2 = XtNewString(CATGETS(c->DT_catd, 1, 270,
 					"This One Only"));
-		  char *ident3 = XtNewString(catgets(c->DT_catd, 1, 271, "Forward"));
-		  char *ident4 = XtNewString(catgets(c->DT_catd, 1, 272, "All"));
+		  char *ident3 = XtNewString(CATGETS(c->DT_catd, 1, 271, "Forward"));
+		  char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 272, "All"));
 		answer = dialog_popup(t->frame,
 				DIALOG_TITLE, title,
 				DIALOG_TEXT, text,
@@ -1131,12 +1131,12 @@ t_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 	      }
 	}
 	else if (appt->recurrence_rule->value) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 591,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 591,
                                         "Calendar : To Do Editor"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 791,
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 791,
                                         "This To Do repeats in an unknown fashion.  All occurrences will be changed\nDo you still wish to delete it?"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	  	char *ident4 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	  	char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
                 answer = dialog_popup(c->frame,
                                 DIALOG_TITLE, title,
                                 DIALOG_TEXT, text,
@@ -1218,12 +1218,12 @@ t_execute_change(ToDo *t, CSA_entry_handle old_a, Dtcm_appointment *new_a,
             (appt->repeat_type->value->item.sint32_value == CSA_X_DT_REPEAT_OTHER_WEEKLY) ||
             (appt->repeat_type->value->item.sint32_value == CSA_X_DT_REPEAT_OTHER_MONTHLY) ||
             (appt->repeat_type->value->item.sint32_value == CSA_X_DT_REPEAT_OTHER_YEARLY)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 591,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 591,
                                         "Calendar : To Do Editor"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 708,
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 708,
                                         "This appointment repeats in an unknown fashion.  All occurrences will be changed\nDo you still wish to change it?"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	  	char *ident4 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	  	char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
                 answer = dialog_popup(c->frame,
                                 DIALOG_TITLE, title,
                                 DIALOG_TEXT, text,
@@ -1238,14 +1238,14 @@ t_execute_change(ToDo *t, CSA_entry_handle old_a, Dtcm_appointment *new_a,
 	}
 	else if (appt->repeat_type->value->item.sint32_value != 
 		CSA_X_DT_REPEAT_ONETIME) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 591, "Calendar : To Do Editor"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 579,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 591, "Calendar : To Do Editor"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 579,
 				"This To Do is part of a repeating series.\nDo you want to change ...?"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	  	char *ident2 = XtNewString(catgets(c->DT_catd, 1, 270,
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	  	char *ident2 = XtNewString(CATGETS(c->DT_catd, 1, 270,
 				"This One Only"));
-	  	char *ident3 = XtNewString(catgets(c->DT_catd, 1, 271, "Forward"));
-	  	char *ident4 = XtNewString(catgets(c->DT_catd, 1, 272, "All"));
+	  	char *ident3 = XtNewString(CATGETS(c->DT_catd, 1, 271, "Forward"));
+	  	char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 272, "All"));
 		answer = dialog_popup(frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1366,10 +1366,10 @@ t_change_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 	_DtTurnOnHourGlass(t->frame);
 	if (!XmListGetSelectedPos(t->todo_list, &item_list, &item_cnt)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 566, "Calendar : Error - To Do Editor"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 585,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 566, "Calendar : Error - To Do Editor"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 585,
 				"Select a To Do and CHANGE again."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(t->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1384,10 +1384,10 @@ t_change_proc(Widget w, XtPointer client_data, XtPointer data) {
 	} 
 
 	if (!(old_a = t_nth_appt(t, item_list[0] - 1))) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 566, "Calendar : Error - To Do Editor"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 1009,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 566, "Calendar : Error - To Do Editor"));
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 1009,
 				"Internal error selecting To Do.\nTo Do was not changed."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(t->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1558,7 +1558,7 @@ t_make_todo(Calendar *c)
 	**  Build the stuff in the upper portion of the form
 	*/
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 797, "To Do"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 797, "To Do"));
 	t->list_label = XtVaCreateWidget("todo_label",
                 xmLabelGadgetClass, 	t->base_form_mgr,
 		XmNtopAttachment, 	XmATTACH_FORM,
@@ -1586,7 +1586,7 @@ t_make_todo(Calendar *c)
 	/*
 	**  Create insert, delete, change, and clear buttons
 	*/
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 342, "Insert"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 342, "Insert"));
         t->insert_button = XtVaCreateWidget("insert",
 		xmPushButtonWidgetClass, t->base_form_mgr,
 		XmNbottomAttachment, 	XmATTACH_WIDGET,
@@ -1600,7 +1600,7 @@ t_make_todo(Calendar *c)
 	XtAddCallback(t->insert_button, XmNactivateCallback, t_insert_proc, t);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 343, "Change"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 343, "Change"));
         t->change_button = XtVaCreateWidget("change",
 		xmPushButtonWidgetClass, t->base_form_mgr,
 		XmNbottomAttachment, 	XmATTACH_WIDGET,
@@ -1615,7 +1615,7 @@ t_make_todo(Calendar *c)
 	XtAddCallback(t->change_button, XmNactivateCallback, t_change_proc, t);
 	XmStringFree(xmstr);
  
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 802, "Delete"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 802, "Delete"));
         t->delete_button = XtVaCreateWidget("delete",
 		xmPushButtonWidgetClass, t->base_form_mgr,
 		XmNbottomAttachment, 	XmATTACH_WIDGET,
@@ -1630,7 +1630,7 @@ t_make_todo(Calendar *c)
 	XtAddCallback(t->delete_button, XmNactivateCallback, t_delete_proc, t);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 803, "Clear"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 803, "Clear"));
         t->clear_button = XtVaCreateWidget("clear",
 		xmPushButtonWidgetClass, t->base_form_mgr,
 		XmNbottomAttachment, 	XmATTACH_WIDGET,
@@ -1644,7 +1644,7 @@ t_make_todo(Calendar *c)
 	XtAddCallback(t->clear_button, XmNactivateCallback, t_clear_proc, t);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 923, "Cancel"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 923, "Cancel"));
         t->close_button = XtVaCreateWidget("close",
 		xmPushButtonWidgetClass, t->base_form_mgr,
 		XmNbottomAttachment, 	XmATTACH_WIDGET,
@@ -1658,7 +1658,7 @@ t_make_todo(Calendar *c)
 	XtAddCallback(t->close_button, XmNactivateCallback, t_close_proc, t);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
         t->help_button = XtVaCreateWidget("help",
 		xmPushButtonWidgetClass, t->base_form_mgr,
 		XmNbottomAttachment, 	XmATTACH_WIDGET,
@@ -1697,7 +1697,7 @@ t_make_todo(Calendar *c)
 		XmNbottomWidget, 	t->separator2,
 		NULL);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 626, "More"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 626, "More"));
         t->expand_ui_button = XtVaCreateWidget("expando",
 		xmPushButtonWidgetClass, t->base_form_mgr,
 		XmNlabelString, 	xmstr,
@@ -1723,14 +1723,14 @@ t_make_todo(Calendar *c)
 	build_dssw(&t->dssw, c, t->base_form_mgr, True, False);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 590, "Due Date:"));
+				CATGETS(c->DT_catd, 1, 590, "Due Date:"));
 	XtVaSetValues(t->dssw.date_label,
 		XmNlabelString, xmstr,
 		NULL);
 	XmStringFree(xmstr);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 798, "Time Due:"));
+				CATGETS(c->DT_catd, 1, 798, "Time Due:"));
 	XtVaSetValues(t->dssw.start_label,
 		XmNlabelString, xmstr,
 		NULL);
@@ -1790,7 +1790,7 @@ t_make_todo(Calendar *c)
 	 * Add a drag source icon inside the dssw, lower right
 	 */
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 906, "Drag To Do"));
+				CATGETS(c->DT_catd, 1, 906, "Drag To Do"));
 	t->drag_source = XtVaCreateWidget("drag_source",
 		dtIconGadgetClass, 	t->dssw.dssw_form_mgr,
 		XmNpixmapPosition, 	XmPIXMAP_TOP,
@@ -1830,7 +1830,7 @@ t_make_todo(Calendar *c)
 	XtVaSetValues(t->drag_source, XmNpixmap, p->drag_icon_xbm, NULL);
 
 	xmstr = XmStringCreateLocalized(
-				catgets(c->DT_catd, 1, 784, "Completed"));
+				CATGETS(c->DT_catd, 1, 784, "Completed"));
 
 	t->completed_toggle = XtVaCreateManagedWidget("completed",
 		xmToggleButtonGadgetClass, t->dssw.dssw_form_mgr,
@@ -2056,22 +2056,22 @@ set_list_title(ToDo *t) {
 
 	switch (t->view_list_glance) {
 		case yearGlance:
-				header = catgets(c->DT_catd, 1, 806, "Year of %d");
+				header = CATGETS(c->DT_catd, 1, 806, "Year of %d");
 				sprintf(buffer, header, year(t->view_list_date));
 				break;
 		case monthGlance:
 				format_date(t->view_list_date+1, get_int_prop(p, CP_DATEORDERING), buffer2, 0, 0, 0);
-				header = catgets(c->DT_catd, 1, 807, "%s");
+				header = CATGETS(c->DT_catd, 1, 807, "%s");
 				sprintf(buffer, header, buffer2);
 				break;
 		case weekGlance:
 				format_date(t->view_list_date+1, get_int_prop(p, CP_DATEORDERING), buffer2, 1, 0, 0);
-				header = catgets(c->DT_catd, 1, 808, "Week of %s");
+				header = CATGETS(c->DT_catd, 1, 808, "Week of %s");
 				sprintf(buffer, header, buffer2);
 				break;
 		case dayGlance:
 				format_date(t->view_list_date+1, get_int_prop(p, CP_DATEORDERING), buffer2, 1, 0, 0);
-				header = catgets(c->DT_catd, 1, 809, "%s");
+				header = CATGETS(c->DT_catd, 1, 809, "%s");
 				sprintf(buffer, header, buffer2);
 				break;
 	}
@@ -2361,7 +2361,7 @@ set_todo_title(ToDo *t, char *name) {
 	char		buf[MAXNAMELEN];
 
 	if (t->frame) {
-		sprintf(buf, "%s - %s", catgets(c->DT_catd, 1, 591, "Calendar : To Do Editor"), name);
+		sprintf(buf, "%s - %s", CATGETS(c->DT_catd, 1, 591, "Calendar : To Do Editor"), name);
 		XtVaSetValues(t->frame, XmNtitle, buf,
 			NULL);
 	}
@@ -2459,12 +2459,12 @@ todo_insert(Dtcm_appointment *appt, CSA_entry_handle *new_a, Calendar *c) {
         if ((appt->repeat_type->value) &&
            (appt->repeat_type->value->item.sint32_value != CSA_X_DT_REPEAT_ONETIME))
         {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 1102,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 1102,
 					"Insert To Do"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 1103,
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 1103,
 					"This To Do is part of a repeating series.\nDo you want to insert the item ...?"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	  	char *ident4 = XtNewString(catgets(c->DT_catd, 1, 272, "All"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	  	char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 272, "All"));
 			answer = dialog_popup(c->frame,
 				DIALOG_TITLE, title,
 				DIALOG_TEXT, text,

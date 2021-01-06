@@ -179,8 +179,8 @@ fchooser_initialize(
     name = obj_get_unique_name(obj, "file_seln", 5000, nameBuf);
     obj_set_name(obj, name);
 
-    obj_set_label(obj, catgets(Dtb_project_catd, 100, 257, "File Selection Dialog"));
-    obj_set_ok_label(obj, catgets(Dtb_project_catd, 100, 228, "Ok"));
+    obj_set_label(obj, CATGETS(Dtb_project_catd, 100, 257, "File Selection Dialog"));
+    obj_set_ok_label(obj, CATGETS(Dtb_project_catd, 100, 228, "Ok"));
     obj_set_is_initially_visible(obj, False);
     obj_set_is_initially_active(obj, True);
 

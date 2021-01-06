@@ -95,7 +95,7 @@
  * Removed debugging #defines.
  */
 #include "Search.h"	/* the "public" header file */
-#include <nl_types.h>	/* for nl_catd below and all cat...() funcs */
+#include <Dt/MsgCatP.h>	/* for nl_catd below and all cat...() funcs */
 #include <sys/types.h>
 #include <netinet/in.h>
 
@@ -600,7 +600,7 @@ extern void swab_objrec (struct or_objrec *rec,  SWABDIR direction);
 
 /*------------------------- MACROS ---------------------------*/
 /* (Use offsetof() in stddef.h to replace my old OFFSET macro) */
-#define NULLORSTR(str)      ((str)?str:catgets(dtsearch_catd,1,1,"<null>"))
+#define NULLORSTR(str)      ((str)?str:CATGETS(dtsearch_catd,1,1,"<null>"))
 #define NUMARRAY(arr)       ((sizeof(arr) / sizeof(arr[0])))
 
 /****************************************/

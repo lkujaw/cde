@@ -252,7 +252,7 @@ static int	update_msg_set(MsgFile msgFile, ABObj obj);
 
 #define print_writing_message(_fname) \
 	 {STRING progress_msg; \
-	 progress_msg=XtNewString(catgets(Dtb_project_catd, 1, 52, "writing"));\
+	 progress_msg=XtNewString(CATGETS(Dtb_project_catd, 1, 52, "writing"));\
 	 print_progress_message(1,progress_msg,_fname);\
 	 XtFree(progress_msg);}
 
@@ -486,7 +486,7 @@ epilogue:
     if (return_value < 0)
     {
 	util_puts_err("\n");
-	util_puts_err(catgets(Dtb_project_catd, 1, 53,
+	util_puts_err(CATGETS(Dtb_project_catd, 1, 53,
 	    "** Aborting due to errors **\n"));
     }
     abmfP_res_file_close(genCodeInfo->resource_file);	/* NULL OK */
@@ -544,13 +544,13 @@ write_module_files(
 	char *prog_name_string = util_get_program_name();
 	char *module_name_string = obj_get_name(module);
 
-	fprintf(stderr, catgets(Dtb_project_catd, 1, 54,
+	fprintf(stderr, CATGETS(Dtb_project_catd, 1, 54,
 	    "%s: module filename must contain only letters\n"), 
 	    prog_name_string);
-	fprintf(stderr, catgets(Dtb_project_catd, 1, 55,
+	fprintf(stderr, CATGETS(Dtb_project_catd, 1, 55,
 	    "and digits.  %s will generate C variables based\n"), 
 	    prog_name_string);
-	fprintf(stderr, catgets(Dtb_project_catd, 1, 56,
+	fprintf(stderr, CATGETS(Dtb_project_catd, 1, 56,
 	    "on the module filename.  Please rename %s\n"), module_name_string);
 	exit(1);
     }
@@ -628,7 +628,7 @@ write_module_files(
 	    if ((genCodeInfo->resource_file != NULL) && (resFileName != NULL))
 	    {
 		char *prog_name_string = util_get_program_name();
-		fprintf(stderr, catgets(Dtb_project_catd, 1, 57,
+		fprintf(stderr, CATGETS(Dtb_project_catd, 1, 57,
 			"%s: writing resources for %s into %s\n"),
 			prog_name_string,
 			uiCFileName,
@@ -888,7 +888,7 @@ write_project_files(
 	{
 	    if (check_dates && force_write_c_file)
 	    {
-		util_printf(catgets(Dtb_project_catd, 1, 58,
+		util_printf(CATGETS(Dtb_project_catd, 1, 58,
 		    "generating %s because of changes in modules\n"),
 		    stubsFileName);
 	    }
@@ -1014,7 +1014,7 @@ write_make_file(
 	    if (util_be_verbose())
 	    {
 		char *prog_name_string = util_get_program_name();
-		fprintf(stderr, catgets(Dtb_project_catd, 1, 59,
+		fprintf(stderr, CATGETS(Dtb_project_catd, 1, 59,
 		    "%s: Skipping user-defined %s\n"),
 		    prog_name_string, curMakeFileName);
 	    }
@@ -1037,7 +1037,7 @@ write_make_file(
 
     if (actualOSType == AB_OS_UNDEF)
     {
-	util_printf_err(catgets(Dtb_project_catd, 1, 60,
+	util_printf_err(CATGETS(Dtb_project_catd, 1, 60,
 	    "Could not determine OS type of this machine\n"));
 	goto epilogue;
     }
@@ -1049,7 +1049,7 @@ write_make_file(
 	/* The user has modified this file since we wrote it last */
 	if (util_be_verbose())
 	{
-	    util_printf(catgets(Dtb_project_catd, 1, 61,
+	    util_printf(CATGETS(Dtb_project_catd, 1, 61,
 	       "Skipping user-defined %s\n"), actualMakeFileName);
 	}
     }
@@ -1057,20 +1057,20 @@ write_make_file(
     {
 	if (!util_be_silent())
 	{
-	    util_printf(catgets(Dtb_project_catd, 1, 62,
+	    util_printf(CATGETS(Dtb_project_catd, 1, 62,
 		 "linking %s => %s\n"), curMakeFileName, actualMakeFileName);
 	}
 	rc = unlink(actualMakeFileName);
 	if (util_file_exists(actualMakeFileName))
 	{
-	    util_printf_err(catgets(Dtb_project_catd, 1, 63,
+	    util_printf_err(CATGETS(Dtb_project_catd, 1, 63,
 		"Could not remove %s\n"), actualMakeFileName);
 	    return_code(-1);
 	}
 	rc = link(curMakeFileName, actualMakeFileName);
 	if (rc != 0)
 	{
-	    util_printf_err(catgets(Dtb_project_catd, 1, 64,
+	    util_printf_err(CATGETS(Dtb_project_catd, 1, 64,
 		"Could not create link to %s\n"), curMakeFileName);
 	    return_code(-1);
 	}
@@ -1647,7 +1647,7 @@ check_and_replace_file(
         if (orgFile == NULL)
         {
 	    fileSkippedReasonOut = ABMF_SKIP_ERR_OCCURRED;
-	    util_printf_err(catgets(Dtb_project_catd, 1, 65, "%s: %s\n"),
+	    util_printf_err(CATGETS(Dtb_project_catd, 1, 65, "%s: %s\n"),
 		fileName, strerror(errno));
 	    return_code(-1);
         }
@@ -1673,7 +1673,7 @@ check_and_replace_file(
 	    if (file == NULL)
 	    {
 	        fileSkippedReasonOut = ABMF_SKIP_ERR_OCCURRED;
-	        util_printf_err(catgets(Dtb_project_catd, 1, 65, "%s: %s\n"),
+	        util_printf_err(CATGETS(Dtb_project_catd, 1, 65, "%s: %s\n"),
 		    fileName, strerror(errno));
 		return_code(ERR_OPEN);
 	    }
@@ -1767,7 +1767,7 @@ replace_file(STRING fileName, File fromFile, BOOL rewindFiles)
     toFile = util_fopen_locked(fileName, "w");
     if (toFile == NULL)
     {
-	util_printf_err(catgets(Dtb_project_catd, 1, 65, "%s: %s\n"),
+	util_printf_err(CATGETS(Dtb_project_catd, 1, 65, "%s: %s\n"),
 	    fileName, strerror(errno));
 	return ERR_OPEN;
     }
@@ -1787,7 +1787,7 @@ print_progress_message(int verbosity, STRING message, STRING fileName)
 {
     if (util_get_verbosity() >= verbosity)
     {
-	util_printf_err(catgets(Dtb_project_catd, 1, 67, "%s %s\n"),
+	util_printf_err(CATGETS(Dtb_project_catd, 1, 67, "%s %s\n"),
 		message, fileName);
     }
     return 0;
@@ -1802,15 +1802,15 @@ print_skipping_message(STRING fileName, ABMF_SKIP_WHY why)
 	switch (why)
 	{
 	    case ABMF_SKIP_NO_CHANGES: 
-		util_printf(catgets(Dtb_project_catd, 1, 68,
+		util_printf(CATGETS(Dtb_project_catd, 1, 68,
 		    "skipping (no changes) %s\n"), fileName);
 		break;
 	    case ABMF_SKIP_UP_TO_DATE: 
-		util_printf(catgets(Dtb_project_catd, 1, 69,
+		util_printf(CATGETS(Dtb_project_catd, 1, 69,
 		    "skipping (up-to-date) %s\n"), fileName);
 		break;
 	    case ABMF_SKIP_ERR_OCCURRED: 
-		util_printf(catgets(Dtb_project_catd, 1, 70,
+		util_printf(CATGETS(Dtb_project_catd, 1, 70,
 		    "skipping due to errors %s\n"), fileName);
 		break;
 	}
@@ -1824,7 +1824,7 @@ print_backing_up_message(STRING fileFromName, STRING fileToName)
 {
     if (util_be_verbose())
     {
-	util_printf(catgets(Dtb_project_catd, 1, 71, 
+	util_printf(CATGETS(Dtb_project_catd, 1, 71,
 	  "saving previous %s to %s\n"), fileFromName, fileToName);
     }
     return 0;

@@ -33,7 +33,7 @@
 extern "C" {
 #endif
 
-#include <nl_types.h> 
+#include <Dt/MsgCatP.h>
 #include <locale.h> 
 
 #include "dtprintinfo_msg.h"
@@ -41,14 +41,8 @@ extern "C" {
 
 extern nl_catd dtprintinfo_cat;
 
-#ifdef hpux
-extern char *Catgets(nl_catd catd, int set_num, int msg_num, char *s);
 #define MESSAGE(msg) \
-   Catgets(dtprintinfo_cat,DTPRINTER_SET,msg,TXT_DTPRINTER_SET_ ## msg)
-#else
-#define MESSAGE(msg) \
-   catgets(dtprintinfo_cat,DTPRINTER_SET,msg,TXT_DTPRINTER_SET_ ## msg)
-#endif
+   CATGETS(dtprintinfo_cat,DTPRINTER_SET,msg,TXT_DTPRINTER_SET_ ## msg)
 
 #ifdef __cplusplus
 }  /* Close scope of 'extern "C"' declaration which encloses file. */

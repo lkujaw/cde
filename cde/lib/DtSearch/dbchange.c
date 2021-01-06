@@ -89,7 +89,7 @@ static int      file_has_changed (char *fname, time_t origtime)
     char            sprintbuf[1024];
 
     if (stat (fname, &statbuf) == -1) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, 10, 1300,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, 10, 1300,
 		"%s Unable to comply with request; cannot access status\n"
 		"  of database file '%s': %s"),
 	    PROGNAME "1300", fname, strerror (errno));
@@ -107,7 +107,7 @@ static int      file_has_changed (char *fname, time_t origtime)
 	    PROGNAME "1312", aa_argv0, fname,
 	    sprintbuf, nowstring (&statbuf.st_mtime));
 	if (!(usrblk.flags & USR_NO_INFOMSGS)) {
-	    sprintf (sprintbuf, catgets (dtsearch_catd, 10, 1313,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, 10, 1313,
 		    "%s *** REQUEST CANCELED *** %s Engine reinitialized\n"
 		    "  due to modification of file %s, probably caused by\n"
 		    "  update to one or more databases."),

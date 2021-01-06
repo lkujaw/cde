@@ -58,7 +58,7 @@
 #include    <setjmp.h>
 #include    <string.h>
 #include    <dirent.h>
-#include    <nl_types.h>
+#include    <Dt/MsgCatP.h>
 
 # include   <sys/signal.h>
 
@@ -112,7 +112,6 @@ unsigned char *
 ReadCatalog( int set_num, int msg_num, char *def_str )
 {
     static Bool alreadyopen = False;
-    char *s;
 
     if (alreadyopen == False)
     {
@@ -174,12 +173,10 @@ ReadCatalog( int set_num, int msg_num, char *def_str )
       * msg catalog could not be opened), subsequent call to catgets() using
       * that descriptor will return 'def_str'.
       */
-      nl_fd = catopen("dtlogin", NL_CAT_LOCALE);
+      nl_fd = CATOPEN("dtlogin", NL_CAT_LOCALE);
     }
 
-    s = catgets(nl_fd,set_num,msg_num,def_str);
-    
-    return((unsigned char *)s);
+    return ((unsigned char *) CATGETS(nl_fd, set_num, msg_num, def_str));
 }
 
 void

@@ -76,7 +76,7 @@
 #include <limits.h>
 #include <locale.h>
 #ifndef NO_MESSAGE_CATALOG
-# include <nl_types.h>
+# include <Dt/MsgCatP.h>
 #endif
 
 #include <Dt/EnvControlP.h>
@@ -1147,30 +1147,15 @@ GetMessage(
         int n,
         char *s )
 {
-        char *msg;
-	char *lang;
-	nl_catd catopen();
-	char *catgets();
 	static int first = 1;
-	static nl_catd nlmsg_fd;
-	if ( first ) 
+	static nl_catd nlmsg_fd = (nl_catd) -1;
+
+	if ( first )
         {
 		first = 0;
-
-		lang = (char *) getenv ("LANG");
-
-		if (!lang || !(strcmp (lang, "C"))) 
-			/*
-			 * If LANG is not set or if LANG=C, then there
-			 * is no need to open the message catalog - just
-			 * return the built-in string "s".
-			 */
-			nlmsg_fd = (nl_catd)-1;
-		else
-			nlmsg_fd = catopen("dthello", NL_CAT_LOCALE);
+		nlmsg_fd = CATOPEN("dthello", NL_CAT_LOCALE);
 	}
-	msg=catgets(nlmsg_fd,set,n,s);
-	return (msg);
+	return CATGETS(nlmsg_fd, set, n, s);
 }
 #endif
 

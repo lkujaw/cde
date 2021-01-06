@@ -2269,7 +2269,7 @@ abobj_paste(
                     if (!obj_is_base_win(winobj))
 		    {
 			Err = True;
-                        i18n_msg = catgets(Dtb_project_catd, 100, 37,
+                        i18n_msg = CATGETS(Dtb_project_catd, 100, 37,
 				"Menubar can be pasted to a Main Window only.");
 
                         if (errmsg != (STRING) NULL)
@@ -2289,7 +2289,7 @@ abobj_paste(
                             if (obj_is_menubar(nobj))
 			    {
 			        Err = True;
-	                        i18n_msg = catgets(Dtb_project_catd, 100, 27,  
+	                        i18n_msg = CATGETS(Dtb_project_catd, 100, 27,
 				"There is already a Menubar for the selected window.");
 				if (errmsg != (STRING) NULL)
 				    util_free(errmsg);  
@@ -2308,7 +2308,7 @@ abobj_paste(
         	       && !obj_is_file_chooser(obj_get_root(root)))))
 		    {
 			Err = True;
-                        i18n_msg = catgets(Dtb_project_catd, 100, 28,
+                        i18n_msg = CATGETS(Dtb_project_catd, 100, 28,
 				"Containers must be pasted to\na Main Window or Custom Dialog.");
 
                         if (errmsg != (STRING) NULL)
@@ -2324,7 +2324,7 @@ abobj_paste(
 		       || obj_is_group(obj_get_root(root)))))
 		    {
 			Err = True;
-                        i18n_msg = catgets(Dtb_project_catd, 100, 57,
+                        i18n_msg = CATGETS(Dtb_project_catd, 100, 57,
 				"Groups must be pasted to\na group or control panel.");
 
                         if (errmsg != (STRING) NULL)
@@ -2406,7 +2406,7 @@ abobj_paste(
 		        if (obj_is_control_panel(obj))
 		        {
 			    Err = True;
-                            i18n_msg = catgets(Dtb_project_catd, 100, 59,
+                            i18n_msg = CATGETS(Dtb_project_catd, 100, 59,
 			"Control Panes must be pasted to a Main Window,\nCustom Dialog, or another pane.");
 
                             /* If we have an old buffer lying around, free it */
@@ -2440,7 +2440,7 @@ abobj_paste(
 				!(obj_is_container(root) && !obj_is_menubar(root))))
 		    {
 			Err = True;
-                        i18n_msg = catgets(Dtb_project_catd, 100, 29,
+                        i18n_msg = CATGETS(Dtb_project_catd, 100, 29,
 				"Panes must be pasted to\na Main Window, Custom Dialog or Container.");
 
                         if (errmsg != (STRING) NULL)
@@ -2459,7 +2459,7 @@ abobj_paste(
                 	!obj_is_group(obj_get_root(newroot))))
 		    {
 			Err = True;
-                        i18n_msg = catgets(Dtb_project_catd, 100, 30, 
+                        i18n_msg = CATGETS(Dtb_project_catd, 100, 30,
 				"Controls must be pasted to\na Control Panel or Group."); 
 
                         if (errmsg != (STRING) NULL) 

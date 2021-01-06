@@ -48,7 +48,6 @@ static char *termWhatString = _DtTermPullInTermWhatString;
 #include "TermPrimRenderLineDraw.h"
 #include "TermPrimMessageCatI.h"
 #include "TermPrimSelectP.h"
-#include <nl_types.h>
 
 
 static int TextInsertProc(Widget w, unsigned char *buffer, int length);

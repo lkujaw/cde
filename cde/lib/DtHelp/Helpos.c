@@ -51,9 +51,6 @@
 #define XOS_USE_XT_LOCKING
 #include <X11/Xos_r.h>
 #include <unistd.h>
-#ifndef _SUN_OS /* don't need the nl_types.h file */
-# include <nl_types.h>
-#endif /* ! _SUN_OS */
 
 #include <X11/Intrinsic.h>
 #include <X11/Shell.h>
@@ -62,6 +59,7 @@
 /* Dt Includes */
 #include <Dt/Help.h>
 #include <Dt/DtNlUtils.h>
+#include <Dt/MsgCatP.h>
 
 #include "HelpP.h"
 #include "HelpI.h"
@@ -305,8 +303,6 @@ char *_DtHelpGetMessage(
 {
    char *msg;
    char *loc;
-   nl_catd catopen();
-   char *catgets();
    static int first = 1;
    static nl_catd nlmsg_fd;
 
@@ -330,12 +326,12 @@ char *_DtHelpGetMessage(
 	 */
 	nlmsg_fd = (nl_catd) -1;
      else
-	nlmsg_fd = catopen(CatFileName, NL_CAT_LOCALE);
+	nlmsg_fd = CATOPEN(CatFileName, NL_CAT_LOCALE);
 
      first = 0;
    }
    
-   msg=catgets(nlmsg_fd,set,n,s);
+   msg=CATGETS(nlmsg_fd,set,n,s);
    _DtHelpProcessUnlock();
    return (msg);
 }

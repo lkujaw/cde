@@ -34,17 +34,11 @@
  * (c) Copyright 1996 Hitachi.
  */
 
-#ifdef I18N_MSG
-
-#include <nl_types.h>
+#include "nlmsg.h"
 
 #if !defined(NL_CAT_LOCALE)
 #define NL_CAT_LOCALE 0
 #endif 
-
-#define DTPDMD_CAT_NAME "dtpdmd"
-
-#endif /* I18N_MSG */
 
 /*
  * ------------------------------------------------------------------------
@@ -108,8 +102,6 @@ const char DtPdmdMsg_0015[] = "\
 
 const char DtPdmdMsg_0016[] = "%1$s: error, cannot open log file \"%2$s\". Turning off stderr message logging\n";
 
-#ifdef I18N_MSG
-
 /*
  * ------------------------------------------------------------------------
  * Name: DtPdmdGetMessage
@@ -126,26 +118,17 @@ const char DtPdmdMsg_0016[] = "%1$s: error, cannot open log file \"%2$s\". Turni
  * Returns: the string for set 'set' and number 'n'.
  */
 const char *
-DtPdmdGetMessage(
-		int set,
-		int n,
-		char * s)
+DtPdmdGetMessage(int set,
+                 int n,
+                 const char *s)
 {
-    char *msg;
-    nl_catd catopen();
-    char *catgets();
     static int first = 1;
-    static nl_catd nlmsg_fd;
-    
-    if(set == -1 || n == -1)
-	return s;
-    
-    if(first) 
+    static nl_catd nlmsg_fd = (nl_catd) -1;
+
+    if (first)
     {
 	first = 0;
-	nlmsg_fd = catopen(DTPDMD_CAT_NAME, NL_CAT_LOCALE);
+	nlmsg_fd = CATOPEN("dtpdmd", NL_CAT_LOCALE);
     }
-    msg=catgets(nlmsg_fd,set,n,s);
-    return (msg);
+    return CATGETS(nlmsg_fd, set, n, s);
 }
-#endif /* I18N_MSG */

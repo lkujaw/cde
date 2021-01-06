@@ -113,7 +113,7 @@
 #ifndef NO_MESSAGE_CATALOG
 # define TRUE 1
 # define FALSE 0
-# include <nl_types.h>
+# include <Dt/MsgCatP.h>
 # if !defined(NL_CAT_LOCALE)
 #  define NL_CAT_LOCALE 0
 # endif
@@ -1703,27 +1703,19 @@ char *
 _DtpadGetMessage(
     int set,
     int number,
-    char *string )
+    const char *string)
 {
-    char *msg;
-    nl_catd catopen();
-    char *catgets();
     static int first = 1;
-    static nl_catd nlmsg_fd;
+    static nl_catd nlmsg_fd = (nl_catd) -1;
 
     if ( first ) {
 	first = 0;
-	nlmsg_fd = catopen(_DTPAD_CAT_NAME, NL_CAT_LOCALE);
+	nlmsg_fd = CATOPEN(_DTPAD_CAT_NAME, NL_CAT_LOCALE);
 
-	if (nlmsg_fd == -1) 
+	if (nlmsg_fd == (nl_catd) -1)
             perror("catopen");
     }
-#if defined(hpV4)
-    msg = _DtCatgetsCached(nlmsg_fd, set, number, string);
-#else
-    msg = catgets(nlmsg_fd, set, number, string);
-#endif
-    return (msg);
+    return CATGETS(nlmsg_fd, set, number, string);
 }
 
 #endif /* NO_MESSAGE_CATALOG */

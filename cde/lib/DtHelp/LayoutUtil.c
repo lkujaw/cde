@@ -64,14 +64,6 @@
 #include "StringFuncsI.h"
 #include "VirtFuncsI.h"
 
-#if defined(NLS16) || !defined(NO_MESSAGE_CATALOG)
-#include <nl_types.h>
-#endif
-
-#ifndef NL_CAT_LOCALE
-static const int NL_CAT_LOCALE = 0;
-#endif
-
 /******************************************************************************
  *
  * Private Defines

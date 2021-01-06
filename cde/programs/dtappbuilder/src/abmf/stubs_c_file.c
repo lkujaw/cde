@@ -1192,7 +1192,7 @@ abmfP_write_action_function(
     default:
 	{
 	    char *obj_name_string = obj_get_name(fromObj);
-	    util_printf_err(catgets(Dtb_project_catd, 1, 78,
+	    util_printf_err(CATGETS(Dtb_project_catd, 1, 78,
 		    "unknown function type for action from object, %s"),
 		    obj_name_string);
 	    return_code(ERR);
@@ -1469,13 +1469,13 @@ write_builtin_action(
 		if (obj_get_name(action) != NULL)
 		{
 		    char *action_name = obj_get_name(action);
-		    sprintf(msg, catgets(Dtb_project_catd, 1, 76,
+		    sprintf(msg, CATGETS(Dtb_project_catd, 1, 76,
 			"Unknown action name, %s"), action_name);
 		}
 		else
 		{
 		    int action_type = obj_get_func_builtin(action);
-		    sprintf(msg, catgets(Dtb_project_catd, 1, 77,
+		    sprintf(msg, CATGETS(Dtb_project_catd, 1, 77,
 			"Unknown action type, %d"), action_type);
 		}
 		util_error(msg);

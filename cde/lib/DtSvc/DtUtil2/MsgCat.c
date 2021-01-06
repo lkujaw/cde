@@ -37,11 +37,18 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <nl_types.h>
-#include <X11/Intrinsic.h>
-#include <Dt/MsgCatP.h>
-#include <DtSvcLock.h>
 
+#if defined(NO_XLIB)
+#define _DtSvcProcessLock()
+#define _DtSvcProcessUnlock()
+#else
+#include <X11/Intrinsic.h>
+#include <DtSvcLock.h>
+#endif /* NO_XLIB */
+
+#include <Dt/MsgCatP.h>
+
+#if defined(hpV4) && !defined(NO_XLIB)
 typedef struct _dt_msg_cache
 {
     char ***cached_msgs;
@@ -56,8 +63,8 @@ static _DtMsgCache	*catalog_message_caches = NULL;
 
 static _DtMsgCache *get_msg_cache(nl_catd catd)
 {
-    #define INITIAL_NMSGS_PER_SET	300
-    #define INITIAL_NSETS		50
+    const int initial_nmsgs_per_set = 300;
+    const int initial_nsets         = 50;
 
     _DtMsgCache *c;
 
@@ -66,28 +73,23 @@ static _DtMsgCache *get_msg_cache(nl_catd catd)
 
     c = (_DtMsgCache*) XtMalloc(sizeof(_DtMsgCache));
     c->cached_msgs = NULL;
-    c->nmsgs_per_set = INITIAL_NMSGS_PER_SET;
-    c->nsets = INITIAL_NSETS;
+    c->nmsgs_per_set = initial_nmsgs_per_set;
+    c->nsets = initial_nsets;
     c->catd = catd;
     c->next = catalog_message_caches;
     catalog_message_caches = c;
     return c;
 }
 
-
 /*
  * Wrapper around catgets -- this makes sure the message string is saved
  * in a safe location; so repeated calls to catgets() do not overwrite
  * the catgets() internal buffer.  This has been a problem on HP systems.
  */
-char *_DtCatgetsCached(nl_catd catd, int set, int num, char *dflt)
+char *_DtCatgetsCached(nl_catd catd, int set, int num, const char *dflt)
 {
-    char	*message;
-
-#if !defined(hpV4)
-    message = catgets(catd, set, num, dflt);
-#else
-    _DtMsgCache *c;
+    char	*message = NULL;
+    _DtMsgCache	*c;
     char	**setptr;
     int		i, multiplier;
     int		size;
@@ -95,8 +97,6 @@ char *_DtCatgetsCached(nl_catd catd, int set, int num, char *dflt)
     /* convert to a zero based index */
     int		setIdx = set - 1;
     int		numIdx = num - 1;
-
-    _DtSvcProcessLock();
 
     c = get_msg_cache(catd);
     if (NULL == c) 
@@ -150,8 +150,32 @@ char *_DtCatgetsCached(nl_catd catd, int set, int num, char *dflt)
   
     message = setptr[numIdx];
 
-    _DtSvcProcessUnlock();
+    return message;
+}
 #endif /* hpV4 */
 
-    return message;
+int _DtCatclose(nl_catd catd)
+{
+    return (catd == (nl_catd) -1) ? 0 : catclose(catd);
+}
+
+char *_DtCatgets(nl_catd catd, int set, int num, const char *dflt)
+{
+    char *msg = NULL;
+
+    if (catd == (nl_catd) -1 || set < 0 || num < 0) {
+      /* Some catgets() implementations will fault if catd is invalid. */
+      msg = (char *) dflt;
+    } else {
+      /* Per POSIX, we cannot assume catgets() is thread-safe. */
+      _DtSvcProcessLock();
+#if defined(hpV4) && !defined(NO_XLIB)
+      msg = _DtCatgetsCached(catd, set, num, dflt);
+#else
+      msg = catgets(catd, set, num, dflt);
+#endif /* hpV4 */
+      _DtSvcProcessUnlock();
+    }
+
+   return msg;
 }

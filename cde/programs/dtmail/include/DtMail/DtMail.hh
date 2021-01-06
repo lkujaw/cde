@@ -52,7 +52,7 @@
 #include <iconv.h>
 #endif
 #include <sys/stat.h>
-/*#include <nl_types.h>*/
+/*#include <Dt/MsgCatP.h>*/
 #include <DtMail/DtMailError.hh>
 #include <DtMail/DtMailProps.h>
 #include <DtMail/DtMailTypes.h>

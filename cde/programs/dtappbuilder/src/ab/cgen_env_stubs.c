@@ -105,7 +105,7 @@ cgenP_get_envCB(
         }
 	if (var_value == NULL)
 	{
-	    XmTextSetString(env_dlg->textpane, catgets(Dtb_project_catd, 100, 58, "*** Not Set ***"));
+	    XmTextSetString(env_dlg->textpane, CATGETS(Dtb_project_catd, 100, 58, "*** Not Set ***"));
 	}
 	else
 	{
@@ -193,7 +193,7 @@ cgenP_reset_envCB(
 
     if (var_value == NULL)
     {
-	XmTextSetString(env_dlg->textpane, catgets(Dtb_project_catd, 100, 58, "*** Not Set ***"));
+	XmTextSetString(env_dlg->textpane, CATGETS(Dtb_project_catd, 100, 58, "*** Not Set ***"));
     }
     else
     {

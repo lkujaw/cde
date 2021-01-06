@@ -48,7 +48,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <Tt/tt_c.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 //
 // Name of the messaging database file.

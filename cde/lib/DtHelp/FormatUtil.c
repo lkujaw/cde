@@ -75,7 +75,7 @@ extern int errno;
 #include "FormatUtilI.h"
 
 #if defined(NLS16) || !defined(NO_MESSAGE_CATALOG)
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #endif
 
 #ifndef NL_CAT_LOCALE
@@ -789,13 +789,13 @@ _DtHelpLoadMultiInfo (
     char     *ptr;
     nl_catd   cat_fd;
 
-    cat_fd = catopen ("fmt_tbl", NL_CAT_LOCALE);
+    cat_fd = CATOPEN("fmt_tbl", NL_CAT_LOCALE);
     if (cat_fd != ((nl_catd) -1))
       {
 	/*
 	 * Get the list of characters that can't begin a line.
 	 */
-	ptr = catgets (cat_fd, 1, 1, "");
+	ptr = CATGETS(cat_fd, 1, 1, "");
 	len = strlen (ptr) + 1;
 	*cant_begin_chars = (wchar_t *) malloc (len * sizeof (wchar_t));
 	if (NULL != *cant_begin_chars &&
@@ -808,7 +808,7 @@ _DtHelpLoadMultiInfo (
 	/*
 	 * Get the list of characters that can't end a line.
 	 */
-	ptr = catgets (cat_fd, 1, 2, "");
+	ptr = CATGETS(cat_fd, 1, 2, "");
 	len = strlen (ptr) + 1;
 	*cant_end_chars = (wchar_t *) malloc (len * sizeof (wchar_t));
 	if (*cant_end_chars != NULL &&
@@ -825,10 +825,10 @@ _DtHelpLoadMultiInfo (
 	 *      0 means only between a multibyte string and
 	 *        a singlebyte string.
 	 */
-	ptr = catgets (cat_fd, 1, 3, "1");
+	ptr = CATGETS(cat_fd, 1, 3, "1");
 	*nl_to_space = atoi(ptr);
 
-	catclose (cat_fd);
+	CATCLOSE(cat_fd);
       }
     else
 #endif

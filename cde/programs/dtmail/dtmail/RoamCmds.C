@@ -209,7 +209,7 @@ SearchCmd::doit()
     _menuwindow->normalCursor();
     
     if (count == 0) {
-	_menuwindow->message(GETMSG(DT_catd, 3, 46, "Empty container"));
+	_menuwindow->message(CATGETS(DT_catd, 3, 46, "Empty container"));
 	_done = TRUE;
 	return;
     }
@@ -833,7 +833,7 @@ UnifiedSelectFileCmd::unifiedFileSelected(char *selection)
         errmsg = (const char*) error;
         err = strdup(errmsg);
 
-	_genDialog->setToErrorDialog(GETMSG(DT_catd, 3, 48, "Mailer"), err);
+	_genDialog->setToErrorDialog(CATGETS(DT_catd, 3, 48, "Mailer"), err);
 	answer = _genDialog->post_and_return(DTMAILHELPERROR);
 	if (1 == answer) doit();
 	if (err) free(err);
@@ -1154,7 +1154,7 @@ UnifiedSelectMailboxCmd::unifiedMailboxSelected(
         errmsg = (const char*) error;
         err = strdup(errmsg);
 
-	_genDialog->setToErrorDialog(GETMSG(DT_catd, 3, 48, "Mailer"), err);
+	_genDialog->setToErrorDialog(CATGETS(DT_catd, 3, 48, "Mailer"), err);
 	answer = _genDialog->post_and_return(DTMAILHELPERROR);
 	if (1 == answer) doit();
 	if (err) free(err);
@@ -1213,7 +1213,7 @@ ContainerMenuCmd::doit()
     // Initialize mail_error.
     mail_error.clear();
 
-    theRoamApp.busyAllWindows(GETMSG(DT_catd, 3, 15, "Saving..."));
+    theRoamApp.busyAllWindows(CATGETS(DT_catd, 3, 15, "Saving..."));
     _menuwindow->mailbox()->save();
     theRoamApp.unbusyAllWindows();
 
@@ -1432,7 +1432,7 @@ UndeleteCmd::doit()
 	}
 //	if (!_undelFromList) {
 	_undelFromList = new UndelFromListDialog(
-	                 GETMSG(DT_catd, 1, 227, "Mailer - Deleted Messages"), 
+	                 CATGETS(DT_catd, 1, 227, "Mailer - Deleted Messages"),
 	                 _menuwindow);	
 	_undelFromList->initialize();
 	
@@ -1496,7 +1496,7 @@ MoveCopyCmd::MoveCopyCmd( char *name,
 			  DtMailBoolean only_show_mailboxes)
 : UnifiedSelectMailboxCmd(name,
 			  label,
-			  GETMSG(DT_catd, 1, 89, "Mailer - Other Mailboxes"),
+			  CATGETS(DT_catd, 1, 89, "Mailer - Other Mailboxes"),
 			  "Move",
 			  active, 
 			  move_callback, 
@@ -1539,7 +1539,7 @@ MoveCopyCmd::doit()
     if (!_fileBrowser) {
 	UnifiedSelectMailboxCmd::doit();
 	// Customize buttons for MoveCopy dialog
-	move = XmStringCreateLocalized(GETMSG(DT_catd, 1, 90, "Move"));
+	move = XmStringCreateLocalized(CATGETS(DT_catd, 1, 90, "Move"));
 	
 	filter_button = XtNameToWidget(_fileBrowser, "*Apply");
 	_move_button = XtNameToWidget(_fileBrowser, "*OK");
@@ -1549,11 +1549,11 @@ MoveCopyCmd::doit()
 			xmPushButtonWidgetClass, _fileBrowser,
 			NULL);
 	_copy_button = XtVaCreateManagedWidget(
-			GETMSG(DT_catd, 1, 237, "Copy"),
+			CATGETS(DT_catd, 1, 237, "Copy"),
 			/*xmPushButtonWidgetClass, _fileBrowser,*/
 			xmPushButtonGadgetClass, _fileBrowser,
                 	XmNlabelString,
-                	XmStringCreateLocalized(GETMSG(DT_catd, 1, 43, "Copy")),
+                	XmStringCreateLocalized(CATGETS(DT_catd, 1, 43, "Copy")),
 			NULL);
 	printHelpId("Copy", _copy_button);
 	//
@@ -2084,7 +2084,7 @@ RelNoteCmd::doit()
     //   _genDialog = new DtMailGenDialog("AboutBox", _parent->baseWidget());
     
     // _genDialog->setToAboutDialog();
-    // answer = _genDialog->post_and_return(GETMSG(DT_catd, 1, 92, "OK"), NULL);
+    // answer = _genDialog->post_and_return(CATGETS(DT_catd, 1, 92, "OK"), NULL);
 
     DisplayMain(_parent->baseWidget(), "Mailer", "_copyright");
 }
@@ -2248,7 +2248,7 @@ SaveAttachCmd::SaveAttachCmd ( char *name,
 :UnifiedSelectFileCmd (name,
 		       label,
 		       title,
-		       GETMSG(DT_catd, 1, 93, "Save"),
+		       CATGETS(DT_catd, 1, 93, "Save"),
 		       active,
 		       save_callback,
 		       clientData,
@@ -2270,7 +2270,7 @@ SaveAttachCmd::SaveAttachCmd (
 :UnifiedSelectFileCmd (name,
 		       label,
 		       title,
-		       GETMSG(DT_catd, 1, 93, "Save"),
+		       CATGETS(DT_catd, 1, 93, "Save"),
 		       active,
 		       save_callback,
 		       clientData,
@@ -2292,7 +2292,7 @@ SaveAttachCmd::SaveAttachCmd (
 :UnifiedSelectFileCmd (name,
 		       label,
 		       title,
-		       GETMSG(DT_catd, 1, 93, "Save"),
+		       CATGETS(DT_catd, 1, 93, "Save"),
 		       active,
 		       save_callback,
 		       clientData,
@@ -2341,7 +2341,7 @@ SaveAsTextCmd::SaveAsTextCmd (
 :UnifiedSelectFileCmd (name,
 		       label,
 		       title,
-		       GETMSG(DT_catd, 1, 95, "Save"),
+		       CATGETS(DT_catd, 1, 95, "Save"),
 		       active,
 		       fileCB,
 		       this,
@@ -2363,7 +2363,7 @@ SaveAsTextCmd::SaveAsTextCmd (
 :UnifiedSelectFileCmd (name,
 		       label,
 		       title,
-		       GETMSG(DT_catd, 1, 95, "Save"),
+		       CATGETS(DT_catd, 1, 95, "Save"),
 		       active,
 		       fileCB,
 		       this,
@@ -2392,10 +2392,10 @@ SaveAsTextCmd::saveText(const char * filename)
     if (0 == status)
     {
 	sprintf(buf,
-		GETMSG(DT_catd, 3, 47, "%s already exists.\nOverwrite?"),
+		CATGETS(DT_catd, 3, 47, "%s already exists.\nOverwrite?"),
 		filename);
 	
-	_genDialog->setToQuestionDialog(GETMSG(DT_catd, 3, 48, "Mailer"), buf);
+	_genDialog->setToQuestionDialog(CATGETS(DT_catd, 3, 48, "Mailer"), buf);
 	helpId = DTMAILHELPERROR;
 	answer = _genDialog->post_and_return(helpId);
 	if (answer==2) {
@@ -2406,10 +2406,10 @@ SaveAsTextCmd::saveText(const char * filename)
 	if (unlink(filename) < 0)
 	{
 	    sprintf(buf, 
-		    GETMSG(DT_catd, 3, 49, "Unable to overwrite %s.\n\
+		    CATGETS(DT_catd, 3, 49, "Unable to overwrite %s.\n\
 Check file permissions and retry."), 
 		    filename);
-	    _genDialog->setToErrorDialog(GETMSG(DT_catd, 3, 50, "Mailer"), buf);
+	    _genDialog->setToErrorDialog(CATGETS(DT_catd, 3, 50, "Mailer"), buf);
             helpId = DTMAILHELPNOOVERWRITE;
 	    _genDialog->post_and_return(helpId);
 	    delete [] buf;
@@ -2421,8 +2421,8 @@ Check file permissions and retry."),
     int fd = SafeOpen(filename, O_RDWR | O_CREAT | O_TRUNC, 0600);
     if (fd < 0)
     {
-	sprintf(buf, GETMSG(DT_catd, 3, 51, "Unable to create %s."), filename);
-	_genDialog->setToErrorDialog(GETMSG(DT_catd, 3, 52, "Mailer"), buf);
+	sprintf(buf, CATGETS(DT_catd, 3, 51, "Unable to create %s."), filename);
+	_genDialog->setToErrorDialog(CATGETS(DT_catd, 3, 52, "Mailer"), buf);
         helpId = DTMAILHELPNOCREATE;        
 	_genDialog->post_and_return(helpId);
 	delete [] buf;
@@ -2432,9 +2432,9 @@ Check file permissions and retry."),
     if (SafeWrite(fd, "\n", 1) < 1)
     {
 	sprintf(buf, 
-		GETMSG(DT_catd, 3, 53, "Unable to write to %s."), 
+		CATGETS(DT_catd, 3, 53, "Unable to write to %s."),
 		filename);
-	_genDialog->setToErrorDialog(GETMSG(DT_catd, 3, 54, "Mailer"), buf);
+	_genDialog->setToErrorDialog(CATGETS(DT_catd, 3, 54, "Mailer"), buf);
         helpId = DTMAILHELPNOWRITE;
 	_genDialog->post_and_return(helpId);
 	SafeClose(fd);
@@ -2473,8 +2473,8 @@ SaveAsTextCmd::writeTextFromScrolledList(int fd)
     char *tmpdir = new char[MAXPATHLEN+1];
     snprintf(tmpdir, MAXPATHLEN+1, "%s/%s", getenv("HOME"), DtPERSONAL_TMP_DIRECTORY);
     if ((tmppath = tempnam(tmpdir, "dtmail")) == NULL) {
-	snprintf(buf, sizeof(buf), GETMSG(DT_catd, 3, 51, "Unable to create %s."), tmpdir);
-	_genDialog->setToErrorDialog(GETMSG(DT_catd, 3, 52, "Mailer"), buf);
+	snprintf(buf, sizeof(buf), CATGETS(DT_catd, 3, 51, "Unable to create %s."), tmpdir);
+	_genDialog->setToErrorDialog(CATGETS(DT_catd, 3, 52, "Mailer"), buf);
         helpId = DTMAILHELPNOCREATE;        
 	_genDialog->post_and_return(helpId);
 	delete [] tmpdir;
@@ -2537,10 +2537,10 @@ SaveAsTextCmd::writeText(XtPointer filedes, char *text_buf)
 
 	sprintf(
 		buf,
-		GETMSG(DT_catd, 3, 53, "Unable to write to %s."), 
+		CATGETS(DT_catd, 3, 53, "Unable to write to %s."),
 		filename);
         helpId = DTMAILHELPNOWRITE;
-	_genDialog->setToErrorDialog(GETMSG(DT_catd, 3, 56, "Mailer"), buf);
+	_genDialog->setToErrorDialog(CATGETS(DT_catd, 3, 56, "Mailer"), buf);
 	_genDialog->post_and_return(helpId);
 #endif
     }
@@ -2566,8 +2566,8 @@ SaveAsTextCmd::doit()
 	    DtMailGenDialog *dialog = _roam_menu_window->genDialog();
 
 	    dialog->setToErrorDialog(
-			    GETMSG(DT_catd, 3, 50, "Mailer"),
-			    GETMSG(DT_catd, 2, 16, "No message selected."));
+			    CATGETS(DT_catd, 3, 50, "Mailer"),
+			    CATGETS(DT_catd, 2, 16, "No message selected."));
 	    dialog->post_and_return(NULL);
 
             return;
@@ -2701,12 +2701,12 @@ RenameAttachCmd::RenameAttachCmd (
 					0
 					);
     
-    message = XmStringCreateLocalized(GETMSG(DT_catd, 1, 96, "Empty"));
+    message = XmStringCreateLocalized(CATGETS(DT_catd, 1, 96, "Empty"));
     XtVaSetValues(renameDialog, XmNselectionLabelString, message, NULL);
     XmStringFree(message);
-    XmString ok_str = XmStringCreateLocalized(GETMSG(DT_catd, 1, 97, "Rename"));
+    XmString ok_str = XmStringCreateLocalized(CATGETS(DT_catd, 1, 97, "Rename"));
     XtVaSetValues(XtParent(renameDialog),
-		  XmNtitle, GETMSG(DT_catd, 1, 98, "Mailer - Rename"),
+		  XmNtitle, CATGETS(DT_catd, 1, 98, "Mailer - Rename"),
 		  NULL);
     XtVaSetValues(renameDialog,
 		  XmNokLabelString, ok_str,
@@ -2744,7 +2744,7 @@ void RenameAttachCmd::doit()
     
     renameDialog = aa->getRenameDialog();
     
-    sprintf(buf, "%s", GETMSG(DT_catd, 3, 57, "Rename attachment as"));
+    sprintf(buf, "%s", CATGETS(DT_catd, 3, 57, "Rename attachment as"));
     
     message = XmStringCreateLocalized(buf);
     
@@ -3493,9 +3493,9 @@ VacationCmd::handleForwardFile()
 	else
 	  dialog = theRoamApp.genDialog();
 
-	sprintf(error_buf, "%s", GETMSG(DT_catd, 1, 102, "You are already using the forwarding facility for\nsomething other than Vacation.  While Vacation is\nrunning, Vacation will be appended to this other\nforwarding activity. Is it still OK to start Vacation?\0"));
+	sprintf(error_buf, "%s", CATGETS(DT_catd, 1, 102, "You are already using the forwarding facility for\nsomething other than Vacation.  While Vacation is\nrunning, Vacation will be appended to this other\nforwarding activity. Is it still OK to start Vacation?\0"));
 
-	dialog->setToQuestionDialog(GETMSG(DT_catd, 1, 103, "Mailer"), 
+	dialog->setToQuestionDialog(CATGETS(DT_catd, 1, 103, "Mailer"),
 				    error_buf);
 
 	helpId = DTMAILHELPOKSTARTVACATION;
@@ -3541,7 +3541,7 @@ VacationCmd::handleForwardFile()
 	else
 	  dialog = theRoamApp.genDialog();
 
- 	sprintf(error_buf, "%s", GETMSG(DT_catd, 1, 104, "You are already running the vacation program in your .forward file.\nConsult documentation on how to stop it and remove it from your .forward file.\nTry this command after fixing that problem.\0"));
+ 	sprintf(error_buf, "%s", CATGETS(DT_catd, 1, 104, "You are already running the vacation program in your .forward file.\nConsult documentation on how to stop it and remove it from your .forward file.\nTry this command after fixing that problem.\0"));
  	
  	dialog->setToErrorDialog("Error", error_buf);
  	helpId = DTMAILHELPREMOVEVACATION;
@@ -3921,7 +3921,7 @@ VacationCmd::parseVacationMessage()
     if (SafeFStat(fd, &buf) < 0) {
 
 	sprintf(dialog_text, "%s",
-		GETMSG(DT_catd, 1, 105, "Cannot open .vacation.msg file -- No write permission."));
+		CATGETS(DT_catd, 1, 105, "Cannot open .vacation.msg file -- No write permission."));
 	dialog->setToQuestionDialog("Mailer", dialog_text);
 	helpId = DTMAILHELPNOWRITEVACATION;
 	answer = dialog->post_and_return(helpId);
@@ -3949,8 +3949,8 @@ VacationCmd::parseVacationMessage()
 	free_buf = 1;
 	mbuf.buffer = new char[mbuf.size];
 	if (mbuf.buffer == NULL) {
-	    dialog->setToErrorDialog(GETMSG(DT_catd, 3, 59, "No Memory"),
-				     GETMSG(DT_catd, 3, 60, "There is not enough memory to load the existing .vacation.msg file."));
+	    dialog->setToErrorDialog(CATGETS(DT_catd, 3, 59, "No Memory"),
+				     CATGETS(DT_catd, 3, 60, "There is not enough memory to load the existing .vacation.msg file."));
 	    helpId = DTMAILHELPNOLOADVACATION;
 	    answer = dialog->post_and_return(helpId);
 	    SafeClose(fd);
@@ -3962,8 +3962,8 @@ VacationCmd::parseVacationMessage()
 	}
 
 	if (SafeRead(fd, mbuf.buffer, (unsigned int)mbuf.size) < mbuf.size) {
-	    dialog->setToErrorDialog(GETMSG(DT_catd, 3, 61, "Mailer"),
-				     GETMSG(DT_catd, 3, 62, "The existing .vacation.msg file appears to be corrupt."));
+	    dialog->setToErrorDialog(CATGETS(DT_catd, 3, 61, "Mailer"),
+				     CATGETS(DT_catd, 3, 62, "The existing .vacation.msg file appears to be corrupt."));
 	    helpId = DTMAILHELPCORRUPTVACATION;
 	    answer = dialog->post_and_return(helpId);
 	    SafeClose(fd);
@@ -4107,7 +4107,7 @@ VacationCmd::handleMessageFile(
 
     if (msg_file_exists >= 0 &&  text_changed) {
 	sprintf(dialog_text, "%s",
-		GETMSG(DT_catd, 1, 106, ".vacation.msg file exists.  Replace with new text?"));
+		CATGETS(DT_catd, 1, 106, ".vacation.msg file exists.  Replace with new text?"));
 	dialog->setToQuestionDialog("Mailer", dialog_text);
 	helpId = DTMAILHELPEXISTSVACATION;
 	answer = dialog->post_and_return(helpId);
@@ -4125,7 +4125,7 @@ VacationCmd::handleMessageFile(
 	fd = SafeOpen(messagefile, O_WRONLY | O_CREAT);
 	if (fd < 0) {
 	    sprintf(dialog_text, "%s",
-		GETMSG(DT_catd, 1, 107, "Cannot open .vacation.msg file -- No write permission."));
+		CATGETS(DT_catd, 1, 107, "Cannot open .vacation.msg file -- No write permission."));
 	    dialog->setToQuestionDialog("Mailer", dialog_text);
 	    helpId = DTMAILHELPERROR;
 	    answer = dialog->post_and_return(helpId);
@@ -4142,7 +4142,7 @@ VacationCmd::handleMessageFile(
 	     * message that gets returned to the sender when vacation
 	     * is turned on.
 	     */
-	    subj = GETMSG(DT_catd, 1, 108, "I am on vacation");
+	    subj = CATGETS(DT_catd, 1, 108, "I am on vacation");
 	} else {
 	    buf.appendData("Subject: ", 9);
 	    buf.appendData(subj, strlen(subj));
@@ -4153,7 +4153,7 @@ VacationCmd::handleMessageFile(
         _subject = strdup(subj);
 	
 	if (!text) {
-	    text = GETMSG(DT_catd, 1, 109,
+	    text = CATGETS(DT_catd, 1, 109,
 			    "I'm on vacation.\nYour mail regarding \"$SUBJECT\" will be read when I return.\n");
 	}
 	buf.appendData(text, strlen(text));

@@ -219,7 +219,7 @@ appt_to_form(GEditor *ge, CSA_entry_handle a, char *name, int version) {
 	backend_err_msg(ge->frame, name, stat, pu->xm_error_pixmap);
 	if (stat == CSA_SUCCESS) {
 		sprintf(buf, "%s:  %s",
-			catgets(ge->cal->DT_catd, 1, 300, "Author"),
+			CATGETS(ge->cal->DT_catd, 1, 300, "Author"),
 			appt->author->value->item.calendar_user_value->user_name);
 		set_message(ge->message_text, buf);
 	} else
@@ -266,10 +266,10 @@ ge_set_modify_buttons(GEditor *ge, int cnt) {
 
 	if (cnt == 1)
 		sprintf(buf, "%d %s.", cnt,
-			catgets(ge->cal->DT_catd, 1, 633, "Calendar Selected"));
+			CATGETS(ge->cal->DT_catd, 1, 633, "Calendar Selected"));
 	else
 		sprintf(buf, "%d %s.", cnt,
-			catgets(ge->cal->DT_catd, 1, 634, "Calendars Selected"));
+			CATGETS(ge->cal->DT_catd, 1, 634, "Calendars Selected"));
 	set_message(ge->message_text, buf);
 
 }
@@ -420,7 +420,7 @@ ge_build_expand(GEditor *ge) {
         }
         XtManageChildren(widgets, n - 2);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 304, "Mail..."));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 304, "Mail..."));
         ge->mail_button = XtVaCreateWidget("mail",
 		xmPushButtonWidgetClass, ge->base_form_mgr,
 		XmNlabelString, xmstr,
@@ -472,7 +472,7 @@ ge_expand_ui_proc(Widget w, XtPointer client_data, XtPointer data) {
 		XtRealizeWidget(ge->rfp.rfp_form_mgr);
 
 		xmstr = XmStringCreateLocalized(
-				catgets(ge->cal->DT_catd, 1, 625, "Less"));
+				CATGETS(ge->cal->DT_catd, 1, 625, "Less"));
 		XtVaSetValues(ge->expand_ui_button, 
 			XmNlabelString, xmstr,
 			NULL);
@@ -489,7 +489,7 @@ ge_expand_ui_proc(Widget w, XtPointer client_data, XtPointer data) {
 		expand_state_closed = False;
 	} else {
 		XtSetSensitive(ge->rfp.rfp_form_mgr, False);
-		xmstr = XmStringCreateLocalized(catgets(ge->cal->DT_catd, 1, 626,
+		xmstr = XmStringCreateLocalized(CATGETS(ge->cal->DT_catd, 1, 626,
 							"More"));
 		XtVaSetValues(ge->expand_ui_button, XmNlabelString, xmstr,
 			NULL);
@@ -707,11 +707,11 @@ ge_insert_proc(Widget w, XtPointer client_data, XtPointer data) {
 	_DtTurnOnHourGlass(ge->frame);
 	XmListGetSelectedPos(ge->access_list, &c_list, &c_cnt);
 	if (c_cnt <= 0) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 305,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 305,
 				"Calendar : Error - Group Appointment Editor"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 306,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 306,
 				"Select a calendar and INSERT again."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		dialog_popup(ge->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -813,11 +813,11 @@ ge_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 	_DtTurnOnHourGlass(ge->frame);
 	if (!XmListGetSelectedPos(ge->appt_list, &item_list, &item_cnt)) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 305,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 305,
 				"Calendar : Error - Group Appointment Editor"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 253,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 253,
 				"Select an appointment and DELETE again."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(ge->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -832,11 +832,11 @@ ge_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 	}
 
 	if (!(entry = geditor_nth_appt(ge, item_list[0], &ad))) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 305,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 305,
 				"Calendar : Error - Group Appointment Editor"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 256,
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 256,
 				"Internal error selecting appointment.\nAppointment was not deleted."));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95,
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95,
 				"Continue"));
 		answer = dialog_popup(ge->frame,
 			DIALOG_TITLE, title,
@@ -857,11 +857,11 @@ ge_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 	XtVaGetValues(ge->access_list, XmNselectedItemCount, &c_cnt,
 		NULL);
 	if (c_cnt <= 0) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 305,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 305,
 				"Calendar : Error - Group Appointment Editor"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 315,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 315,
 				"Select a calendar and DELETE again."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(ge->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -892,15 +892,15 @@ ge_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 	if (appt->repeat_type->value) {
 		if (appt->repeat_type->value->item.sint32_value !=
 		    CSA_X_DT_REPEAT_ONETIME) {
-		  	char *title = XtNewString(catgets(c->DT_catd, 1, 314,
+		  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 314,
 					"Calendar : Group Appointment Editor - Delete"));
-		  	char *text = XtNewString(catgets(c->DT_catd, 1, 274,
+		  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 274,
 					"This appointment is part of a repeating series.\nDo you want to delete ...?"));
-		  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-		  	char *ident2 = XtNewString(catgets(c->DT_catd, 1, 270,
+		  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+		  	char *ident2 = XtNewString(CATGETS(c->DT_catd, 1, 270,
 					"This One Only"));
-		  	char *ident3 = XtNewString(catgets(c->DT_catd, 1, 271, "Forward"));
-		  	char *ident4 = XtNewString(catgets(c->DT_catd, 1, 272, "All"));
+		  	char *ident3 = XtNewString(CATGETS(c->DT_catd, 1, 271, "Forward"));
+		  	char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 272, "All"));
 			answer = dialog_popup(ge->frame,
 				DIALOG_TITLE, title,
 				DIALOG_TEXT, text,
@@ -919,12 +919,12 @@ ge_delete_proc(Widget w, XtPointer client_data, XtPointer data) {
 		}
 	}
 	else if (appt->recurrence_rule->value) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 314,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 314,
                                         "Calendar : Group Appointment Editor - Delete"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 711,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 711,
                                         "This appointment repeats in an unknown fashion.  All occurrences will be deleted\nDo you still wish to delete it?"));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-		char *ident4 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+		char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
                 answer = dialog_popup(c->frame,
                                 DIALOG_TITLE, title,
                                 DIALOG_TEXT, text,
@@ -982,11 +982,11 @@ ge_change_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 	_DtTurnOnHourGlass(ge->frame);
 	if (!XmListGetSelectedPos(ge->appt_list, &item_list, &item_cnt)) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 305,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 305,
 				"Calendar : Error - Group Appointment Editor"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 259,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 259,
 				"Select an appointment and CHANGE again."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(ge->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1001,11 +1001,11 @@ ge_change_proc(Widget w, XtPointer client_data, XtPointer data) {
 	} 
 
 	if (!(old_a = geditor_nth_appt(ge, item_list[0], &ad))) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 305,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 305,
 				"Calendar : Error - Group Appointment Editor"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 1007,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 1007,
 				"Internal error selecting appointment.\nAppointment was not changed."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(ge->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1024,11 +1024,11 @@ ge_change_proc(Widget w, XtPointer client_data, XtPointer data) {
 	XtVaGetValues(ge->access_list, XmNselectedItemCount, &c_cnt,
 		NULL);
 	if (c_cnt <= 0) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 329,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 329,
 				"Calendar : Group Appointment Editor - Change"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 330,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 330,
 				"Select a calendar and CHANGE again."));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
 		answer = dialog_popup(ge->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1071,12 +1071,12 @@ ge_change_proc(Widget w, XtPointer client_data, XtPointer data) {
             (appt->repeat_type->value->item.sint32_value == CSA_X_DT_REPEAT_OTHER_WEEKLY) ||
             (appt->repeat_type->value->item.sint32_value == CSA_X_DT_REPEAT_OTHER_MONTHLY) ||
             (appt->repeat_type->value->item.sint32_value == CSA_X_DT_REPEAT_OTHER_YEARLY)) {
-	  	char *title = XtNewString(catgets(c->DT_catd, 1, 329,
+	  	char *title = XtNewString(CATGETS(c->DT_catd, 1, 329,
                                         "Calendar : Group Appointment Editor - Change"));
-	  	char *text = XtNewString(catgets(c->DT_catd, 1, 708,
+	  	char *text = XtNewString(CATGETS(c->DT_catd, 1, 708,
                                         "This appointment repeats in an unknown fashion.  All occurrences will be changed\nDo you still wish to change it?"));
-	  	char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-	  	char *ident4 = XtNewString(catgets(c->DT_catd, 1, 95, "Continue"));
+	  	char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+	  	char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 95, "Continue"));
                 answer = dialog_popup(c->frame,
                                 DIALOG_TITLE, title,
                                 DIALOG_TEXT, text,
@@ -1092,15 +1092,15 @@ ge_change_proc(Widget w, XtPointer client_data, XtPointer data) {
 
 	else if (appt->repeat_type->value->item.sint32_value != 
 		CSA_X_DT_REPEAT_ONETIME) {
-		char *title = XtNewString(catgets(c->DT_catd, 1, 329,
+		char *title = XtNewString(CATGETS(c->DT_catd, 1, 329,
 				"Calendar : Group Appointment Editor - Change"));
-		char *text = XtNewString(catgets(c->DT_catd, 1, 268,
+		char *text = XtNewString(CATGETS(c->DT_catd, 1, 268,
 				"This appointment is part of a repeating series.\nDo you want to change ...?"));
-		char *ident1 = XtNewString(catgets(c->DT_catd, 1, 923, "Cancel"));
-		char *ident2 = XtNewString(catgets(c->DT_catd, 1, 270,
+		char *ident1 = XtNewString(CATGETS(c->DT_catd, 1, 923, "Cancel"));
+		char *ident2 = XtNewString(CATGETS(c->DT_catd, 1, 270,
 				"This One Only"));
-		char *ident3 = XtNewString(catgets(c->DT_catd, 1, 271, "Forward"));
-		char *ident4 = XtNewString(catgets(c->DT_catd, 1, 272, "All"));
+		char *ident3 = XtNewString(CATGETS(c->DT_catd, 1, 271, "Forward"));
+		char *ident4 = XtNewString(CATGETS(c->DT_catd, 1, 272, "All"));
 		answer = dialog_popup(ge->frame,
 			DIALOG_TITLE, title,
 			DIALOG_TEXT, text,
@@ -1337,7 +1337,7 @@ ge_make_editor(Calendar *c) {
 
 
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 342, "Insert"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 342, "Insert"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNleftAttachment, XmATTACH_POSITION); ++cnt;
 	XtSetArg(args[cnt], XmNleftPosition, 1); ++cnt;
@@ -1350,7 +1350,7 @@ ge_make_editor(Calendar *c) {
 		      ge);
 
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 343, "Change"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 343, "Change"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNleftAttachment, XmATTACH_POSITION); ++cnt;
 	XtSetArg(args[cnt], XmNleftPosition, 2); ++cnt;
@@ -1363,7 +1363,7 @@ ge_make_editor(Calendar *c) {
 		      ge);
 
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 419, "Delete"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 419, "Delete"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNleftAttachment, XmATTACH_POSITION); ++cnt;
 	XtSetArg(args[cnt], XmNleftPosition, 3); ++cnt;
@@ -1376,7 +1376,7 @@ ge_make_editor(Calendar *c) {
 		      ge);
 
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 803, "Clear"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 803, "Clear"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNleftAttachment, XmATTACH_POSITION); ++cnt;
 	XtSetArg(args[cnt], XmNleftPosition, 4); ++cnt;
@@ -1389,7 +1389,7 @@ ge_make_editor(Calendar *c) {
 		      ge);
 
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 923, "Cancel"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 923, "Cancel"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNleftAttachment, XmATTACH_POSITION); ++cnt;
 	XtSetArg(args[cnt], XmNleftPosition, 5); ++cnt;
@@ -1402,7 +1402,7 @@ ge_make_editor(Calendar *c) {
 		      ge);
 
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 77, "Help"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 77, "Help"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNleftAttachment, XmATTACH_POSITION); ++cnt;
 	XtSetArg(args[cnt], XmNleftPosition, 6); ++cnt;
@@ -1445,7 +1445,7 @@ ge_make_editor(Calendar *c) {
 	**  The more button
 	*/
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 626, "More"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 626, "More"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNbottomAttachment, XmATTACH_WIDGET); ++cnt;
 	XtSetArg(args[cnt], XmNbottomWidget, ge->separator1); ++cnt;
@@ -1462,7 +1462,7 @@ ge_make_editor(Calendar *c) {
 	**  The appt list label
 	*/
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 971, "Time Calendar"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 971, "Time Calendar"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNtopAttachment, XmATTACH_FORM); ++cnt;
 	XtSetArg(args[cnt], XmNtopOffset, 5); ++cnt;
@@ -1474,7 +1474,7 @@ ge_make_editor(Calendar *c) {
 	**  The appt list label
 	*/
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 972, "What"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 972, "What"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNtopAttachment, XmATTACH_FORM); ++cnt;
 	XtSetArg(args[cnt], XmNtopOffset, 5); ++cnt;
@@ -1501,7 +1501,7 @@ ge_make_editor(Calendar *c) {
 	/*
 	 * Add a drag source icon inside the dssw, lower right
 	 */
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 627, "Drag Appt"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 627, "Drag Appt"));
 	ge->drag_source = XtVaCreateWidget("drag_source",
 		dtIconGadgetClass, ge->dssw.dssw_form_mgr,
 		XmNpixmapPosition, XmPIXMAP_TOP,
@@ -1571,7 +1571,7 @@ ge_make_editor(Calendar *c) {
 	**  The access list label
 	*/
 	cnt = 0;
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 340, "Calendar"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 340, "Calendar"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNbottomAttachment, XmATTACH_WIDGET); ++cnt;
 	XtSetArg(args[cnt], XmNbottomWidget, ge->access_list_sw); ++cnt;
@@ -1582,7 +1582,7 @@ ge_make_editor(Calendar *c) {
 		"access_list_label", args, cnt);
 	XmStringFree(xmstr);
 
-	xmstr = XmStringCreateLocalized(catgets(c->DT_catd, 1, 341, "Access"));
+	xmstr = XmStringCreateLocalized(CATGETS(c->DT_catd, 1, 341, "Access"));
 	XtSetArg(args[cnt], XmNlabelString, xmstr); ++cnt;
 	XtSetArg(args[cnt], XmNbottomAttachment, XmATTACH_WIDGET); ++cnt;
 	XtSetArg(args[cnt], XmNbottomWidget, ge->access_list_sw); ++cnt;
@@ -1731,7 +1731,7 @@ add_to_gaccess_list(
 	new_data->entry_access = user_access;
 	CmDataListAdd(ge->access_data, (void *)new_data, 0);
 
-	buf = (char *)ckalloc(ACCESS_NAME_LEN + cm_strlen(catgets(c->DT_catd,
+	buf = (char *)ckalloc(ACCESS_NAME_LEN + cm_strlen(CATGETS(c->DT_catd,
 		1, 348, "Insert Permission")) + 5);
 	sprintf(buf, "%-*s %c", ACCESS_NAME_LEN, name, access);
 	xmstr = XmStringCreateLocalized(buf);
@@ -1978,7 +1978,7 @@ set_geditor_title(GEditor *ge, char *name) {
 	Calendar	*c = ge->cal;
 
 	if (ge->frame) {
-		sprintf(buf, "%s - %s", catgets(c->DT_catd, 1, 349,
+		sprintf(buf, "%s - %s", CATGETS(c->DT_catd, 1, 349,
 			"Calendar : Group Appointment Editor"), name);
 		XtVaSetValues(ge->frame, XmNtitle, buf,
 			NULL);

@@ -147,7 +147,7 @@ extern int	db_oflag;
 static void     signal_abort (int sig)
 {
     fputs (DtSearchGetMessages (), aa_stderr);
-    fprintf (aa_stderr, catgets (dtsearch_catd, MS_ausapi, 216,
+    fprintf (aa_stderr, CATGETS(dtsearch_catd, MS_ausapi, 216,
 	"\n%s %s Caught signal %d.\n"),
 	PROGNAME"216",
 	(aa_argv0) ? aa_argv0 : OE_prodname,
@@ -191,7 +191,7 @@ static int      valid_dbname (char *dbname)
 	    break;
     }
     if (db == NULL) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_ausapi, 1,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 1,
 		"%1$sInvalid or unavailable database '%2$s'."),
 	    PROGNAME "48 ", dbname);
 	DtSearchAddMessage (sprintbuf);
@@ -301,7 +301,7 @@ int             DtSearchInit (
                     int		*dbcount)
 {
     if (aa_is_initialized) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_ausapi, 621,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 621,
 	    "%1$s %2%s has already been initialized."),
 	    PROGNAME"621", PRODNAME);
 	DtSearchAddMessage (sprintbuf);
@@ -322,7 +322,7 @@ int             DtSearchInit (
     /* Open msgs and help text catalogs. */
     if (switches & (DtSrInNOLOCALE == 0)) {
 	setlocale (LC_ALL, "");
-	dtsearch_catd = catopen (FNAME_DTSRCAT, 0);
+	dtsearch_catd = CATOPEN(FNAME_DTSRCAT, 0);
     }
 
     /* Register AusText abort signal handlers.
@@ -348,7 +348,7 @@ int             DtSearchInit (
     /* If user name was not passed, get it from LOGNAME environment var */
     if (userid == NULL || *userid == 0)
 	if ((userid = (char *) getenv ("LOGNAME")) == NULL) {
-	    sprintf (sprintbuf, catgets (dtsearch_catd, MS_ausapi, 187,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 187,
 		"%1$s Missing both userid and LOGNAME environment variable."),
 		PROGNAME "187 ");
 	    DtSearchAddMessage (sprintbuf);
@@ -398,7 +398,7 @@ int             DtSearchInit (
     if (dbnames) {
 	*dbnames = ausapi_dbnamesv;
 	if (!dbcount) {
-	    sprintf (sprintbuf, catgets(dtsearch_catd, MS_ausapi, 7,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 7,
 		"%s dbnames specified but not dbcount."),
 		PROGNAME"304");
 	    DtSearchAddMessage (sprintbuf);
@@ -494,7 +494,7 @@ static int      both_valid_dates (char *date1, char *date2)
 	usrblk.objdate1 != 0L &&
 	usrblk.objdate2 != 0L &&
 	usrblk.objdate1 >= usrblk.objdate2) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_ausapi, 198,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 198,
 		"%s 'Before' date is equal to or after 'After' date.\n"
 		"  No records would be returned."),
 	    PROGNAME "198");
@@ -569,7 +569,7 @@ int             DtSearchQuery (
 	    break;
 
 	default:
-	    sprintf (sprintbuf, catgets (dtsearch_catd, MS_ausapi, 20,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 20,
 		    "%1$s Invalid search_type '%2$c'."),
 		PROGNAME "172 ", search_type);
 	    DtSearchAddMessage (sprintbuf);
@@ -580,7 +580,7 @@ int             DtSearchQuery (
     /* Validate the 'qry' argument */
     if (qry == NULL) {
 QUERY_ERROR:
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_ausapi, 30,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 30,
 		"%s Null query.  No search performed."),
 	    PROGNAME"81");
 	DtSearchAddMessage (sprintbuf);
@@ -686,7 +686,7 @@ END_OF_SEARCH:
 	    /* Query was invalid.  Tell the user why. */
 	    if (ausapi_msglist == NULL) {
 		sprintf (sprintbuf,
-		    catgets (dtsearch_catd, MS_ausapi, 806,
+		    CATGETS(dtsearch_catd, MS_ausapi, 806,
 			"%s Query insufficient or search options "
 			"incompatible with database '%s' to commence search."),
 		    PROGNAME "806", usrblk.dblk->name);
@@ -795,7 +795,7 @@ int             DtSearchHighlight (
 
     /* copy cleartext to usrblk if necessary */
     if (cleartext == NULL || cleartext[0] == 0) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_ausapi, 40,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 40,
 		"%1$s Null cleartext.  No highlighting performed."),
 	    PROGNAME "349 ", dbname);
 	DtSearchAddMessage (sprintbuf);
@@ -817,7 +817,7 @@ int             DtSearchHighlight (
 
     if (stems) {
 	if (stemcount > DtSrMAX_STEMCOUNT) {
-	    sprintf (sprintbuf, catgets (dtsearch_catd, MS_ausapi, 1072,
+	    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 1072,
 		"%s Program Error: Stem count (%d) greater than maximum (%d)."),
 		PROGNAME"1072", stemcount, DtSrMAX_STEMCOUNT);
 	    DtSearchAddMessage (sprintbuf);
@@ -864,7 +864,7 @@ int             DtSearchHighlight (
 	     * msglist. 
 	     */
 	    if (!ausapi_msglist) {
-		sprintf (sprintbuf, catgets (dtsearch_catd, MS_ausapi, 1342,
+		sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_ausapi, 1342,
 		    "%s Search Engine Error %d for highlight request for "
 		    "database '%s', hit word count=%ld, search type='%c', text='%.30s'"),
 		    PROGNAME "1342",

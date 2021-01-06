@@ -70,10 +70,8 @@
 #include <X11/Intrinsic.h>
 #include "Help.hh"
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 extern nl_catd catd;
-
-#include "NLS.hh"
 
 extern "C" {
 #include <Dt/HourGlass.h>
@@ -184,7 +182,7 @@ void SelectFileCmd::doit()
 	XmStringFree(title);
 	XmStringFree(ok_str);
 	XmString hidden_str = XmStringCreateLocalized(
-			GETMSG(catd, 1, 11, "Show hidden folders and files"));
+			CATGETS(catd, 1, 11, "Show hidden folders and files"));
 	_hidden_button = XtVaCreateManagedWidget(
 				"hidden", xmToggleButtonWidgetClass,
 				 _fileBrowser,

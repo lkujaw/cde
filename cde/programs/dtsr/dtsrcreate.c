@@ -169,7 +169,7 @@ static void	confirm_ok_to_overwrite (char *fname)
 	return;
     fclose (fptr);
 
-    printf ( catgets(dtsearch_catd, MS_initausd, 12,
+    printf ( CATGETS(dtsearch_catd, MS_initausd, 12,
 	"\nFile '%s' already exists.\n"
 	"Is it ok to overwrite it and other database files? [y,n] ") ,
 	newpath);
@@ -198,7 +198,7 @@ static int      change_max_wordsize (char *new_size)
 
     /* error if min and max specifications incompatible */
     if (minwordsz > maxwordsz) {
-	printf (catgets (dtsearch_catd, MS_initausd, 5,
+	printf (CATGETS(dtsearch_catd, MS_initausd, 5,
 	    PROGNAME" Minimum word size %d greater "
 	    "than maximum word size %d.\n"),
 	    minwordsz, maxwordsz);
@@ -218,13 +218,13 @@ static int      change_max_wordsize (char *new_size)
     }
 
     if (maxwordsz != users_newsize)
-	printf (catgets (dtsearch_catd, MS_initausd, 8,
+	printf (CATGETS(dtsearch_catd, MS_initausd, 8,
 	    PROGNAME " Adjusted maximum word size to %d.\n"),
 	    maxwordsz);
 
     /* Give user a final warning about large word sizes */
     if (maxwordsz > STANDARD_MAXWORD && language != DtSrLaDEU && !quiet_mode)
-	printf ("%s", catgets (dtsearch_catd, MS_initausd, 10,
+	printf ("%s", CATGETS(dtsearch_catd, MS_initausd, 10,
 		PROGNAME" Specifying large maximum word sizes may "
 		"significantly\n  increase storage requirements.\n"));
     return TRUE;
@@ -247,7 +247,7 @@ static int      change_min_wordsize (char *new_size)
 
     /* error if min and max specifications incompatible */
     if (minwordsz > maxwordsz) {
-	printf (catgets (dtsearch_catd, MS_initausd, 5,
+	printf (CATGETS(dtsearch_catd, MS_initausd, 5,
 	    PROGNAME " Minimum word size %d greater than "
 	    "maximum word size %d.\n"),
 	    minwordsz, maxwordsz);
@@ -256,13 +256,13 @@ static int      change_min_wordsize (char *new_size)
 
     if (!quiet_mode) {
 	if (minwordsz != old_minwordsz)
-	    printf (catgets (dtsearch_catd, MS_initausd, 6,
+	    printf (CATGETS(dtsearch_catd, MS_initausd, 6,
 		PROGNAME " Adjusted minimum word size to %d.\n"),
 		minwordsz);
 
 	/* give user a warning about short word sizes */
 	if (minwordsz < DEFAULT_MINWORD)
-	    printf ("%s", catgets (dtsearch_catd, MS_initausd, 9,
+	    printf ("%s", CATGETS(dtsearch_catd, MS_initausd, 9,
 		    PROGNAME " Specifying small minimum word sizes"
 		    " may require extensive\n"
 		    "  editing of stopword file to prevent significantly\n"
@@ -281,7 +281,7 @@ static void	print_usage (void)
 {
     int		i;
 
-    printf (catgets (dtsearch_catd, MS_initausd,
+    printf (CATGETS(dtsearch_catd, MS_initausd,
 	    3,
   "\nUSAGE: %s [-options] dbname\n"
   "       Creates and initializes DtSearch/AusText database files.\n"
@@ -355,7 +355,7 @@ static void     user_args_processor (int argc, char **argv)
 		else {
 BAD_ARG:
 		    print_usage();
-		    printf (catgets (dtsearch_catd, MS_misc, 9,
+		    printf (CATGETS(dtsearch_catd, MS_misc, 9,
 			    "%sInvalid command line argument '%s'.\a\n"),
 			"\n"PROGNAME" ", ptr);
 		    DtSearchExit (2);
@@ -418,7 +418,7 @@ BAD_ARG:
 		if (language < 0)
 		    goto BAD_ARG;
 		if (!quiet_mode  &&  language > DtSrLaLAST)
-		    printf ( catgets(dtsearch_catd, MS_initausd, 13,
+		    printf ( CATGETS(dtsearch_catd, MS_initausd, 13,
 			"%s Warning! you have specified "
 			"an unsupported, custom language.\n"
 			"  You will have to provide your own "
@@ -429,7 +429,7 @@ BAD_ARG:
 		break;
 
 	    default:
-		printf (catgets (dtsearch_catd, MS_misc, 10,
+		printf (CATGETS(dtsearch_catd, MS_misc, 10,
 			"%sIgnored unknown command line argument '%s'.\n"),
 		    PROGNAME " ", ptr);
 		break;
@@ -443,7 +443,7 @@ BAD_ARG:
      */
     if (argc <= 0) {
 	print_usage();
-	printf (catgets (dtsearch_catd, MS_misc, 18,
+	printf (CATGETS(dtsearch_catd, MS_misc, 18,
 		"%sDatabase name not specified.\n\a"), "\n"PROGNAME" ");
 	DtSearchExit(2);
     }
@@ -468,7 +468,7 @@ BAD_ARG:
     if (i < 1 || i > 8) {
 BAD_DBNAME:
 	print_usage();
-	printf (catgets (dtsearch_catd, MS_misc, 11,
+	printf (CATGETS(dtsearch_catd, MS_misc, 11,
 		"%sInvalid database name '%s'.\a\n"),
 	    "\n"PROGNAME"346 ", ptr);
 	DtSearchExit(2);
@@ -482,7 +482,7 @@ BAD_DBNAME:
     /* Ensure semantic processing specified only for english language */
     if (fzkeysz != 0  && language != DtSrLaENG  &&  language != DtSrLaENG2) {
 	print_usage();
-	printf ( catgets(dtsearch_catd, MS_initausd, 14,
+	printf ( CATGETS(dtsearch_catd, MS_initausd, 14,
 	    "\n%s semantic processing is only available "
 	    "for English language databases.\n\a") ,
 	    PROGNAME"340");
@@ -525,7 +525,7 @@ static void     remove_d9x_file (char *extension)
     if (remove (newpath) != 0) {
 	/* 'file not found' is not an error */
 	if (errno != ENOENT) {
-	    printf (catgets (dtsearch_catd, MS_initausd, 244,
+	    printf (CATGETS(dtsearch_catd, MS_initausd, 244,
 		    PROGNAME "244 Unable to remove '%s': %s\n"),
 		newpath, strerror (errno));
 	    DtSearchExit (5);
@@ -562,14 +562,14 @@ static void     create_new_dbd (FILE *f)
     confirm_ok_to_overwrite (newpath);
     if (chmod (newpath, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP)) {
 	if (errno != ENOENT) {
-	    printf (catgets (dtsearch_catd, MS_initausd, 214, nocopy_msg),
+	    printf (CATGETS(dtsearch_catd, MS_initausd, 214, nocopy_msg),
 		PROGNAME"515", modelpath, newpath, strerror(errno));
 	    DtSearchExit (15);
 	}
     }
 
     if ((g = fopen (newpath, "w+b")) == NULL) {
-	printf (catgets (dtsearch_catd, MS_initausd, 214, nocopy_msg),
+	printf (CATGETS(dtsearch_catd, MS_initausd, 214, nocopy_msg),
 	    PROGNAME"509", modelpath, newpath, strerror(errno));
 	DtSearchExit (4);
     }
@@ -577,7 +577,7 @@ static void     create_new_dbd (FILE *f)
     while ((i = fgetc (f)) != EOF)
 	fputc (i, g);
     if (errno) {
-	printf (catgets (dtsearch_catd, MS_initausd, 214, nocopy_msg),
+	printf (CATGETS(dtsearch_catd, MS_initausd, 214, nocopy_msg),
 	    PROGNAME"531", modelpath, newpath, strerror(errno));
 	DtSearchExit (13);
     }
@@ -622,14 +622,14 @@ int             main (int argc, char *argv[])
     struct or_lwordrec	lwordrec;
 
     setlocale (LC_ALL, "");
-    dtsearch_catd = catopen (FNAME_DTSRCAT, 0);
+    dtsearch_catd = CATOPEN(FNAME_DTSRCAT, 0);
 
     aa_argv0 = argv[0];
     max_ormisc_size = sizeof (miscrec.or_misc);
     maxwidth_sword = sizeof (swordrec.or_swordkey) - 1;
     maxwidth_lword = sizeof (lwordrec.or_lwordkey) - 1;
 
-    printf (catgets (dtsearch_catd, MS_misc, 4,
+    printf (CATGETS(dtsearch_catd, MS_misc, 4,
 	    "%s Version %s.\n"),
 	aa_argv0,
 	DtSrVERSION
@@ -655,7 +655,7 @@ int             main (int argc, char *argv[])
 	}
 	else {
 	    print_usage();
-	    printf (catgets (dtsearch_catd, MS_initausd, 213,
+	    printf (CATGETS(dtsearch_catd, MS_initausd, 213,
 		    default_unable_to_open_msg),
 		"\n"PROGNAME"302", modelpath, strerror(errno));
 	    DtSearchExit (4);
@@ -676,7 +676,7 @@ int             main (int argc, char *argv[])
     }
     else if (errno != ENOENT) {
 	print_usage();
-	printf (catgets (dtsearch_catd, MS_initausd, 213,
+	printf (CATGETS(dtsearch_catd, MS_initausd, 213,
 		default_unable_to_open_msg),
 	    "\n"PROGNAME"655", FNAME_MODEL, strerror(errno));
 	DtSearchExit (4);
@@ -700,7 +700,7 @@ int             main (int argc, char *argv[])
     if (debug_mode)
 	puts (PROGNAME"682 Never found it!");
     print_usage();
-    printf (catgets (dtsearch_catd, MS_initausd, 213,
+    printf (CATGETS(dtsearch_catd, MS_initausd, 213,
 	    default_unable_to_open_msg),
 	"\n"PROGNAME"686", FNAME_MODEL,
 	"Not found in either current or target directories.  Use -d option\a");
@@ -715,7 +715,7 @@ DBD_OKAY:
 	printf ("040*** d_open newpath = '%s'.\n", newpath);
     d_open (newpath, "o");
     if (db_status != S_OKAY) {
-	printf (catgets (dtsearch_catd, MS_initausd, 230,
+	printf (CATGETS(dtsearch_catd, MS_initausd, 230,
 		PROGNAME "230 Could not open database '%s'.\n"), newpath);
 	puts (vista_msg (PROGNAME "231"));
 	DtSearchExit (3);
@@ -727,7 +727,7 @@ DBD_OKAY:
 	printf ("042*** d_initialize.\n");
     d_initialize (0);
     if (db_status != S_OKAY) {
-	printf (catgets (dtsearch_catd, MS_initausd, 239,
+	printf (CATGETS(dtsearch_catd, MS_initausd, 239,
 		PROGNAME "239 Could not initialize database '%s'.\n"), newpath);
 	puts (vista_msg (PROGNAME "240"));
 	DtSearchExit (3);
@@ -763,7 +763,7 @@ DBD_OKAY:
     if (i < 0) {
 	/* Add in difference to INCREASE abstrsz */
 	dbrec.or_abstrsz -= i;
-	printf (catgets (dtsearch_catd, MS_misc, 433,
+	printf (CATGETS(dtsearch_catd, MS_misc, 433,
 		"%1$sAdjusted maximum abstract size upward to %2$hd.\n"),
 	    PROGNAME "433 ", dbrec.or_abstrsz);
     }
@@ -800,7 +800,7 @@ DBD_OKAY:
 	printf ("060*** fillnew dbrec.\n");
     d_fillnew (OR_DBREC, &dbrec, 0);
     if (db_status != S_OKAY) {
-	printf ("%s", catgets (dtsearch_catd, MS_initausd, 509,
+	printf ("%s", CATGETS(dtsearch_catd, MS_initausd, 509,
 		PROGNAME "509 Could not initialize database header record.\n"));
 	puts (vista_msg (PROGNAME "510"));
 	DtSearchExit (3);
@@ -816,7 +816,7 @@ DBD_OKAY:
     remove_d9x_file (".d99");
 
     *newextp = 0;	/* no extension suffixes for next msgs */
-    printf (catgets (dtsearch_catd, MS_initausd, 24,
+    printf (CATGETS(dtsearch_catd, MS_initausd, 24,
 	    PROGNAME " Successfully initialized database '%s'.\n"), newpath);
 
     return 0;

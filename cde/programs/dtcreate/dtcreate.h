@@ -33,7 +33,7 @@
 #define __TOOLTALK
 
 #include <Xm/Xm.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <sys/param.h>
 
 /***************************************************************************/
@@ -190,7 +190,7 @@ typedef struct {
 /*  Macro Declarations                                                     */
 /*                                                                         */
 /***************************************************************************/
-#define GETMESSAGE(set, number, defstr) catgets(nlmsg_fd, set, number, defstr)
+#define GETMESSAGE(set, number, defstr) CATGETS(nlmsg_fd, set, number, defstr)
 
 /***************************************************************************/
 /*                                                                         */

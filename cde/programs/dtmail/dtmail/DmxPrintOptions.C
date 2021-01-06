@@ -251,7 +251,7 @@ DmxPrintOptions::DmxPrintOptions (
     for (i=0; i<nitems; i++)
     {
         data[i] = (void*) hdrftr_values[i].prop_string;
-        strings[i] = GETMSG(
+        strings[i] = CATGETS(
 			DT_catd, 
 			hdrftr_values[i].set_id, 
 			hdrftr_values[i].msg_id,
@@ -338,7 +338,7 @@ DmxPrintOptions::DmxPrintOptions (
     for (i=0; i<nitems; i++)
     {
         data[i] = (void*) prthdr_values[i].prop_string;
-        strings[i] = GETMSG(
+        strings[i] = CATGETS(
 			DT_catd, 
 			prthdr_values[i].set_id, 
 			prthdr_values[i].msg_id,
@@ -348,7 +348,7 @@ DmxPrintOptions::DmxPrintOptions (
 
     iom = new IndexedOptionMenu(_form, nitems, (char**) strings, data);
     xms = XmStringCreateLocalized(
-		GETMSG(DT_catd, 25, 1, "Printed Message Headers:  ")
+		CATGETS(DT_catd, 25, 1, "Printed Message Headers:  ")
 		);
     XtVaSetValues(
 		iom->baseWidget(),
@@ -387,7 +387,7 @@ DmxPrintOptions::DmxPrintOptions (
     for (i=0; i<nitems; i++)
     {
         data[i] = (void*) msgsep_values[i].prop_string;
-        strings[i] = GETMSG(
+        strings[i] = CATGETS(
 			DT_catd, 
 			msgsep_values[i].set_id, 
 			msgsep_values[i].msg_id,
@@ -397,7 +397,7 @@ DmxPrintOptions::DmxPrintOptions (
 
     iom = new IndexedOptionMenu(_form, nitems, (char**) strings, data);
     xms = XmStringCreateLocalized(
-		GETMSG( DT_catd, 25, 2, "Separate Multiple Messages With:  ")
+		CATGETS( DT_catd, 25, 2, "Separate Multiple Messages With:  ")
 		);
     XtVaSetValues(
 		iom->baseWidget(),
@@ -703,19 +703,19 @@ DmxPrintOptions::isValidMarginSpec(PropUiItem* pui, void* data)
     {
       case DTPRINT_OPTION_MARGIN_TOP:
         i18nMsg =
-	  GETMSG(DT_catd, 26, 1, "Top Margin specifier is invalid:  ");
+	  CATGETS(DT_catd, 26, 1, "Top Margin specifier is invalid:  ");
 	break;
       case DTPRINT_OPTION_MARGIN_RIGHT:
         i18nMsg =
-	  GETMSG(DT_catd, 26, 2, "Right Margin specifier is invalid:  ");
+	  CATGETS(DT_catd, 26, 2, "Right Margin specifier is invalid:  ");
 	break;
       case DTPRINT_OPTION_MARGIN_BOTTOM:
         i18nMsg =
-	  GETMSG(DT_catd, 26, 3, "Bottom Margin specifier is invalid:  ");
+	  CATGETS(DT_catd, 26, 3, "Bottom Margin specifier is invalid:  ");
 	break;
       case DTPRINT_OPTION_MARGIN_LEFT:
         i18nMsg =
-	  GETMSG(DT_catd, 26, 4, "Left Margin specifier is invalid:  ");
+	  CATGETS(DT_catd, 26, 4, "Left Margin specifier is invalid:  ");
 	break;
     }
     errMsg = (char*) XtMalloc(strlen(i18nMsg) + strlen(marginSpec) + 1);

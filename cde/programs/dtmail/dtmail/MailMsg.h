@@ -43,7 +43,7 @@
 #ifndef MAILMSG_H
 #define MAILMSG_H
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 #include <Dt/MsgCatP.h>
 
 /*
@@ -65,15 +65,8 @@ extern nl_catd DT_catd;   /* Catgets file descriptor */
 #ifdef XGETTEXT
 #define MAILMSG(msgid, str)   dgettext(NL_SET, msgid, str)
 #else
-#define MAILMSG(msgid, str)   catgets(DT_catd, NL_SET, msgid, str)
+#define MAILMSG(msgid, str)   CATGETS(DT_catd, NL_SET, msgid, str)
 #endif
-
-#ifdef hpV4
-#define GETMSG(DT_catd, NL_SET, msgid, str) _DtCatgetsCached(DT_catd, NL_SET, msgid, str)
-#else
-#define GETMSG(DT_catd, NL_SET, msgid, str) catgets(DT_catd, NL_SET, msgid, str)
-#endif
-
 
 /*  MailBox.C             msgid  100 - 199
  *  MBOX_*

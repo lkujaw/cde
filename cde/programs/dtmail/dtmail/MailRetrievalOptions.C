@@ -205,7 +205,7 @@ MailRetrievalOptions::MailRetrievalOptions (
 				XmNcolumns, 30,
 				XmNvalue, "",
 				NULL);
-    xms = XmStringCreateLocalized(GETMSG(DT_catd, 27, 18,"INBOX folder path:"));
+    xms = XmStringCreateLocalized(CATGETS(DT_catd, 27, 18,"INBOX folder path:"));
     _inboxpath_label = XtVaCreateManagedWidget(
 				"InboxNameLabel",
 				xmLabelWidgetClass, _form,
@@ -266,7 +266,7 @@ MailRetrievalOptions::MailRetrievalOptions (
 				NULL);
 
     xms = XmStringCreateLocalized(
-		GETMSG(Dtb_project_catd, 2, 13, "Check for new mail every:"));
+		CATGETS(Dtb_project_catd, 2, 13, "Check for new mail every:"));
     _checkfornewmail_label = XtVaCreateManagedWidget(
 				"CheckForNewMailLabel",
                 		xmLabelWidgetClass, _form,
@@ -307,7 +307,7 @@ MailRetrievalOptions::MailRetrievalOptions (
 				NULL);
 
     xms = XmStringCreateLocalized(
-		GETMSG(DT_catd, 27, 6, "Automatic (system) delivery"));
+		CATGETS(DT_catd, 27, 6, "Automatic (system) delivery"));
     _system_tb = XtVaCreateManagedWidget(
 				"SystemTB",
 				xmToggleButtonGadgetClass, _form,
@@ -355,7 +355,7 @@ MailRetrievalOptions::MailRetrievalOptions (
 				NULL);
 
     xms = XmStringCreateLocalized(
-		GETMSG(DT_catd, 27, 7, "Mail server retrieval"));
+		CATGETS(DT_catd, 27, 7, "Mail server retrieval"));
     _server_tb = XtVaCreateManagedWidget(
 				"UseServerTB",
 				xmToggleButtonGadgetClass, _server_frame,
@@ -400,7 +400,7 @@ MailRetrievalOptions::MailRetrievalOptions (
     for (int i=0; i<nitems; i++)
     {
         data[i] = (void*) serverprotocol_values[i].prop_value_string;
-        strings[i] = GETMSG(
+        strings[i] = CATGETS(
 			DT_catd, 
 			serverprotocol_values[i].set_id, 
 			serverprotocol_values[i].msg_id,
@@ -422,7 +422,7 @@ MailRetrievalOptions::MailRetrievalOptions (
     XtFree((char*) data);
 
     xms = XmStringCreateLocalized(
-		GETMSG(DT_catd, 27, 8, "Server Protocol:"));
+		CATGETS(DT_catd, 27, 8, "Server Protocol:"));
     _serverprotocol_label = XtVaCreateManagedWidget(
 			"ServerProtocolLabel",
 			xmLabelWidgetClass, _serverframe_form,
@@ -460,7 +460,7 @@ MailRetrievalOptions::MailRetrievalOptions (
 			XmNcolumns, 30,
 			XmNvalue, "",
 			NULL);
-    xms = XmStringCreateLocalized(GETMSG(DT_catd, 27, 9, "Server Name:"));
+    xms = XmStringCreateLocalized(CATGETS(DT_catd, 27, 9, "Server Name:"));
     _servername_label = XtVaCreateManagedWidget(
 			"ServerNameLabel",
 			xmLabelWidgetClass, _serverframe_form,
@@ -498,7 +498,7 @@ MailRetrievalOptions::MailRetrievalOptions (
 			XmNcolumns, 30,
 			XmNvalue, "",
 			NULL);
-    xms = XmStringCreateLocalized(GETMSG(DT_catd, 27, 10, "User Name:"));
+    xms = XmStringCreateLocalized(CATGETS(DT_catd, 27, 10, "User Name:"));
     _username_label = XtVaCreateManagedWidget(
 			"UserNameLabel",
 			xmLabelWidgetClass, _serverframe_form,
@@ -537,7 +537,7 @@ MailRetrievalOptions::MailRetrievalOptions (
 			XmNcolumns, 30,
 			XmNvalue, "",
 			NULL);
-    xms = XmStringCreateLocalized(GETMSG(DT_catd, 27, 11, "Password:"));
+    xms = XmStringCreateLocalized(CATGETS(DT_catd, 27, 11, "Password:"));
     _password_label = XtVaCreateManagedWidget(
 			"PasswordLabel",
 			xmLabelWidgetClass, _serverframe_form,
@@ -564,7 +564,7 @@ MailRetrievalOptions::MailRetrievalOptions (
     //  Create GUI for the Remember Password Option
     //
     xms = XmStringCreateLocalized(
-		GETMSG(DT_catd, 27, 12, "Remember password"));
+		CATGETS(DT_catd, 27, 12, "Remember password"));
     _rememberpassword_tb = XtVaCreateManagedWidget(
 			"RememberPasswordTB",
 			xmToggleButtonWidgetClass, _serverframe_form,
@@ -598,7 +598,7 @@ MailRetrievalOptions::MailRetrievalOptions (
     //  Create GUI for the Delete From Server Option
     //
     xms = XmStringCreateLocalized(
-		GETMSG(DT_catd, 27, 13,
+		CATGETS(DT_catd, 27, 13,
 		       "Delete from server after retrieval"));
     _removeafterdelivery_tb = XtVaCreateManagedWidget(
 			"RemoveAfterDeliveryTB",
@@ -627,7 +627,7 @@ MailRetrievalOptions::MailRetrievalOptions (
     //  Create GUI for the RetrieveOld Option
     //
     xms = XmStringCreateLocalized(
-		GETMSG(DT_catd, 27, 14,
+		CATGETS(DT_catd, 27, 14,
 		       "Retrieve old messages"));
     _retrieveold_tb = XtVaCreateManagedWidget(
 			"RetrieveOldTB",
@@ -671,7 +671,7 @@ MailRetrievalOptions::MailRetrievalOptions (
 				NULL);
 
     xms = XmStringCreateLocalized(
-		GETMSG(DT_catd, 27, 15, "Custom retrieval"));
+		CATGETS(DT_catd, 27, 15, "Custom retrieval"));
     _custom_tb = XtVaCreateManagedWidget(
 				"CustomTB",
 				xmToggleButtonGadgetClass, _custom_frame,
@@ -720,7 +720,7 @@ MailRetrievalOptions::MailRetrievalOptions (
 			XmNvalue, "",
 			NULL);
     xms = XmStringCreateLocalized(
-			GETMSG(DT_catd, 27, 16, "User Getmail command:"));
+			CATGETS(DT_catd, 27, 16, "User Getmail command:"));
     _customcommand_label = XtVaCreateManagedWidget(
 			"CustomCommandLabel",
 			xmLabelWidgetClass, _customframe_form,
@@ -810,7 +810,7 @@ MailRetrievalOptions::isValidInboxPath(PropUiItem* pui, void* data)
     text = pui->getWidget();
     if (text) inbox_path = XmTextFieldGetString(text);
     if (NULL == inbox_path || 0 == strlen(inbox_path))
-      return GETMSG(DT_catd, 27, 17, "Null INBOX path.");
+      return CATGETS(DT_catd, 27, 17, "Null INBOX path.");
 
     tmp = (char*) malloc(strlen(inbox_path)+1);
     for (s=inbox_path, t=tmp; *s; s++)
@@ -826,7 +826,7 @@ MailRetrievalOptions::isValidInboxPath(PropUiItem* pui, void* data)
     inbox_path = tmp;
 
     if (NULL == inbox_path || 0 == strlen(inbox_path))
-      return GETMSG(DT_catd, 27, 17, "Null INBOX path.");
+      return CATGETS(DT_catd, 27, 17, "Null INBOX path.");
 
     if (isalpha(inbox_path[0]))
     {

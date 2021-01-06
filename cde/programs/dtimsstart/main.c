@@ -32,26 +32,18 @@
  * (c) Copyright 1996 Hitachi.
  */
 
-#ifndef	lint
-static char	*RCS_ID = "@(#)dtimsstart $Revision: /main/10 $ $Date: 1996/10/28 12:41:03 $";
-#endif
-
 char	*ProgramRevision = "dtimsstart $Revision: /main/10 $";
 
 #define	_EXTERN_DEFINE_
 #include	"xims.h"
 #undef	_EXTERN_DEFINE_
 
-#include	<signal.h>
-#include	<locale.h>
+#include <signal.h>
+#include <locale.h>
+#include <Dt/MsgCatP.h>
 
-#ifndef	NLS
-#define catgets(i, sn,mn,s) (s)
-#else
 #define NL_SETN 1	/* set number */
-#include <nl_types.h>
 static nl_catd	catd = (nl_catd) -1;
-#endif	/* NLS */
 
 extern char *find_system_locale_name(char *);
 
@@ -616,7 +608,7 @@ static void	show_select_mode(int mode)
 {
     char	*valp;
 
-    printf("%s: \t", (catgets(catd,NL_SETN,20, "SelectMode")));
+    printf("%s: \t", (CATGETS(catd,NL_SETN,20, "SelectMode")));
 
     switch (mode) {
 	default:
@@ -624,10 +616,10 @@ static void	show_select_mode(int mode)
 	case SEL_MODE_NONE:	valp = "<NOT DEFINED>"; /* break; */
 #endif
 	case SEL_MODE_NOAUTO:
-	    valp = (catgets(catd,NL_SETN,21, "ask_at_login"));
+	    valp = (CATGETS(catd,NL_SETN,21, "ask_at_login"));
 	    break;
 	case SEL_MODE_AUTO:
-	    valp = (catgets(catd,NL_SETN,22, "resume_current_input_method"));
+	    valp = (CATGETS(catd,NL_SETN,22, "resume_current_input_method"));
 	    break;
 #ifdef	SelectMode_ONCE
 	case SEL_MODE_ONCE:
@@ -705,14 +697,10 @@ static int	set_locale_env(char *locale)
         putenv(XtNewString(buf));
     }
 
-#ifdef	NLS
-    if (catd != (nl_catd) -1)	(void) catclose(catd);
-    catd = (nl_catd) -1;	(void) catclose(catd);
-
+    (void)CATCLOSE(catd);
     if (Verbose > 0) {
-	catd = catopen(DTIMS_PROGNAME, 0);
+	catd = CATOPEN(DTIMS_PROGNAME, 0);
     }
-#endif	/* NLS */
 
     return NoError;
 }
@@ -1107,32 +1095,32 @@ static void	usage(int force)
 
     if (!force && Verbose <= 0)	return;
 
-    fprintf(LogFp, (catgets(catd,NL_SETN,1, "usage:  %s  [options ..]")),
+    fprintf(LogFp, (CATGETS(catd,NL_SETN,1, "usage:  %s  [options ..]")),
 							    ProgramName);
     putc('\n', LogFp);
 
     if (OpMode != MODE_MODE) {
 	fprintf(LogFp, fmt,
-	    "-env", (catgets(catd,NL_SETN,2, "print modified environment variables")));
+	    "-env", (CATGETS(catd,NL_SETN,2, "print modified environment variables")));
 	fprintf(LogFp, fmt,
-	    "-shell <name>", (catgets(catd,NL_SETN,3, "override $SHELL")));
+	    "-shell <name>", (CATGETS(catd,NL_SETN,3, "override $SHELL")));
 	fprintf(LogFp, fmt,
-	    "-ims <name>", (catgets(catd,NL_SETN,4, "specifies input method name")));
+	    "-ims <name>", (CATGETS(catd,NL_SETN,4, "specifies input method name")));
 	fprintf(LogFp, fmt,
-	    "-imsopt <string>", (catgets(catd,NL_SETN,5, "specifies command options for input method server")));
+	    "-imsopt <string>", (CATGETS(catd,NL_SETN,5, "specifies command options for input method server")));
 	fprintf(LogFp, fmt,
-	    "-host <name>", (catgets(catd,NL_SETN,6, "specifies host where input method server should be run")));
+	    "-host <name>", (CATGETS(catd,NL_SETN,6, "specifies host where input method server should be run")));
 	fprintf(LogFp, fmt,
-	    "-mode", (catgets(catd,NL_SETN,7, "change input method selection mode")));
+	    "-mode", (CATGETS(catd,NL_SETN,7, "change input method selection mode")));
 	fprintf(LogFp, fmt,
-	    "-list", (catgets(catd,NL_SETN,8, "print registered input method")));
+	    "-list", (CATGETS(catd,NL_SETN,8, "print registered input method")));
 	fprintf(LogFp, fmt,
-	    "-help", (catgets(catd,NL_SETN,9, "show this message")));
+	    "-help", (CATGETS(catd,NL_SETN,9, "show this message")));
     } else {
 	fprintf(LogFp, fmt,
-	    "-auto", (catgets(catd,NL_SETN,23, "force 'resume_current_input_method' mode")));
+	    "-auto", (CATGETS(catd,NL_SETN,23, "force 'resume_current_input_method' mode")));
 	fprintf(LogFp, fmt,
-	    "-noauto", (catgets(catd,NL_SETN,24, "force 'ask_at_login' mode")));
+	    "-noauto", (CATGETS(catd,NL_SETN,24, "force 'ask_at_login' mode")));
     }
 
 #ifdef	DEBUG
@@ -1159,86 +1147,86 @@ char	*xims_errmsg(int err_num, void *arg1, void *arg2, void *arg3)
 	case NoError:
 		break;
 	case ErrSyntax:		/* arg1: option string */
-		fmt = (catgets(catd,NL_SETN,31, "invalid option '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,31, "invalid option '%s'"));
 		break;
 	case ErrNoHome:
-		fmt = (catgets(catd,NL_SETN,32, "environment variable 'HOME' not defined"));
+		fmt = (CATGETS(catd,NL_SETN,32, "environment variable 'HOME' not defined"));
 		break;
 	case ErrNoLocale:
-		fmt = (catgets(catd,NL_SETN,33, "environment variable 'LANG' not defined"));
+		fmt = (CATGETS(catd,NL_SETN,33, "environment variable 'LANG' not defined"));
 		break;
 	case ErrNoCDELocale:
-		fmt = (catgets(catd,NL_SETN,34, "this locale is not supported by the desktop."));
+		fmt = (CATGETS(catd,NL_SETN,34, "this locale is not supported by the desktop."));
 		break;
 	case ErrNoDisplay:
-		fmt = (catgets(catd,NL_SETN,35, "environment variable 'DISPLAY' not defined"));
+		fmt = (CATGETS(catd,NL_SETN,35, "environment variable 'DISPLAY' not defined"));
 		break;
 
 	case ErrFileOpen:	/* arg1: file name */
-		fmt = (catgets(catd,NL_SETN,36, "cannot open file\n  [%s]"));
+		fmt = (CATGETS(catd,NL_SETN,36, "cannot open file\n  [%s]"));
 		setErrArg1(errFilePath);
 		break;
 	case ErrFileCreate:	/* arg1: file name */
-		fmt = (catgets(catd,NL_SETN,37, "cannot create file\n  [%s]"));
+		fmt = (CATGETS(catd,NL_SETN,37, "cannot create file\n  [%s]"));
 		setErrArg1(errFilePath);
 		break;
 	case ErrDirCreate:	/* arg1: dir name */
-		fmt = (catgets(catd,NL_SETN,38, "cannot create directory\n  [%s]"));
+		fmt = (CATGETS(catd,NL_SETN,38, "cannot create directory\n  [%s]"));
 		setErrArg1(errFilePath);
 		break;
 	case ErrMissEntry:	/* arg1: entry name, arg2: file name */
-		fmt = (catgets(catd,NL_SETN,39, "missing '%s' entry in configuration file\n  [%s]"));
+		fmt = (CATGETS(catd,NL_SETN,39, "missing '%s' entry in configuration file\n  [%s]"));
 		setErrArg2(errFilePath);
 		break;
 
 	case ErrAnotherProg:
-		fmt = (catgets(catd,NL_SETN,40, "another '%s' is already running"));
+		fmt = (CATGETS(catd,NL_SETN,40, "another '%s' is already running"));
 		setErrArg1(ProgramName);
 		break;
 	case ErrNoSelectionFile:	/* arg1: locale name */
-		fmt = (catgets(catd,NL_SETN,41, "no selection file for '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,41, "no selection file for '%s'"));
 		setErrArg1(userEnv.locale);
 		break;
 	case ErrSaveSelection:	/* arg1: file name */
-		fmt = (catgets(catd,NL_SETN,42, "cannot create selection file\n  [%s]"));
+		fmt = (CATGETS(catd,NL_SETN,42, "cannot create selection file\n  [%s]"));
 		setErrArg1(errFilePath);
 		break;
 	case ErrNoSelection:	/* arg1: locale name */
-		fmt = (catgets(catd,NL_SETN,43, "no ims selected for '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,43, "no ims selected for '%s'"));
 		setErrArg1(userEnv.locale);
 		break;
 	case ErrNoLocaleConf:	/* arg1: file name */
-		fmt = (catgets(catd,NL_SETN,44, "no locale configuration file for '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,44, "no locale configuration file for '%s'"));
 		setErrArg1(userEnv.locale);
 		break;
 	case ErrNoImsEntry:	/* arg1: locale name */
-		fmt = (catgets(catd,NL_SETN,45, "no ims configured for '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,45, "no ims configured for '%s'"));
 		setErrArg1(userEnv.locale);
 		break;
 	case ErrNoImsConf:	/* arg1: ims name */
-		fmt = (catgets(catd,NL_SETN,46, "no ims configuration file for '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,46, "no ims configuration file for '%s'"));
 		setErrArg1(userSel.name);
 		break;
 	case ErrNotRegistered:	/* arg1: ims name */
-		fmt = (catgets(catd,NL_SETN,47, "ims '%s' not registered"));
+		fmt = (CATGETS(catd,NL_SETN,47, "ims '%s' not registered"));
 		setErrArg1(userSel.name);
 		break;
 	case ErrNoExecutable:	/* arg1: ims name, arg2: file name */
-		fmt = (catgets(catd,NL_SETN,48, "no executable file for '%s'\n  [%s]"));
+		fmt = (CATGETS(catd,NL_SETN,48, "no executable file for '%s'\n  [%s]"));
 		setErrArg1(userSel.name);
 		setErrArg2(userSel.ent->ims->cmd_path);
 		break;
 
 	case ErrImsRunning:	/* arg1: ims name */
-		fmt = (catgets(catd,NL_SETN,49, "ims '%s' is already running"));
+		fmt = (CATGETS(catd,NL_SETN,49, "ims '%s' is already running"));
 		setErrArg1(userSel.name);
 		break;
 	case ErrImsExecution:	/* arg1: ims name */
-		fmt = (catgets(catd,NL_SETN,50, "cannot execute ims '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,50, "cannot execute ims '%s'"));
 		setErrArg1(userSel.name);
 		break;
 	case ErrImsAborted:	/* arg1: ims name, arg2: log file */
-		fmt = (catgets(catd,NL_SETN,51, "ims '%s' aborted.  See log file.\n  [%s]"));
+		fmt = (CATGETS(catd,NL_SETN,51, "ims '%s' aborted.  See log file.\n  [%s]"));
 		setErrArg1(userSel.name);
 		if (userSel.host_type == HOST_REMOTE)
 		    setErrArg2(errFilePath);
@@ -1246,38 +1234,38 @@ char	*xims_errmsg(int err_num, void *arg1, void *arg2, void *arg3)
 		    setErrArg2(Opt.LogPath);
 		break;
 	case ErrImsTimeout:	/* arg1: file name */
-		fmt = (catgets(catd,NL_SETN,52, "ims '%s' is not available yet"));
+		fmt = (CATGETS(catd,NL_SETN,52, "ims '%s' is not available yet"));
 		setErrArg1(userSel.name);
 		break;
 
 	case ErrUnknownHost:	/* arg1: host name */
-		fmt = (catgets(catd,NL_SETN,53, "unknown host '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,53, "unknown host '%s'"));
 		setErrArg1(userSel.hostname);
 		break;
 	case ErrRemoteAction:	/* arg1: action name */
-		fmt = (catgets(catd,NL_SETN,54, "action '%s' failed"));
+		fmt = (CATGETS(catd,NL_SETN,54, "action '%s' failed"));
 		setErrArg1(errFuncName);
 		break;
 	case ErrRemoteData:	/* arg1: host name */
-		fmt = (catgets(catd,NL_SETN,55, "remote execution failed on '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,55, "remote execution failed on '%s'"));
 		setErrArg1(userSel.hostname);
 		break;
 	case ErrNoImsstart:	/* arg1: host name */
-		fmt = (catgets(catd,NL_SETN,56, "remote functionality is not available on '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,56, "remote functionality is not available on '%s'"));
 		setErrArg1(userSel.hostname);
 		break;
 	case ErrRemoteNoIms:	/* arg1: host name */
-		fmt = (catgets(catd,NL_SETN,57, "no ims registered on '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,57, "no ims registered on '%s'"));
 		setErrArg1(userSel.hostname);
 		break;
 	case ErrRemoteMissIms:	/* arg1: ims name, arg2: host name */
-		fmt = (catgets(catd,NL_SETN,58, "ims '%1$s' not registered on '%2$s'"));
+		fmt = (CATGETS(catd,NL_SETN,58, "ims '%1$s' not registered on '%2$s'"));
 		setErrArg1(userSel.name);
 		setErrArg2(userSel.hostname);
 		break;
 
 	case ErrOpenDpy:	/* arg1: display name */
-		fmt = (catgets(catd,NL_SETN,59, "cannot open display '%s'"));
+		fmt = (CATGETS(catd,NL_SETN,59, "cannot open display '%s'"));
 		setErrArg1(userEnv.displayname);
 		break;
 

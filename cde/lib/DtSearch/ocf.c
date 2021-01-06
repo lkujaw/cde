@@ -287,7 +287,7 @@ static int      read_database (char *keyword, _Xstrtokparams *strtok_buf)
 
     if ((token = _XStrtok(NULL, DELIMITERS, *strtok_buf)) == NULL) {
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 477,
+	    CATGETS(dtsearch_catd, MS_loadocf, 477,
 		"%s %s: Missing database name after '%s' keyword.\n"),
 	    PROGNAME"477", cfgfname, keyword);
 	DtSearchAddMessage (sprintbufp);
@@ -297,7 +297,7 @@ static int      read_database (char *keyword, _Xstrtokparams *strtok_buf)
 
     if (strlen (token) > 8) {
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 184,
+	    CATGETS(dtsearch_catd, MS_loadocf, 184,
 	    "%s %s: More than 8 characters in Database name '%.16s'.\n"),
 	    PROGNAME"184", cfgfname, token);
 	DtSearchAddMessage (sprintbufp);
@@ -346,7 +346,7 @@ static void     set_boolbit (long *flagvar, long mask, char *flagname,
 	*flagvar &= ~mask;	/* switch OFF */
     else {
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 352,
+	    CATGETS(dtsearch_catd, MS_loadocf, 352,
 	    "%s %s: Invalid %s value, line ignored.\n"),
 	    PROGNAME"352", cfgfname, flagname);
 	DtSearchAddMessage (sprintbufp);
@@ -366,9 +366,9 @@ static void     set_int (int *intvar, char *keyword, _Xstrtokparams *strtok_buf)
     int             myint;
 
     if ((token = _XStrtok(NULL, DELIMITERS, *strtok_buf)) == NULL) {
-	token = catgets (dtsearch_catd, MS_loadocf, 140, "(missing)");
+	token = CATGETS(dtsearch_catd, MS_loadocf, 140, "(missing)");
 ERR_MSG:
-	sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 610,
+	sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 610,
 	    "%s %s: %s value is '%s'. "
 	    "Should be positive integer. Line ignored."),
 	    PROGNAME"844", cfgfname, keyword, token);
@@ -393,9 +393,9 @@ static void     set_long (long *longvar, char *keyword,
     long            longi;
 
     if ((token = _XStrtok(NULL, DELIMITERS, *strtok_buf)) == NULL) {
-	token = catgets (dtsearch_catd, MS_loadocf, 140, "(missing)");
+	token = CATGETS(dtsearch_catd, MS_loadocf, 140, "(missing)");
 ERR_MSG:
-	sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 610,
+	sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 610,
 	    "%s %s: %s value is '%s'. "
 	    "Should be positive integer. Line ignored."),
 	    PROGNAME"610", cfgfname, keyword, token);
@@ -427,7 +427,7 @@ static void     set_boolint (int *boolint, char *keyword,
 	*boolint = FALSE;	/* switch OFF */
     else {
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 352,
+	    CATGETS(dtsearch_catd, MS_loadocf, 352,
 	    "%s %s: Invalid %s value, line ignored.\n"),
 	    PROGNAME"352", cfgfname, keyword);
 	DtSearchAddMessage (sprintbufp);
@@ -464,7 +464,7 @@ static void     set_fileio (_Xstrtokparams *strtok_buf)
     else if (strcmp (token, "-HOME") == 0)
 	OE_fileio = "-HOME";
     else {
-	sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 607,
+	sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 607,
 	    "%s %s: Invalid FILEIO value.  "
 	    "User file reads and writes prohibited."),
 	    PROGNAME"607", cfgfname);
@@ -487,7 +487,7 @@ static void     read_rest_of_line (char *keyword, char **passed_ptr,
 				   _Xstrtokparams *strtok_buf)
 {
     if ((token = _XStrtok(NULL, "\n", *strtok_buf)) == NULL) {
-	sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 1007,
+	sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 1007,
 	    "%s%s: Empty %s string ignored."),
 	    PROGNAME"1007 ", cfgfname, keyword);
 	DtSearchAddMessage (sprintbufp);
@@ -515,12 +515,12 @@ static void     read_filepath (_Xstrtokparams *strtok_buf)
      * Set tabx to matching oef table entry.
      */
     if ((token = _XStrtok(NULL, DELIMITERS, *strtok_buf)) == NULL) {
-	token = catgets (dtsearch_catd, MS_loadocf, 142, "rest of line");
-	errp = catgets (dtsearch_catd, MS_loadocf, 143, "is empty");
+	token = CATGETS(dtsearch_catd, MS_loadocf, 142, "rest of line");
+	errp = CATGETS(dtsearch_catd, MS_loadocf, 143, "is empty");
 
 IGNORE_FILEPATH:
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 903,
+	    CATGETS(dtsearch_catd, MS_loadocf, 903,
 	    "%s %s: FILEPATH '%s' %s. Line ignored."),
 	    PROGNAME"903", cfgfname, token, errp);
 	DtSearchAddMessage (sprintbufp);
@@ -532,11 +532,11 @@ IGNORE_FILEPATH:
 	    break;
     }
     if (oef_table[tabx].id == NULL) {
-	errp = catgets (dtsearch_catd, MS_loadocf, 165, "unknown id");
+	errp = CATGETS(dtsearch_catd, MS_loadocf, 165, "unknown id");
 	goto IGNORE_FILEPATH;
     }
     if (oef_table[tabx].previously_specified) {
-	errp = catgets (dtsearch_catd, MS_loadocf, 166, "previously specified");
+	errp = CATGETS(dtsearch_catd, MS_loadocf, 166, "previously specified");
 	goto IGNORE_FILEPATH;
     }
 
@@ -545,7 +545,7 @@ IGNORE_FILEPATH:
      */
     if ((token = _XStrtok(NULL, DELIMITERS, *strtok_buf)) == NULL) {
 	token = oef_table[tabx].id;
-	errp = catgets (dtsearch_catd, MS_loadocf, 168,
+	errp = CATGETS(dtsearch_catd, MS_loadocf, 168,
 	    "missing path specification");
 	goto IGNORE_FILEPATH;
     }
@@ -586,7 +586,7 @@ static void     read_path (_Xstrtokparams *strtok_buf)
 
     /* parse the path for this dictionary/database */
     if ((token = _XStrtok(NULL, DELIMITERS, *strtok_buf)) == NULL) {
-	sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 221,
+	sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 221,
 	    "%s %s: Database '%s', No PATH specified, statement ignored.\n"),
 	    PROGNAME"221", cfgfname, db->name);
 	DtSearchAddMessage (sprintbufp);
@@ -607,7 +607,7 @@ static void     read_path (_Xstrtokparams *strtok_buf)
 /* append warning msg: passed keyword no longer used */
 static void     obsolete_keyword (char *keyword)
 {
-    sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 1,
+    sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 1,
 	"%1$s%2$s: %3$s keyword is obsolete."),
 	PROGNAME "001 ", cfgfname, keyword);
     DtSearchAddMessage (sprintbufp);
@@ -632,7 +632,7 @@ static void     read_maxhits (_Xstrtokparams *strtok_buf)
     if ((token = _XStrtok(NULL, DELIMITERS, *strtok_buf)) == NULL) {
 INVALID_MAXHITS:
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 304,
+	    CATGETS(dtsearch_catd, MS_loadocf, 304,
 	    "%s %s: Database '%s', invalid MAXHITS value.\n"),
 	    PROGNAME"304", cfgfname, db->name);
 	DtSearchAddMessage (sprintbufp);
@@ -672,7 +672,7 @@ static int      add_a_keytype (char ktchar)
     /* Make sure we have not exceeded max number of keytypes */
     if (db->ktcount >= MAX_KTCOUNT) {
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 732,
+	    CATGETS(dtsearch_catd, MS_loadocf, 732,
 	    "%s %s: Database '%s', No more than %d keytypes allowed.\n"),
 	    PROGNAME"732", cfgfname, db->name, MAX_KTCOUNT);
 	DtSearchAddMessage (sprintbufp);
@@ -685,7 +685,7 @@ static int      add_a_keytype (char ktchar)
 	if (!isprint (ktchar))
 	    ktchar = '?';
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 684,
+	    CATGETS(dtsearch_catd, MS_loadocf, 684,
 	    "%s %s: Database '%s',\n  Invalid KEYTYPE character '%c'."),
 	    PROGNAME"684", cfgfname, db->name, ktchar);
 	DtSearchAddMessage (sprintbufp);
@@ -698,7 +698,7 @@ static int      add_a_keytype (char ktchar)
     for (i = 0; i < db->ktcount; i++)
 	if (ktchar == kt[i].ktchar) {
 	    sprintf (sprintbufp,
-		catgets (dtsearch_catd, MS_loadocf, 1002,
+		CATGETS(dtsearch_catd, MS_loadocf, 1002,
 		"%s %s: Database '%s', Duplicate KEYTYPE character '%c'.\n"),
 		PROGNAME"1002", cfgfname, db->name, ktchar);
 	    DtSearchAddMessage (sprintbufp);
@@ -716,12 +716,12 @@ static int      add_a_keytype (char ktchar)
     kt[newindex].is_selected = TRUE;
     kt[newindex].ktchar = ktchar;
     sprintf (kt[newindex].name,
-	catgets (dtsearch_catd, MS_loadocf, 457, "'%c' Records"), ktchar);
+	CATGETS(dtsearch_catd, MS_loadocf, 457, "'%c' Records"), ktchar);
 
     /* Warn about inaccessible lowercase ktchars */
     if ( ((ascii_charmap[ktchar] & 0xff) != ktchar) && OE_uppercase_keys ) {
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 1011,
+	    CATGETS(dtsearch_catd, MS_loadocf, 1011,
 	    "%s %s: Database '%s': Records with lowercase\n"
 	    "  KEYTYPE character '%c' will be inaccessible.\n"
 	    "  Set UPPERKEYS = FALSE if lowercase keys are intended."),
@@ -870,7 +870,7 @@ GOT_FULLNAME:
      */
     if (fptr == NULL) {
 	if (errno != ENOENT || is_prespecified_fname) {
-	    sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 414,
+	    sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 414,
 		"%s Unable to open configuration file '%s':\n  %s."),
 		PROGNAME"414", fullname, strerror(errno));
 	    DtSearchAddMessage (sprintbufp);
@@ -885,7 +885,7 @@ GOT_FULLNAME:
 	strcpy (OE_sitecnfg_fname, fullname);
     }
     if (fstat (fileno (fptr), &statbuf) == -1) {
-	sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 1404,
+	sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 1404,
 	    "%s Status unavailable for configuration file '%s': %s"),
 	    PROGNAME"1404", fullname, strerror(errno));
 	DtSearchAddMessage (sprintbufp);
@@ -1014,7 +1014,7 @@ int             load_ocf (void)
 	goto OCFOPEN_OK;
 
     /* If we can't find site config on OE side we must quit.  */
-    sprintf (sprintbuf, catgets (dtsearch_catd, MS_loadocf, 1643,
+    sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_loadocf, 1643,
 	    "%1$sCannot find or open '%2$s'\n"
 	    "  configuration file in any of the following locations:\n"
 	    "    DTSROCFPATH directory =     %3$s,\n"
@@ -1025,16 +1025,16 @@ int             load_ocf (void)
 	)
 	,PROGNAME "1643 "
 	,FNAME_SITECONFIG
-	,(p) ? p : catgets (dtsearch_catd, MS_misc, 16,
+	,(p) ? p : CATGETS(dtsearch_catd, MS_misc, 16,
 	    "<no environment variable>")
 	,inbuf
-	,(q) ? q : catgets (dtsearch_catd, MS_misc, 16,
+	,(q) ? q : CATGETS(dtsearch_catd, MS_misc, 16,
 	    "<no environment variable>")
 	,(OE_inittab_dir) ? OE_inittab_dir :
-	    catgets (dtsearch_catd, MS_misc, 17,
+	    CATGETS(dtsearch_catd, MS_misc, 17,
 	    "<no server daemon>")
 	,(OE_server_dir) ? OE_server_dir :
-	    catgets (dtsearch_catd, MS_misc, 17,
+	    CATGETS(dtsearch_catd, MS_misc, 17,
 	    "<no server daemon>")
 	);
     DtSearchAddMessage (sprintbuf);
@@ -1130,7 +1130,7 @@ OCFOPEN_OK:
 
 	/* if we made it this far, the first token is unknown */
 	sprintf (sprintbufp,
-	    catgets (dtsearch_catd, MS_loadocf, 495,
+	    CATGETS(dtsearch_catd, MS_loadocf, 495,
 	    "%s %s: '%.16s' is invalid keyword.\n"),
 	    PROGNAME"495", cfgfname, token);
 	DtSearchAddMessage (sprintbufp);
@@ -1149,7 +1149,7 @@ OCFOPEN_OK:
      * in site config file, remove the dblk and mark fatal error.
      */
     if (usrblk.dblist == NULL) {
-	sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 1869,
+	sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 1869,
 	    "%s %s: Configuration file must specify at least one database."),
 	    PROGNAME"1869", cfgfname);
 	DtSearchAddMessage (sprintbufp);
@@ -1158,7 +1158,7 @@ OCFOPEN_OK:
     else
 	for (db = usrblk.dblist; db != NULL; db = db->link) {
 	    if (db->ktcount <= 0) {
-		sprintf (sprintbufp, catgets (dtsearch_catd, MS_loadocf, 986,
+		sprintf (sprintbufp, CATGETS(dtsearch_catd, MS_loadocf, 986,
 		    "%s %s: KEYTYPES missing for database '%s'."),
 		    PROGNAME"986", cfgfname, db->name);
 		DtSearchAddMessage (sprintbufp);

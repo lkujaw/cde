@@ -286,7 +286,7 @@ DmxPrintSetup::attachPrintSetupDialog (void)
     dialog = XtParent(_dtprint_setup);
     if (NULL != dialog && XtIsShell(dialog))
     {
-	char *title = (char*) GETMSG(DT_catd, 21, 21, "Mailer - Print Setup");
+	char *title = (char*) CATGETS(DT_catd, 21, 21, "Mailer - Print Setup");
         XtVaSetValues(dialog, XmNtitle, title, NULL);
     }
     else
@@ -339,7 +339,7 @@ DmxPrintSetup::createPrintSetupDialog (Widget parent)
 		widgets->dtprint_setup,
 		NULL);
 		 
-    xms = XmStringCreateLocalized(GETMSG(DT_catd, 21, 12, "Print Separately"));
+    xms = XmStringCreateLocalized(CATGETS(DT_catd, 21, 12, "Print Separately"));
     widgets->print_separately_tb = XtVaCreateManagedWidget(
 				"PrintSeparatelyTB",
 				xmToggleButtonWidgetClass,
@@ -351,7 +351,7 @@ DmxPrintSetup::createPrintSetupDialog (Widget parent)
 				NULL);
     XmStringFree(xms);
 
-    xms = XmStringCreateLocalized(GETMSG(DT_catd, 21, 13, "Use Word Wrap"));
+    xms = XmStringCreateLocalized(CATGETS(DT_catd, 21, 13, "Use Word Wrap"));
     widgets->use_word_wrap_tb = XtVaCreateManagedWidget(
 				"UseWordWrapTB",
 			  	xmToggleButtonWidgetClass,
@@ -365,7 +365,7 @@ DmxPrintSetup::createPrintSetupDialog (Widget parent)
 				NULL);
     XmStringFree(xms);
 
-    xms = XmStringCreateLocalized(GETMSG(DT_catd, 21, 20, "More ..."));
+    xms = XmStringCreateLocalized(CATGETS(DT_catd, 21, 20, "More ..."));
     widgets->more_options_pb = XtVaCreateManagedWidget(
 				"PrintOptionsPB",
 			  	xmPushButtonWidgetClass,

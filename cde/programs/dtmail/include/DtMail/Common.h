@@ -44,7 +44,7 @@
 #define _COMMON_H
 
 #include <unistd.h>
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 
 // XPG3 compatible. NL_CAT_LOCALE is set to non-zero in XPG4. Use NL_CAT_LOCALE
 // for all catopen() calls.

@@ -10,7 +10,7 @@
 #
 
 INCLUDES = -I. -I$(DTSEARCHSRC) -I$(DTSEARCHSRC)/raima
-DEFINES  = -DMAIN_PROGRAM
+DEFINES  = -DMAIN_PROGRAM -DNO_XLIB
 
 #ifdef AlphaArchitecture
 EXTRA_DEFINES = -DBYTE_SWAP -D_XOPEN_SOURCE -D_OSF_SOURCE
@@ -36,41 +36,43 @@ SYS_LIBRARIES   = -lc -lm
 PROGRAMS =  $(PROGRAM1) $(PROGRAM2) $(PROGRAM3) $(PROGRAM4) $(PROGRAM5) \
 	    $(PROGRAM6) $(PROGRAM7) $(PROGRAM9) $(PROGRAM10)
 
+EXTRA_OBJS = MsgCat.o
+
 PROGRAM1 =  dtsrcreate
 SRCS1   =  dtsrcreate.c
-OBJS1   =  dtsrcreate.o
+OBJS1   =  dtsrcreate.o $(EXTRA_OBJS)
 
 PROGRAM2 =  dtsrdbrec
 SRCS2   =  dtsrdbrec.c
-OBJS2   =  dtsrdbrec.o
+OBJS2   =  dtsrdbrec.o $(EXTRA_OBJS)
 
 PROGRAM3 =  dtsrhan
 SRCS3   =  dtsrhan.c
-OBJS3   =  dtsrhan.o
+OBJS3   =  dtsrhan.o $(EXTRA_OBJS)
 
 PROGRAM4 =  dtsrload
 SRCS4   =  dtsrload.c
-OBJS4   =  dtsrload.o
+OBJS4   =  dtsrload.o $(EXTRA_OBJS)
 
 PROGRAM5 =  dtsrindex
 SRCS5   =  dtsrindex.c
-OBJS5   =  dtsrindex.o
+OBJS5   =  dtsrindex.o $(EXTRA_OBJS)
 
 PROGRAM6 =  dtsrdelete
 SRCS6   =  tomita.c
-OBJS6   =  tomita.o
+OBJS6   =  tomita.o $(EXTRA_OBJS)
 
 PROGRAM7 =  dtsrclean
 SRCS7   =  dtsrclean.c
-OBJS7   =  dtsrclean.o
+OBJS7   =  dtsrclean.o $(EXTRA_OBJS)
 
 PROGRAM9 =  huffcode
 SRCS9  =  huffcode.c
-OBJS9  =  huffcode.o
+OBJS9  =  huffcode.o $(EXTRA_OBJS)
 
 PROGRAM10 =  dtsrkdump
 SRCS10  =  dtsrkdump.c
-OBJS10  =  dtsrkdump.o
+OBJS10  =  dtsrkdump.o $(EXTRA_OBJS)
 
 ComplexProgramTarget_1($(PROGRAM1),$(LOCAL_LIBRARIES), /* */)
 ComplexProgramTarget_2($(PROGRAM2),$(LOCAL_LIBRARIES), /* */)
@@ -81,3 +83,5 @@ ComplexProgramTarget_6($(PROGRAM6),$(LOCAL_LIBRARIES), /* */)
 ComplexProgramTarget_7($(PROGRAM7),$(LOCAL_LIBRARIES) $(BYTE_SWAP_LIB), /* */)
 ComplexProgramTarget_9($(PROGRAM9),$(LOCAL_LIBRARIES), /* */)
 ComplexProgramTarget_10($(PROGRAM10),$(LOCAL_LIBRARIES), /* */)
+
+LinkSourceFile(MsgCat.c,$(DTSVCSRC)/DtUtil2)

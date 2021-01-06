@@ -190,12 +190,12 @@ button_initialize(
     if (obj_get_subtype(obj) == AB_BUT_MENU)
     {
 	obj_set_unique_name(obj, "menubutton");
-	obj_set_label(obj, catgets(Dtb_project_catd, 6, 66, "Menu Button"));
+	obj_set_label(obj, CATGETS(Dtb_project_catd, 6, 66, "Menu Button"));
     }
     else /* Push or Drawn */
     {
     	obj_set_unique_name(obj, "button");
-	obj_set_label(obj, catgets(Dtb_project_catd, 6, 65, "Button"));
+	obj_set_label(obj, CATGETS(Dtb_project_catd, 6, 65, "Button"));
     }
     obj_set_is_initially_visible(obj, True);
     obj_set_is_initially_active(obj, True);

@@ -166,7 +166,7 @@ char           *get_hitlist_text (int maxlen)
     size_t          mallocsz;
 
     if (usrblk.dittocount <= 0L) {
-	sprintf (sprintbuf, catgets (dtsearch_catd, MS_misc, 96,
+	sprintf (sprintbuf, CATGETS(dtsearch_catd, MS_misc, 96,
 		"%s Hitlist is empty."), PROGNAME"96");
 	DtSearchAddMessage (sprintbuf);
 	return NULL;

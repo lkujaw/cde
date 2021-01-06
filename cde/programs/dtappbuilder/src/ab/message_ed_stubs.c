@@ -1164,23 +1164,23 @@ set_msg_textp_label(
     {
         case AB_MSG_QUESTION:
             ui_set_label_string(mes->msg_textp_label, 
-		catgets(Dtb_project_catd, 100, 210, "Question Message"));
+		CATGETS(Dtb_project_catd, 100, 210, "Question Message"));
 	    break;
         case AB_MSG_ERROR:
             ui_set_label_string(mes->msg_textp_label, 
-		catgets(Dtb_project_catd, 100, 211, "Error Message"));
+		CATGETS(Dtb_project_catd, 100, 211, "Error Message"));
 	    break;
         case AB_MSG_WARNING:
             ui_set_label_string(mes->msg_textp_label, 
-		catgets(Dtb_project_catd, 100, 212, "Warning Message"));
+		CATGETS(Dtb_project_catd, 100, 212, "Warning Message"));
 	    break;
         case AB_MSG_WORKING:
             ui_set_label_string(mes->msg_textp_label, 
-		catgets(Dtb_project_catd, 100, 213, "Working Message"));
+		CATGETS(Dtb_project_catd, 100, 213, "Working Message"));
 	    break;
         case AB_MSG_INFORMATION:
             ui_set_label_string(mes->msg_textp_label, 
-		catgets(Dtb_project_catd, 100, 214, "Information Message"));
+		CATGETS(Dtb_project_catd, 100, 214, "Information Message"));
 	    break;
 	default:
 	    break;
@@ -2361,31 +2361,31 @@ msgEdP_do_auto_apply(
  
     	if (ChangingObjects)
     	{
-            sprintf(buffer, catgets(Dtb_project_catd, 100, 36,
+            sprintf(buffer, CATGETS(Dtb_project_catd, 100, 36,
                 "Properties for \"%s\" have been modified but not\
                 Applied.\nApply Changes or Cancel Load operation\
                 for \"%s\"."), old_name, new_name);
-	    help_data->help_text = catgets(Dtb_project_catd, 100, 98,
+	    help_data->help_text = CATGETS(Dtb_project_catd, 100, 98,
 "Click Apply Changes to apply the changes to the\ncurrent message and load the selected message.\n\nClick Cancel if you don't want to apply the\nchanges to the current message. You can then\nclick Reset to undo the changes before loading\nthe selected message.");
     	}
     	else
     	{
             if (new_obj != (ABObj) NULL)
        	    {
-            	sprintf(buffer, catgets(Dtb_project_catd, 100, 35,
+            	sprintf(buffer, CATGETS(Dtb_project_catd, 100, 35,
                 "Properties for \"%s\" have been modified but not\
                 Applied.\nApply Changes or Cancel Close operation."),
                 old_name);
-	    	help_data->help_text = catgets(Dtb_project_catd, 100, 99,
+	    	help_data->help_text = CATGETS(Dtb_project_catd, 100, 99,
 "Click Apply Changes to apply the changes to the\ncurrent message and close the Message Editor.\n\nClick Cancel if you don't want to apply the\nchanges to the current message and want the\nMessage Editor to remain displayed. You can\nthen click Reset to undo the changes before\nclosing the Message Editor.");
             }
             else
             {
-            	sprintf(buffer,catgets(Dtb_project_catd, 100, 39,
+            	sprintf(buffer,CATGETS(Dtb_project_catd, 100, 39,
                 "Properties for \"%s\" have been modified but not\
                 Applied.\nApply Changes or Cancel Add-Message\
                 operation."), old_name);
-	    	help_data->help_text = catgets(Dtb_project_catd, 100, 100,
+	    	help_data->help_text = CATGETS(Dtb_project_catd, 100, 100,
 "Click Apply Changes to apply the changes to the\ncurrent message and add a new message to the\nmodule.\n\nClick Cancel if you don't want to apply the\nchanges to the current message. You can then\nclick Reset to undo the changes before adding\na new message.");
             }
     	}
@@ -2553,21 +2553,21 @@ static void
 msgEdP_strings_init(void)
 {
     msgEd_strings[MSG_ED_RETRY_STR] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 202, "Retry"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 202, "Retry"));
     msgEd_strings[MSG_ED_OK_STR] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 203, "OK"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 203, "OK"));
     msgEd_strings[MSG_ED_CLOSE_STR] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 204, "Close"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 204, "Close"));
     msgEd_strings[MSG_ED_STOP_STR] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 205, "Stop"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 205, "Stop"));
     msgEd_strings[MSG_ED_YES_STR] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 206, "Yes"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 206, "Yes"));
     msgEd_strings[MSG_ED_NO_STR] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 207, "No"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 207, "No"));
     msgEd_strings[MSG_ED_CONT_STR] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 208, "Continue"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 208, "Continue"));
     msgEd_strings[MSG_ED_NO_MODULES_STR] = 
-	XtNewString(catgets(Dtb_project_catd, 100, 209, "No Modules"));
+	XtNewString(CATGETS(Dtb_project_catd, 100, 209, "No Modules"));
 }
 
 /*** DTB_USER_CODE_END

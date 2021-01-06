@@ -69,10 +69,8 @@
 #include <Xm/MessageB.h>
 #include <assert.h>
 
-#include <nl_types.h>
+#include <Dt/MsgCatP.h>
 extern nl_catd catd;
-
-#include "NLS.hh"
 
 DialogManager::DialogManager ( char   *name ): UIComponent ( name )
 {
@@ -468,8 +466,8 @@ DialogManager::post_and_return(
     // They may have been set via the overloaded post_and_return()
     // method before. Reset them to their default values...
 
-    okLabel = XmStringCreateLocalized(GETMSG(catd, 1, 2, "OK"));
-    cancelLabel = XmStringCreateLocalized(GETMSG(catd, 1, 3, "Cancel"));
+    okLabel = XmStringCreateLocalized(CATGETS(catd, 1, 2, "OK"));
+    cancelLabel = XmStringCreateLocalized(CATGETS(catd, 1, 3, "Cancel"));
 
     Widget dlg = this->getDialog(wid);
 
