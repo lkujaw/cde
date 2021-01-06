@@ -109,14 +109,15 @@ platforms as part of a translation.
 /*================================================$SKIP$==*/
 #endif
 /* $DEF$, Platform constants */
-#if defined(SVR4) || defined(_AIX)
+#if defined(SVR4) || defined(_AIX) || defined(SYS_NMLN)
 #define _DtPLATFORM_MAX_LEN SYS_NMLN
-#else
-#if defined(SYS_NMLN)
-#define _DtPLATFORM_MAX_LEN SYS_NMLN
-#else
+#elif defined(UTSLEN)
 #define _DtPLATFORM_MAX_LEN UTSLEN
-#endif
+#else
+/* POSIX guarantees that hostnames are limited to 255 bytes,
+ * but SVR4 platforms commonly allow for 256.
+ */
+#define _DtPLATFORM_MAX_LEN 257
 #endif
 
 #define _DtPLATFORM_UNKNOWN ((const char *)0)

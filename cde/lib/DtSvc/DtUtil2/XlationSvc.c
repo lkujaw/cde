@@ -2199,18 +2199,15 @@ int _DtXlateGetXlateEnv(
    /* then look up version number of execution host */
    if (ret_AppExecEnvVersion) 
    {
-#if defined(sun) || defined(_AIX) || defined(__linux__) || defined(CSRG_BASED)
-      char version[SYS_NMLN+SYS_NMLN+2];
-#else
-      char version[UTSLEN+UTSLEN+2];
-#endif
+      char version[sizeof(names.release)+sizeof(names.version)-1];
       char * stdVer = NULL;
       int  verNum = MATCHALL_VER;
 
       /* cat release version and do a translation on it to a std value */
       /* then convert the std value to a integer */
-      strcpy(version,names.release);
-      strcat(version,names.version);
+      strncpy(version,names.release,sizeof(names.release)-1);
+      version[sizeof(names.release)-1] = EOS;
+      strncat(version,names.version,sizeof(names.version)-1);
       ret = _DtXlateOpToStdValue(db,names.sysname,0,
                    _DtXLATE_OPER_VERSION,version,&stdVer,NULL);
       if (ret == 0)
