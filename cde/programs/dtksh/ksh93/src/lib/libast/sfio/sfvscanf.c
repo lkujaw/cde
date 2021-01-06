@@ -61,6 +61,12 @@
 #endif
 #endif
 
+#if defined(va_copy)
+#define __VA_COPY__(d,s) va_copy(d,s)
+#elif defined(__va_copy)
+#define __VA_COPY__(d,s) __va_copy(d,s)
+#endif
+
 #define MAXLENGTH	(int)(((uint)~0)>>1)
 
 #define a2f(s)	strtod(s,NIL(char**))
@@ -236,10 +242,10 @@ loop_fa :
 			fa->form = (char*)form;
 			if(!(form = va_arg(args,char*)))
 				form = "";
-#ifdef __ppc
-			__va_copy( argsp, va_arg(args,va_list*) );
-			__va_copy( fa->args, args );
-			__va_copy( args, argsp );
+#if defined(__VA_COPY__)
+			__VA_COPY__( *argsp, *va_arg(args,va_list*) );
+			__VA_COPY__( fa->args, args );
+			__VA_COPY__( args, *argsp );
 #else
 			argsp = va_arg(args,va_list*);
 			memcpy((Void_t*)(&(fa->args)), (Void_t*)(&args), sizeof(va_list));

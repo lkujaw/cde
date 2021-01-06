@@ -93,6 +93,11 @@
 #define va_listarg		va_list*
 #endif
 #include <ast.h>
+#if defined(va_copy)
+#define __VA_COPY__(d,s) va_copy(d,s)
+#else
+#define __VA_COPY__(d,s) __va_copy(d,s)
+#endif
 
 static char	empty[1];
 
@@ -229,7 +234,7 @@ tokscan __PARAM__((char* s, char** nxt, const char* fmt, ...), (va_alist)) __OTO
 		if (f = prv_f)
 		{
 			prv_f = 0;
-			__va_copy( ap, prv_ap );
+			__VA_COPY__( ap, prv_ap );
 			continue;
 		}
 		goto done;
@@ -258,8 +263,8 @@ tokscan __PARAM__((char* s, char** nxt, const char* fmt, ...), (va_alist)) __OTO
 		case ':':
 			prv_f = f;
 			f = va_arg(ap, char*);
-			__va_copy( prv_ap, ap );
-			__va_copy(ap, va_listval(va_arg(ap, va_listarg)));
+			__VA_COPY__( prv_ap, ap );
+			__VA_COPY__(ap, va_listval(va_arg(ap, va_listarg)));
 			continue;
 		case 'c':
 			p_char = va_arg(ap, char*);

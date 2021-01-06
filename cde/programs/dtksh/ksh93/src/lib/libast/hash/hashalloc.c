@@ -96,6 +96,12 @@ static const char id_hash[] = "\n@(#)hash (AT&T Bell Laboratories) 05/09/95\0\n"
 
 #include "hashlib.h"
 
+#if defined(va_copy)
+#define __VA_COPY__(d,s) va_copy(d,s)
+#else
+#define __VA_COPY__(d,s) __va_copy(d,s)
+#endif
+
 #if _DLL_INDIRECT_DATA && !_DLL
 static Hash_info_t	hash_info_data;
 Hash_info_t		hash_info = &hash_info_data;
@@ -222,10 +228,10 @@ hashalloc __PARAM__((Hash_table_t* ref, ...), (va_alist)) __OTORP__(va_dcl)
 #else
 			if (vp < &va[elementsof(va)])
 			{
-				__va_copy( *vp, ap );
+				__VA_COPY__( *vp, ap );
 				vp++;
 			}
-			__va_copy(ap, va_listval(va_arg(ap, va_listarg)));
+			__VA_COPY__(ap, va_listval(va_arg(ap, va_listarg)));
 #endif
 			break;
 		case 0:
@@ -235,7 +241,7 @@ hashalloc __PARAM__((Hash_table_t* ref, ...), (va_alist)) __OTORP__(va_dcl)
 				ap = *--vp;
 #else
 				vp--;
-				__va_copy( ap, *vp );
+				__VA_COPY__( ap, *vp );
 #endif
 				break;
 			}

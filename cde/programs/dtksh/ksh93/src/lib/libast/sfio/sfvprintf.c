@@ -56,6 +56,12 @@
 #define HIGHBIT		(~(((ulong)~0L) >> 1))
 #endif
 
+#if defined(va_copy)
+#define __VA_COPY__(d,s) va_copy(d,s)
+#elif defined(__va_copy)
+#define __VA_COPY__(d,s) __va_copy(d,s)
+#endif
+
 #define F_LEFT		000001	/* left justification (-)		*/
 #define F_SIGN		000002	/* must set a sign - or +		*/
 #define F_BLANK		000004	/* if not - and +, then prepend a blank */
@@ -92,10 +98,10 @@
 	}
 #define GETARGL(elt,arge,argf,args,etype,type,fmt,t_user,n_user) \
 	{ if(!argf) \
-		__va_copy( elt, va_arg(args,type) ); \
+		__VA_COPY__( *elt, *va_arg(args,type) ); \
 	  else if((*argf)(fmt,(char*)(&arge),t_user,n_user) < 0) \
 		goto pop_fa; \
-	  else	__va_copy( elt, arge ); \
+	  else	__VA_COPY__( *elt, *arge ); \
 	}
 
 #if __STD_C
@@ -301,15 +307,14 @@ loop_fa :
 			GETARG(form,form,argf,args,char*,char*,'1',t_user,n_user);
 			if(!form)
 				form = "";
-#if (defined(CSRG_BASED) && !defined(__LP64__)) || \
-    (defined(__linux__) && !defined(__LP64__)) || defined(sun)
+#if defined(__VA_COPY__)
+			GETARGL(argsp,argsp,argf,args,va_list*,va_list*,'2',t_user,n_user);
+			__VA_COPY__( fa->args, args );
+			__VA_COPY__( args, *argsp );
+#else
 			GETARG(argsp,argsp,argf,args,va_list*,va_list*,'2',t_user,n_user);
 			memcpy((Void_t*)(&(fa->args)), (Void_t*)(&args), sizeof(va_list));
 			memcpy((Void_t*)(&args), (Void_t*)argsp, sizeof(va_list));
-#else
-			GETARGL(argsp,argsp,argf,args,va_list*,va_list*,'2',t_user,n_user);
-			__va_copy( fa->args, args );
-			__va_copy( args, argsp );
 #endif
 			fa->argf.p = argf;
 			fa->extf.p = extf;
@@ -324,7 +329,7 @@ loop_fa :
 				va_list savarg = args;  /* is this portable? */
 #else
 				va_list	savarg; 	/* is this portable?   Sorry .. NO. */
-				__va_copy( savarg, args );
+				__VA_COPY__( savarg, args );
 #endif
 
 				GETARG(sp,astr,argf,args,char*,char*,fmt,t_user,n_user);
@@ -336,7 +341,7 @@ loop_fa :
 #if defined(CSRG_BASED) && !defined(__LP64__)
 				args = savarg;  /* extf failed, treat as if unmatched */
 #else
-				__va_copy( args, savarg ); /* extf failed, treat as if unmatched */
+				__VA_COPY__( args, savarg ); /* extf failed, treat as if unmatched */
 #endif
 			}
 

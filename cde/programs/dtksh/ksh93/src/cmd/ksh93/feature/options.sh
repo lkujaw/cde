@@ -42,7 +42,6 @@ do	: This could be done with eval, but eval broken in some shells
 	KIA)		j=$KIA;;
 	MULTIBYTE)	j=$MULTIBYTE;;
 	OLDTERMIO)	echo "#include <sys/termios.h>" > /tmp/dummy$$.c
-			echo "#include <sys/termio.h>" >>/tmp/dummy$$.c
 			if	${CC-cc} -E /tmp/dummy$$.c > /dev/null 2>&1
 			then	j=$OLDTERMIO
 			fi
