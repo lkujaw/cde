@@ -195,8 +195,16 @@ int ConnectToPrintServer(const char *rhost, int timeout)
    // run as user's UID, but with privileges from root
    SETEUID(0);
 
-   // Try connecting to the server.
+   // Try connecting to the server from a privileged port.
+   /* FIXME: Test for the presence of rresvport and provide a substitute
+    *        if necessary. Linux C library support:
+    * dietlibc: no rresvport, defines __dietlibc__
+    * musl: no rresvport
+    * uclibc: rresvport, defines __GLIBC__
+    */
+#if !defined(__linux__) || defined(__GLIBC__)
    s = rresvport(&lport);
+#endif
 
    signal(SIGALRM, connect_timeout);
    if (timeout > 0)
