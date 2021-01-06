@@ -54,7 +54,7 @@
 #include "storage/unixf_storage.h"
 #include "dynhash/data_t.h"
 
-#ifdef SVR4
+#if defined(SVR4) || defined(__linux__)
 
 #include <sys/types.h>
 #include <sys/stat.h>
