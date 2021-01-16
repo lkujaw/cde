@@ -350,9 +350,10 @@ function tokenize() {
         # allow escaping of significant syntax characters
         #
         gsub("[\\][{]","{")
-        gsub("\\:",":")
-        gsub("\\;",";")
-        gsub("\\=","=")
+        # These cause warnings in newer nawk, and aren't really necessary.
+        #        gsub("\\:",":")
+        #        gsub("\\;",";")
+        #        gsub("\=","=")
         gsub("[\\][}]","}")
 
 	#
