@@ -414,7 +414,7 @@ TEMPLATE_OBJS=TemplateDB//**/*.o
 
 #if defined(i386Architecture) || defined(AMD64Architecture) || defined(AlphaArchitecture) || defined(ARMArchitecture) || defined(AArch64Architecture)
 # define ByteOrderDefines LittleEndianDefines
-#elif defined(HAL32V7Architecture) || defined(SunArchitecture) || defined(AIXArchitecture) || defined(HPArchitecture)
+#elif defined(HAL32V7Architecture) || defined(SunArchitecture) || defined(AIXArchitecture) || defined(HPArchitecture) || defined(PpcArchitecture)
 # define ByteOrderDefines BigEndianDefines
 #else
 # define ByteOrderDefines DefaultEndianDefines

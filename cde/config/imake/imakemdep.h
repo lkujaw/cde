@@ -298,16 +298,16 @@ char *cpp_argv[ARGUMENTS] = {
         "-D__amd64__",
 # endif
 # ifdef __ppc__
-        {"-D__powerpc__", "1"},
+        "-D__powerpc__",
 # endif
 # ifdef __ppc64__
-        {"-D__powerpc64__", "1"},
+        "-D__powerpc64__",
 # endif
 # ifdef __powerpc__
-        {"-D__powerpc__", "1"},
+        "-D__powerpc__",
 # endif
 # ifdef __powerpc64__
-        {"-D__powerpc64__", "1"},
+        "-D__powerpc64__",
 # endif
 
 # if defined(__GNUC__) && !defined(__llvm__)
